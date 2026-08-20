@@ -4,16 +4,16 @@ import { dirname, resolve } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// En dev, Vite sirve páginas anidadas (pymes/index.html) en /pymes/ (con slash).
-// Vercel resuelve /pymes -> pymes/index.html vía cleanUrls en producción;
+// En dev, Vite sirve páginas anidadas (teams/index.html) en /teams/ (con slash).
+// Vercel resuelve /teams -> teams/index.html vía cleanUrls en producción;
 // este middleware replica ese comportamiento en el servidor local.
 function cleanUrlsDev() {
   return {
     name: 'clean-urls-dev',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        if (req.url === '/pymes') {
-          req.url = '/pymes/';
+        if (req.url === '/teams') {
+          req.url = '/teams/';
         }
         next();
       });
@@ -28,7 +28,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        pymes: resolve(__dirname, 'pymes/index.html'),
+        teams: resolve(__dirname, 'teams/index.html'),
       },
     },
   },
