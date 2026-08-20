@@ -9,7 +9,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
-        pymes: resolve(__dirname, 'pymes/index.html'),
+        equipos: resolve(__dirname, 'equipos/index.html'),
       },
     },
   },
