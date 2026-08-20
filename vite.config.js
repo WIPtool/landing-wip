@@ -29,6 +29,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         teams: resolve(__dirname, 'teams/index.html'),
+        politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
       },
     },
   },

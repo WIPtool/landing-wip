@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad — WIP · Aplicando S.A.S.</title>
+<meta name="description" content="Política de privacidad y tratamiento de datos personales de Aplicando S.A.S., empresa propietaria de la plataforma WIP.">
+<meta name="robots" content="noindex, follow">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#161d31;
+    --lime:#dbff57;
+    --lime-text:#4f8f1f;
+    --salmon:#ff6c6c;
+    --paper:#f9f9fb;
+    --paper-2:#ffffff;
+    --line:#e6e6ea;
+    --ink:#161d31;
+    --muted:#5a647a;
+    --maxw:860px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em}
+  a{color:var(--navy)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  header{position:sticky;top:0;z-index:20;background:rgba(249,249,251,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{max-width:1100px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-weight:700;font-size:19px;color:var(--navy);text-decoration:none}
+  .logo .mark{width:28px;height:28px;background:var(--navy);border-radius:7px;display:grid;place-items:center;color:var(--lime);font-weight:700;font-size:13px}
+  .back-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none}
+  .back-link:hover{color:var(--navy)}
+
+  .hero-block{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--lime-text);margin-bottom:16px}
+  .eyebrow::before{content:"";width:20px;height:2px;background:var(--lime-text)}
+  h1{font-size:clamp(30px,4.4vw,42px);font-weight:700;color:var(--navy);margin-bottom:14px}
+  .hero-block p.lede{font-size:16px;color:var(--muted);max-width:640px}
+
+  .toc{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:32px 0 0}
+  .toc h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:12px;font-family:'Inter';font-weight:700}
+  .toc ol{padding-left:20px}
+  .toc li{margin-bottom:6px;font-size:14.5px}
+  .toc a{text-decoration:none;color:var(--navy);font-weight:500}
+  .toc a:hover{color:var(--lime-text);text-decoration:underline}
+
+  main{padding:44px 0 90px}
+  section{margin-bottom:44px;scroll-margin-top:90px}
+  section h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--lime)}
+  section h3{font-size:16px;font-weight:700;color:var(--navy);margin:20px 0 8px}
+  section p{font-size:15px;color:#333;margin-bottom:14px}
+  section ul, section ol.plain{margin:12px 0 16px 22px}
+  section li{font-size:15px;color:#333;margin-bottom:8px}
+  .clause-list{counter-reset:clause}
+  .clause{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+  .clause b{color:var(--navy)}
+  .setting-card{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+  .setting-card b{display:block;color:var(--navy);margin-bottom:4px;font-size:15px}
+  .contact-box{background:var(--navy);color:#fff;border-radius:16px;padding:26px 28px;margin-top:8px}
+  .contact-box p{color:#c9cde0;font-size:14.5px;margin-bottom:6px}
+  .contact-box a{color:var(--lime);font-weight:600}
+  .note{background:#fff9e6;border:1px solid #f0e3a8;border-radius:10px;padding:12px 16px;font-size:13.5px;color:#6b5c1e;margin-top:10px}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;text-align:center}
+  footer p{font-size:13px;color:var(--muted)}
+  footer a{color:var(--navy);font-weight:600}
+
+  @media(max-width:600px){
+    .nav{padding:0 18px}
+    .back-link span.txt{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="logo"><span class="mark">W</span>WIP</a>
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span class="txt">Volver a wiptool.com</span>
+    </a>
+  </div>
+</header>
+
+<div class="hero-block">
+  <div class="wrap">
+    <span class="eyebrow">Aplicando S.A.S. · WIP</span>
+    <h1>Política de privacidad</h1>
+    <p class="lede">Tratamiento de datos personales, uso de la API de WhatsApp Business y recolección de datos en la app de WIP, en cumplimiento de la Ley 1581 de 2012 de Colombia.</p>
+
+    <nav class="toc" aria-label="Tabla de contenido">
+      <h2>Contenido</h2>
+      <ol>
+        <li><a href="#responsable">Responsable del tratamiento</a></li>
+        <li><a href="#finalidades">Finalidades del tratamiento de datos</a></li>
+        <li><a href="#derechos">Derechos del titular</a></li>
+        <li><a href="#whatsapp">Integración y uso de WhatsApp Business API</a></li>
+        <li><a href="#datos-app">Datos recopilados en la app WIP</a></li>
+        <li><a href="#vigencia">Vigencia del tratamiento y conservación de datos</a></li>
+        <li><a href="#ubicacion">Uso de la ubicación (Android)</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="responsable">
+    <h2>1. Responsable del tratamiento</h2>
+    <p>APLICANDO S.A.S., con domicilio en Medellín, Colombia, en cumplimiento de la Ley 1581 de 2012, es responsable del tratamiento de los Datos Personales que recolecta y para ello cuenta con una Política de Tratamiento y Procedimientos de Datos Personales.</p>
+    <p>Los mecanismos a través de los cuales hacemos uso de estos son seguros y confidenciales, pues contamos con los medios tecnológicos idóneos para asegurar que sean almacenados de manera tal que se impida el acceso indeseado por parte de terceras personas y, en ese mismo orden, aseguramos la confidencialidad de estos.</p>
+  </section>
+
+  <section id="finalidades">
+    <h2>2. Finalidades del tratamiento de datos</h2>
+    <p>Sus Datos Personales serán incluidos en una o más bases de datos y podrán ser transmitidos y/o transferidos entre APLICANDO S.A.S., sus subordinadas vinculadas, su matriz o controlante, y las subordinadas de su matriz o controlante (en adelante, "Las Entidades Autorizadas"), para que directamente o a través de terceros, traten los Datos Personales de acuerdo con los fines establecidos en este aviso. De igual forma, las bases de datos de APLICANDO S.A.S. podrán incluir e integrar datos transmitidos y/o transferidos a esta por las Entidades Autorizadas y/o por terceros.</p>
+
+    <p>Los Datos Personales que APLICANDO S.A.S. solicita serán utilizados para:</p>
+    <ul>
+      <li>Lograr una comunicación eficiente con el Titular de la información, relacionada con nuestros productos, servicios, promociones, alianzas, estudios, concursos, eventos, contenidos, campañas publicitarias y de mercadeo, beneficios, condiciones o políticas aplicables, canales de atención y redes sociales, así como los de Las Entidades Autorizadas.</li>
+      <li>Proveer nuestros servicios y/o productos.</li>
+      <li>Informar sobre cambios de nuestros productos o servicios, o respecto de nuevos productos relacionados con lo contratado o adquirido.</li>
+      <li>Dar cumplimiento a las obligaciones contraídas con nuestros clientes, proveedores y empleados.</li>
+      <li>Evaluar la calidad del servicio.</li>
+      <li>Entregar y ofrecer al Titular información, contenido y/o publicidad, de forma general o segmentada, y calificar la propensión o afinidad a productos o servicios, para realizar segmentaciones o perfilamiento de usuarios.</li>
+      <li>Elaborar y reportar información estadística, encuestas de satisfacción, estudios y análisis de mercado o consumo, incluyendo la posibilidad de contactar al Titular para dichos propósitos.</li>
+      <li>Anonimizar información con fines de estadísticas, estudios y análisis de mercadeo o consumo.</li>
+      <li>Identificar, recolectar y asociar información sobre preferencias de navegación en los portales de APLICANDO S.A.S. y/o de Las Entidades Autorizadas, así como datos de georreferenciación o ubicación específica que generen dispositivos móviles, para mejorar la experiencia del usuario y entregar información o publicidad segmentada. Ver también la Política de Datos de Navegación ("Cookies").</li>
+      <li>Identificar, recolectar y asociar información sobre hábitos de compra o intereses, y compartirlos con Las Entidades Autorizadas y/o terceros (asistencia a eventos, redención de promociones, uso de programas de fidelización, interacción en redes sociales, entre otros).</li>
+      <li>Transmitir los datos, dentro o fuera de Colombia, a terceros que actúen como encargados del tratamiento y que provean servicios tecnológicos, logísticos, administrativos, de distribución, e-mail marketing, contact center u otros servicios requeridos para el desarrollo de las finalidades de este aviso.</li>
+      <li>Transferir los datos, dentro o fuera de Colombia, a Las Entidades Autorizadas y/o terceros, para actividades comerciales y las finalidades descritas en este aviso.</li>
+      <li>Transferir y/o transmitir los datos, dentro o fuera de Colombia, a la(s) compañía(s) que a futuro pueda(n) administrar y/o adquirir, total o parcialmente, a APLICANDO S.A.S. y/o a una de las Entidades Autorizadas, o alguna de sus unidades de negocio o activos.</li>
+      <li>Recolectar y entregar información ante autoridades públicas o privadas, nacionales o extranjeras, cuando se requiera para dar cumplimiento a deberes legales o reglamentarios, incluyendo prevención de evasión fiscal, lavado de activos y financiación del terrorismo.</li>
+      <li>Hacer perfilamientos de bases de datos, generar perfiles básicos y demográficos, y completar datos de contacto mediante el cruce de bases de datos con la Registraduría Nacional del Estado Civil y sus aliados tecnológicos certificados, operadores de información comercial o crediticia, entidades del Sistema de Seguridad Social Integral y empresas prestadoras de servicios públicos.</li>
+    </ul>
+    <p>El Titular entiende y acepta que, mediante la presente autorización, concede a los encargados del tratamiento autorización para acceder a sus Datos Personales en la medida en que así lo requieran para la prestación de los servicios para los cuales fueron contratados.</p>
+  </section>
+
+  <section id="derechos">
+    <h2>3. Derechos del titular</h2>
+    <p>Usted podrá ejercer sus derechos a conocer, actualizar y rectificar sus Datos Personales, hacer consultas y reclamos, y ejercer los demás derechos indicados en el artículo 8° de la Ley 1581 de 2012 y las normas que la complementen o sustituyan, a través de los siguientes medios:</p>
+    <div class="clause">
+      <p style="margin-bottom:6px"><b>Correo electrónico:</b> <a href="mailto:support@wiptool.com">support@wiptool.com</a></p>
+      <p style="margin-bottom:0"><b>Teléfono:</b> <a href="tel:+0573005124111">+057 300 512 4111</a></p>
+    </div>
+    <p>En relación con datos considerados como Sensibles, en los términos de la Ley 1581 de 2012, el Titular no está obligado a autorizar su tratamiento. Respecto de Datos Personales de Niños, Niñas y Adolescentes, cuando se recolecten, se tratarán de acuerdo con lo establecido en el artículo 7 de la Ley 1581 de 2012 y el artículo 12 del Decreto 1377 de 2013, según las finalidades establecidas en este aviso, en lo que sean aplicables.</p>
+    <p>Los Titulares pueden consultar la Política de Tratamiento y Procedimientos de Datos Personales de APLICANDO S.A.S., que contiene nuestras políticas para el tratamiento de la información recogida, así como los procedimientos de consulta y reclamación para hacer efectivos los derechos de acceso, consulta, rectificación, actualización y supresión de datos, escribiendo a <a href="mailto:support@wiptool.com">support@wiptool.com</a>.</p>
+  </section>
+
+  <section id="whatsapp">
+    <h2>4. Cláusula de integración y uso de WhatsApp Business API (WIP)</h2>
+    <div class="clause-list">
+      <div class="clause">
+        <b>4.1 Propósito y limitación de las comunicaciones.</b>
+        <p style="margin-top:8px;margin-bottom:0">Al integrar su número de teléfono corporativo en la plataforma WIP, el Usuario (la empresa) acepta que el uso del canal se regirá estrictamente bajo fines profesionales. Las comunicaciones enviadas a través de esta integración se limitarán exclusivamente a la gestión de los servicios solicitados por los clientes finales, notificaciones transaccionales, alertas de estado e información relevante sobre la cuenta o el servicio contratado. Queda prohibido el uso del canal para fines personales o envío de contenido ajeno a la actividad comercial declarada.</p>
+      </div>
+      <div class="clause">
+        <b>4.2 Consentimiento y revocación (opt-in / opt-out).</b>
+        <p style="margin-top:8px;margin-bottom:0">El Usuario es el único responsable de obtener el consentimiento previo y explícito de sus destinatarios antes de iniciar cualquier comunicación. Asimismo, se garantiza que el destinatario final puede revocar este consentimiento en cualquier momento enviando la palabra "BAJA" o "STOP" a través del mismo chat de WhatsApp, o siguiendo las instrucciones proporcionadas en la plataforma. El Usuario se compromete a respetar estas solicitudes de baja de forma inmediata.</p>
+      </div>
+      <div class="clause">
+        <b>4.3 Costos y planes de servicio.</b>
+        <p style="margin-top:8px;margin-bottom:0">El acceso a la API y una cuota establecida de mensajes (según el plan contratado) están incluidos en la tarifa mensual de WIP. Cualquier excedente en el volumen de mensajes consumidos, o cambios imprevistos en las tarifas oficiales de Meta, podrían derivar en ajustes en el costo del plan, los cuales serán comunicados al Usuario con previa notificación.</p>
+      </div>
+      <div class="clause">
+        <b>4.4 Suspensión y calidad del servicio.</b>
+        <p style="margin-top:8px;margin-bottom:0">WIP se reserva el derecho de suspender la conexión y el acceso a la API si Meta reporta un alto índice de bloqueos, reportes de spam o una calificación de calidad baja asociada al número del Usuario. Esta medida se toma para proteger la integridad de la infraestructura técnica y asegurar el cumplimiento de las Políticas de Mensajería Comercial de WhatsApp.</p>
+      </div>
+      <div class="clause">
+        <b>4.5 Exclusividad técnica.</b>
+        <p style="margin-top:8px;margin-bottom:0">El Usuario reconoce que, al vincular su número a la WhatsApp Business API, dicho número quedará dedicado a la gestión técnica a través de la plataforma, lo que limitará o anulará su uso en aplicaciones móviles convencionales (WhatsApp Messenger o WhatsApp Business App).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="datos-app">
+    <h2>5. Datos recopilados en la aplicación WIP</h2>
+    <p>WIP recopila datos que se generan cuando se utilizan nuestros servicios a través de la app móvil para colaboradores en campo, tales como los detalles del dispositivo, la ubicación y el uso de la app. A continuación, se detallan los datos recopilados por WIP o en su nombre.</p>
+
+    <h3>5.1 Datos proporcionados por usuarios</h3>
+
+    <h3 style="margin-top:16px">Datos de ubicación (colaborador en campo o profesional a domicilio)</h3>
+    <p>Recopilamos datos de ubicación precisos o aproximados de los colaboradores en campo o profesionales a domicilio, para permitir y mejorar el uso de nuestras apps, permitir que se realicen servicios o entregas, activar el seguimiento y funciones de seguridad, prevenir y detectar fraudes, y cumplir con requisitos legales. WIP recopila esta información cuando la app se ejecuta en primer plano (abierta y en pantalla) o en segundo plano (abierta, pero no en pantalla) en el dispositivo móvil.</p>
+    <p>Recopilamos estos datos de los dispositivos móviles de los usuarios únicamente si se nos autoriza a hacerlo. Los colaboradores en campo o profesionales a domicilio pueden usar las apps de WIP sin permitir la recopilación de datos de ubicación precisa, aunque esto puede afectar algunas funciones (por ejemplo, deberán ingresar manualmente la dirección del punto de partida). Los datos de ubicación recopilados también nos ayudan con la generación de recibos, soporte al cliente, detección de fraude y motivos relacionados con seguros o litigios.</p>
+
+    <h3>Información de transacciones</h3>
+    <p>Recopilamos datos de las transacciones relacionadas con el uso de nuestros servicios: tipo de servicio solicitado o prestado, fecha y hora de la prestación, detalles del pedido, método e información de pago (como el monto de la transacción o el nombre y la ubicación del comercio), datos de entrega, importe cobrado y distancia recorrida. Si un usuario emplea un código promocional, podemos asociar su nombre con dicho código.</p>
+
+    <h3>Datos de uso</h3>
+    <p>Recopilamos información sobre cómo los usuarios interactúan con nuestros servicios, incluyendo fecha y hora de acceso, funciones de la app o páginas vistas, fallos de la app y otras actividades del sistema, y tipo de navegador.</p>
+
+    <h3>Datos de comunicación</h3>
+    <p>Permitimos que los usuarios se comuniquen entre sí y con WIP a través de las apps móviles y los sitios web de WIP, por ejemplo mediante chats. WIP también puede usar esta información para brindar servicios de soporte al cliente (incluyendo la resolución de disputas entre usuarios), por cuestiones de seguridad, para mejorar nuestros servicios y funciones, y para realizar análisis.</p>
+  </section>
+
+  <section id="vigencia">
+    <h2>6. Vigencia del tratamiento y conservación de datos</h2>
+    <p>APLICANDO S.A.S. conservará y tratará los Datos Personales del Titular mientras se mantenga vigente la relación comercial y el cliente se encuentre al día con sus obligaciones de pago por los servicios contratados.</p>
+    <p>En caso de mora o cese en el pago de los servicios, APLICANDO S.A.S. se reserva el derecho de suspender el acceso a la cuenta. Si el incumplimiento persiste por un periodo de dos (2) meses calendario, la empresa procederá con el cierre definitivo de la cuenta y la eliminación total de los datos alojados en sus servidores, salvo aquellos que deban conservarse por mandato legal, contable o tributario según la normativa colombiana vigente.</p>
+    <div class="note">Es responsabilidad del Titular realizar las copias de seguridad o exportación de su información antes de que se cumpla el plazo de dos meses tras el impago.</div>
+  </section>
+
+  <section id="ubicacion">
+    <h2>7. Cómo WIP usa la información de ubicación de los colaboradores en campo o profesionales a domicilio (Android)</h2>
+    <p>Al registrarte en la app de WIP, verás una solicitud de permiso de tu dispositivo para compartir tu información de ubicación, que incluye datos recopilados a través de bluetooth y señales wifi cercanas. De forma predeterminada, para obtener el mejor servicio disponible, la app te pide activar los servicios de ubicación en modo "Permitir solo mientras usas la app". Usamos estos datos para encontrar colaboradores en campo o profesionales a domicilio cercanos y ayudarlos a navegar hasta el punto de partida, así como para mostrar el historial en tus recibos, entender y resolver casos de soporte, y solucionar problemas y errores de software.</p>
+
+    <p style="margin-top:20px"><b>Puedes elegir entre las siguientes configuraciones de ubicación:</b></p>
+
+    <div class="setting-card">
+      <b>Permitir todo el tiempo</b>
+      Podemos recopilar los datos de tu ubicación en cualquier momento, incluso cuando no estés usando activamente la app de WIP. Si un servicio requiere esta opción, te pediremos permiso al habilitarlo.
+    </div>
+    <div class="setting-card">
+      <b>Permitir solo mientras usas la app</b>
+      Podemos recopilar los datos de tu ubicación cuando la app esté abierta en la pantalla, al solicitar un servicio y durante su prestación. Recibirás una notificación persistente en el panel de notificaciones de Android mientras se recopilan datos de ubicación en segundo plano bajo esta configuración.
+    </div>
+    <div class="setting-card">
+      <b>Denegar</b>
+      Con esta opción se desactivan los servicios de ubicación en la app de WIP. Aún podrás usar la app, pero el operador o colaborador asignado no podrá ver tu ubicación, lo cual afecta la calidad de la prestación del servicio.
+    </div>
+
+    <p style="margin-top:14px">Siempre puedes modificar las opciones de ubicación en las preferencias de ubicación de tu dispositivo.</p>
+  </section>
+
+  <section id="contacto">
+    <h2>8. Contacto</h2>
+    <div class="contact-box">
+      <p><b style="color:#fff">APLICANDO S.A.S.</b></p>
+      <p>Correo: <a href="mailto:support@wiptool.com">support@wiptool.com</a></p>
+      <p>Teléfono: <a href="tel:+0573005124111">+057 300 512 4111</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 WIP · Aplicando S.A.S. Todos los derechos reservados. · <a href="/">Volver a wiptool.com</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
