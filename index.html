@@ -202,7 +202,7 @@ a{text-decoration:none;color:inherit}
   padding:6px 12px;border-radius:var(--r-pill);
 }
 .headline-xl{
-  font-size:clamp(42px,7vw,92px);font-weight:700;line-height:1.04;
+  font-size:clamp(40px,6.5vw,84px);font-weight:700;line-height:1.04;
   letter-spacing:-0.035em;text-wrap:balance;
 }
 .headline-lg{
@@ -282,7 +282,7 @@ a{text-decoration:none;color:inherit}
 }
 .hero__inner{
   position:relative;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;
-  padding-top:clamp(100px,9vw,120px);padding-bottom:clamp(64px,9vw,120px);
+  padding-top:clamp(100px,9vw,120px);padding-bottom:clamp(24px,3vw,34px);
 }
 /* 3 bloques (mensaje / acción / prueba social): poco espacio adentro, mucho espacio entre bloques */
 .hero__copy{display:flex;flex-direction:column;align-items:flex-start;gap:clamp(48px,6vw,68px)}
@@ -1846,62 +1846,57 @@ html{zoom:.9}
 .netmap__live b{width:7px;height:7px;border-radius:50%;background:#dbff57;display:block;box-shadow:0 0 0 3px rgba(219,255,87,.30);animation:netLive 1.8s ease-in-out infinite}
 @keyframes netLive{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.72);opacity:.65}}
 
-.netmap__hud{position:absolute;left:45%;right:28px;bottom:26px;display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap;padding:11px 16px;border-radius:16px;background:rgba(255,255,255,.80);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);box-shadow:0 12px 30px rgba(22,29,49,.12)}
-.netmap__kpis{display:flex;align-items:center;gap:14px}
-.netmap__kpi{text-align:center;line-height:1}
-.netmap__kpi b{font-size:19px;font-weight:700;color:#161d31}
-.netmap__kpi span{display:block;font-size:9.5px;color:#5b6172;margin-top:3px;white-space:nowrap}
+.netmap__hud{position:absolute;left:42%;right:28px;bottom:26px;display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.80);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);box-shadow:0 12px 30px rgba(22,29,49,.12)}
+@media(min-width:1173px){ .netmap__hud{flex-wrap:nowrap} }
+.netmap__kpis{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.netmap__hud-live{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:700;color:#3d8b3d;flex-shrink:0;white-space:nowrap}
+.netmap__hud-live b{width:6px;height:6px;border-radius:50%;background:#3fb950;display:block;box-shadow:0 0 0 3px rgba(63,185,80,.18);animation:netLive 1.8s ease-in-out infinite}
+.netmap__kpi{text-align:center;line-height:1;flex-shrink:0}
+.netmap__kpi b{font-size:16.5px;font-weight:700;color:#161d31;display:inline-block;transition:opacity .15s ease}
+.netmap__kpi span{display:block;font-size:8.7px;color:#5b6172;margin-top:3px;white-space:nowrap}
 .netmap__kpi--good b{color:#4b7a09}
-.netmap__sep{width:1px;height:22px;background:#e6e6ea;flex-shrink:0}
-.netmap__legend{display:flex;align-items:center;gap:12px;font-size:10.5px;font-weight:600;color:#3f4658}
+.netmap__sep{width:1px;height:18px;background:#e6e6ea;flex-shrink:0}
+.netmap__legend{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:600;color:#3f4658;flex-shrink:0}
 .netmap__legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
 .netmap__legend i{width:8px;height:8px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
 
-/* --- Actores: WIP (núcleo), Proveedor (ícono de empresa, monocromo) y Técnico (bolita) --- */
+/* --- Regla única de actores: WIP (núcleo) + parejas Proveedor (empresa) → Técnico (pin de ubicación) --- */
 .net-hub-core{fill:#161d31}
 .net-hub-ring{fill:none;stroke:#dbff57;stroke-width:1.5}
 .net-ring{fill:none;stroke:#dbff57;stroke-width:1.5;animation:netRing 3s ease-out infinite}
 .net-ring2{animation-delay:1.5s}
-@keyframes netRing{0%{r:8;opacity:.5}100%{r:48;opacity:0}}
+@keyframes netRing{0%{r:9;opacity:.5}100%{r:50;opacity:0}}
 
-/* técnico: punto fijo, discreto, cerca del ícono de empresa que anima */
-.net-tech{fill:rgba(22,29,49,.32)}
-
-/* --- Red en movimiento: WIP asigna a varias empresas en simultáneo, escalonadas en el tiempo --- */
-/* fase 1 (una por proveedor): nace en el hub, viaja y se detiene exactamente sobre su ícono de empresa */
+/* líneas estáticas de la red: WIP→proveedor y el salto corto proveedor→técnico, en todas las parejas */
 .net-line{stroke:rgba(22,29,49,.11);stroke-width:1;stroke-dasharray:3 5;fill:none}
+.net-line--sub{stroke:rgba(22,29,49,.16);stroke-width:1;stroke-dasharray:3 5;fill:none}
+
+/* animación completa (WIP→empresa→técnico), solo en 1-2 parejas para no recargar; el resto queda estática */
 .net-svc1{fill:#dbff57;opacity:0}
 .net-svc1--a{animation:svc1A 7s ease-in-out infinite}
-.net-svc1--b{animation:svc1B 7s ease-in-out 1s infinite}
-.net-svc1--c{animation:svc1C 7s ease-in-out 2s infinite}
-.net-svc1--d{animation:svc1D 7s ease-in-out 3s infinite}
-@keyframes svc1A{0%,100%{transform:translate(312px,266px);opacity:0}4%{opacity:.85}30%{transform:translate(196px,178px);opacity:.85}34%{transform:translate(196px,178px);opacity:0}}
-@keyframes svc1B{0%,100%{transform:translate(312px,266px);opacity:0}4%{opacity:.85}30%{transform:translate(356px,146px);opacity:.85}34%{transform:translate(356px,146px);opacity:0}}
-@keyframes svc1C{0%,100%{transform:translate(312px,266px);opacity:0}4%{opacity:.85}30%{transform:translate(248px,318px);opacity:.85}34%{transform:translate(248px,318px);opacity:0}}
-@keyframes svc1D{0%,100%{transform:translate(312px,266px);opacity:0}4%{opacity:.85}30%{transform:translate(430px,238px);opacity:.85}34%{transform:translate(430px,238px);opacity:0}}
-/* acuse de recibo: cada ícono de empresa destella al recibir su servicio (misma forma, delay propio) */
+.net-svc1--d{animation:svc1D 7s ease-in-out 3s infinite;fill:#ff6c6c}
+@keyframes svc1A{0%,100%{transform:translate(440px,240px);opacity:0}4%{opacity:.85}30%{transform:translate(380px,100px);opacity:.85}34%{transform:translate(380px,100px);opacity:0}}
+@keyframes svc1D{0%,100%{transform:translate(440px,240px);opacity:0}4%{opacity:.85}30%{transform:translate(284px,293px);opacity:.85}34%{transform:translate(284px,293px);opacity:0}}
+/* acuse de recibo: la casita del proveedor hace pulse al recibir el servicio */
 .net-arrive1{fill:#dbff57;opacity:0;transform-origin:center;transform-box:fill-box}
 .net-arrive1--a{animation:svcArrive1 7s ease-in-out infinite}
-.net-arrive1--b{animation:svcArrive1 7s ease-in-out 1s infinite}
-.net-arrive1--c{animation:svcArrive1 7s ease-in-out 2s infinite}
-.net-arrive1--d{animation:svcArrive1 7s ease-in-out 3s infinite}
+.net-arrive1--d{animation:svcArrive1 7s ease-in-out 3s infinite;fill:#ff6c6c}
 @keyframes svcArrive1{
   0%,29%,100%{opacity:0;transform:scale(.5)}
   32%{opacity:.55;transform:scale(1)}
   42%{opacity:0;transform:scale(1.6)}
 }
 
-/* fase 2, solo en FibraMax: recién ahora nace en la empresa y baja al técnico (nunca simultánea con su fase 1) */
-.net-line--sub{stroke:rgba(22,29,49,.11);stroke-width:1;stroke-dasharray:3 5;fill:none}
-.net-svc2{fill:#dbff57;opacity:0;animation:svcPhase2 7s ease-in-out 3s infinite}
-@keyframes svcPhase2{
-  0%,45%,100%{transform:translate(430px,238px);opacity:0}
-  49%{opacity:.55}
-  62%{transform:translate(410px,270px);opacity:.55}
-  66%{transform:translate(410px,270px);opacity:0}
-}
-/* el técnico se enciende: servicio en ejecución en campo */
-.net-arrive2{fill:#dbff57;opacity:0;transform-origin:center;transform-box:fill-box;animation:svcArrive2 7s ease-in-out 3s infinite}
+/* fase 2: solo en esas mismas 1-2 parejas, arranca justo después del pulse de la fase 1 */
+.net-svc2{fill:#dbff57;opacity:0}
+.net-svc2--a{animation:svcPhase2A 7s ease-in-out 0s infinite}
+.net-svc2--d{animation:svcPhase2D 7s ease-in-out 3s infinite;fill:#ff6c6c}
+@keyframes svcPhase2A{0%,45%,100%{transform:translate(380px,100px);opacity:0}49%{opacity:.55}62%{transform:translate(364px,63px);opacity:.55}66%{transform:translate(364px,63px);opacity:0}}
+@keyframes svcPhase2D{0%,45%,100%{transform:translate(284px,293px);opacity:0}49%{opacity:.55}62%{transform:translate(246px,306px);opacity:.55}66%{transform:translate(246px,306px);opacity:0}}
+/* el pin del técnico se enciende: servicio en ejecución, mismo color que su cadena */
+.net-arrive2{fill:#dbff57;opacity:0;transform-origin:center;transform-box:fill-box}
+.net-arrive2--a{animation:svcArrive2 7s ease-in-out 0s infinite}
+.net-arrive2--d{animation:svcArrive2 7s ease-in-out 3s infinite;fill:#ff6c6c}
 @keyframes svcArrive2{
   0%,61%,100%{opacity:0;transform:scale(.5)}
   64%{opacity:.5;transform:scale(1)}
@@ -1921,9 +1916,9 @@ html{zoom:.9}
   .netmap__hud{padding:10px 12px;gap:8px 12px}.netmap__kpis{gap:10px;width:100%;justify-content:space-between}.netmap__kpi b{font-size:17px}
   .netmap__legend{width:100%;justify-content:space-between;gap:8px}
 }
-@media(max-width:720px){
-  /* mobile: prioridad al titular, se omite la fase 2 (empresa → técnico) */
-  .net-line--sub,.net-tech,.net-svc2,.net-arrive2{display:none}
+@media(max-width:520px){
+  /* mobile angosto: menos parejas para que no se amontonen (queda VitalCare oculta) */
+  .net-pair--c{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   .netmap__live b,.net-ring,.net-svc1,.net-svc2,.net-arrive1,.net-arrive2{animation:none!important}
@@ -1960,9 +1955,9 @@ html{zoom:.9}
   <div class="container hero__inner">
     <div class="hero__copy reveal">
       <div class="hero__group hero__group--message">
-        <span class="eyebrow">#1 en FSM para LATAM · +4M de servicios gestionados</span>
+        <span class="eyebrow">Field Service Management · +4M de servicios gestionados</span>
         <h1 class="headline-xl" style="color:var(--navy)">Toda tu red de proveedores, bajo control y en <span class="hl-grad">tiempo real</span></h1>
-        <p class="lede" style="font-size: 20px">WIP es el Field Service Management para empresas en Latam, que coordinan servicios a través de su red de proveedores (otras empresas). Visibilidad total de cada servicio, SLAs bajo control, red conectada y trazabilidad de punta a punta, a la escala que tu operación exige.</p>
+        <p class="lede" style="font-size: 20px">Coordina toda tu red de proveedores desde un solo lugar: cada servicio visible, cada SLA bajo control, todos los proveedores conectados y trazabilidad de punta a punta, a la escala que tu operación exige.</p>
         <p class="hero__rescue">¿Gestionas tu propio equipo en campo? <a href="/equipos" class="hero__rescue-link">Conoce WIP Equipos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
       </div>
       <div class="hero__group hero__group--action">
@@ -1990,111 +1985,102 @@ html{zoom:.9}
       <svg viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <filter id="nmSh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#161d31" flood-opacity="0.16"/></filter>
-          <g id="pinL"><circle r="5" fill="#dbff57" stroke="#fff" stroke-width="1.6"/></g>
-          <g id="pinS"><circle r="5" fill="#ff6c6c" stroke="#fff" stroke-width="1.6"/></g>
-          <g id="pinN"><circle r="5" fill="#161d31" stroke="#fff" stroke-width="1.6"/></g>
+          <!-- pines de ubicación clásicos: gota con hueco central; la punta (0,0) ancla la coordenada -->
+          <g id="pinL"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#dbff57" stroke="#161d31" stroke-width="1.1"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
+          <g id="pinS"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#ff6c6c"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
+          <g id="pinN"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#161d31"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
           <!-- proveedor (empresa): ícono pequeño y monocromo, distinto de los puntos de estado -->
-          <g id="pinCo"><circle r="7.5" fill="#ffffff" stroke="rgba(22,29,49,.16)"/><path d="M-3.1,1.6 V-1.1 L0,-3.2 L3.1,-1.1 V1.6 Z" fill="none" stroke="#161d31" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/></g>
-          <!-- textura de manzana: retícula fina que simula el parcelario, con variación de escala/ángulo por distrito -->
-          <pattern id="blkA" width="13" height="13" patternUnits="userSpaceOnUse" patternTransform="rotate(-10)"><path d="M13 0H0V13" fill="none" stroke="#ffffff" stroke-width="1" opacity=".65"/></pattern>
-          <pattern id="blkB" width="15" height="15" patternUnits="userSpaceOnUse" patternTransform="rotate(12)"><path d="M15 0H0V15" fill="none" stroke="#ffffff" stroke-width="1" opacity=".65"/></pattern>
-          <pattern id="blkC" width="11" height="11" patternUnits="userSpaceOnUse" patternTransform="rotate(4)"><path d="M11 0H0V11" fill="none" stroke="#ffffff" stroke-width="1" opacity=".65"/></pattern>
-          <pattern id="blkD" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-22)"><path d="M14 0H0V14" fill="none" stroke="#ffffff" stroke-width="1" opacity=".65"/></pattern>
+          <g id="pinCo" filter="url(#nmSh)"><circle r="7.5" fill="#ffffff" stroke="rgba(22,29,49,.22)"/><path d="M-3.1,1.6 V-1.1 L0,-3.2 L3.1,-1.1 V1.6 Z" fill="none" stroke="#161d31" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/></g>
         </defs>
 
-        <!-- Basemap: estilo mapa vectorial plano (referencia): gris neutro, manzanas con parcelario y avenidas curvas -->
-        <rect width="640" height="520" fill="#d9dcde"/>
-        <!-- distritos: polígonos con textura de manzana, cada uno con escala/ángulo propio para variedad orgánica -->
-        <g>
-          <polygon points="0,0 210,-10 190,150 30,190 -20,140" fill="url(#blkA)"/>
-          <polygon points="210,-10 420,10 440,130 190,150" fill="url(#blkB)"/>
-          <polygon points="420,10 660,-10 660,160 440,130" fill="url(#blkC)"/>
-          <polygon points="30,190 190,150 210,300 60,340" fill="url(#blkC)"/>
-          <polygon points="190,150 440,130 470,290 210,300" fill="url(#blkA)"/>
-          <polygon points="440,130 660,160 660,340 470,290" fill="url(#blkD)"/>
-          <polygon points="60,340 210,300 235,470 -20,520 -20,380" fill="url(#blkB)"/>
-          <polygon points="210,300 470,290 500,520 235,470" fill="url(#blkD)"/>
-          <polygon points="470,290 660,340 660,520 500,520" fill="url(#blkA)"/>
+        <!-- Basemap: estilo mapa vectorial de líneas finas (referencia): blanco, malla densa de calles curvas, sin manzanas de color -->
+        <rect width="640" height="520" fill="#ffffff"/>
+        <!-- calles: red fina y orgánica que se cruza en todas direcciones -->
+        <g fill="none" stroke="rgba(22,29,49,.14)" stroke-width="1" stroke-linecap="round">
+          <path d="M40 -20 C 60 60, 20 140, 55 220 C 85 290, 30 360, 60 540"/>
+          <path d="M110 -20 C 130 70, 95 150, 120 230 C 145 300, 100 380, 125 540"/>
+          <path d="M180 -20 C 195 60, 220 130, 190 210 C 165 280, 200 350, 180 540"/>
+          <path d="M250 -20 C 265 70, 235 150, 260 230 C 285 300, 245 380, 265 540"/>
+          <path d="M320 -20 C 335 60, 300 140, 330 220 C 355 290, 310 360, 335 540"/>
+          <path d="M390 -20 C 405 70, 375 150, 400 230 C 420 300, 385 380, 405 540"/>
+          <path d="M460 -20 C 475 60, 445 140, 470 220 C 495 290, 455 360, 475 540"/>
+          <path d="M530 -20 C 545 70, 515 150, 540 230 C 560 300, 525 380, 545 540"/>
+          <path d="M600 -20 C 610 70, 585 150, 605 230 C 620 300, 590 380, 605 540"/>
+          <path d="M-20 40 C 60 55, 140 25, 220 45 C 300 65, 380 30, 460 50 C 520 65, 580 40, 660 55"/>
+          <path d="M-20 110 C 70 95, 150 130, 230 105 C 310 80, 390 120, 470 100 C 540 85, 600 115, 660 100"/>
+          <path d="M-20 185 C 60 200, 150 170, 230 195 C 310 215, 390 180, 470 200 C 540 215, 600 185, 660 200"/>
+          <path d="M-20 260 C 70 245, 150 280, 230 255 C 310 230, 390 270, 470 250 C 540 235, 600 265, 660 250"/>
+          <path d="M-20 335 C 60 350, 150 320, 230 345 C 310 365, 390 330, 470 350 C 540 365, 600 335, 660 350"/>
+          <path d="M-20 410 C 70 395, 150 430, 230 405 C 310 380, 390 420, 470 400 C 540 385, 600 415, 660 400"/>
+          <path d="M-20 480 C 60 495, 150 465, 230 490 C 310 510, 390 475, 470 495 C 540 510, 600 480, 660 495"/>
         </g>
-        <!-- avenidas: trazos curvos que separan los distritos, jerarquía por grosor -->
-        <g fill="none" stroke="#ffffff" stroke-linecap="round">
-          <path d="M-20 145 C 40 155, 120 165, 190 150 C 260 135, 340 120, 420 115 C 500 110, 580 130, 660 150" stroke-width="5" opacity=".95"/>
-          <path d="M195 -10 C 205 60, 200 110, 205 160 C 212 230, 205 270, 210 300 C 218 360, 225 420, 232 475" stroke-width="5" opacity=".95"/>
-          <path d="M-20 340 C 40 335, 120 330, 210 305 C 300 280, 380 295, 470 290 C 550 286, 610 320, 660 335" stroke-width="4.5" opacity=".9"/>
-          <path d="M440 -10 C 445 60, 450 110, 445 160 C 438 220, 465 260, 470 290 C 478 360, 490 440, 500 520" stroke-width="4.5" opacity=".9"/>
-          <path d="M60 190 C 55 260, 58 300, 60 340 C 62 400, 40 460, -20 500" stroke-width="3.5" opacity=".85"/>
-          <path d="M235 300 C 238 360, 236 420, 235 470" stroke-width="3.5" opacity=".85"/>
+        <!-- avenidas: un par de trazos algo más marcados, dan jerarquía sobre la malla fina -->
+        <g fill="none" stroke="rgba(22,29,49,.26)" stroke-linecap="round">
+          <path d="M-20 150 C 100 170, 220 130, 340 165 C 460 195, 560 150, 660 175" stroke-width="1.8"/>
+          <path d="M230 -20 C 250 100, 200 200, 240 300 C 275 390, 220 470, 250 540" stroke-width="1.8"/>
         </g>
-        <!-- rotondas, en dos cruces de avenidas -->
-        <circle cx="150" cy="110" r="12" fill="none" stroke="#ffffff" stroke-width="2.6" opacity=".9"/>
-        <!-- glorieta, en el cruce de dos avenidas -->
-        <circle cx="390" cy="270" r="22" fill="none" stroke="#ffffff" stroke-width="2.6" opacity=".9"/>
 
-        <!-- Pines = proveedores (puntos, sin etiqueta) -->
-        <use href="#pinS" transform="translate(90,120)"/>
-        <use href="#pinS" transform="translate(420,110)"/>
-        <use href="#pinS" transform="translate(520,300)"/>
-        <use href="#pinL" transform="translate(110,240)"/>
-        <use href="#pinL" transform="translate(300,440)"/>
-        <use href="#pinL" transform="translate(560,180)"/>
-        <use href="#pinL" transform="translate(470,380)"/>
-        <use href="#pinN" transform="translate(170,300)"/>
-        <use href="#pinN" transform="translate(500,450)"/>
-        <use href="#pinN" transform="translate(590,360)"/>
-
-        <!-- Pines clave con etiqueta de empresa -->
-        <g filter="url(#nmSh)">
-          <g transform="translate(196,178)"><rect x="12" y="-11.5" width="48" height="15" rx="7.5" fill="#ffffff"/><text x="19" y="-1.2" font-family="Inter,Arial" font-size="7.6" font-weight="700" fill="#161d31">GrúaYa</text></g>
-          <g transform="translate(356,146)"><rect x="12" y="-11.5" width="64" height="15" rx="7.5" fill="#ffffff"/><text x="19" y="-1.2" font-family="Inter,Arial" font-size="7.6" font-weight="700" fill="#161d31">FixHome Sas</text></g>
-          <g transform="translate(248,318)"><rect x="12" y="-11.5" width="57" height="15" rx="7.5" fill="#ffffff"/><text x="19" y="-1.2" font-family="Inter,Arial" font-size="7.6" font-weight="700" fill="#161d31">VitalCare</text></g>
-          <g transform="translate(430,238)"><rect x="12" y="-11.5" width="53" height="15" rx="7.5" fill="#ffffff"/><text x="19" y="-1.2" font-family="Inter,Arial" font-size="7.6" font-weight="700" fill="#161d31">FibraMax</text></g>
+        <!-- Regla única: solo existen parejas Proveedor (empresa) → Técnico (pin de ubicación). Nada suelto. -->
+        <g class="net-pair net-pair--a">
+          <path class="net-line" d="M440,240 L380,100"/>
+          <path class="net-line--sub" d="M380,100 L364,63"/>
+          <g filter="url(#nmSh)"><g transform="translate(380,100)"><rect x="12" y="-10" width="44" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">GrúaYa</text></g></g>
+          <use href="#pinCo" transform="translate(380,100)"/>
+          <use href="#pinL" transform="translate(364,63)"/>
         </g>
-        <use href="#pinCo" transform="translate(196,178)"/>
-        <use href="#pinCo" transform="translate(356,146)"/>
-        <use href="#pinCo" transform="translate(248,318)"/>
-        <use href="#pinCo" transform="translate(430,238)"/>
+        <g class="net-pair net-pair--b">
+          <path class="net-line" d="M440,240 L570,212"/>
+          <path class="net-line--sub" d="M570,212 L570,252"/>
+          <g filter="url(#nmSh)"><g transform="translate(570,212)"><rect x="12" y="-10" width="58" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">FixHome Sas</text></g></g>
+          <use href="#pinCo" transform="translate(570,212)"/>
+          <use href="#pinN" transform="translate(570,252)"/>
+        </g>
+        <g class="net-pair net-pair--c">
+          <path class="net-line" d="M440,240 L405,383"/>
+          <path class="net-line--sub" d="M405,383 L396,422"/>
+          <g filter="url(#nmSh)"><g transform="translate(405,383)"><rect x="12" y="-10" width="51" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">VitalCare</text></g></g>
+          <use href="#pinCo" transform="translate(405,383)"/>
+          <use href="#pinL" transform="translate(396,422)"/>
+        </g>
+        <g class="net-pair net-pair--d">
+          <path class="net-line" d="M440,240 L284,293"/>
+          <path class="net-line--sub" d="M284,293 L246,306"/>
+          <g filter="url(#nmSh)"><g transform="translate(284,293)"><rect x="12" y="-10" width="48" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">FibraMax</text></g></g>
+          <use href="#pinCo" transform="translate(284,293)"/>
+          <use href="#pinS" transform="translate(246,306)"/>
+        </g>
 
-        <!-- Red en movimiento: WIP asigna a las 4 empresas en simultáneo, escalonadas. Solo FibraMax continúa hacia el técnico en campo. -->
-        <circle class="net-tech" cx="410" cy="270" r="2.4"/>
         <g class="net-anim" aria-hidden="true">
-          <path class="net-line" d="M312,266 L196,178"/>
-          <path class="net-line" d="M312,266 L356,146"/>
-          <path class="net-line" d="M312,266 L248,318"/>
-          <path class="net-line" d="M312,266 L430,238"/>
-          <path class="net-line--sub" d="M430,238 L410,270"/>
-          <g class="net-hub" transform="translate(312,266)">
-            <circle class="net-ring" cx="0" cy="0" r="8"/>
-            <circle class="net-ring net-ring2" cx="0" cy="0" r="8"/>
-            <circle class="net-hub-core" cx="0" cy="0" r="8"/>
-            <circle class="net-hub-ring" cx="0" cy="0" r="8"/>
-            <text x="0" y="2.4" text-anchor="middle" font-family="Inter,Arial" font-size="6.6" font-weight="800" fill="#dbff57">W</text>
+          <g class="net-hub" transform="translate(440,240)">
+            <circle class="net-ring" cx="0" cy="0" r="9"/>
+            <circle class="net-ring net-ring2" cx="0" cy="0" r="9"/>
+            <circle class="net-hub-core" cx="0" cy="0" r="9"/>
+            <circle class="net-hub-ring" cx="0" cy="0" r="9"/>
+            <text x="0" y="2.6" text-anchor="middle" font-family="Inter,Arial" font-size="7" font-weight="800" fill="#dbff57">W</text>
           </g>
-          <!-- fase 1, una por empresa: WIP → ícono de empresa (mismo ciclo, disparadas en distintos momentos) -->
+          <!-- solo 2 parejas completas animan (GrúaYa en lima, FibraMax en salmón); el resto queda estática -->
           <circle class="net-svc1 net-svc1--a" r="2.6"/>
-          <circle class="net-arrive1 net-arrive1--a" cx="196" cy="178" r="9"/>
-          <circle class="net-svc1 net-svc1--b" r="2.6"/>
-          <circle class="net-arrive1 net-arrive1--b" cx="356" cy="146" r="9"/>
-          <circle class="net-svc1 net-svc1--c" r="2.6"/>
-          <circle class="net-arrive1 net-arrive1--c" cx="248" cy="318" r="9"/>
+          <circle class="net-arrive1 net-arrive1--a" cx="380" cy="100" r="9"/>
           <circle class="net-svc1 net-svc1--d" r="2.6"/>
-          <circle class="net-arrive1 net-arrive1--d" cx="430" cy="238" r="9"/>
-          <!-- fase 2, solo FibraMax: ícono de empresa → técnico (arranca solo cuando su fase 1 ya terminó) -->
-          <circle class="net-svc2" r="2"/>
-          <circle class="net-arrive2" cx="410" cy="270" r="6"/>
+          <circle class="net-arrive1 net-arrive1--d" cx="284" cy="293" r="9"/>
+          <circle class="net-svc2 net-svc2--a" r="2"/>
+          <circle class="net-arrive2 net-arrive2--a" cx="364" cy="63" r="6"/>
+          <circle class="net-svc2 net-svc2--d" r="2"/>
+          <circle class="net-arrive2 net-arrive2--d" cx="246" cy="306" r="6"/>
         </g>
       </svg>
     </div>
 
-    <div class="netmap__chip netmap__header"><span class="netmap__wmark">W</span>WIP · Central de monitoreo</div>
     <div class="netmap__chip netmap__live"><b></b>En vivo</div>
 
     <div class="netmap__hud">
       <div class="netmap__kpis">
-        <div class="netmap__kpi"><b>1500</b><span>servicios hoy</span></div>
+        <span class="netmap__hud-live"><b></b>En vivo</span>
+        <div class="netmap__kpi"><b id="nm-kpi-1">1500</b><span>servicios hoy</span></div>
         <span class="netmap__sep"></span>
-        <div class="netmap__kpi"><b>750</b><span>en curso</span></div>
+        <div class="netmap__kpi"><b id="nm-kpi-2">750</b><span>en curso</span></div>
         <span class="netmap__sep"></span>
-        <div class="netmap__kpi netmap__kpi--good"><b>98%</b><span>SLA cumplido</span></div>
+        <div class="netmap__kpi netmap__kpi--good"><b id="nm-kpi-3">98%</b><span>SLA cumplido</span></div>
       </div>
       <div class="netmap__legend">
         <span><i style="background:#dbff57"></i>Disponible</span>
@@ -2103,6 +2089,21 @@ html{zoom:.9}
       </div>
     </div>
   </div>
+  <script>
+  (function(){
+    var a=document.getElementById('nm-kpi-1'),b=document.getElementById('nm-kpi-2'),c=document.getElementById('nm-kpi-3');
+    if(!a||!b||!c)return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    function set(el,v){el.style.opacity='0';setTimeout(function(){el.textContent=v;el.style.opacity='1';},150);}
+    var toggled=false;
+    setInterval(function(){
+      toggled=!toggled;
+      set(a,toggled?'1512':'1500');
+      set(b,toggled?'742':'750');
+      set(c,toggled?'97%':'98%');
+    },3500);
+  })();
+  </script>
 </section>
 
 <!-- ===================== MARQUESINA: tipos de servicio ===================== -->
@@ -2173,7 +2174,7 @@ html{zoom:.9}
   <symbol id="ic-plug" viewBox="0 0 24 24"><path d="M9 3v5M15 3v5"/><path d="M7 8h10v3a5 5 0 0 1-10 0z"/><path d="M12 16v5"/></symbol>
 </svg>
 <section class="section svc-marq" id="servicios-wip" aria-label="Tipos de servicios que se gestionan con WIP">
-  <h2 class="svc-marq__title"><span class="lime">Potenciamos</span> todos los tipos de servicios y asistencias</h2>
+  <h2 class="svc-marq__title">Empresas de todos los tipos de servicios y asistencias usan <span class="lime">WIP</span></h2>
   <div class="svc-marq__viewport">
     <div class="svc-marq__track">
       <div class="svc-marq__group">
