@@ -1696,7 +1696,8 @@ html{zoom:.9}
    Uso lime-text (legible sobre fondo claro). Si más adelante pasas el
    hero a fondo oscuro navy, cambia var(--lime-text) por var(--lime). */
 .hl-accent{color:var(--lime-text)}
-.hl-grad{background:linear-gradient(96deg,#457f18 0%,var(--lime-text) 52%,#5aa022 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
+.hl-grad{background:linear-gradient(96deg,#c9ec5c 0%,var(--lime) 52%,#c9ec5c 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  text-shadow:-0.6px -0.6px 0 var(--navy),0.6px -0.6px 0 var(--navy),-0.6px 0.6px 0 var(--navy),0.6px 0.6px 0 var(--navy)}
 
 /* Fila de prueba (equivale al rating + velocidad de la referencia) */
 .hero__proof{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
@@ -1832,7 +1833,7 @@ html{zoom:.9}
     <div class="hero__copy reveal">
       <span class="eyebrow">#1 en FSM para LATAM · +4M de servicios gestionados</span>
       <h1 class="headline-xl" style="color:var(--navy)">Toda tu red de proveedores, bajo control y en <span class="hl-grad">tiempo real</span></h1>
-      <p class="lede" style="font-size: 20px">WIP es el Field Service Management para empresas que coordinan servicios a través de su red de proveedores en LATAM. Visibilidad total de cada servicio, SLAs bajo control y trazabilidad de punta a punta, a la escala que tu operación exige.</p>
+      <p class="lede" style="font-size: 20px">WIP es el Field Service Management para empresas en Latam, que coordinan servicios a través de su red de proveedores (otras empresas). Visibilidad total de cada servicio, SLAs bajo control, red conectada y trazabilidad de punta a punta, a la escala que tu operación exige.</p>
       <div class="hero__buttons">
         <a href="#contacto" class="btn btn--primary">Agenda una demo</a>
         <a href="#chats" class="btn btn--outline">Ver WIP en acción</a>
@@ -1921,15 +1922,17 @@ html{zoom:.9}
 
         <!-- Pines con etiqueta de empresa (zona central, legibles) -->
         <g filter="url(#nmSh)">
-          <g transform="translate(196,178)"><rect x="14" y="-13" width="92" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">Grúas del Valle</text></g>
-          <g transform="translate(356,146)"><rect x="14" y="-13" width="72" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">Asist. Norte</text></g>
-          <g transform="translate(248,318)"><rect x="14" y="-13" width="66" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">Servimóvil</text></g>
-          <g transform="translate(430,238)"><rect x="14" y="-13" width="74" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">Auxilio 24/7</text></g>
+          <g transform="translate(196,178)"><rect x="14" y="-13" width="52" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">GrúaYa</text></g>
+          <g transform="translate(356,146)"><rect x="14" y="-13" width="71" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">FixHome Sas</text></g>
+          <g transform="translate(248,318)"><rect x="14" y="-13" width="63" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">VitalCare</text></g>
+          <g transform="translate(430,238)"><rect x="14" y="-13" width="58" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">FibraMax</text></g>
+          <g transform="translate(470,380)"><rect x="14" y="-13" width="58" height="17" rx="8.5" fill="#ffffff"/><text x="22" y="-1.2" font-family="Inter,Arial" font-size="8.6" font-weight="700" fill="#161d31">PetMóvil</text></g>
         </g>
         <use href="#pinL" transform="translate(196,178)"/>
         <use href="#pinS" transform="translate(356,146)"/>
         <use href="#pinN" transform="translate(248,318)"/>
         <use href="#pinL" transform="translate(430,238)"/>
+        <use href="#pinL" transform="translate(470,380)"/>
         <!-- Movimiento: asignación a proveedores -->
         <g class="net-anim" aria-hidden="true">
           <path class="net-line" d="M312,266 L196,178"/>
@@ -1963,9 +1966,9 @@ html{zoom:.9}
 
     <div class="netmap__hud">
       <div class="netmap__kpis">
-        <div class="netmap__kpi"><b>24</b><span>servicios hoy</span></div>
+        <div class="netmap__kpi"><b>1500</b><span>servicios hoy</span></div>
         <span class="netmap__sep"></span>
-        <div class="netmap__kpi"><b>8</b><span>en curso</span></div>
+        <div class="netmap__kpi"><b>750</b><span>en curso</span></div>
         <span class="netmap__sep"></span>
         <div class="netmap__kpi netmap__kpi--good"><b>98%</b><span>SLA cumplido</span></div>
       </div>
