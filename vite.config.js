@@ -14,6 +14,8 @@ function cleanUrlsDev() {
       server.middlewares.use((req, res, next) => {
         if (req.url === '/equipos') {
           req.url = '/equipos/';
+        } else if (req.url === '/cotizaciones/asisya01') {
+          req.url = '/cotizaciones/asisya01/';
         }
         next();
       });
@@ -29,6 +31,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         equipos: resolve(__dirname, 'equipos/index.html'),
+        cotizacionesAsisya01: resolve(__dirname, 'cotizaciones/asisya01/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
       },
     },
