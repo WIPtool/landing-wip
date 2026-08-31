@@ -16,6 +16,8 @@ function cleanUrlsDev() {
           req.url = '/equipos/';
         } else if (req.url === '/cotizaciones/asisya01') {
           req.url = '/cotizaciones/asisya01/';
+        } else if (req.url === '/cotizaciones/auxilia01') {
+          req.url = '/cotizaciones/auxilia01/';
         }
         next();
       });
@@ -32,6 +34,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         equipos: resolve(__dirname, 'equipos/index.html'),
         cotizacionesAsisya01: resolve(__dirname, 'cotizaciones/asisya01/index.html'),
+        cotizacionesAuxilia01: resolve(__dirname, 'cotizaciones/auxilia01/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
       },
     },
