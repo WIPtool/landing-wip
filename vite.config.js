@@ -20,6 +20,8 @@ function cleanUrlsDev() {
           req.url = '/cotizaciones/auxilia01/';
         } else if (req.url === '/cotizaciones/sotrandes01') {
           req.url = '/cotizaciones/sotrandes01/';
+        } else if (req.url === '/cotizaciones/Hisercol01') {
+          req.url = '/cotizaciones/Hisercol01/';
         }
         next();
       });
@@ -38,6 +40,7 @@ export default defineConfig({
         cotizacionesAsisya01: resolve(__dirname, 'cotizaciones/asisya01/index.html'),
         cotizacionesAuxilia01: resolve(__dirname, 'cotizaciones/auxilia01/index.html'),
         cotizacionesSotrandes01: resolve(__dirname, 'cotizaciones/sotrandes01/index.html'),
+        cotizacionesHisercol01: resolve(__dirname, 'cotizaciones/Hisercol01/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
       },
     },
