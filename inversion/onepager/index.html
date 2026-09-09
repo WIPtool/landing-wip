@@ -33,7 +33,7 @@
   /* ---- page ---- */
   .page{
     width:794px;min-height:1123px;margin:14px auto 40px;background:var(--paper);
-    padding:30px 40px 20px;position:relative;overflow:hidden;
+    padding:26px 40px 16px;position:relative;overflow:hidden;
     background-image:
       linear-gradient(rgba(17,20,24,.045) 1px,transparent 1px),
       linear-gradient(90deg,rgba(17,20,24,.045) 1px,transparent 1px);
@@ -55,7 +55,7 @@
     font-weight:700;font-size:10.5px;letter-spacing:.1em;padding:5px 12px;border-radius:999px;margin-bottom:14px}
   h1{font-family:'Archivo';font-weight:900;font-size:31px;line-height:1.06;letter-spacing:-.02em;
     max-width:21ch;margin-bottom:9px}
-  .lead{font-size:13.5px;line-height:1.5;color:var(--ink2);max-width:66ch}
+  .lead{font-size:12.7px;line-height:1.45;color:var(--ink2);max-width:70ch}
   .lead b{color:var(--ink);font-weight:600}
 
   .rule{height:1px;background:var(--line);margin:11px 0}
@@ -74,14 +74,14 @@
 
   /* ---- section label ---- */
   .slab{font-family:'Archivo';font-weight:800;font-size:12px;letter-spacing:.02em;color:var(--ink);
-    margin:13px 0 9px;display:flex;align-items:center;gap:9px}
+    margin:11px 0 8px;display:flex;align-items:center;gap:9px}
   .slab::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--dot);display:inline-block}
 
   /* ---- metric cards ---- */
-  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  .metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
   .m{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:14px 14px 13px;
      box-shadow:0 1px 0 rgba(20,25,30,.02)}
-  .m .n{font-family:'Archivo';font-weight:900;font-size:29px;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+  .m .n{font-family:'Archivo';font-weight:900;font-size:26px;letter-spacing:-.03em;line-height:1;color:var(--ink)}
   .m .l{font-size:10.8px;line-height:1.35;color:var(--ink2);margin-top:7px}
 
   /* ---- highlight bar ---- */
@@ -91,7 +91,7 @@
      display:flex;align-items:center;justify-content:center;font-size:15px}
   .hl p{font-size:12.3px;line-height:1.4}
   .hl b{color:var(--lime);font-weight:700}
-  .fin{margin-top:11px;background:#FafbF8;border:1px solid var(--line);border-radius:var(--radius);padding:12px 15px;font-size:11.2px;line-height:1.5;color:var(--ink2)}
+  .fin{margin-top:10px;background:#FafbF8;border:1px solid var(--line);border-radius:var(--radius);padding:11px 15px;font-size:10.8px;line-height:1.45;color:var(--ink2)}
   .fin b{color:var(--ink);font-family:'Archivo';font-weight:700}
 
   /* ---- market + segments ---- */
@@ -152,7 +152,7 @@
 
       <span class="eyebrow">QUÉ ES WIP</span>
       <h1>Field Service Management para logísticas de asistencia en LATAM</h1>
-      <p class="lead">WIP <b>uberiza la asistencia en terreno</b>: conecta en tiempo real a la compañía, sus proveedores y técnicos, y le da al usuario final una experiencia tipo Uber, asignación, seguimiento en vivo y trazabilidad de punta a punta. Construida desde la realidad operativa de LATAM, no adaptada de un producto global.</p>
+      <p class="lead">WIP lleva la <b>experiencia tipo Uber</b> a la asistencia en terreno: asignación en tiempo real, seguimiento en vivo y trazabilidad de punta a punta, <b>sobre la red curada de proveedores certificados y SLAs</b> del sector, no un marketplace abierto. Un solo panel conecta a la compañía, sus proveedores y técnicos. Construida desde la realidad operativa de LATAM, no adaptada de un producto global.</p>
 
       <div class="rule"></div>
 
@@ -170,47 +170,48 @@
       <div class="caps">
         <span class="cap">SaaS multi-tenant</span>
         <span class="cap">Creado para LATAM</span>
-        <span class="cap">Soporta <b>+8.000</b> transacciones / min</span>
+        <span class="cap">Arquitectura para <b>+8.000</b> transacciones / min</span>
         <span class="cap">Integración SFTP / API</span>
       </div>
 
       <div class="slab">Tracción</div>
       <div class="metrics">
-        <div class="m"><div class="n">+4M</div><div class="l">servicios gestionados en la plataforma</div></div>
+        <div class="m"><div class="n">+4M</div><div class="l">servicios gestionados, acumulado histórico de la plataforma</div></div>
         <div class="m"><div class="n">LATAM</div><div class="l">disponible en toda la región, hoy operamos en Colombia, Honduras, Guatemala y México</div></div>
-        <div class="m"><div class="n">~20x</div><div class="l">economía unitaria, costo US$0,064 vs. precio US$1,28 por servicio</div></div>
+        <div class="m"><div class="n">US$0,06</div><div class="l">costo de infraestructura por transacción, a costo marginal casi nulo (capa de software)</div></div>
         <div class="m"><div class="n">+22%</div><div class="l">margen bruto 2025 (desde ~4% en 2024)</div></div>
       </div>
 
       <div class="hl">
         <div class="ic">↗</div>
-        <p><b>Retención y expansión probadas:</b> un cliente mid-market (Asisya) pasó de 500 a 2.000 servicios al año, <b>4x</b>, dentro de la misma plataforma.</p>
+        <p><b>Retención y expansión probadas:</b> un cliente mid-market (Asisya) pasó de 500 a 2.000 servicios al año (<b>4x</b>) dentro de la misma plataforma.</p>
       </div>
 
-      <div class="fin"><b>Facturación:</b> de ~US$175K (2024) a ~US$140K (2025), baja <b>deliberada</b> por salir de ingreso tercerizado de bajo margen. A cambio, la utilidad bruta creció 3,5x y el margen bruto pasó de ~4% a ~22%.</div>
+      <div class="fin"><b>Facturación:</b> de ~US$175K (2024) a ~US$110K (2025). Reducción <b>deliberada</b>: cerramos la línea de asistencias (donde WIP prestaba el servicio) para enfocarnos en vender y expandir el software. La utilidad bruta creció ~3,5x y el margen bruto pasó de ~4% a ~22%.</div>
 
       <div class="slab">Mercado y modelo</div>
       <div class="info">
         <div class="box">
           <div class="t">Mercado</div>
-          <p>El mercado de Field Service Management en LATAM se estima en <b style="color:var(--ink)">~US$900M en 2025</b> y crece a doble dígito hacia <b style="color:var(--ink)">~US$2.000M</b> a inicios de la próxima década. WIP ataca el segmento de asistencias y redes de proveedores, hoy resuelto con planillas y sistemas fragmentados.</p>
+          <p>El mercado de <b style="color:var(--ink)">Field Service Management en LATAM</b> se estima en ~US$900M (2025), creciendo a doble dígito hacia ~US$2.000M a inicios de la próxima década. <span style="color:var(--ink3)">Fuente: Grand View Research.</span> WIP ataca el segmento de asistencias y redes de proveedores, hoy resuelto con planillas y sistemas fragmentados.</p>
         </div>
         <div class="box">
-          <div class="t">Segmentos y ticket</div>
+          <div class="t">Modelo y ticket promedio</div>
           <div class="tk">
             <div><span>Pymes</span><b>desde US$390 / mes</b></div>
             <div><span>Mid-market</span><b>~US$1.280 / mes</b></div>
             <div><span>Enterprise</span><b>a medida</b></div>
           </div>
+          <div style="font-size:10.3px;color:var(--ink3);margin-top:9px;line-height:1.4">Ingreso recurrente por suscripción (SaaS) mensual, por segmento.</div>
         </div>
       </div>
 
-      <div class="slab">Equipo</div>
+      <div class="slab">Equipo fundador</div>
       <div class="team">
-        <div class="who"><b>Jessica Tabares</b><span>CEO, comercial, marketing y crecimiento.</span></div>
-        <div class="who"><b>Misha Forero</b><span>COO, operaciones y producto.</span></div>
+        <div class="who"><b>Jessica Tabares</b><span>CEO</span></div>
+        <div class="who"><b>Misha Forero</b><span>COO</span></div>
       </div>
-      <div class="creds">Aplicando S.A.S. · +10 años de operación · Reconocida por Forbes Colombia: 30 Promesas (2023) y 100 Mejores Startups (2022). Clientes: Falabella, Cafam, Transmilenio, Fixit, Asisya, Apoyo 24h.</div>
+      <div class="creds"><b style="color:var(--ink)">Reconocimientos:</b> Forbes Colombia: 30 Promesas (2023) y 100 Mejores Startups (2022). Aplicando S.A.S. · +10 años.<br><b style="color:var(--ink)">Algunos de nuestros clientes</b><br><b style="color:var(--ink)">Asistencias y redes de proveedores:</b> Asisya (Finanzautos), Apoyo 24h, Fixit, Avise, AISA, CL Tiene.</div>
 
       <div class="backers">
         <span class="bl">Inversionistas</span>
@@ -221,7 +222,7 @@
       <div class="ask">
         <div class="t">La oportunidad de inversión</div>
         <div class="grid">
-          <div><div class="k">Valoración</div><div class="v">US$3M</div></div>
+          <div><div class="k">Cap</div><div class="v">US$3M</div></div>
           <div><div class="k">Vehículo</div><div class="v">Nota convertible</div></div>
           <div><div class="k">Participación</div><div class="v">hasta 3%<small>según cap y descuento</small></div></div>
           <div><div class="k">Destino</div><div class="v">100% comercial<small>equipo de ventas · pauta · expansión LATAM</small></div></div>
