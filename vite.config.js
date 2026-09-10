@@ -24,6 +24,8 @@ function cleanUrlsDev() {
           req.url = '/cotizaciones/Hisercol01/';
         } else if (req.url === '/inversion/onepager') {
           req.url = '/inversion/onepager/';
+        } else if (req.url === '/informeFixit/WipIA') {
+          req.url = '/informeFixit/WipIA/';
         }
         next();
       });
@@ -44,6 +46,7 @@ export default defineConfig({
         cotizacionesSotrandes01: resolve(__dirname, 'cotizaciones/sotrandes01/index.html'),
         cotizacionesHisercol01: resolve(__dirname, 'cotizaciones/Hisercol01/index.html'),
         inversionOnepager: resolve(__dirname, 'inversion/onepager/index.html'),
+        informeFixitWipIA: resolve(__dirname, 'informeFixit/WipIA/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
       },
     },
