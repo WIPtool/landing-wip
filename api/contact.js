@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true });
   }
 
-  const { nombre, email, empresa, telefono, necesidad } = data;
+  const { nombre, email, empresa, telefono, colaboradores, necesidad } = data;
   if (!nombre || !email || !empresa) {
     return res.status(400).json({ error: 'Faltan campos requeridos' });
   }
@@ -39,6 +39,7 @@ export default async function handler(req, res) {
     <p><b>Correo:</b> ${escapeHtml(email)}</p>
     <p><b>Empresa:</b> ${escapeHtml(empresa)}</p>
     <p><b>Teléfono:</b> ${escapeHtml(telefono || '-')}</p>
+    <p><b>Colaboradores en campo:</b> ${escapeHtml(colaboradores || '-')}</p>
     <p><b>Necesidad:</b><br>${escapeHtml(necesidad || '-').replace(/\n/g, '<br>')}</p>
   `;
 
