@@ -12,6 +12,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css">
 <!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="WIP">
@@ -556,6 +557,10 @@ a{text-decoration:none;color:inherit}
 .contact-form textarea{border-radius:16px;min-height:118px;resize:vertical;line-height:1.5}
 .contact-form input::placeholder,.contact-form textarea::placeholder{color:var(--navy-faint)}
 .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--lime-text)}
+.contact-form .iti{width:100%}
+.contact-form .iti input{width:100%;background:var(--surface-low);border:1px solid var(--border-line);border-radius:var(--r-pill);padding:13px 18px 13px 52px;font-size:15px;font-family:inherit;color:var(--on-surface)}
+.contact-form .iti input:focus{outline:none;border-color:var(--lime-text)}
+.contact-form .iti__selected-flag{border-radius:var(--r-pill) 0 0 var(--r-pill)}
 .contact-consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--on-surface-variant);margin-top:2px}
 .contact-consent input{width:17px;height:17px;flex-shrink:0;margin-top:1px;accent-color:var(--lime-text)}
 .contact-consent a{color:var(--lime-text);font-weight:600;text-decoration:underline}
@@ -3981,7 +3986,7 @@ html{zoom:.9}
     </form>
     <div class="contact-ok" id="contactOk" hidden style="max-width:700px;margin:18px auto 0;text-align:center;background:#f2fbe3;border:1px solid #dcefb6;border-radius:16px;padding:22px">
       <b style="font-size:18px;color:#3d6b09;display:block;margin-bottom:5px">¡Gracias! Recibimos tu solicitud.</b>
-      <span style="color:var(--on-surface-variant)">Nuestro equipo te contactará muy pronto.</span>
+      <span style="color:var(--on-surface-variant)">Tus datos ya fueron enviados a nuestro equipo comercial. Uno de nuestros asesores se comunicará contigo en los próximos minutos.</span>
     </div>
     <div class="contact-trust reveal"><span class="dot"></span>Te contactamos en menos de 24 horas hábiles.</div>
   </div>
@@ -4114,14 +4119,33 @@ html{zoom:.9}
   window.addEventListener('resize',function(){ render(i); });
 })();
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script id="contact-js">
 (function(){
   var f=document.getElementById('contactForm'); if(!f)return;
   var ok=document.getElementById('contactOk');
+
+  var telInput=document.getElementById('c-telefono');
+  var iti=null;
+  if(telInput && window.intlTelInput){
+    iti=window.intlTelInput(telInput,{
+      initialCountry:'auto',
+      preferredCountries:['co','mx','pe','cl','ec','pa','gt','sv','hn'],
+      separateDialCode:true,
+      utilsScript:'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js',
+      geoIpLookup:function(callback){
+        fetch('/api/geo').then(function(r){return r.json();})
+          .then(function(d){callback((d && d.country) ? d.country : 'co');})
+          .catch(function(){callback('co');});
+      }
+    });
+  }
+
   f.addEventListener('submit',function(e){
     e.preventDefault();
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
+    if(iti && telInput.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     if(btn){btn.disabled=true;btn.textContent='Enviando…';}
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
       .then(function(r){
