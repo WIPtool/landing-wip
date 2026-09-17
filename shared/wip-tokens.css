@@ -1,0 +1,64 @@
+/* ==============================================================
+   WIP — Tokens y componentes estructurales compartidos entre
+   WIP Red (/) y WIP Equipos (/equipos).
+
+   Define tamaños, formas y espaciados, NO colores: cada página
+   mantiene su propia paleta (--navy, --lime, etc. se siguen
+   definiendo por separado en cada archivo).
+   ============================================================== */
+:root{
+  --r-pill:980px;
+  --r-card:18px;
+  --r-media:6px;
+  --section-pad:clamp(88px,13vw,168px);
+  --h2-size:clamp(34px,5vw,68px);
+  --faq-q-size:clamp(16px,1.5vw,18px);
+  --nav-container:1180px;
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:inherit;font-size:15px;font-weight:600;line-height:1;
+  padding:14px 26px;border-radius:var(--r-pill);
+  border:1.5px solid transparent;cursor:pointer;
+  white-space:nowrap;transition:all .2s ease;
+}
+
+/* ==============================================================
+   NAV — misma estructura y tamaño en ambas páginas (colores
+   y fondo del "vidrio" se definen aparte, por página).
+   ============================================================== */
+.nav{position:sticky;top:14px;z-index:50}
+.nav__inner{
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;max-width:var(--nav-container);margin:0 auto;
+  padding:0 28px;border-radius:18px;
+  backdrop-filter:blur(26px) saturate(180%);
+  -webkit-backdrop-filter:blur(26px) saturate(180%);
+  transition:background .3s ease, box-shadow .3s ease, border-color .3s ease;
+  view-transition-name:site-nav;
+}
+.nav__logo{font-weight:700;font-size:22px;letter-spacing:-0.02em;display:flex;align-items:center;gap:8px}
+.nav__logo .dot{width:9px;height:9px;border-radius:50%}
+.logo-sub{font-weight:700;font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;padding:3px 9px;border-radius:20px;align-self:flex-end;line-height:1;margin-bottom:2px}
+@media(max-width:960px){.logo-sub{display:none}}
+.nav__links{display:flex;align-items:center;gap:34px}
+.nav__links a{font-size:15px;font-weight:500;transition:color .2s ease;position:relative}
+.nav__links a.is-active{font-weight:700}
+.nav__links a.is-active::after{content:"";position:absolute;left:2px;right:2px;bottom:-7px;height:3px;border-radius:3px}
+.nav__cta{display:flex;align-items:center;gap:14px}
+.nav__pymes{display:flex;flex-direction:row;align-items:baseline;justify-content:center;gap:6px;line-height:1.12}
+.nav__pymes-main{font-size:15px;font-weight:600;transition:color .2s ease}
+.nav__pymes-sub{font-size:11px;font-weight:500;letter-spacing:-.005em;white-space:nowrap;transition:color .2s ease}
+
+@media (max-width:720px){
+  .nav__links{display:flex!important;gap:0}
+  .nav__links a:not(.nav__pymes){display:none}
+  .nav__pymes{flex-direction:column;align-items:center;text-align:center;justify-content:center;gap:2px}
+  .nav__pymes-main{font-size:14px;font-weight:700}
+  .nav__pymes-sub{font-size:10.5px}
+  .nav__cta .btn--ghost,.nav__cta .btn-ghost,.nav__cta .lnk{display:none}
+}
+@media (max-width:360px){
+  .nav__pymes-sub{font-size:10px}
+}
