@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Material comercial privado: propuestas de clientes, informes e inversión.
+# No debe aparecer en buscadores (las páginas además llevan noindex).
+Disallow: /cotizaciones/
+Disallow: /inversion/
+Disallow: /informeFixit/
+Disallow: /informeWip/
+Disallow: /api/
+
+Sitemap: https://wiptool.com/sitemap.xml
