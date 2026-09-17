@@ -517,18 +517,37 @@
   .final p{color:var(--muted-l);font-size:17px;max-width:56ch;margin:0 auto 30px}
   .final .hero-ctas{justify-content:center;opacity:1}
 
-  /* ---------- footer ---------- */
-  footer{background:var(--navy-brand);border-top:1px solid rgba(255,255,255,0.08);padding:44px 0}
-  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px}
+  /* ---------- footer ----------
+     Config (dimensiones, tipografía, márgenes) calcada 1:1 de WIP Red
+     (#blog en /index.html) para que ambos footers se vean exactamente
+     iguales en tamaño; sólo cambian los colores propios de Equipos y,
+     obviamente, el contenido. */
+  footer{background:var(--navy-brand);padding:44px 0}
+  footer .wrap{max-width:1360px;padding-left:28px;padding-right:28px}
+  .footer-grid{display:grid;grid-template-columns:1.6fr 1fr 0.5fr 1fr;gap:40px}
+  .footer-col--social{grid-column:4}
   .footer-brand{display:flex;flex-direction:column;gap:14px;max-width:340px}
   .footer-brand .logo{font-size:19px}
   .footer-brand p{color:var(--muted-l);font-size:14px;line-height:1.5}
-  .footer-col h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim-l);margin-bottom:14px}
-  .footer-col a{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--muted-l);margin-bottom:10px;transition:color .2s ease}
+  .footer-col h4{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:normal;color:var(--dim-l);margin-bottom:14px}
+  .footer-col a{display:block;font-size:14px;line-height:1.2;color:var(--muted-l);margin-bottom:10px;transition:color .2s ease}
   .footer-col a:hover{color:var(--ink-l)}
-  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);color:var(--muted-l);font-size:13.5px}
+  .footer-col--social a{display:flex;align-items:center;gap:8px}
+  .footer-col--social svg{flex-shrink:0}
+  .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-top:32px;padding-top:24px;border-top:1px solid rgba(255,255,255,0.08);color:var(--muted-l);font-size:13.5px;line-height:normal}
   .footer-bottom a{color:var(--muted-l);text-decoration:underline;transition:color .2s ease}
   .footer-bottom a:hover{color:var(--ink-l)}
+  @media (max-width:900px){
+    .footer-grid{grid-template-columns:1fr;gap:32px}
+    .footer-brand{max-width:none}
+    .footer-col--social{grid-column:auto}
+  }
+  @media (max-width:720px){
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .footer-brand{grid-column:1/-1}
+    .footer-col--social{grid-column:auto}
+    .footer-bottom{flex-direction:column;align-items:flex-start}
+  }
 
   /* ---------- reveal ---------- */
   .reveal{opacity:0;transform:translateY(30px);transition:opacity .75s ease, transform .75s ease}
@@ -1607,42 +1626,54 @@
   </section>
 
   <!-- ================= HABLEMOS (contacto) ================= -->
+  <!-- Idéntica a la de WIP Red (/#contacto): mismos colores, tamaños y
+       formato, con valores fijos en vez de los tokens propios de Equipos,
+       para garantizar que ambas páginas se vean exactamente iguales. -->
   <style id="contacto-css">
+    #demo{background:#f3f3f5}
     #demo .contacto-split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-    #demo .contact-head{text-align:left}
-    #demo .contact-head h2{font-size:clamp(44px,min(5.6vw,6.2vh),72px);margin:14px 0}
-    #demo .contact-head .lede{max-width:none;margin:14px 0;text-align:left}
-    #demo .cta-soft-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink-d);border-bottom:1.5px solid var(--salmon);padding-bottom:2px;transition:border-color .2s ease,gap .2s ease}
-    #demo .cta-soft-link:hover{gap:11px}
+    #demo .contact-head{text-align:left;margin:0}
+    #demo .contact-head h2{font-size:var(--h2-size);font-weight:700;line-height:1.04;letter-spacing:-0.035em;margin:14px 0;color:#1a1c1d}
+    #demo .contact-head .eyebrow{display:inline-flex;align-items:center;font-size:13px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;background:#dbff57;color:#161d31;padding:6px 12px;border-radius:var(--r-pill);margin-bottom:0}
+    #demo .contact-head .eyebrow::before{content:none}
+    #demo .contact-head .lede{max-width:none;margin:14px 0;text-align:left;font-size:clamp(19px,2.2vw,26px);font-weight:400;line-height:1.4;letter-spacing:-0.01em;color:#45464d}
+    #demo .cta-soft-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:#161d31;border-bottom:1.5px solid rgba(155,190,40,.6);padding-bottom:2px;transition:border-color .2s ease,gap .2s ease}
+    #demo .cta-soft-link:hover{border-color:#161d31;gap:11px}
     #demo .contact-calendly{margin-top:26px}
-    #demo .contacto-form-col{background:var(--paper);border:1px solid var(--gl-border);border-radius:var(--r-card);padding:clamp(20px,min(2.6vw,2.8vh),34px)}
-    #demo .contacto-form-title{font-size:clamp(19px,1.8vw,23px);font-weight:700;letter-spacing:-0.01em;margin-bottom:clamp(10px,min(1.4vw,1.5vh),18px);text-align:center;color:var(--ink-d)}
-    #demo .contact-form{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,min(1.6vw,1.6vh),18px)}
+    #demo .contacto-form-col{background:none;border:none;padding:0}
+    #demo .contacto-form-title{font-size:clamp(19px,1.8vw,23px);font-weight:700;letter-spacing:-0.01em;margin-bottom:clamp(10px,min(1.4vw,1.5vh),18px);text-align:center;color:#1a1c1d}
+    #demo .contact-form{
+      max-width:none;margin:0;
+      background:#ffffff;border:1px solid #e6e6ea;
+      border-radius:var(--r-card);box-shadow:0 2px 14px rgba(22,29,49,0.05);
+      padding:clamp(20px,min(2.6vw,2.8vh),34px);
+      display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,min(1.6vw,1.6vh),18px);
+    }
     #demo .contact-form .field{display:flex;flex-direction:column;gap:7px}
     #demo .contact-form .field--full{grid-column:1/-1}
-    #demo .contact-form label{font-size:12.5px;font-weight:500;color:var(--body-d)}
+    #demo .contact-form label{font-size:13px;font-weight:500;color:#5b6172}
     #demo .contact-form input,#demo .contact-form select,#demo .contact-form textarea{
-      background:var(--white);border:1px solid var(--gl-border);
-      border-radius:var(--r-pill);padding:12px 16px;font-size:14.5px;
-      font-family:inherit;color:var(--ink-d);transition:border-color .2s ease;
+      background:#f3f3f5;border:1px solid #e6e6ea;
+      border-radius:var(--r-pill);padding:13px 18px;font-size:15px;
+      font-family:inherit;color:#1a1c1d;transition:border-color .2s ease;
     }
-    #demo .contact-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a839a' stroke-width='2.4' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px;padding-right:42px}
-    #demo .contact-form select:invalid{color:var(--muted-d)}
+    #demo .contact-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6172' stroke-width='2.4' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px;padding-right:42px}
+    #demo .contact-form select:invalid{color:#8a8f9c}
     #demo .contact-form textarea{border-radius:16px;min-height:clamp(60px,min(8vw,8vh),100px);resize:vertical;line-height:1.5}
-    #demo .contact-form input::placeholder,#demo .contact-form textarea::placeholder{color:var(--muted-d)}
-    #demo .contact-form input:focus,#demo .contact-form textarea:focus,#demo .contact-form select:focus{outline:none;border-color:var(--lime)}
+    #demo .contact-form input::placeholder,#demo .contact-form textarea::placeholder{color:#8a8f9c}
+    #demo .contact-form input:focus,#demo .contact-form textarea:focus,#demo .contact-form select:focus{outline:none;border-color:#4f8f1f}
     #demo .contact-form .iti{width:100%}
-    #demo .contact-form .iti input{width:100%;background:var(--white);border:1px solid var(--gl-border);border-radius:var(--r-pill);padding:12px 16px 12px 52px;font-size:14.5px;font-family:inherit;color:var(--ink-d)}
-    #demo .contact-form .iti input:focus{outline:none;border-color:var(--lime)}
+    #demo .contact-form .iti input{width:100%;background:#f3f3f5;border:1px solid #e6e6ea;border-radius:var(--r-pill);padding:13px 18px 13px 52px;font-size:15px;font-family:inherit;color:#1a1c1d}
+    #demo .contact-form .iti input:focus{outline:none;border-color:#4f8f1f}
     #demo .contact-form .iti__selected-flag{border-radius:var(--r-pill) 0 0 var(--r-pill)}
-    #demo .contact-consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:12.5px;line-height:1.45;color:var(--body-d);margin-top:2px}
-    #demo .contact-consent input{width:17px;height:17px;flex-shrink:0;margin-top:1px;accent-color:var(--lime)}
-    #demo .contact-consent a{color:var(--ink-d);font-weight:600;text-decoration:underline}
+    #demo .contact-consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:#45464d;margin-top:2px}
+    #demo .contact-consent input{width:17px;height:17px;flex-shrink:0;margin-top:1px;accent-color:#4f8f1f}
+    #demo .contact-consent a{color:#4f8f1f;font-weight:600;text-decoration:underline}
     #demo .hp-field{position:absolute;left:-9999px}
     #demo .contact-form .btn{grid-column:1/-1;width:100%;margin-top:6px}
     #demo .contact-ok{background:#f2fbe3;border:1px solid #dcefb6;border-radius:16px;padding:clamp(14px,min(2vw,2vh),22px);margin-top:clamp(10px,min(1.4vw,1.5vh),18px)}
-    #demo .contact-trust{display:flex;align-items:center;justify-content:center;gap:8px;font-size:13px;color:var(--body-d);margin-top:clamp(10px,min(1.4vw,1.5vh),18px)}
-    #demo .contact-trust .dot{width:7px;height:7px;border-radius:50%;background:var(--lime)}
+    #demo .contact-trust{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:#5b6172;margin-top:clamp(10px,min(1.4vw,1.5vh),18px)}
+    #demo .contact-trust .dot{width:7px;height:7px;border-radius:50%;background:#4f8f1f}
     @media(min-width:901px){
       #demo{min-height:calc(100vh / 0.9);display:flex;align-items:center}
       #demo .wrap{width:100%}
@@ -1654,8 +1685,7 @@
       #demo .contact-calendly{text-align:center}
     }
   </style>
-  <section id="demo" class="sec-paper" style="padding-top:20px">
-    <span class="blob lime" style="width:420px;height:420px;top:-140px;right:-100px"></span>
+  <section id="demo" style="padding-top:20px">
     <div class="wrap">
       <div class="contacto-split">
         <div class="contact-head reveal">
@@ -1722,7 +1752,7 @@
   <div class="wrap footer-grid">
     <div class="footer-brand">
       <div class="logo"><span class="logo-img" role="img" aria-label="WIP"></span></div>
-      <p>Field Service Management para empresas de asistencia en LATAM.</p>
+      <p>Plataforma Field Service Management para empresas de asistencia en LATAM.</p>
     </div>
     <div class="footer-col">
       <h4>Información</h4>
@@ -1792,12 +1822,20 @@
 
 
 
-  // acordeón FAQ
-  document.querySelectorAll('#faq .faq-q').forEach(function(btn){
+  // acordeón FAQ (exclusivo: abrir una pregunta cierra las demás)
+  var faqItems = document.querySelectorAll('#faq .faq-item');
+  faqItems.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
     btn.addEventListener('click', function(){
-      var item = btn.parentElement;
-      var open = item.classList.toggle('open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var willOpen = !item.classList.contains('open');
+      faqItems.forEach(function(other){
+        other.classList.remove('open');
+        other.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+      });
+      if(willOpen){
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
     });
   });
 
