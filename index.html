@@ -4178,7 +4178,7 @@ html{zoom:.9}
   var nav=document.querySelector('.nav');
   var blobs=document.querySelectorAll('.bg-blobs span');
   function onScroll(){
-    var y=window.pageYOffset||document.documentElement.scrollTop;
+    var y=window.scrollY;
     if(nav){ y>10?nav.classList.add('is-scrolled'):nav.classList.remove('is-scrolled'); }
     if(!reduce&&blobs.length){
       if(blobs[0])blobs[0].style.transform='translateY('+(y*0.05)+'px)';
@@ -4188,7 +4188,7 @@ html{zoom:.9}
   }
   var ticking=false;
   window.addEventListener('scroll',function(){ if(!ticking){requestAnimationFrame(function(){onScroll();ticking=false;});ticking=true;} },{passive:true});
-  requestAnimationFrame(onScroll);
+  if(window.scrollY>0) requestAnimationFrame(onScroll);
 })();
 </script>
 <script id="jrny-js">
