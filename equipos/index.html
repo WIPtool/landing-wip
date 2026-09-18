@@ -57,7 +57,8 @@ gtag('config', 'G-2ZX12K09EW');
 <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="/shared/wip-tokens.css">
 <style id="global-scale">html{zoom:.9}</style>
 <script>
@@ -980,9 +981,12 @@ gtag('config', 'G-2ZX12K09EW');
 <link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://assets.calendly.com/assets/external/widget.css"></noscript>
 <script>
-/* Calendly se carga tras la primera interacción: no pesa en la carga inicial. */
+/* Calendly e intl-tel-input se cargan tras la primera interacción: no pesan en la carga inicial. */
 (function(){var l=false;function load(){if(l)return;l=true;
-var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;document.head.appendChild(s);}
+var s=document.createElement('script');s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;document.head.appendChild(s);
+var t=document.createElement('script');t.src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js';t.async=true;
+t.onload=function(){if(window.__wipInitTelInput)window.__wipInitTelInput();};
+document.head.appendChild(t);}
 ['pointerdown','keydown','scroll','touchstart'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});
 window.addEventListener('load',function(){setTimeout(load,2500);});})();
 </script>
@@ -2074,7 +2078,6 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
   });
 })();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>
 <script id="contact-js">
 (function(){
   var f=document.getElementById('contactForm'); if(!f)return;
@@ -2092,7 +2095,8 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
 
   var telInput=document.getElementById('c-telefono');
   var iti=null;
-  if(telInput && window.intlTelInput){
+  function initTelInput(){
+    if(!telInput || iti) return;
     iti=window.intlTelInput(telInput,{
       initialCountry:'auto',
       preferredCountries:['co','mx','pe','cl','ec','pa','gt','sv','hn'],
@@ -2105,6 +2109,10 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
           .catch(function(){callback('co');});
       }
     });
+  }
+  if(telInput){
+    if(window.intlTelInput) initTelInput();
+    else window.__wipInitTelInput=initTelInput;
   }
 
   f.addEventListener('submit',function(e){
