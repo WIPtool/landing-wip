@@ -4188,7 +4188,6 @@ html{zoom:.9}
   }
   var ticking=false;
   window.addEventListener('scroll',function(){ if(!ticking){requestAnimationFrame(function(){onScroll();ticking=false;});ticking=true;} },{passive:true});
-  if(window.scrollY>0) requestAnimationFrame(onScroll);
 })();
 </script>
 <script id="jrny-js">
