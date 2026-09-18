@@ -4207,6 +4207,20 @@ html{zoom:.9}
           .catch(function(){callback('co');});
       }
     });
+    /* intl-tel-input deja aria-activedescendant apuntando a un item de la lista
+       de paises incluso cuando esta cerrada (display:none, fuera del arbol de
+       accesibilidad): quitarlo mientras el combobox esta colapsado. */
+    var flagEl=telInput.closest('.iti')&&telInput.closest('.iti').querySelector('.iti__selected-flag');
+    if(flagEl && 'MutationObserver' in window){
+      var stripIfCollapsed=function(){
+        if(flagEl.getAttribute('aria-expanded')==='false' && flagEl.hasAttribute('aria-activedescendant')){
+          flagEl.removeAttribute('aria-activedescendant');
+        }
+      };
+      stripIfCollapsed();
+      new MutationObserver(stripIfCollapsed)
+        .observe(flagEl,{attributes:true,attributeFilter:['aria-expanded','aria-activedescendant']});
+    }
   }
   if(telInput){
     if(window.intlTelInput) initTelInput();
