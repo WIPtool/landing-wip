@@ -59,6 +59,23 @@ gtag('config', 'G-2ZX12K09EW');
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/shared/wip-tokens.css">
+<style id="global-scale">html{zoom:.9}</style>
+<script>
+/* Mide el zoom real ANTES del primer pintado y lo deja en una variable CSS,
+   para que .hero/#demo calculen su alto bien desde el primer frame (evita
+   el salto de layout que causaba ajustarlo después por JS). */
+(function(){
+  var probe=document.createElement('div');
+  probe.style.cssText='position:fixed;top:0;left:0;width:1px;height:100vh;visibility:hidden;pointer-events:none';
+  document.documentElement.appendChild(probe);
+  var renderedH=probe.getBoundingClientRect().height;
+  document.documentElement.removeChild(probe);
+  var ratio=renderedH/window.innerHeight;
+  if(ratio>0 && isFinite(ratio)){
+    document.documentElement.style.setProperty('--vh-ratio', ratio);
+  }
+})();
+</script>
 <style>
   :root{
     --navy:#080d1a;          /* azul muy oscuro, tirando a negro */
@@ -88,7 +105,7 @@ gtag('config', 'G-2ZX12K09EW');
   }
 
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;zoom:.9}
+  html{scroll-behavior:smooth}
   body{
     font-family:var(--body);
     background:var(--white);
@@ -227,7 +244,7 @@ gtag('config', 'G-2ZX12K09EW');
      en vez de dejar una franja de color plano detrás de la barra */
   .hero{margin-top:-78px;padding:clamp(102px,calc(min(3vw,3.6vh) + 78px),142px) 0 clamp(20px,min(2.2vw,2.8vh),40px)}
   @media(min-width:961px){
-    .hero{min-height:calc(100vh / 0.9);display:flex;align-items:center}
+    .hero{min-height:calc(100vh / var(--vh-ratio, 0.9));display:flex;align-items:center}
     .hero .wrap{width:100%}
   }
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(24px,min(3.5vw,4vh),56px);align-items:center}
@@ -1691,7 +1708,7 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
     #demo .contact-trust{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:#5b6172;margin-top:clamp(10px,min(1.4vw,1.5vh),18px)}
     #demo .contact-trust .dot{width:7px;height:7px;border-radius:50%;background:#4f8f1f}
     @media(min-width:901px){
-      #demo{min-height:calc(100vh / 0.9);display:flex;align-items:center}
+      #demo{min-height:calc(100vh / var(--vh-ratio, 0.9));display:flex;align-items:center}
       #demo .wrap{width:100%}
     }
     @media(max-width:900px){
@@ -2035,13 +2052,10 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
 </script>
 <script id="hero-fit-js">
 (function(){
-  /* Ajusta el alto de las secciones "pantalla completa" (hero, hablemos)
-     midiendo en el navegador real (en vez de asumir un factor fijo de
-     zoom), así funciona sin importar la escala de pantalla del usuario. */
-  var targets=[
-    {el:document.querySelector('.hero'),minWidth:961},
-    {el:document.querySelector('#demo'),minWidth:901}
-  ];
+  /* El alto de hero/#demo se calcula en CSS con --vh-ratio, medido muy
+     temprano en <head> (antes del primer pintado, sin causar saltos de
+     layout). Aquí solo se refresca esa variable si el usuario cambia el
+     tamaño de la ventana. */
   function measureRatio(){
     var probe=document.createElement('div');
     probe.style.cssText='position:fixed;top:0;left:0;width:1px;height:100vh;visibility:hidden;pointer-events:none';
@@ -2051,19 +2065,13 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
     var ratio=renderedH/window.innerHeight;
     return (ratio>0 && isFinite(ratio))?ratio:1;
   }
-  function fit(){
-    var ratio=measureRatio();
-    targets.forEach(function(t){
-      if(!t.el) return;
-      if(window.innerWidth<t.minWidth){ t.el.style.minHeight=''; return; }
-      t.el.style.minHeight=(window.innerHeight/ratio)+'px';
-    });
-  }
-  fit();
-  window.addEventListener('load',fit);
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fit); }
   var t;
-  window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(fit,120); });
+  window.addEventListener('resize',function(){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      document.documentElement.style.setProperty('--vh-ratio', measureRatio());
+    },120);
+  });
 })();
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js"></script>

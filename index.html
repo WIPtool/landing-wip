@@ -208,7 +208,7 @@ a{text-decoration:none;color:inherit}
    ============================================================ */
 .hero{position:relative;overflow:hidden;margin-top:-64px}
 @media(min-width:1173px){
-  .hero{min-height:calc(100vh / 0.9);display:flex;align-items:center}
+  .hero{min-height:calc(100vh / var(--vh-ratio, 0.9));display:flex;align-items:center}
 }
 .hero__grid-bg{
   position:absolute;inset:0;
@@ -478,7 +478,7 @@ a{text-decoration:none;color:inherit}
    quepan sin scroll en pantallas comunes (ej. 1920x1080). */
 #nosotros{padding-top:clamp(48px,min(6vw,6.4vh),104px);padding-bottom:clamp(48px,min(6vw,6.4vh),104px)}
 @media(min-width:901px){
-  #nosotros{min-height:calc(100vh / 0.9);display:flex;align-items:center}
+  #nosotros{min-height:calc(100vh / var(--vh-ratio, 0.9));display:flex;align-items:center}
   #nosotros .container{width:100%}
 }
 #nosotros .center-head{gap:clamp(8px,min(1.3vw,1.4vh),18px)}
@@ -551,7 +551,7 @@ a{text-decoration:none;color:inherit}
 #contacto .contact-trust{justify-content:center;margin-top:clamp(10px,min(1.4vw,1.5vh),18px)}
 #contacto .contact-ok{padding:clamp(14px,min(2vw,2vh),22px);margin-top:clamp(10px,min(1.4vw,1.5vh),18px)}
 @media(min-width:901px){
-  #contacto{min-height:calc(100vh / 0.9);display:flex;align-items:center}
+  #contacto{min-height:calc(100vh / var(--vh-ratio, 0.9));display:flex;align-items:center}
   #contacto .container{width:100%}
 }
 @media(max-width:900px){
@@ -1597,6 +1597,22 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d3
 /* ===== Reducir tamaño general de la landing (se veía muy grande en el dominio) ===== */
 html{zoom:.9}
 </style>
+<script>
+/* Mide el zoom real ANTES del primer pintado y lo deja en una variable CSS,
+   para que .hero/#nosotros/#contacto calculen su alto bien desde el primer
+   frame (evita el salto de layout que causaba ajustarlo después por JS). */
+(function(){
+  var probe=document.createElement('div');
+  probe.style.cssText='position:fixed;top:0;left:0;width:1px;height:100vh;visibility:hidden;pointer-events:none';
+  document.documentElement.appendChild(probe);
+  var renderedH=probe.getBoundingClientRect().height;
+  document.documentElement.removeChild(probe);
+  var ratio=renderedH/window.innerHeight;
+  if(ratio>0 && isFinite(ratio)){
+    document.documentElement.style.setProperty('--vh-ratio', ratio);
+  }
+})();
+</script>
 <style id="ind-one-line">
 /* ===== Construido para tu industria: en una sola línea ===== */
 .ind-grid{grid-template-columns:repeat(5,1fr)!important;gap:16px!important}
@@ -4050,15 +4066,10 @@ html{zoom:.9}
 </script>
 <script id="hero-fit-js">
 (function(){
-  /* Ajusta el alto de las secciones "pantalla completa" (hero, nosotros,
-     contacto) midiendo en el navegador real (en vez de asumir un factor
-     fijo de zoom), así funciona sin importar la escala de pantalla del
-     usuario. */
-  var targets=[
-    {el:document.querySelector('.hero'),minWidth:1173},
-    {el:document.querySelector('#nosotros'),minWidth:901},
-    {el:document.querySelector('#contacto'),minWidth:901}
-  ];
+  /* El alto de hero/nosotros/contacto se calcula en CSS con --vh-ratio,
+     medido muy temprano en <head> (antes del primer pintado, sin causar
+     saltos de layout). Aquí solo se refresca esa variable si el usuario
+     cambia el tamaño de la ventana. */
   function measureRatio(){
     var probe=document.createElement('div');
     probe.style.cssText='position:fixed;top:0;left:0;width:1px;height:100vh;visibility:hidden;pointer-events:none';
@@ -4068,19 +4079,13 @@ html{zoom:.9}
     var ratio=renderedH/window.innerHeight;
     return (ratio>0 && isFinite(ratio))?ratio:1;
   }
-  function fit(){
-    var ratio=measureRatio();
-    targets.forEach(function(t){
-      if(!t.el) return;
-      if(window.innerWidth<t.minWidth){ t.el.style.minHeight=''; return; }
-      t.el.style.minHeight=(window.innerHeight/ratio)+'px';
-    });
-  }
-  fit();
-  window.addEventListener('load',fit);
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(fit); }
   var t;
-  window.addEventListener('resize',function(){ clearTimeout(t); t=setTimeout(fit,120); });
+  window.addEventListener('resize',function(){
+    clearTimeout(t);
+    t=setTimeout(function(){
+      document.documentElement.style.setProperty('--vh-ratio', measureRatio());
+    },120);
+  });
 })();
 </script>
 <script id="trends-2026-js">
