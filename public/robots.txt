@@ -9,4 +9,4 @@ Disallow: /informeFixit/
 Disallow: /informeWip/
 Disallow: /api/
 
-Sitemap: https://wiptool.com/sitemap.xml
+Sitemap: https://www.wiptool.com/sitemap.xml
