@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-22XT2K09EW"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-22XT2K09EW');
+</script>
 <title>WIP Equipos, software para empresas de asistencia en LATAM</title>
 <meta name="description" content="Software de gestión de operaciones en campo (FSM) para empresas de asistencia en LATAM. Trazabilidad, tiempos, tarifas automáticas y ubicación del equipo en tiempo real." />
 <meta name="author" content="WIP - Aplicando S.A.S." />
@@ -2109,7 +2117,7 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
     if(btn){btn.disabled=true;btn.textContent='Enviando…';}
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
       .then(function(r){
-        if(r.ok){ f.style.display='none'; if(ok)ok.hidden=false; }
+        if(r.ok){ f.style.display='none'; if(ok)ok.hidden=false; if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||''}); }
         else { throw new Error('net'); }
       })
       .catch(function(){
@@ -2118,8 +2126,20 @@ window.addEventListener('load',function(){setTimeout(load,2500);});})();
         var body=encodeURIComponent('Nombre: '+(data.nombre||'')+'\nCorreo: '+(data.email||'')+'\nEmpresa: '+(data.empresa||'')+'\nTelefono: '+(data.telefono||'')+'\nServicios mensuales: '+(data.servicios||'')+'\n\nNecesidad:\n'+(data.necesidad||''));
         window.location.href='mailto:comercial@wiptool.com?subject='+sub+'&body='+body;
         if(btn){btn.disabled=false;btn.textContent='Quiero que me contacten';}
+        if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||'',via:'mailto'});
       });
   });
+})();
+</script>
+<script id="conversion-events-js">
+(function(){
+  if(!window.gtag) return;
+  document.addEventListener('click',function(e){
+    var wa=e.target.closest('.wa-fab');
+    if(wa){ gtag('event','click_whatsapp',{page_location:location.href}); return; }
+    var cal=e.target.closest('.contact-calendly a, [onclick*="Calendly.initPopupWidget"]');
+    if(cal){ gtag('event','click_calendly',{page_location:location.href}); }
+  }, true);
 })();
 </script>
 </body>
