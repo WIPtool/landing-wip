@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<!-- Google tag (gtag.js): el stub encola eventos en dataLayer; la libreria se carga tras el load / primera interaccion -->
+<!-- Google tag (gtag.js): el stub encola eventos en dataLayer; la libreria se carga tras el load / primera interaccion.
+     Solo mide en el dominio de produccion: las vistas previas de Vercel y localhost no ensucian la propiedad.
+     El stub se define siempre, porque conversion-events-js comprueba window.gtag al parsear. -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+if(location.hostname==='www.wiptool.com'){
 gtag('js', new Date());
 gtag('config', 'G-2ZX12K09EW');
 (function(){var l=false;function load(){if(l)return;l=true;
@@ -15,6 +18,7 @@ var s=document.createElement('script');s.src='https://www.googletagmanager.com/g
 window.addEventListener('load',function(){
   if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
 });})();
+}
 </script>
 <title>WIP Equipos, software para empresas de asistencia en LATAM</title>
 <meta name="description" content="Software de gestión de operaciones en campo (FSM) para empresas de asistencia en LATAM. Trazabilidad, tiempos, tarifas automáticas y ubicación del equipo en tiempo real." />
@@ -56,6 +60,86 @@ window.addEventListener('load',function(){
     "legalName": "Aplicando S.A.S.",
     "url": "https://www.wiptool.com"
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es WIP y para qué le sirve a mi empresa?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Es la herramienta para ordenar los servicios que prestas fuera de la oficina. Asignas, haces seguimiento en tiempo real, cobras y le respondes al cliente desde un solo lugar, sin depender de Excel y WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre WIP Red y WIP Equipos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "WIP Equipos es para empresas que prestan los servicios con su propio equipo en campo (técnicos, cuadrillas, conductores): asignas, haces seguimiento y le respondes al cliente. WIP Red es para corporativos que no atienden directamente, sino que coordinan una red de proveedores externos y necesitan controlar tiempos, cumplimiento y trazabilidad de esa red. En resumen: si tu gente hace el servicio, es WIP Equipos; si gestionas una red que lo hace por ti, es WIP Red."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Sirve si tengo pocos técnicos o trabajo con proveedores externos?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Funciona igual de bien con equipo propio o con una red de proveedores, sin importar si son 3 o 30. Está hecho para el tamaño de tu empresa."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿WIP es parametrizable y se ajusta a mi tipo de servicio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. WIP es parametrizable y se adapta a tu tipo de servicio: formularios, estados, tarifas y flujos se configuran según cómo operas tú. Y no lo haces solo: nuestro equipo te acompaña en la parametrización para que todo quede funcionando justo como lo necesitas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué tan rápido lo tengo funcionando?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "En días, no semanas. Depende mucho de cada empresa: por nuestro lado estamos listos para arrancar cuando tú lo estés, y te acompañamos en la puesta en marcha."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Mis clientes cómo se enteran del servicio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con la experiencia app sin app: tu cliente recibe por WhatsApp cada evento del servicio (quién va y si ya llegó) y puede calificar, sin descargar nada. Y si tu cliente es una empresa, también tenemos una experiencia para él: su propio perfil de cliente corporativo desde donde solicita servicios, hace seguimiento con trazabilidad completa y ve todo en tiempo real."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo dejar de usar Excel y WhatsApp para coordinar?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, esa es la idea. Todo lo que hoy resuelves a mano queda centralizado y con trazabilidad, para que dejes de operar a ciegas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿WIP se integra con otras plataformas?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí, WIP se puede integrar con otras plataformas. Para esto puedes hablar con nuestro equipo de integraciones WIP y armamos la conexión que tu operación necesita."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Hay permanencia o contrato mínimo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Trabajamos sin cláusulas de permanencia. Nos quedamos porque te funciona, no por un contrato que te amarre."
+      }
+    }
+  ]
 }
 </script>
 <link rel="icon" type="image/png" href="/favicon.png" />
@@ -2040,7 +2124,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
     if(play){
       play.addEventListener('click', ()=>{
         if(!id || id==='VIDEO_ID') return;
-        el.innerHTML = '<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1" title="Video testimonial WIP" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+        el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1" title="Video testimonial WIP" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
       });
     }
   });

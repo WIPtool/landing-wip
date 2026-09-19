@@ -1,12 +1,10 @@
 User-agent: *
 Allow: /
-
-# Material comercial privado: propuestas de clientes, informes e inversión.
-# No debe aparecer en buscadores (las páginas además llevan noindex).
-Disallow: /cotizaciones/
-Disallow: /inversion/
-Disallow: /informeFixit/
-Disallow: /informeWip/
 Disallow: /api/
+
+# Material comercial privado (cotizaciones, informes e inversion): NO se bloquea aqui a
+# proposito. Todas esas paginas llevan noindex en el HTML y el header X-Robots-Tag
+# (vercel.json); si se bloquearan con Disallow, Google no podria leer el noindex y podria
+# indexar la URL "sin contenido" si se descubre por un enlace compartido.
 
 Sitemap: https://www.wiptool.com/sitemap.xml

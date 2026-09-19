@@ -2,10 +2,13 @@
 <html lang="es"><head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js): el stub encola eventos en dataLayer; la libreria se carga tras el load / primera interaccion -->
+<!-- Google tag (gtag.js): el stub encola eventos en dataLayer; la libreria se carga tras el load / primera interaccion.
+     Solo mide en el dominio de produccion: las vistas previas de Vercel y localhost no ensucian la propiedad.
+     El stub se define siempre, porque conversion-events-js comprueba window.gtag al parsear. -->
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+if(location.hostname==='www.wiptool.com'){
 gtag('js', new Date());
 gtag('config', 'G-2ZX12K09EW');
 (function(){var l=false;function load(){if(l)return;l=true;
@@ -14,6 +17,7 @@ var s=document.createElement('script');s.src='https://www.googletagmanager.com/g
 window.addEventListener('load',function(){
   if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
 });})();
+}
 </script>
 <title>WIP | Field Service Management para LATAM</title>
 <meta name="description" content="Gestiona tus servicios en campo en tiempo real: asignación inteligente, seguimiento en vivo y control de tu red de proveedores. El FSM para LATAM.">
@@ -113,7 +117,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 <meta property="og:site_name" content="WIP">
 <meta property="og:locale" content="es_LA">
 <meta property="og:title" content="WIP | Field Service Management para gestión de servicios en LATAM">
-<meta property="og:description" content="Gestiona tus servicios en campo en tiempo real y controla tu red de proveedores o tu equipo. El FSM para operaciones B2B en 9 países de LATAM.">
+<meta property="og:description" content="Gestiona tus servicios en campo en tiempo real y controla tu red de proveedores o tu equipo. El FSM para operaciones B2B en 10 países de LATAM.">
 <meta property="og:url" content="https://www.wiptool.com/">
 <meta property="og:image" content="https://www.wiptool.com/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
@@ -133,7 +137,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
   "url": "https://www.wiptool.com/",
   "logo": "https://www.wiptool.com/logo.png",
   "description": "Plataforma de Field Service Management (FSM) para la gestión de servicios en campo en Latinoamérica.",
-  "areaServed": ["CO", "MX", "HN", "GT", "EC", "PE", "CL", "PA", "SV"],
+  "areaServed": ["CO", "MX", "HN", "GT", "EC", "PE", "NI", "CL", "PA", "SV"],
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "sales",
@@ -3955,7 +3959,7 @@ html{zoom:.9}
       </details>
       <details class="faq-item" name="faq">
         <summary>¿WIP funciona en varios países de Latinoamérica?<span class="faq-ic"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg></span></summary>
-        <p>Sí. Operamos en 9 países de la región (Colombia, México, Chile, Ecuador, Honduras, Guatemala, Panamá, Nicaragua y El Salvador), con soporte y operación pensados para la realidad de cada mercado local.</p>
+        <p>Sí. Operamos en 10 países de la región (Colombia, México, Perú, Chile, Ecuador, Honduras, Guatemala, Panamá, Nicaragua y El Salvador), con soporte y operación pensados para la realidad de cada mercado local.</p>
       </details>
       
     </div>
@@ -4035,7 +4039,7 @@ html{zoom:.9}
       "name": "¿WIP funciona en varios países de Latinoamérica?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sí. Operamos en 9 países de la región (Colombia, México, Chile, Ecuador, Honduras, Guatemala, Panamá, Nicaragua y El Salvador), con soporte y operación pensados para la realidad de cada mercado local."
+        "text": "Sí. Operamos en 10 países de la región (Colombia, México, Perú, Chile, Ecuador, Honduras, Guatemala, Panamá, Nicaragua y El Salvador), con soporte y operación pensados para la realidad de cada mercado local."
       }
     }
   ]
