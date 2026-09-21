@@ -3,6 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js): mismo tag y misma regla de host que la home y Equipos (solo mide en www.wiptool.com). -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+if(location.hostname==='www.wiptool.com'){
+gtag('js', new Date());
+gtag('config', 'G-2ZX12K09EW');
+(function(){var l=false;function load(){if(l)return;l=true;
+var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-2ZX12K09EW';s.async=true;document.head.appendChild(s);}
+['pointerdown','keydown','scroll','touchstart'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});
+window.addEventListener('load',function(){
+  if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
+});})();
+}
+</script>
 <title>Política de Privacidad, WIP · Aplicando S.A.S.</title>
 <meta name="description" content="Política de privacidad y tratamiento de datos personales de Aplicando S.A.S., empresa propietaria de la plataforma WIP.">
 <meta name="robots" content="noindex, follow">
