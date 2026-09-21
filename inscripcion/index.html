@@ -111,6 +111,35 @@ h1 .accent{color:var(--salmon)}
 .reg-form .iti{width:100%}
 .reg-form .iti input{padding:13px 18px 13px 52px}
 .reg-form .iti__selected-flag{border-radius:var(--r-pill) 0 0 var(--r-pill)}
+/* Selector de país con bandera (mismo aspecto que los demás campos) */
+.cpick{position:relative}
+.cpick__btn{
+  width:100%;display:flex;align-items:center;gap:10px;text-align:left;cursor:pointer;
+  background-color:var(--surface-low);border:1px solid var(--border-line);border-radius:var(--r-pill);
+  padding:13px 42px 13px 18px;font-size:15px;font-family:inherit;color:var(--on-surface);
+  transition:border-color .2s ease;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6172' stroke-width='2.4' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 16px center;background-size:16px;
+}
+.cpick__btn:focus-visible,.cpick__btn[aria-expanded=true]{outline:none;border-color:var(--lime-text);box-shadow:0 0 0 3px rgba(79,143,31,.18)}
+.cpick__name{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
+.cpick__name.is-empty{color:var(--navy-faint)}
+.cpick .iti__flag{flex:none;display:block;width:20px;height:15px}
+.cpick__panel{
+  position:absolute;z-index:30;left:0;right:0;top:calc(100% + 6px);
+  background:var(--surface-bright);border:1px solid var(--border-line);border-radius:16px;
+  box-shadow:0 14px 36px rgba(22,29,49,.16);overflow:hidden;
+}
+.reg-form .cpick__search{
+  border:0;border-bottom:1px solid var(--border-line);border-radius:0;
+  background:var(--surface-bright);padding:13px 16px;font-size:14px;
+}
+.reg-form .cpick__search:focus{box-shadow:none;border-bottom-color:var(--lime-text)}
+.cpick__list{list-style:none;max-height:min(260px,50vh);overflow-y:auto;padding:6px 0}
+.cpick__opt{display:flex;align-items:center;gap:10px;padding:9px 16px;font-size:14px;cursor:pointer}
+.cpick__opt.is-active{background:var(--surface-low)}
+.cpick__opt[aria-selected=true]{font-weight:600}
+.cpick__empty{padding:12px 16px;font-size:14px;color:var(--navy-faint)}
 .consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--on-surface-variant);margin-top:2px}
 .consent input{width:17px;height:17px;flex-shrink:0;margin-top:1px;accent-color:var(--lime-text)}
 .consent a{color:var(--lime-text);font-weight:600;text-decoration:underline}
@@ -178,11 +207,20 @@ h1 .accent{color:var(--salmon)}
     </div>
     <div class="field">
       <label for="i-pais">País <span class="star">*</span></label>
-      <input id="i-pais" name="pais" type="text" placeholder="País" autocomplete="country-name" required>
+      <div class="cpick" id="cp">
+        <button type="button" class="cpick__btn" id="i-pais" aria-haspopup="listbox" aria-expanded="false" aria-controls="cp-panel">
+          <span class="iti__flag" id="cp-flag" aria-hidden="true"></span><span class="cpick__name" id="cp-name">Selecciona tu país</span>
+        </button>
+        <div class="cpick__panel" id="cp-panel" hidden>
+          <input type="text" class="cpick__search" id="cp-search" role="combobox" aria-expanded="true" aria-controls="cp-list" aria-autocomplete="list" aria-label="Buscar país" placeholder="Buscar país" autocomplete="off">
+          <ul class="cpick__list" id="cp-list" role="listbox" aria-label="Países"></ul>
+        </div>
+        <input type="hidden" name="pais" id="i-pais-val">
+      </div>
     </div>
     <div class="field">
-      <label for="i-departamento">Departamento <span class="star">*</span></label>
-      <input id="i-departamento" name="departamento" type="text" placeholder="Departamento" autocomplete="address-level1" required>
+      <label for="i-departamento">Departamento/Provincia/Estado <span class="star">*</span></label>
+      <input id="i-departamento" name="departamento" type="text" placeholder="Departamento/Provincia/Estado" autocomplete="address-level1" required>
     </div>
     <div class="field">
       <label for="i-ciudad">Ciudad <span class="star">*</span></label>
@@ -258,19 +296,118 @@ h1 .accent{color:var(--salmon)}
     if(c){document.getElementById('i-codigo').value=c.slice(0,60);}
   }catch(e){}
 
+  /* ---------- Países: nombres en español, mismos códigos que el selector del celular ---------- */
+  var ISO='af al dz as ad ao ai ag ar am aw ac au at az bs bh bd bb by be bz bj bm bt bo ba bw br io vg bn bg bf bi kh cm ca cv bq ky cf td cl cn cx cc co km cd cg ck cr ci hr cu cw cy cz dk dj dm do ec eg sv gq er ee sz et fk fo fj fi fr gf pf ga gm ge de gh gi gr gl gd gp gu gt gg gn gw gy ht hn hk hu is in id ir iq ie im il it jm jp je jo kz ke ki xk kw kg la lv lb ls lr ly li lt lu mo mk mg mw my mv ml mt mh mq mr mu yt mx fm md mc mn me ms ma mz mm na nr np nl nc nz ni ne ng nu nf kp mp no om pk pw ps pa pg py pe ph pl pt pr qa re ro ru rw bl sh kn lc mf pm vc ws sm st sa sn rs sc sl sg sx sk si sb so za kr ss es lk sd sr sj se ch sy tw tj tz th tl tg tk to tt tn tr tm tc tv vi ug ua ae gb us uy uz vu va ve vn wf eh ye zm zw ax'.split(' ');
+  var dn=null; try{ dn=new Intl.DisplayNames(['es'],{type:'region'}); }catch(e){}
+  function nameOf(iso){
+    var u=iso.toUpperCase(), n='';
+    try{ n=dn?dn.of(u):''; }catch(e){}
+    return (n && n!==u) ? n : u;
+  }
+  var countries=ISO.map(function(c){return {iso:c,name:nameOf(c)};})
+    .sort(function(a,b){return a.name.localeCompare(b.name,'es');});
+  var byIso={}, localized={};
+  countries.forEach(function(c){byIso[c.iso]=c; localized[c.iso]=c.name;});
+  function norm(s){return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();}
+
+  /* País de la persona según su conexión (/api/geo); si no se puede saber, Colombia. */
+  var geoP=fetch('/api/geo').then(function(r){return r.json();})
+    .then(function(d){var c=((d&&d.country)||'').toLowerCase(); return byIso[c]?c:'co';})
+    .catch(function(){return 'co';});
+
+  /* ---------- Selector de país con bandera ---------- */
+  var cpBtn=document.getElementById('i-pais'), cpFlag=document.getElementById('cp-flag'), cpName=document.getElementById('cp-name');
+  var cpPanel=document.getElementById('cp-panel'), cpSearch=document.getElementById('cp-search'), cpList=document.getElementById('cp-list');
+  var paisVal=document.getElementById('i-pais-val');
+  var current='', touched=false, shown=[], activeIdx=-1;
+
+  function setPais(iso,syncPhone){
+    if(!byIso[iso]) return;
+    current=iso;
+    paisVal.value=byIso[iso].name;
+    cpFlag.className='iti__flag iti__'+iso;
+    cpName.textContent=byIso[iso].name;
+    cpName.classList.remove('is-empty');
+    if(syncPhone && iti && iti.getSelectedCountryData().iso2!==iso){ iti.setCountry(iso); }
+  }
+  function renderList(filter){
+    var q=norm(filter||'');
+    shown=countries.filter(function(c){return !q || norm(c.name).indexOf(q)>-1;});
+    cpList.innerHTML='';
+    if(!shown.length){
+      var li=document.createElement('li'); li.className='cpick__empty'; li.setAttribute('role','presentation'); li.textContent='Sin resultados'; cpList.appendChild(li);
+      activeIdx=-1; cpSearch.removeAttribute('aria-activedescendant'); return;
+    }
+    shown.forEach(function(c,i){
+      var li=document.createElement('li');
+      li.id='cp-opt-'+c.iso; li.className='cpick__opt'; li.setAttribute('role','option'); li.dataset.iso=c.iso;
+      li.setAttribute('aria-selected',c.iso===current?'true':'false');
+      var fl=document.createElement('span'); fl.className='iti__flag iti__'+c.iso; fl.setAttribute('aria-hidden','true');
+      var tx=document.createElement('span'); tx.textContent=c.name;
+      li.appendChild(fl); li.appendChild(tx); cpList.appendChild(li);
+    });
+    var sel=shown.map(function(c){return c.iso;}).indexOf(current);
+    setActive(sel>-1?sel:0,!filter);
+  }
+  function setActive(i,scroll){
+    var opts=cpList.querySelectorAll('.cpick__opt');
+    if(!opts.length) return;
+    if(i<0) i=0; if(i>=opts.length) i=opts.length-1;
+    if(activeIdx>-1 && opts[activeIdx]) opts[activeIdx].classList.remove('is-active');
+    activeIdx=i; opts[i].classList.add('is-active');
+    cpSearch.setAttribute('aria-activedescendant',opts[i].id);
+    if(scroll!==false) opts[i].scrollIntoView({block:'nearest'});
+  }
+  function openPanel(){
+    cpPanel.hidden=false; cpBtn.setAttribute('aria-expanded','true');
+    cpSearch.value=''; renderList('');
+    cpSearch.focus();
+  }
+  function closePanel(focusBtn){
+    cpPanel.hidden=true; cpBtn.setAttribute('aria-expanded','false');
+    if(focusBtn) cpBtn.focus();
+  }
+  function choose(iso){ touched=true; setPais(iso,true); closePanel(true); }
+
+  cpName.classList.add('is-empty');
+  cpBtn.addEventListener('click',function(){ if(cpPanel.hidden) openPanel(); else closePanel(false); });
+  cpBtn.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){ e.preventDefault(); if(cpPanel.hidden) openPanel(); }
+  });
+  cpSearch.addEventListener('input',function(){ renderList(cpSearch.value); });
+  cpSearch.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'){ e.preventDefault(); setActive(activeIdx+1); }
+    else if(e.key==='ArrowUp'){ e.preventDefault(); setActive(activeIdx-1); }
+    else if(e.key==='Enter'){ e.preventDefault(); if(activeIdx>-1 && shown[activeIdx]) choose(shown[activeIdx].iso); }
+    else if(e.key==='Escape'){ e.preventDefault(); closePanel(true); }
+    else if(e.key==='Tab'){ closePanel(false); }
+  });
+  cpList.addEventListener('mousedown',function(e){ e.preventDefault(); });
+  cpList.addEventListener('click',function(e){
+    var li=e.target.closest('.cpick__opt'); if(li) choose(li.dataset.iso);
+  });
+  document.addEventListener('click',function(e){
+    if(!cpPanel.hidden && !e.target.closest('#cp')) closePanel(false);
+  });
+
+  /* Por defecto: el país desde donde se conecta (también fija la bandera del celular). */
+  geoP.then(function(c){ if(!current){ setPais(c,true); } });
+
   function initTelInput(){
     if(!telInput || iti) return;
     iti=window.intlTelInput(telInput,{
-      initialCountry:'auto',
+      initialCountry:current||'auto',
       preferredCountries:['co','mx','pe','cl','ec','pa','gt','sv','hn'],
       separateDialCode:true,
       autoPlaceholder:'polite',
+      localizedCountries:localized,
       utilsScript:'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js',
-      geoIpLookup:function(callback){
-        fetch('/api/geo').then(function(r){return r.json();})
-          .then(function(d){callback((d && d.country) ? d.country : 'co');})
-          .catch(function(){callback('co');});
-      }
+      geoIpLookup:function(callback){ geoP.then(function(c){ callback(current||c); }); }
+    });
+    /* Si cambian la bandera del celular, el país del formulario la sigue. */
+    telInput.addEventListener('countrychange',function(){
+      var d=iti.getSelectedCountryData();
+      if(d && d.iso2 && d.iso2!==current){ touched=true; setPais(d.iso2,false); }
     });
     /* intl-tel-input deja aria-activedescendant apuntando a un item oculto mientras
        la lista está cerrada: se quita mientras el combobox está colapsado. */
@@ -296,6 +433,11 @@ h1 .accent{color:var(--salmon)}
   f.addEventListener('submit',function(e){
     e.preventDefault();
     err.hidden=true;
+    if(!paisVal.value){
+      showError('Selecciona tu país.');
+      cpBtn.focus();
+      return;
+    }
     if(!f.checkValidity()){
       f.reportValidity();
       return;
