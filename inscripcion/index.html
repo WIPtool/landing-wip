@@ -96,6 +96,7 @@ h1 .accent{color:var(--salmon)}
 .field{display:flex;flex-direction:column;gap:7px;min-width:0}
 .field--full{grid-column:1/-1}
 .reg-form label{font-size:13px;font-weight:500;color:var(--navy-soft)}
+.reg-form label small{font-size:11px;font-weight:400;color:var(--navy-faint)}
 .reg-form label .star{color:var(--salmon);margin-left:2px}
 .reg-form input:not([type=checkbox]),.reg-form select{
   width:100%;background:var(--surface-low);border:1px solid var(--border-line);
@@ -172,8 +173,8 @@ h1 .accent{color:var(--salmon)}
       <input id="i-empresa" name="empresa" type="text" placeholder="Razón social" autocomplete="organization" required>
     </div>
     <div class="field">
-      <label for="i-nit">NIT <span class="star">*</span></label>
-      <input id="i-nit" name="nit" type="text" placeholder="NIT" inputmode="text" required>
+      <label for="i-nit">NIF <small>(Número de Identificación Tributaria)</small> <span class="star">*</span></label>
+      <input id="i-nit" name="nit" type="text" placeholder="NIF" autocomplete="off" required>
     </div>
     <div class="field">
       <label for="i-pais">País <span class="star">*</span></label>

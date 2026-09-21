@@ -79,7 +79,7 @@ export default async function handler(req, res) {
     ['Nombre', nombre],
     ['Correo', email],
     ['Razón social', empresa],
-    ['NIT', nit],
+    ['NIF (Número de Identificación Tributaria)', nit],
     ['País', pais],
     ['Departamento', departamento],
     ['Ciudad', ciudad],
