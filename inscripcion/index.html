@@ -313,7 +313,7 @@ h1 .accent{color:var(--salmon)}
     fetch('/api/inscripcion',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
       .then(function(r){
         if(!r.ok){throw new Error('http '+r.status);}
-        f.hidden=true; ok.hidden=false; ok.scrollIntoView({behavior:'smooth',block:'center'});
+        f.style.display='none'; ok.hidden=false; ok.scrollIntoView({behavior:'smooth',block:'center'});
         if(window.gtag)gtag('event','inscripcion_enviada',{plan:data.plan||'',empresa:data.empresa||''});
       })
       .catch(function(){
