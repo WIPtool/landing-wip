@@ -32,7 +32,7 @@ const cards = courses.map((c, i) => `
         <li role="presentation">
           <a class="card" id="tab-${c.slug}" role="tab" href="#${c.slug}" data-course="${c.slug}" aria-controls="${c.slug}" aria-selected="${i === 0}" tabindex="${i === 0 ? 0 : -1}">
             ${i === 0 ? '<span class="card__badge">Empieza aquí</span>' : ''}
-            <img src="/img/academy/${c.img}.jpg" width="640" height="320" alt="" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async">
+            <img src="/img/academy/${c.img}.jpg" srcset="/img/academy/${c.img}-360.jpg 360w, /img/academy/${c.img}.jpg 640w" sizes="(max-width:600px) 112px, (max-width:1000px) 45vw, 365px" width="640" height="320" alt="" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async">
             <span class="card__body">
               <span class="card__name">${esc(c.name)}</span>
               <span class="card__meta">${c.lessons.length} videos</span>
