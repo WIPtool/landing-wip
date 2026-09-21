@@ -58,11 +58,13 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
   --on-surface:#1a1c1d;
   --on-surface-variant:#45464d;
   --navy-soft:#5b6172;
-  --navy-faint:#8a8f9c;
+  --navy-faint:#666b7a;
   --navy:#161d31;
   --lime:#dbff57;
   --lime-text:#4f8f1f;
   --salmon:#ff6c6c;
+  --salmon-text:#d32f2f;
+  --accent-text:#e03e44;
   --border-line:#e6e6ea;
   --shadow-card:0 2px 14px rgba(22,29,49,0.05);
   --r-pill:980px;
@@ -83,7 +85,7 @@ a{color:inherit}
 .wrap{max-width:760px;margin:0 auto;padding:clamp(40px,7vw,80px) 20px clamp(56px,8vw,96px)}
 .head{text-align:center;margin-bottom:clamp(30px,4vw,44px)}
 h1{font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:var(--navy)}
-h1 .accent{color:var(--salmon)}
+h1 .accent{color:var(--accent-text)}
 .head p{margin:18px auto 0;max-width:620px;font-size:clamp(15px,1.5vw,17px);color:var(--on-surface-variant)}
 .head p + p{margin-top:12px}
 .req-note{font-size:13px;color:var(--navy-faint);margin-top:16px}
@@ -97,7 +99,7 @@ h1 .accent{color:var(--salmon)}
 .field--full{grid-column:1/-1}
 .reg-form label{font-size:13px;font-weight:500;color:var(--navy-soft)}
 .reg-form label small{font-size:11px;font-weight:400;color:var(--navy-faint)}
-.reg-form label .star{color:var(--salmon);margin-left:2px}
+.reg-form label .star{color:var(--salmon-text);margin-left:2px}
 .reg-form input:not([type=checkbox]),.reg-form select{
   width:100%;background:var(--surface-low);border:1px solid var(--border-line);
   border-radius:var(--r-pill);padding:13px 18px;font-size:15px;
@@ -142,7 +144,7 @@ h1 .accent{color:var(--salmon)}
 .cpick__empty{padding:12px 16px;font-size:14px;color:var(--navy-faint)}
 .consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--on-surface-variant);margin-top:2px}
 .consent input{width:17px;height:17px;flex-shrink:0;margin-top:1px;accent-color:var(--lime-text)}
-.consent a{color:var(--lime-text);font-weight:600;text-decoration:underline}
+.consent a{color:#3f7a14;font-weight:600;text-decoration:underline}
 .hp-field{position:absolute;left:-9999px}
 .btn{
   grid-column:1/-1;width:100%;margin-top:6px;
@@ -161,7 +163,7 @@ h1 .accent{color:var(--salmon)}
 .ok{background:#f2fbe3;border:1px solid #dcefb6;border-radius:16px;padding:26px;text-align:center}
 .ok h2{font-size:22px;font-weight:700;letter-spacing:-0.01em;color:var(--navy)}
 .ok p{margin-top:8px;color:var(--on-surface-variant);font-size:15px}
-.ok a{color:var(--lime-text);font-weight:600}
+.ok a{color:#3f7a14;font-weight:600}
 .foot{text-align:center;font-size:13px;color:var(--navy-faint);margin-top:26px}
 .foot a{color:var(--navy-soft);text-decoration:underline}
 @media(max-width:600px){
@@ -174,7 +176,7 @@ h1 .accent{color:var(--salmon)}
 <body>
 <header class="topbar">
   <div class="topbar__inner">
-    <a href="/" aria-label="WIP, ir al inicio"><img src="/img/wip-logo-lima-554349d3.png" alt="WIP" class="brand-logo" width="47" height="26"></a>
+    <a href="/" aria-label="WIP, ir al inicio"><img src="/img/wip-logo-lima-94w.png" alt="WIP" class="brand-logo" width="47" height="26"></a>
   </div>
 </header>
 
@@ -183,7 +185,7 @@ h1 .accent{color:var(--salmon)}
     <h1>Bienvenidos a WIP, el <span class="accent">Software para tus servicios</span> a domicilio/en campo.</h1>
     <p>Desde ahora comenzarás a transformar en tu empresa la forma de gestionar tus servicios y le brindarás a tus clientes una experiencia única.</p>
     <p>Diligencia el siguiente formulario con los datos de tu empresa para disfrutar de todos los beneficios de WIP en tu logística. Nuestro equipo te contactará para activar tu plan.</p>
-    <p class="req-note"><span class="star" style="color:var(--salmon)">*</span> Obligatorio</p>
+    <p class="req-note"><span class="star" style="color:var(--salmon-text)">*</span> Obligatorio</p>
   </div>
 
   <form class="reg-form" id="inscripcion-form" novalidate>
