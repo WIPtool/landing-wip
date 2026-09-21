@@ -302,6 +302,11 @@ h1 .accent{color:var(--salmon)}
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
     data.acepto=f.acepto.checked;
+    /* Origen de la visita (campañas): se guarda junto a la inscripción. */
+    try{
+      var uq=new URLSearchParams(location.search);
+      ['utm_source','utm_medium','utm_content'].forEach(function(k){ if(uq.get(k)) data[k]=uq.get(k); });
+    }catch(e){}
     if(iti && telInput.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     btn.disabled=true; btn.textContent='Enviando…';
     fetch('/api/inscripcion',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})

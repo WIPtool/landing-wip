@@ -48,6 +48,11 @@ export default async function handler(req, res) {
   const tipoServicio = clean(data.tipo_servicio);
   const plan = clean(data.plan, 80);
   const codigo = clean(data.codigo, 60);
+  const utm = {
+    source: clean(data.utm_source, 100),
+    medium: clean(data.utm_medium, 100),
+    content: clean(data.utm_content, 100),
+  };
 
   const faltantes = [nombre, email, empresa, nit, pais, departamento, ciudad, direccion, telefono, plan].some((v) => !v);
   if (faltantes || data.acepto !== true) {
@@ -90,7 +95,7 @@ export default async function handler(req, res) {
     <p><b>Aceptó las Políticas de Privacidad:</b> Sí</p>
   `;
 
-  try {
+  const enviarCorreo = async () => {
     const r = await fetch(RESEND_API_URL, {
       method: 'POST',
       headers: {
@@ -105,15 +110,34 @@ export default async function handler(req, res) {
         html,
       }),
     });
+    if (!r.ok) throw new Error(`Resend ${r.status}: ${await r.text()}`);
+  };
 
-    if (!r.ok) {
-      console.error('Resend error', r.status, await r.text());
-      return res.status(502).json({ error: 'No se pudo enviar el correo' });
-    }
+  // Fila en la hoja "Registro de clientes" (Apps Script). Es opcional: sin la variable no hace nada.
+  const hojaConfigurada = Boolean(process.env.SHEETS_WEBHOOK_URL);
+  const enviarHoja = async () => {
+    if (!hojaConfigurada) return;
+    const r = await fetch(process.env.SHEETS_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify({
+        nombre, email, empresa, nit, pais, departamento, ciudad, direccion, telefono,
+        tipo_servicio: tipoServicio, plan,
+        url: 'https://www.wiptool.com/inscripcion',
+        utm_source: utm.source, utm_medium: utm.medium, utm_content: utm.content,
+      }),
+      signal: AbortSignal.timeout(8000),
+    });
+    const resp = await r.json().catch(() => ({}));
+    if (!r.ok || !resp.ok) throw new Error(`Hoja ${r.status}: ${resp.error || 'sin detalle'}`);
+  };
 
-    return res.status(200).json({ ok: true });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({ error: 'Error interno' });
+  // Se intentan ambos: la inscripcion solo se da por perdida si fallan todos los canales activos.
+  const [correo, hoja] = await Promise.allSettled([enviarCorreo(), enviarHoja()]);
+  if (correo.status === 'rejected') console.error('Correo:', correo.reason);
+  if (hoja.status === 'rejected') console.error('Hoja:', hoja.reason);
+  if (correo.status === 'rejected' && (!hojaConfigurada || hoja.status === 'rejected')) {
+    return res.status(502).json({ error: 'No se pudo enviar la inscripción' });
   }
+  return res.status(200).json({ ok: true });
 }
