@@ -1,5 +1,8 @@
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
+// Copias fijas de cada inscripcion (ademas del buzon comercial).
+const INSCRIPCION_CC = ['auxadministrativo@wiptool.com', 'jessica@wiptool.com'];
+
 const PLANES = [
   'Plan Básico - Esencial',
   'Plan Avanzado',
@@ -63,7 +66,8 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Servicio de correo no configurado' });
   }
 
-  const to = process.env.CONTACT_TO_EMAIL || 'comercial@wiptool.com';
+  const principal = process.env.CONTACT_TO_EMAIL || 'comercial@wiptool.com';
+  const to = [...new Set([principal, ...INSCRIPCION_CC].map((m) => m.trim().toLowerCase()))];
   const from = process.env.CONTACT_FROM_EMAIL || 'WIP Web <onboarding@resend.dev>';
 
   const filas = [
