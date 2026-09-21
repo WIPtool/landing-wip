@@ -4,10 +4,10 @@ const RESEND_API_URL = 'https://api.resend.com/emails';
 const INSCRIPCION_CC = ['auxadministrativo@wiptool.com', 'jessica@wiptool.com'];
 
 const PLANES = [
-  'Plan Básico - Esencial',
+  'Plan Básico',
   'Plan Avanzado',
   'Plan Pro',
-  'Plan Básico - Esencial anualidad',
+  'Plan Básico anualidad',
   'Plan Avanzado anualidad',
   'Plan Pro anualidad',
   'Plan corporativo personalizado',
@@ -46,7 +46,8 @@ export default async function handler(req, res) {
   const direccion = clean(data.direccion, 250);
   const telefono = clean(data.telefono, 40);
   const tipoServicio = clean(data.tipo_servicio);
-  const plan = clean(data.plan, 80);
+  // Una página en caché puede enviar todavía el nombre anterior ("- Esencial").
+  const plan = clean(data.plan, 80).replace(/ - Esencial/, '');
   const codigo = clean(data.codigo, 60);
   const utm = {
     source: clean(data.utm_source, 100),

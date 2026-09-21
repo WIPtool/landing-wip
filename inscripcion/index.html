@@ -242,10 +242,10 @@ h1 .accent{color:var(--salmon)}
       <label for="i-plan">Plan al que te inscribes <span class="star">*</span></label>
       <select id="i-plan" name="plan" required>
         <option value="" selected disabled>Selecciona un plan</option>
-        <option>Plan Básico - Esencial</option>
+        <option>Plan Básico</option>
         <option>Plan Avanzado</option>
         <option>Plan Pro</option>
-        <option>Plan Básico - Esencial anualidad</option>
+        <option>Plan Básico anualidad</option>
         <option>Plan Avanzado anualidad</option>
         <option>Plan Pro anualidad</option>
         <option>Plan corporativo personalizado</option>
@@ -286,7 +286,8 @@ h1 .accent{color:var(--salmon)}
   /* Enlaces con ?plan=... o ?codigo=... preseleccionan el plan y el código promocional. */
   try{
     var q=new URLSearchParams(location.search);
-    var p=(q.get('plan')||'').trim().toLowerCase();
+    /* Los enlaces antiguos con "- Esencial" siguen preseleccionando el plan. */
+    var p=(q.get('plan')||'').trim().toLowerCase().replace(/\s*-\s*esencial/,'');
     if(p){
       for(var i=0;i<planSel.options.length;i++){
         if(planSel.options[i].value.toLowerCase()===p){planSel.selectedIndex=i;break;}
