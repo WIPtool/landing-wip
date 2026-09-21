@@ -12,7 +12,9 @@ function cleanUrlsDev() {
     name: 'clean-urls-dev',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        if (req.url === '/equipos') {
+        if (req.url === '/inscripcion' || req.url.startsWith('/inscripcion?')) {
+          req.url = '/inscripcion/' + req.url.slice('/inscripcion'.length);
+        } else if (req.url === '/equipos') {
           req.url = '/equipos/';
         } else if (req.url === '/cotizaciones/asisya01') {
           req.url = '/cotizaciones/asisya01/';
@@ -51,6 +53,7 @@ export default defineConfig({
         informeFixitWipIA: resolve(__dirname, 'informeFixit/WipIA/index.html'),
         informeWipAviseAsistencia: resolve(__dirname, 'informeWip/AviseAsistencia/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
+        inscripcion: resolve(__dirname, 'inscripcion/index.html'),
       },
     },
   },

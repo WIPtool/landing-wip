@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inscripción | WIP</title>
+<meta name="description" content="Inscribe tu empresa en WIP, el software para gestionar tus servicios a domicilio y en campo.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#161d31">
+<link rel="canonical" href="https://www.wiptool.com/inscripcion">
+<link rel="icon" type="image/png" href="/favicon.png">
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+if(location.hostname==='www.wiptool.com'){
+gtag('js', new Date());
+gtag('config', 'G-2ZX12K09EW');
+(function(){var l=false;function load(){if(l)return;l=true;
+var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-2ZX12K09EW';s.async=true;document.head.appendChild(s);}
+['pointerdown','keydown','scroll','touchstart'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});
+window.addEventListener('load',function(){
+  if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
+});})();
+}
+</script>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css"></noscript>
+<script>
+/* intl-tel-input se carga cuando el campo de celular está cerca del viewport. */
+(function(){var l=false;function load(){if(l)return;l=true;
+var t=document.createElement('script');t.src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js';t.async=true;
+t.onload=function(){if(window.__wipInitTelInput)window.__wipInitTelInput();};
+document.head.appendChild(t);}
+function armObserver(){
+  var telInput=document.getElementById('i-telefono');
+  if(!telInput) return;
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ load(); io.disconnect(); } });
+    },{rootMargin:'600px 0px'});
+    io.observe(telInput);
+  } else { load(); }
+}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',armObserver);}else{armObserver();}
+})();
+</script>
+<style>
+/* Inter autoalojada (misma que el resto del sitio) */
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:optional;src:url('/fonts/inter-latin-ext.woff2') format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;}
+@font-face{font-family:'Inter';font-style:normal;font-weight:400 800;font-display:optional;src:url('/fonts/inter-latin.woff2') format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;}
+@font-face{font-family:'Inter Fallback';src:local('Arial');ascent-override:90%;descent-override:22%;line-gap-override:0%;size-adjust:106%;}
+:root{
+  --surface:#f9f9fb;
+  --surface-bright:#ffffff;
+  --surface-low:#f3f3f5;
+  --on-surface:#1a1c1d;
+  --on-surface-variant:#45464d;
+  --navy-soft:#5b6172;
+  --navy-faint:#8a8f9c;
+  --navy:#161d31;
+  --lime:#dbff57;
+  --lime-text:#4f8f1f;
+  --salmon:#ff6c6c;
+  --border-line:#e6e6ea;
+  --shadow-card:0 2px 14px rgba(22,29,49,0.05);
+  --r-pill:980px;
+  --r-card:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Inter','Inter Fallback',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--surface);color:var(--on-surface);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  line-height:1.5;
+}
+a{color:inherit}
+.topbar{background:var(--navy);padding:18px 28px}
+.topbar__inner{max-width:1180px;margin:0 auto;display:flex;align-items:center}
+.topbar a{display:inline-flex}
+.brand-logo{height:26px;width:auto;display:block}
+.wrap{max-width:760px;margin:0 auto;padding:clamp(40px,7vw,80px) 20px clamp(56px,8vw,96px)}
+.head{text-align:center;margin-bottom:clamp(30px,4vw,44px)}
+h1{font-size:clamp(30px,5vw,50px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:var(--navy)}
+h1 .accent{color:var(--salmon)}
+.head p{margin:18px auto 0;max-width:620px;font-size:clamp(15px,1.5vw,17px);color:var(--on-surface-variant)}
+.head p + p{margin-top:12px}
+.req-note{font-size:13px;color:var(--navy-faint);margin-top:16px}
+.reg-form{
+  background:var(--surface-bright);border:1px solid var(--border-line);
+  border-radius:var(--r-card);box-shadow:var(--shadow-card);
+  padding:clamp(26px,4vw,46px);
+  display:grid;grid-template-columns:1fr 1fr;gap:18px;
+}
+.field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.field--full{grid-column:1/-1}
+.reg-form label{font-size:13px;font-weight:500;color:var(--navy-soft)}
+.reg-form label .star{color:var(--salmon);margin-left:2px}
+.reg-form input:not([type=checkbox]),.reg-form select{
+  width:100%;background:var(--surface-low);border:1px solid var(--border-line);
+  border-radius:var(--r-pill);padding:13px 18px;font-size:15px;
+  font-family:inherit;color:var(--on-surface);transition:border-color .2s ease;
+}
+.reg-form select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6172' stroke-width='2.4' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px;padding-right:42px}
+.reg-form select:invalid{color:var(--navy-faint)}
+.reg-form input::placeholder{color:var(--navy-faint)}
+.reg-form input:focus,.reg-form select:focus{outline:none;border-color:var(--lime-text)}
+.reg-form input:focus-visible,.reg-form select:focus-visible{border-color:var(--lime-text);box-shadow:0 0 0 3px rgba(79,143,31,.18)}
+.reg-form .iti{width:100%}
+.reg-form .iti input{padding:13px 18px 13px 52px}
+.reg-form .iti__selected-flag{border-radius:var(--r-pill) 0 0 var(--r-pill)}
+.consent{grid-column:1/-1;display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.45;color:var(--on-surface-variant);margin-top:2px}
+.consent input{width:17px;height:17px;flex-shrink:0;margin-top:1px;accent-color:var(--lime-text)}
+.consent a{color:var(--lime-text);font-weight:600;text-decoration:underline}
+.hp-field{position:absolute;left:-9999px}
+.btn{
+  grid-column:1/-1;width:100%;margin-top:6px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  font-family:inherit;font-size:15px;font-weight:600;line-height:1;
+  padding:15px 26px;border-radius:var(--r-pill);
+  border:1.5px solid transparent;cursor:pointer;
+  background:var(--lime);color:var(--navy);
+  transition:transform .2s ease,box-shadow .25s ease,filter .2s ease;
+}
+.btn:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(219,255,87,.6)}
+.btn:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+.btn[disabled]{opacity:.7;cursor:default;transform:none;box-shadow:none}
+.form-error{grid-column:1/-1;background:#fff2f2;border:1px solid #ffd0d0;border-radius:14px;padding:14px 18px;font-size:14px;color:#8a2d2d}
+.form-error a{font-weight:600}
+.ok{background:#f2fbe3;border:1px solid #dcefb6;border-radius:16px;padding:26px;text-align:center}
+.ok h2{font-size:22px;font-weight:700;letter-spacing:-0.01em;color:var(--navy)}
+.ok p{margin-top:8px;color:var(--on-surface-variant);font-size:15px}
+.ok a{color:var(--lime-text);font-weight:600}
+.foot{text-align:center;font-size:13px;color:var(--navy-faint);margin-top:26px}
+.foot a{color:var(--navy-soft);text-decoration:underline}
+@media(max-width:600px){
+  .topbar{padding:16px 20px}
+  .reg-form{grid-template-columns:1fr;gap:16px}
+}
+@media(prefers-reduced-motion:reduce){.btn{transition:none}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="/" aria-label="WIP, ir al inicio"><img src="/img/wip-logo-lima-554349d3.png" alt="WIP" class="brand-logo" width="47" height="26"></a>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="head">
+    <h1>Bienvenidos a WIP, el <span class="accent">Software para tus servicios</span> a domicilio/en campo.</h1>
+    <p>Desde ahora comenzarás a transformar en tu empresa la forma de gestionar tus servicios y le brindarás a tus clientes una experiencia única.</p>
+    <p>Diligencia el siguiente formulario con los datos de tu empresa para disfrutar de todos los beneficios de WIP en tu logística. Nuestro equipo te contactará para activar tu plan.</p>
+    <p class="req-note"><span class="star" style="color:var(--salmon)">*</span> Obligatorio</p>
+  </div>
+
+  <form class="reg-form" id="inscripcion-form" novalidate>
+    <div class="hp-field" aria-hidden="true"><label>No llenar este campo <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></div>
+
+    <div class="field">
+      <label for="i-nombre">Nombre <span class="star">*</span></label>
+      <input id="i-nombre" name="nombre" type="text" placeholder="Nombre completo" autocomplete="name" required>
+    </div>
+    <div class="field">
+      <label for="i-email">Correo <span class="star">*</span></label>
+      <input id="i-email" name="email" type="email" placeholder="Correo corporativo" autocomplete="email" required>
+    </div>
+    <div class="field">
+      <label for="i-empresa">Razón social <span class="star">*</span></label>
+      <input id="i-empresa" name="empresa" type="text" placeholder="Razón social" autocomplete="organization" required>
+    </div>
+    <div class="field">
+      <label for="i-nit">NIT <span class="star">*</span></label>
+      <input id="i-nit" name="nit" type="text" placeholder="NIT" inputmode="text" required>
+    </div>
+    <div class="field">
+      <label for="i-pais">País <span class="star">*</span></label>
+      <input id="i-pais" name="pais" type="text" placeholder="País" autocomplete="country-name" required>
+    </div>
+    <div class="field">
+      <label for="i-departamento">Departamento <span class="star">*</span></label>
+      <input id="i-departamento" name="departamento" type="text" placeholder="Departamento" autocomplete="address-level1" required>
+    </div>
+    <div class="field">
+      <label for="i-ciudad">Ciudad <span class="star">*</span></label>
+      <input id="i-ciudad" name="ciudad" type="text" placeholder="Ciudad" autocomplete="address-level2" required>
+    </div>
+    <div class="field">
+      <label for="i-direccion">Dirección <span class="star">*</span></label>
+      <input id="i-direccion" name="direccion" type="text" placeholder="Dirección" autocomplete="street-address" required>
+    </div>
+    <div class="field">
+      <label for="i-telefono">Celular <span class="star">*</span></label>
+      <input id="i-telefono" name="telefono" type="tel" placeholder="Teléfono" autocomplete="tel" required>
+    </div>
+    <div class="field">
+      <label for="i-tipo">Tipo de servicio que presta la empresa</label>
+      <input id="i-tipo" name="tipo_servicio" type="text" placeholder="Tipo de servicio que presta tu empresa">
+    </div>
+    <div class="field">
+      <label for="i-plan">Plan al que te inscribes <span class="star">*</span></label>
+      <select id="i-plan" name="plan" required>
+        <option value="" selected disabled>Selecciona un plan</option>
+        <option>Plan Básico - Esencial</option>
+        <option>Plan Avanzado</option>
+        <option>Plan Pro</option>
+        <option>Plan Básico - Esencial anualidad</option>
+        <option>Plan Avanzado anualidad</option>
+        <option>Plan Pro anualidad</option>
+        <option>Plan corporativo personalizado</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="i-codigo">Código promocional</label>
+      <input id="i-codigo" name="codigo" type="text" placeholder="Código promocional" autocomplete="off">
+    </div>
+
+    <label class="consent">
+      <input type="checkbox" name="acepto" id="i-acepto" required>
+      <span>Estoy de acuerdo con las <a href="/politica-privacidad" target="_blank" rel="noopener">Políticas de Privacidad</a>.</span>
+    </label>
+
+    <div class="form-error" id="i-error" role="alert" hidden></div>
+    <button class="btn" type="submit">Enviar</button>
+  </form>
+
+  <div class="ok" id="i-ok" role="status" hidden>
+    <h2>¡Gracias por inscribirte!</h2>
+    <p>Recibimos los datos de tu empresa. Nuestro equipo te contactará muy pronto.</p>
+    <p><a href="/">Volver al inicio</a></p>
+  </div>
+
+  <p class="foot">¿Dudas? Escríbenos a <a href="mailto:comercial@wiptool.com">comercial@wiptool.com</a></p>
+</main>
+
+<script>
+(function(){
+  var f=document.getElementById('inscripcion-form');
+  var ok=document.getElementById('i-ok');
+  var err=document.getElementById('i-error');
+  var telInput=document.getElementById('i-telefono');
+  var planSel=document.getElementById('i-plan');
+  var iti=null;
+
+  /* Enlaces con ?plan=... o ?codigo=... preseleccionan el plan y el código promocional. */
+  try{
+    var q=new URLSearchParams(location.search);
+    var p=(q.get('plan')||'').trim().toLowerCase();
+    if(p){
+      for(var i=0;i<planSel.options.length;i++){
+        if(planSel.options[i].value.toLowerCase()===p){planSel.selectedIndex=i;break;}
+      }
+    }
+    var c=q.get('codigo');
+    if(c){document.getElementById('i-codigo').value=c.slice(0,60);}
+  }catch(e){}
+
+  function initTelInput(){
+    if(!telInput || iti) return;
+    iti=window.intlTelInput(telInput,{
+      initialCountry:'auto',
+      preferredCountries:['co','mx','pe','cl','ec','pa','gt','sv','hn'],
+      separateDialCode:true,
+      autoPlaceholder:'polite',
+      utilsScript:'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/utils.js',
+      geoIpLookup:function(callback){
+        fetch('/api/geo').then(function(r){return r.json();})
+          .then(function(d){callback((d && d.country) ? d.country : 'co');})
+          .catch(function(){callback('co');});
+      }
+    });
+    /* intl-tel-input deja aria-activedescendant apuntando a un item oculto mientras
+       la lista está cerrada: se quita mientras el combobox está colapsado. */
+    var flagEl=telInput.closest('.iti')&&telInput.closest('.iti').querySelector('.iti__selected-flag');
+    if(flagEl && 'MutationObserver' in window){
+      var stripIfCollapsed=function(){
+        if(flagEl.getAttribute('aria-expanded')==='false' && flagEl.hasAttribute('aria-activedescendant')){
+          flagEl.removeAttribute('aria-activedescendant');
+        }
+      };
+      stripIfCollapsed();
+      new MutationObserver(stripIfCollapsed)
+        .observe(flagEl,{attributes:true,attributeFilter:['aria-expanded','aria-activedescendant']});
+    }
+  }
+  if(window.intlTelInput) initTelInput(); else window.__wipInitTelInput=initTelInput;
+
+  function showError(msg,html){
+    err.hidden=false;
+    if(html){err.innerHTML=msg;}else{err.textContent=msg;}
+  }
+
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    err.hidden=true;
+    if(!f.checkValidity()){
+      f.reportValidity();
+      return;
+    }
+    var btn=f.querySelector('button[type=submit]');
+    var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
+    data.acepto=f.acepto.checked;
+    if(iti && telInput.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
+    btn.disabled=true; btn.textContent='Enviando…';
+    fetch('/api/inscripcion',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){
+        if(!r.ok){throw new Error('http '+r.status);}
+        f.hidden=true; ok.hidden=false; ok.scrollIntoView({behavior:'smooth',block:'center'});
+        if(window.gtag)gtag('event','inscripcion_enviada',{plan:data.plan||'',empresa:data.empresa||''});
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent='Enviar';
+        showError('No pudimos enviar tus datos en este momento. Inténtalo de nuevo o escríbenos a <a href="mailto:comercial@wiptool.com">comercial@wiptool.com</a>.',true);
+      });
+  });
+})();
+</script>
+</body>
+</html>
