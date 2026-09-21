@@ -2,41 +2,340 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/landing/inscripcion", "destination": "/inscripcion", "permanent": true }
+    {
+      "source": "/landing/inscripcion",
+      "destination": "/inscripcion",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/academy/instructor/:slug",
+      "destination": "/academy",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/usuarios",
+      "destination": "/academy#usuarios",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/usuarios/clases/como-crear-tu",
+      "destination": "/academy#usuarios/como-crear-tu",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/usuarios/clases/enviar-solicitud-y-conectarse-a-una-empresa-desde-la-web",
+      "destination": "/academy#usuarios/enviar-solicitud-y-conectarse-a-una-empresa-desde-la-web",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/usuarios/clases/enviar-solicitud-y-conectarse-a-una-empresa-desde-la-app",
+      "destination": "/academy#usuarios/enviar-solicitud-y-conectarse-a-una-empresa-desde-la-app",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/usuarios/clases/editar-tu-usuario-desde-la-web",
+      "destination": "/academy#usuarios/editar-tu-usuario-desde-la-web",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/usuarios/clases/como-editar-tu-usuario-desde-la-app",
+      "destination": "/academy#usuarios/como-editar-tu-usuario-desde-la-app",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores",
+      "destination": "/academy#empresas-colaboradores",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/como-crear-una-empresa",
+      "destination": "/academy#empresas-colaboradores/como-crear-una-empresa",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/creacion-y-edicion-de-unidades-de-negocio",
+      "destination": "/academy#empresas-colaboradores/creacion-y-edicion-de-unidades-de-negocio",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/agregar-formularios-a-tu-empresa",
+      "destination": "/academy#empresas-colaboradores/agregar-formularios-a-tu-empresa",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/envia-solicitud-y-conectate-con-empresa-cliente",
+      "destination": "/academy#empresas-colaboradores/envia-solicitud-y-conectate-con-empresa-cliente",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/conectar-operadores-y-colaboradores",
+      "destination": "/academy#empresas-colaboradores/conectar-operadores-y-colaboradores",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/como-editar-tu-empresa-desde-la-web",
+      "destination": "/academy#empresas-colaboradores/como-editar-tu-empresa-desde-la-web",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/crear-servicio-y-enviar-a-colaborador-en-campo",
+      "destination": "/academy#empresas-colaboradores/crear-servicio-y-enviar-a-colaborador-en-campo",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresas-colaboradores/clases/central-de-monitoreo",
+      "destination": "/academy#empresas-colaboradores/central-de-monitoreo",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/como-crear-tu-empresa",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/como-crear-tu-empresa",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/crea-y-edita-unidades-de-negocio",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/crea-y-edita-unidades-de-negocio",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/agrega-formularios-a-tu-empresa",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/agrega-formularios-a-tu-empresa",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/envia-solicitud-y-conectate-con-una-empresa-cliente",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/envia-solicitud-y-conectate-con-una-empresa-cliente",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/envia-solicitud-y-conectate-con-una-empresa-proveedor",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/envia-solicitud-y-conectate-con-una-empresa-proveedor",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/conectar-operadores-y-colaboradores-2",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/conectar-operadores-y-colaboradores-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/como-editar-tu-empresa-desde-la-web-2",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/como-editar-tu-empresa-desde-la-web-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/crear-un-servicio-y-envialo-a-un-proveedor",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/crear-un-servicio-y-envialo-a-un-proveedor",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/soy-una-empresa-propietaria-con-proveedores/clases/central-de-monitoreo-2",
+      "destination": "/academy#soy-una-empresa-propietaria-con-proveedores/central-de-monitoreo-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente",
+      "destination": "/academy#empresa-cliente",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente/clases/como-crear-tu-empresa-2",
+      "destination": "/academy#empresa-cliente/como-crear-tu-empresa-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente/clases/envia-solicitud-y-conectate-con-tu-empresa-propietaria",
+      "destination": "/academy#empresa-cliente/envia-solicitud-y-conectate-con-tu-empresa-propietaria",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente/clases/envia-solicitud-y-conectate-con-operadores-tus-empleados",
+      "destination": "/academy#empresa-cliente/envia-solicitud-y-conectate-con-operadores-tus-empleados",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente/clases/agrega-usuarios-a-la-unidad-de-negocio",
+      "destination": "/academy#empresa-cliente/agrega-usuarios-a-la-unidad-de-negocio",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente/clases/edita-tu-empresa-desde-la-web",
+      "destination": "/academy#empresa-cliente/edita-tu-empresa-desde-la-web",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente/clases/crear-un-servicio-y-envialo-a-un-propietaro",
+      "destination": "/academy#empresa-cliente/crear-un-servicio-y-envialo-a-un-propietaro",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/empresa-cliente/clases/seguimiento-a-tus-servicios-central-de-monitoreo",
+      "destination": "/academy#empresa-cliente/seguimiento-a-tus-servicios-central-de-monitoreo",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor",
+      "destination": "/academy#proveedor",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor/clases/como-crear-tu-empresa-3",
+      "destination": "/academy#proveedor/como-crear-tu-empresa-3",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor/clases/envia-solicitud-y-conectate-con-tu-empresa-propietaria-2",
+      "destination": "/academy#proveedor/envia-solicitud-y-conectate-con-tu-empresa-propietaria-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor/clases/envia-solicitud-y-conectate-con-operadores-y-colaboradores",
+      "destination": "/academy#proveedor/envia-solicitud-y-conectate-con-operadores-y-colaboradores",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor/clases/agrega-usuarios-a-la-unidad-de-negocio-2",
+      "destination": "/academy#proveedor/agrega-usuarios-a-la-unidad-de-negocio-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor/clases/edita-tu-empresa-desde-la-web-2",
+      "destination": "/academy#proveedor/edita-tu-empresa-desde-la-web-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor/clases/acepta-y-gestiona-un-servicio",
+      "destination": "/academy#proveedor/acepta-y-gestiona-un-servicio",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/proveedor/clases/seguimiento-a-tus-servicios-central-de-monitoreo-2",
+      "destination": "/academy#proveedor/seguimiento-a-tus-servicios-central-de-monitoreo-2",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/colaborador",
+      "destination": "/academy#colaborador",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/colaborador/clases/como-crear-tu-usuario-colaborador",
+      "destination": "/academy#colaborador/como-crear-tu-usuario-colaborador",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/colaborador/clases/vincularse-a-una-empresa",
+      "destination": "/academy#colaborador/vincularse-a-una-empresa",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/colaborador/clases/editar-tu-usuario",
+      "destination": "/academy#colaborador/editar-tu-usuario",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/colaborador/clases/gestionar-un-servicio",
+      "destination": "/academy#colaborador/gestionar-un-servicio",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/colaborador/clases/historial-de-servicios",
+      "destination": "/academy#colaborador/historial-de-servicios",
+      "permanent": true
+    },
+    {
+      "source": "/academy/cursos/colaborador/clases/ajustes-a-tu-celular-para-mejor-rendimiento-de-la-app",
+      "destination": "/academy#colaborador/ajustes-a-tu-celular-para-mejor-rendimiento-de-la-app",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/img/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/fonts/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*)",
-      "has": [{ "type": "host", "value": "landing-wip-ten.vercel.app" }],
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "has": [
+        {
+          "type": "host",
+          "value": "landing-wip-ten.vercel.app"
+        }
+      ],
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/cotizaciones/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/inversion/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/informeFixit/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     },
     {
       "source": "/informeWip/(.*)",
-      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
     }
   ]
 }

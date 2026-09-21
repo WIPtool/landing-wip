@@ -12,7 +12,9 @@ function cleanUrlsDev() {
     name: 'clean-urls-dev',
     configureServer(server) {
       server.middlewares.use((req, res, next) => {
-        if (req.url === '/inscripcion' || req.url.startsWith('/inscripcion?')) {
+        if (req.url === '/academy') {
+          req.url = '/academy/';
+        } else if (req.url === '/inscripcion' || req.url.startsWith('/inscripcion?')) {
           req.url = '/inscripcion/' + req.url.slice('/inscripcion'.length);
         } else if (req.url === '/equipos') {
           req.url = '/equipos/';
@@ -54,6 +56,7 @@ export default defineConfig({
         informeWipAviseAsistencia: resolve(__dirname, 'informeWip/AviseAsistencia/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
         inscripcion: resolve(__dirname, 'inscripcion/index.html'),
+        academy: resolve(__dirname, 'academy/index.html'),
       },
     },
   },
