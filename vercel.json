@@ -341,6 +341,16 @@
       "source": "/demo",
       "destination": "/contacto",
       "permanent": true
+    },
+    {
+      "source": "/software-gestion-personal-en-campo",
+      "destination": "/equipos",
+      "permanent": true
+    },
+    {
+      "source": "/software-logistico",
+      "destination": "/software-gestion-servicios-en-campo",
+      "permanent": true
     }
   ],
   "headers": [

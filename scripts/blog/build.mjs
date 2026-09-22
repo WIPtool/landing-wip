@@ -5,6 +5,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { postSeo, ebookSeo, pageSeo } from './data/seo.mjs';
+import { soluciones } from './data/soluciones.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
@@ -80,8 +81,8 @@ const crumbsLd = (items) => ({
   itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: `${SITE}${it.url}` })),
 });
 
-function page({ url, title, desc, ogType = 'website', ogImage = '/og-image.jpg', ogW = 1200, ogH = 630, ogAlt, ld, preload = '', active, body, scripts = '', extraMeta = '' }) {
-  const nav = [['/blog', 'Blog'], ['/ebook', 'Ebooks']]
+function page({ url, title, desc, ogType = 'website', ogImage = '/og-image.jpg', ogW = 1200, ogH = 630, ogAlt, ld, preload = '', active, body, scripts = '', extraMeta = '', extraCss = '' }) {
+  const nav = [['/software-gestion-servicios-en-campo', 'Soluciones'], ['/blog', 'Blog'], ['/ebook', 'Ebooks']]
     .map(([h, t]) => `<a href="${h}"${active === h ? ' aria-current="page"' : ''}>${t}</a>`).join('');
   return `<!DOCTYPE html>
 <html lang="es">
@@ -111,13 +112,13 @@ ${JSON.stringify({ '@context': 'https://schema.org', '@graph': ld })}
 ${GTAG}
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 ${preload}<style>
-${css}</style>
+${css}${extraCss}</style>
 </head>
 <body>
 <header class="topbar">
   <div class="topbar__inner">
     <a class="brand" href="/" aria-label="WIP, inicio"><img src="/img/wip-logo-lima-94w.png" alt="WIP" width="47" height="26"></a>
-    <nav class="topnav" aria-label="Recursos">${nav}</nav>
+    <nav class="topnav" aria-label="Secciones">${nav}</nav>
     <a class="topbar__cta" href="/contacto" data-cta="header-demo">Agenda una demo</a>
   </div>
 </header>
@@ -513,10 +514,118 @@ for (const e of ebooks) {
   }));
 }
 
+// ---------- Paginas de solucion (/software-...) ----------
+const solBy = Object.fromEntries(soluciones.map((s) => [s.slug, s]));
+const solCss = read('scripts/blog/soluciones.css');
+const check = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>';
+for (const s of soluciones) {
+  if (s.title.length > 62) throw new Error(`titulo largo en ${s.slug}: ${s.title.length}`);
+  if (s.desc.length > 160) throw new Error(`descripcion larga en ${s.slug}: ${s.desc.length}`);
+  const url = `/${s.slug}`;
+  const cards = (items, cls, h = 'h3') => items.map(([t, p]) => `
+          <li class="${cls}"><${h}>${esc(t)}</${h}><p>${esc(p)}</p></li>`).join('');
+  const faq = s.faq.map(([q, a]) => `
+        <details class="sol-faq__item"><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join('');
+  const rel = s.relacionados.map((r) => solBy[r]).map((r) => `
+          <li><a class="sol-rel__card" href="/${r.slug}"><span class="eyebrow">${esc(r.eyebrow)}</span><strong>${esc(r.h1)}</strong><span class="sol-rel__more">Ver solución →</span></a></li>`).join('');
+  const body = `
+  <section class="sol-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Ruta"><a href="/">Inicio</a><span aria-hidden="true">/</span><a href="/software-gestion-servicios-en-campo">Soluciones</a>${s.slug === 'software-gestion-servicios-en-campo' ? '' : `<span aria-hidden="true">/</span><span>${esc(s.nav)}</span>`}</nav>
+      <span class="eyebrow">${esc(s.eyebrow)}</span>
+      <h1>${esc(s.h1)}</h1>
+      <p class="sol-lead">${esc(s.lead)}</p>
+      <div class="sol-actions">
+        <a class="btn btn--primary" href="/contacto" data-cta="sol-demo">Agenda una demo</a>
+        <a class="btn btn--ghost" href="${s.cta2.href}" data-cta="sol-producto">${esc(s.cta2.text)}</a>
+      </div>
+      <ul class="sol-proof">
+        <li>${check}<span><strong>+4 millones</strong> de servicios gestionados</span></li>
+        <li>${check}<span>Operamos en <strong>10 países</strong> de LATAM</span></li>
+        <li>${check}<span>Soporte en español y técnico <strong>24/7</strong></span></li>
+      </ul>
+    </div>
+  </section>
+  <section class="sol-sec">
+    <div class="container">
+      <h2>${esc(s.dolor.h2)}</h2>
+      <p class="sol-intro">${esc(s.dolor.intro)}</p>
+      <ul class="sol-pains">${cards(s.dolor.items, 'sol-pain')}
+      </ul>
+    </div>
+  </section>
+  <section class="sol-sec sol-sec--alt">
+    <div class="container">
+      <h2>${esc(s.funciones.h2)}</h2>
+      <p class="sol-intro">${esc(s.funciones.intro)}</p>
+      <ul class="sol-feats">${cards(s.funciones.items, 'sol-feat')}
+      </ul>
+    </div>
+  </section>${s.pasos ? `
+  <section class="sol-sec">
+    <div class="container">
+      <h2>${esc(s.pasos.h2)}</h2>
+      <ol class="sol-steps">${cards(s.pasos.items, 'sol-step')}
+      </ol>
+    </div>
+  </section>` : ''}
+  <section class="sol-sec${s.pasos ? ' sol-sec--alt' : ''}">
+    <div class="container">
+      <h2>${esc(s.servicios.h2)}</h2>
+      <p class="sol-intro">${esc(s.servicios.intro)}</p>
+      <ul class="sol-tags">${s.servicios.items.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
+    </div>
+  </section>
+  <section class="sol-sec${s.pasos ? '' : ' sol-sec--alt'}">
+    <div class="container">
+      <h2>Con tu equipo propio o con una red de proveedores</h2>
+      <p class="sol-intro">WIP tiene una solución para cada forma de operar. Si tu gente hace el servicio, es WIP Equipos; si coordinas una red que lo hace por ti, es WIP Red.</p>
+      <ul class="sol-products">
+        <li><h3>WIP Equipos</h3><p>Para empresas que prestan el servicio con su propio personal en campo: técnicos, cuadrillas o conductores. Planes mensuales, sin cláusulas de permanencia.</p><a class="btn btn--ghost" href="/equipos" data-cta="sol-equipos">Conoce WIP Equipos</a></li>
+        <li><h3>WIP Red</h3><p>Para corporativos que coordinan una red de proveedores o contratistas externos y necesitan controlar tiempos, cumplimiento y trazabilidad.</p><a class="btn btn--ghost" href="/" data-cta="sol-red">Conoce WIP Red</a></li>
+      </ul>
+    </div>
+  </section>
+  <section class="sol-sec sol-faq" aria-labelledby="faq">
+    <div class="container">
+      <h2 id="faq">Preguntas frecuentes</h2>
+      <div class="sol-faq__list">${faq}
+      </div>
+    </div>
+  </section>
+  <section class="sol-sec sol-sec--alt" aria-labelledby="otras">
+    <div class="container">
+      <h2 id="otras">Otras soluciones de WIP</h2>
+      <ul class="sol-rel">${rel}
+      </ul>
+      <aside class="post-end sol-end">
+        <div>
+          <h2>¿Quieres ver WIP en vivo?</h2>
+          <p>Cuéntanos sobre tu operación y te mostramos WIP en acción con un caso como el tuyo. Te contactamos en menos de 24 horas hábiles.</p>
+        </div>
+        <div class="post-end__actions">
+          <a class="btn btn--primary" href="/contacto" data-cta="sol-demo-final">Agenda una demo</a>
+        </div>
+      </aside>
+    </div>
+  </section>`;
+  write(s.slug, page({
+    url, title: s.title, desc: s.desc, active: url, body, extraCss: solCss,
+    ld: [
+      { '@type': 'WebPage', name: s.h1, description: s.desc, url: `${SITE}${url}`, inLanguage: 'es',
+        about: { '@type': 'SoftwareApplication', name: 'WIP', applicationCategory: 'BusinessApplication', operatingSystem: 'Web, Android, iOS', url: `${SITE}/` },
+        publisher: ORG },
+      { '@type': 'FAQPage', mainEntity: s.faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) },
+      crumbsLd([{ name: 'Inicio', url: '/' }, { name: 'Soluciones', url: '/software-gestion-servicios-en-campo' },
+        ...(s.slug === 'software-gestion-servicios-en-campo' ? [] : [{ name: s.nav, url }])]),
+    ],
+  }));
+}
+
 // ---------- Redirects de WordPress y cabeceras ----------
 const vercelPath = path.join(root, 'vercel.json');
 const vercel = JSON.parse(fs.readFileSync(vercelPath, 'utf8'));
-const OWN = /^\/(blog|ebook|ebook-confirmacion|herramientas|demo)(\/|$)/;
+const OWN = /^\/(blog|ebook|ebook-confirmacion|herramientas|demo|software-gestion-personal-en-campo|software-logistico)(\/|$)/;
 const keep = (vercel.redirects || []).filter((r) => !OWN.test(r.source));
 const red = [
   { source: '/ebook-confirmacion', destination: '/ebook', permanent: true },
@@ -531,6 +640,9 @@ const red = [
   { source: '/herramientas/unidades-de-negocio', destination: '/', permanent: true },
   { source: '/herramientas', destination: '/', permanent: true },
   { source: '/demo', destination: '/contacto', permanent: true },
+  // Paginas de producto del WordPress que Google aun muestra (Search Console)
+  { source: '/software-gestion-personal-en-campo', destination: '/equipos', permanent: true },
+  { source: '/software-logistico', destination: '/software-gestion-servicios-en-campo', permanent: true },
 ];
 vercel.redirects = [...keep, ...red];
 vercel.headers = (vercel.headers || []).filter((h) => h.source !== '/ebooks/(.*)');
@@ -543,11 +655,12 @@ fs.writeFileSync(vercelPath, JSON.stringify(vercel, null, 2) + '\n');
 // ---------- Sitemap ----------
 const smPath = path.join(root, 'public/sitemap.xml');
 const sm = fs.readFileSync(smPath, 'utf8');
-const blocks = (sm.match(/<url>[\s\S]*?<\/url>/g) || []).filter((b) => !/\/(blog|ebook)(<|\/)/.test(b));
+const blocks = (sm.match(/<url>[\s\S]*?<\/url>/g) || []).filter((b) => !/\/(blog|ebook|software-[\w-]+)(<|\/)/.test(b));
 const entry = (loc, lastmod, pr) => `  <url>\n    <loc>${SITE}${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${pr}</priority>\n  </url>`;
 const newest = posts.reduce((m, p) => (p.modified > m ? p.modified : m), '2000-01-01');
 const today = new Date().toISOString().slice(0, 10);
 const extra = [
+  ...soluciones.map((s) => entry(`/${s.slug}`, today, '0.9')),
   entry('/blog', today, '0.8'),
   ...categories.map((c) => entry(`/blog/${c.slug}`, c.posts.reduce((m, p) => (p.modified > m ? p.modified : m), newest), '0.5')),
   ...posts.map((p) => entry(`/blog/${p.slug}`, p.modified, '0.6')),
@@ -557,5 +670,5 @@ const extra = [
 ];
 fs.writeFileSync(smPath, `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${blocks.map((b) => '  ' + b.trim()).join('\n')}\n${extra.join('\n')}\n</urlset>\n`);
 
-console.log(`paginas: ${written.length} (${posts.length} articulos, ${categories.length} categorias, ${ebooks.length} ebooks + 2 listados)`);
+console.log(`paginas: ${written.length} (${posts.length} articulos, ${categories.length} categorias, ${ebooks.length} ebooks, ${soluciones.length} soluciones + contacto y 2 listados)`);
 console.log(`redirects propios: ${red.length}`);
