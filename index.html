@@ -1209,7 +1209,7 @@ a{text-decoration:none;color:inherit}
 }
 .ce-chat__msg--left .ce-chat__bubble{border-bottom-left-radius:5px}
 .ce-chat__msg--right .ce-chat__bubble{border-bottom-right-radius:5px;background:var(--lime);border-color:var(--lime);color:var(--navy)}
-.ce-chat__time{font-size:10px;color:var(--navy-faint);padding:0 4px}
+.ce-chat__time{font-size:10px;color:#666b7a;padding:0 4px}
 .ce-chat__input{
   display:flex;align-items:center;gap:9px;
   padding:10px 12px;background:#fff;border-top:1px solid var(--border-line);
@@ -1279,9 +1279,11 @@ a{text-decoration:none;color:inherit}
 .ce-evid__caption{text-align:center;font-size:12px;color:var(--navy-faint);font-weight:600}
 .ce-evid__dots{display:flex;justify-content:center;gap:7px}
 .ce-evid__dot{
-  width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;
+  position:relative;width:7px;height:7px;border-radius:50%;border:none;cursor:pointer;padding:0;
   background:var(--surface-container);transition:background .2s ease,transform .2s ease;
 }
+/* Area tactil de 24px alrededor del punto, sin cambiar su tamano visible. */
+.ce-evid__dot::after{content:"";position:absolute;left:50%;top:50%;width:24px;height:24px;transform:translate(-50%,-50%)}
 .ce-evid__dot.is-active{background:var(--lime);transform:scale(1.25)}
 @media (prefers-reduced-motion:reduce){
   .ce-evid__slide{transition:none}
@@ -2043,6 +2045,7 @@ html{zoom:.9}
 </header>
 
 <!-- ===================== HERO ===================== -->
+<main>
 <section class="hero" id="plataforma">
   <div class="hero__grid-bg"></div>
   
@@ -2213,7 +2216,7 @@ html{zoom:.9}
   font-size:clamp(15px,2vw,24px);line-height:1.2;color:var(--navy);
   max-width:1080px;margin:0 auto clamp(30px,4vw,44px);padding:0 20px;
 }
-.svc-marq__title .lime{color:var(--lime-text)}
+.svc-marq__title .lime{color:#3f7a14}
 .svc-marq__viewport{
   position:relative;overflow:hidden;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
@@ -4106,6 +4109,8 @@ html{zoom:.9}
 </section>
 
 <!-- ===================== FOOTER ===================== -->
+</main>
+
 <footer class="footer" id="blog">
   <div class="container">
     <div class="footer__grid">
