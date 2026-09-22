@@ -16,6 +16,7 @@ function generatedPages() {
   };
   walk('blog');
   walk('ebook');
+  walk('contacto');
   return out;
 }
 
@@ -47,7 +48,7 @@ function cleanUrlsDev() {
           req.url = '/informeFixit/WipIA/';
         } else if (req.url === '/informeWip/AviseAsistencia') {
           req.url = '/informeWip/AviseAsistencia/';
-        } else if (/^\/(blog|ebook)(\/[\w-]+)*(\?.*)?$/.test(req.url)) {
+        } else if (/^\/(blog|ebook|contacto)(\/[\w-]+)*(\?.*)?$/.test(req.url)) {
           const [p, q] = req.url.split('?');
           req.url = p + '/' + (q ? '?' + q : '');
         }

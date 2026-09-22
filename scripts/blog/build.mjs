@@ -118,7 +118,7 @@ ${css}</style>
   <div class="topbar__inner">
     <a class="brand" href="/" aria-label="WIP, inicio"><img src="/img/wip-logo-lima-94w.png" alt="WIP" width="47" height="26"></a>
     <nav class="topnav" aria-label="Recursos">${nav}</nav>
-    <a class="topbar__cta" href="/#contacto" data-cta="header-demo">Agenda una demo</a>
+    <a class="topbar__cta" href="/contacto" data-cta="header-demo">Agenda una demo</a>
   </div>
 </header>
 <main>
@@ -289,7 +289,7 @@ ${content}
             <p>${toRed ? 'WIP asigna, monitorea y califica los servicios de tu red de proveedores en tiempo real.' : 'Con WIP asignas servicios, sigues a tu equipo en el mapa y tu cliente recibe el seguimiento por WhatsApp.'}</p>
           </div>
           <div class="post-end__actions">
-            <a class="btn btn--primary" href="/#contacto" data-cta="post-demo">Agenda una demo</a>
+            <a class="btn btn--primary" href="/contacto" data-cta="post-demo">Agenda una demo</a>
             <a class="btn btn--ghost" href="${toRed ? '/' : '/equipos'}" data-cta="post-producto">${toRed ? 'Conoce WIP Red' : 'Conoce WIP Equipos'}</a>
           </div>
         </aside>
@@ -322,6 +322,77 @@ ${content}
         author: { '@type': 'Organization', name: 'Equipo de WIP', url: `${SITE}/` }, publisher: ORG,
         articleSection: c.name, inLanguage: 'es', wordCount: p.words, isPartOf: { '@type': 'Blog', name: 'Blog de WIP', url: `${SITE}/blog` } },
       crumbsLd([{ name: 'Inicio', url: '/' }, { name: 'Blog', url: '/blog' }, { name: c.name, url: `/blog/${c.slug}` }, { name: p.title, url: `/blog/${p.slug}` }]),
+    ],
+  }));
+}
+
+// ---------- /contacto ----------
+{
+  const CAL = 'https://calendly.com/comercial-wiptool/acercamiento-wip';
+  const WA = 'https://api.whatsapp.com/send?phone=573005124111&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20WIP';
+  const body = `
+  <section class="contact-page">
+    <div class="container contact-grid">
+      <div class="contact-intro">
+        <nav class="crumbs" aria-label="Ruta"><a href="/">Inicio</a><span aria-hidden="true">/</span><span>Contacto</span></nav>
+        <span class="eyebrow">Hablemos</span>
+        <h1>¿Quieres ver WIP en vivo? Agéndate.</h1>
+        <p class="contact-lede">Cuéntanos sobre tu operación y te mostramos WIP en acción, y si encaja en un caso como el tuyo.</p>
+        <a id="calendlyBtn" class="btn btn--primary" href="${CAL}" target="_blank" rel="noopener">Quiero agendarme para conocer más en una reunión</a>
+        <ul class="contact-ways">
+          <li><a href="${esc(WA)}" target="_blank" rel="noopener" data-wa><svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.5 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607z"/></svg><span><strong>WhatsApp</strong>+57 300 512 4111</span></a></li>
+          <li><a href="mailto:comercial@wiptool.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><strong>Correo</strong>comercial@wiptool.com</span></a></li>
+        </ul>
+        <p class="contact-products">¿Aún no conoces WIP? <a href="/">WIP Red</a> para redes de proveedores · <a href="/equipos">WIP Equipos</a> para personal en campo.</p>
+      </div>
+      <div>
+        <h2 class="contact-form-title">¿O prefieres que te contactemos?</h2>
+        <form class="lead-form contact-form" id="contactForm" novalidate>
+          <div class="hp-field" aria-hidden="true"><label>No llenar este campo <input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></div>
+          <div class="form-row">
+            <div class="field"><label for="c-nombre">Nombre completo <span class="star">*</span></label><input id="c-nombre" name="nombre" type="text" autocomplete="name" placeholder="Ej. Juan Pérez" required></div>
+            <div class="field"><label for="c-correo">Correo corporativo <span class="star">*</span></label><input id="c-correo" name="email" type="email" autocomplete="email" placeholder="juan@empresa.com" required></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="c-empresa">Empresa <span class="star">*</span></label><input id="c-empresa" name="empresa" type="text" autocomplete="organization" placeholder="Nombre de tu organización" required></div>
+            <div class="field"><label for="c-telefono">Teléfono <span class="star">*</span></label><input id="c-telefono" name="telefono" type="tel" autocomplete="tel" placeholder="Teléfono" required></div>
+          </div>
+          <div class="field">
+            <label for="c-servicios">Servicios mensuales <span class="star">*</span></label>
+            <select id="c-servicios" name="servicios" required>
+              <option value="" disabled selected>Selecciona un rango</option>
+              <option value="1-200">1 - 200</option>
+              <option value="201-500">201 - 500</option>
+              <option value="501-5000">501 - 5.000</option>
+              <option value="5001-50000">5.001 - 50.000</option>
+              <option value="+51000">+51.000</option>
+            </select>
+          </div>
+          <div class="field"><label for="c-necesidad">¿Qué necesitas resolver?</label><textarea id="c-necesidad" name="necesidad" rows="4" placeholder="Cuéntanos sobre tu operación y qué te gustaría mejorar."></textarea></div>
+          <label class="consent"><input type="checkbox" name="consentimiento" required><span>Autorizo el tratamiento de mis datos personales conforme a la <a href="/politica-privacidad" target="_blank" rel="noopener">Política de privacidad</a> y acepto ser contactado por WIP.</span></label>
+          <div class="form-error" id="contactError" role="alert" hidden></div>
+          <button class="btn btn--primary" type="submit">Quiero que me contacten</button>
+        </form>
+        <div class="form-ok" id="contactOk" role="status" hidden>
+          <h2>¡Gracias! Recibimos tu solicitud.</h2>
+          <p>Tus datos ya fueron enviados a nuestro equipo comercial. Uno de nuestros asesores se comunicará contigo muy pronto.</p>
+        </div>
+        <p class="contact-trust"><span class="dot" aria-hidden="true"></span>Te contactamos en menos de 24 horas hábiles.</p>
+      </div>
+    </div>
+  </section>`;
+  write('contacto', page({
+    url: '/contacto',
+    title: 'Contacto: agenda una demo de WIP | WIP',
+    desc: 'Agenda una demo de WIP o déjanos tus datos y te contactamos en menos de 24 horas hábiles. También por WhatsApp o en comercial@wiptool.com.',
+    body,
+    preload: '<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>\n',
+    scripts: `<script>\n${read('scripts/blog/contact.js')}</script>\n`,
+    ld: [
+      { '@type': 'ContactPage', name: 'Contacto WIP', url: `${SITE}/contacto`, inLanguage: 'es',
+        mainEntity: { ...ORG, email: 'comercial@wiptool.com',
+          contactPoint: [{ '@type': 'ContactPoint', contactType: 'sales', email: 'comercial@wiptool.com', telephone: '+57-300-512-4111', availableLanguage: ['es'], areaServed: ['CO', 'MX', 'HN', 'GT', 'EC', 'PE', 'NI', 'CL', 'PA', 'SV'] }] } },
+      crumbsLd([{ name: 'Inicio', url: '/' }, { name: 'Contacto', url: '/contacto' }]),
     ],
   }));
 }
@@ -459,7 +530,7 @@ const red = [
   { source: '/herramientas/app-sin-app', destination: '/#whatsapp', permanent: true },
   { source: '/herramientas/unidades-de-negocio', destination: '/', permanent: true },
   { source: '/herramientas', destination: '/', permanent: true },
-  { source: '/demo', destination: '/#contacto', permanent: true },
+  { source: '/demo', destination: '/contacto', permanent: true },
 ];
 vercel.redirects = [...keep, ...red];
 vercel.headers = (vercel.headers || []).filter((h) => h.source !== '/ebooks/(.*)');
@@ -480,6 +551,7 @@ const extra = [
   entry('/blog', today, '0.8'),
   ...categories.map((c) => entry(`/blog/${c.slug}`, c.posts.reduce((m, p) => (p.modified > m ? p.modified : m), newest), '0.5')),
   ...posts.map((p) => entry(`/blog/${p.slug}`, p.modified, '0.6')),
+  entry('/contacto', today, '0.8'),
   entry('/ebook', today, '0.6'),
   ...ebooks.map((e) => entry(`/ebook/${e.slug}`, e.date, '0.5')),
 ];

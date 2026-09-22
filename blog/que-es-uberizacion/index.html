@@ -306,6 +306,32 @@ img{max-width:100%;height:auto;display:block}
   .footer__bottom{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.post-card,.ebook-card,.btn,.ebook-band__covers a{transition:none}.post-card:hover,.ebook-card:hover,.btn--primary:hover{transform:none}}
+
+/* ---------- Contacto ---------- */
+.contact-page{padding:clamp(36px,5vw,72px) 0 0}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:clamp(32px,5vw,64px);align-items:start}
+.contact-intro h1{font-size:clamp(30px,4.4vw,48px);font-weight:800;letter-spacing:-0.03em;line-height:1.1;color:var(--navy)}
+.contact-lede{margin:14px 0 24px;font-size:clamp(16px,1.6vw,18px);color:var(--on-surface-variant);max-width:520px}
+.contact-intro .btn{white-space:normal;text-align:center;line-height:1.3}
+.contact-ways{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.contact-ways a{display:flex;gap:14px;align-items:center;background:var(--surface-bright);border:1px solid var(--border-line);border-radius:16px;padding:14px 18px;color:var(--navy);transition:border-color .2s ease}
+.contact-ways a:hover{border-color:var(--navy)}
+.contact-ways svg{flex:none}
+.contact-ways span{display:flex;flex-direction:column;font-size:14.5px;color:var(--on-surface-variant)}
+.contact-ways strong{font-size:15px;color:var(--navy)}
+.contact-products{margin-top:22px;font-size:14.5px;color:var(--navy-soft)}
+.contact-products a{color:var(--lime-text);font-weight:600;text-decoration:underline}
+.contact-form-title{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:14px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field select,.field textarea{width:100%;font-family:inherit;font-size:15px;padding:13px 18px;border:1px solid var(--border-line);background:var(--surface-low);color:var(--on-surface)}
+.field select{border-radius:var(--r-pill);appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6172' stroke-width='2.4' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;background-size:16px;padding-right:42px}
+.field select:invalid{color:var(--navy-faint)}
+.field textarea{border-radius:16px;resize:vertical;min-height:110px;line-height:1.5}
+.field select:focus,.field textarea:focus{outline:none;border-color:var(--lime-text);box-shadow:0 0 0 3px rgba(63,122,20,.15)}
+.contact-trust{display:flex;align-items:center;justify-content:center;gap:8px;font-size:14px;color:var(--navy-soft);margin-top:18px}
+.contact-trust .dot{width:7px;height:7px;border-radius:50%;background:var(--lime-text)}
+@media(max-width:960px){.contact-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.form-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -313,7 +339,7 @@ img{max-width:100%;height:auto;display:block}
   <div class="topbar__inner">
     <a class="brand" href="/" aria-label="WIP, inicio"><img src="/img/wip-logo-lima-94w.png" alt="WIP" width="47" height="26"></a>
     <nav class="topnav" aria-label="Recursos"><a href="/blog" aria-current="page">Blog</a><a href="/ebook">Ebooks</a></nav>
-    <a class="topbar__cta" href="/#contacto" data-cta="header-demo">Agenda una demo</a>
+    <a class="topbar__cta" href="/contacto" data-cta="header-demo">Agenda una demo</a>
   </div>
 </header>
 <main>
@@ -343,7 +369,7 @@ img{max-width:100%;height:auto;display:block}
             <p>WIP asigna, monitorea y califica los servicios de tu red de proveedores en tiempo real.</p>
           </div>
           <div class="post-end__actions">
-            <a class="btn btn--primary" href="/#contacto" data-cta="post-demo">Agenda una demo</a>
+            <a class="btn btn--primary" href="/contacto" data-cta="post-demo">Agenda una demo</a>
             <a class="btn btn--ghost" href="/" data-cta="post-producto">Conoce WIP Red</a>
           </div>
         </aside>

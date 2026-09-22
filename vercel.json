@@ -339,7 +339,7 @@
     },
     {
       "source": "/demo",
-      "destination": "/#contacto",
+      "destination": "/contacto",
       "permanent": true
     }
   ],
