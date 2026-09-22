@@ -113,7 +113,7 @@ const html = `<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>${TITLE}</title>
 <meta name="description" content="${DESCRIPTION}">
-<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#161d31">
 <link rel="canonical" href="${SITE}/academy">
 <link rel="icon" type="image/png" href="/favicon.png">
@@ -212,10 +212,9 @@ fs.writeFileSync(vercelPath, JSON.stringify(vercel, null, 2) + '\n');
 // ---------- Sitemap ----------
 const smPath = path.join(root, 'public/sitemap.xml');
 let sm = fs.readFileSync(smPath, 'utf8');
-if (!sm.includes(`${SITE}/academy`)) {
-  sm = sm.replace('</urlset>', `  <url>\n    <loc>${SITE}/academy</loc>\n    <lastmod>${new Date().toISOString().slice(0, 10)}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.7</priority>\n  </url>\n</urlset>`);
-  fs.writeFileSync(smPath, sm);
-}
+// Academy no se indexa (noindex): se asegura que no quede en el sitemap.
+const smClean = sm.replace(/\s*<url>\s*<loc>[^<]*\/academy<\/loc>[\s\S]*?<\/url>/g, '');
+if (smClean !== sm) fs.writeFileSync(smPath, smClean);
 
 console.log(`academy/index.html: ${(html.length / 1024).toFixed(1)} KB, ${courses.length} cursos, ${total} lecciones`);
 console.log(`redirects academy: ${red.length}`);

@@ -81,7 +81,7 @@ const crumbsLd = (items) => ({
 });
 
 function page({ url, title, desc, ogType = 'website', ogImage = '/og-image.jpg', ogW = 1200, ogH = 630, ogAlt, ld, preload = '', active, body, scripts = '', extraMeta = '' }) {
-  const nav = [['/blog', 'Blog'], ['/ebook', 'Ebooks'], ['/academy', 'Academy']]
+  const nav = [['/blog', 'Blog'], ['/ebook', 'Ebooks']]
     .map(([h, t]) => `<a href="${h}"${active === h ? ' aria-current="page"' : ''}>${t}</a>`).join('');
   return `<!DOCTYPE html>
 <html lang="es">
