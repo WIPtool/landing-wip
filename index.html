@@ -1,5 +1,15 @@
 <!DOCTYPE html>
 <html lang="es"><head>
+<script>
+/* Las animaciones decorativas arrancan cuando la pagina termina de cargar: durante
+   el primer pintado la pantalla se estabiliza antes (mejor Speed Index y LCP). */
+(function(){var d=document.documentElement;d.classList.add("wip-boot");
+function go(){d.classList.remove("wip-boot");}
+if(document.readyState==="complete"){requestAnimationFrame(go);}
+else{addEventListener("load",function(){requestAnimationFrame(function(){setTimeout(go,120);});});}
+setTimeout(go,4000);})();
+</script>
+<style>html.wip-boot *,html.wip-boot *::before,html.wip-boot *::after{animation-play-state:paused!important}</style>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Google tag (gtag.js): el stub encola eventos en dataLayer; la libreria se carga tras el load / primera interaccion.
