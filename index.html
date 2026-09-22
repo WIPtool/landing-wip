@@ -2048,6 +2048,52 @@ html{zoom:.9}
 </header>
 
 <!-- ===================== HERO ===================== -->
+<script id="wip-visible-js">
+/* Corre una animación sólo mientras su sección está en pantalla y la pestaña visible:
+   evita trabajo del hilo principal (y batería) por secciones que nadie está viendo. */
+window.wipWhenVisible=function(el,start,stop){
+  if(!el) return;
+  var on=false,inView=false;
+  function sync(){
+    var should=inView && !document.hidden;
+    if(should===on) return;
+    on=should;
+    should?start():stop();
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ inView=e.isIntersecting; });
+      sync();
+    },{rootMargin:'120px 0px'}).observe(el);
+  } else { inView=true; }
+  document.addEventListener('visibilitychange',sync);
+  sync();
+};
+</script>
+<style id="wip-cv-css">
+/* Las secciones bajo el primer pantallazo sólo se calculan y dibujan cuando se
+   acercan a la pantalla. El alto declarado (medido en móvil) reserva su espacio
+   para que la barra de desplazamiento y los anclajes no salten. */
+@supports (content-visibility: auto) {
+  @media (prefers-reduced-motion: no-preference) {
+    #como-funciona{content-visibility:auto;contain-intrinsic-size:auto 2147px}
+    #industrias{content-visibility:auto;contain-intrinsic-size:auto 1664px}
+    #conectados{content-visibility:auto;contain-intrinsic-size:auto 1760px}
+    #resuelve{content-visibility:auto;contain-intrinsic-size:auto 717px}
+    #asignacion{content-visibility:auto;contain-intrinsic-size:auto 918px}
+    #radar{content-visibility:auto;contain-intrinsic-size:auto 818px}
+    #monitoreo{content-visibility:auto;contain-intrinsic-size:auto 1254px}
+    #scoring{content-visibility:auto;contain-intrinsic-size:auto 1187px}
+    #chats{content-visibility:auto;contain-intrinsic-size:auto 1571px}
+    #whatsapp{content-visibility:auto;contain-intrinsic-size:auto 964px}
+    #conexiones{content-visibility:auto;contain-intrinsic-size:auto 1353px}
+    #nosotros{content-visibility:auto;contain-intrinsic-size:auto 972px}
+    #testimonios{content-visibility:auto;contain-intrinsic-size:auto 944px}
+    #faq{content-visibility:auto;contain-intrinsic-size:auto 1141px}
+    #contacto{content-visibility:auto;contain-intrinsic-size:auto 1036px}
+  }
+}
+</style>
 <main>
 <section class="hero" id="plataforma">
   <div class="hero__grid-bg"></div>
@@ -2195,13 +2241,15 @@ html{zoom:.9}
     if(!a||!b||!c)return;
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
     function set(el,v){el.style.opacity='0';setTimeout(function(){el.textContent=v;el.style.opacity='1';},150);}
-    var toggled=false;
-    setInterval(function(){
-      toggled=!toggled;
-      set(a,toggled?'1512':'1500');
-      set(b,toggled?'742':'750');
-      set(c,toggled?'97%':'98%');
-    },3500);
+    var toggled=false,t=null;
+    wipWhenVisible(document.getElementById('nosotros'),function(){
+      t=setInterval(function(){
+        toggled=!toggled;
+        set(a,toggled?'1512':'1500');
+        set(b,toggled?'742':'750');
+        set(c,toggled?'97%':'98%');
+      },3500);
+    },function(){ clearInterval(t); });
   })();
   </script>
 </section>
@@ -3290,8 +3338,8 @@ html{zoom:.9}
     var state=document.getElementById('mon-state-alert'),pct=document.getElementById('mon-pct'),bar=document.getElementById('mon-bar');
     if(!state)return;
     if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-    var breached=false;
-    setInterval(function(){
+    var breached=false,t=null;
+    wipWhenVisible(document.getElementById('monitoreo'),function(){ t=setInterval(function(){
       breached=!breached;
       if(breached){
         state.textContent='SLA incumplido';
@@ -3306,7 +3354,7 @@ html{zoom:.9}
         setTimeout(function(){pct.textContent='74%';pct.style.opacity='1';},150);
         if(bar)bar.style.width='74%';
       }
-    },3000);
+    },3000); },function(){ clearInterval(t); });
   })();
   </script>
 </section>
@@ -3660,7 +3708,8 @@ html{zoom:.9}
     var vp=car.querySelector('.ce-evid__viewport');
     vp.addEventListener('mouseenter',stop);
     vp.addEventListener('mouseleave',start);
-    show(0);start();
+    show(0);
+    wipWhenVisible(car,start,stop);
   })();
   </script>
 </section>
