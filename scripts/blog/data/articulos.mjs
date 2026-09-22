@@ -400,7 +400,7 @@ ${tool('Central de monitoreo con semáforo de SLA', 'Sigue cada asistencia de tu
 <tr><td>Cumplimiento de SLA por cliente</td><td>Sustenta tu operación ante aseguradoras y empresas</td></tr>
 <tr><td>Servicios con evidencia completa</td><td>Protege la facturación y reduce reclamos</td></tr>
 </tbody></table></div>
-${tool('Tu flota en el mapa', 'Despacha cada caso a la unidad disponible más cercana y sigue cada servicio en vivo.', '/software-para-gruas-y-flotas', 'Ver software para grúas y flotas', 'mapa')}
+${tool('Tu flota en el mapa', 'Despacha cada caso a la unidad disponible más cercana y sigue cada servicio en vivo.', '/software-para-gruas-y-flotas', 'Ver software para flotas de servicio', 'mapa')}
 <h2>Buenas prácticas de despacho</h2>
 <ol class="steps">
 <li><strong>Define zonas y turnos</strong> Qué unidades cubren qué zonas y en qué horarios.</li>
@@ -419,7 +419,7 @@ ${tool('Tu flota en el mapa', 'Despacha cada caso a la unidad disponible más ce
 </ul>
 <!--EBOOK:checklist-definitiva-->
 <h2>Conclusión</h2>
-<p>Gestionar una flota de servicio es gestionar servicios, no solo vehículos. La telemetría cuida tus activos; un software de gestión de servicios en campo te ayuda a cumplir y a cobrar. Si tu empresa opera grúas, carros taller o unidades de servicio, conoce nuestro <a href="/software-para-gruas-y-flotas">software para empresas de grúas y flotas de servicio</a>.</p>
+<p>Gestionar una flota de servicio es gestionar servicios, no solo vehículos. La telemetría cuida tus activos; un software de gestión de servicios en campo te ayuda a cumplir y a cobrar. Si tu empresa opera grúas, carros taller o unidades de servicio, conoce nuestro <a href="/software-para-gruas-y-flotas">software para flotas de servicio (médicos, grúas, envíos y más)</a>.</p>
 `,
   },
 
