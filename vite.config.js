@@ -1,8 +1,23 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath } from 'url';
-import { dirname, resolve } from 'path';
+import { dirname, resolve, join } from 'path';
+import { existsSync, readdirSync, statSync } from 'fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// Paginas generadas por scripts/blog/build.mjs: blog/**/index.html y ebook/**/index.html.
+function generatedPages() {
+  const out = {};
+  const walk = (dir) => {
+    const abs = resolve(__dirname, dir);
+    if (!existsSync(abs)) return;
+    if (existsSync(join(abs, 'index.html'))) out[dir.replace(/[/]/g, '_')] = join(abs, 'index.html');
+    for (const d of readdirSync(abs)) if (statSync(join(abs, d)).isDirectory()) walk(dir + '/' + d);
+  };
+  walk('blog');
+  walk('ebook');
+  return out;
+}
 
 // En dev, Vite sirve páginas anidadas (equipos/index.html) en /equipos/ (con slash).
 // Vercel resuelve /equipos -> equipos/index.html vía cleanUrls en producción;
@@ -32,6 +47,9 @@ function cleanUrlsDev() {
           req.url = '/informeFixit/WipIA/';
         } else if (req.url === '/informeWip/AviseAsistencia') {
           req.url = '/informeWip/AviseAsistencia/';
+        } else if (/^\/(blog|ebook)(\/[\w-]+)*(\?.*)?$/.test(req.url)) {
+          const [p, q] = req.url.split('?');
+          req.url = p + '/' + (q ? '?' + q : '');
         }
         next();
       });
@@ -57,6 +75,7 @@ export default defineConfig({
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
         inscripcion: resolve(__dirname, 'inscripcion/index.html'),
         academy: resolve(__dirname, 'academy/index.html'),
+        ...generatedPages(),
       },
     },
   },

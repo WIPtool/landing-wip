@@ -8,6 +8,91 @@
       "permanent": true
     },
     {
+      "source": "/ebook-confirmacion",
+      "destination": "/ebook",
+      "permanent": true
+    },
+    {
+      "source": "/blog/page/:n",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/delivery/page/:n",
+      "destination": "/blog/delivery",
+      "permanent": true
+    },
+    {
+      "source": "/blog/insurtech/page/:n",
+      "destination": "/blog/insurtech",
+      "permanent": true
+    },
+    {
+      "source": "/blog/logistica-y-transporte/page/:n",
+      "destination": "/blog/logistica-y-transporte",
+      "permanent": true
+    },
+    {
+      "source": "/blog/optimizacion-procesos-logisticos/page/:n",
+      "destination": "/blog/optimizacion-procesos-logisticos",
+      "permanent": true
+    },
+    {
+      "source": "/blog/trazabilidad-y-ruteo/page/:n",
+      "destination": "/blog/trazabilidad-y-ruteo",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uberizacion/page/:n",
+      "destination": "/blog/uberizacion",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas/central-monitoreo",
+      "destination": "/#monitoreo",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas/gps-tracker",
+      "destination": "/equipos#ubicacion",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas/gps-tracker-wip",
+      "destination": "/equipos#ubicacion",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas/app-colaborador",
+      "destination": "/equipos",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas/experiencia-app-sin-app",
+      "destination": "/#whatsapp",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas/app-sin-app",
+      "destination": "/#whatsapp",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas/unidades-de-negocio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/herramientas",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/demo",
+      "destination": "/#contacto",
+      "permanent": true
+    },
+    {
       "source": "/academy/cursos",
       "destination": "/academy",
       "permanent": true
@@ -334,6 +419,19 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/ebooks/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400"
         }
       ]
     }

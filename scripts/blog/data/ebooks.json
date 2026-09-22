@@ -1,0 +1,65 @@
+[
+ {
+  "slug": "checklist-definitiva",
+  "title": "Checklist definitiva",
+  "seoTitle": "Checklist definitiva",
+  "seoDesc": "En esta completa guía, te proporcionaremos una serie de pasos clave que te permitirán optimizar tus procesos, evitar errores costosos y mejorar la colaboración con tus proveedores.",
+  "excerpt": "En esta completa guía, te proporcionaremos una serie de pasos clave que te permitirán optimizar tus procesos, evitar errores costosos y mejorar la colaboración con tus proveedores.",
+  "date": "2023-05-26",
+  "cover": {
+   "file": "/img/blog/ebookcover-checklist-definitiva-600.webp",
+   "w": 600,
+   "h": 844
+  },
+  "coverSm": {
+   "file": "/img/blog/ebookcover-checklist-definitiva-300.webp",
+   "w": 300,
+   "h": 422
+  },
+  "og": "/img/blog/ebook-checklist-definitiva-og.jpg",
+  "pdf": "/ebooks/checklist-definitiva.pdf",
+  "pdfBytes": 2752267
+ },
+ {
+  "slug": "uberizacion",
+  "title": "Uberización",
+  "seoTitle": "Descarga nuestro ebook de uberización y aplica este modelo",
+  "seoDesc": "Descubre cómo la uberización y la transformación digital están cambiando tu sector. Conoce las últimas tendencias y aplícalas en tu empresa.",
+  "excerpt": "Profundiza en el modelo de negocio de Uber, cómo logró convertirse en la mayor empresa de movilidad del mundo sin tener un solo vehículo.",
+  "date": "2023-05-08",
+  "cover": {
+   "file": "/img/blog/portada-uberizacion-pdf-600.webp",
+   "w": 600,
+   "h": 827
+  },
+  "coverSm": {
+   "file": "/img/blog/portada-uberizacion-pdf-300.webp",
+   "w": 300,
+   "h": 414
+  },
+  "og": "/img/blog/ebook-uberizacion-og.jpg",
+  "pdf": "/ebooks/uberizacion.pdf",
+  "pdfBytes": 5544958
+ },
+ {
+  "slug": "gestion-de-equipos-de-trabajo-en-campo",
+  "title": "Gestión de equipos de trabajo en campo",
+  "seoTitle": "Gestión de equipos de trabajo en campo",
+  "seoDesc": "Guía práctica para optimizar la gestión de equipos de trabajo en campo y aumentar la eficiencia de tu empresa.",
+  "excerpt": "Guía práctica para optimizar la gestión de equipos de trabajo en campo y aumentar la eficiencia de tu empresa.",
+  "date": "2023-04-28",
+  "cover": {
+   "file": "/img/blog/ebookcover-gestion-equipos-trabajo-campo-600.webp",
+   "w": 600,
+   "h": 844
+  },
+  "coverSm": {
+   "file": "/img/blog/ebookcover-gestion-equipos-trabajo-campo-300.webp",
+   "w": 300,
+   "h": 422
+  },
+  "og": "/img/blog/ebook-gestion-de-equipos-de-trabajo-en-campo-og.jpg",
+  "pdf": "/ebooks/gestion-de-equipos-de-trabajo-en-campo.pdf",
+  "pdfBytes": 3297381
+ }
+]

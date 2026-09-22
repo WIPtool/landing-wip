@@ -1,0 +1,52 @@
+{
+ "categories": [
+  {
+   "slug": "delivery",
+   "name": "Delivery",
+   "seoTitle": "Encuentra todo lo que necesitas saber acerca del Delivery aquí",
+   "seoDesc": "Descubre cómo la tecnología de delivery puede mejorar tus entregas, mejorar los tiempos, potenciar la capacidad de tus colaboradores y más"
+  },
+  {
+   "slug": "insurtech",
+   "name": "Insurtech",
+   "seoTitle": "¿Qué es Insurtech y cómo puede potenciar a tu aseguradora?",
+   "seoDesc": "Descubre cómo la tecnología está potenciando a las aseguradoras, haciendo que mejoren sus servicios, sus procesos e incluso su logística"
+  },
+  {
+   "slug": "logistica-y-transporte",
+   "name": "Logística y Transporte",
+   "seoTitle": "Cómo optimizar la logística y el transporte de tu empresa",
+   "seoDesc": "Aprende acerca de las mejores prácticas y herramientas que pueden optimizar la logística de transporte de tu empresa"
+  },
+  {
+   "slug": "optimizacion-procesos-logisticos",
+   "name": "Optimización de procesos logísticos",
+   "seoTitle": "Optimización de procesos logísticos | Mejora tu eficiencia",
+   "seoDesc": "Obtén los mejores recursos y aprende sobre cómo optimizar tus procesos logísticos, mejorar la eficiencia, reducir costos y mucho más"
+  },
+  {
+   "slug": "trazabilidad-y-ruteo",
+   "name": "Trazabilidad",
+   "seoTitle": "La importancia de la trazabilidad en la logística",
+   "seoDesc": "Descubre cómo la trazabilidad puede ayudar a las empresas de logística a mejorar la eficiencia, la calidad y la satisfacción del cliente."
+  },
+  {
+   "slug": "uberizacion",
+   "name": "Uberización",
+   "seoTitle": "Conoce cómo la uberización está cambiando tu sector | Wip",
+   "seoDesc": "Encuentra aquí artículos y análisis sobre cómo la tecnología está revolucionando tu industria y cómo prepararte para el cambio."
+  }
+ ],
+ "index": {
+  "blog": {
+   "t": "Bienvenido al Blog de Wip, encuentra contenido para tu empresa",
+   "d": "En el Blog de Wip encuentra contenido para optimizar tus procesos logístico, mejorar la experiencia de tu cliente y la prestación de tu servicio 🚀",
+   "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+  },
+  "ebook": {
+   "t": "Descarga nuestros ebooks gratuitos | Wip",
+   "d": "Descarga nuestra selección de ebooks gratuitos para el sector de asegurador y logístico. En Wip te ofrecemos contenido para mejorar tu negocio",
+   "robots": "follow, index, max-snippet:-1, max-video-preview:-1, max-image-preview:large"
+  }
+ }
+}

@@ -24,8 +24,7 @@ footer = footer
   .replace(/<div class="nav__logo"><img src="([^"]+)" alt="WIP" class="brand-logo" width="148" height="82"><\/div>/, '<img src="$1" alt="WIP" width="148" height="82">')
   .replace('href="#industrias"', 'href="/#industrias"')
   .replace('href="#asignacion"', 'href="/#asignacion"')
-  .replace('href="#testimonios"', 'href="/#testimonios"')
-  .replace('<a href="/equipos">', '<a href="/academy">WIP Academy</a>\n        <a href="/equipos">');
+  .replace('href="#testimonios"', 'href="/#testimonios"');
 
 // ---------- Tarjetas de curso ----------
 const cards = courses.map((c, i) => `
