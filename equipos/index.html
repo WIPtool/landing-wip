@@ -1165,6 +1165,26 @@ if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded
 window.addEventListener('load',function(){setTimeout(load,4000);});
 })();
 </script>
+<script>
+/* Pixel de Meta (conjunto de datos "Wip (Wiptool)", negocio WIP). La cola fbq existe siempre,
+   para que los eventos no fallen; la libreria se descarga tras la carga o la primera
+   interaccion, como la de Google, y solo en el dominio de produccion. */
+!function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);
+if(location.hostname==='www.wiptool.com'){
+fbq('init','7944401458963798');
+fbq('track','PageView');
+(function(){var l=false;function load(){if(l)return;l=true;
+var s=document.createElement('script');s.src='https://connect.facebook.net/en_US/fbevents.js';s.async=true;document.head.appendChild(s);}
+['pointerdown','keydown','scroll','touchstart'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});
+window.addEventListener('load',function(){
+  if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
+});})();
+/* Calendly avisa por postMessage cuando la persona termina de agendar: esa es la conversion real. */
+window.addEventListener('message',function(e){
+  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');}
+});
+}
+</script>
 </head>
 <body>
 <!-- Botón flotante de WhatsApp de WIP (+57 300 512 4111). -->
@@ -2328,7 +2348,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
     if(btn){btn.disabled=true;btn.textContent='Enviando…';}
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
       .then(function(r){
-        if(r.ok){ f.style.display='none'; if(ok)ok.hidden=false; if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||''}); }
+        if(r.ok){ f.style.display='none'; if(ok)ok.hidden=false; if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||''}); if(window.fbq)fbq('track','Lead',{content_name:'formulario_contacto'}); }
         else { throw new Error('net'); }
       })
       .catch(function(){
@@ -2337,7 +2357,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
         var body=encodeURIComponent('Nombre: '+(data.nombre||'')+'\nCorreo: '+(data.email||'')+'\nEmpresa: '+(data.empresa||'')+'\nTelefono: '+(data.telefono||'')+'\nServicios mensuales: '+(data.servicios||'')+'\n\nNecesidad:\n'+(data.necesidad||''));
         window.location.href='mailto:comercial@wiptool.com?subject='+sub+'&body='+body;
         if(btn){btn.disabled=false;btn.textContent='Quiero que me contacten';}
-        if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||'',via:'mailto'});
+        if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||'',via:'mailto'}); if(window.fbq)fbq('track','Lead',{content_name:'formulario_contacto',via:'mailto'});
       });
   });
 })();
@@ -2347,9 +2367,9 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
   if(!window.gtag) return;
   document.addEventListener('click',function(e){
     var wa=e.target.closest('.wa-fab');
-    if(wa){ gtag('event','click_whatsapp',{page_location:location.href}); return; }
+    if(wa){ gtag('event','click_whatsapp',{page_location:location.href}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
     var cal=e.target.closest('.contact-calendly a, [onclick*="Calendly.initPopupWidget"]');
-    if(cal){ gtag('event','click_calendly',{page_location:location.href}); }
+    if(cal){ gtag('event','click_calendly',{page_location:location.href}); if(window.fbq)fbq('trackCustom','ClickCalendly'); }
   }, true);
 })();
 </script>

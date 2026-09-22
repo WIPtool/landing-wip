@@ -45,6 +45,7 @@
   if(cal){
     cal.addEventListener('click',function(e){
       if(window.gtag) gtag('event','click_calendly',{page_location:location.href});
+      if(window.fbq) fbq('trackCustom','ClickCalendly');
       e.preventDefault();
       var url=cal.getAttribute('href');
       if(window.Calendly){ Calendly.initPopupWidget({url:url}); return; }
@@ -58,6 +59,7 @@
   document.addEventListener('click',function(e){
     var wa=e.target.closest('[data-wa]');
     if(wa && window.gtag) gtag('event','click_whatsapp',{page_location:location.href});
+    if(wa && window.fbq) fbq('track','Contact',{content_name:'whatsapp'});
   });
 
   f.addEventListener('submit',function(e){
@@ -81,6 +83,7 @@
           gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||'',origen:'contacto'});
           gtag('event','generate_lead',{lead_source:'contacto'});
         }
+        if(window.fbq) fbq('track','Lead',{content_name:'formulario_contacto'});
       })
       .catch(function(){
         btn.disabled=false; btn.textContent='Quiero que me contacten';

@@ -89,6 +89,26 @@ window.addEventListener('load',function(){
   if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
 });})();
 }
+</script>
+<script>
+/* Pixel de Meta (conjunto de datos "Wip (Wiptool)", negocio WIP). La cola fbq existe siempre,
+   para que los eventos no fallen; la libreria se descarga tras la carga o la primera
+   interaccion, como la de Google, y solo en el dominio de produccion. */
+!function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);
+if(location.hostname==='www.wiptool.com'){
+fbq('init','7944401458963798');
+fbq('track','PageView');
+(function(){var l=false;function load(){if(l)return;l=true;
+var s=document.createElement('script');s.src='https://connect.facebook.net/en_US/fbevents.js';s.async=true;document.head.appendChild(s);}
+['pointerdown','keydown','scroll','touchstart'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});
+window.addEventListener('load',function(){
+  if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
+});})();
+/* Calendly avisa por postMessage cuando la persona termina de agendar: esa es la conversion real. */
+window.addEventListener('message',function(e){
+  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');}
+});
+}
 </script>`;
 
 const ORG = { '@type': 'Organization', name: 'WIP', url: `${SITE}/`, logo: { '@type': 'ImageObject', url: `${SITE}/logo.png` } };

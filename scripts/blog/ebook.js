@@ -71,6 +71,7 @@
           gtag('event','ebook_descarga',{ebook:data.ebook});
           gtag('event','generate_lead',{lead_source:'ebook',ebook:data.ebook});
         }
+        if(window.fbq) fbq('track','Lead',{content_name:'ebook',content_category:data.ebook});
       })
       .catch(function(){
         btn.disabled=false; btn.textContent='Descargar ebook';
