@@ -53,6 +53,7 @@
     if(!f.checkValidity()){ f.reportValidity(); return; }
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
+    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href;
     data.acepto=f.acepto.checked;
     if(iti && tel.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     try{
@@ -71,7 +72,7 @@
           gtag('event','ebook_descarga',{ebook:data.ebook});
           gtag('event','generate_lead',{lead_source:'ebook',ebook:data.ebook});
         }
-        if(window.fbq) fbq('track','Lead',{content_name:'ebook',content_category:data.ebook});
+        if(window.fbq) fbq('track','Lead',{content_name:'ebook',content_category:data.ebook},{eventID:data.event_id});
       })
       .catch(function(){
         btn.disabled=false; btn.textContent='Descargar ebook';

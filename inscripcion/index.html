@@ -202,7 +202,7 @@ window.addEventListener('load',function(){
 });})();
 /* Calendly avisa por postMessage cuando la persona termina de agendar: esa es la conversion real. */
 window.addEventListener('message',function(e){
-  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');}
+  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');if(window.gtag)gtag('event','calendly_agendado',{page_location:location.href});}
 });
 }
 </script>
@@ -482,6 +482,7 @@ window.addEventListener('message',function(e){
     }
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
+    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href;
     data.acepto=f.acepto.checked;
     /* Origen de la visita (campañas): se guarda junto a la inscripción. */
     try{
@@ -494,7 +495,7 @@ window.addEventListener('message',function(e){
       .then(function(r){
         if(!r.ok){throw new Error('http '+r.status);}
         f.style.display='none'; ok.hidden=false; ok.scrollIntoView({behavior:'smooth',block:'center'});
-        if(window.gtag)gtag('event','inscripcion_enviada',{plan:data.plan||'',empresa:data.empresa||''}); if(window.fbq)fbq('track','CompleteRegistration',{content_name:data.plan||''});
+        if(window.gtag)gtag('event','inscripcion_enviada',{plan:data.plan||'',empresa:data.empresa||''}); if(window.fbq)fbq('track','CompleteRegistration',{content_name:data.plan||''},{eventID:data.event_id});
       })
       .catch(function(){
         btn.disabled=false; btn.textContent='Enviar';

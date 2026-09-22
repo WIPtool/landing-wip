@@ -1181,7 +1181,7 @@ window.addEventListener('load',function(){
 });})();
 /* Calendly avisa por postMessage cuando la persona termina de agendar: esa es la conversion real. */
 window.addEventListener('message',function(e){
-  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');}
+  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');if(window.gtag)gtag('event','calendly_agendado',{page_location:location.href});}
 });
 }
 </script>
@@ -2344,11 +2344,12 @@ window.addEventListener('message',function(e){
     e.preventDefault();
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
+    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href;
     if(iti && telInput.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     if(btn){btn.disabled=true;btn.textContent='Enviando…';}
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
       .then(function(r){
-        if(r.ok){ f.style.display='none'; if(ok)ok.hidden=false; if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||''}); if(window.fbq)fbq('track','Lead',{content_name:'formulario_contacto'}); }
+        if(r.ok){ f.style.display='none'; if(ok)ok.hidden=false; if(window.gtag)gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||''}); if(window.fbq)fbq('track','Lead',{content_name:'formulario_contacto'},{eventID:data.event_id}); }
         else { throw new Error('net'); }
       })
       .catch(function(){

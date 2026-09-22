@@ -106,7 +106,7 @@ window.addEventListener('load',function(){
 });})();
 /* Calendly avisa por postMessage cuando la persona termina de agendar: esa es la conversion real. */
 window.addEventListener('message',function(e){
-  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');}
+  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');if(window.gtag)gtag('event','calendly_agendado',{page_location:location.href});}
 });
 }
 </script>`;

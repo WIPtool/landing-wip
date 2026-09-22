@@ -68,6 +68,7 @@
     if(!f.checkValidity()){ f.reportValidity(); return; }
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
+    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href;
     if(iti && tel.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     try{
       var q=new URLSearchParams(location.search);
@@ -83,7 +84,7 @@
           gtag('event','formulario_contacto',{empresa:data.empresa||'',servicios:data.servicios||'',origen:'contacto'});
           gtag('event','generate_lead',{lead_source:'contacto'});
         }
-        if(window.fbq) fbq('track','Lead',{content_name:'formulario_contacto'});
+        if(window.fbq) fbq('track','Lead',{content_name:'formulario_contacto'},{eventID:data.event_id});
       })
       .catch(function(){
         btn.disabled=false; btn.textContent='Quiero que me contacten';

@@ -1,3 +1,5 @@
+import { enviarEventoMeta } from './_meta-capi.js';
+
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
 // Ebooks disponibles (slug -> titulo y PDF). Debe coincidir con scripts/blog/data/ebooks.json;
@@ -70,5 +72,6 @@ export default async function handler(req, res) {
     console.error('Correo de ebook no enviado:', err.message, JSON.stringify(Object.fromEntries(filas)));
   }
 
+  await enviarEventoMeta(req, { evento: 'Lead', eventId: data.event_id, email, telefono, nombre, url: data.page, datos: { content_name: 'ebook', content_category: clean(data.ebook, 80) } });
   return res.status(200).json({ ok: true, url: ebook.pdf });
 }

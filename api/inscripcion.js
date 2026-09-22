@@ -1,3 +1,5 @@
+import { enviarEventoMeta } from './_meta-capi.js';
+
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
 // Copias fijas de cada inscripcion (ademas del buzon comercial).
@@ -140,5 +142,6 @@ export default async function handler(req, res) {
   if (correo.status === 'rejected' && (!hojaConfigurada || hoja.status === 'rejected')) {
     return res.status(502).json({ error: 'No se pudo enviar la inscripción' });
   }
+  await enviarEventoMeta(req, { evento: 'CompleteRegistration', eventId: data.event_id, email, telefono, nombre, url: 'https://www.wiptool.com/inscripcion', datos: { content_name: plan } });
   return res.status(200).json({ ok: true });
 }

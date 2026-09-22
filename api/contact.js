@@ -1,3 +1,5 @@
+import { enviarEventoMeta } from './_meta-capi.js';
+
 const RESEND_API_URL = 'https://api.resend.com/emails';
 
 function escapeHtml(str) {
@@ -64,6 +66,7 @@ export default async function handler(req, res) {
       return res.status(502).json({ error: 'No se pudo enviar el correo' });
     }
 
+    await enviarEventoMeta(req, { evento: 'Lead', eventId: data.event_id, email, telefono, nombre, url: data.page, datos: { content_name: 'formulario_contacto' } });
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error(err);
