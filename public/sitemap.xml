@@ -37,6 +37,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.wiptool.com/contacto</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/contacto</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.wiptool.com/software-gestion-servicios-en-campo</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -61,46 +73,100 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://www.wiptool.com/software-servicios-a-domicilio</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/software-para-gruas-y-flotas</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
     <loc>https://www.wiptool.com/blog</loc>
     <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.wiptool.com/blog/gestion-servicios-en-campo</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.wiptool.com/blog/delivery</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.wiptool.com/blog/insurtech</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.wiptool.com/blog/logistica-y-transporte</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.wiptool.com/blog/optimizacion-procesos-logisticos</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.wiptool.com/blog/trazabilidad-y-ruteo</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://www.wiptool.com/blog/uberizacion</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2026-09-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/orden-de-trabajo</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/como-elegir-software-gestion-servicios-en-campo</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/control-de-personal-en-campo</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/sla-proveedores-de-asistencia</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/gestion-de-flotas-de-servicio</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/digitalizar-empresa-servicios-a-domicilio</loc>
+    <lastmod>2026-09-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.wiptool.com/blog/los-10-chicharrones-mas-complejos-de-la-gestion-de-proveedores</loc>
@@ -121,25 +187,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.wiptool.com/blog/centro-de-distribucion</loc>
-    <lastmod>2023-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.wiptool.com/blog/tendencias-logisticas-2023</loc>
-    <lastmod>2023-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.wiptool.com/blog/icommerce</loc>
-    <lastmod>2023-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.wiptool.com/blog/logistica-ecommerce</loc>
+    <loc>https://www.wiptool.com/blog/modelo-de-negocio-de-uber</loc>
     <lastmod>2023-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -151,7 +199,25 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.wiptool.com/blog/modelo-de-negocio-de-uber</loc>
+    <loc>https://www.wiptool.com/blog/logistica-ecommerce</loc>
+    <lastmod>2023-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/icommerce</loc>
+    <lastmod>2023-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/tendencias-logisticas-2023</loc>
+    <lastmod>2023-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/centro-de-distribucion</loc>
     <lastmod>2023-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -181,13 +247,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.wiptool.com/blog/que-es-uberizacion</loc>
-    <lastmod>2023-05-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.wiptool.com/blog/indicadores-de-productividad-empresarial</loc>
+    <loc>https://www.wiptool.com/blog/que-es-el-ciclo-phva</loc>
     <lastmod>2023-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -199,19 +259,19 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.wiptool.com/blog/que-es-el-ciclo-phva</loc>
+    <loc>https://www.wiptool.com/blog/indicadores-de-productividad-empresarial</loc>
     <lastmod>2023-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.wiptool.com/blog/servicio-al-cliente-que-es</loc>
+    <loc>https://www.wiptool.com/blog/que-es-uberizacion</loc>
     <lastmod>2023-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.wiptool.com/blog/logistica-delivery</loc>
+    <loc>https://www.wiptool.com/blog/que-es-la-productividad-empresarial</loc>
     <lastmod>2023-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -223,7 +283,13 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.wiptool.com/blog/que-es-la-productividad-empresarial</loc>
+    <loc>https://www.wiptool.com/blog/logistica-delivery</loc>
+    <lastmod>2023-05-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.wiptool.com/blog/servicio-al-cliente-que-es</loc>
     <lastmod>2023-05-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>

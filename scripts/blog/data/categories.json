@@ -1,6 +1,12 @@
 {
  "categories": [
   {
+   "slug": "gestion-servicios-en-campo",
+   "name": "Gestión de servicios en campo",
+   "seoTitle": "Gestión de servicios en campo: guías y buenas prácticas | WIP",
+   "seoDesc": "Guías prácticas para gestionar técnicos, proveedores y flotas en campo: órdenes de trabajo, SLA, control de personal y servicios a domicilio."
+  },
+  {
    "slug": "delivery",
    "name": "Delivery",
    "seoTitle": "Encuentra todo lo que necesitas saber acerca del Delivery aquí",

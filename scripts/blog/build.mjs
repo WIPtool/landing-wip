@@ -6,6 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { postSeo, ebookSeo, pageSeo } from './data/seo.mjs';
 import { soluciones } from './data/soluciones.mjs';
+import { articulos } from './data/articulos.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
@@ -13,7 +14,22 @@ const read = (p) => fs.readFileSync(path.join(root, p), 'utf8');
 const readJson = (p) => JSON.parse(read(p));
 
 const SITE = 'https://www.wiptool.com';
-const posts = readJson('scripts/blog/data/posts.json').sort((a, b) => (a.date < b.date ? 1 : -1));
+// Articulos propios: se les calculan los id de los h2, el indice, las palabras y la lectura.
+const slugify = (t) => t.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase().replace(/<[^>]+>/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+function normalizar(a) {
+  const toc = [];
+  const html = a.html.trim().replace(/<h2>([\s\S]*?)<\/h2>/g, (_, t) => {
+    const text = t.replace(/<[^>]+>/g, '').trim();
+    const id = slugify(text);
+    toc.push({ id, text });
+    return `<h2 id="${id}">${t}</h2>`;
+  });
+  const words = html.replace(/<aside[\s\S]*?<\/aside>/g, ' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  return { ...a, html, toc, words: String(words), readMin: String(Math.max(1, Math.round(words / 200))) };
+}
+const posts = [...readJson('scripts/blog/data/posts.json'), ...articulos.map(normalizar)]
+  .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
+if (new Set(posts.map((p) => p.slug)).size !== posts.length) throw new Error('slug de articulo repetido');
 const ebooks = readJson('scripts/blog/data/ebooks.json');
 const { categories } = readJson('scripts/blog/data/categories.json');
 const catBy = Object.fromEntries(categories.map((c) => [c.slug, c]));
@@ -194,7 +210,7 @@ function write(rel, html) {
   <section class="page-head">
     <div class="container">
       <span class="eyebrow">WIP Blog</span>
-      <h1>Blog de logística, delivery y gestión de servicios en campo</h1>
+      <h1>Blog de gestión de servicios en campo y logística</h1>
       <p>Bienvenido a nuestro blog: guías prácticas y contenido de valor para que tu empresa lleve su operación a otro nivel.</p>
     </div>
   </section>
@@ -291,7 +307,9 @@ ${content}
           </div>
           <div class="post-end__actions">
             <a class="btn btn--primary" href="/contacto" data-cta="post-demo">Agenda una demo</a>
-            <a class="btn btn--ghost" href="${toRed ? '/' : '/equipos'}" data-cta="post-producto">${toRed ? 'Conoce WIP Red' : 'Conoce WIP Equipos'}</a>
+            ${p.solucion
+    ? `<a class="btn btn--ghost" href="/${p.solucion}" data-cta="post-solucion">Conoce la solución</a>`
+    : `<a class="btn btn--ghost" href="${toRed ? '/' : '/equipos'}" data-cta="post-producto">${toRed ? 'Conoce WIP Red' : 'Conoce WIP Equipos'}</a>`}
           </div>
         </aside>
       </div>

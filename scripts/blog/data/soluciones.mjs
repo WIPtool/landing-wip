@@ -59,7 +59,7 @@ export const soluciones = [
       ['¿Cuánto tiempo toma implementar WIP?', 'La puesta en marcha es ágil comparada con plataformas FSM tradicionales, con acompañamiento en español y en tu huso horario. El tiempo exacto depende del tamaño de tu operación y de las integraciones que necesites.'],
       ['¿En qué países funciona WIP?', 'Operamos en 10 países de Latinoamérica: Colombia, México, Perú, Chile, Ecuador, Honduras, Guatemala, Panamá, Nicaragua y El Salvador.'],
     ],
-    relacionados: ['software-empresas-de-asistencia', 'software-servicio-tecnico', 'software-telecomunicaciones-y-energia'],
+    relacionados: ['software-empresas-de-asistencia', 'software-servicio-tecnico', 'software-telecomunicaciones-y-energia', 'software-servicios-a-domicilio', 'software-para-gruas-y-flotas'],
   },
 
   {
@@ -109,7 +109,7 @@ export const soluciones = [
       ['¿El asegurado tiene que descargar una app?', 'No. Con la experiencia app sin app recibe cada evento de su asistencia por WhatsApp y puede calificar al final. Si lo prefieres, también existe la app móvil del cliente.'],
       ['¿Cuánto vale WIP para una aseguradora o empresa de asistencia?', 'Para operaciones corporativas partimos de entender tus necesidades, integraciones y volumen, y armamos una cotización a la medida. Agenda una demo y te la dimensionamos.'],
     ],
-    relacionados: ['software-gestion-servicios-en-campo', 'software-servicio-tecnico', 'software-telecomunicaciones-y-energia'],
+    relacionados: ['software-para-gruas-y-flotas', 'software-servicios-a-domicilio', 'software-gestion-servicios-en-campo'],
   },
 
   {
@@ -159,7 +159,7 @@ export const soluciones = [
       ['¿Puedo trabajar también con contratistas externos?', 'Sí. Si parte de tus instalaciones las hacen contratistas o proveedores externos, WIP Red te permite coordinarlos con la misma trazabilidad que a tu equipo propio.'],
       ['¿Qué tan rápido lo tengo funcionando?', 'En días, no en semanas. La implementación, la configuración de flujos y la capacitación de tu equipo están incluidas en los planes de WIP Equipos.'],
     ],
-    relacionados: ['software-gestion-servicios-en-campo', 'software-telecomunicaciones-y-energia', 'software-empresas-de-asistencia'],
+    relacionados: ['software-servicios-a-domicilio', 'software-telecomunicaciones-y-energia', 'software-gestion-servicios-en-campo'],
   },
 
   {
@@ -210,5 +210,105 @@ export const soluciones = [
       ['¿Qué soporte ofrece WIP?', 'Hacemos onboarding y capacitamos a tu equipo. Tienes soporte operativo de lunes a viernes de 8:00 a.m. a 5:00 p.m. (hora Colombia) y soporte técnico 24/7.'],
     ],
     relacionados: ['software-gestion-servicios-en-campo', 'software-servicio-tecnico', 'software-empresas-de-asistencia'],
+  },
+
+  {
+    slug: 'software-servicios-a-domicilio',
+    nav: 'Servicios a domicilio',
+    title: 'Software para empresas de servicios a domicilio | WIP',
+    desc: 'Coordina a los técnicos y profesionales que atienden a domicilio (hogar, plomería, médicos o veterinarios) con seguimiento en vivo y avisos por WhatsApp.',
+    eyebrow: 'Hogar, salud y mascotas a domicilio',
+    h1: 'Software para empresas de servicios a domicilio',
+    lead: 'Si tu empresa atiende en la casa o en el sitio del cliente, WIP ordena cada visita: quién va, cuándo llega, qué hizo y cuánto vale. Tu cliente sigue el servicio por WhatsApp, sin llamar a preguntar.',
+    cta2: { href: '/equipos', text: 'Ver planes y precios' },
+    dolor: {
+      h2: 'Atender a domicilio con Excel y WhatsApp tiene un costo',
+      intro: 'En un servicio a domicilio el cliente espera en su casa. Cada minuto de incertidumbre se convierte en una llamada o en un reclamo.',
+      items: [
+        ['"¿A qué hora llega?"', 'El cliente no sabe quién va ni cuándo llega, y la operación tampoco tiene cómo responderle con datos.'],
+        ['La agenda vive en chats', 'Direcciones, horarios y novedades repartidos entre conversaciones que nadie puede auditar después.'],
+        ['El profesional no reporta', 'No sabes si ya llegó, si terminó o si hubo una novedad hasta que alguien pregunta.'],
+        ['Cobros hechos a mano', 'Recargos por horario, distancia o tipo de servicio calculados en una hoja de cálculo, con errores.'],
+      ],
+    },
+    funciones: {
+      h2: 'Cómo WIP ordena tus servicios a domicilio',
+      intro: 'Una sola herramienta para la oficina, para el profesional que va a la casa del cliente y para el cliente que lo espera.',
+      items: [
+        ['Cada visita con hora y responsable', 'Cada servicio se crea con los datos del cliente, la dirección, la hora programada y el formulario del tipo de servicio.'],
+        ['Asignación por cercanía y disponibilidad', 'WIP asigna al profesional más cercano y disponible, o según prioridad y tarifa, de forma automática o manual.'],
+        ['Seguimiento en vivo', 'Ves en el mapa quién va en camino, quién está disponible y quién ya está donde el cliente.'],
+        ['Tu cliente informado por WhatsApp', 'Recibe quién lo atiende, cuándo llega y puede chatear y calificar el servicio, sin descargar ninguna app.'],
+        ['Formularios por tipo de servicio', 'Cada servicio tiene su propio formulario y sus estados: no es lo mismo una plomería que una visita veterinaria.'],
+        ['Evidencias y firma del cliente', 'Fotos antes y después, documentos y la firma del cliente, cargados desde la app y ligados al servicio.'],
+        ['Tarifas automáticas', 'El valor se calcula con tus reglas por cliente, tipo de caso, distancia u horario, incluidos los recargos nocturnos.'],
+        ['Portal para clientes empresa', 'Si atiendes a aseguradoras o empresas, cada una puede tener su perfil para solicitar servicios y seguirlos en tiempo real.'],
+      ],
+    },
+    pasos: null,
+    servicios: {
+      h2: 'Servicios a domicilio que se gestionan con WIP',
+      intro: 'Hogar, salud, mascotas y mantenimiento: cada tipo de servicio con sus propios flujos, formularios y tarifas.',
+      items: ['Plomería', 'Electricistas', 'Cerrajería', 'Vidriería', 'Limpieza a domicilio', 'Jardinería', 'Control de plagas', 'Aire acondicionado', 'Reparación de electrodomésticos', 'Médicos a domicilio', 'Enfermería a domicilio', 'Fisioterapia a domicilio', 'Toma de muestras', 'Veterinarios a domicilio', 'Peluquería a domicilio', 'Lavado de vehículos a domicilio'],
+    },
+    faq: [
+      ['¿Qué es un software para servicios a domicilio?', 'Es una herramienta para coordinar las visitas que tu empresa hace en la casa o el sitio del cliente: agenda cada servicio, lo asigna al profesional adecuado, muestra su ubicación en tiempo real, informa al cliente y guarda la evidencia y el valor de cada visita.'],
+      ['¿WIP sirve para médicos, enfermeras o veterinarios a domicilio?', 'Sí, para la operación de la visita: asignación, seguimiento, avisos al paciente o al dueño de la mascota, evidencias y tarifas. WIP no es una historia clínica electrónica; si la necesitas, WIP puede convivir con tu sistema clínico.'],
+      ['¿Mis clientes tienen que descargar una app?', 'No. Con la experiencia app sin app reciben cada evento del servicio por WhatsApp y pueden calificar al final.'],
+      ['¿Sirve si trabajo con profesionales independientes?', 'Sí. Puedes gestionar a tu equipo propio con WIP Equipos o coordinar una red de proveedores y profesionales externos con WIP Red, con la misma trazabilidad.'],
+      ['¿Cuánto cuesta?', 'WIP Equipos funciona con planes mensuales desde 200 servicios al mes, sin cláusulas de permanencia y con la implementación incluida. Para operaciones más grandes armamos un plan a la medida.'],
+      ['¿Qué tan rápido lo tengo funcionando?', 'En días, no en semanas. Te acompañamos en la configuración de tus tipos de servicio, formularios y tarifas.'],
+    ],
+    relacionados: ['software-servicio-tecnico', 'software-empresas-de-asistencia', 'software-gestion-servicios-en-campo'],
+  },
+
+  {
+    slug: 'software-para-gruas-y-flotas',
+    nav: 'Grúas y flotas de servicio',
+    title: 'Software para empresas de grúas y flotas de servicio | WIP',
+    desc: 'Despacha grúas, carros taller y unidades de servicio al caso más cercano, sigue tu flota en vivo y cierra cada servicio con evidencia y tarifa calculada.',
+    eyebrow: 'Grúas, carro taller y unidades de servicio',
+    h1: 'Software para empresas de grúas y flotas de servicio',
+    lead: 'Para empresas que operan grúas, carros taller o unidades de servicio en la calle: asigna cada caso a la unidad disponible más cercana, sigue a tu flota en el mapa y cierra cada servicio con evidencia y tarifa calculada.',
+    cta2: { href: '/equipos', text: 'Ver planes para tu flota' },
+    dolor: {
+      h2: 'Despachar por radio y WhatsApp ya no alcanza',
+      intro: 'Cuando la flota crece y los clientes corporativos exigen tiempos de llegada, el despacho manual se vuelve el cuello de botella.',
+      items: [
+        ['No sabes qué unidad está libre', 'Para despachar un caso hay que llamar a cada conductor y preguntar dónde está.'],
+        ['Tiempos de llegada sin medir', 'Tus clientes, aseguradoras y empresas de asistencia, te miden el SLA, pero tú no tienes el dato mientras el servicio está en curso.'],
+        ['Liquidación a mano', 'Kilómetros, recargos nocturnos y valores por cliente calculados al final del mes, caso por caso.'],
+        ['Evidencia del vehículo incompleta', 'Fotos del estado del vehículo antes y después del servicio que no llegan o se pierden en el celular del conductor.'],
+      ],
+    },
+    funciones: {
+      h2: 'Cómo WIP gestiona tu flota de servicio',
+      intro: 'WIP es un software de gestión de servicios en campo: coordina a los conductores y operadores que prestan cada servicio, desde el despacho hasta el cierre.',
+      items: [
+        ['Despacho a la unidad más cercana', 'WIP asigna cada caso por cercanía, disponibilidad, prioridad o tarifa por convenio, de forma automática o manual.'],
+        ['Tu flota en el mapa', 'La ubicación llega desde la app de WIP en el celular del conductor: ves quién está disponible, quién va en camino y quién ya está con el cliente.'],
+        ['Tiempos y SLA en vivo', 'Hora de asignación, de llegada y de cierre medidas automáticamente, con semáforo y alertas antes de incumplir.'],
+        ['Tarifas por distancia y horario', 'El valor de cada servicio se calcula con tus reglas: tarifa base, kilómetros recorridos, recargo nocturno y condiciones por cliente.'],
+        ['Evidencias antes y después', 'Fotos del vehículo, documentos y firma del cliente cargados desde el sitio y ligados al servicio.'],
+        ['Tu cliente informado por WhatsApp', 'La persona atendida sabe quién va, cuándo llega y puede calificar el servicio, sin descargar nada.'],
+        ['Portal para aseguradoras y empresas', 'Tus clientes corporativos pueden solicitar servicios desde su propio perfil y seguir cada caso en tiempo real.'],
+        ['Reportes para tus clientes', 'Servicios, tiempos y cumplimiento por cliente, ciudad o fecha, listos para exportar y sustentar tu operación.'],
+      ],
+    },
+    pasos: null,
+    servicios: {
+      h2: 'Servicios de flota que se coordinan con WIP',
+      intro: 'Asistencia vial, movilidad y transporte: cada tipo de servicio con sus propios flujos y tarifas.',
+      items: ['Grúas', 'Carro taller', 'Asistencia mecánica', 'Cambio de llanta', 'Paso de corriente', 'Suministro de gasolina', 'Cerrajería vehicular', 'Conductor elegido', 'Conductor profesional', 'Desplazamiento', 'Transporte de personas', 'Mudanzas'],
+    },
+    faq: [
+      ['¿WIP presta servicios de grúa?', 'No. WIP es un software de gestión para empresas que prestan o coordinan servicios de grúa y asistencia vial. Si necesitas una grúa, comunícate con tu aseguradora o con tu empresa de asistencia.'],
+      ['¿Necesito instalar un GPS en cada vehículo?', 'No necesariamente. La ubicación en tiempo real se toma de la app de WIP en el celular del conductor u operador mientras presta el servicio.'],
+      ['¿WIP es un software de telemetría o de mantenimiento de flotas?', 'No. WIP no mide consumo de combustible ni programa el mantenimiento de los vehículos. Se encarga de los servicios que presta tu flota: despacho, seguimiento, tiempos, evidencias, tarifas y experiencia del cliente.'],
+      ['¿Puedo trabajar con aseguradoras y empresas de asistencia desde WIP?', 'Sí. Cada cliente corporativo puede tener su propio perfil para solicitar servicios y seguirlos en tiempo real, y tú puedes sacar reportes de tiempos y cumplimiento por cliente.'],
+      ['¿Cómo se calculan las tarifas de cada servicio?', 'Con las reglas que tú defines: por cliente, por tipo de caso, por distancia o por horario. WIP calcula el valor de cada servicio automáticamente al cerrarlo.'],
+      ['¿Cuánto cuesta WIP para una empresa de grúas?', 'WIP Equipos funciona con planes mensuales desde 200 servicios al mes, sin cláusulas de permanencia. Si manejas más volumen, armamos un plan a la medida con un asesor WIP.'],
+    ],
+    relacionados: ['software-empresas-de-asistencia', 'software-servicios-a-domicilio', 'software-gestion-servicios-en-campo'],
   },
 ];

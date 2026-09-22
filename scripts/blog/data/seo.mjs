@@ -57,8 +57,8 @@ export const ebookSeo = {
 
 export const pageSeo = {
   blog: {
-    title: 'Blog de WIP: logística, delivery y gestión de servicios',
-    desc: 'Guías prácticas sobre logística, delivery, trazabilidad, uberización y productividad para optimizar tus procesos y la gestión de tus servicios.',
+    title: 'Blog de WIP: gestión de servicios en campo y logística',
+    desc: 'Guías prácticas para gestionar servicios en campo: órdenes de trabajo, técnicos, proveedores de asistencia, flotas de servicio, trazabilidad y logística.',
   },
   ebook: {
     title: 'Ebooks gratuitos de logística y gestión de servicios | WIP',
