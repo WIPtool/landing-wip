@@ -381,6 +381,498 @@ a{text-decoration:none;color:inherit}
 .ph--light .ph__label{color:#5b6172}
 
 /* ============================================================
+   Scroll reveal
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.16,.84,.44,1),transform .9s cubic-bezier(.16,.84,.44,1)}
+.reveal.is-visible{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+
+/* ============================================================
+   Responsive (primera pantalla)
+   ============================================================ */
+@media (max-width:900px){
+  .hero__inner{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:720px){
+  .nav__links,.nav__cta .btn--ghost{display:none}
+}
+</style>
+<style id="trends-2026">
+/* ===== Tendencias 2026 (ADITIVO): glassmorphism light + motion narrative ===== */
+/* El color base pasa a la capa de blobs para que el vidrio los revele */
+body{background:transparent}
+.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--surface)}
+.bg-blobs span{position:absolute;display:block;border-radius:50%;filter:blur(90px);will-change:transform}
+.bg-blobs .b1{width:520px;height:520px;background:#dbff57;top:-130px;left:-90px;opacity:.22}
+.bg-blobs .b2{width:460px;height:460px;background:#ff6c6c;top:40%;right:-150px;opacity:.15}
+.bg-blobs .b3{width:420px;height:420px;background:#dbff57;bottom:-160px;left:32%;opacity:.14}
+
+/* Utilidad glass reutilizable (receta fondo claro) */
+.glass{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 8px 30px rgba(22,29,49,.08)}
+
+/* Cards de industria (funcionalidades): vidrio + micro-interacción hover */
+.ind-card{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 8px 30px rgba(22,29,49,.07);transition:transform .35s cubic-bezier(.16,.84,.44,1),box-shadow .35s ease,border-color .35s ease,opacity .9s cubic-bezier(.16,.84,.44,1)}
+.ind-card:hover{transform:translateY(-6px);border-color:#dbff57;box-shadow:0 20px 44px rgba(22,29,49,.12)}
+
+/* Botón lima: glow lima sutil (potencia el hover existente) */
+.btn--primary{transition:transform .2s ease,box-shadow .25s ease,filter .2s ease}
+.btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(219,255,87,.6)}
+
+/* CTA secundario (outline): toque glass al hover */
+.btn--outline{transition:transform .2s ease,box-shadow .25s ease,background .25s ease,border-color .2s ease}
+.btn--outline:hover{transform:translateY(-2px);background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(22,29,49,.08)}
+
+/* Motion narrative: escalonado de las cards al entrar (usa tu clase is-visible) */
+.ind-grid > .reveal:nth-child(1){transition-delay:0s}
+.ind-grid > .reveal:nth-child(2){transition-delay:.12s}
+.ind-grid > .reveal:nth-child(3){transition-delay:.24s}
+.ind-grid > .reveal:nth-child(4){transition-delay:.36s}
+.ind-grid > .reveal:nth-child(5){transition-delay:.48s}
+
+/* Rendimiento móvil: sin blur pesado en pantallas chicas */
+@media(max-width:720px){
+  .ind-card{background:rgba(255,255,255,.92);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .bg-blobs span{filter:blur(70px)}
+}
+
+/* Accesibilidad: foco de teclado visible sobre vidrio */
+a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d31;outline-offset:2px;border-radius:8px}
+
+/* NO NEGOCIABLE: respetar prefers-reduced-motion */
+@media(prefers-reduced-motion:reduce){
+  .ind-card,.btn--primary,.btn--outline,.nav{transition:none!important}
+  .ind-card:hover,.btn--primary:hover,.btn--outline:hover{transform:none!important}
+  .bg-blobs span{display:none!important}
+  .ind-grid > .reveal{transition-delay:0s!important}
+}
+</style>
+<style id="hero-map">
+.hero__inner{position:relative;z-index:1}
+</style>
+<style id="nav-glass">
+/* ===== Colores del "vidrio" de la barra (estructura compartida en /shared/wip-tokens.css) ===== */
+.nav{background:transparent;border-bottom:none;box-shadow:none}
+.nav__inner{
+  background:rgba(255,255,255,.32);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 10px 34px rgba(22,29,49,.10);
+}
+/* al hacer scroll, la píldora se define un poco más (más viva) pero sigue translúcida */
+.nav.is-scrolled .nav__inner{
+  background:rgba(255,255,255,.42);
+  box-shadow:0 14px 44px rgba(22,29,49,.16);
+  border-color:rgba(255,255,255,.7);
+}
+@media(prefers-reduced-motion:reduce){ .nav__inner{transition:none} }
+</style>
+<style id="brand-logo-css">
+.brand-logo{height:26px;width:auto;display:block}
+.footer__brand .brand-logo{height:22px}
+</style>
+<style id="hero-grid-off">
+/* Se quita la cuadrícula del hero: el mapa de fondo queda solo, sin doble textura */
+.hero__grid-bg{display:none!important}
+</style>
+
+
+<style id="global-scale">
+/* ===== Reducir tamaño general de la landing (se veía muy grande en el dominio) ===== */
+html{zoom:.9}
+</style>
+<script>
+/* Mide el zoom real ANTES del primer pintado y lo deja en una variable CSS,
+   para que .hero/#nosotros/#contacto calculen su alto bien desde el primer
+   frame (evita el salto de layout que causaba ajustarlo después por JS). */
+(function(){
+  var probe=document.createElement('div');
+  probe.style.cssText='position:fixed;top:0;left:0;width:1px;height:100vh;visibility:hidden;pointer-events:none';
+  document.documentElement.appendChild(probe);
+  var renderedH=probe.getBoundingClientRect().height;
+  document.documentElement.removeChild(probe);
+  var ratio=renderedH/window.innerHeight;
+  if(ratio>0 && isFinite(ratio)){
+    document.documentElement.style.setProperty('--vh-ratio', ratio);
+  }
+})();
+</script>
+<style id="hero-copy-dapta">
+/* ============================================================
+   Hero, estilo referencia: titular en dos colores + fila de prueba
+   ============================================================ */
+/* Palabra/frase de resultado en el color de marca.
+   Uso lime-text (legible sobre fondo claro). Si más adelante pasas el
+   hero a fondo oscuro navy, cambia var(--lime-text) por var(--lime). */
+.hl-accent{color:var(--lime-text)}
+.hl-grad{background:linear-gradient(96deg,#c9ec5c 0%,var(--lime) 52%,#c9ec5c 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
+  text-shadow:-0.6px -0.6px 0 var(--navy),0.6px -0.6px 0 var(--navy),-0.6px 0.6px 0 var(--navy),0.6px 0.6px 0 var(--navy)}
+
+/* Fila de prueba (equivale al rating + velocidad de la referencia) */
+.hero__proof{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
+.hero__proof-item{display:flex;flex-direction:column;line-height:1.12}
+.hero__proof-item b{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+.hero__proof-item span{font-size:13px;color:var(--navy-soft)}
+.hero__proof-div{width:1px;height:26px;background:var(--border-line);flex-shrink:0}
+@media(max-width:420px){ .hero__proof{gap:12px} .hero__proof-div{display:none} }
+</style>
+<style id="pymes-nav-rescue">
+/* ===== Nav: colores del enlace "WIP Equipos" (estructura en /shared/wip-tokens.css) ===== */
+.nav__pymes .nav__pymes-main{color:var(--navy-soft)}
+.nav__pymes .nav__pymes-sub{color:var(--navy-faint)}
+.nav__pymes:hover .nav__pymes-main{color:var(--navy)}
+.nav__pymes:hover .nav__pymes-sub{color:var(--navy-soft)}
+@media (max-width:720px){
+  .nav__pymes .nav__pymes-main{color:var(--navy)}
+  .nav__pymes .nav__pymes-sub{color:var(--navy-soft)}
+}
+</style>
+<style id="hero-netmap-css">
+/* ============================================================
+   Hero: mapa de red, sangra a la derecha, se difumina a la izquierda + movimiento de asignación
+   ============================================================ */
+.hero__media:empty{display:none}
+
+.netmap{position:absolute;top:0;right:0;bottom:0;width:clamp(560px,60%,1020px);z-index:1;pointer-events:none;font-family:'Inter','Inter Fallback',sans-serif}
+.netmap__map{position:absolute;inset:0;
+  -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.12) 15%, #000 42%, #000 100%);
+  mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.12) 15%, #000 42%, #000 100%);}
+.netmap__map svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+
+.netmap__chip{position:absolute;display:inline-flex;align-items:center;gap:7px;font-weight:600;border-radius:999px;white-space:nowrap;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.netmap__header{top:26px;left:45%;font-size:12px;color:#161d31;padding:7px 13px 7px 8px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(22,29,49,.10)}
+.netmap__wmark{width:18px;height:18px;border-radius:5px;background:#161d31;color:#dbff57;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:-.02em}
+.netmap__live{top:26px;right:28px;font-size:11.5px;color:#eef1f4;padding:7px 13px;background:#161d31;box-shadow:0 8px 22px rgba(22,29,49,.20)}
+.netmap__live b{width:7px;height:7px;border-radius:50%;background:#dbff57;display:block;box-shadow:0 0 0 3px rgba(219,255,87,.30);animation:netLive 1.8s ease-in-out infinite}
+@keyframes netLive{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.72);opacity:.65}}
+
+.netmap__hud{position:absolute;left:42%;right:28px;bottom:26px;display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.80);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);box-shadow:0 12px 30px rgba(22,29,49,.12)}
+@media(min-width:1173px){ .netmap__hud{flex-wrap:nowrap} }
+.netmap__kpis{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.netmap__hud-live{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:700;color:#3d8b3d;flex-shrink:0;white-space:nowrap}
+.netmap__hud-live b{width:6px;height:6px;border-radius:50%;background:#3fb950;display:block;box-shadow:0 0 0 3px rgba(63,185,80,.18);animation:netLive 1.8s ease-in-out infinite}
+.netmap__kpi{text-align:center;line-height:1;flex-shrink:0}
+.netmap__kpi b{font-size:16.5px;font-weight:700;color:#161d31;display:inline-block;transition:opacity .15s ease}
+.netmap__kpi span{display:block;font-size:8.7px;color:#5b6172;margin-top:3px;white-space:nowrap}
+.netmap__kpi--good b{color:#4b7a09}
+.netmap__sep{width:1px;height:18px;background:#e6e6ea;flex-shrink:0}
+.netmap__legend{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:600;color:#3f4658;flex-shrink:0}
+.netmap__legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.netmap__legend i{width:8px;height:8px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
+
+/* --- Regla única de actores: WIP (núcleo) + parejas Proveedor (empresa) → Técnico (pin de ubicación) --- */
+.net-hub-core{fill:#161d31}
+.net-hub-ring{fill:none;stroke:#dbff57;stroke-width:1.5}
+.net-ring{fill:none;stroke:#dbff57;stroke-width:1.5;animation:netRing 3s ease-out infinite}
+.net-ring2{animation-delay:1.5s}
+@keyframes netRing{0%{r:9;opacity:.5}100%{r:50;opacity:0}}
+
+/* líneas estáticas de la red: WIP→proveedor y el salto corto proveedor→técnico, en todas las parejas */
+.net-line{stroke:rgba(22,29,49,.11);stroke-width:1;stroke-dasharray:3 5;fill:none}
+.net-line--sub{stroke:rgba(22,29,49,.16);stroke-width:1;stroke-dasharray:3 5;fill:none}
+
+/* animación completa (WIP→empresa→técnico), solo en 1-2 parejas para no recargar; el resto queda estática */
+.net-svc1{fill:#dbff57;opacity:0}
+.net-svc1--a{animation:svc1A 7s ease-in-out infinite}
+.net-svc1--d{animation:svc1D 7s ease-in-out 3s infinite;fill:#ff6c6c}
+@keyframes svc1A{0%,100%{transform:translate(440px,240px);opacity:0}4%{opacity:.85}30%{transform:translate(380px,100px);opacity:.85}34%{transform:translate(380px,100px);opacity:0}}
+@keyframes svc1D{0%,100%{transform:translate(440px,240px);opacity:0}4%{opacity:.85}30%{transform:translate(284px,293px);opacity:.85}34%{transform:translate(284px,293px);opacity:0}}
+/* acuse de recibo: la casita del proveedor hace pulse al recibir el servicio */
+.net-arrive1{fill:#dbff57;opacity:0;transform-origin:center;transform-box:fill-box}
+.net-arrive1--a{animation:svcArrive1 7s ease-in-out infinite}
+.net-arrive1--d{animation:svcArrive1 7s ease-in-out 3s infinite;fill:#ff6c6c}
+@keyframes svcArrive1{
+  0%,29%,100%{opacity:0;transform:scale(.5)}
+  32%{opacity:.55;transform:scale(1)}
+  42%{opacity:0;transform:scale(1.6)}
+}
+
+/* fase 2: solo en esas mismas 1-2 parejas, arranca justo después del pulse de la fase 1 */
+.net-svc2{fill:#dbff57;opacity:0}
+.net-svc2--a{animation:svcPhase2A 7s ease-in-out 0s infinite}
+.net-svc2--d{animation:svcPhase2D 7s ease-in-out 3s infinite;fill:#ff6c6c}
+@keyframes svcPhase2A{0%,45%,100%{transform:translate(380px,100px);opacity:0}49%{opacity:.55}62%{transform:translate(364px,63px);opacity:.55}66%{transform:translate(364px,63px);opacity:0}}
+@keyframes svcPhase2D{0%,45%,100%{transform:translate(284px,293px);opacity:0}49%{opacity:.55}62%{transform:translate(246px,306px);opacity:.55}66%{transform:translate(246px,306px);opacity:0}}
+/* el pin del técnico se enciende: servicio en ejecución, mismo color que su cadena */
+.net-arrive2{fill:#dbff57;opacity:0;transform-origin:center;transform-box:fill-box}
+.net-arrive2--a{animation:svcArrive2 7s ease-in-out 0s infinite}
+.net-arrive2--d{animation:svcArrive2 7s ease-in-out 3s infinite;fill:#ff6c6c}
+@keyframes svcArrive2{
+  0%,61%,100%{opacity:0;transform:scale(.5)}
+  64%{opacity:.5;transform:scale(1)}
+  74%{opacity:0;transform:scale(1.5)}
+}
+
+@media(max-width:1172px){
+  .netmap{position:relative;top:auto;right:auto;bottom:auto;width:auto;max-width:560px;margin:6px auto 0;aspect-ratio:16/12}
+  .netmap__map{-webkit-mask-image:radial-gradient(120% 104% at 50% 45%, #000 0%, #000 56%, transparent 92%);mask-image:radial-gradient(120% 104% at 50% 45%, #000 0%, #000 56%, transparent 92%)}
+  .netmap__header{left:14px;top:14px}
+  .netmap__live{top:14px;right:14px}
+  .netmap__hud{left:14px;right:14px;bottom:14px}
+}
+@media(max-width:520px){
+  .netmap__header{font-size:11px;padding:6px 11px 6px 7px}.netmap__wmark{width:16px;height:16px;font-size:10px}
+  .netmap__live{font-size:10.5px;padding:6px 11px}
+  .netmap__hud{padding:10px 12px;gap:8px 12px}.netmap__kpis{gap:10px;width:100%;justify-content:space-between}.netmap__kpi b{font-size:17px}
+  .netmap__legend{width:100%;justify-content:space-between;gap:8px}
+}
+@media(max-width:520px){
+  /* mobile angosto: menos parejas para que no se amontonen (queda VitalCare oculta) */
+  .net-pair--c{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .netmap__live b,.net-ring,.net-svc1,.net-svc2,.net-arrive1,.net-arrive2{animation:none!important}
+  .net-svc1,.net-svc2,.net-arrive1,.net-arrive2{opacity:0}
+}
+</style>
+</head>
+<body>
+<style id="wa-fab-css">
+.wa-fab{position:fixed;right:22px;bottom:22px;z-index:999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#161d31;text-decoration:none;padding:12px 18px 12px 14px;border-radius:40px;font-family:inherit;font-weight:700;font-size:15px;box-shadow:0 12px 34px rgba(37,211,102,.45);transition:transform .18s ease,box-shadow .18s ease;view-transition-name:wa-fab-btn}
+.wa-fab:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(37,211,102,.55);color:#161d31}
+.wa-fab svg{width:26px;height:26px;flex:none}
+.wa-fab .wa-txt{white-space:nowrap}
+@media (max-width:560px){.wa-fab .wa-txt{display:none}.wa-fab{padding:14px;border-radius:50%;right:16px;bottom:16px}}
+</style>
+<a class="wa-fab" href="https://api.whatsapp.com/send?phone=573005124111&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20WIP" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.5 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+<span class="wa-txt">¿Dudas? Escríbenos</span>
+</a>
+<div class="bg-blobs" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
+
+
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="nav__inner">
+    <div class="nav__logo"><img src="/img/wip-logo-nav-2x.png" alt="WIP" class="brand-logo" width="148" height="82"><span class="logo-sub">Red</span></div>
+    <nav class="nav__links">
+      <a href="#" class="is-active" aria-current="page">Wip Red</a>
+      <a href="/equipos" class="nav__pymes" aria-label="Wip Equipos, ¿Equipo propio en campo?">
+        <span class="nav__pymes-main">Wip Equipos</span>
+        <span class="nav__pymes-sub">¿Equipo propio en campo?</span>
+      </a>
+    </nav>
+    <div class="nav__cta">
+      <a href="#contacto" class="btn btn--primary">Hablemos</a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== HERO ===================== -->
+<script id="wip-visible-js">
+/* Corre una animación sólo mientras su sección está en pantalla y la pestaña visible:
+   evita trabajo del hilo principal (y batería) por secciones que nadie está viendo. */
+window.wipWhenVisible=function(el,start,stop){
+  if(!el) return;
+  var on=false,inView=false;
+  function sync(){
+    var should=inView && !document.hidden;
+    if(should===on) return;
+    on=should;
+    should?start():stop();
+  }
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){
+      es.forEach(function(e){ inView=e.isIntersecting; });
+      sync();
+    },{rootMargin:'120px 0px'}).observe(el);
+  } else { inView=true; }
+  document.addEventListener('visibilitychange',sync);
+  sync();
+};
+</script>
+<style id="wip-cv-css">
+/* Las secciones bajo el primer pantallazo sólo se calculan y dibujan cuando se
+   acercan a la pantalla. El alto declarado (medido en móvil) reserva su espacio
+   para que la barra de desplazamiento y los anclajes no salten. */
+@supports (content-visibility: auto) {
+  @media (prefers-reduced-motion: no-preference) {
+    #como-funciona{content-visibility:auto;contain-intrinsic-size:auto 2147px}
+    #industrias{content-visibility:auto;contain-intrinsic-size:auto 1664px}
+    #conectados{content-visibility:auto;contain-intrinsic-size:auto 1760px}
+    #resuelve{content-visibility:auto;contain-intrinsic-size:auto 717px}
+    #asignacion{content-visibility:auto;contain-intrinsic-size:auto 918px}
+    #radar{content-visibility:auto;contain-intrinsic-size:auto 818px}
+    #monitoreo{content-visibility:auto;contain-intrinsic-size:auto 1254px}
+    #scoring{content-visibility:auto;contain-intrinsic-size:auto 1187px}
+    #chats{content-visibility:auto;contain-intrinsic-size:auto 1571px}
+    #whatsapp{content-visibility:auto;contain-intrinsic-size:auto 964px}
+    #conexiones{content-visibility:auto;contain-intrinsic-size:auto 1353px}
+    #nosotros{content-visibility:auto;contain-intrinsic-size:auto 972px}
+    #testimonios{content-visibility:auto;contain-intrinsic-size:auto 944px}
+    #faq{content-visibility:auto;contain-intrinsic-size:auto 1141px}
+    #contacto{content-visibility:auto;contain-intrinsic-size:auto 1036px}
+  }
+}
+</style>
+<main>
+<section class="hero" id="plataforma">
+  <div class="hero__grid-bg"></div>
+  
+  <div class="container hero__inner">
+    <div class="hero__copy">
+      <div class="hero__group hero__group--message">
+        <span class="eyebrow">Field Service Management · +4M de servicios gestionados</span>
+        <h1 class="headline-xl" style="color:var(--navy)">Toda tu red de proveedores, bajo control y en <span class="hl-grad">tiempo real</span></h1>
+        <p class="lede" style="font-size: 19px">Coordina toda tu red de proveedores desde un solo lugar: cada servicio visible, cada SLA bajo control, todos los proveedores conectados y trazabilidad de punta a punta, a la escala que tu operación exige.</p>
+        <p class="hero__rescue">¿Gestionas tu propio equipo en campo? <a href="/equipos" class="hero__rescue-link">Conoce WIP Equipos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
+      </div>
+      <div class="hero__group hero__group--action">
+        <div class="hero__buttons">
+          <a href="#contacto" class="btn btn--primary">Agenda una demo</a>
+          <a href="#chats" class="btn btn--outline">Ver WIP en acción</a>
+        </div>
+      </div>
+      <div class="hero__proof">
+        <div class="hero__proof-item"><b>+4M</b><span>servicios gestionados</span></div>
+        <span class="hero__proof-div" aria-hidden="true"></span>
+        <div class="hero__proof-item"><b>Operamos</b><span>en LATAM</span></div>
+        <span class="hero__proof-div" aria-hidden="true"></span>
+        <div class="hero__proof-item"><b>#1 FSM</b><span>para LATAM</span></div>
+      </div>
+    </div>
+    <div class="hero__media"></div>
+  </div>
+
+  <!-- ============================================================
+       Mapa de red de proveedores: hub despachador con asignación animada
+       ============================================================ -->
+  <div class="netmap">
+    <div class="netmap__map" aria-hidden="true">
+      <svg viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="nmSh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#161d31" flood-opacity="0.16"/></filter>
+          <!-- pines de ubicación clásicos: gota con hueco central; la punta (0,0) ancla la coordenada -->
+          <g id="pinL"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#dbff57" stroke="#161d31" stroke-width="1.1"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
+          <g id="pinS"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#ff6c6c"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
+          <g id="pinN"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#161d31"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
+          <!-- proveedor (empresa): ícono pequeño y monocromo, distinto de los puntos de estado -->
+          <g id="pinCo" filter="url(#nmSh)"><circle r="7.5" fill="#ffffff" stroke="rgba(22,29,49,.22)"/><path d="M-3.1,1.6 V-1.1 L0,-3.2 L3.1,-1.1 V1.6 Z" fill="none" stroke="#161d31" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/></g>
+        </defs>
+
+        <!-- Basemap: estilo mapa vectorial de líneas finas (referencia): blanco, malla densa de calles curvas, sin manzanas de color -->
+        <rect width="640" height="520" fill="#ffffff"/>
+        <!-- calles: red fina y orgánica que se cruza en todas direcciones -->
+        <g fill="none" stroke="rgba(22,29,49,.14)" stroke-width="1" stroke-linecap="round">
+          <path d="M40 -20 C 60 60, 20 140, 55 220 C 85 290, 30 360, 60 540"/>
+          <path d="M110 -20 C 130 70, 95 150, 120 230 C 145 300, 100 380, 125 540"/>
+          <path d="M180 -20 C 195 60, 220 130, 190 210 C 165 280, 200 350, 180 540"/>
+          <path d="M250 -20 C 265 70, 235 150, 260 230 C 285 300, 245 380, 265 540"/>
+          <path d="M320 -20 C 335 60, 300 140, 330 220 C 355 290, 310 360, 335 540"/>
+          <path d="M390 -20 C 405 70, 375 150, 400 230 C 420 300, 385 380, 405 540"/>
+          <path d="M460 -20 C 475 60, 445 140, 470 220 C 495 290, 455 360, 475 540"/>
+          <path d="M530 -20 C 545 70, 515 150, 540 230 C 560 300, 525 380, 545 540"/>
+          <path d="M600 -20 C 610 70, 585 150, 605 230 C 620 300, 590 380, 605 540"/>
+          <path d="M-20 40 C 60 55, 140 25, 220 45 C 300 65, 380 30, 460 50 C 520 65, 580 40, 660 55"/>
+          <path d="M-20 110 C 70 95, 150 130, 230 105 C 310 80, 390 120, 470 100 C 540 85, 600 115, 660 100"/>
+          <path d="M-20 185 C 60 200, 150 170, 230 195 C 310 215, 390 180, 470 200 C 540 215, 600 185, 660 200"/>
+          <path d="M-20 260 C 70 245, 150 280, 230 255 C 310 230, 390 270, 470 250 C 540 235, 600 265, 660 250"/>
+          <path d="M-20 335 C 60 350, 150 320, 230 345 C 310 365, 390 330, 470 350 C 540 365, 600 335, 660 350"/>
+          <path d="M-20 410 C 70 395, 150 430, 230 405 C 310 380, 390 420, 470 400 C 540 385, 600 415, 660 400"/>
+          <path d="M-20 480 C 60 495, 150 465, 230 490 C 310 510, 390 475, 470 495 C 540 510, 600 480, 660 495"/>
+        </g>
+        <!-- avenidas: un par de trazos algo más marcados, dan jerarquía sobre la malla fina -->
+        <g fill="none" stroke="rgba(22,29,49,.26)" stroke-linecap="round">
+          <path d="M-20 150 C 100 170, 220 130, 340 165 C 460 195, 560 150, 660 175" stroke-width="1.8"/>
+          <path d="M230 -20 C 250 100, 200 200, 240 300 C 275 390, 220 470, 250 540" stroke-width="1.8"/>
+        </g>
+
+        <!-- Regla única: solo existen parejas Proveedor (empresa) → Técnico (pin de ubicación). Nada suelto. -->
+        <g class="net-pair net-pair--a">
+          <path class="net-line" d="M440,240 L380,100"/>
+          <path class="net-line--sub" d="M380,100 L364,63"/>
+          <g filter="url(#nmSh)"><g transform="translate(380,100)"><rect x="12" y="-10" width="44" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">GrúaYa</text></g></g>
+          <use href="#pinCo" transform="translate(380,100)"/>
+          <use href="#pinL" transform="translate(364,63)"/>
+        </g>
+        <g class="net-pair net-pair--b">
+          <path class="net-line" d="M440,240 L570,212"/>
+          <path class="net-line--sub" d="M570,212 L570,252"/>
+          <g filter="url(#nmSh)"><g transform="translate(570,212)"><rect x="12" y="-10" width="58" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">FixHome Sas</text></g></g>
+          <use href="#pinCo" transform="translate(570,212)"/>
+          <use href="#pinN" transform="translate(570,252)"/>
+        </g>
+        <g class="net-pair net-pair--c">
+          <path class="net-line" d="M440,240 L405,383"/>
+          <path class="net-line--sub" d="M405,383 L396,422"/>
+          <g filter="url(#nmSh)"><g transform="translate(405,383)"><rect x="12" y="-10" width="51" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">VitalCare</text></g></g>
+          <use href="#pinCo" transform="translate(405,383)"/>
+          <use href="#pinL" transform="translate(396,422)"/>
+        </g>
+        <g class="net-pair net-pair--d">
+          <path class="net-line" d="M440,240 L284,293"/>
+          <path class="net-line--sub" d="M284,293 L246,306"/>
+          <g filter="url(#nmSh)"><g transform="translate(284,293)"><rect x="12" y="-10" width="48" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">FibraMax</text></g></g>
+          <use href="#pinCo" transform="translate(284,293)"/>
+          <use href="#pinS" transform="translate(246,306)"/>
+        </g>
+
+        <g class="net-anim" aria-hidden="true">
+          <g class="net-hub" transform="translate(440,240)">
+            <circle class="net-ring" cx="0" cy="0" r="9"/>
+            <circle class="net-ring net-ring2" cx="0" cy="0" r="9"/>
+            <circle class="net-hub-core" cx="0" cy="0" r="9"/>
+            <circle class="net-hub-ring" cx="0" cy="0" r="9"/>
+            <text x="0" y="2.6" text-anchor="middle" font-family="Inter,Arial" font-size="7" font-weight="800" fill="#dbff57">W</text>
+          </g>
+          <!-- solo 2 parejas completas animan (GrúaYa en lima, FibraMax en salmón); el resto queda estática -->
+          <circle class="net-svc1 net-svc1--a" r="2.6"/>
+          <circle class="net-arrive1 net-arrive1--a" cx="380" cy="100" r="9"/>
+          <circle class="net-svc1 net-svc1--d" r="2.6"/>
+          <circle class="net-arrive1 net-arrive1--d" cx="284" cy="293" r="9"/>
+          <circle class="net-svc2 net-svc2--a" r="2"/>
+          <circle class="net-arrive2 net-arrive2--a" cx="364" cy="63" r="6"/>
+          <circle class="net-svc2 net-svc2--d" r="2"/>
+          <circle class="net-arrive2 net-arrive2--d" cx="246" cy="306" r="6"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="netmap__chip netmap__live"><b></b>En vivo</div>
+
+    <div class="netmap__hud">
+      <div class="netmap__kpis">
+        <span class="netmap__hud-live"><b></b>En vivo</span>
+        <div class="netmap__kpi"><b id="nm-kpi-1">1500</b><span>servicios hoy</span></div>
+        <span class="netmap__sep"></span>
+        <div class="netmap__kpi"><b id="nm-kpi-2">750</b><span>en curso</span></div>
+        <span class="netmap__sep"></span>
+        <div class="netmap__kpi netmap__kpi--good"><b id="nm-kpi-3">98%</b><span>SLA cumplido</span></div>
+      </div>
+      <div class="netmap__legend">
+        <span><i style="background:#dbff57"></i>Disponible</span>
+        <span><i style="background:#ff6c6c"></i>En camino</span>
+        <span><i style="background:#161d31"></i>Con cliente</span>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var a=document.getElementById('nm-kpi-1'),b=document.getElementById('nm-kpi-2'),c=document.getElementById('nm-kpi-3');
+    if(!a||!b||!c)return;
+    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+    function set(el,v){el.style.opacity='0';setTimeout(function(){el.textContent=v;el.style.opacity='1';},150);}
+    var toggled=false,t=null;
+    wipWhenVisible(document.getElementById('nosotros'),function(){
+      t=setInterval(function(){
+        toggled=!toggled;
+        set(a,toggled?'1512':'1500');
+        set(b,toggled?'742':'750');
+        set(c,toggled?'97%':'98%');
+      },3500);
+    },function(){ clearInterval(t); });
+  })();
+  </script>
+</section>
+
+<!-- CSS de las secciones interiores: se aplica despues de pintar la primera
+     pantalla, asi el navegador no espera 60 KB de reglas que aun no ve.
+     Va justo aqui, antes de cualquier seccion interior, para que el orden de
+     la cascada sea el mismo que cuando estaba todo en el <head>. -->
+<style id="wip-css-secciones">
+/* ============================================================
    SPLIT (texto + imagen alternados)
    ============================================================ */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
@@ -672,16 +1164,6 @@ a{text-decoration:none;color:inherit}
   #contacto .contact-calendly{text-align:center}
   #contacto .contacto-form-title{text-align:center}
   #contacto .contact-trust{justify-content:center;margin-left:0}
-}
-
-/* ============================================================
-   Scroll reveal
-   ============================================================ */
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.16,.84,.44,1),transform .9s cubic-bezier(.16,.84,.44,1)}
-.reveal.is-visible{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){
-  .reveal{opacity:1;transform:none;transition:none}
-  html{scroll-behavior:auto}
 }
 
 /* ============================================================
@@ -1316,22 +1798,19 @@ a{text-decoration:none;color:inherit}
   .ce-col{max-width:none}
 }
 
-/* ============================================================
-   Responsive
-   ============================================================ */
+
+/* responsive de las secciones interiores */
 @media (max-width:900px){
-  .hero__inner,.split,.cards-2,.cta__grid,.footer__grid{grid-template-columns:1fr}
+  .split,.cards-2,.cta__grid,.footer__grid{grid-template-columns:1fr}
   .ind-grid{grid-template-columns:1fr 1fr}
   .ind-card,.ind-card:nth-child(4),.ind-card:nth-child(5){grid-column:auto}
   .forbes__cards{grid-template-columns:1fr}
   .split--reverse .split__media{order:0}
-  .hero__inner{gap:40px}
   .footer__grid{gap:32px}
   .footer__brand{max-width:none}
   .footer__col--social{grid-column:auto}
 }
 @media (max-width:720px){
-  .nav__links,.nav__cta .btn--ghost{display:none}
   .ind-grid{grid-template-columns:1fr}
   .contact-form{grid-template-columns:1fr}
   .forbes-card{flex-direction:column;align-items:flex-start}
@@ -1340,57 +1819,8 @@ a{text-decoration:none;color:inherit}
   .footer__col--social{grid-column:auto}
   .footer__bottom{flex-direction:column;align-items:flex-start}
 }
-</style>
-<style id="trends-2026">
-/* ===== Tendencias 2026 (ADITIVO): glassmorphism light + motion narrative ===== */
-/* El color base pasa a la capa de blobs para que el vidrio los revele */
-body{background:transparent}
-.bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none;background:var(--surface)}
-.bg-blobs span{position:absolute;display:block;border-radius:50%;filter:blur(90px);will-change:transform}
-.bg-blobs .b1{width:520px;height:520px;background:#dbff57;top:-130px;left:-90px;opacity:.22}
-.bg-blobs .b2{width:460px;height:460px;background:#ff6c6c;top:40%;right:-150px;opacity:.15}
-.bg-blobs .b3{width:420px;height:420px;background:#dbff57;bottom:-160px;left:32%;opacity:.14}
 
-/* Utilidad glass reutilizable (receta fondo claro) */
-.glass{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 8px 30px rgba(22,29,49,.08)}
-
-/* Cards de industria (funcionalidades): vidrio + micro-interacción hover */
-.ind-card{background:rgba(255,255,255,.6);border:1px solid rgba(255,255,255,.8);-webkit-backdrop-filter:blur(16px) saturate(140%);backdrop-filter:blur(16px) saturate(140%);box-shadow:0 8px 30px rgba(22,29,49,.07);transition:transform .35s cubic-bezier(.16,.84,.44,1),box-shadow .35s ease,border-color .35s ease,opacity .9s cubic-bezier(.16,.84,.44,1)}
-.ind-card:hover{transform:translateY(-6px);border-color:#dbff57;box-shadow:0 20px 44px rgba(22,29,49,.12)}
-
-/* Botón lima: glow lima sutil (potencia el hover existente) */
-.btn--primary{transition:transform .2s ease,box-shadow .25s ease,filter .2s ease}
-.btn--primary:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(219,255,87,.6)}
-
-/* CTA secundario (outline): toque glass al hover */
-.btn--outline{transition:transform .2s ease,box-shadow .25s ease,background .25s ease,border-color .2s ease}
-.btn--outline:hover{transform:translateY(-2px);background:rgba(255,255,255,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 8px 24px rgba(22,29,49,.08)}
-
-/* Motion narrative: escalonado de las cards al entrar (usa tu clase is-visible) */
-.ind-grid > .reveal:nth-child(1){transition-delay:0s}
-.ind-grid > .reveal:nth-child(2){transition-delay:.12s}
-.ind-grid > .reveal:nth-child(3){transition-delay:.24s}
-.ind-grid > .reveal:nth-child(4){transition-delay:.36s}
-.ind-grid > .reveal:nth-child(5){transition-delay:.48s}
-
-/* Rendimiento móvil: sin blur pesado en pantallas chicas */
-@media(max-width:720px){
-  .ind-card{background:rgba(255,255,255,.92);-webkit-backdrop-filter:none;backdrop-filter:none}
-  .bg-blobs span{filter:blur(70px)}
-}
-
-/* Accesibilidad: foco de teclado visible sobre vidrio */
-a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d31;outline-offset:2px;border-radius:8px}
-
-/* NO NEGOCIABLE: respetar prefers-reduced-motion */
-@media(prefers-reduced-motion:reduce){
-  .ind-card,.btn--primary,.btn--outline,.nav{transition:none!important}
-  .ind-card:hover,.btn--primary:hover,.btn--outline:hover{transform:none!important}
-  .bg-blobs span{display:none!important}
-  .ind-grid > .reveal{transition-delay:0s!important}
-}
-</style>
-<style id="pyme-depth">
+/* pyme-depth */
 /* ===== Franja Pymes: profundidad aditiva (gradiente + textura + blob) ===== */
 .pyme-strip{
   background:linear-gradient(120deg,#e6ff72 0%,#dbff57 46%,#c6ee3c 100%);
@@ -1416,154 +1846,21 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d3
 @media(max-width:720px){
   .pyme-strip::after{width:320px;height:320px;right:-120px;top:-130px}
 }
-</style>
-<style id="hero-map">
-.hero__inner{position:relative;z-index:1}
-</style>
-<style id="nav-glass">
-/* ===== Colores del "vidrio" de la barra (estructura compartida en /shared/wip-tokens.css) ===== */
-.nav{background:transparent;border-bottom:none;box-shadow:none}
-.nav__inner{
-  background:rgba(255,255,255,.32);
-  border:1px solid rgba(255,255,255,.55);
-  box-shadow:0 10px 34px rgba(22,29,49,.10);
-}
-/* al hacer scroll, la píldora se define un poco más (más viva) pero sigue translúcida */
-.nav.is-scrolled .nav__inner{
-  background:rgba(255,255,255,.42);
-  box-shadow:0 14px 44px rgba(22,29,49,.16);
-  border-color:rgba(255,255,255,.7);
-}
-@media(prefers-reduced-motion:reduce){ .nav__inner{transition:none} }
-</style>
-<style id="hero-shot">
-/* ===== Central de monitoreo (visual del hero) ===== */
-.hero__media .shot{background:#eef1f4}
-.mon{position:relative;font-family:'Inter','Inter Fallback',sans-serif}
-.mon__bar{display:flex;align-items:center;gap:12px;padding:11px 14px;background:#fff;border-bottom:1px solid var(--border-line)}
-.mon__dots{display:flex;gap:6px}
-.mon__dots i{width:10px;height:10px;border-radius:50%;background:#e2e5ea;display:block}
-.mon__dots i:nth-child(1){background:#ff6c6c}.mon__dots i:nth-child(2){background:#ffd166}.mon__dots i:nth-child(3){background:#a9c93f}
-.mon__title{font-size:12.5px;font-weight:600;color:var(--navy)}
-.mon__live{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#3d8b3d}
-.mon__live b{width:7px;height:7px;border-radius:50%;background:#3fb950;display:block;box-shadow:0 0 0 3px rgba(63,185,80,.18)}
-.mon__map{position:relative;aspect-ratio:16/11;overflow:hidden}
-.mon__map>svg{position:absolute;inset:0;width:100%;height:100%}
-.mon__stats{position:absolute;top:12px;right:12px;display:flex;align-items:center;gap:10px;padding:8px 13px;border-radius:12px;background:rgba(255,255,255,.72);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.8);box-shadow:0 8px 24px rgba(22,29,49,.10)}
-.mon__stats div{text-align:center;line-height:1}
-.mon__stats b{font-size:15px;font-weight:700;color:var(--navy)}
-.mon__stats span{display:block;font-size:9.5px;color:var(--on-surface-variant);margin-top:3px}
-.mon__stats>i{width:1px;height:20px;background:var(--border-line);display:block}
-.mon__card{position:absolute;display:flex;align-items:center;gap:9px;padding:9px 11px;border-radius:13px;max-width:74%;background:rgba(255,255,255,.82);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);box-shadow:0 10px 30px rgba(22,29,49,.14)}
-.mon__card--go{left:12px;bottom:56px}
-.mon__card--done{left:12px;bottom:12px}
-.mon__ic{width:30px;height:30px;border-radius:9px;flex-shrink:0;background:var(--navy)}
-.mon__card--go .mon__ic{background:#a9c93f}
-.mon__card--done .mon__ic{background:#3fb950}
-.mon__txt b{font-size:12.5px;font-weight:600;color:var(--navy);display:block;line-height:1.2}
-.mon__txt small{font-size:10.5px;color:var(--on-surface-variant)}
-.mon__badge{margin-left:auto;font-size:9.5px;font-weight:700;padding:4px 9px;border-radius:999px;white-space:nowrap;background:#eef1f3;color:var(--navy)}
-.mon__badge--go{background:#dbff57;color:var(--navy)}
-.mon__badge--done{background:#dcf6dc;color:#2f7d32}
-@media(max-width:520px){.mon__stats{padding:6px 9px;gap:7px}.mon__card{max-width:82%}}
-@media(prefers-reduced-motion:reduce){.mon__map svg animate{display:none}}
-</style>
-<style id="hero-board">
-/* ===== Tablero de órdenes (visual hero, versión light) ===== */
-.hero__media .shot .mon{background:#fbfcfd}
-.mon__panel{padding:16px 16px 18px}
-.mon__kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
-.mon__kpi{background:#f4f6f8;border:1px solid var(--border-line);border-radius:12px;padding:12px 10px;text-align:center}
-.mon__kpi b{display:block;font-size:22px;font-weight:700;color:var(--navy);line-height:1}
-.mon__kpi span{display:block;font-size:10.5px;color:var(--on-surface-variant);margin-top:5px}
-.mon__kpi--good{background:#f2fbe3;border-color:#dcefb6}
-.mon__kpi--good b{color:#4b7a09}
-.mon__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px}
-.mon__row{display:flex;align-items:center;gap:11px;padding:11px 12px;background:#fff;border:1px solid var(--border-line);border-radius:13px;box-shadow:0 4px 14px rgba(22,29,49,.04)}
-.mon__ava{width:34px;height:34px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;font-size:12px;font-weight:700}
-.mon__info{flex:1;min-width:0}
-.mon__info b{display:block;font-size:13px;font-weight:600;color:var(--navy);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mon__info small{font-size:11px;color:var(--on-surface-variant)}
-.mon__st{flex-shrink:0;font-size:10.5px;font-weight:700;padding:5px 11px;border-radius:999px;white-space:nowrap}
-.mon__st--go{background:#dbff57;color:var(--navy)}
-.mon__st--assign{background:#eef1f4;color:var(--navy)}
-.mon__st--done{background:#dcf6dc;color:#2f7d32}
-.mon__st--risk{background:#ffe1e1;color:#c33}
-@media(max-width:520px){.mon__kpi b{font-size:19px}.mon__info b{font-size:12px}}
-</style>
-<style id="flags-small">
+
+
+/* flags-small */
 .countries .flag{width:40px;height:40px}
 .countries__row{gap:clamp(20px,3.6vw,46px);margin-top:24px}
 .country{gap:0}
 @media(max-width:520px){ .countries .flag{width:34px;height:34px} }
-</style>
-<style id="radar-map-bg">
+
+
+/* radar-map-bg */
 .radar-map{background:#e9ecef url("/img/radar-map-2d4a9e02.jpg") center/cover no-repeat!important;background-image:image-set(url("/img/radar-map-2d4a9e02.webp") type("image/webp"),url("/img/radar-map-2d4a9e02.jpg") type("image/jpeg"))!important}
 .radar-map::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(22,29,49,.06));pointer-events:none}
-</style>
-<style id="journey">
-/* ===== Journey del servicio (end to end) ===== */
-.journey{margin-top:clamp(40px,6vw,64px)}
-.journey__track{position:relative;display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
-.journey__line{position:absolute;top:19px;left:9%;right:9%;height:3px;background:var(--border-line);border-radius:3px;z-index:0}
-.journey__line--fill{right:auto;width:46%;background:linear-gradient(90deg,#dbff57,#a9c93f);z-index:1}
-.journey__step{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px}
-.journey__node{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;background:#fff;border:2px solid var(--border-line);color:var(--on-surface-variant);margin-bottom:12px;transition:all .3s}
-.journey__step--done .journey__node{background:var(--lime);border-color:var(--lime);color:var(--navy)}
-.journey__step--active .journey__node{background:var(--navy);border-color:var(--navy);position:relative}
-.journey__step--active .journey__node::before{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--lime);animation:jpulse 1.8s ease-in-out infinite}
-.journey__step--active .journey__node::after{content:"";width:12px;height:12px;border-radius:50%;background:var(--lime)}
-@keyframes jpulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.25);opacity:0}}
-.journey__step b{font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.2}
-.journey__step small{font-size:11.5px;color:var(--on-surface-variant);margin-top:3px}
-@media(max-width:720px){
-  .journey__track{grid-template-columns:1fr;gap:0}
-  .journey__line{top:0;bottom:0;left:19px;right:auto;width:3px;height:auto}
-  .journey__line--fill{width:3px;height:46%;background:linear-gradient(180deg,#dbff57,#a9c93f)}
-  .journey__step{flex-direction:row;align-items:center;text-align:left;gap:13px;padding:9px 0}
-  .journey__node{margin-bottom:0;flex-shrink:0}
-  .journey__step b{font-size:14px}
-}
-@media(prefers-reduced-motion:reduce){.journey__step--active .journey__node::before{animation:none}}
-</style>
-<style id="jrny-css">
-/* ===== Journey del servicio (end to end, animado) ===== */
-.jrny{margin-top:clamp(44px,7vw,72px)}
-.jrny__wrap{position:relative}
-.jrny__steps{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;z-index:2}
-.jrny__line{position:absolute;top:24px;left:8.33%;right:8.33%;height:3px;background:var(--border-line);border-radius:3px;z-index:0}
-.jrny__fill{position:absolute;top:24px;left:8.33%;height:3px;border-radius:3px;background:linear-gradient(90deg,#dbff57,#a9c93f);z-index:1;width:calc(var(--p,0) * 83.34%);transition:width .6s cubic-bezier(.5,0,.2,1)}
-.jrny__step{position:relative;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 4px}
-.jrny__node{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff;border:2px solid var(--border-line);color:var(--on-surface-variant);margin-bottom:14px;transition:background .35s,border-color .35s,color .35s,transform .35s}
-.jrny__step--done .jrny__node{background:var(--lime);border-color:var(--lime);color:var(--navy)}
-.jrny__step--active .jrny__node{background:var(--navy);border-color:var(--navy);color:var(--lime);transform:scale(1.08)}
-.jrny__step--active .jrny__node::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:2px solid var(--lime);animation:jrnyPulse 1.7s ease-out infinite}
-@keyframes jrnyPulse{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.5);opacity:0}}
-.jrny__step b{font-size:13.5px;font-weight:600;color:var(--navy);line-height:1.2}
-.jrny__step small{font-size:11.5px;color:var(--on-surface-variant);margin-top:4px;max-width:150px}
-.jrny__step--active b{color:var(--navy)}
-.jrny__tip{position:absolute;top:64px;transform:translateX(-50%);background:var(--navy);color:#fff;font-size:12px;font-weight:600;padding:8px 13px;border-radius:11px;white-space:nowrap;box-shadow:0 10px 26px rgba(22,29,49,.22);opacity:0;transition:opacity .35s, left .5s cubic-bezier(.5,0,.2,1);z-index:5;pointer-events:none}
-.jrny__tip::before{content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%) rotate(45deg);width:10px;height:10px;background:var(--navy)}
-.jrny__tip.show{opacity:1}
-@media(max-width:760px){
-  .jrny__steps{grid-template-columns:1fr;gap:0}
-  .jrny__line{top:0;bottom:0;left:24px;right:auto;width:3px;height:auto}
-  .jrny__fill{top:0;left:24px;width:3px;height:calc(var(--p,0) * 100%);background:linear-gradient(180deg,#dbff57,#a9c93f);transition:height .6s cubic-bezier(.5,0,.2,1)}
-  .jrny__step{flex-direction:row;align-items:center;text-align:left;gap:14px;padding:10px 0}
-  .jrny__node{margin-bottom:0;flex-shrink:0;width:44px;height:44px}
-  .jrny__step small{max-width:none}
-  .jrny__tip{display:none}
-}
-@media(prefers-reduced-motion:reduce){
-  .jrny__step--active .jrny__node::after{animation:none}
-  .jrny__fill,.jrny__tip{transition:none}
-}
-</style>
-<style id="brand-logo-css">
-.brand-logo{height:26px;width:auto;display:block}
-.footer__brand .brand-logo{height:22px}
-</style>
-<style id="glass-motion-nosotros">
+
+
+/* glass-motion-nosotros */
 /* ===== "Operamos donde otros no llegan": glass + motion (aditivo) ===== */
 
 /* Panel: blobs internos para dar profundidad al vidrio */
@@ -1611,12 +1908,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d3
   .countries__row .country{opacity:1;transform:none;transition:none}
   .client-logo,.country .flag{transition:none}
 }
-</style>
-<style id="hero-grid-off">
-/* Se quita la cuadrícula del hero: el mapa de fondo queda solo, sin doble textura */
-.hero__grid-bg{display:none!important}
-</style>
-<style id="ce-declutter">
+
+
+/* ce-declutter */
 /* ===== Chats y Evidencias: menos saturado, más jerarquía (aditivo) ===== */
 .ce-icon{display:none} /* quitamos el ícono: el título ya comunica */
 .ce-col{padding:38px 36px;gap:14px}
@@ -1631,8 +1925,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d3
 /* aire antes del mockup: lo separamos claramente del bloque de texto */
 .ce-pills + .ce-thread,.ce-pills + .ce-evid{margin-top:14px}
 @media(max-width:720px){ .ce-col{padding:28px 24px} }
-</style>
-<style id="legend-pills">
+
+
+/* legend-pills */
 /* ===== Leyenda del Radar como badges/píldoras (aditivo) ===== */
 .legend{flex-direction:row;flex-wrap:wrap;gap:10px}
 .legend li{
@@ -1647,8 +1942,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d3
 .legend li:nth-child(2){background:rgba(255,108,108,.12);border-color:rgba(255,108,108,.35)}
 .legend li:nth-child(3){background:rgba(22,29,49,.06);border-color:rgba(22,29,49,.18)}
 .legend .swatch{width:9px;height:9px;box-shadow:0 0 0 3px rgba(255,255,255,.6)}
-</style>
-<style id="mon-checklist-css">
+
+
+/* mon-checklist-css */
 /* ===== Checklist de capacidades: Central de monitoreo (aditivo) ===== */
 .mon-checklist{
   list-style:none;display:flex;flex-wrap:wrap;justify-content:center;
@@ -1667,10 +1963,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d3
   background:var(--lime);display:flex;align-items:center;justify-content:center;
 }
 @media(max-width:640px){ .mon-checklist li{white-space:normal;font-size:13px} }
-</style>
 
 
-<style id="wa2-photoframe-css">
+/* wa2-photoframe-css */
 /* ===== Marco de celular con imagen real, tamaño grande (aditivo) ===== */
 .wa2-photoframe{
   position:relative; width:min(560px,94vw); aspect-ratio:1/1; margin:0 auto;
@@ -1694,28 +1989,9 @@ a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid #161d3
 .wa2-photoscreen .wa2-body{ padding:14px 12px; gap:9px; font-size:13.5px }
 @media(max-width:600px){ .wa2-photoframe{width:min(420px,90vw)} .wa2-photoscreen .wa2-body{font-size:12px} .wa2-photoscreen .wa2-head{font-size:13px} }
 @media(max-width:400px){ .wa2-photoframe{width:min(320px,88vw)} }
-</style>
-<style id="global-scale">
-/* ===== Reducir tamaño general de la landing (se veía muy grande en el dominio) ===== */
-html{zoom:.9}
-</style>
-<script>
-/* Mide el zoom real ANTES del primer pintado y lo deja en una variable CSS,
-   para que .hero/#nosotros/#contacto calculen su alto bien desde el primer
-   frame (evita el salto de layout que causaba ajustarlo después por JS). */
-(function(){
-  var probe=document.createElement('div');
-  probe.style.cssText='position:fixed;top:0;left:0;width:1px;height:100vh;visibility:hidden;pointer-events:none';
-  document.documentElement.appendChild(probe);
-  var renderedH=probe.getBoundingClientRect().height;
-  document.documentElement.removeChild(probe);
-  var ratio=renderedH/window.innerHeight;
-  if(ratio>0 && isFinite(ratio)){
-    document.documentElement.style.setProperty('--vh-ratio', ratio);
-  }
-})();
-</script>
-<style id="ind-one-line">
+
+
+/* ind-one-line */
 /* ===== Construido para tu industria: en una sola línea ===== */
 .ind-grid{grid-template-columns:repeat(5,1fr)!important;gap:16px!important}
 .ind-card{grid-column:span 1!important;padding:24px 18px!important;gap:12px!important}
@@ -1726,8 +2002,9 @@ html{zoom:.9}
   .ind-grid{grid-template-columns:repeat(2,1fr)!important}
   .ind-card{grid-column:span 1!important}
 }
-</style>
-<style id="industrias-polish">
+
+
+/* industrias-polish */
 /* ===== Construido para tu industria: alturas iguales + cuerpo real + hover con acento lima ===== */
 .ind-card{
   height:100%;
@@ -1794,8 +2071,9 @@ html{zoom:.9}
 @media(prefers-reduced-motion:reduce){
   .ind-bridge__cta,.ind-bridge__cta svg{transition:none!important}
 }
-</style>
-<style id="mon-checklist-one-line">
+
+
+/* mon-checklist-one-line */
 /* ===== Checklist Central de monitoreo: una sola línea ===== */
 .mon-checklist{flex-wrap:nowrap;gap:8px}
 .mon-checklist li{white-space:nowrap;font-size:12px;padding:7px 12px 7px 8px}
@@ -1804,8 +2082,9 @@ html{zoom:.9}
   .mon-checklist{flex-wrap:wrap;justify-content:center}
   .mon-checklist li{white-space:normal;font-size:13px;padding:8px 15px 8px 10px}
 }
-</style>
-<style id="faq-css">
+
+
+/* faq-css */
 /* ===== FAQ (acordeón nativo, sin JS), layout oscuro 2 columnas ===== */
 .faq-sec{background:linear-gradient(180deg,#0e1626 0%,#0b1220 100%);color:#fff}
 .faq-grid{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(40px,6vw,80px);align-items:start}
@@ -1833,26 +2112,14 @@ html{zoom:.9}
   .faq-asub{max-width:none}
 }
 @media(prefers-reduced-motion:reduce){ .faq-ic{transition:none} }
-</style>
-<style id="cta-soft-link-css">
+
+
+/* cta-soft-link-css */
 .cta-soft-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--navy);border-bottom:1.5px solid rgba(155,190,40,.6);padding-bottom:2px;transition:border-color .2s ease,gap .2s ease}
 .cta-soft-link:hover{border-color:var(--navy);gap:11px}
-</style>
-<style id="scw-cards-css">
-/* ===== Equipo conectado: 3 tarjetas simples, sin dispositivos ===== */
-.scw-row{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:clamp(40px,6vw,60px)}
-.scw-card{position:relative;background:#fff;border:1px solid var(--border-line);border-radius:18px;padding:32px 26px;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
-.scw-card:hover{transform:translateY(-5px);border-color:rgba(155,190,40,.5);box-shadow:0 20px 44px -24px rgba(22,29,49,.18)}
-.scw-card .scw-num{position:absolute;top:22px;right:26px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:var(--border-line)}
-.scw-card .scw-ic{width:48px;height:48px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
-.scw-card .scw-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5f7a00;margin-bottom:10px}
-.scw-card h3{font-size:clamp(22px,2vw,27px);font-weight:800;color:var(--navy);line-height:1.15;letter-spacing:-.02em;margin-bottom:10px}
-.scw-card p{font-size:14.5px;color:var(--on-surface-variant);line-height:1.5}
-@media(max-width:860px){ .scw-row{grid-template-columns:1fr} }
-@media(prefers-reduced-motion:reduce){ .scw-card{transition:none} }
-</style>
-<style id="mon-responsive-fix">
+
+
+/* mon-responsive-fix */
 /* ============================================================
    Central de monitoreo, ajustes responsive
    ============================================================ */
@@ -1894,375 +2161,8 @@ html{zoom:.9}
 @media(max-width:520px){
   .ind-grid{grid-template-columns:1fr!important}
 }
+
 </style>
-<style id="hero-copy-dapta">
-/* ============================================================
-   Hero, estilo referencia: titular en dos colores + fila de prueba
-   ============================================================ */
-/* Palabra/frase de resultado en el color de marca.
-   Uso lime-text (legible sobre fondo claro). Si más adelante pasas el
-   hero a fondo oscuro navy, cambia var(--lime-text) por var(--lime). */
-.hl-accent{color:var(--lime-text)}
-.hl-grad{background:linear-gradient(96deg,#c9ec5c 0%,var(--lime) 52%,#c9ec5c 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;
-  text-shadow:-0.6px -0.6px 0 var(--navy),0.6px -0.6px 0 var(--navy),-0.6px 0.6px 0 var(--navy),0.6px 0.6px 0 var(--navy)}
-
-/* Fila de prueba (equivale al rating + velocidad de la referencia) */
-.hero__proof{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px}
-.hero__proof-item{display:flex;flex-direction:column;line-height:1.12}
-.hero__proof-item b{font-size:18px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
-.hero__proof-item span{font-size:13px;color:var(--navy-soft)}
-.hero__proof-div{width:1px;height:26px;background:var(--border-line);flex-shrink:0}
-@media(max-width:420px){ .hero__proof{gap:12px} .hero__proof-div{display:none} }
-</style>
-<style id="pymes-nav-rescue">
-/* ===== Nav: colores del enlace "WIP Equipos" (estructura en /shared/wip-tokens.css) ===== */
-.nav__pymes .nav__pymes-main{color:var(--navy-soft)}
-.nav__pymes .nav__pymes-sub{color:var(--navy-faint)}
-.nav__pymes:hover .nav__pymes-main{color:var(--navy)}
-.nav__pymes:hover .nav__pymes-sub{color:var(--navy-soft)}
-@media (max-width:720px){
-  .nav__pymes .nav__pymes-main{color:var(--navy)}
-  .nav__pymes .nav__pymes-sub{color:var(--navy-soft)}
-}
-</style>
-<style id="hero-netmap-css">
-/* ============================================================
-   Hero: mapa de red, sangra a la derecha, se difumina a la izquierda + movimiento de asignación
-   ============================================================ */
-.hero__media:empty{display:none}
-
-.netmap{position:absolute;top:0;right:0;bottom:0;width:clamp(560px,60%,1020px);z-index:1;pointer-events:none;font-family:'Inter','Inter Fallback',sans-serif}
-.netmap__map{position:absolute;inset:0;
-  -webkit-mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.12) 15%, #000 42%, #000 100%);
-  mask-image:linear-gradient(90deg, transparent 0%, rgba(0,0,0,.12) 15%, #000 42%, #000 100%);}
-.netmap__map svg{position:absolute;inset:0;width:100%;height:100%;display:block}
-
-.netmap__chip{position:absolute;display:inline-flex;align-items:center;gap:7px;font-weight:600;border-radius:999px;white-space:nowrap;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
-.netmap__header{top:26px;left:45%;font-size:12px;color:#161d31;padding:7px 13px 7px 8px;background:rgba(255,255,255,.82);border:1px solid rgba(255,255,255,.9);box-shadow:0 8px 22px rgba(22,29,49,.10)}
-.netmap__wmark{width:18px;height:18px;border-radius:5px;background:#161d31;color:#dbff57;display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;letter-spacing:-.02em}
-.netmap__live{top:26px;right:28px;font-size:11.5px;color:#eef1f4;padding:7px 13px;background:#161d31;box-shadow:0 8px 22px rgba(22,29,49,.20)}
-.netmap__live b{width:7px;height:7px;border-radius:50%;background:#dbff57;display:block;box-shadow:0 0 0 3px rgba(219,255,87,.30);animation:netLive 1.8s ease-in-out infinite}
-@keyframes netLive{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.72);opacity:.65}}
-
-.netmap__hud{position:absolute;left:42%;right:28px;bottom:26px;display:flex;align-items:center;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;padding:10px 14px;border-radius:16px;background:rgba(255,255,255,.80);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.85);box-shadow:0 12px 30px rgba(22,29,49,.12)}
-@media(min-width:1173px){ .netmap__hud{flex-wrap:nowrap} }
-.netmap__kpis{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.netmap__hud-live{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:700;color:#3d8b3d;flex-shrink:0;white-space:nowrap}
-.netmap__hud-live b{width:6px;height:6px;border-radius:50%;background:#3fb950;display:block;box-shadow:0 0 0 3px rgba(63,185,80,.18);animation:netLive 1.8s ease-in-out infinite}
-.netmap__kpi{text-align:center;line-height:1;flex-shrink:0}
-.netmap__kpi b{font-size:16.5px;font-weight:700;color:#161d31;display:inline-block;transition:opacity .15s ease}
-.netmap__kpi span{display:block;font-size:8.7px;color:#5b6172;margin-top:3px;white-space:nowrap}
-.netmap__kpi--good b{color:#4b7a09}
-.netmap__sep{width:1px;height:18px;background:#e6e6ea;flex-shrink:0}
-.netmap__legend{display:flex;align-items:center;gap:8px;font-size:9.5px;font-weight:600;color:#3f4658;flex-shrink:0}
-.netmap__legend span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
-.netmap__legend i{width:8px;height:8px;border-radius:50%;box-shadow:0 0 0 2px rgba(255,255,255,.7)}
-
-/* --- Regla única de actores: WIP (núcleo) + parejas Proveedor (empresa) → Técnico (pin de ubicación) --- */
-.net-hub-core{fill:#161d31}
-.net-hub-ring{fill:none;stroke:#dbff57;stroke-width:1.5}
-.net-ring{fill:none;stroke:#dbff57;stroke-width:1.5;animation:netRing 3s ease-out infinite}
-.net-ring2{animation-delay:1.5s}
-@keyframes netRing{0%{r:9;opacity:.5}100%{r:50;opacity:0}}
-
-/* líneas estáticas de la red: WIP→proveedor y el salto corto proveedor→técnico, en todas las parejas */
-.net-line{stroke:rgba(22,29,49,.11);stroke-width:1;stroke-dasharray:3 5;fill:none}
-.net-line--sub{stroke:rgba(22,29,49,.16);stroke-width:1;stroke-dasharray:3 5;fill:none}
-
-/* animación completa (WIP→empresa→técnico), solo en 1-2 parejas para no recargar; el resto queda estática */
-.net-svc1{fill:#dbff57;opacity:0}
-.net-svc1--a{animation:svc1A 7s ease-in-out infinite}
-.net-svc1--d{animation:svc1D 7s ease-in-out 3s infinite;fill:#ff6c6c}
-@keyframes svc1A{0%,100%{transform:translate(440px,240px);opacity:0}4%{opacity:.85}30%{transform:translate(380px,100px);opacity:.85}34%{transform:translate(380px,100px);opacity:0}}
-@keyframes svc1D{0%,100%{transform:translate(440px,240px);opacity:0}4%{opacity:.85}30%{transform:translate(284px,293px);opacity:.85}34%{transform:translate(284px,293px);opacity:0}}
-/* acuse de recibo: la casita del proveedor hace pulse al recibir el servicio */
-.net-arrive1{fill:#dbff57;opacity:0;transform-origin:center;transform-box:fill-box}
-.net-arrive1--a{animation:svcArrive1 7s ease-in-out infinite}
-.net-arrive1--d{animation:svcArrive1 7s ease-in-out 3s infinite;fill:#ff6c6c}
-@keyframes svcArrive1{
-  0%,29%,100%{opacity:0;transform:scale(.5)}
-  32%{opacity:.55;transform:scale(1)}
-  42%{opacity:0;transform:scale(1.6)}
-}
-
-/* fase 2: solo en esas mismas 1-2 parejas, arranca justo después del pulse de la fase 1 */
-.net-svc2{fill:#dbff57;opacity:0}
-.net-svc2--a{animation:svcPhase2A 7s ease-in-out 0s infinite}
-.net-svc2--d{animation:svcPhase2D 7s ease-in-out 3s infinite;fill:#ff6c6c}
-@keyframes svcPhase2A{0%,45%,100%{transform:translate(380px,100px);opacity:0}49%{opacity:.55}62%{transform:translate(364px,63px);opacity:.55}66%{transform:translate(364px,63px);opacity:0}}
-@keyframes svcPhase2D{0%,45%,100%{transform:translate(284px,293px);opacity:0}49%{opacity:.55}62%{transform:translate(246px,306px);opacity:.55}66%{transform:translate(246px,306px);opacity:0}}
-/* el pin del técnico se enciende: servicio en ejecución, mismo color que su cadena */
-.net-arrive2{fill:#dbff57;opacity:0;transform-origin:center;transform-box:fill-box}
-.net-arrive2--a{animation:svcArrive2 7s ease-in-out 0s infinite}
-.net-arrive2--d{animation:svcArrive2 7s ease-in-out 3s infinite;fill:#ff6c6c}
-@keyframes svcArrive2{
-  0%,61%,100%{opacity:0;transform:scale(.5)}
-  64%{opacity:.5;transform:scale(1)}
-  74%{opacity:0;transform:scale(1.5)}
-}
-
-@media(max-width:1172px){
-  .netmap{position:relative;top:auto;right:auto;bottom:auto;width:auto;max-width:560px;margin:6px auto 0;aspect-ratio:16/12}
-  .netmap__map{-webkit-mask-image:radial-gradient(120% 104% at 50% 45%, #000 0%, #000 56%, transparent 92%);mask-image:radial-gradient(120% 104% at 50% 45%, #000 0%, #000 56%, transparent 92%)}
-  .netmap__header{left:14px;top:14px}
-  .netmap__live{top:14px;right:14px}
-  .netmap__hud{left:14px;right:14px;bottom:14px}
-}
-@media(max-width:520px){
-  .netmap__header{font-size:11px;padding:6px 11px 6px 7px}.netmap__wmark{width:16px;height:16px;font-size:10px}
-  .netmap__live{font-size:10.5px;padding:6px 11px}
-  .netmap__hud{padding:10px 12px;gap:8px 12px}.netmap__kpis{gap:10px;width:100%;justify-content:space-between}.netmap__kpi b{font-size:17px}
-  .netmap__legend{width:100%;justify-content:space-between;gap:8px}
-}
-@media(max-width:520px){
-  /* mobile angosto: menos parejas para que no se amontonen (queda VitalCare oculta) */
-  .net-pair--c{display:none}
-}
-@media(prefers-reduced-motion:reduce){
-  .netmap__live b,.net-ring,.net-svc1,.net-svc2,.net-arrive1,.net-arrive2{animation:none!important}
-  .net-svc1,.net-svc2,.net-arrive1,.net-arrive2{opacity:0}
-}
-</style>
-</head>
-<body>
-<style id="wa-fab-css">
-.wa-fab{position:fixed;right:22px;bottom:22px;z-index:999;display:inline-flex;align-items:center;gap:10px;background:#25D366;color:#161d31;text-decoration:none;padding:12px 18px 12px 14px;border-radius:40px;font-family:inherit;font-weight:700;font-size:15px;box-shadow:0 12px 34px rgba(37,211,102,.45);transition:transform .18s ease,box-shadow .18s ease;view-transition-name:wa-fab-btn}
-.wa-fab:hover{transform:translateY(-3px);box-shadow:0 18px 44px rgba(37,211,102,.55);color:#161d31}
-.wa-fab svg{width:26px;height:26px;flex:none}
-.wa-fab .wa-txt{white-space:nowrap}
-@media (max-width:560px){.wa-fab .wa-txt{display:none}.wa-fab{padding:14px;border-radius:50%;right:16px;bottom:16px}}
-</style>
-<a class="wa-fab" href="https://api.whatsapp.com/send?phone=573005124111&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20WIP" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
-<svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.5 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-<span class="wa-txt">¿Dudas? Escríbenos</span>
-</a>
-<div class="bg-blobs" aria-hidden="true"><span class="b1"></span><span class="b2"></span><span class="b3"></span></div>
-
-
-
-<!-- ===================== NAV ===================== -->
-<header class="nav">
-  <div class="nav__inner">
-    <div class="nav__logo"><img src="/img/wip-logo-nav-2x.png" alt="WIP" class="brand-logo" width="148" height="82"><span class="logo-sub">Red</span></div>
-    <nav class="nav__links">
-      <a href="#" class="is-active" aria-current="page">Wip Red</a>
-      <a href="/equipos" class="nav__pymes" aria-label="Wip Equipos, ¿Equipo propio en campo?">
-        <span class="nav__pymes-main">Wip Equipos</span>
-        <span class="nav__pymes-sub">¿Equipo propio en campo?</span>
-      </a>
-    </nav>
-    <div class="nav__cta">
-      <a href="#contacto" class="btn btn--primary">Hablemos</a>
-    </div>
-  </div>
-</header>
-
-<!-- ===================== HERO ===================== -->
-<script id="wip-visible-js">
-/* Corre una animación sólo mientras su sección está en pantalla y la pestaña visible:
-   evita trabajo del hilo principal (y batería) por secciones que nadie está viendo. */
-window.wipWhenVisible=function(el,start,stop){
-  if(!el) return;
-  var on=false,inView=false;
-  function sync(){
-    var should=inView && !document.hidden;
-    if(should===on) return;
-    on=should;
-    should?start():stop();
-  }
-  if('IntersectionObserver' in window){
-    new IntersectionObserver(function(es){
-      es.forEach(function(e){ inView=e.isIntersecting; });
-      sync();
-    },{rootMargin:'120px 0px'}).observe(el);
-  } else { inView=true; }
-  document.addEventListener('visibilitychange',sync);
-  sync();
-};
-</script>
-<style id="wip-cv-css">
-/* Las secciones bajo el primer pantallazo sólo se calculan y dibujan cuando se
-   acercan a la pantalla. El alto declarado (medido en móvil) reserva su espacio
-   para que la barra de desplazamiento y los anclajes no salten. */
-@supports (content-visibility: auto) {
-  @media (prefers-reduced-motion: no-preference) {
-    #como-funciona{content-visibility:auto;contain-intrinsic-size:auto 2147px}
-    #industrias{content-visibility:auto;contain-intrinsic-size:auto 1664px}
-    #conectados{content-visibility:auto;contain-intrinsic-size:auto 1760px}
-    #resuelve{content-visibility:auto;contain-intrinsic-size:auto 717px}
-    #asignacion{content-visibility:auto;contain-intrinsic-size:auto 918px}
-    #radar{content-visibility:auto;contain-intrinsic-size:auto 818px}
-    #monitoreo{content-visibility:auto;contain-intrinsic-size:auto 1254px}
-    #scoring{content-visibility:auto;contain-intrinsic-size:auto 1187px}
-    #chats{content-visibility:auto;contain-intrinsic-size:auto 1571px}
-    #whatsapp{content-visibility:auto;contain-intrinsic-size:auto 964px}
-    #conexiones{content-visibility:auto;contain-intrinsic-size:auto 1353px}
-    #nosotros{content-visibility:auto;contain-intrinsic-size:auto 972px}
-    #testimonios{content-visibility:auto;contain-intrinsic-size:auto 944px}
-    #faq{content-visibility:auto;contain-intrinsic-size:auto 1141px}
-    #contacto{content-visibility:auto;contain-intrinsic-size:auto 1036px}
-  }
-}
-</style>
-<main>
-<section class="hero" id="plataforma">
-  <div class="hero__grid-bg"></div>
-  
-  <div class="container hero__inner">
-    <div class="hero__copy">
-      <div class="hero__group hero__group--message">
-        <span class="eyebrow">Field Service Management · +4M de servicios gestionados</span>
-        <h1 class="headline-xl" style="color:var(--navy)">Toda tu red de proveedores, bajo control y en <span class="hl-grad">tiempo real</span></h1>
-        <p class="lede" style="font-size: 19px">Coordina toda tu red de proveedores desde un solo lugar: cada servicio visible, cada SLA bajo control, todos los proveedores conectados y trazabilidad de punta a punta, a la escala que tu operación exige.</p>
-        <p class="hero__rescue">¿Gestionas tu propio equipo en campo? <a href="/equipos" class="hero__rescue-link">Conoce WIP Equipos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p>
-      </div>
-      <div class="hero__group hero__group--action">
-        <div class="hero__buttons">
-          <a href="#contacto" class="btn btn--primary">Agenda una demo</a>
-          <a href="#chats" class="btn btn--outline">Ver WIP en acción</a>
-        </div>
-      </div>
-      <div class="hero__proof">
-        <div class="hero__proof-item"><b>+4M</b><span>servicios gestionados</span></div>
-        <span class="hero__proof-div" aria-hidden="true"></span>
-        <div class="hero__proof-item"><b>Operamos</b><span>en LATAM</span></div>
-        <span class="hero__proof-div" aria-hidden="true"></span>
-        <div class="hero__proof-item"><b>#1 FSM</b><span>para LATAM</span></div>
-      </div>
-    </div>
-    <div class="hero__media"></div>
-  </div>
-
-  <!-- ============================================================
-       Mapa de red de proveedores: hub despachador con asignación animada
-       ============================================================ -->
-  <div class="netmap">
-    <div class="netmap__map" aria-hidden="true">
-      <svg viewBox="0 0 640 520" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="nmSh" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="1.5" stdDeviation="2.5" flood-color="#161d31" flood-opacity="0.16"/></filter>
-          <!-- pines de ubicación clásicos: gota con hueco central; la punta (0,0) ancla la coordenada -->
-          <g id="pinL"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#dbff57" stroke="#161d31" stroke-width="1.1"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
-          <g id="pinS"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#ff6c6c"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
-          <g id="pinN"><path d="M0,0 C-1.7,-3.3 -5.5,-9.3 -5.5,-14 A5.5,5.5 0 1,1 5.5,-14 C5.5,-9.3 1.7,-3.3 0,0 Z" fill="#161d31"/><circle cx="0" cy="-14" r="2.2" fill="#fff"/></g>
-          <!-- proveedor (empresa): ícono pequeño y monocromo, distinto de los puntos de estado -->
-          <g id="pinCo" filter="url(#nmSh)"><circle r="7.5" fill="#ffffff" stroke="rgba(22,29,49,.22)"/><path d="M-3.1,1.6 V-1.1 L0,-3.2 L3.1,-1.1 V1.6 Z" fill="none" stroke="#161d31" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/></g>
-        </defs>
-
-        <!-- Basemap: estilo mapa vectorial de líneas finas (referencia): blanco, malla densa de calles curvas, sin manzanas de color -->
-        <rect width="640" height="520" fill="#ffffff"/>
-        <!-- calles: red fina y orgánica que se cruza en todas direcciones -->
-        <g fill="none" stroke="rgba(22,29,49,.14)" stroke-width="1" stroke-linecap="round">
-          <path d="M40 -20 C 60 60, 20 140, 55 220 C 85 290, 30 360, 60 540"/>
-          <path d="M110 -20 C 130 70, 95 150, 120 230 C 145 300, 100 380, 125 540"/>
-          <path d="M180 -20 C 195 60, 220 130, 190 210 C 165 280, 200 350, 180 540"/>
-          <path d="M250 -20 C 265 70, 235 150, 260 230 C 285 300, 245 380, 265 540"/>
-          <path d="M320 -20 C 335 60, 300 140, 330 220 C 355 290, 310 360, 335 540"/>
-          <path d="M390 -20 C 405 70, 375 150, 400 230 C 420 300, 385 380, 405 540"/>
-          <path d="M460 -20 C 475 60, 445 140, 470 220 C 495 290, 455 360, 475 540"/>
-          <path d="M530 -20 C 545 70, 515 150, 540 230 C 560 300, 525 380, 545 540"/>
-          <path d="M600 -20 C 610 70, 585 150, 605 230 C 620 300, 590 380, 605 540"/>
-          <path d="M-20 40 C 60 55, 140 25, 220 45 C 300 65, 380 30, 460 50 C 520 65, 580 40, 660 55"/>
-          <path d="M-20 110 C 70 95, 150 130, 230 105 C 310 80, 390 120, 470 100 C 540 85, 600 115, 660 100"/>
-          <path d="M-20 185 C 60 200, 150 170, 230 195 C 310 215, 390 180, 470 200 C 540 215, 600 185, 660 200"/>
-          <path d="M-20 260 C 70 245, 150 280, 230 255 C 310 230, 390 270, 470 250 C 540 235, 600 265, 660 250"/>
-          <path d="M-20 335 C 60 350, 150 320, 230 345 C 310 365, 390 330, 470 350 C 540 365, 600 335, 660 350"/>
-          <path d="M-20 410 C 70 395, 150 430, 230 405 C 310 380, 390 420, 470 400 C 540 385, 600 415, 660 400"/>
-          <path d="M-20 480 C 60 495, 150 465, 230 490 C 310 510, 390 475, 470 495 C 540 510, 600 480, 660 495"/>
-        </g>
-        <!-- avenidas: un par de trazos algo más marcados, dan jerarquía sobre la malla fina -->
-        <g fill="none" stroke="rgba(22,29,49,.26)" stroke-linecap="round">
-          <path d="M-20 150 C 100 170, 220 130, 340 165 C 460 195, 560 150, 660 175" stroke-width="1.8"/>
-          <path d="M230 -20 C 250 100, 200 200, 240 300 C 275 390, 220 470, 250 540" stroke-width="1.8"/>
-        </g>
-
-        <!-- Regla única: solo existen parejas Proveedor (empresa) → Técnico (pin de ubicación). Nada suelto. -->
-        <g class="net-pair net-pair--a">
-          <path class="net-line" d="M440,240 L380,100"/>
-          <path class="net-line--sub" d="M380,100 L364,63"/>
-          <g filter="url(#nmSh)"><g transform="translate(380,100)"><rect x="12" y="-10" width="44" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">GrúaYa</text></g></g>
-          <use href="#pinCo" transform="translate(380,100)"/>
-          <use href="#pinL" transform="translate(364,63)"/>
-        </g>
-        <g class="net-pair net-pair--b">
-          <path class="net-line" d="M440,240 L570,212"/>
-          <path class="net-line--sub" d="M570,212 L570,252"/>
-          <g filter="url(#nmSh)"><g transform="translate(570,212)"><rect x="12" y="-10" width="58" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">FixHome Sas</text></g></g>
-          <use href="#pinCo" transform="translate(570,212)"/>
-          <use href="#pinN" transform="translate(570,252)"/>
-        </g>
-        <g class="net-pair net-pair--c">
-          <path class="net-line" d="M440,240 L405,383"/>
-          <path class="net-line--sub" d="M405,383 L396,422"/>
-          <g filter="url(#nmSh)"><g transform="translate(405,383)"><rect x="12" y="-10" width="51" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">VitalCare</text></g></g>
-          <use href="#pinCo" transform="translate(405,383)"/>
-          <use href="#pinL" transform="translate(396,422)"/>
-        </g>
-        <g class="net-pair net-pair--d">
-          <path class="net-line" d="M440,240 L284,293"/>
-          <path class="net-line--sub" d="M284,293 L246,306"/>
-          <g filter="url(#nmSh)"><g transform="translate(284,293)"><rect x="12" y="-10" width="48" height="13" rx="6.5" fill="#ffffff"/><text x="18.5" y="-1.3" font-family="Inter,Arial" font-size="6.6" font-weight="700" fill="#161d31">FibraMax</text></g></g>
-          <use href="#pinCo" transform="translate(284,293)"/>
-          <use href="#pinS" transform="translate(246,306)"/>
-        </g>
-
-        <g class="net-anim" aria-hidden="true">
-          <g class="net-hub" transform="translate(440,240)">
-            <circle class="net-ring" cx="0" cy="0" r="9"/>
-            <circle class="net-ring net-ring2" cx="0" cy="0" r="9"/>
-            <circle class="net-hub-core" cx="0" cy="0" r="9"/>
-            <circle class="net-hub-ring" cx="0" cy="0" r="9"/>
-            <text x="0" y="2.6" text-anchor="middle" font-family="Inter,Arial" font-size="7" font-weight="800" fill="#dbff57">W</text>
-          </g>
-          <!-- solo 2 parejas completas animan (GrúaYa en lima, FibraMax en salmón); el resto queda estática -->
-          <circle class="net-svc1 net-svc1--a" r="2.6"/>
-          <circle class="net-arrive1 net-arrive1--a" cx="380" cy="100" r="9"/>
-          <circle class="net-svc1 net-svc1--d" r="2.6"/>
-          <circle class="net-arrive1 net-arrive1--d" cx="284" cy="293" r="9"/>
-          <circle class="net-svc2 net-svc2--a" r="2"/>
-          <circle class="net-arrive2 net-arrive2--a" cx="364" cy="63" r="6"/>
-          <circle class="net-svc2 net-svc2--d" r="2"/>
-          <circle class="net-arrive2 net-arrive2--d" cx="246" cy="306" r="6"/>
-        </g>
-      </svg>
-    </div>
-
-    <div class="netmap__chip netmap__live"><b></b>En vivo</div>
-
-    <div class="netmap__hud">
-      <div class="netmap__kpis">
-        <span class="netmap__hud-live"><b></b>En vivo</span>
-        <div class="netmap__kpi"><b id="nm-kpi-1">1500</b><span>servicios hoy</span></div>
-        <span class="netmap__sep"></span>
-        <div class="netmap__kpi"><b id="nm-kpi-2">750</b><span>en curso</span></div>
-        <span class="netmap__sep"></span>
-        <div class="netmap__kpi netmap__kpi--good"><b id="nm-kpi-3">98%</b><span>SLA cumplido</span></div>
-      </div>
-      <div class="netmap__legend">
-        <span><i style="background:#dbff57"></i>Disponible</span>
-        <span><i style="background:#ff6c6c"></i>En camino</span>
-        <span><i style="background:#161d31"></i>Con cliente</span>
-      </div>
-    </div>
-  </div>
-  <script>
-  (function(){
-    var a=document.getElementById('nm-kpi-1'),b=document.getElementById('nm-kpi-2'),c=document.getElementById('nm-kpi-3');
-    if(!a||!b||!c)return;
-    if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches)return;
-    function set(el,v){el.style.opacity='0';setTimeout(function(){el.textContent=v;el.style.opacity='1';},150);}
-    var toggled=false,t=null;
-    wipWhenVisible(document.getElementById('nosotros'),function(){
-      t=setInterval(function(){
-        toggled=!toggled;
-        set(a,toggled?'1512':'1500');
-        set(b,toggled?'742':'750');
-        set(c,toggled?'97%':'98%');
-      },3500);
-    },function(){ clearInterval(t); });
-  })();
-  </script>
-</section>
 
 <!-- ===================== MARQUESINA: tipos de servicio ===================== -->
 <style id="svc-marq-css">
@@ -4261,42 +4161,6 @@ window.wipWhenVisible=function(el,start,stop){
   }
   var ticking=false;
   window.addEventListener('scroll',function(){ if(!ticking){requestAnimationFrame(function(){onScroll();ticking=false;});ticking=true;} },{passive:true});
-})();
-</script>
-<script id="jrny-js">
-(function(){
-  var root=document.getElementById('jrny'); if(!root)return;
-  var wrap=root.querySelector('.jrny__wrap');
-  var steps=[].slice.call(root.querySelectorAll('.jrny__step'));
-  var fill=root.querySelector('.jrny__fill');
-  var tip=root.querySelector('.jrny__tip');
-  var n=steps.length, i=0;
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function render(idx){
-    steps.forEach(function(s,k){
-      s.classList.toggle('jrny__step--done', k<idx);
-      s.classList.toggle('jrny__step--active', k===idx);
-    });
-    root.style.setProperty('--p', (idx/(n-1)).toFixed(4));
-    var act=steps[idx];
-    tip.textContent=act.getAttribute('data-tip');
-    if(window.matchMedia('(min-width:761px)').matches){
-      tip.style.left=(act.offsetLeft+act.offsetWidth/2)+'px';
-      tip.classList.add('show');
-    }
-  }
-  if(reduce){ render(3); return; }
-  var started=false;
-  function start(){ if(started)return; started=true;
-    render(0);
-    setInterval(function(){ i=(i+1)%n; render(i); }, 2100);
-  }
-  // arrancar cuando entra en viewport
-  if('IntersectionObserver' in window){
-    var io=new IntersectionObserver(function(e){ e.forEach(function(en){ if(en.isIntersecting){start();io.disconnect();} }); },{threshold:.3});
-    io.observe(root);
-  } else { start(); }
-  window.addEventListener('resize',function(){ render(i); });
 })();
 </script>
 <script id="contact-js">
