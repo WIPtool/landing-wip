@@ -50,7 +50,7 @@ for (const c of categories) {
 const home = read('index.html');
 let footer = home.match(/<footer class="footer"[\s\S]*?<\/footer>/)[0]
   .replace('<footer class="footer" id="blog">', '<footer class="footer">')
-  .replace(/<div class="nav__logo"><img src="([^"]+)" alt="WIP" class="brand-logo" width="148" height="82"><\/div>/, '<img src="$1" alt="WIP" width="148" height="82" loading="lazy">')
+  .replace(/<div class="nav__logo"><img src="[^"]+" alt="WIP" class="brand-logo" width="148" height="82"><\/div>/, '<img src="/img/wip-logo-nav-2x.webp" alt="WIP" width="148" height="82" loading="lazy">')
   .replace(/href="#(industrias|asignacion|testimonios)"/g, 'href="/#$1"')
   // h4 -> h3: en estas paginas el pie viene despues de un h2 y no debe saltar niveles
   .replace(/<(\/?)h4>/g, '<$1h3>');
@@ -379,7 +379,7 @@ for (const e of ebooks) {
       <div class="ebook-layout">
         <div>
           <div class="ebook-intro">
-            <img src="${e.cover.file}" width="${e.cover.w}" height="${e.cover.h}" alt="Portada del ebook ${esc(e.title)}" fetchpriority="high" decoding="async">
+            <img src="${e.coverSm.file}" srcset="${e.coverSm.file} ${e.coverSm.w}w, ${e.cover.file} ${e.cover.w}w" sizes="(max-width:640px) 110px, 200px" width="${e.cover.w}" height="${e.cover.h}" alt="Portada del ebook ${esc(e.title)}" fetchpriority="high" decoding="async">
             <div>
               <span class="eyebrow">Ebook gratis · PDF ${mb} MB</span>
               <h1>${esc(e.title)}</h1>
