@@ -154,7 +154,7 @@ export const soluciones = [
     faq: [
       ['¿Qué es un software de gestión de servicio técnico?', 'Es una herramienta para ordenar las visitas que hacen tus técnicos fuera de la oficina: crea las órdenes de trabajo, las asigna, muestra dónde está cada técnico, guarda la evidencia de la visita y calcula el valor del servicio.'],
       ['¿Los técnicos necesitan una app?', 'Sí. Tus técnicos usan la app de colaboradores de WIP en el celular para recibir las órdenes, actualizar el estado, compartir su ubicación y subir fotos, documentos y firmas desde el sitio.'],
-      ['¿Sirve si tengo pocos técnicos?', 'Sí. WIP funciona igual de bien con 3 o con 30 técnicos. Los planes de WIP Equipos empiezan desde 200 servicios al mes, sin cláusulas de permanencia.'],
+      ['¿Sirve para cualquier número de técnicos?', 'Sí. WIP funciona igual de bien con 3, 30, 300 o los técnicos que necesites. Los planes de WIP Equipos empiezan desde 200 servicios al mes, sin cláusulas de permanencia, y crecen con tu operación.'],
       ['¿Qué cuenta como un servicio en los planes?', 'Cada servicio u orden de trabajo que creas en WIP cuenta dentro del cupo mensual de tu plan. Asignarlo, reasignarlo y gestionarlo no tiene costo adicional.'],
       ['¿Puedo trabajar también con contratistas externos?', 'Sí. Si parte de tus instalaciones las hacen contratistas o proveedores externos, WIP Red te permite coordinarlos con la misma trazabilidad que a tu equipo propio.'],
       ['¿Qué tan rápido lo tengo funcionando?', 'En días, no en semanas. La implementación, la configuración de flujos y la capacitación de tu equipo están incluidas en los planes de WIP Equipos.'],
