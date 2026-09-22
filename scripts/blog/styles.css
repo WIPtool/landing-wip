@@ -214,7 +214,7 @@ img{max-width:100%;height:auto;display:block}
 .footer__brand{display:flex;flex-direction:column;gap:14px;max-width:340px}
 .footer__brand img{height:22px;width:auto;align-self:flex-start}
 .footer__brand p{font-size:14px;color:var(--on-surface-variant);line-height:1.5}
-.footer__col h4{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy-faint);margin-bottom:14px}
+.footer__col h3,.footer__col h4{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy-faint);margin-bottom:14px}
 .footer__col a{display:block;font-size:14px;color:var(--navy-soft);margin-bottom:10px;transition:color .2s ease}
 .footer__col a:hover{color:var(--navy)}
 .footer__col--social a{display:flex;align-items:center;gap:8px}

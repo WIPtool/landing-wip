@@ -51,7 +51,9 @@ const home = read('index.html');
 let footer = home.match(/<footer class="footer"[\s\S]*?<\/footer>/)[0]
   .replace('<footer class="footer" id="blog">', '<footer class="footer">')
   .replace(/<div class="nav__logo"><img src="([^"]+)" alt="WIP" class="brand-logo" width="148" height="82"><\/div>/, '<img src="$1" alt="WIP" width="148" height="82" loading="lazy">')
-  .replace(/href="#(industrias|asignacion|testimonios)"/g, 'href="/#$1"');
+  .replace(/href="#(industrias|asignacion|testimonios)"/g, 'href="/#$1"')
+  // h4 -> h3: en estas paginas el pie viene despues de un h2 y no debe saltar niveles
+  .replace(/<(\/?)h4>/g, '<$1h3>');
 
 const css = read('scripts/blog/styles.css');
 const blogJs = read('scripts/blog/blog.js');
@@ -139,7 +141,7 @@ function postCard(p, { feature = false, heading = 'h2', eager = false } = {}) {
   return `
         <li data-search="${search}"${feature ? ' class="grid__feature" style="grid-column:1/-1"' : ''}>
           <a class="post-card${feature ? ' post-card--feature' : ''}" href="/blog/${p.slug}">
-            <span class="post-card__img"><img src="${p.thumb.file}" width="${p.thumb.w}" height="${p.thumb.h}" alt="" loading="${eager ? 'eager' : 'lazy'}"${eager ? ' fetchpriority="high"' : ''} decoding="async"></span>
+            <span class="post-card__img"><img src="${p.thumb.file}" width="${p.thumb.w}" height="${p.thumb.h}" alt="" loading="${eager ? 'eager' : 'lazy'}" decoding="async"></span>
             <span class="post-card__body">
               ${catPill(c)}
               <${heading}>${esc(p.title)}</${heading}>
@@ -199,7 +201,7 @@ function write(rel, html) {
     <div class="container">
       <div class="filters">${chips(null)}${searchBox}
       </div>
-      <ul class="grid">${postCard(first, { feature: true, eager: true })}${rest.map((p, i) => postCard(p, { eager: i < 2 })).join('')}
+      <ul class="grid">${postCard(first, { feature: true, eager: true })}${rest.map((p) => postCard(p)).join('')}
       </ul>
       <p class="empty" id="sin-resultados" hidden>No encontramos artículos con esa búsqueda. Prueba con otra palabra.</p>
       ${ebookBand()}
@@ -207,7 +209,6 @@ function write(rel, html) {
   </section>`;
   write('blog', page({
     url: '/blog', title: pageSeo.blog.title, desc: pageSeo.blog.desc, active: '/blog', body,
-    preload: `<link rel="preload" as="image" href="${first.thumb.file}" fetchpriority="high">\n`,
     ld: [
       { '@type': 'Blog', name: 'Blog de WIP', url: `${SITE}/blog`, inLanguage: 'es', publisher: ORG,
         blogPost: posts.map((p) => ({ '@type': 'BlogPosting', headline: p.title, url: `${SITE}/blog/${p.slug}`, datePublished: p.date, dateModified: p.modified })) },
@@ -230,7 +231,7 @@ for (const c of categories) {
     <div class="container">
       <div class="filters">${chips(c.slug)}${searchBox}
       </div>
-      <ul class="grid">${c.posts.map((p, i) => postCard(p, { eager: i < 3 })).join('')}
+      <ul class="grid">${c.posts.map((p, i) => postCard(p, { eager: i === 0 })).join('')}
       </ul>
       <p class="empty" id="sin-resultados" hidden>No encontramos artículos con esa búsqueda. Prueba con otra palabra.</p>
       ${ebookBand()}
