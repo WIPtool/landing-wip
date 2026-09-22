@@ -22,6 +22,7 @@
     });
     /* intl-tel-input deja aria-activedescendant apuntando a un item oculto mientras la lista esta cerrada. */
     var flag=tel.closest('.iti')&&tel.closest('.iti').querySelector('.iti__selected-flag');
+    if(flag) flag.setAttribute('aria-label','Código de país del teléfono');
     if(flag && 'MutationObserver' in window){
       var strip=function(){ if(flag.getAttribute('aria-expanded')==='false' && flag.hasAttribute('aria-activedescendant')) flag.removeAttribute('aria-activedescendant'); };
       strip();

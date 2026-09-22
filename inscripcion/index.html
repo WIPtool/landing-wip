@@ -429,6 +429,7 @@ h1 .accent{color:var(--accent-text)}
     /* intl-tel-input deja aria-activedescendant apuntando a un item oculto mientras
        la lista está cerrada: se quita mientras el combobox está colapsado. */
     var flagEl=telInput.closest('.iti')&&telInput.closest('.iti').querySelector('.iti__selected-flag');
+    if(flagEl) flagEl.setAttribute('aria-label','Código de país del teléfono');
     if(flagEl && 'MutationObserver' in window){
       var stripIfCollapsed=function(){
         if(flagEl.getAttribute('aria-expanded')==='false' && flagEl.hasAttribute('aria-activedescendant')){
