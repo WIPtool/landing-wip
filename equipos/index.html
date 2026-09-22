@@ -246,7 +246,7 @@ window.addEventListener('load',function(){
 
     --ink-l:#f4f6fb;         /* texto sobre oscuro */
     --muted-l:#9aa3b8;
-    --dim-l:#6b7488;
+    --dim-l:#8a93a8;
 
     --ink-d:#161d31;         /* texto sobre blanco */
     --body-d:#4b5468;
@@ -364,13 +364,13 @@ window.addEventListener('load',function(){
   header.nav{background:transparent}
   .nav__inner{
     color:var(--ink-l);
-    background:rgba(12,17,30,0.55);
+    background:rgba(12,17,30,0.84);
     border:1px solid rgba(255,255,255,0.14);
     box-shadow:0 10px 34px rgba(0,0,0,0.35);
   }
   /* al hacer scroll, la píldora se define más (igual que en Wip Red) */
   .nav.is-scrolled .nav__inner{
-    background:rgba(12,17,30,0.72);
+    background:rgba(12,17,30,0.92);
     box-shadow:0 14px 44px rgba(0,0,0,0.45);
     border-color:rgba(255,255,255,0.22);
   }
@@ -897,7 +897,7 @@ window.addEventListener('load',function(){
   .hstat .hd{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 8px var(--lime);animation:blink 1.6s infinite}
   .hpt{position:absolute;z-index:5;font-family:var(--mono);font-size:10.5px;font-weight:700;padding:4px 9px;border-radius:8px;transform:translate(-50%,-170%);white-space:nowrap;border:1px solid;backdrop-filter:blur(6px)}
   .hpt-a{left:12.5%;top:84.7%;background:rgba(12,17,32,.82);color:#fff;border-color:rgba(255,255,255,.2)}
-  .hpt-b{left:83.2%;top:24.7%;background:var(--salmon);color:#fff;border-color:rgba(255,255,255,.4)}
+  .hpt-b{left:83.2%;top:24.7%;background:#d93a40;color:#fff;border-color:rgba(255,255,255,.4)}
 
   /* ---------- beneficios carrusel ---------- */
   .feat-carousel{position:relative;margin-top:6px}
@@ -1318,7 +1318,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
         <div class="fc-viewport">
           <button class="fc-arrow prev" aria-label="Anterior">&lsaquo;</button>
           <div class="fc-track">
-          <article class="fc-slide active" role="tabpanel" aria-hidden="false">
+          <article class="fc-slide active" role="tabpanel">
             <div class="fc-copy">
               <span class="fc-count">01 / 08</span>
               <span class="fc-badge">Lo favorito</span>
@@ -1331,7 +1331,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 <div class="mm-legend"><span><i class="dot enroute"></i>En camino</span><span><i class="dot avail"></i>Disponible</span><span><i class="dot client"></i>Con cliente</span></div>
 <span class="mm-mk avail" style="left:20%;top:32%">JM</span><span class="mm-mk enroute mv1" style="left:62%;top:28%">DH</span><span class="mm-mk enroute mv2" style="left:32%;top:56%">GS</span><span class="mm-mk avail" style="left:80%;top:60%">AT</span><span class="mm-mk client" style="left:48%;top:68%">TM</span><span class="mm-tip" style="left:48%;top:68%">Ya lleg&oacute; &#10003;</span></div></div></div>
           </article>
-          <article class="fc-slide" role="tabpanel" aria-hidden="true">
+          <article class="fc-slide" role="tabpanel" inert>
             <div class="fc-copy">
               <span class="fc-count">02 / 08</span>
               <h3>Asignaci&oacute;n inteligente de servicios</h3>
@@ -1345,7 +1345,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 <span class="asig-mk service" style="left:43%;top:55%">&#128295;</span><span class="asig-mk tech pick" style="left:65%;top:48%">CM</span><span class="asig-mk enroute d1" style="left:20%;top:36%">LR</span><span class="asig-mk enroute d2" style="left:26%;top:76%">AS</span><span class="asig-mk avail" style="left:82%;top:64%">JP</span>
 <div class="asig-tip" style="left:60%;top:30%"><b>Carlos M.</b><span>2.1 km &middot; <i>Disponible</i></span><b>$45.000</b></div></div></div></div>
           </article>
-          <article class="fc-slide" role="tabpanel" aria-hidden="true">
+          <article class="fc-slide" role="tabpanel" inert>
             <div class="fc-copy">
               <span class="fc-count">03 / 08</span>
               <h3>Trazabilidad y tiempos</h3>
@@ -1357,7 +1357,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 <ul class="trz-line"><li class="done"><span class="tt">09:58</span><span class="tl">Creado</span></li><li class="done"><span class="tt">10:00</span><span class="tl">Asignado a Andr&eacute;s M.</span></li><li class="done"><span class="tt">10:03</span><span class="tl">En camino</span></li><li class="now"><span class="tt">10:11</span><span class="tl">Lleg&oacute; donde el cliente</span></li><li><span class="tt">--:--</span><span class="tl">Finalizaci&oacute;n</span></li></ul>
 <div class="trz-foot">Tiempo de respuesta <b>13 min</b></div></div></div></div>
           </article>
-          <article class="fc-slide" role="tabpanel" aria-hidden="true">
+          <article class="fc-slide" role="tabpanel" inert>
             <div class="fc-copy">
               <span class="fc-count">04 / 08</span>
               <h3>Tarifas autom&aacute;ticas</h3>
@@ -1369,7 +1369,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 <ul class="tar-rows"><li><span>Tarifa base</span><span class="tar-val" data-v="30000">$30.000</span></li><li><span>Distancia &middot; 8 km &times; $1.500</span><span class="tar-val" data-v="12000">$12.000</span></li><li><span>Recargo nocturno</span><span class="tar-val" data-v="3000">$3.000</span></li></ul>
 <div class="tar-total"><span>Total del servicio</span><b class="tar-val" data-v="45000">$45.000</b></div><div class="tar-note">Calculado seg&uacute;n tus reglas &#10003;</div></div></div></div>
           </article>
-          <article class="fc-slide" role="tabpanel" aria-hidden="true">
+          <article class="fc-slide" role="tabpanel" inert>
             <div class="fc-copy">
               <span class="fc-count">05 / 08</span>
               <h3>Evidencias multimedia</h3>
@@ -1386,7 +1386,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 <div class="evi-more">+6</div></div>
 <div class="evi-note">Subido en tiempo real desde el sitio</div></div></div></div>
           </article>
-          <article class="fc-slide" role="tabpanel" aria-hidden="true">
+          <article class="fc-slide" role="tabpanel" inert>
             <div class="fc-copy">
               <span class="fc-count">06 / 08</span>
               <h3>Reportes</h3>
@@ -1398,7 +1398,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 <div class="rep-kpis"><div><b>1.284</b><span>Servicios</span></div><div><b>22 min</b><span>Tiempo prom.</span></div><div><b>96%</b><span>Cumplimiento</span></div></div>
 <div class="rep-chart"><span style="height:40%"></span><span style="height:62%"></span><span style="height:50%"></span><span style="height:78%"></span><span style="height:66%"></span><span style="height:90%"></span><span style="height:72%"></span></div></div></div></div>
           </article>
-          <article class="fc-slide" role="tabpanel" aria-hidden="true">
+          <article class="fc-slide" role="tabpanel" inert>
             <div class="fc-copy">
               <span class="fc-count">07 / 08</span>
               <h3>WhatsApp para clientes</h3>
@@ -1408,7 +1408,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
             <div class="fc-mock"><div class="mock wa-mock"><div class="wam-top"><span class="wam-av">W</span><div><b>Tu empresa de asistencia</b><span>en l&iacute;nea</span></div></div>
 <div class="wam-body"><div class="wam in">Asignamos a Andr&eacute;s para tu asistencia &#129520;<span>10:02</span></div><div class="wam in">Andr&eacute;s va en camino &#128663; Llega en ~8 min<span>10:05</span></div><div class="wam in">&#9989; El t&eacute;cnico lleg&oacute; a tu ubicaci&oacute;n<span>10:13</span></div><div class="wam out">&iexcl;Gracias! &#128591;<span>10:14</span></div><div class="wam in">Servicio finalizado. Califica tu atenci&oacute;n &#11088;<span>10:39</span></div></div></div></div>
           </article>
-          <article class="fc-slide" role="tabpanel" aria-hidden="true">
+          <article class="fc-slide" role="tabpanel" inert>
             <div class="fc-copy">
               <span class="fc-count">08 / 08</span>
               <h3>Tus clientes corporativos</h3>
@@ -1587,12 +1587,12 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
 
       <div class="wip-planes-toggles reveal">
         <div class="wip-planes-seg" id="wipPlanesCur" role="tablist" aria-label="Moneda">
-          <button class="is-on" data-cur="cop" aria-selected="true">COP</button>
-          <button data-cur="usd" aria-selected="false">USD</button>
+          <button class="is-on" role="tab" data-cur="cop" aria-selected="true">COP</button>
+          <button role="tab" data-cur="usd" aria-selected="false">USD</button>
         </div>
         <div class="wip-planes-seg" id="wipPlanesPer" role="tablist" aria-label="Facturaci&oacute;n">
-          <button class="is-on" data-per="mensual" aria-selected="true">Mensual</button>
-          <button data-per="anual" aria-selected="false">Anual &middot; 10% dcto</button>
+          <button class="is-on" role="tab" data-per="mensual" aria-selected="true">Mensual</button>
+          <button role="tab" data-per="anual" aria-selected="false">Anual &middot; 10% dcto</button>
         </div>
       </div>
 
@@ -1711,7 +1711,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
           <div class="xl-marquee"><div class="xl-track"><div class="xl-logo-card" style="background:#c8c7c7"><img width="300" height="108" loading="lazy" decoding="async" src="/img/transmilenio-27ed6232.png" alt="Transmilenio"/></div><div class="xl-logo-card" style="background:#ffe701"><img width="300" height="108" loading="lazy" decoding="async" src="/img/exito-ee8ff1bf.png" alt="Éxito"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/falabella-05c45636.png" alt="Falabella"/></div><div class="xl-logo-card" style="background:#028036"><img width="300" height="108" loading="lazy" decoding="async" src="/img/constructora-bolivar-ed4ca42f.png" alt="Constructora Bolívar"/></div><div class="xl-logo-card" style="background:#1367b7"><img width="300" height="108" loading="lazy" decoding="async" src="/img/cafam-65f413eb.png" alt="Cafam"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/avise-f7dd7347.png" alt="Avise"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/sotrandes-7c1565df.png" alt="Sotrandes"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/autogruas-hercon-ecb1d20a.png" alt="Autogrúas Hercon"/></div><div class="xl-logo-card" style="background:#c8c7c7"><img width="300" height="108" loading="lazy" decoding="async" src="/img/transmilenio-27ed6232.png" alt="Transmilenio"/></div><div class="xl-logo-card" style="background:#ffe701"><img width="300" height="108" loading="lazy" decoding="async" src="/img/exito-ee8ff1bf.png" alt="Éxito"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/falabella-05c45636.png" alt="Falabella"/></div><div class="xl-logo-card" style="background:#028036"><img width="300" height="108" loading="lazy" decoding="async" src="/img/constructora-bolivar-ed4ca42f.png" alt="Constructora Bolívar"/></div><div class="xl-logo-card" style="background:#1367b7"><img width="300" height="108" loading="lazy" decoding="async" src="/img/cafam-65f413eb.png" alt="Cafam"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/avise-f7dd7347.png" alt="Avise"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/sotrandes-7c1565df.png" alt="Sotrandes"/></div><div class="xl-logo-card" style="background:#ffffff"><img width="300" height="108" loading="lazy" decoding="async" src="/img/autogruas-hercon-ecb1d20a.png" alt="Autogrúas Hercon"/></div></div></div>
         </div>
       </div>
-      <div class="xl-flags" aria-label="Pa&iacute;ses de Latinoam&eacute;rica"><span class="xl-flag f-co"></span><span class="xl-flag f-hn"></span><span class="xl-flag f-gt"></span><span class="xl-flag f-mx"></span><span class="xl-flag f-cl"></span><span class="xl-flag f-pa"></span><span class="xl-flag f-ec"></span><span class="xl-flag f-cr"></span><span class="xl-flag f-sv"></span><span class="xl-flag f-ni"></span></div>
+      <div class="xl-flags" role="img" aria-label="Pa&iacute;ses de Latinoam&eacute;rica"><span class="xl-flag f-co"></span><span class="xl-flag f-hn"></span><span class="xl-flag f-gt"></span><span class="xl-flag f-mx"></span><span class="xl-flag f-cl"></span><span class="xl-flag f-pa"></span><span class="xl-flag f-ec"></span><span class="xl-flag f-cr"></span><span class="xl-flag f-sv"></span><span class="xl-flag f-ni"></span></div>
       <p class="xl-caption reveal">Operamos en LATAM.</p>
     </div>
   </section>
@@ -2144,7 +2144,7 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
     function go(k){ i=(k+n)%n; track.style.transform='translateX(-'+(i*100)+'%)';
       tabs.forEach((t,x)=>{t.classList.toggle('active',x===i);t.setAttribute('aria-selected',x===i);});
       dots.forEach((d,x)=>d.classList.toggle('active',x===i));
-      slides.forEach((s,x)=>s.setAttribute('aria-hidden',x!==i)); }
+      slides.forEach((s,x)=>{s.inert=x!==i;}); }
     function stop(){ stopped=true; if(timer){clearInterval(timer);timer=null;} }
     function auto(){ if(reduce||stopped||timer) return; timer=setInterval(()=>go(i+1),5500); }
     root.querySelector('.fc-arrow.prev').addEventListener('click',()=>{stop();go(i-1);});
@@ -2230,7 +2230,8 @@ window.addEventListener('load',function(){setTimeout(load,4000);});
   window.addEventListener('scroll', function(){
     if(!ticking){ requestAnimationFrame(function(){ onScroll(); ticking = false; }); ticking = true; }
   }, {passive:true});
-  onScroll();
+  /* Sin lectura inicial de la posicion: forzaba un calculo de diseno al cargar. Si la
+     pagina abre desplazada (ancla o recarga), el navegador dispara "scroll" y se aplica. */
 })();
 </script>
 <script id="hero-fit-js">
