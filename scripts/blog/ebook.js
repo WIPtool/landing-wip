@@ -21,8 +21,19 @@
           .catch(function(){cb('co');});
       }
     });
+    /* intl-tel-input deja aria-activedescendant apuntando a un item oculto mientras
+       la lista esta cerrada: se quita mientras el combobox esta colapsado. */
+    var flag=tel.closest('.iti')&&tel.closest('.iti').querySelector('.iti__selected-flag');
+    if(flag && 'MutationObserver' in window){
+      var strip=function(){
+        if(flag.getAttribute('aria-expanded')==='false' && flag.hasAttribute('aria-activedescendant')) flag.removeAttribute('aria-activedescendant');
+      };
+      strip();
+      new MutationObserver(strip).observe(flag,{attributes:true,attributeFilter:['aria-expanded','aria-activedescendant']});
+    }
   }
-  /* intl-tel-input se descarga cuando el formulario esta cerca de la pantalla. */
+  /* intl-tel-input (selector de pais del telefono) se descarga cuando la persona
+     empieza a usar el formulario: asi no bloquea la carga de la pagina. */
   (function(){
     var loaded=false;
     function load(){
@@ -30,11 +41,7 @@
       var css=document.createElement('link'); css.rel='stylesheet'; css.href='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/css/intlTelInput.css'; document.head.appendChild(css);
       var s=document.createElement('script'); s.src='https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.19/js/intlTelInput.min.js'; s.async=true; s.onload=initTel; document.head.appendChild(s);
     }
-    if('IntersectionObserver' in window){
-      var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ load(); io.disconnect(); } }); },{rootMargin:'400px 0px'});
-      io.observe(f);
-    } else { load(); }
-    ['pointerdown','keydown','touchstart'].forEach(function(ev){ f.addEventListener(ev,load,{once:true,passive:true}); });
+    ['focusin','pointerdown','touchstart'].forEach(function(ev){ f.addEventListener(ev,load,{once:true,passive:true}); });
   })();
 
   function showError(html){ err.hidden=false; err.innerHTML=html; }
