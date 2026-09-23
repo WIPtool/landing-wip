@@ -368,7 +368,7 @@ ${content}
 // ---------- /contacto ----------
 {
   const CAL = 'https://calendly.com/comercial-wiptool/acercamiento-wip';
-  const WA = 'https://api.whatsapp.com/send?phone=573005124111&text=Hola%2C%20quiero%20m%C3%A1s%20informaci%C3%B3n%20de%20WIP';
+  const WA = 'https://api.whatsapp.com/send?phone=573005124111&text=Hola%2C%20vengo%20del%20sitio%20web%20y%20quiero%20saber%20m%C3%A1s%20de%20WIP';
   const body = `
   <section class="contact-page">
     <div class="container contact-grid">
