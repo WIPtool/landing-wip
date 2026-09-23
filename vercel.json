@@ -3,6 +3,21 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/ig",
+      "destination": "/?utm_source=instagram&utm_medium=social&utm_campaign=bio",
+      "permanent": false
+    },
+    {
+      "source": "/fb",
+      "destination": "/?utm_source=facebook&utm_medium=social&utm_campaign=perfil",
+      "permanent": false
+    },
+    {
+      "source": "/wa",
+      "destination": "/?utm_source=whatsapp&utm_medium=chat&utm_campaign=meta_mensajeria",
+      "permanent": false
+    },
+    {
       "source": "/landing/inscripcion",
       "destination": "/inscripcion",
       "permanent": true
