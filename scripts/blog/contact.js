@@ -56,12 +56,6 @@
       document.head.appendChild(s);
     });
   }
-  document.addEventListener('click',function(e){
-    var wa=e.target.closest('[data-wa]');
-    if(wa && window.gtag) gtag('event','click_whatsapp',{page_location:location.href});
-    if(wa && window.fbq) fbq('track','Contact',{content_name:'whatsapp'});
-  });
-
   f.addEventListener('submit',function(e){
     e.preventDefault();
     err.hidden=true;

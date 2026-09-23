@@ -2368,7 +2368,7 @@ window.addEventListener('message',function(e){
   if(!window.gtag) return;
   document.addEventListener('click',function(e){
     var wa=e.target.closest('.wa-fab');
-    if(wa){ gtag('event','click_whatsapp',{page_location:location.href}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
+    if(wa){ gtag('event','click_whatsapp',{page_location:location.href,origen:'sitio_web'}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
     var cal=e.target.closest('.contact-calendly a, [onclick*="Calendly.initPopupWidget"]');
     if(cal){ gtag('event','click_calendly',{page_location:location.href}); if(window.fbq)fbq('trackCustom','ClickCalendly'); }
   }, true);

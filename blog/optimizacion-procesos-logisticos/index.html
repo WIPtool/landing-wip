@@ -36,6 +36,9 @@ window.addEventListener('load',function(){
   if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
 });})();
 }
+// Clics a WhatsApp de cualquier boton o enlace de la pagina.
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="api.whatsapp.com"],a[href*="wa.me"],[data-wa]');if(!a)return;
+gtag('event','click_whatsapp',{page_location:location.href,origen:'sitio_web'});if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'});});
 </script>
 <script>
 /* Pixel de Meta (conjunto de datos "Wip (Wiptool)", negocio WIP). La cola fbq existe siempre,

@@ -381,6 +381,14 @@
     {
       "source": "/asiste/:path*",
       "destination": "/api/gone"
+    },
+    {
+      "source": "/wa-ig",
+      "destination": "/api/wa?src=instagram"
+    },
+    {
+      "source": "/wa-fb",
+      "destination": "/api/wa?src=facebook"
     }
   ],
   "headers": [
