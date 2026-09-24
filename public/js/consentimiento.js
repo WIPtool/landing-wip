@@ -3,7 +3,7 @@
    en Europa todo queda rechazado hasta que la persona acepte; en el resto de paises se mide
    desde el inicio y la persona puede rechazar. Este archivo muestra el aviso, guarda la
    eleccion en localStorage ("wip_consent") y avisa a Google (Consent Mode), al pixel de Meta
-   y a quien escuche el evento "wip:consent" (por ejemplo Clarity).
+   y a quien escuche el evento "wip:consent". Tambien carga Microsoft Clarity si hay consentimiento.
    Cualquier elemento con data-cookies vuelve a abrir el aviso. */
 (function () {
   var CLAVE = 'wip_consent';
@@ -47,7 +47,7 @@
     caja.setAttribute('role', 'dialog');
     caja.setAttribute('aria-label', 'Preferencias de cookies');
     caja.innerHTML =
-      '<p><strong>Cookies en wiptool.com</strong>Usamos cookies de Google y Meta para medir las visitas y mejorar nuestros anuncios. ' +
+      '<p><strong>Cookies en wiptool.com</strong>Usamos cookies de Google, Meta y Microsoft Clarity para medir las visitas, mejorar el sitio y nuestros anuncios. ' +
       'Más detalles en la <a href="/politica-privacidad#finalidades">política de privacidad</a>.</p>' +
       '<div class="wip-cookies__acc"><button type="button" class="wip-cookies__si">Aceptar</button>' +
       '<button type="button" class="wip-cookies__no">Rechazar</button></div>';
@@ -55,6 +55,32 @@
     caja.querySelector('.wip-cookies__no').addEventListener('click', function () { aplicar('denied'); cerrar(); });
     document.body.appendChild(caja);
   }
+
+  // Microsoft Clarity (mapas de calor y grabaciones anonimas): solo en el dominio de produccion
+  // y solo con las cookies aceptadas. Se descarga despues de cargar la pagina, como Google y Meta.
+  var claritySolicitado = false;
+  function clarity(estado) {
+    if (location.hostname !== 'www.wiptool.com') return;
+    if (estado !== 'granted') {
+      if (window.clarity) window.clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' });
+      return;
+    }
+    if (claritySolicitado) return;
+    claritySolicitado = true;
+    (function (c, l, a, r, i, t, y) {
+      c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
+      t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
+      y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+    })(window, document, 'clarity', 'script', 'ync4pxhjqu');
+    window.clarity('consentv2', { ad_Storage: 'granted', analytics_Storage: 'granted' });
+  }
+  window.addEventListener('wip:consent', function (e) { clarity(e.detail); });
+  function claritySiAcepto() {
+    if (c.estado !== 'granted') return;
+    if ('requestIdleCallback' in window) requestIdleCallback(function () { clarity('granted'); }, { timeout: 3000 });
+    else setTimeout(function () { clarity('granted'); }, 1500);
+  }
+  if (document.readyState === 'complete') claritySiAcepto(); else window.addEventListener('load', claritySiAcepto, { once: true });
 
   window.wipCookies = { abrir: abrir };
   document.addEventListener('click', function (e) {
