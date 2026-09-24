@@ -7,6 +7,12 @@
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+/* Consentimiento de cookies (Consent Mode): en Europa se rechaza por defecto hasta que la persona acepte;
+   en el resto de paises se mide desde el inicio y se puede rechazar. El aviso esta en /js/consentimiento.js. */
+(function(){var e=null,tz='';try{e=JSON.parse(localStorage.getItem('wip_consent')||'null');}catch(x){}try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(x){}
+var eu=/^Europe.|^Atlantic.(Canary|Madeira|Azores|Reykjavik|Faroe)/.test(tz),s=e&&e.estado?e.estado:(eu?'denied':'granted');
+window.wipConsent={estado:s,eu:eu,elegido:!!(e&&e.estado)};
+gtag('consent','default',{ad_storage:s,analytics_storage:s,ad_user_data:s,ad_personalization:s,wait_for_update:500});})();
 if(location.hostname==='www.wiptool.com'){
 gtag('js', new Date());
 gtag('config', 'G-2ZX12K09EW');
@@ -168,6 +174,7 @@ window.addEventListener('load',function(){
     <h3 style="margin-top:16px">Datos de navegación y herramientas de medición en wiptool.com</h3>
     <p>Para medir el uso del sitio web, conocer el resultado de nuestras campañas y mostrar publicidad relacionada con WIP, el sitio www.wiptool.com utiliza cookies y tecnologías similares de terceros: Google Analytics y Google Ads (Google LLC) y el píxel de Meta (Meta Platforms, Inc., para Facebook e Instagram). Estas herramientas registran datos de navegación, como las páginas visitadas, el dispositivo, la ubicación aproximada y acciones como el envío de formularios, la descarga de ebooks o el agendamiento de una reunión, y pueden asociarlos a su cuenta en esas plataformas conforme a sus propias políticas de privacidad.</p>
     <p>Puede limitar este uso desde la configuración de cookies de su navegador, desde la configuración de anuncios de su cuenta de Google (adssettings.google.com) y desde las preferencias de anuncios de su cuenta de Meta (accountscenter.meta.com).</p>
+    <p>Al entrar a www.wiptool.com le mostramos un aviso para aceptar o rechazar estas cookies. Si las rechaza, no se usan para medición ni publicidad. Puede cambiar su elección en cualquier momento: <a href="#" data-cookies>cambiar mis preferencias de cookies</a>.</p>
   </section>
 
   <section id="derechos">
@@ -273,5 +280,6 @@ window.addEventListener('load',function(){
   </div>
 </footer>
 
+<script src="/js/consentimiento.js" defer></script>
 </body>
 </html>

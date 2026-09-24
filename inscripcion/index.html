@@ -26,6 +26,12 @@
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+/* Consentimiento de cookies (Consent Mode): en Europa se rechaza por defecto hasta que la persona acepte;
+   en el resto de paises se mide desde el inicio y se puede rechazar. El aviso esta en /js/consentimiento.js. */
+(function(){var e=null,tz='';try{e=JSON.parse(localStorage.getItem('wip_consent')||'null');}catch(x){}try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(x){}
+var eu=/^Europe.|^Atlantic.(Canary|Madeira|Azores|Reykjavik|Faroe)/.test(tz),s=e&&e.estado?e.estado:(eu?'denied':'granted');
+window.wipConsent={estado:s,eu:eu,elegido:!!(e&&e.estado)};
+gtag('consent','default',{ad_storage:s,analytics_storage:s,ad_user_data:s,ad_personalization:s,wait_for_update:500});})();
 if(location.hostname==='www.wiptool.com'){
 gtag('js', new Date());
 gtag('config', 'G-2ZX12K09EW');
@@ -192,6 +198,7 @@ h1 .accent{color:var(--accent-text)}
    interaccion, como la de Google, y solo en el dominio de produccion. */
 !function(f){if(f.fbq)return;var n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];}(window);
 if(location.hostname==='www.wiptool.com'){
+if(window.wipConsent&&window.wipConsent.estado==='denied')fbq('consent','revoke');
 fbq('init','7944401458963798');
 fbq('track','PageView');
 (function(){var l=false;function load(){if(l)return;l=true;
@@ -482,7 +489,7 @@ window.addEventListener('message',function(e){
     }
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
-    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href;
+    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href; data.cookies=(window.wipConsent||{}).estado||'granted';
     data.acepto=f.acepto.checked;
     /* Origen de la visita (campañas): se guarda junto a la inscripción. */
     try{
@@ -504,5 +511,6 @@ window.addEventListener('message',function(e){
   });
 })();
 </script>
+<script src="/js/consentimiento.js" defer></script>
 </body>
 </html>

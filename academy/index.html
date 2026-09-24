@@ -27,6 +27,12 @@
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+/* Consentimiento de cookies (Consent Mode): en Europa se rechaza por defecto hasta que la persona acepte;
+   en el resto de paises se mide desde el inicio y se puede rechazar. El aviso esta en /js/consentimiento.js. */
+(function(){var e=null,tz='';try{e=JSON.parse(localStorage.getItem('wip_consent')||'null');}catch(x){}try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(x){}
+var eu=/^Europe.|^Atlantic.(Canary|Madeira|Azores|Reykjavik|Faroe)/.test(tz),s=e&&e.estado?e.estado:(eu?'denied':'granted');
+window.wipConsent={estado:s,eu:eu,elegido:!!(e&&e.estado)};
+gtag('consent','default',{ad_storage:s,analytics_storage:s,ad_user_data:s,ad_personalization:s,wait_for_update:500});})();
 if(location.hostname==='www.wiptool.com'){
 gtag('js', new Date());
 gtag('config', 'G-2ZX12K09EW');
@@ -1000,6 +1006,15 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
         <a href="/equipos">¿Equipo propio en campo? WIP Equipos</a>
       </div>
       <div class="footer__col">
+        <h4>Soluciones</h4>
+        <a href="/software-gestion-servicios-en-campo">Gestión de servicios en campo</a>
+        <a href="/software-empresas-de-asistencia">Empresas de asistencia y aseguradoras</a>
+        <a href="/software-servicio-tecnico">Servicio técnico e instalaciones</a>
+        <a href="/software-telecomunicaciones-y-energia">Telecomunicaciones y energía</a>
+        <a href="/software-servicios-a-domicilio">Servicios a domicilio</a>
+        <a href="/software-para-gruas-y-flotas">Flotas de servicio (médicos, grúas, envíos o más)</a>
+      </div>
+      <div class="footer__col">
         <h4>Recursos</h4>
         <a href="/blog">Blog</a>
         <a href="/ebook">Ebooks gratuitos</a>
@@ -1015,6 +1030,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
       <span>© 2026 WIP · Aplicando S.A.S. Field Service Management.</span>
       <div class="footer__legal">
         <a href="/politica-privacidad" target="_blank" rel="noopener">Política de privacidad y tratamiento de datos</a>
+        <a href="#" data-cookies>Preferencias de cookies</a>
       </div>
     </div>
   </div>
@@ -1130,5 +1146,6 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
   fromHash();
 })();
 </script>
+<script src="/js/consentimiento.js" defer></script>
 </body>
 </html>

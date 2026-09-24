@@ -53,7 +53,7 @@
     if(!f.checkValidity()){ f.reportValidity(); return; }
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
-    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href;
+    data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href; data.cookies=(window.wipConsent||{}).estado||'granted';
     data.acepto=f.acepto.checked;
     if(iti && tel.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     try{

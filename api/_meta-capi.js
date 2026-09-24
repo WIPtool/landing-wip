@@ -27,6 +27,8 @@ function cookie(req, nombre) {
 export async function enviarEventoMeta(req, { evento, eventId, email, telefono, nombre, url, datos = {} }) {
   const token = process.env.META_CAPI_TOKEN;
   if (!token) return; // Sin token configurado no se envia nada.
+  // Si la persona rechazo las cookies en el aviso del sitio, tampoco se envia desde el servidor.
+  if (req.body && req.body.cookies === 'denied') return;
   // Solo produccion: las vistas previas de Vercel no deben sumar conversiones.
   if (process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production') return;
 

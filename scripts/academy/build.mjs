@@ -135,6 +135,12 @@ ${JSON.stringify(jsonld)}
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+/* Consentimiento de cookies (Consent Mode): en Europa se rechaza por defecto hasta que la persona acepte;
+   en el resto de paises se mide desde el inicio y se puede rechazar. El aviso esta en /js/consentimiento.js. */
+(function(){var e=null,tz='';try{e=JSON.parse(localStorage.getItem('wip_consent')||'null');}catch(x){}try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(x){}
+var eu=/^Europe.|^Atlantic.(Canary|Madeira|Azores|Reykjavik|Faroe)/.test(tz),s=e&&e.estado?e.estado:(eu?'denied':'granted');
+window.wipConsent={estado:s,eu:eu,elegido:!!(e&&e.estado)};
+gtag('consent','default',{ad_storage:s,analytics_storage:s,ad_user_data:s,ad_personalization:s,wait_for_update:500});})();
 if(location.hostname==='www.wiptool.com'){
 gtag('js', new Date());
 gtag('config', 'G-2ZX12K09EW');
@@ -186,6 +192,7 @@ ${footer}
 
 <script>
 ${client}</script>
+<script src="/js/consentimiento.js" defer></script>
 </body>
 </html>
 `;
