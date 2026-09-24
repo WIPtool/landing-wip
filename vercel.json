@@ -389,6 +389,14 @@
     {
       "source": "/wa-fb",
       "destination": "/api/wa?src=facebook"
+    },
+    {
+      "source": "/wa-email",
+      "destination": "/api/wa?src=email"
+    },
+    {
+      "source": "/agenda-email",
+      "destination": "/api/agenda?src=email"
     }
   ],
   "headers": [
