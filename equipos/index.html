@@ -583,6 +583,8 @@ window.addEventListener('load',function(){
   .wip-planes-seg{display:inline-flex;padding:5px;border-radius:12px;background:rgba(22,29,49,0.05);border:1px solid var(--gl-border);gap:3px}
   .wip-planes-seg button{font-family:var(--mono);font-size:12.5px;font-weight:700;letter-spacing:.06em;padding:9px 20px;border-radius:9px;border:none;background:transparent;color:var(--muted-d);cursor:pointer;transition:.18s}
   .wip-planes-seg button.is-on{background:var(--lime);color:var(--navy-brand)}
+  .wip-planes-scrollwrap{position:relative}
+  .wip-planes-hint{display:none}
   .wip-planes-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
   .wip-planes-card{min-width:640px;border:1px solid var(--gl-border);border-radius:22px;overflow:hidden;background:#fff;box-shadow:0 30px 70px rgba(22,29,49,.10)}
   .wip-planes-cmp{display:grid;grid-template-columns:minmax(150px,1.25fr) repeat(3,minmax(140px,1fr))}
@@ -639,6 +641,26 @@ window.addEventListener('load',function(){
   @media (max-width:620px){
     .wip-planes-big{flex-direction:column;align-items:stretch;text-align:center}
     .wip-planes-impl{flex-direction:column;text-align:center}
+  }
+  /* ===== Planes en mobile: la tabla comparativa desliza en horizontal =====
+     La tarjeta mide 640px; por debajo de ~688px (640 + padding del wrap) ya no
+     cabe y se scrollea de lado. Ayudas para que se entienda y nada se corte: */
+  @media (max-width:688px){
+    /* aviso visible de que la tabla se desliza */
+    .wip-planes-hint{display:flex;align-items:center;justify-content:center;gap:6px;font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:var(--muted-d);margin:0 0 10px}
+    .wip-planes-hint span{display:inline-block;animation:wipPlanesNudge 1.4s ease-in-out infinite}
+    @keyframes wipPlanesNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+    /* degradado en el borde derecho que insinua contenido oculto */
+    .wip-planes-scrollwrap::after{content:"";position:absolute;top:32px;right:0;bottom:8px;width:42px;background:linear-gradient(to right,rgba(255,255,255,0),#fff);pointer-events:none;border-radius:0 18px 18px 0}
+    /* el scroll se ajusta por columnas y la columna de caracteristicas queda fija */
+    .wip-planes-scroll{scroll-snap-type:x proximity}
+    .wip-planes-h{scroll-snap-align:start}
+    .wip-planes-card{overflow:visible;border-radius:18px}
+    .wip-planes-cmp > .wip-planes-cell:nth-child(4n+1){position:sticky;left:0;z-index:3;box-shadow:6px 0 12px -6px rgba(22,29,49,.16)}
+    /* precios y celdas mas compactos para que "$690.000" no se corte */
+    .wip-planes-h{padding:20px 12px 16px}
+    .wip-planes-h .pr-now{font-size:22px}
+    .wip-planes-cell{padding:12px 11px}
   }
 
 
@@ -758,7 +780,9 @@ window.addEventListener('load',function(){
   }
   @media (max-width:620px){
     section{padding:66px 0}
-    .hero{padding:60px 0 48px}
+    /* el header pasa a 52px de alto en mobile (14px gap + 52px barra = 66px):
+       recalcular el margen negativo del hero para que el titular no quede tapado por la barra */
+    .hero{margin-top:-66px;padding:94px 0 48px}
     .compare,.who-grid,.feat-grid{grid-template-columns:1fr}
     .feat.hot{grid-column:span 1}
     .hero-trust{font-size:11.5px;gap:12px}
@@ -1624,14 +1648,17 @@ window.addEventListener('message',function(e){
         </div>
       </div>
 
-      <div class="wip-planes-scroll reveal">
+      <div class="wip-planes-scrollwrap reveal">
+        <p class="wip-planes-hint" aria-hidden="true">Desliza para comparar los 3 planes <span>&rarr;</span></p>
+        <div class="wip-planes-scroll">
         <div class="wip-planes-card">
           <div class="wip-planes-cmp">
 <div class="wip-planes-cell wip-planes-lbl" style="align-items:flex-end;font-weight:600;color:var(--ink-d)">Compara los planes</div><div class="wip-planes-cell wip-planes-h is-top" data-plan="basico"><span class="nm">Plan Básico</span><span class="pr"><span class="pr-now"></span><span class="old"></span><span class="per">/mes</span></span><span class="anote">Facturado anual &middot; 10% dcto</span><span class="addl">Servicio adicional <span class="addv"></span></span></div><div class="wip-planes-cell wip-planes-h is-top is-adv" data-plan="avanzado"><span class="wip-planes-badge">Recomendado</span><span class="nm">Plan Avanzado</span><span class="pr"><span class="pr-now"></span><span class="old"></span><span class="per">/mes</span></span><span class="anote">Facturado anual &middot; 10% dcto</span><span class="addl">Servicio adicional <span class="addv"></span></span></div><div class="wip-planes-cell wip-planes-h is-top" data-plan="pro"><span class="nm">Plan Pro</span><span class="pr"><span class="pr-now"></span><span class="old"></span><span class="per">/mes</span></span><span class="anote">Facturado anual &middot; 10% dcto</span><span class="addl">Servicio adicional <span class="addv"></span></span></div>
 <div class="wip-planes-cell wip-planes-lbl">Servicios / mes</div><div class="wip-planes-cell wip-planes-val is-svc"><b>200</b></div><div class="wip-planes-cell wip-planes-val is-svc is-adv"><b>550</b></div><div class="wip-planes-cell wip-planes-val is-svc"><b>1.200</b></div>
 <div class="wip-planes-cell wip-planes-lbl"><span>Usuarios operativos <span style="opacity:.7">(acceso web)</span> + colaboradores en campo <span style="opacity:.7">(app m&oacute;vil)</span></span></div><div class="wip-planes-cell wip-planes-val">30</div><div class="wip-planes-cell wip-planes-val is-adv">65</div><div class="wip-planes-cell wip-planes-val">Ilimitados</div><div class="wip-planes-cell wip-planes-lbl">Tipos de formularios</div><div class="wip-planes-cell wip-planes-val">5</div><div class="wip-planes-cell wip-planes-val is-adv">30</div><div class="wip-planes-cell wip-planes-val">Ilimitados</div><div class="wip-planes-cell wip-planes-lbl">Unidades de negocio</div><div class="wip-planes-cell wip-planes-val">3</div><div class="wip-planes-cell wip-planes-val is-adv">15</div><div class="wip-planes-cell wip-planes-val">Ilimitadas</div><div class="wip-planes-cell wip-planes-lbl">Fotos por servicio</div><div class="wip-planes-cell wip-planes-val">10</div><div class="wip-planes-cell wip-planes-val is-adv">20</div><div class="wip-planes-cell wip-planes-val">Ilimitadas</div><div class="wip-planes-cell wip-planes-lbl">Seguimiento en vivo por WhatsApp para tu cliente (sin descargar app)</div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck no">&#10007;</span></div><div class="wip-planes-cell wip-planes-val is-adv"><span class="wip-planes-ck yes">&#10003;</span></div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck yes">&#10003;</span></div><div class="wip-planes-cell wip-planes-lbl">Perfiles para cliente corporativo</div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck no">&#10007;</span></div><div class="wip-planes-cell wip-planes-val is-adv"><span class="wip-planes-ck yes">&#10003;</span></div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck yes">&#10003;</span></div><div class="wip-planes-cell wip-planes-lbl">Módulo de tarifados automáticos</div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck no">&#10007;</span></div><div class="wip-planes-cell wip-planes-val is-adv"><span class="wip-planes-ck yes">&#10003;</span></div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck yes">&#10003;</span></div><div class="wip-planes-cell wip-planes-lbl">Asignación automática por cercanía o prioridad</div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck no">&#10007;</span></div><div class="wip-planes-cell wip-planes-val is-adv"><span class="wip-planes-ck no">&#10007;</span></div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck yes">&#10003;</span></div><div class="wip-planes-cell wip-planes-lbl">Gestión de red de proveedores</div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck no">&#10007;</span></div><div class="wip-planes-cell wip-planes-val is-adv"><span class="wip-planes-ck no">&#10007;</span></div><div class="wip-planes-cell wip-planes-val"><span class="wip-planes-ck no">&#10007;</span></div>
-<div class="wip-planes-cell wip-planes-lbl" style="background:transparent;border-bottom:none"></div><div class="wip-planes-cell wip-planes-f is-bot"><a href="#demo" class="btn btn-ghost">Empezar <span class="btn-arrow">&rarr;</span></a><span class="risk">Sin cl&aacute;usulas de permanencia &middot; Cancela cuando quieras.</span></div><div class="wip-planes-cell wip-planes-f is-bot is-adv"><a href="#demo" class="btn btn-primary">Empezar <span class="btn-arrow">&rarr;</span></a><span class="risk">Sin cl&aacute;usulas de permanencia &middot; Cancela cuando quieras.</span></div><div class="wip-planes-cell wip-planes-f is-bot"><a href="#demo" class="btn btn-ghost">Empezar <span class="btn-arrow">&rarr;</span></a><span class="risk">Sin cl&aacute;usulas de permanencia &middot; Cancela cuando quieras.</span></div>
+<div class="wip-planes-cell wip-planes-lbl" style="border-bottom:none"></div><div class="wip-planes-cell wip-planes-f is-bot"><a href="#demo" class="btn btn-ghost">Empezar <span class="btn-arrow">&rarr;</span></a><span class="risk">Sin cl&aacute;usulas de permanencia &middot; Cancela cuando quieras.</span></div><div class="wip-planes-cell wip-planes-f is-bot is-adv"><a href="#demo" class="btn btn-primary">Empezar <span class="btn-arrow">&rarr;</span></a><span class="risk">Sin cl&aacute;usulas de permanencia &middot; Cancela cuando quieras.</span></div><div class="wip-planes-cell wip-planes-f is-bot"><a href="#demo" class="btn btn-ghost">Empezar <span class="btn-arrow">&rarr;</span></a><span class="risk">Sin cl&aacute;usulas de permanencia &middot; Cancela cuando quieras.</span></div>
           </div>
+        </div>
         </div>
       </div>
 

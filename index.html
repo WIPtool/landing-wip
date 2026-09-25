@@ -997,7 +997,8 @@ window.wipWhenVisible=function(el,start,stop){
 .pyme-strip__cta{background:var(--navy);color:var(--lime);flex-shrink:0}
 .pyme-strip__cta:hover{background:var(--navy-deep);transform:translateY(-1px)}
 @media (max-width:640px){
-  .pyme-strip__inner{flex-direction:column;align-items:flex-start;gap:18px}
+  .pyme-strip{min-height:0 !important}
+  .pyme-strip__inner{flex-direction:column;align-items:flex-start;gap:18px;padding-top:32px;padding-bottom:32px}
   .pyme-strip__cta{width:100%}
 }
 
@@ -3860,10 +3861,10 @@ window.wipWhenVisible=function(el,start,stop){
 </section>
 
 <!-- ===================== FRANJA PYMES ===================== -->
-<div class="pyme-strip" id="pymes" style="height: 190px">
+<div class="pyme-strip" id="pymes" style="min-height: 190px">
   <div class="container pyme-strip__inner">
     <div class="pyme-strip__text">
-      <h3 style="font-size: 40px">¿Gestionas tu propio equipo en campo?</h3>
+      <h3 style="font-size: clamp(22px, 5vw, 40px)">¿Gestionas tu propio equipo en campo?</h3>
       <p>Conoce WIP Equipos: la plataforma para empresas que operan con su propio equipo, no con una red de proveedores.</p>
     </div>
     <a href="/equipos" class="btn pyme-strip__cta">Ver WIP Equipos</a>
