@@ -18,6 +18,11 @@
       "permanent": false
     },
     {
+      "source": "/landing/sbs",
+      "destination": "/?utm_source=app_sbs_vieja&utm_medium=app&utm_campaign=app_sbs_vieja",
+      "permanent": false
+    },
+    {
       "source": "/landing/inscripcion",
       "destination": "/inscripcion",
       "permanent": true
