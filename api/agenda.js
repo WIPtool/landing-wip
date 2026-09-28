@@ -1,4 +1,5 @@
-// Enlace medido a la agenda comercial en Calendly: /agenda-email (rewrite en vercel.json) llega aqui.
+// Enlace medido a la agenda comercial en Calendly: /agenda-email (secuencias de Brevo) y
+// /agenda-explee (prospeccion en frio de Explee), rewrites en vercel.json, llegan aqui.
 // Registra el clic en Google Analytics como click_calendly (el mismo evento de los botones del
 // sitio) con su origen, y redirige a Calendly con UTM para que la cita agendada quede con su
 // origen en Calendly. ?c= identifica el correo de la secuencia (utm_content y parametro correo).
@@ -7,6 +8,7 @@ import { registrarEvento, pieza, redirigir } from './_ga4.js';
 const CALENDLY = 'https://calendly.com/comercial-wiptool/acercamiento-wip';
 const ORIGENES = {
   email: { utm_source: 'brevo', utm_medium: 'email', utm_campaign: 'secuencias' },
+  explee: { utm_source: 'explee', utm_medium: 'email', utm_campaign: 'prospeccion' },
 };
 
 export default async function handler(req, res) {

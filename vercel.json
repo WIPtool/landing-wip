@@ -401,6 +401,10 @@
     {
       "source": "/agenda-email",
       "destination": "/api/agenda?src=email"
+    },
+    {
+      "source": "/agenda-explee",
+      "destination": "/api/agenda?src=explee"
     }
   ],
   "headers": [
