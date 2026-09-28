@@ -13,6 +13,11 @@
       "permanent": false
     },
     {
+      "source": "/explee",
+      "destination": "/?utm_source=explee&utm_medium=email&utm_campaign=prospeccion",
+      "permanent": false
+    },
+    {
       "source": "/wa",
       "destination": "/?utm_source=whatsapp&utm_medium=chat&utm_campaign=meta_mensajeria",
       "permanent": false
