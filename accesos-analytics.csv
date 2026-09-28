@@ -1,0 +1,13 @@
+enlace,destino,utm_source,utm_medium,utm_campaign,utm_content,evento_ga4
+/ig,Portada,instagram,social,bio,,
+/fb,Portada,facebook,social,perfil,,
+/wa,Portada,whatsapp,chat,meta_mensajeria,,
+/explee,Portada,explee,email,prospeccion,,
+/explee/:campana,Portada,explee,email,prospeccion,:campana,
+/wa-ig,WhatsApp,,,,,click_whatsapp (origen=instagram)
+/wa-fb,WhatsApp,,,,,click_whatsapp (origen=facebook)
+/wa-email,WhatsApp,,,,:c (correo),click_whatsapp (origen=email)
+/agenda-email,Calendly,brevo,email,secuencias,:c (correo),click_calendly (origen=email)
+/agenda-explee,Calendly,explee,email,prospeccion,,click_calendly (origen=explee)
+/agenda-explee/:campana,Calendly,explee,email,prospeccion,:campana,click_calendly (origen=explee)
+/landing/sbs,Portada,app_sbs_vieja,app,app_sbs_vieja,,
