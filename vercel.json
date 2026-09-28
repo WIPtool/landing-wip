@@ -18,6 +18,11 @@
       "permanent": false
     },
     {
+      "source": "/explee/:campana",
+      "destination": "/?utm_source=explee&utm_medium=email&utm_campaign=prospeccion&utm_content=:campana",
+      "permanent": false
+    },
+    {
       "source": "/wa",
       "destination": "/?utm_source=whatsapp&utm_medium=chat&utm_campaign=meta_mensajeria",
       "permanent": false
@@ -410,6 +415,10 @@
     {
       "source": "/agenda-explee",
       "destination": "/api/agenda?src=explee"
+    },
+    {
+      "source": "/agenda-explee/:campana",
+      "destination": "/api/agenda?src=explee&c=:campana"
     }
   ],
   "headers": [
