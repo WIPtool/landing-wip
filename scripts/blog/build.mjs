@@ -340,7 +340,7 @@ ${content}
             <a class="btn btn--primary" href="/contacto" data-cta="post-demo">Agenda una demo</a>
             ${p.solucion
     ? `<a class="btn btn--ghost" href="/${p.solucion}" data-cta="post-solucion">Conoce la solución</a>`
-    : `<a class="btn btn--ghost" href="${toRed ? '/' : '/equipos'}" data-cta="post-producto">${toRed ? 'Conoce WIP Red' : 'Conoce WIP Equipos'}</a>`}
+    : `<a class="btn btn--ghost" href="${toRed ? '/' : '/equipos'}" data-cta="post-producto">${toRed ? 'Conoce WIP Redes' : 'Conoce WIP Equipos'}</a>`}
           </div>
         </aside>
       </div>
@@ -393,7 +393,7 @@ ${content}
           <li><a href="${esc(WA)}" target="_blank" rel="noopener" data-wa><svg width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.5 0 12.05 0a11.82 11.82 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.607z"/></svg><span><strong>WhatsApp</strong>+57 300 512 4111</span></a></li>
           <li><a href="mailto:comercial@wiptool.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span><strong>Correo</strong>comercial@wiptool.com</span></a></li>
         </ul>
-        <p class="contact-products">¿Aún no conoces WIP? <a href="/">WIP Red</a> para redes de proveedores · <a href="/equipos">WIP Equipos</a> para personal en campo.</p>
+        <p class="contact-products">¿Aún no conoces WIP? <a href="/">WIP Redes</a> para redes de proveedores · <a href="/equipos">WIP Equipos</a> para personal en campo.</p>
       </div>
       <div>
         <h2 class="contact-form-title">¿O prefieres que te contactemos?</h2>
@@ -628,10 +628,10 @@ for (const s of soluciones) {
   <section class="sol-sec${s.pasos ? '' : ' sol-sec--alt'}">
     <div class="container">
       <h2>Con tu equipo propio o con una red de proveedores</h2>
-      <p class="sol-intro">WIP tiene una solución para cada forma de operar. Si tu gente hace el servicio, es WIP Equipos; si coordinas una red que lo hace por ti, es WIP Red.</p>
+      <p class="sol-intro">WIP tiene una solución para cada forma de operar. Si tu gente hace el servicio, es WIP Equipos; si coordinas una red que lo hace por ti, es WIP Redes.</p>
       <ul class="sol-products">
         <li><h3>WIP Equipos</h3><p>Para empresas que prestan el servicio con su propio personal en campo: técnicos, cuadrillas o conductores. Planes mensuales, sin cláusulas de permanencia.</p><a class="btn btn--ghost" href="/equipos" data-cta="sol-equipos">Conoce WIP Equipos</a></li>
-        <li><h3>WIP Red</h3><p>Para corporativos que coordinan una red de proveedores o contratistas externos y necesitan controlar tiempos, cumplimiento y trazabilidad.</p><a class="btn btn--ghost" href="/" data-cta="sol-red">Conoce WIP Red</a></li>
+        <li><h3>WIP Redes</h3><p>Para corporativos que coordinan una red de proveedores o contratistas externos y necesitan controlar tiempos, cumplimiento y trazabilidad.</p><a class="btn btn--ghost" href="/" data-cta="sol-red">Conoce WIP Redes</a></li>
       </ul>
     </div>
   </section>

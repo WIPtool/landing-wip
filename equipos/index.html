@@ -81,10 +81,10 @@ window.addEventListener('load',function(){
     },
     {
       "@type": "Question",
-      "name": "¿Cuál es la diferencia entre WIP Red y WIP Equipos?",
+      "name": "¿Cuál es la diferencia entre WIP Redes y WIP Equipos?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "WIP Equipos es para empresas que prestan los servicios con su propio equipo en campo (técnicos, cuadrillas, conductores): asignas, haces seguimiento y le respondes al cliente. WIP Red es para corporativos que no atienden directamente, sino que coordinan una red de proveedores externos y necesitan controlar tiempos, cumplimiento y trazabilidad de esa red. En resumen: si tu gente hace el servicio, es WIP Equipos; si gestionas una red que lo hace por ti, es WIP Red."
+        "text": "WIP Equipos es para empresas que prestan los servicios con su propio equipo en campo (técnicos, cuadrillas, conductores): asignas, haces seguimiento y le respondes al cliente. WIP Redes es para corporativos que no atienden directamente, sino que coordinan una red de proveedores externos y necesitan controlar tiempos, cumplimiento y trazabilidad de esa red. En resumen: si tu gente hace el servicio, es WIP Equipos; si gestionas una red que lo hace por ti, es WIP Redes."
       }
     },
     {
@@ -365,8 +365,8 @@ window.addEventListener('load',function(){
   .btn:hover .btn-arrow{transform:translateX(3px)}
 
   /* ---------- header (barra flotante) ---------- */
-  /* Estructura/tamaño de .nav, .nav__inner, etc: ver /shared/wip-tokens.css (misma barra que WIP Red). Acá solo colores. */
-  /* Transición suave entre WIP Equipos y WIP Red (Chrome/Edge; sin efecto en navegadores sin soporte) */
+  /* Estructura/tamaño de .nav, .nav__inner, etc: ver /shared/wip-tokens.css (misma barra que WIP Redes). Acá solo colores. */
+  /* Transición suave entre WIP Equipos y WIP Redes (Chrome/Edge; sin efecto en navegadores sin soporte) */
   @view-transition{navigation:auto}
   header.nav{background:transparent}
   .nav__inner{
@@ -375,7 +375,7 @@ window.addEventListener('load',function(){
     border:1px solid rgba(255,255,255,0.14);
     box-shadow:0 10px 34px rgba(0,0,0,0.35);
   }
-  /* al hacer scroll, la píldora se define más (igual que en Wip Red) */
+  /* al hacer scroll, la píldora se define más (igual que en Wip Redes) */
   .nav.is-scrolled .nav__inner{
     background:rgba(12,17,30,0.92);
     box-shadow:0 14px 44px rgba(0,0,0,0.45);
@@ -732,7 +732,7 @@ window.addEventListener('load',function(){
   .final .hero-ctas{justify-content:center;opacity:1}
 
   /* ---------- footer ----------
-     Config (dimensiones, tipografía, márgenes) calcada 1:1 de WIP Red
+     Config (dimensiones, tipografía, márgenes) calcada 1:1 de WIP Redes
      (#blog en /index.html) para que ambos footers se vean exactamente
      iguales en tamaño; sólo cambian los colores propios de Equipos y,
      obviamente, el contenido. */
@@ -1225,14 +1225,14 @@ window.addEventListener('message',function(e){
 </a>
 
 <!-- ================= HEADER ================= -->
-<!-- Misma estructura/clases que la barra de WIP Red (ver /shared/wip-tokens.css) -->
+<!-- Misma estructura/clases que la barra de WIP Redes (ver /shared/wip-tokens.css) -->
 <header class="nav">
   <div class="nav__inner">
     <div class="nav__logo"><span class="logo-img" role="img" aria-label="WIP"></span><span class="logo-sub">Equipos</span></div>
     <nav class="nav__links" aria-label="Segmento">
-      <!-- Ancla al enterprise: "WIP Red" debe apuntar a tu landing principal (raíz "/"). Va siempre a la izquierda. -->
-      <a href="/" class="nav__pymes" aria-label="WIP Red, ¿Tercerizas servicios?">
-        <span class="nav__pymes-main">WIP Red</span>
+      <!-- Ancla al enterprise: "WIP Redes" debe apuntar a tu landing principal (raíz "/"). Va siempre a la izquierda. -->
+      <a href="/" class="nav__pymes" aria-label="WIP Redes, ¿Tercerizas servicios?">
+        <span class="nav__pymes-main">WIP Redes</span>
         <span class="nav__pymes-sub">¿Tercerizas servicios?</span>
       </a>
       <a href="#" class="is-active" aria-current="page">WIP Equipos</a>
@@ -1825,10 +1825,10 @@ window.addEventListener('message',function(e){
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
             <span class="faq-num">2.</span>
-            <span class="faq-qt">&iquest;Cu&aacute;l es la diferencia entre WIP Red y WIP Equipos?</span>
+            <span class="faq-qt">&iquest;Cu&aacute;l es la diferencia entre WIP Redes y WIP Equipos?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
-          <div class="faq-a"><p><b>WIP Equipos</b> es para empresas que prestan los servicios con su <b>propio equipo en campo</b> (t&eacute;cnicos, cuadrillas, conductores): asignas, haces seguimiento y le respondes al cliente. <b>WIP Red</b> es para corporativos que <b>no atienden directamente</b>, sino que coordinan una <b>red de proveedores externos</b> y necesitan controlar tiempos, cumplimiento y trazabilidad de esa red. En resumen: si tu gente hace el servicio, es WIP Equipos; si gestionas una red que lo hace por ti, es WIP Red.</p></div>
+          <div class="faq-a"><p><b>WIP Equipos</b> es para empresas que prestan los servicios con su <b>propio equipo en campo</b> (t&eacute;cnicos, cuadrillas, conductores): asignas, haces seguimiento y le respondes al cliente. <b>WIP Redes</b> es para corporativos que <b>no atienden directamente</b>, sino que coordinan una <b>red de proveedores externos</b> y necesitan controlar tiempos, cumplimiento y trazabilidad de esa red. En resumen: si tu gente hace el servicio, es WIP Equipos; si gestionas una red que lo hace por ti, es WIP Redes.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
@@ -1892,7 +1892,7 @@ window.addEventListener('message',function(e){
   </section>
 
   <!-- ================= HABLEMOS (contacto) ================= -->
-  <!-- Idéntica a la de WIP Red (/#contacto): mismos colores, tamaños y
+  <!-- Idéntica a la de WIP Redes (/#contacto): mismos colores, tamaños y
        formato, con valores fijos en vez de los tokens propios de Equipos,
        para garantizar que ambas páginas se vean exactamente iguales. -->
   <style id="contacto-css">
@@ -2025,7 +2025,7 @@ window.addEventListener('message',function(e){
       <a href="#beneficios">Soluciones</a>
       <a href="#testimonios">Testimonios</a>
       <a href="#planes">Planes</a>
-      <a href="/">¿Tercerizas servicios? WIP Red</a>
+      <a href="/">¿Tercerizas servicios? WIP Redes</a>
     </div>
     <div class="footer-col">
       <h4>Soluciones</h4>
