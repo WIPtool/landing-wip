@@ -2401,11 +2401,20 @@ window.addEventListener('message',function(e){
 <script id="conversion-events-js">
 (function(){
   if(!window.gtag) return;
+  /* Origen de la visita (instagram, facebook, explee): se toma de utm_source y se recuerda en la sesión para marcar los clics */
+  function origenVisita(){
+    try{
+      var u=(new URLSearchParams(location.search).get('utm_source')||'').toLowerCase();
+      if(u==='instagram'||u==='facebook'||u==='explee') sessionStorage.setItem('wip_origen',u);
+      return sessionStorage.getItem('wip_origen')||'';
+    }catch(err){ return ''; }
+  }
+  origenVisita();
   document.addEventListener('click',function(e){
     var wa=e.target.closest('.wa-fab');
-    if(wa){ gtag('event','click_whatsapp',{page_location:location.href,origen:'sitio_web'}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
+    if(wa){ gtag('event','click_whatsapp',{page_location:location.href,origen:origenVisita()||'sitio_web'}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
     var cal=e.target.closest('.contact-calendly a, [onclick*="Calendly.initPopupWidget"]');
-    if(cal){ gtag('event','click_calendly',{page_location:location.href}); if(window.fbq)fbq('trackCustom','ClickCalendly'); }
+    if(cal){ var o=origenVisita(); var p={page_location:location.href}; if(o)p.origen=o; gtag('event','click_calendly',p); if(window.fbq)fbq('trackCustom','ClickCalendly'); }
   }, true);
 })();
 </script>
