@@ -44,7 +44,7 @@
   var cal=document.getElementById('calendlyBtn');
   if(cal){
     cal.addEventListener('click',function(e){
-      if(window.gtag) gtag('event','click_calendly',{page_location:location.href});
+      if(window.gtag) gtag('event','click_calendly',(window.wipOrigen&&wipOrigen())?{page_location:location.href,origen:wipOrigen()}:{page_location:location.href});
       if(window.fbq) fbq('trackCustom','ClickCalendly');
       e.preventDefault();
       var url=cal.getAttribute('href');

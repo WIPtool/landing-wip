@@ -42,9 +42,12 @@ window.addEventListener('load',function(){
   if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
 });})();
 }
+// Origen de la visita (instagram, facebook, explee): viene de utm_source y se recuerda en la sesion para marcar los clics.
+function wipOrigen(){try{var u=(new URLSearchParams(location.search).get('utm_source')||'').toLowerCase();if(u==='instagram'||u==='facebook'||u==='explee')sessionStorage.setItem('wip_origen',u);return sessionStorage.getItem('wip_origen')||'';}catch(x){return '';}}
+wipOrigen();
 // Clics a WhatsApp de cualquier boton o enlace de la pagina.
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="api.whatsapp.com"],a[href*="wa.me"],[data-wa]');if(!a)return;
-gtag('event','click_whatsapp',{page_location:location.href,origen:'sitio_web'});if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'});});
+gtag('event','click_whatsapp',{page_location:location.href,origen:wipOrigen()||'sitio_web'});if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'});});
 </script>
 <script>
 /* Pixel de Meta (conjunto de datos "Wip (Wiptool)", negocio WIP). La cola fbq existe siempre,
@@ -63,7 +66,7 @@ window.addEventListener('load',function(){
 });})();
 /* Calendly avisa por postMessage cuando la persona termina de agendar: esa es la conversion real. */
 window.addEventListener('message',function(e){
-  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');if(window.gtag)gtag('event','calendly_agendado',{page_location:location.href});}
+  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');if(window.gtag)gtag('event','calendly_agendado',(window.wipOrigen&&wipOrigen())?{page_location:location.href,origen:wipOrigen()}:{page_location:location.href});}
 });
 }
 </script>
@@ -572,7 +575,7 @@ img{max-width:100%;height:auto;display:block}
   var cal=document.getElementById('calendlyBtn');
   if(cal){
     cal.addEventListener('click',function(e){
-      if(window.gtag) gtag('event','click_calendly',{page_location:location.href});
+      if(window.gtag) gtag('event','click_calendly',(window.wipOrigen&&wipOrigen())?{page_location:location.href,origen:wipOrigen()}:{page_location:location.href});
       if(window.fbq) fbq('trackCustom','ClickCalendly');
       e.preventDefault();
       var url=cal.getAttribute('href');

@@ -649,7 +649,7 @@ window.addEventListener('load',function(){
 });})();
 /* Calendly avisa por postMessage cuando la persona termina de agendar: esa es la conversion real. */
 window.addEventListener('message',function(e){
-  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');if(window.gtag)gtag('event','calendly_agendado',{page_location:location.href});}
+  if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled'){fbq('track','Schedule');if(window.gtag)gtag('event','calendly_agendado',(window.wipOrigen&&wipOrigen())?{page_location:location.href,origen:wipOrigen()}:{page_location:location.href});}
 });
 }
 </script>
@@ -4295,6 +4295,7 @@ window.wipWhenVisible=function(el,start,stop){
     }catch(err){ return ''; }
   }
   origenVisita();
+  window.wipOrigen=origenVisita;
   document.addEventListener('click',function(e){
     var wa=e.target.closest('.wa-fab');
     if(wa){ gtag('event','click_whatsapp',{page_location:location.href,origen:origenVisita()||'sitio_web'}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
