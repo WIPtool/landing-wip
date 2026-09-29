@@ -23,6 +23,11 @@
       "permanent": false
     },
     {
+      "source": "/equipos/ig",
+      "destination": "/equipos?utm_source=instagram&utm_medium=social&utm_campaign=bio_equipos",
+      "permanent": false
+    },
+    {
       "source": "/equipos/explee",
       "destination": "/equipos?utm_source=explee&utm_medium=email&utm_campaign=prospeccion",
       "permanent": false
