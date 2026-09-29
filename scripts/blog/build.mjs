@@ -95,8 +95,8 @@ window.addEventListener('load',function(){
   if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
 });})();
 }
-// Origen de la visita (instagram, facebook, explee): viene de utm_source y se recuerda en la sesion para marcar los clics.
-function wipOrigen(){try{var u=(new URLSearchParams(location.search).get('utm_source')||'').toLowerCase();if(u==='instagram'||u==='facebook'||u==='explee')sessionStorage.setItem('wip_origen',u);return sessionStorage.getItem('wip_origen')||'';}catch(x){return '';}}
+// Origen de la visita (instagram, facebook, explee, brevo): viene de utm_source y se recuerda en la sesion para marcar los clics.
+function wipOrigen(){try{var u=(new URLSearchParams(location.search).get('utm_source')||'').toLowerCase();if(u==='brevo'||u==='sendinblue')u='email';if(u==='instagram'||u==='facebook'||u==='explee'||u==='email')sessionStorage.setItem('wip_origen',u);return sessionStorage.getItem('wip_origen')||'';}catch(x){return '';}}
 wipOrigen();
 // Clics a WhatsApp de cualquier boton o enlace de la pagina.
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="api.whatsapp.com"],a[href*="wa.me"],[data-wa]');if(!a)return;

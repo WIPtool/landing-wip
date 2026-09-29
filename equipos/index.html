@@ -2401,11 +2401,11 @@ window.addEventListener('message',function(e){
 <script id="conversion-events-js">
 (function(){
   if(!window.gtag) return;
-  /* Origen de la visita (instagram, facebook, explee): se toma de utm_source y se recuerda en la sesión para marcar los clics */
+  /* Origen de la visita (instagram, facebook, explee, brevo): se toma de utm_source y se recuerda en la sesión para marcar los clics */
   function origenVisita(){
     try{
       var u=(new URLSearchParams(location.search).get('utm_source')||'').toLowerCase();
-      if(u==='instagram'||u==='facebook'||u==='explee') sessionStorage.setItem('wip_origen',u);
+      if(u==='brevo'||u==='sendinblue')u='email';if(u==='instagram'||u==='facebook'||u==='explee'||u==='email') sessionStorage.setItem('wip_origen',u);
       return sessionStorage.getItem('wip_origen')||'';
     }catch(err){ return ''; }
   }
