@@ -50,6 +50,7 @@ function wipOrigen(){try{var u=(new URLSearchParams(location.search).get('utm_so
 wipOrigen();
 // Clics a WhatsApp de cualquier boton o enlace de la pagina.
 document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href*="api.whatsapp.com"],a[href*="wa.me"],[data-wa]');if(!a)return;
+var f={instagram:'vengo de Instagram',facebook:'vengo de Facebook',email:'vengo del correo de WIP',explee:'vengo del correo que me enviaron'}[wipOrigen()];if(f&&a.href){try{var u=new URL(a.href),t=u.searchParams.get('text');if(t&&/vengo del sitio web/i.test(t)){u.searchParams.set('text',t.replace(/vengo del sitio web/i,f));a.href=u.toString();}}catch(x){}}
 gtag('event','click_whatsapp',{page_location:location.href,origen:wipOrigen()||'sitio_web'});if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'});});
 </script>
 <script>

@@ -2411,7 +2411,14 @@ window.addEventListener('message',function(e){
   }
   origenVisita();
   window.wipOrigen=origenVisita;
+  /* El mensaje de WhatsApp dice de dónde viene la persona (Kommo lo usa para llenar el campo Origen) */
+  function waConOrigen(a){
+    var f={instagram:'vengo de Instagram',facebook:'vengo de Facebook',email:'vengo del correo de WIP',explee:'vengo del correo que me enviaron'}[origenVisita()];
+    if(!f) return;
+    try{ var u=new URL(a.href), t=u.searchParams.get('text'); if(t&&/vengo del sitio web/i.test(t)){ u.searchParams.set('text',t.replace(/vengo del sitio web/i,f)); a.href=u.toString(); } }catch(err){}
+  }
   document.addEventListener('click',function(e){
+    var enlace=e.target.closest('a[href*="api.whatsapp.com"],a[href*="wa.me"]'); if(enlace) waConOrigen(enlace);
     var wa=e.target.closest('.wa-fab');
     if(wa){ gtag('event','click_whatsapp',{page_location:location.href,origen:origenVisita()||'sitio_web'}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
     var cal=e.target.closest('.contact-calendly a, [onclick*="Calendly.initPopupWidget"]');
