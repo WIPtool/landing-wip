@@ -48,7 +48,7 @@
     caja.setAttribute('aria-label', 'Preferencias de cookies');
     caja.innerHTML =
       '<p><strong>Cookies en wiptool.com</strong>Usamos cookies de Google, Meta y Microsoft Clarity para medir las visitas, mejorar el sitio y nuestros anuncios. ' +
-      'Más detalles en la <a href="/politica-privacidad#finalidades">política de privacidad</a>.</p>' +
+      'Más detalles en la <a href="/politica-cookies">política de cookies</a>.</p>' +
       '<div class="wip-cookies__acc"><button type="button" class="wip-cookies__si">Aceptar</button>' +
       '<button type="button" class="wip-cookies__no">Rechazar</button></div>';
     caja.querySelector('.wip-cookies__si').addEventListener('click', function () { aplicar('granted'); cerrar(); });

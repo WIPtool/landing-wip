@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js): mismo tag y misma regla de host que la home y Equipos (solo mide en www.wiptool.com). -->
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+/* Consentimiento de cookies (Consent Mode): en Europa se rechaza por defecto hasta que la persona acepte;
+   en el resto de paises se mide desde el inicio y se puede rechazar. El aviso esta en /js/consentimiento.js. */
+(function(){var e=null,tz='';try{e=JSON.parse(localStorage.getItem('wip_consent')||'null');}catch(x){}try{tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'';}catch(x){}
+var eu=/^Europe.|^Atlantic.(Canary|Madeira|Azores|Reykjavik|Faroe)/.test(tz),s=e&&e.estado?e.estado:(eu?'denied':'granted');
+window.wipConsent={estado:s,eu:eu,elegido:!!(e&&e.estado)};
+gtag('consent','default',{ad_storage:s,analytics_storage:s,ad_user_data:s,ad_personalization:s,wait_for_update:500});})();
+if(location.hostname==='www.wiptool.com'){
+gtag('js', new Date());
+gtag('config', 'G-2ZX12K09EW');
+(function(){var l=false;function load(){if(l)return;l=true;
+var s=document.createElement('script');s.src='https://www.googletagmanager.com/gtag/js?id=G-2ZX12K09EW';s.async=true;document.head.appendChild(s);}
+['pointerdown','keydown','scroll','touchstart'].forEach(function(e){window.addEventListener(e,load,{once:true,passive:true});});
+window.addEventListener('load',function(){
+  if('requestIdleCallback' in window){requestIdleCallback(load,{timeout:3000});}else{setTimeout(load,1500);}
+});})();
+}
+</script>
+<title>Términos y condiciones, WIP · Aplicando S.A.S.</title>
+<meta name="description" content="Términos y condiciones del servicio de la plataforma WIP, de Aplicando S.A.S.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://www.wiptool.com/terminos-condiciones">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --navy:#161d31;
+    --lime:#dbff57;
+    --lime-text:#4f8f1f;
+    --salmon:#ff6c6c;
+    --paper:#f9f9fb;
+    --paper-2:#ffffff;
+    --line:#e6e6ea;
+    --ink:#161d31;
+    --muted:#5a647a;
+    --maxw:860px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,.display{font-family:'Space Grotesk',sans-serif;letter-spacing:-0.02em}
+  a{color:var(--navy)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+
+  header{position:sticky;top:0;z-index:20;background:rgba(249,249,251,.9);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav{max-width:1100px;margin:0 auto;padding:0 24px;height:66px;display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:9px;font-family:'Space Grotesk';font-weight:700;font-size:19px;color:var(--navy);text-decoration:none}
+  .logo .mark{width:28px;height:28px;background:var(--navy);border-radius:7px;display:grid;place-items:center;color:var(--lime);font-weight:700;font-size:13px}
+  .back-link{display:inline-flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none}
+  .back-link:hover{color:var(--navy)}
+
+  .hero-block{padding:56px 0 28px;border-bottom:1px solid var(--line)}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--lime-text);margin-bottom:16px}
+  .eyebrow::before{content:"";width:20px;height:2px;background:var(--lime-text)}
+  h1{font-size:clamp(30px,4.4vw,42px);font-weight:700;color:var(--navy);margin-bottom:14px}
+  .hero-block p.lede{font-size:16px;color:var(--muted);max-width:640px}
+
+  .toc{background:var(--paper-2);border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin:32px 0 0}
+  .toc h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:12px;font-family:'Inter';font-weight:700}
+  .toc ol{padding-left:20px}
+  .toc li{margin-bottom:6px;font-size:14.5px}
+  .toc a{text-decoration:none;color:var(--navy);font-weight:500}
+  .toc a:hover{color:var(--lime-text);text-decoration:underline}
+
+  main{padding:44px 0 90px}
+  section{margin-bottom:44px;scroll-margin-top:90px}
+  section h2{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--lime)}
+  section h3{font-size:16px;font-weight:700;color:var(--navy);margin:20px 0 8px}
+  section p{font-size:15px;color:#333;margin-bottom:14px}
+  section ul, section ol.plain{margin:12px 0 16px 22px}
+  section li{font-size:15px;color:#333;margin-bottom:8px}
+  .clause-list{counter-reset:clause}
+  .clause{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:12px}
+  .clause b{color:var(--navy)}
+  .setting-card{background:var(--paper-2);border:1px solid var(--line);border-radius:12px;padding:16px 18px;margin-bottom:10px}
+  .setting-card b{display:block;color:var(--navy);margin-bottom:4px;font-size:15px}
+  .contact-box{background:var(--navy);color:#fff;border-radius:16px;padding:26px 28px;margin-top:8px}
+  .contact-box p{color:#c9cde0;font-size:14.5px;margin-bottom:6px}
+  .contact-box a{color:var(--lime);font-weight:600}
+  .note{background:#fff9e6;border:1px solid #f0e3a8;border-radius:10px;padding:12px 16px;font-size:13.5px;color:#6b5c1e;margin-top:10px}
+
+  footer{border-top:1px solid var(--line);padding:32px 0;text-align:center}
+  footer p{font-size:13px;color:var(--muted)}
+  footer a{color:var(--navy);font-weight:600}
+
+  @media(max-width:600px){
+    .nav{padding:0 18px}
+    .back-link span.txt{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a href="/" class="logo"><span class="mark">W</span>WIP</a>
+    <a href="/" class="back-link">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      <span class="txt">Volver a wiptool.com</span>
+    </a>
+  </div>
+</header>
+
+<div class="hero-block">
+  <div class="wrap">
+    <span class="eyebrow">Aplicando S.A.S. · WIP</span>
+    <h1>Términos y condiciones</h1>
+    <p class="lede">Condiciones de uso de la plataforma WIP para las empresas que la contratan: el servicio, las obligaciones de cada parte, los datos, los pagos y la terminación.</p>
+    <p class="lede" style="margin-top:10px;font-size:14px">Última actualización: 2 de octubre de 2026.</p>
+
+    <nav class="toc" aria-label="Tabla de contenido">
+      <h2>Contenido</h2>
+      <ol>
+        <li><a href="#partes">Quiénes somos y cuándo aplican estos términos</a></li>
+        <li><a href="#servicio">El servicio</a></li>
+        <li><a href="#cliente">Uso de la plataforma y obligaciones del Cliente</a></li>
+        <li><a href="#wip">Obligaciones de WIP</a></li>
+        <li><a href="#seguridad">Seguridad de la información</a></li>
+        <li><a href="#datos">Datos personales</a></li>
+        <li><a href="#confidencialidad">Confidencialidad</a></li>
+        <li><a href="#propiedad">Propiedad de los datos y de la plataforma</a></li>
+        <li><a href="#precio">Precio, facturación y pagos</a></li>
+        <li><a href="#duracion">Duración, renovación y terminación</a></li>
+        <li><a href="#responsabilidad">Garantías y límite de responsabilidad</a></li>
+        <li><a href="#cambios">Cambios a estos términos</a></li>
+        <li><a href="#cumplimiento">Anticorrupción y prevención de lavado de activos</a></li>
+        <li><a href="#generales">Disposiciones generales</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ol>
+    </nav>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section id="partes">
+    <h2>1. Quiénes somos y cuándo aplican estos términos</h2>
+    <p>WIP es una plataforma en la nube (software como servicio) para gestionar servicios en campo y a domicilio. La presta <b>APLICANDO S.A.S.</b> (en adelante, "WIP"), sociedad colombiana identificada con NIT 900.886.750-2 y domicilio en Medellín, Antioquia.</p>
+    <p>Estos términos regulan la relación entre WIP y la empresa que contrata la plataforma (en adelante, "el Cliente"). Se aceptan al firmar, de forma física o electrónica, la <b>Orden de servicio</b> (también llamada SOF o propuesta comercial aceptada), que hace parte de estos términos. Si hay diferencias entre ambos documentos, prevalece lo pactado en la Orden de servicio.</p>
+  </section>
+
+  <section id="servicio">
+    <h2>2. El servicio</h2>
+    <p>WIP da acceso a la plataforma y a sus módulos (central de monitoreo, app para técnicos y colaboradores en campo, seguimiento para el cliente final, informes, integraciones y los demás que se contraten), junto con la implementación y el soporte técnico, en el alcance definido en la Orden de servicio.</p>
+    <ul>
+      <li><b>Implementación.</b> WIP implementa la plataforma en el plazo de la Orden de servicio, de forma remota salvo que se pacte otra cosa. El plazo puede ampliarse de común acuerdo. El servicio se entiende activado y aceptado cuando WIP notifica la activación al correo registrado por el Cliente.</li>
+      <li><b>Disponibilidad.</b> WIP hará los esfuerzos técnicos razonables para mantener la plataforma disponible al menos el <b>99,5 %</b> del tiempo, o el porcentaje superior que indique la Orden de servicio, sin contar los mantenimientos programados ni las causas fuera de su control (fuerza mayor, fallas de proveedores de internet o de nube, actos de terceros o del propio Cliente).</li>
+      <li><b>Soporte y mantenimiento.</b> El soporte es remoto y cubre los servicios contratados. Los mantenimientos programados se avisan con 10 a 15 días de anticipación y se hacen entre las 7:00 p. m. y las 5:00 a. m. (hora de Colombia). Si corrigen una falla crítica, pueden avisarse y hacerse el mismo día.</li>
+      <li><b>Servicios adicionales.</b> Lo que exceda el alcance contratado (desarrollos, capacitaciones o consultorías extra) se cotiza y se cobra por separado, previa aprobación del Cliente.</li>
+      <li><b>Funciones en prueba.</b> Las funciones beta, de prueba o gratuitas se ofrecen tal como están, sin las garantías de esta sección.</li>
+    </ul>
+  </section>
+
+  <section id="cliente">
+    <h2>3. Uso de la plataforma y obligaciones del Cliente</h2>
+    <p>El Cliente se compromete a:</p>
+    <ul>
+      <li>Pagar el valor del servicio en las fechas y condiciones de la Orden de servicio.</li>
+      <li>Contar con los equipos, dispositivos compatibles y conexión a internet que WIP le indique. La velocidad de la plataforma también depende de esa conexión.</li>
+      <li>Responder por la exactitud, legalidad y origen de los datos que carga, y por contar con las autorizaciones de sus titulares (ver la sección 6).</li>
+      <li>Dar acceso a la plataforma solo a personas sobre las que tenga control (empleados, contratistas, técnicos o proveedores vinculados) y cuidar que cada usuario use sus propias credenciales.</li>
+      <li>Participar en la implementación: designar responsables, entregar la información requerida y cumplir las tareas acordadas en el plan de trabajo o acta de inicio.</li>
+    </ul>
+    <p>El Cliente no podrá:</p>
+    <ul>
+      <li>Revender, alquilar o ceder el acceso a la plataforma a terceros no autorizados.</li>
+      <li>Usarla para enviar spam o contenido ilegal, falso, difamatorio, acosador o que viole derechos de terceros, incluida la privacidad y la propiedad intelectual.</li>
+      <li>Cargar código malicioso, intentar acceder sin autorización a la plataforma o a sus sistemas, ni hacer ingeniería inversa.</li>
+      <li>Modificar la plataforma por su cuenta. Las integraciones deben hacerse por los mecanismos que WIP habilite (API e integradores). Si el Cliente o un tercero modifican la plataforma sin aprobación de WIP, WIP deja de responder por su funcionamiento.</li>
+    </ul>
+  </section>
+
+  <section id="wip">
+    <h2>4. Obligaciones de WIP</h2>
+    <ul>
+      <li>Prestar el servicio según la Orden de servicio y estos términos, de manera profesional y con el cuidado debido.</li>
+      <li>Dar soporte técnico y monitorear la plataforma de forma permanente para cumplir la disponibilidad ofrecida.</li>
+      <li>Avisar al Cliente de inmediato sobre cualquier evento que afecte la prestación normal del servicio y tomar las medidas para corregirlo.</li>
+      <li>Mantener la confidencialidad de la información del Cliente (sección 7).</li>
+      <li>No disminuir las funcionalidades del plan contratado durante la vigencia del contrato, salvo acuerdo con el Cliente.</li>
+    </ul>
+  </section>
+
+  <section id="seguridad">
+    <h2>5. Seguridad de la información</h2>
+    <p>WIP mantiene un programa de seguridad de la información para proteger la confidencialidad, integridad y disponibilidad de los datos del Cliente, que incluye:</p>
+    <ul>
+      <li>Cifrado de los datos en tránsito y controles de acceso a la información.</li>
+      <li>Herramientas de seguridad perimetral y de prevención de fuga de información.</li>
+      <li>Procedimientos para atender incidentes, con aviso oportuno al Cliente cuando afecten su información.</li>
+      <li>Un plan de continuidad del servicio, con pruebas periódicas.</li>
+      <li>Borrado seguro de la información cuando termine el servicio (sección 8).</li>
+    </ul>
+    <p>La plataforma funciona sobre infraestructura de nube de terceros y sobre redes que no controla WIP. Por eso WIP no responde por demoras, pérdidas o interceptaciones que ocurran en esas redes, ni por la seguridad de la infraestructura propia del Cliente. La plataforma puede tener limitaciones en países con restricciones legales de acceso a internet.</p>
+  </section>
+
+  <section id="datos">
+    <h2>6. Datos personales</h2>
+    <p>Respecto de los datos personales que el Cliente carga o recoge con la plataforma (por ejemplo, de sus técnicos, colaboradores y clientes finales), el <b>Cliente es el Responsable del tratamiento</b> y <b>WIP es el Encargado</b>, en los términos de la Ley 1581 de 2012, el Decreto 1074 de 2015 y las normas que los modifiquen.</p>
+    <ul>
+      <li>El Cliente declara que cuenta con la autorización de los titulares para que WIP trate sus datos con el fin de prestar el servicio.</li>
+      <li>WIP trata esos datos solo para prestar el servicio, siguiendo las instrucciones del Cliente, y cumple las obligaciones de los encargados del tratamiento.</li>
+    </ul>
+    <p>El tratamiento de los datos que WIP recoge por cuenta propia (por ejemplo, en su sitio web o al contactar a sus clientes) se rige por la <a href="/politica-privacidad">Política de privacidad</a>.</p>
+  </section>
+
+  <section id="confidencialidad">
+    <h2>7. Confidencialidad</h2>
+    <p>Ambas partes guardarán reserva sobre la información de la otra que conozcan con ocasión del servicio (datos, documentos, procesos, precios y conocimiento del negocio). Solo la usarán para cumplir el contrato y harán que sus empleados y contratistas también la protejan, con al menos el mismo cuidado que dan a su propia información.</p>
+    <p>Esta obligación dura mientras se preste el servicio y <b>cinco (5) años</b> después. No aplica a información que sea pública sin culpa de la parte que la recibió, ni a la que deba revelarse por orden de una autoridad.</p>
+  </section>
+
+  <section id="propiedad">
+    <h2>8. Propiedad de los datos y de la plataforma</h2>
+    <ul>
+      <li><b>Los datos son del Cliente.</b> El Cliente conserva la propiedad de su información y le da a WIP una licencia limitada, gratuita y no transferible para almacenarla, procesarla y usarla solo para prestar el servicio.</li>
+      <li><b>La plataforma es de WIP.</b> El software, el código, los diseños, la marca WIP y la metodología son propiedad de APLICANDO S.A.S. o de sus proveedores. El contrato no transfiere ningún derecho sobre ellos al Cliente más allá del uso del servicio contratado.</li>
+      <li><b>Al terminar el servicio</b>, el Cliente tiene <b>diez (10) días hábiles</b> para descargar o pedir la entrega de su información. Pasado ese plazo, WIP puede eliminarla de forma segura, junto con las copias que haya hecho para prestar el servicio.</li>
+    </ul>
+  </section>
+
+  <section id="precio">
+    <h2>9. Precio, facturación y pagos</h2>
+    <ul>
+      <li>El valor del servicio es el pactado en la Orden de servicio. WIP envía las facturas electrónicas al correo que indique el Cliente, y los pagos se hacen con las retenciones de ley.</li>
+      <li>Si el precio está en dólares, se factura en pesos a la TRM del día de facturación, salvo que la Orden de servicio diga otra cosa.</li>
+      <li>En cada renovación anual, el valor se ajusta según la variación del IPC de Colombia del año anterior.</li>
+      <li><b>Mora.</b> Si el Cliente deja de pagar una o más cuotas, WIP puede suspender el servicio avisando por escrito con dos (2) días hábiles de anticipación. El servicio se restablece en máximo tres (3) días hábiles después de confirmado el pago. Las sumas en mora causan intereses a la tasa máxima legal, y el Cliente asume los costos de reconexión, que no superarán el valor de una cuota mensual.</li>
+      <li>Los costos adicionales que surjan por retrasos atribuibles al Cliente, como cambios de cronograma o actividades no incluidas en la implementación, los asume el Cliente. Los atribuibles a WIP, los asume WIP.</li>
+    </ul>
+  </section>
+
+  <section id="duracion">
+    <h2>10. Duración, renovación y terminación</h2>
+    <ul>
+      <li>El contrato dura el plazo de la Orden de servicio y se renueva por periodos iguales, salvo que alguna de las partes avise lo contrario antes del vencimiento.</li>
+      <li>Cualquiera de las partes puede terminarlo en cualquier momento avisando por correo electrónico con <b>treinta (30) días calendario</b> de anticipación, sin penalidades.</li>
+      <li>También termina por mutuo acuerdo; por fuerza mayor debidamente probada; por incumplimiento de una obligación esencial que no se corrija dentro de los quince (15) días hábiles siguientes al aviso; o, si WIP así lo decide, por falta de pago de dos (2) o más cuotas.</li>
+      <li>Cualquiera de las partes puede terminarlo de inmediato y sin indemnización si la otra incumple las normas anticorrupción o de prevención de lavado de activos (sección 13).</li>
+    </ul>
+  </section>
+
+  <section id="responsabilidad">
+    <h2>11. Garantías y límite de responsabilidad</h2>
+    <ul>
+      <li>WIP garantiza que la plataforma funcionará sustancialmente según el plan contratado y que los servicios de implementación se prestarán de forma profesional. No garantiza que la plataforma esté libre de errores o interrupciones, ni que cumpla requisitos del Cliente que no consten en la Orden de servicio.</li>
+      <li>WIP no responde por retrasos o fallas causados por la falta de infraestructura o el incumplimiento del Cliente, por actos de su personal o de terceros sobre su infraestructura, ni por el contenido o el funcionamiento de aplicaciones de terceros.</li>
+      <li>La responsabilidad total de WIP, por cualquier causa, no superará los valores pagados por el Cliente en los <b>doce (12) meses</b> anteriores a la reclamación. WIP no responde por daños indirectos, lucro cesante ni pérdida de oportunidades. Este límite no aplica a daños causados con dolo o culpa grave.</li>
+      <li>Si alguna de las partes incumple sus obligaciones, pagará a la otra, a título de pena, el veinte por ciento (20 %) del valor total del contrato, sin perjuicio de exigir el cumplimiento. La terminación con el aviso de la sección 10 no es un incumplimiento.</li>
+    </ul>
+  </section>
+
+  <section id="cambios">
+    <h2>12. Cambios a estos términos</h2>
+    <p>WIP puede actualizar estos términos y avisará de los cambios en esta página, por correo electrónico o dentro de la plataforma. Los cambios rigen quince (15) días después de publicados y no son retroactivos, salvo los que exija la ley, que rigen de inmediato. Si el Cliente no está de acuerdo, puede terminar el contrato según la sección 10.</p>
+  </section>
+
+  <section id="cumplimiento">
+    <h2>13. Anticorrupción y prevención de lavado de activos</h2>
+    <p>Las partes declaran que sus recursos provienen de actividades lícitas y se obligan a cumplir las normas anticorrupción y antisoborno, tanto del sector público como del privado, y las de prevención de lavado de activos y financiación del terrorismo. Si una parte, sus representantes, socios principales o directivos son condenados por estos delitos o incluidos en listas restrictivas (como la lista OFAC o la de la ONU), la otra puede terminar el contrato de inmediato y sin indemnización.</p>
+  </section>
+
+  <section id="generales">
+    <h2>14. Disposiciones generales</h2>
+    <ul>
+      <li><b>Documentos del contrato.</b> El contrato está formado por estos términos, la Orden de servicio, el acta de inicio (si existe) y las modificaciones que las partes acuerden por escrito. Reemplazan cualquier acuerdo anterior sobre el mismo tema.</li>
+      <li><b>Firma y comunicaciones electrónicas.</b> Las partes aceptan la firma electrónica y el correo electrónico como medios válidos para firmar y notificarse, con plenos efectos según la Ley 527 de 1999.</li>
+      <li><b>Cesión.</b> El Cliente no puede ceder el contrato sin autorización escrita de WIP. WIP puede cederlo a una sociedad de su grupo empresarial, avisando al Cliente con cinco (5) días hábiles de anticipación.</li>
+      <li><b>Naturaleza del contrato.</b> Es un contrato civil y comercial, y no crea relación laboral entre el Cliente y las personas que WIP designe para prestar el servicio. Las obligaciones claras y exigibles de estos documentos prestan mérito ejecutivo.</li>
+      <li><b>Ley aplicable y controversias.</b> El contrato se rige por la ley colombiana. Las diferencias que no se resuelvan directamente se someterán a un tribunal de arbitramento del Centro de Conciliación y Arbitraje de la Cámara de Comercio de Medellín, que fallará en derecho, con un (1) árbitro para asuntos de menor cuantía o tres (3) para los de mayor cuantía.</li>
+    </ul>
+  </section>
+
+  <section id="contacto">
+    <h2>15. Contacto</h2>
+    <div class="contact-box">
+      <p><b style="color:#fff">APLICANDO S.A.S.</b> · NIT 900.886.750-2 · Medellín, Colombia</p>
+      <p>Correo: <a href="mailto:support@wiptool.com">support@wiptool.com</a></p>
+      <p>Teléfono: <a href="tel:+573005124111">+57 300 512 4111</a></p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>© 2026 WIP · Aplicando S.A.S. Todos los derechos reservados. · <a href="/terminos-condiciones">Términos y condiciones</a> · <a href="/politica-privacidad">Política de privacidad</a> · <a href="/politica-cookies">Política de cookies</a> · <a href="/">Volver a wiptool.com</a></p>
+  </div>
+</footer>
+
+<script src="/js/consentimiento.js" defer></script>
+</body>
+</html>

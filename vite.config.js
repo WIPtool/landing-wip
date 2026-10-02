@@ -79,6 +79,8 @@ export default defineConfig({
         informeFixitWipIA: resolve(__dirname, 'informeFixit/WipIA/index.html'),
         informeWipAviseAsistencia: resolve(__dirname, 'informeWip/AviseAsistencia/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
+        terminosCondiciones: resolve(__dirname, 'terminos-condiciones.html'),
+        politicaCookies: resolve(__dirname, 'politica-cookies.html'),
         inscripcion: resolve(__dirname, 'inscripcion/index.html'),
         academy: resolve(__dirname, 'academy/index.html'),
         ...generatedPages(),
