@@ -708,7 +708,8 @@ fs.writeFileSync(vercelPath, JSON.stringify(vercel, null, 2) + '\n');
 // ---------- Sitemap ----------
 const smPath = path.join(root, 'public/sitemap.xml');
 const sm = fs.readFileSync(smPath, 'utf8');
-const blocks = (sm.match(/<url>[\s\S]*?<\/url>/g) || []).filter((b) => !/\/(blog|ebook|software-[\w-]+)(<|\/)/.test(b));
+// Se quitan las entradas que este script vuelve a generar (incluida /contacto, que antes se duplicaba en cada corrida).
+const blocks = (sm.match(/<url>[\s\S]*?<\/url>/g) || []).filter((b) => !/\/(blog|ebook|contacto|software-[\w-]+)(<|\/)/.test(b));
 const entry = (loc, lastmod, pr) => `  <url>\n    <loc>${SITE}${loc}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>${pr}</priority>\n  </url>`;
 const newest = posts.reduce((m, p) => (p.modified > m ? p.modified : m), '2000-01-01');
 const today = new Date().toISOString().slice(0, 10);
