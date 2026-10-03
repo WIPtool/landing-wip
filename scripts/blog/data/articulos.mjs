@@ -213,6 +213,7 @@ ${tool('App para técnicos en campo', 'Tus técnicos reciben la orden, actualiza
 ${tool('Central de monitoreo', 'Mira cómo WIP muestra cada servicio en vivo, con semáforo de SLA y evidencias.', '/software-gestion-servicios-en-campo', 'Conocer WIP', 'monitoreo')}
 <h2>Conclusión</h2>
 <p>El mejor software FSM no es el que tiene más funciones, sino el que tu equipo usa todos los días y te da datos para decidir. Antes de pedir demos, anota tu modelo de operación, tus reglas de asignación y cómo cobras. Con eso, la comparación se vuelve sencilla. WIP nació en Latinoamérica para este tipo de operaciones: si quieres verlo con un caso como el tuyo, <a href="/contacto">agenda una demo</a>.</p>
+<p>Según tu operación, mira cómo funciona WIP como <a href="/software-para-gruas-y-flotas">software para grúas y flotas de servicio</a>, <a href="/software-empresas-de-asistencia">software para aseguradoras y empresas de asistencia</a>, para <a href="/software-servicios-a-domicilio">asistencia hogar, médica y veterinaria a domicilio</a>, para <a href="/software-telecomunicaciones-y-energia">telecomunicaciones, energía e instalación de internet</a> o para <a href="/software-servicio-tecnico">servicio técnico e instalaciones</a>.</p>
 `,
   },
 

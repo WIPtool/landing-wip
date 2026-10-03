@@ -59,7 +59,7 @@ export const soluciones = [
       ['¿Cuánto tiempo toma implementar WIP?', 'La puesta en marcha es ágil comparada con plataformas FSM tradicionales, con acompañamiento en español y en tu huso horario. El tiempo exacto depende del tamaño de tu operación y de las integraciones que necesites.'],
       ['¿En qué países funciona WIP?', 'Operamos en 10 países de Latinoamérica: Colombia, México, Perú, Chile, Ecuador, Honduras, Guatemala, Panamá, Nicaragua y El Salvador.'],
     ],
-    relacionados: ['software-empresas-de-asistencia', 'software-servicio-tecnico', 'software-telecomunicaciones-y-energia', 'software-servicios-a-domicilio', 'software-para-gruas-y-flotas'],
+    relacionados: ['software-para-gruas-y-flotas', 'software-empresas-de-asistencia', 'software-servicios-a-domicilio', 'software-telecomunicaciones-y-energia', 'software-servicio-tecnico'],
   },
 
   {
@@ -96,12 +96,24 @@ export const soluciones = [
       ],
     },
     pasos: null,
+    verticales: {
+      h2: 'Asistencia vial, hogar, médica, veterinaria y legal',
+      intro: 'Cada línea de asistencia con sus propios proveedores, formularios, tiempos y tarifas, en la misma plataforma y con el asegurado informado por WhatsApp.',
+      items: [
+        ['Asistencia vial', 'Grúa, carro taller, cambio de llanta, paso de corriente, cerrajería vehicular y conductor elegido, asignados al proveedor más cercano con el tiempo de llegada medido.'],
+        ['Asistencia hogar', 'Plomería, cerrajería, electricidad y vidriería, con el técnico confirmado al asegurado, fotos antes y después y cierre con su firma.'],
+        ['Asistencia médica domiciliaria', 'Médicos, enfermería, toma de muestras y orientación médica, asignados por zona y especialidad, con el paciente siguiendo la atención en vivo.'],
+        ['Asistencia veterinaria', 'Veterinario a domicilio y orientación veterinaria para las mascotas de tus asegurados, con cada atención registrada y calificada.'],
+        ['Asistencia legal', 'Abogado en el sitio para accidentes de tránsito y orientación jurídica, con la hora de solicitud, de llegada y de cierre de cada caso.'],
+      ],
+    },
     servicios: {
       h2: 'Tipos de asistencia que se gestionan en WIP',
       intro: 'Asistencia vial, de hogar, médica, veterinaria o jurídica: cada tipo de servicio con sus propios flujos, formularios y tarifas.',
       items: ['Grúas', 'Carro taller', 'Cambio de llanta', 'Paso de corriente', 'Suministro de gasolina', 'Cerrajería vehicular', 'Conductor elegido', 'Cerrajería hogar', 'Plomería', 'Electricista', 'Vidriería', 'Médicos a domicilio', 'Enfermera a domicilio', 'Veterinario a domicilio', 'Abogados a domicilio', 'Limpieza a domicilio'],
     },
     faq: [
+      ['¿WIP sirve para asistencia médica, veterinaria y legal?', 'Sí, para coordinar la atención: asignar al profesional o al proveedor, seguir el servicio en tiempo real, medir el SLA y dejar la evidencia de cada caso. WIP no es un software de historia clínica, de clínica veterinaria ni de gestión de procesos jurídicos; se encarga de la operación de la asistencia.'],
       ['¿WIP sirve como software para aseguradoras?', 'Sí, para la operación de las asistencias y los servicios en campo: grúas, carro taller, cerrajería, plomería, médicos a domicilio, inspecciones y más. WIP no es un core de pólizas ni de siniestros; se conecta con tu operación para asignar cada caso a tu red de proveedores, controlar los tiempos y mantener informado al asegurado.'],
       ['¿Qué es un software para empresas de asistencia?', 'Es una plataforma para coordinar los servicios de asistencia (vial, hogar, médica y otros) que presta una red de proveedores: recibe la solicitud, asigna al proveedor adecuado, hace seguimiento en tiempo real, controla el SLA y deja la evidencia lista para liquidar.'],
       ['¿WIP reemplaza mi call center o mi plataforma actual?', 'No necesariamente. Las solicitudes pueden llegar por tus canales actuales (línea, numeral, app o tu propia plataforma) y WIP se encarga de la operación del servicio. Tenemos un área de integraciones para conectar WIP con otras herramientas de tu operación.'],
@@ -167,9 +179,9 @@ export const soluciones = [
     slug: 'software-telecomunicaciones-y-energia',
     nav: 'Telecomunicaciones, internet y energía',
     title: 'Software para telecomunicaciones, internet y energía | WIP',
-    desc: 'Coordina instalaciones, mantenimientos y cuadrillas propias o contratistas en telecomunicaciones, proveedores de internet y redes eléctricas, en tiempo real.',
-    eyebrow: 'Telcos, proveedores de internet y utilities',
-    h1: 'Software para gestionar instalaciones de telecomunicaciones, internet y energía',
+    desc: 'Software para telecomunicaciones, energía e instalación de internet y fibra óptica: coordina cuadrillas propias y contratistas en campo en tiempo real.',
+    eyebrow: 'Telcos, energía y proveedores de internet',
+    h1: 'Software para telecomunicaciones, energía e instalación de internet',
     lead: 'Coordina técnicos, cuadrillas propias y contratistas en instalaciones y mantenimientos de red, sin perder de vista un solo servicio y con evidencia de cada trabajo en campo.',
     cta2: { href: '/', text: 'Conoce WIP Redes' },
     dolor: {
@@ -196,6 +208,16 @@ export const soluciones = [
         ['Integraciones', 'WIP puede conectarse con otras herramientas de tu operación a través de nuestra área de integraciones.'],
       ],
     },
+    verticales: {
+      h2: 'Para cada tipo de operación de red',
+      intro: 'Telecomunicaciones, energía, internet y redes de comunicación: cada tipo de trabajo con su formulario, su flujo y su tarifa.',
+      items: [
+        ['Telecomunicaciones', 'Instalaciones, visitas técnicas, traslados, retiros de equipos y atención de fallas, repartidos entre cuadrillas propias y contratistas por zona.'],
+        ['Energía y redes eléctricas', 'Mantenimientos, inspecciones, cortes, reconexiones y cuadrillas de emergencia, con la evidencia de cada trabajo lista para auditar.'],
+        ['Instalación de internet y fibra óptica', 'Agenda de instalaciones, aviso al suscriptor por WhatsApp de quién va y cuándo llega, fotos de la instalación, materiales usados y acta firmada.'],
+        ['Redes de comunicación y cableado', 'Tendido de red, cableado estructurado y redes de datos para empresas, con órdenes por proyecto, avance por cuadrilla y evidencia de cada punto instalado.'],
+      ],
+    },
     pasos: null,
     servicios: {
       h2: 'Trabajos de red que se coordinan con WIP',
@@ -204,6 +226,7 @@ export const soluciones = [
     },
     faq: [
       ['¿WIP sirve para proveedores de internet (ISP)?', 'Sí, para la operación en campo: instalaciones, visitas técnicas, traslados, retiros y atención de fallas. WIP no reemplaza tu sistema de facturación ni la gestión de tu red; se encarga de coordinar a los técnicos y contratistas que hacen el trabajo en terreno.'],
+      ['¿Sirve para empresas de instalación de redes de comunicación y cableado?', 'Sí. Las empresas que instalan redes de datos, cableado estructurado o fibra óptica usan WIP para asignar cada orden a la cuadrilla o al contratista, seguir el avance en campo y cerrar con fotos, materiales y la firma del cliente.'],
       ['¿Puedo gestionar contratistas y cuadrillas propias al mismo tiempo?', 'Sí. WIP integra toda tu operación en una sola plataforma: técnicos de tu nómina, contratistas externos o ambos, cada uno con el perfil adecuado según su rol.'],
       ['¿Funciona para empresas de energía y utilities?', 'Sí. Utilities coordinan en WIP cuadrillas propias y terceras en instalaciones y mantenimientos, con trazabilidad y evidencia de cada servicio en campo.'],
       ['¿Cómo mide WIP el cumplimiento de cada contratista?', 'Cada orden registra automáticamente los tiempos de asignación, llegada y cierre. Con esos datos WIP calcula el cumplimiento y el scoring de cada contratista.'],
@@ -267,7 +290,7 @@ export const soluciones = [
     slug: 'software-para-gruas-y-flotas',
     nav: 'Grúas y flotas de servicio (médicos, envíos o más)',
     title: 'Software para grúas y flotas de servicio | WIP',
-    desc: 'Software para empresas de grúas, ambulancias y flotas de servicio: despacha la unidad más cercana, sigue tu flota en vivo y cierra cada caso con evidencia.',
+    desc: 'Software y programa para empresas de grúas, ambulancias y flotas de servicio: despacha la unidad más cercana, sigue tu flota en vivo y cierra con evidencia.',
     eyebrow: 'Grúas, médicos, envíos y unidades de servicio',
     h1: 'Software para grúas y flotas de servicio: médicos, envíos y más',
     lead: 'Para empresas de grúas y de cualquier flota que opere en la calle, sean médicos a domicilio, envíos u otro servicio: asigna cada caso a la unidad disponible más cercana, sigue a tu flota en el mapa y cierra cada servicio con evidencia y tarifa calculada.',
@@ -296,15 +319,26 @@ export const soluciones = [
         ['Reportes para tus clientes', 'Servicios, tiempos y cumplimiento por cliente, ciudad o fecha, listos para exportar y sustentar tu operación.'],
       ],
     },
+    verticales: {
+      h2: 'Un programa para cada tipo de flota',
+      intro: 'Grúas, ambulancias, mensajeros o conductores: cada flota con sus propios estados, formularios y tarifas, en la misma plataforma.',
+      items: [
+        ['Grúas y asistencia vial', 'Despacho de grúas de plataforma, de arrastre y moto grúas, carro taller y asistencia mecánica a la unidad más cercana, con tiempo de llegada medido, fotos del vehículo antes y después y tarifa por kilómetro y horario.'],
+        ['Médicos y ambulancias', 'Médicos, enfermería y toma de muestras a domicilio asignados por zona y disponibilidad, con el paciente informado por WhatsApp de quién va y cuándo llega.'],
+        ['Mensajería y envíos', 'Cada envío al mensajero disponible más cercano, la ruta en el mapa y el cierre con foto y firma de quien recibe.'],
+        ['Transporte y conductores', 'Conductor elegido, transporte de personas y traslados programados, con el recorrido, los tiempos y la tarifa de cada servicio registrados.'],
+      ],
+    },
     pasos: null,
     servicios: {
       h2: 'Flotas de servicio que se coordinan con WIP',
       intro: 'Salud, asistencia vial, envíos y movilidad: cada tipo de servicio con sus propios flujos, formularios y tarifas.',
-      items: ['Médicos a domicilio', 'Enfermería a domicilio', 'Toma de muestras', 'Entrega de muestras de laboratorio', 'Oxígeno a domicilio', 'Grúas', 'Carro taller', 'Asistencia mecánica', 'Cambio de llanta', 'Paso de corriente', 'Envíos', 'Mensajería', 'Delivery', 'Transporte de personas', 'Conductor elegido', 'Mudanzas'],
+      items: ['Grúas', 'Grúa de plataforma', 'Moto grúa', 'Carro taller', 'Asistencia mecánica', 'Cambio de llanta', 'Paso de corriente', 'Médicos a domicilio', 'Ambulancias', 'Enfermería a domicilio', 'Toma de muestras', 'Oxígeno a domicilio', 'Mensajería', 'Envíos', 'Delivery', 'Transporte de personas', 'Conductor elegido', 'Mudanzas'],
     },
     faq: [
       ['¿WIP presta servicios de grúa, médicos o envíos?', 'No. WIP es un software de gestión para empresas que prestan o coordinan esos servicios con su propia flota o con proveedores. Si necesitas uno de esos servicios, comunícate directamente con la empresa que lo presta.'],
       ['¿WIP sirve como software para empresas de grúas?', 'Sí. Las empresas de grúas y de asistencia vial usan WIP para despachar cada servicio a la grúa disponible más cercana, seguir la unidad en el mapa, medir el tiempo de llegada, guardar fotos del vehículo antes y después y calcular la tarifa por distancia y horario. También pueden recibir y reportar los servicios de sus clientes empresa, como aseguradoras y asistencias.'],
+      ['¿Qué debe tener un programa para gestionar una flota de grúas?', 'Despacho a la grúa disponible más cercana, ubicación de cada unidad en tiempo real, tiempos de asignación y llegada medidos, fotos y firma como evidencia, tarifas por distancia y horario, y reportes por cliente para las aseguradoras y asistencias que te envían servicios. WIP reúne todo eso en una sola plataforma.'],
       ['¿Necesito instalar un GPS en cada vehículo?', 'No necesariamente. La ubicación en tiempo real se toma de la app de WIP en el celular del conductor, profesional u operador mientras presta el servicio.'],
       ['¿WIP es un software de telemetría o de mantenimiento de flotas?', 'No. WIP no mide consumo de combustible ni programa el mantenimiento de los vehículos. Se encarga de los servicios que presta tu flota: despacho, seguimiento, tiempos, evidencias, tarifas y experiencia del cliente.'],
       ['¿Puedo trabajar con aseguradoras, clínicas y otras empresas desde WIP?', 'Sí. Cada cliente corporativo puede tener su propio perfil para solicitar servicios y seguirlos en tiempo real, y tú puedes sacar reportes de tiempos y cumplimiento por cliente.'],

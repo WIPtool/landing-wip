@@ -581,6 +581,9 @@ for (const s of soluciones) {
         <details class="sol-faq__item"><summary><h3>${esc(q)}</h3></summary><p>${esc(a)}</p></details>`).join('');
   const rel = s.relacionados.map((r) => solBy[r]).map((r) => `
           <li><a class="sol-rel__card" href="/${r.slug}"><span class="eyebrow">${esc(r.eyebrow)}</span><strong>${esc(r.h1)}</strong><span class="sol-rel__more">Ver solución →</span></a></li>`).join('');
+  // Las secciones después de "funciones" alternan fondo blanco y gris; "verticales" es opcional.
+  let gris = true;
+  const fondo = () => ((gris = !gris) ? ' sol-sec--alt' : '');
   const body = `
   <section class="sol-hero">
     <div class="container">
@@ -614,22 +617,30 @@ for (const s of soluciones) {
       <ul class="sol-feats">${cards(s.funciones.items, 'sol-feat')}
       </ul>
     </div>
-  </section>${s.pasos ? `
-  <section class="sol-sec">
+  </section>${s.verticales ? `
+  <section class="sol-sec${fondo()}">
+    <div class="container">
+      <h2>${esc(s.verticales.h2)}</h2>
+      <p class="sol-intro">${esc(s.verticales.intro)}</p>
+      <ul class="sol-feats sol-verts">${cards(s.verticales.items, 'sol-feat')}
+      </ul>
+    </div>
+  </section>` : ''}${s.pasos ? `
+  <section class="sol-sec${fondo()}">
     <div class="container">
       <h2>${esc(s.pasos.h2)}</h2>
       <ol class="sol-steps">${cards(s.pasos.items, 'sol-step')}
       </ol>
     </div>
   </section>` : ''}
-  <section class="sol-sec${s.pasos ? ' sol-sec--alt' : ''}">
+  <section class="sol-sec${fondo()}">
     <div class="container">
       <h2>${esc(s.servicios.h2)}</h2>
       <p class="sol-intro">${esc(s.servicios.intro)}</p>
       <ul class="sol-tags">${s.servicios.items.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>
     </div>
   </section>
-  <section class="sol-sec${s.pasos ? '' : ' sol-sec--alt'}">
+  <section class="sol-sec${fondo()}">
     <div class="container">
       <h2>Con tu equipo propio o con una red de proveedores</h2>
       <p class="sol-intro">WIP tiene una solución para cada forma de operar. Si tu gente hace el servicio, es WIP Equipos; si coordinas una red que lo hace por ti, es WIP Redes.</p>
@@ -639,14 +650,14 @@ for (const s of soluciones) {
       </ul>
     </div>
   </section>
-  <section class="sol-sec sol-faq" aria-labelledby="faq">
+  <section class="sol-sec sol-faq${fondo()}" aria-labelledby="faq">
     <div class="container">
       <h2 id="faq">Preguntas frecuentes</h2>
       <div class="sol-faq__list">${faq}
       </div>
     </div>
   </section>
-  <section class="sol-sec sol-sec--alt" aria-labelledby="otras">
+  <section class="sol-sec${fondo()}" aria-labelledby="otras">
     <div class="container">
       <h2 id="otras">Otras soluciones de WIP</h2>
       <ul class="sol-rel">${rel}
