@@ -264,7 +264,7 @@ ${tool('Central de monitoreo', 'Mira cómo WIP muestra cada servicio en vivo, co
 <h3>Rastreadores GPS</h3>
 <p>Te dicen dónde está una persona o un vehículo, pero no qué servicio está atendiendo, cuánto tardó ni qué evidencia dejó. Son útiles para la flota, pero no resuelven la operación de servicios.</p>
 <h3>Software de gestión de personal en campo</h3>
-<p>Combina las dos cosas que necesitas: la ubicación y el estado de cada servicio. El técnico usa una app en el celular para recibir el servicio, marcar que va en camino, que llegó y que terminó, y subir fotos y la firma del cliente. La oficina lo ve todo en un mapa y en una línea de tiempo, sin llamar. Así funciona <a href="/equipos">WIP Equipos, el software de gestión de personal en campo</a> de WIP.</p>
+<p>Combina las dos cosas que necesitas: la ubicación y el estado de cada servicio. El técnico usa una app en el celular para recibir el servicio, marcar que va en camino, que llegó y que terminó, y subir fotos y la firma del cliente. La oficina lo ve todo en un mapa y en una línea de tiempo, sin llamar. Así funciona <a href="/equipos">WIP Equipos, el software de control de personal en campo</a> de WIP.</p>
 ${tool('Ubicación del equipo en tiempo real', 'Ve quién está disponible, quién va en camino y quién ya llegó donde el cliente.', '/equipos', 'Ver WIP Equipos', 'mapa')}
 <h2>Cómo implementar el seguimiento en 6 pasos</h2>
 <ol class="steps">
@@ -353,7 +353,7 @@ ${tool('Central de monitoreo con semáforo de SLA', 'Sigue cada asistencia de tu
 <li>Consecuencias y reconocimientos escritos en el acuerdo.</li>
 </ul>
 <h2>Conclusión</h2>
-<p>Un SLA de proveedores de asistencia funciona cuando se mide en vivo, es justo según el tipo de servicio y la zona, y se traduce en decisiones de asignación. Si coordinas una red de proveedores para aseguradoras, mira cómo lo resuelve nuestro <a href="/software-empresas-de-asistencia">software para empresas de asistencia y aseguradoras</a>.</p>
+<p>Un SLA de proveedores de asistencia funciona cuando se mide en vivo, es justo según el tipo de servicio y la zona, y se traduce en decisiones de asignación. Si coordinas una red de proveedores para aseguradoras, mira cómo lo resuelve nuestro <a href="/software-empresas-de-asistencia">software para aseguradoras y empresas de asistencia</a>, o conoce WIP como <a href="/">software para el control de proveedores y contratistas</a>.</p>
 `,
   },
 
@@ -419,7 +419,7 @@ ${tool('Tu flota en el mapa', 'Despacha cada caso a la unidad disponible más ce
 </ul>
 <!--EBOOK:checklist-definitiva-->
 <h2>Conclusión</h2>
-<p>Gestionar una flota de servicio es gestionar servicios, no solo vehículos. La telemetría cuida tus activos; un software de gestión de servicios en campo te ayuda a cumplir y a cobrar. Si tu empresa opera grúas, carros taller o unidades de servicio, conoce nuestro <a href="/software-para-gruas-y-flotas">software para flotas de servicio (médicos, grúas, envíos y más)</a>.</p>
+<p>Gestionar una flota de servicio es gestionar servicios, no solo vehículos. La telemetría cuida tus activos; un software de gestión de servicios en campo te ayuda a cumplir y a cobrar. Si tu empresa opera grúas, carros taller o unidades de servicio, conoce nuestro <a href="/software-para-gruas-y-flotas">software para grúas y flotas de servicio</a>.</p>
 `,
   },
 

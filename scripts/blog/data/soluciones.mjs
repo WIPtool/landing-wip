@@ -64,12 +64,12 @@ export const soluciones = [
 
   {
     slug: 'software-empresas-de-asistencia',
-    nav: 'Empresas de asistencia y aseguradoras',
-    title: 'Software para empresas de asistencia y aseguradoras | WIP',
-    desc: 'Gestiona asistencias vehiculares, de hogar y más con tu red de proveedores: asignación inteligente, SLA en tiempo real y seguimiento por WhatsApp al asegurado.',
+    nav: 'Aseguradoras y empresas de asistencia',
+    title: 'Software para aseguradoras y empresas de asistencia | WIP',
+    desc: 'Software para aseguradoras y empresas de asistencia vial y hogar: asigna cada caso a tu red de proveedores, controla el SLA y avisa al asegurado por WhatsApp.',
     eyebrow: 'Aseguradoras y empresas de asistencia',
-    h1: 'Software para empresas de asistencia y aseguradoras',
-    lead: 'Coordina toda tu red de proveedores de asistencia desde un solo lugar: cada servicio visible, cada SLA bajo control y tu asegurado siguiendo su asistencia en vivo por WhatsApp, aunque la preste un tercero.',
+    h1: 'Software para aseguradoras y empresas de asistencia',
+    lead: 'Coordina toda tu red de proveedores de asistencia vial, hogar y más desde un solo lugar: cada servicio visible, cada SLA bajo control y tu asegurado siguiendo su asistencia en vivo por WhatsApp, aunque la preste un tercero.',
     cta2: { href: '/', text: 'Conoce WIP Redes' },
     dolor: {
       h2: 'Si coordinas una red de proveedores de asistencia, esto te va a sonar',
@@ -102,6 +102,7 @@ export const soluciones = [
       items: ['Grúas', 'Carro taller', 'Cambio de llanta', 'Paso de corriente', 'Suministro de gasolina', 'Cerrajería vehicular', 'Conductor elegido', 'Cerrajería hogar', 'Plomería', 'Electricista', 'Vidriería', 'Médicos a domicilio', 'Enfermera a domicilio', 'Veterinario a domicilio', 'Abogados a domicilio', 'Limpieza a domicilio'],
     },
     faq: [
+      ['¿WIP sirve como software para aseguradoras?', 'Sí, para la operación de las asistencias y los servicios en campo: grúas, carro taller, cerrajería, plomería, médicos a domicilio, inspecciones y más. WIP no es un core de pólizas ni de siniestros; se conecta con tu operación para asignar cada caso a tu red de proveedores, controlar los tiempos y mantener informado al asegurado.'],
       ['¿Qué es un software para empresas de asistencia?', 'Es una plataforma para coordinar los servicios de asistencia (vial, hogar, médica y otros) que presta una red de proveedores: recibe la solicitud, asigna al proveedor adecuado, hace seguimiento en tiempo real, controla el SLA y deja la evidencia lista para liquidar.'],
       ['¿WIP reemplaza mi call center o mi plataforma actual?', 'No necesariamente. Las solicitudes pueden llegar por tus canales actuales (línea, numeral, app o tu propia plataforma) y WIP se encarga de la operación del servicio. Tenemos un área de integraciones para conectar WIP con otras herramientas de tu operación.'],
       ['¿Mis proveedores tienen que pagar o instalar algo?', 'Cada proveedor opera en WIP con su propio acceso y su equipo usa la app de colaboradores desde el celular. El detalle comercial depende de cómo esté estructurada tu red y lo definimos contigo.'],
@@ -264,12 +265,12 @@ export const soluciones = [
 
   {
     slug: 'software-para-gruas-y-flotas',
-    nav: 'Flotas de servicio (médicos, grúas, envíos o más)',
-    title: 'Software para flotas de servicio: médicos, grúas, envíos | WIP',
-    desc: 'Despacha médicos, grúas, mensajeros y unidades de servicio al caso más cercano, sigue tu flota en vivo y cierra cada servicio con evidencia y tarifa calculada.',
-    eyebrow: 'Médicos, grúas, envíos y unidades de servicio',
-    h1: 'Software para flotas de servicio: médicos, grúas, envíos y más',
-    lead: 'Para empresas que operan unidades en la calle, sean médicos a domicilio, grúas, envíos o cualquier otro servicio: asigna cada caso a la unidad disponible más cercana, sigue a tu flota en el mapa y cierra cada servicio con evidencia y tarifa calculada.',
+    nav: 'Grúas y flotas de servicio (médicos, envíos o más)',
+    title: 'Software para grúas y flotas de servicio | WIP',
+    desc: 'Software para empresas de grúas, ambulancias y flotas de servicio: despacha la unidad más cercana, sigue tu flota en vivo y cierra cada caso con evidencia.',
+    eyebrow: 'Grúas, médicos, envíos y unidades de servicio',
+    h1: 'Software para grúas y flotas de servicio: médicos, envíos y más',
+    lead: 'Para empresas de grúas y de cualquier flota que opere en la calle, sean médicos a domicilio, envíos u otro servicio: asigna cada caso a la unidad disponible más cercana, sigue a tu flota en el mapa y cierra cada servicio con evidencia y tarifa calculada.',
     cta2: { href: '/equipos', text: 'Ver planes para tu flota' },
     dolor: {
       h2: 'Despachar por radio y WhatsApp ya no alcanza',
@@ -303,6 +304,7 @@ export const soluciones = [
     },
     faq: [
       ['¿WIP presta servicios de grúa, médicos o envíos?', 'No. WIP es un software de gestión para empresas que prestan o coordinan esos servicios con su propia flota o con proveedores. Si necesitas uno de esos servicios, comunícate directamente con la empresa que lo presta.'],
+      ['¿WIP sirve como software para empresas de grúas?', 'Sí. Las empresas de grúas y de asistencia vial usan WIP para despachar cada servicio a la grúa disponible más cercana, seguir la unidad en el mapa, medir el tiempo de llegada, guardar fotos del vehículo antes y después y calcular la tarifa por distancia y horario. También pueden recibir y reportar los servicios de sus clientes empresa, como aseguradoras y asistencias.'],
       ['¿Necesito instalar un GPS en cada vehículo?', 'No necesariamente. La ubicación en tiempo real se toma de la app de WIP en el celular del conductor, profesional u operador mientras presta el servicio.'],
       ['¿WIP es un software de telemetría o de mantenimiento de flotas?', 'No. WIP no mide consumo de combustible ni programa el mantenimiento de los vehículos. Se encarga de los servicios que presta tu flota: despacho, seguimiento, tiempos, evidencias, tarifas y experiencia del cliente.'],
       ['¿Puedo trabajar con aseguradoras, clínicas y otras empresas desde WIP?', 'Sí. Cada cliente corporativo puede tener su propio perfil para solicitar servicios y seguirlos en tiempo real, y tú puedes sacar reportes de tiempos y cumplimiento por cliente.'],

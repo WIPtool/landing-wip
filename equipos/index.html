@@ -26,13 +26,13 @@ window.addEventListener('load',function(){
 });})();
 }
 </script>
-<title>Software de gestión de personal en campo | WIP Equipos</title>
-<meta name="description" content="Software para el control y seguimiento de tu personal en campo: asigna servicios, ubica a tus técnicos en tiempo real y cobra con tarifas automáticas." />
+<title>Software de control de personal en campo | WIP Equipos</title>
+<meta name="description" content="Controla y haz seguimiento a tu personal de campo: ubicación GPS en tiempo real desde el celular, asignación de servicios, tiempos y evidencias." />
 <meta name="author" content="WIP - Aplicando S.A.S." />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta property="og:site_name" content="WIP" />
-<meta property="og:title" content="WIP Equipos, deja de operar a ciegas" />
-<meta property="og:description" content="Software de gestión de operaciones en campo para empresas de asistencia vehicular, hogar, jurídica, veterinaria y médica en LATAM." />
+<meta property="og:title" content="WIP Equipos: software de control de personal en campo" />
+<meta property="og:description" content="Controla y haz seguimiento a tu personal de campo en tiempo real: ubicación GPS desde el celular, asignación de servicios, tiempos y evidencias." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.wiptool.com/equipos" />
 <meta property="og:locale" content="es_LA" />
@@ -77,6 +77,30 @@ window.addEventListener('load',function(){
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Es la herramienta para ordenar los servicios que prestas fuera de la oficina. Asignas, haces seguimiento en tiempo real, cobras y le respondes al cliente desde un solo lugar, sin depender de Excel y WhatsApp."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo controlar al personal de campo sin perseguirlo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Con datos en lugar de llamadas. En WIP cada servicio tiene estados (asignado, en camino, en sitio, finalizado), hora de cada cambio, ubicación y evidencias. Ves en un mapa quién está disponible, quién va en camino y quién ya llegó, y te enteras de las demoras apenas ocurren, sin escribirle a cada técnico."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Necesito instalar un GPS o un rastreador para el seguimiento de mi personal?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. La ubicación en tiempo real se toma de la app de WIP en el celular de cada técnico o colaborador mientras presta el servicio. No hay que comprar ni instalar dispositivos."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué diferencia hay entre un rastreador GPS y un software de control de personal en campo?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Un rastreador solo dice dónde está un vehículo o una persona. Un software de control de personal en campo como WIP además asigna los servicios, mide los tiempos de llegada y de atención, guarda fotos y firmas como evidencia, calcula las tarifas y le avisa al cliente por WhatsApp."
       }
     },
     {
@@ -417,6 +441,8 @@ window.addEventListener('load',function(){
   .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(24px,min(3.5vw,4vh),56px);align-items:center}
   .hero h1{font-size:clamp(30px,min(4.8vw,6vh),68px);font-weight:900;letter-spacing:-0.035em}
   .hero h1 .line{display:block}
+  /* Palabra clave de la página (SEO) dentro del H1, con el aspecto de la píldora que había antes */
+  .hero h1 .h1-kw{display:table;background:var(--lime);color:var(--navy-brand);font-weight:700;font-size:12.5px;letter-spacing:.02em;line-height:1.3;padding:7px 15px;border-radius:22px;margin-bottom:22px}
   .hero .strike{color:var(--ink-l);position:relative;white-space:nowrap}
   .hero .strike::after{content:"";position:absolute;left:-2%;right:-2%;top:52%;height:3px;background:rgba(154,163,184,.75);transform:scaleX(0);transform-origin:left;border-radius:3px}
   body.loaded .hero .strike::after{animation:strike .9s ease 1s forwards}
@@ -1249,13 +1275,13 @@ window.addEventListener('message',function(e){
   <section class="hero sec-dark">
     <div class="wrap hero-grid">
       <div>
-        <span class="hero-pill">¿Tu operación vive entre Excel y WhatsApp?</span>
         <h1>
+          <span class="line h1-kw">Software de control de personal en campo</span>
           <span class="line">Tu equipo está afuera,</span>
           <span class="line">y tu operación <span class="strike">a ciegas</span>.</span>
           <span class="line" style="font-size:0.55em;margin-top:.28em"><span class="lit">Cambia esto con WIP.</span></span>
         </h1>
-        <p class="lede">Conecta cada servicio, tu equipo propio y cada cliente en un solo lugar. Trazabilidad, tiempos, tarifas automáticas y la <strong style="color:var(--ink-l)">ubicación de tu equipo en tiempo real</strong>. Todo lo que hoy resuelves con Excel y WhatsApp, en una sola herramienta.</p>
+        <p class="lede">Haz seguimiento a tu personal de campo sin perseguirlo por teléfono: la <strong style="color:var(--ink-l)">ubicación GPS de tu equipo en tiempo real</strong> desde su celular, trazabilidad de cada servicio, tiempos y tarifas automáticas. Todo lo que hoy resuelves con Excel y WhatsApp, en una sola herramienta.</p>
         <div class="hero-ctas">
           <a href="#demo" class="btn btn-primary">Agenda una demo <span class="btn-arrow">→</span></a>
           <a href="#planes" class="btn btn-ghost">Ver planes</a>
@@ -1353,8 +1379,8 @@ window.addEventListener('message',function(e){
   <section id="beneficios" class="sec-light">
     <div class="wrap">
       <div class="sec-head center reveal">
-        <h2>Todo lo que tu operación de servicios necesita, en un solo lugar</h2>
-        <p>Una sola herramienta para asignar, hacer seguimiento, calcular valores de servicios y responderle al cliente. Fácil de manejar para todo el equipo.</p>
+        <h2>Todo para controlar a tu personal en campo, en un solo lugar</h2>
+        <p>Una sola herramienta para asignar servicios, hacer seguimiento y monitoreo de tu personal de campo, calcular valores de servicios y responderle al cliente. Fácil de manejar para todo el equipo.</p>
       </div>
       <div class="feat-carousel reveal">
         <div class="fc-tabs" role="tablist" aria-label="Beneficios de WIP">
@@ -1585,7 +1611,7 @@ window.addEventListener('message',function(e){
       </div>
       <div class="reveal">
         <h2 style="font-size:clamp(26px,3.4vw,40px);margin-bottom:14px">Saber dónde está tu equipo lo cambia todo.</h2>
-        <p class="lede">La ubicación en tiempo real es lo que más engancha a nuestros clientes. Deja de adivinar y de llamar uno por uno: el mapa te dice quién está libre, quién va llegando y cuánto falta.</p>
+        <p class="lede">El seguimiento GPS de tu personal de campo sale del celular de cada técnico, sin instalar rastreadores. Deja de adivinar y de llamar uno por uno: el mapa te dice quién está libre, quién va llegando y cuánto falta.</p>
         <ul>
           <li><span class="ic">✓</span> Asigna al técnico más cercano y reduce tiempos de respuesta.</li>
           <li><span class="ic">✓</span> Responde a tu cliente con datos, no con promesas.</li>
@@ -1825,6 +1851,30 @@ window.addEventListener('message',function(e){
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
             <span class="faq-num">2.</span>
+            <span class="faq-qt">&iquest;C&oacute;mo controlar al personal de campo sin perseguirlo?</span>
+            <span class="faq-chev">&#9662;</span>
+          </button>
+          <div class="faq-a"><p>Con datos en lugar de llamadas. En WIP cada servicio tiene estados (asignado, en camino, en sitio, finalizado), hora de cada cambio, ubicaci&oacute;n y evidencias. Ves en un mapa qui&eacute;n est&aacute; disponible, qui&eacute;n va en camino y qui&eacute;n ya lleg&oacute;, y te enteras de las demoras apenas ocurren, sin escribirle a cada t&eacute;cnico.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-num">3.</span>
+            <span class="faq-qt">&iquest;Necesito instalar un GPS o un rastreador para el seguimiento de mi personal?</span>
+            <span class="faq-chev">&#9662;</span>
+          </button>
+          <div class="faq-a"><p>No. La ubicaci&oacute;n en tiempo real se toma de la app de WIP en el celular de cada t&eacute;cnico o colaborador mientras presta el servicio. No hay que comprar ni instalar dispositivos.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-num">4.</span>
+            <span class="faq-qt">&iquest;Qu&eacute; diferencia hay entre un rastreador GPS y un software de control de personal en campo?</span>
+            <span class="faq-chev">&#9662;</span>
+          </button>
+          <div class="faq-a"><p>Un rastreador solo dice d&oacute;nde est&aacute; un veh&iacute;culo o una persona. Un software de control de personal en campo como WIP adem&aacute;s asigna los servicios, mide los tiempos de llegada y de atenci&oacute;n, guarda fotos y firmas como evidencia, calcula las tarifas y le avisa al cliente por WhatsApp.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            <span class="faq-num">5.</span>
             <span class="faq-qt">&iquest;Cu&aacute;l es la diferencia entre WIP Redes y WIP Equipos?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -1832,7 +1882,7 @@ window.addEventListener('message',function(e){
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span class="faq-num">3.</span>
+            <span class="faq-num">6.</span>
             <span class="faq-qt">&iquest;Sirve para cualquier n&uacute;mero de t&eacute;cnicos o si trabajo con proveedores externos?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -1840,7 +1890,7 @@ window.addEventListener('message',function(e){
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span class="faq-num">4.</span>
+            <span class="faq-num">7.</span>
             <span class="faq-qt">&iquest;WIP es parametrizable y se ajusta a mi tipo de servicio?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -1848,7 +1898,7 @@ window.addEventListener('message',function(e){
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span class="faq-num">5.</span>
+            <span class="faq-num">8.</span>
             <span class="faq-qt">&iquest;Qu&eacute; tan r&aacute;pido lo tengo funcionando?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -1856,7 +1906,7 @@ window.addEventListener('message',function(e){
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span class="faq-num">6.</span>
+            <span class="faq-num">9.</span>
             <span class="faq-qt">&iquest;Mis clientes c&oacute;mo se enteran del servicio?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -1864,7 +1914,7 @@ window.addEventListener('message',function(e){
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span class="faq-num">7.</span>
+            <span class="faq-num">10.</span>
             <span class="faq-qt">&iquest;Puedo dejar de usar Excel y WhatsApp para coordinar?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -1872,7 +1922,7 @@ window.addEventListener('message',function(e){
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span class="faq-num">8.</span>
+            <span class="faq-num">11.</span>
             <span class="faq-qt">&iquest;WIP se integra con otras plataformas?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -1880,7 +1930,7 @@ window.addEventListener('message',function(e){
         </div>
         <div class="faq-item">
           <button class="faq-q" aria-expanded="false">
-            <span class="faq-num">9.</span>
+            <span class="faq-num">12.</span>
             <span class="faq-qt">&iquest;Hay permanencia o contrato m&iacute;nimo?</span>
             <span class="faq-chev">&#9662;</span>
           </button>
@@ -2030,11 +2080,11 @@ window.addEventListener('message',function(e){
     <div class="footer-col">
       <h4>Soluciones</h4>
       <a href="/software-gestion-servicios-en-campo">Gestión de servicios en campo</a>
-      <a href="/software-empresas-de-asistencia">Empresas de asistencia y aseguradoras</a>
+      <a href="/software-empresas-de-asistencia">Aseguradoras y empresas de asistencia</a>
       <a href="/software-servicio-tecnico">Servicio técnico e instalaciones</a>
       <a href="/software-telecomunicaciones-y-energia">Telecomunicaciones y energía</a>
       <a href="/software-servicios-a-domicilio">Servicios a domicilio</a>
-      <a href="/software-para-gruas-y-flotas">Flotas de servicio (médicos, grúas, envíos o más)</a>
+      <a href="/software-para-gruas-y-flotas">Grúas y flotas de servicio (médicos, envíos o más)</a>
     </div>
     <div class="footer-col">
       <h4>Recursos</h4>
