@@ -1,6 +1,21 @@
 import { enviarEventoMeta } from './_meta-capi.js';
 
 const RESEND_API_URL = 'https://api.resend.com/emails';
+// Flujo F1 de n8n: crea el contacto como oportunidad en Kommo con su Origen (ruta difícil de adivinar; solo recibe datos).
+const N8N_LEADS_URL = process.env.N8N_LEADS_URL || 'https://wiptool.app.n8n.cloud/webhook/leads-sitio-4f9b2c7e1a8d43e6b0d5';
+
+// Le pasa el formulario a n8n; si n8n falla o tarda, el formulario sigue funcionando (el correo ya salió).
+async function enviarAKommo(datos) {
+  try {
+    const r = await fetch(N8N_LEADS_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(datos),
+      signal: AbortSignal.timeout(4000),
+    });
+    if (!r.ok) console.error('n8n (Kommo) respondió', r.status);
+  } catch (err) {
+    console.error('No se pudo enviar el lead a n8n (Kommo)', err.message);
+  }
+}
 
 function escapeHtml(str) {
   return String(str).replace(/[&<>"']/g, (c) => ({
@@ -66,6 +81,11 @@ export default async function handler(req, res) {
       return res.status(502).json({ error: 'No se pudo enviar el correo' });
     }
 
+    await enviarAKommo({
+      tipo: 'formulario_contacto', nombre, email, empresa, telefono: telefono || '', servicios: servicios || '', necesidad: necesidad || '',
+      origen: data.origen || '', utm_source: data.utm_source || '', utm_medium: data.utm_medium || '', utm_campaign: data.utm_campaign || '',
+      utm_content: data.utm_content || '', pagina: data.page || '',
+    });
     await enviarEventoMeta(req, { evento: 'Lead', eventId: data.event_id, email, telefono, nombre, url: data.page, datos: { content_name: 'formulario_contacto' } });
     return res.status(200).json({ ok: true });
   } catch (err) {

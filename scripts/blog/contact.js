@@ -48,6 +48,8 @@
       if(window.fbq) fbq('trackCustom','ClickCalendly');
       e.preventDefault();
       var url=cal.getAttribute('href');
+      /* La cita queda en Calendly con utm_source = origen de la visita (n8n lo pasa a Kommo como Origen) */
+      try{ var u=new URL(url); if(!u.searchParams.get('utm_source')){ u.searchParams.set('utm_source',(window.wipOrigen&&wipOrigen())||'sitio_web'); u.searchParams.set('utm_medium','sitio'); u.searchParams.set('utm_content',location.pathname); } url=u.toString(); }catch(x){}
       if(window.Calendly){ Calendly.initPopupWidget({url:url}); return; }
       var css=document.createElement('link'); css.rel='stylesheet'; css.href='https://assets.calendly.com/assets/external/widget.css'; document.head.appendChild(css);
       var s=document.createElement('script'); s.src='https://assets.calendly.com/assets/external/widget.js'; s.async=true;
@@ -63,6 +65,7 @@
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
     data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href; data.cookies=(window.wipConsent||{}).estado||'granted';
+    data.origen=(window.wipOrigen&&wipOrigen())||'';
     if(iti && tel.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     try{
       var q=new URLSearchParams(location.search);

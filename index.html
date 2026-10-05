@@ -4279,6 +4279,8 @@ window.wipWhenVisible=function(el,start,stop){
     var btn=f.querySelector('button[type=submit]');
     var data={}; new FormData(f).forEach(function(v,k){data[k]=v;});
     data.event_id='ev-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); data.page=location.href; data.cookies=(window.wipConsent||{}).estado||'granted';
+    data.origen=(window.wipOrigen&&wipOrigen())||'';
+    try{ var q=new URLSearchParams(location.search); ['utm_source','utm_medium','utm_campaign','utm_content'].forEach(function(k){ if(q.get(k)) data[k]=q.get(k); }); }catch(x){}
     if(iti && telInput.value.trim()!==''){ data.telefono=iti.getNumber()||data.telefono; }
     if(btn){btn.disabled=true;btn.textContent='Enviando…';}
     fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
@@ -4316,12 +4318,19 @@ window.wipWhenVisible=function(el,start,stop){
     if(!f) return;
     try{ var u=new URL(a.href), t=u.searchParams.get('text'); if(t&&/vengo del sitio web/i.test(t)){ u.searchParams.set('text',t.replace(/vengo del sitio web/i,f)); a.href=u.toString(); } }catch(err){}
   }
+  function calendlyConOrigen(href,o){
+    try{ var u=new URL(href); if(!u.searchParams.get('utm_source')){ u.searchParams.set('utm_source',o||'sitio_web'); u.searchParams.set('utm_medium','sitio'); u.searchParams.set('utm_content',location.pathname); } return u.toString(); }catch(err){ return href; }
+  }
   document.addEventListener('click',function(e){
     var enlace=e.target.closest('a[href*="api.whatsapp.com"],a[href*="wa.me"]'); if(enlace) waConOrigen(enlace);
     var wa=e.target.closest('.wa-fab');
     if(wa){ gtag('event','click_whatsapp',{page_location:location.href,origen:origenVisita()||'sitio_web'}); if(window.fbq)fbq('track','Contact',{content_name:'whatsapp'}); return; }
     var cal=e.target.closest('.contact-calendly a, [onclick*="Calendly.initPopupWidget"]');
-    if(cal){ var o=origenVisita(); var p={page_location:location.href}; if(o)p.origen=o; gtag('event','click_calendly',p); if(window.fbq)fbq('trackCustom','ClickCalendly'); }
+    if(cal){ var o=origenVisita(); var p={page_location:location.href}; if(o)p.origen=o; gtag('event','click_calendly',p); if(window.fbq)fbq('trackCustom','ClickCalendly');
+      /* La cita queda en Calendly con utm_source = origen de la visita (n8n lo pasa a Kommo como Origen) */
+      var url=calendlyConOrigen(cal.getAttribute('href')||'https://calendly.com/comercial-wiptool/acercamiento-wip', o);
+      if(window.Calendly){ e.preventDefault(); e.stopPropagation(); Calendly.initPopupWidget({url:url}); } else if(cal.tagName==='A'){ cal.href=url; }
+    }
   }, true);
 })();
 </script>
