@@ -489,6 +489,18 @@
     {
       "source": "/agenda-explee/:campana",
       "destination": "/api/agenda?src=explee&c=:campana"
+    },
+    {
+      "source": "/agenda-ig",
+      "destination": "/api/agenda?src=instagram"
+    },
+    {
+      "source": "/agenda-fb",
+      "destination": "/api/agenda?src=facebook"
+    },
+    {
+      "source": "/agenda-meta",
+      "destination": "/api/agenda?src=meta_ads"
     }
   ],
   "headers": [
