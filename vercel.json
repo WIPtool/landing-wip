@@ -38,93 +38,53 @@
       "permanent": false
     },
     {
-      "source": "/a",
-      "destination": "/?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor",
+      "source": "/planes/ig",
+      "destination": "/equipos?utm_source=instagram&utm_medium=social&utm_campaign=bio&utm_content=planes#planes",
       "permanent": false
     },
     {
-      "source": "/a/equipos",
-      "destination": "/equipos?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=equipos",
+      "source": "/equipos/fb",
+      "destination": "/equipos?utm_source=facebook&utm_medium=social&utm_campaign=perfil_equipos",
       "permanent": false
     },
     {
-      "source": "/a/planes",
-      "destination": "/equipos?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=planes#planes",
+      "source": "/planes/fb",
+      "destination": "/equipos?utm_source=facebook&utm_medium=social&utm_campaign=perfil&utm_content=planes#planes",
       "permanent": false
     },
     {
-      "source": "/a/gruas",
-      "destination": "/software-para-gruas-y-flotas?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=gruas",
+      "source": "/planes/explee",
+      "destination": "/equipos?utm_source=explee&utm_medium=email&utm_campaign=prospeccion&utm_content=planes#planes",
       "permanent": false
     },
     {
-      "source": "/a/asistencias",
-      "destination": "/software-empresas-de-asistencia?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=asistencias",
+      "source": "/meta",
+      "destination": "/?utm_source=meta_ads&utm_medium=paid_social&utm_campaign=whatsapp",
       "permanent": false
     },
     {
-      "source": "/a/telecom",
-      "destination": "/software-telecomunicaciones-y-energia?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=telecom",
+      "source": "/equipos/meta",
+      "destination": "/equipos?utm_source=meta_ads&utm_medium=paid_social&utm_campaign=whatsapp&utm_content=equipos",
       "permanent": false
     },
     {
-      "source": "/a/servicio-tecnico",
-      "destination": "/software-servicio-tecnico?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=servicio-tecnico",
+      "source": "/planes/meta",
+      "destination": "/equipos?utm_source=meta_ads&utm_medium=paid_social&utm_campaign=whatsapp&utm_content=planes#planes",
       "permanent": false
     },
     {
-      "source": "/a/domicilio",
-      "destination": "/software-servicios-a-domicilio?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=domicilio",
+      "source": "/email",
+      "destination": "/?utm_source=brevo&utm_medium=email&utm_campaign=secuencias",
       "permanent": false
     },
     {
-      "source": "/a/campo",
-      "destination": "/software-gestion-servicios-en-campo?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=campo",
+      "source": "/equipos/email",
+      "destination": "/equipos?utm_source=brevo&utm_medium=email&utm_campaign=secuencias&utm_content=equipos",
       "permanent": false
     },
     {
-      "source": "/agente",
-      "destination": "/?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor",
-      "permanent": false
-    },
-    {
-      "source": "/agente/equipos",
-      "destination": "/equipos?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=equipos",
-      "permanent": false
-    },
-    {
-      "source": "/agente/planes",
-      "destination": "/equipos?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=planes#planes",
-      "permanent": false
-    },
-    {
-      "source": "/agente/gruas",
-      "destination": "/software-para-gruas-y-flotas?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=gruas",
-      "permanent": false
-    },
-    {
-      "source": "/agente/asistencias",
-      "destination": "/software-empresas-de-asistencia?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=asistencias",
-      "permanent": false
-    },
-    {
-      "source": "/agente/telecom",
-      "destination": "/software-telecomunicaciones-y-energia?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=telecom",
-      "permanent": false
-    },
-    {
-      "source": "/agente/servicio-tecnico",
-      "destination": "/software-servicio-tecnico?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=servicio-tecnico",
-      "permanent": false
-    },
-    {
-      "source": "/agente/domicilio",
-      "destination": "/software-servicios-a-domicilio?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=domicilio",
-      "permanent": false
-    },
-    {
-      "source": "/agente/campo",
-      "destination": "/software-gestion-servicios-en-campo?utm_source=whatsapp&utm_medium=chat&utm_campaign=asesor&utm_content=campo",
+      "source": "/planes/email",
+      "destination": "/equipos?utm_source=brevo&utm_medium=email&utm_campaign=secuencias&utm_content=planes#planes",
       "permanent": false
     },
     {
