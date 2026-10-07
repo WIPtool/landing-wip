@@ -274,3 +274,18 @@ export const courses = [
     ],
   },
 ];
+
+// Guia grafica para colaboradores: descargar la app y conectarse a su empresa.
+// img: captura en public/img/academy/app/<img>.jpg (540x1200). mock: ilustracion
+// hecha con HTML/CSS mientras no haya captura de ese paso (build.mjs -> mocks).
+export const appSteps = [
+  { img: '1-buscar-wip', title: 'Busca “Wip” en la Play Store', text: 'Abre la Play Store en tu celular y escribe “wip” en el buscador.' },
+  { img: '2-wip-colaboradores', title: 'Instala “Wip colaboradores”', text: 'En los resultados aparece Wip colaboradores. Tócala y presiona Instalar.' },
+  { mock: 'registro', title: 'Abre la app y toca “Regístrate”', text: 'Cuando termine la descarga, abre la app y toca el botón Regístrate.' },
+  { img: '4-registro', title: 'Completa tus datos', text: 'Escribe tu correo, tu nombre y tu apellido, y sigue los pasos hasta terminar el registro.' },
+  { mock: 'permisos', title: 'Permite notificaciones y ubicación', text: 'Al ingresar a la app, acepta los permisos de notificaciones y de ubicación. Así te llegan los servicios y tu empresa sabe dónde estás.' },
+  { mock: 'siempre', title: 'En ubicación elige “Permitir siempre”', text: 'En la configuración de ubicación de la app marca Permitir siempre (en algunos celulares dice “Permitir todo el tiempo”), para que tu ubicación se actualice aunque la app esté en segundo plano.' },
+  { img: '7-mi-red', title: 'Entra a “Mi red”', text: 'En la pantalla de inicio toca el círculo Mi red.' },
+  { img: '8-conectar-empresa', title: 'Busca tu empresa y toca “Conectar”', text: 'Escribe el nombre de la empresa para la que trabajas y toca Conectar para enviarle tu solicitud.' },
+  { done: true, title: 'Espera a que tu empresa te acepte', text: 'Tu empresa recibe la solicitud. Cuando te acepte, ya puedes recibir y gestionar tus servicios desde la app.' },
+];
