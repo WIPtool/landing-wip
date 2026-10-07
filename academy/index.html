@@ -163,9 +163,19 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
 /* ---------- Guia: descarga de la app de colaborador ---------- */
 .hero__cta{display:inline-block;margin-top:22px;font-size:15px;font-weight:600;color:var(--navy);background:var(--lime);padding:11px 20px;border-radius:var(--r-pill);transition:transform .2s ease,box-shadow .2s ease}
 .hero__cta:hover{transform:translateY(-1px);box-shadow:var(--shadow-float)}
-.guide{padding:clamp(56px,8vw,96px) 0 0;scroll-margin-top:12px}
+.guide{padding:clamp(40px,6vw,72px) 0 0}
+.guide__actions,.guide__foot{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:24px}
+.guide__foot{flex-direction:column;align-items:center;margin-top:36px}
+.guide__back{font-size:15px;font-weight:600;color:var(--lime-text)}
+.guide__back:hover{text-decoration:underline}
+.btn-guide{display:inline-flex;align-items:center;gap:8px;font:inherit;font-size:15px;font-weight:700;color:var(--navy);background:var(--lime);border:2px solid var(--lime);padding:11px 22px;border-radius:var(--r-pill);cursor:pointer;transition:transform .2s ease,box-shadow .2s ease}
+.btn-guide:hover{transform:translateY(-1px);box-shadow:var(--shadow-float)}
+.btn-guide--ghost{background:transparent;border-color:var(--navy)}
+.course__guide{display:flex;width:fit-content;max-width:100%;align-items:center;gap:8px;margin-top:14px;font-size:15px;font-weight:700;color:var(--navy);background:var(--lime);padding:12px 20px;border-radius:var(--r-pill);transition:transform .2s ease,box-shadow .2s ease}
+.course__guide:hover{transform:translateY(-1px);box-shadow:var(--shadow-float)}
 .guide__head{text-align:center;max-width:680px;margin:0 auto}
-.guide__head h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;letter-spacing:-0.025em;line-height:1.15;color:var(--navy)}
+.guide__head h1,.guide__head h2{font-size:clamp(24px,3.2vw,34px);font-weight:800;letter-spacing:-0.025em;line-height:1.15;color:var(--navy)}
+.guide__head h1{font-size:clamp(28px,4.2vw,44px)}
 .guide__head p{margin-top:10px;font-size:16px;color:var(--on-surface-variant)}
 .steps{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;margin-top:36px}
 .step{display:flex;flex-direction:column;background:var(--surface-bright);border:1px solid var(--border-line);border-radius:var(--r-card);box-shadow:var(--shadow-card);padding:20px 20px 22px}
@@ -226,7 +236,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
   .player__play::after{left:24px;top:18px;border-width:12px 0 12px 18px}
   .footer__bottom{flex-direction:column;align-items:flex-start}
 }
-@media(prefers-reduced-motion:reduce){.hero__cta,.card,.player__thumb,.player__play{transition:none}.card:hover{transform:none}}
+@media(prefers-reduced-motion:reduce){.btn-guide,.course__guide,.hero__cta,.card,.player__thumb,.player__play{transition:none}.card:hover{transform:none}}
 </style>
 </head>
 <body>
@@ -246,7 +256,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
       <span class="eyebrow">Academy</span>
       <h1>Conoce los cursos para dominar nuestro software y potencia tu empresa</h1>
       <p>Cursos completamente gratuitos para ti</p>
-      <a class="hero__cta" href="#descarga-app">¿Eres colaborador? Mira cómo descargar la app →</a>
+      <a class="hero__cta" href="/academy/guia-colaborador">¿Eres colaborador? Mira cómo descargar la app →</a>
     </div>
   </section>
 
@@ -325,6 +335,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
           <h2>Crear y configurar tu cuenta de usuario</h2>
           <p>Descubre cómo crear y configurar tu cuenta de usuario en nuestra plataforma. Conéctate a empresas, actualiza tus datos y mantén tu perfil al día de manera sencilla y rápida.</p>
           <span class="course__count">5 videos</span>
+          
         </div>
         <div class="course__layout">
           <div class="stage">
@@ -413,6 +424,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
           <h2>Soy una empresa propietaria con colaboradores</h2>
           <p>Crea tu empresa, organiza tus unidades de negocio, conecta clientes y colaboradores en campo, crea servicios y haz seguimiento en la central de monitoreo.</p>
           <span class="course__count">8 videos</span>
+          
         </div>
         <div class="course__layout">
           <div class="stage">
@@ -543,6 +555,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
           <h2>Soy una empresa propietaria con proveedores</h2>
           <p>Para empresas que asignan servicios a una red de proveedores: crea tu empresa, conecta clientes, proveedores y operadores, envía servicios y haz seguimiento en la central de monitoreo.</p>
           <span class="course__count">9 videos</span>
+          
         </div>
         <div class="course__layout">
           <div class="stage">
@@ -687,6 +700,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
           <h2>Soy una empresa cliente</h2>
           <p>Conéctate con tu empresa propietaria, suma a tus operadores, crea servicios para ella y haz seguimiento en la central de monitoreo.</p>
           <span class="course__count">7 videos</span>
+          
         </div>
         <div class="course__layout">
           <div class="stage">
@@ -803,6 +817,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
           <h2>Soy un proveedor</h2>
           <p>Conéctate con tu empresa propietaria, suma a tus operadores y colaboradores, y acepta y gestiona los servicios que te envían.</p>
           <span class="course__count">7 videos</span>
+          
         </div>
         <div class="course__layout">
           <div class="stage">
@@ -919,6 +934,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
           <h2>Soy un colaborador</h2>
           <p>Aprende a usar la app: crea tu usuario, vincúlate a una empresa, gestiona servicios, consulta tu historial y ajusta tu celular para el mejor rendimiento.</p>
           <span class="course__count">6 videos</span>
+          <a class="course__guide" href="/academy/guia-colaborador">Guía para que tu colaborador se conecte con tu empresa <span aria-hidden="true">→</span></a>
         </div>
         <div class="course__layout">
           <div class="stage">
@@ -1015,89 +1031,6 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
         </div>
       </div>
     </section>
-
-  <section class="guide" id="descarga-app" aria-labelledby="guide-title">
-    <div class="container">
-      <div class="guide__head">
-        <span class="eyebrow">Colaboradores</span>
-        <h2 id="guide-title">Descarga la app y conéctate con tu empresa</h2>
-        <p>Sigue estos 9 pasos desde tu celular para empezar a recibir y gestionar servicios en WIP.</p>
-      </div>
-      <ol class="steps">
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">1</span>
-              <h3>Busca “Wip” en la Play Store</h3>
-            </div>
-            <p>Abre la Play Store en tu celular y escribe “wip” en el buscador.</p>
-            <div class="phone"><img src="/img/academy/app/1-buscar-wip.jpg" width="540" height="1200" alt="Paso 1: Busca “Wip” en la Play Store" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">2</span>
-              <h3>Instala “Wip colaboradores”</h3>
-            </div>
-            <p>En los resultados aparece Wip colaboradores. Tócala y presiona Instalar.</p>
-            <div class="phone"><img src="/img/academy/app/2-wip-colaboradores.jpg" width="540" height="1200" alt="Paso 2: Instala “Wip colaboradores”" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">3</span>
-              <h3>Abre la app y toca “Regístrate”</h3>
-            </div>
-            <p>Cuando termine la descarga, abre la app y, debajo de Iniciar sesión, toca Regístrate.</p>
-            <div class="phone"><img src="/img/academy/app/3-registrate.jpg" width="540" height="1200" alt="Paso 3: Abre la app y toca “Regístrate”" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">4</span>
-              <h3>Completa tus datos</h3>
-            </div>
-            <p>Escribe tu correo, tu nombre y tu apellido, y sigue los pasos hasta terminar el registro.</p>
-            <div class="phone"><img src="/img/academy/app/4-registro.jpg" width="540" height="1200" alt="Paso 4: Completa tus datos" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">5</span>
-              <h3>Permite notificaciones y ubicación</h3>
-            </div>
-            <p>Al ingresar a la app, acepta los permisos de notificaciones y de ubicación. La app te muestra cómo dejar la ubicación activa todo el tiempo y precisa: sigue esos pasos.</p>
-            <div class="phone"><img src="/img/academy/app/5-permisos.jpg" width="540" height="1200" alt="Paso 5: Permite notificaciones y ubicación" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">6</span>
-              <h3>En ubicación elige “Permitir todo el tiempo”</h3>
-            </div>
-            <p>En Ajustes › Apps › Wip › Permisos › Ubicación, marca Permitir todo el tiempo y deja activa Ubicación precisa, para que tu ubicación se actualice aunque la app esté en segundo plano.</p>
-            <div class="phone"><img src="/img/academy/app/6-permitir-todo-el-tiempo.jpg" width="540" height="1200" alt="Paso 6: En ubicación elige “Permitir todo el tiempo”" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">7</span>
-              <h3>Entra a “Mi red”</h3>
-            </div>
-            <p>En la pantalla de inicio toca el círculo Mi red.</p>
-            <div class="phone"><img src="/img/academy/app/7-mi-red.jpg" width="540" height="1200" alt="Paso 7: Entra a “Mi red”" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step">
-            <div class="step__head">
-              <span class="step__n">8</span>
-              <h3>Busca tu empresa y toca “Conectar”</h3>
-            </div>
-            <p>Escribe el nombre de la empresa para la que trabajas y toca Conectar para enviarle tu solicitud.</p>
-            <div class="phone"><img src="/img/academy/app/8-conectar-empresa.jpg" width="540" height="1200" alt="Paso 8: Busca tu empresa y toca “Conectar”" loading="lazy" decoding="async"></div>
-          </li>
-          <li class="step step--done">
-            <div class="step__head">
-              <span class="step__n"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/></svg><span class="sr-only">Listo</span></span>
-              <h3>Espera a que tu empresa te acepte</h3>
-            </div>
-            <p>Tu empresa recibe la solicitud. Cuando te acepte, ya puedes recibir y gestionar tus servicios desde la app.</p>
-          </li>
-      </ol>
-    </div>
-  </section>
 </main>
 
 <footer class="footer">
@@ -1203,6 +1136,8 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
 
   function fromHash(){
     var h=decodeURIComponent((location.hash||'').replace(/^#/,''));
+    /* La guia de descarga de la app estuvo en esta pagina; ahora tiene su propia URL. */
+    if(h==='descarga-app'){ location.replace('/academy/guia-colaborador'); return; }
     var parts=h.split('/');
     if(parts[0] && select(parts[0],parts[1]||null,{hash:false})) return;
     /* Un ancla que no es de curso (p. ej. #cursos) no cambia la seleccion actual. */

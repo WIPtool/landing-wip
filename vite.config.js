@@ -32,6 +32,8 @@ function cleanUrlsDev() {
       server.middlewares.use((req, res, next) => {
         if (req.url === '/academy') {
           req.url = '/academy/';
+        } else if (req.url === '/academy/guia-colaborador') {
+          req.url = '/academy/guia-colaborador/';
         } else if (req.url === '/inscripcion' || req.url.startsWith('/inscripcion?')) {
           req.url = '/inscripcion/' + req.url.slice('/inscripcion'.length);
         } else if (req.url === '/equipos') {
@@ -83,6 +85,7 @@ export default defineConfig({
         politicaCookies: resolve(__dirname, 'politica-cookies.html'),
         inscripcion: resolve(__dirname, 'inscripcion/index.html'),
         academy: resolve(__dirname, 'academy/index.html'),
+        academyGuiaColaborador: resolve(__dirname, 'academy/guia-colaborador/index.html'),
         ...generatedPages(),
       },
     },
