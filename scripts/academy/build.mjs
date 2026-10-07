@@ -1,9 +1,12 @@
-// Genera academy/index.html (pagina estatica), los redirects de las URLs antiguas en
-// vercel.json y la entrada del sitemap. Uso: node scripts/academy/build.mjs
+// Genera academy/index.html y academy/guia-colaborador/index.html (paginas estaticas),
+// los redirects de las URLs antiguas en vercel.json y la entrada del sitemap.
+// Uso: node scripts/academy/build.mjs
+// La imagen descargable de la guia se genera aparte con scripts/academy/poster.mjs.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { courses, appSteps } from './data.mjs';
+import { courses } from './data.mjs';
+import { GUIDE_PATH, GUIDE_IMG, GUIDE_H1, GUIDE_LEAD, guideSteps } from './guide.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
@@ -75,6 +78,7 @@ const panels = courses.map((c, ci) => {
           <h2>${esc(c.name)}</h2>
           <p>${esc(c.desc)}</p>
           <span class="course__count">${c.lessons.length} videos</span>
+          ${c.slug === 'colaborador' ? `<a class="course__guide" href="${GUIDE_PATH}">Guía para que tu colaborador se conecte con tu empresa <span aria-hidden="true">→</span></a>` : ''}
         </div>
         <div class="course__layout">
           <div class="stage">${lessons}
@@ -90,34 +94,45 @@ const panels = courses.map((c, ci) => {
 }).join('');
 
 // ---------- Guia grafica: descarga de la app de colaborador ----------
-const guideSteps = appSteps.map((s, i) => {
-  let media = '';
-  if (s.img) {
-    media = `
-            <div class="phone"><img src="/img/academy/app/${s.img}.jpg" width="540" height="1200" alt="${esc(`Paso ${i + 1}: ${s.title}`)}" loading="lazy" decoding="async"></div>`;
-  }
-  return `
-          <li class="step${s.done ? ' step--done' : ''}">
-            <div class="step__head">
-              <span class="step__n">${s.done ? '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M9 16.2 4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4Z"/></svg><span class="sr-only">Listo</span>' : i + 1}</span>
-              <h3>${esc(s.title)}</h3>
-            </div>
-            <p>${esc(s.text)}</p>${media}
-          </li>`;
-}).join('');
+const downloadBtn = `<a class="btn-guide" href="${GUIDE_IMG}" download="guia-wip-colaboradores.jpg" data-ev="academy_guia_descarga"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5 20h14v-2H5Zm7-3 6-6-1.4-1.4-3.6 3.6V4h-2v9.2L7.4 9.6 6 11Z"/></svg>Descargar guía en imagen</a>`;
 
-const guide = `
-  <section class="guide" id="descarga-app" aria-labelledby="guide-title">
+const guideMain = `
+  <section class="guide guide--page">
     <div class="container">
       <div class="guide__head">
-        <span class="eyebrow">Colaboradores</span>
-        <h2 id="guide-title">Descarga la app y conéctate con tu empresa</h2>
-        <p>Sigue estos ${appSteps.length} pasos desde tu celular para empezar a recibir y gestionar servicios en WIP.</p>
+        <span class="eyebrow">Guía para colaboradores</span>
+        <h1>${GUIDE_H1}</h1>
+        <p>${GUIDE_LEAD}</p>
+        <div class="guide__actions">
+          ${downloadBtn}
+          <button class="btn-guide btn-guide--ghost" type="button" data-share>Compartir enlace</button>
+        </div>
       </div>
-      <ol class="steps">${guideSteps}
+      <ol class="steps">${guideSteps()}
       </ol>
+      <div class="guide__foot">
+        ${downloadBtn}
+        <a class="guide__back" href="/academy#colaborador">Ver los cursos en video para colaboradores →</a>
+      </div>
     </div>
   </section>`;
+
+const guideClient = `(function(){
+  var b=document.querySelector('[data-share]');
+  if(b){b.addEventListener('click',function(){
+    var url=location.origin+location.pathname, t=document.title;
+    if(navigator.share){ navigator.share({title:t,url:url}).catch(function(){}); return; }
+    var done=function(){ b.textContent='¡Enlace copiado!'; setTimeout(function(){ b.textContent='Compartir enlace'; },2500); };
+    if(navigator.clipboard){ navigator.clipboard.writeText(url).then(done,function(){ prompt('Copia este enlace:',url); }); }
+    else { prompt('Copia este enlace:',url); }
+    if(window.gtag){ gtag('event','academy_guia_compartir'); }
+  });}
+  document.addEventListener('click',function(e){
+    var a=e.target.closest('[data-ev]');
+    if(a && window.gtag){ gtag('event',a.getAttribute('data-ev')); }
+  });
+})();
+`;
 
 const jsonld = {
   '@context': 'https://schema.org',
@@ -136,32 +151,32 @@ const jsonld = {
 const css = read('scripts/academy/styles.css');
 const client = read('scripts/academy/client.js');
 
-const html = `<!DOCTYPE html>
+const layout = ({ title, description, url, jsonld: ld, main, script, yt }) => `<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${TITLE}</title>
-<meta name="description" content="${DESCRIPTION}">
+<title>${title}</title>
+<meta name="description" content="${description}">
 <meta name="robots" content="noindex, follow">
 <meta name="theme-color" content="#161d31">
-<link rel="canonical" href="${SITE}/academy">
+<link rel="canonical" href="${SITE}${url}">
 <link rel="icon" type="image/png" href="/favicon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="WIP">
 <meta property="og:locale" content="es_LA">
-<meta property="og:title" content="${TITLE}">
-<meta property="og:description" content="${DESCRIPTION}">
-<meta property="og:url" content="${SITE}/academy">
+<meta property="og:title" content="${title}">
+<meta property="og:description" content="${description}">
+<meta property="og:url" content="${SITE}${url}">
 <meta property="og:image" content="${SITE}/og-image.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="WIP, Field Service Management para LATAM: asignación inteligente y seguimiento en vivo de tu red de proveedores y tu equipo">
-<script type="application/ld+json">
-${JSON.stringify(jsonld)}
+${ld ? `<script type="application/ld+json">
+${JSON.stringify(ld)}
 </script>
-<script>document.documentElement.className+=' js';</script>
+` : ''}<script>document.documentElement.className+=' js';</script>
 <script>
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
@@ -182,8 +197,7 @@ window.addEventListener('load',function(){
 });})();
 }
 </script>
-<link rel="preconnect" href="https://i.ytimg.com">
-<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+${yt ? '<link rel="preconnect" href="https://i.ytimg.com">\n' : ''}<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 ${css}</style>
 </head>
@@ -198,13 +212,24 @@ ${css}</style>
   </div>
 </header>
 
-<main>
+<main>${main}</main>
+
+${footer}
+
+<script>
+${script}</script>
+<script src="/js/consentimiento.js" defer></script>
+</body>
+</html>
+`;
+
+const academyMain = `
   <section class="hero">
     <div class="container">
       <span class="eyebrow">Academy</span>
       <h1>Conoce los cursos para dominar nuestro software y potencia tu empresa</h1>
       <p>Cursos completamente gratuitos para ti</p>
-      <a class="hero__cta" href="#descarga-app">¿Eres colaborador? Mira cómo descargar la app →</a>
+      <a class="hero__cta" href="${GUIDE_PATH}">¿Eres colaborador? Mira cómo descargar la app →</a>
     </div>
   </section>
 
@@ -217,19 +242,19 @@ ${css}</style>
     </div>
   </section>
 ${panels}
-${guide}
-</main>
-
-${footer}
-
-<script>
-${client}</script>
-<script src="/js/consentimiento.js" defer></script>
-</body>
-</html>
 `;
+
+const html = layout({ title: TITLE, description: DESCRIPTION, url: '/academy', jsonld, main: academyMain, script: client, yt: true });
+const guideHtml = layout({
+  title: 'Guía para colaboradores: descarga la app de WIP | WIP Academy',
+  description: 'Paso a paso con imágenes para que tus colaboradores descarguen la app Wip colaboradores, se registren y se conecten con tu empresa.',
+  url: GUIDE_PATH, main: guideMain, script: guideClient,
+});
+
 fs.mkdirSync(path.join(root, 'academy'), { recursive: true });
 fs.writeFileSync(path.join(root, 'academy/index.html'), html);
+fs.mkdirSync(path.join(root, 'academy/guia-colaborador'), { recursive: true });
+fs.writeFileSync(path.join(root, 'academy/guia-colaborador/index.html'), guideHtml);
 
 // ---------- Redirects de las URLs antiguas (WordPress) ----------
 const vercelPath = path.join(root, 'vercel.json');

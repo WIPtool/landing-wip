@@ -53,6 +53,8 @@
 
   function fromHash(){
     var h=decodeURIComponent((location.hash||'').replace(/^#/,''));
+    /* La guia de descarga de la app estuvo en esta pagina; ahora tiene su propia URL. */
+    if(h==='descarga-app'){ location.replace('/academy/guia-colaborador'); return; }
     var parts=h.split('/');
     if(parts[0] && select(parts[0],parts[1]||null,{hash:false})) return;
     /* Un ancla que no es de curso (p. ej. #cursos) no cambia la seleccion actual. */
