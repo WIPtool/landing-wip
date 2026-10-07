@@ -90,50 +90,11 @@ const panels = courses.map((c, ci) => {
 }).join('');
 
 // ---------- Guia grafica: descarga de la app de colaborador ----------
-// Ilustraciones HTML para los pasos que aun no tienen captura de pantalla.
-const mocks = {
-  registro: `
-              <div class="mock mock--welcome">
-                <img src="/img/wip-logo-lima-94w.png" alt="" width="94" height="52">
-                <p>¡Bienvenido a la app de colaborador Wip!</p>
-                <span class="mock__btn">Regístrate</span>
-                <span class="mock__link">Ya tengo cuenta</span>
-              </div>`,
-  permisos: `
-              <div class="mock mock--dialogs">
-                <div class="mock__dialog">
-                  <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 22a2.5 2.5 0 0 0 2.45-2h-4.9A2.5 2.5 0 0 0 12 22Zm7-6V11a7 7 0 0 0-5.5-6.84V3.5a1.5 1.5 0 0 0-3 0v.66A7 7 0 0 0 5 11v5l-2 2v1h18v-1Z"/></svg>
-                  <p>¿Permitir que <b>Wip colaboradores</b> te envíe notificaciones?</p>
-                  <span class="mock__opt is-on">Permitir</span>
-                  <span class="mock__opt">No permitir</span>
-                </div>
-                <div class="mock__dialog">
-                  <svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5Z"/></svg>
-                  <p>¿Permitir que <b>Wip colaboradores</b> acceda a la ubicación de este dispositivo?</p>
-                  <span class="mock__opt is-on">Mientras se usa la app</span>
-                  <span class="mock__opt">No permitir</span>
-                </div>
-              </div>`,
-  siempre: `
-              <div class="mock mock--settings">
-                <p class="mock__title">Permiso de ubicación</p>
-                <p class="mock__app">Wip colaboradores</p>
-                <span class="mock__radio is-on">Permitir siempre</span>
-                <span class="mock__radio">Permitir solo mientras se usa la app</span>
-                <span class="mock__radio">Preguntar siempre</span>
-                <span class="mock__radio">No permitir</span>
-              </div>`,
-};
-
 const guideSteps = appSteps.map((s, i) => {
   let media = '';
   if (s.img) {
     media = `
             <div class="phone"><img src="/img/academy/app/${s.img}.jpg" width="540" height="1200" alt="${esc(`Paso ${i + 1}: ${s.title}`)}" loading="lazy" decoding="async"></div>`;
-  } else if (s.mock) {
-    media = `
-            <div class="phone phone--mock" role="img" aria-label="${esc(`Ilustración del paso ${i + 1}: ${s.title}`)}">${mocks[s.mock]}
-            </div>`;
   }
   return `
           <li class="step${s.done ? ' step--done' : ''}">
