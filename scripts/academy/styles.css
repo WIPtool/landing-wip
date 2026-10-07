@@ -133,26 +133,6 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
 /* Marco de celular: las capturas son 540x1200 (9:20) */
 .phone{margin:auto auto 0;width:100%;max-width:230px;aspect-ratio:9/20;border:7px solid var(--navy);border-radius:30px;overflow:hidden;background:#fff;box-shadow:var(--shadow-float)}
 .phone img{width:100%;height:100%;object-fit:cover}
-.phone--mock{display:flex}
-.mock{flex:1;display:flex;flex-direction:column;font-size:12px;line-height:1.35}
-.mock--welcome{background:var(--navy);color:#fff;align-items:center;justify-content:center;text-align:center;padding:24px 18px;gap:14px}
-.mock--welcome img{width:84px;height:auto}
-.mock--welcome p{font-size:15px;font-weight:600;line-height:1.3}
-.mock__btn{margin-top:18px;width:100%;padding:11px 0;border-radius:var(--r-pill);background:#e85555;color:#fff;font-size:14px;font-weight:700;box-shadow:0 0 0 4px rgba(232,85,85,.3)}
-.mock__link{font-size:12px;opacity:.7}
-.mock--dialogs{background:#5b5f69;justify-content:center;gap:14px;padding:16px 12px}
-.mock__dialog{background:#fff;border-radius:16px;padding:14px 12px 8px;text-align:center;color:var(--on-surface)}
-.mock__dialog svg{margin:0 auto 6px;color:#1a73e8}
-.mock__dialog p{font-size:12px;margin-bottom:8px}
-.mock__opt{display:block;padding:7px 0;margin-top:4px;border-radius:var(--r-pill);font-size:11.5px;font-weight:600;color:#1a73e8;background:#eef3fd}
-.mock__opt.is-on{background:#1a73e8;color:#fff}
-.mock--settings{background:#fff;color:var(--on-surface);padding:26px 14px 14px}
-.mock__title{font-size:16px;font-weight:700;color:var(--navy)}
-.mock__app{font-size:12px;color:var(--navy-soft);margin:2px 0 16px;padding-bottom:12px;border-bottom:1px solid var(--border-line)}
-.mock__radio{position:relative;display:block;padding:10px 0 10px 30px;font-size:12.5px}
-.mock__radio::before{content:"";position:absolute;left:2px;top:50%;width:16px;height:16px;margin-top:-8px;border-radius:50%;border:2px solid #80868b;box-sizing:border-box}
-.mock__radio.is-on{font-weight:700;color:var(--navy);background:#e8f0fe;border-radius:10px;margin:0 -6px;padding-left:36px}
-.mock__radio.is-on::before{left:8px;border-color:#1a73e8;background:radial-gradient(circle,#1a73e8 0 3.5px,transparent 4px)}
 
 /* ---------- Pie de pagina (mismo de la home) ---------- */
 .footer{padding:44px 0;margin-top:clamp(56px,8vw,96px);background:var(--surface-bright);border-top:1px solid var(--border-line)}
