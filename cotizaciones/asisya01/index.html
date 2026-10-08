@@ -163,6 +163,10 @@ body{
   font-weight:800;color:var(--ink);font-size:1.28cqw;padding-top:1cqw}
 .tbl tr.total td.inc{color:var(--dot)}
 .tbl.compact{margin-top:1.2cqw}
+.tbl .strike{text-decoration:line-through;text-decoration-color:#E5383B;text-decoration-thickness:2px}
+.tbl td .note{display:block;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
+.tbl.compact th{white-space:nowrap}
+.tbl.compact td{padding:.5cqw 1cqw}
 .tbl.compact td{padding:.58cqw 1cqw}
 .tbl.compact tr.total td{padding-top:.8cqw}
 
@@ -500,8 +504,8 @@ body{
           <tr><td class="dev">Módulo de gráficas</td><td class="n">90</td><td class="n">$12.600.000</td><td class="inc">$12.600.000</td><td class="z"></td></tr>
           <tr><td class="dev">Reporte detallado de costos</td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
           <tr><td class="dev">Revisión de fallidos (locales/carreteros)</td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
-          <tr><td class="dev">Bloqueo de campos y perfiles de autorización</td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add">$3.080.000</td></tr>
-          <tr class="total"><td>Total</td><td class="n">246</td><td class="n">$34.440.000</td><td class="inc">$19.320.000</td><td class="add">$15.120.000</td></tr>
+          <tr><td class="dev">Bloqueo de campos y perfiles de autorización <span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n"><s class="strike">$3.080.000</s></td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
+          <tr class="total"><td>Total</td><td class="n">246</td><td class="n">$31.360.000</td><td class="inc">$19.320.000</td><td class="add">$12.040.000</td></tr>
         </tbody>
       </table>
       <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP<br>Valores sin IVA</div>
