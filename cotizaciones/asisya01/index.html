@@ -166,7 +166,8 @@ body{
 .tbl tr.total td.inc{color:var(--dot)}
 .tbl.compact{margin-top:.9cqw;font-size:1.02cqw}
 .tbl .strike{text-decoration:line-through;text-decoration-color:#E5383B;text-decoration-thickness:2px}
-.tbl td .note{display:block;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
+.tbl td .tn{display:inline-block;width:2.1cqw;font-family:var(--display);font-weight:700;color:var(--lime-deep);font-variant-numeric:tabular-nums}
+.tbl td .note{display:block;padding-left:2.1cqw;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
 .tbl.compact th{white-space:nowrap;padding-bottom:.6cqw}
 .tbl.compact td{padding:.42cqw 1cqw;line-height:1.2}
 .tbl.compact tr.total td{padding-top:.6cqw}
@@ -525,19 +526,19 @@ body{
       <table class="tbl compact">
         <thead><tr><th>Desarrollo</th><th style="text-align:right">Horas</th><th style="text-align:right">Valor</th><th style="text-align:right">Incluido en tu plan</th><th style="text-align:right">No incluido</th></tr></thead>
         <tbody>
-          <tr><td class="dev">Integración Sigma</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Integración Mawdy</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Integración Connect</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Integración Perito Ya</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Formularios (usabilidad)</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
-          <tr><td class="dev">APIs Simón</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Usuarios activos en tiempo real</td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
-          <tr><td class="dev">Alertas de casos sin proveedor</td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
-          <tr><td class="dev">Estadísticas en pestañas de servicio</td><td class="n">12</td><td class="n">$1.680.000</td><td class="inc">$1.680.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Módulo de gráficas</td><td class="n">90</td><td class="n">$12.600.000</td><td class="inc">$12.600.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Reporte detallado de costos</td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
-          <tr><td class="dev">Revisión de fallidos (locales/carreteros)</td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
-          <tr><td class="dev">Bloqueo de campos y perfiles de autorización <span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
+          <tr><td class="dev"><span class="tn">01</span>Integración Sigma</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">02</span>Integración Mawdy</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">03</span>Integración Connect</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">04</span>Integración Perito Ya</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">05</span>Formularios (usabilidad)</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">06</span>APIs Simón</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">07</span>Usuarios activos en tiempo real</td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
+          <tr><td class="dev"><span class="tn">08</span>Alertas de casos sin proveedor</td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
+          <tr><td class="dev"><span class="tn">09</span>Estadísticas en pestañas de servicio</td><td class="n">12</td><td class="n">$1.680.000</td><td class="inc">$1.680.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">10</span>Módulo de gráficas</td><td class="n">90</td><td class="n">$12.600.000</td><td class="inc">$12.600.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">11</span>Reporte detallado de costos</td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
+          <tr><td class="dev"><span class="tn">12</span>Revisión de fallidos (locales/carreteros)</td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
+          <tr><td class="dev"><span class="tn">13</span>Bloqueo de campos y perfiles de autorización <span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
           <tr class="total"><td>Total</td><td class="n">318</td><td class="n">$44.520.000</td><td class="inc">$29.400.000</td><td class="add">$12.040.000</td></tr>
         </tbody>
       </table>
