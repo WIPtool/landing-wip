@@ -127,6 +127,8 @@ body{
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
 .g5{grid-template-columns:repeat(5,1fr)}
+.g5 .ov{padding:1.1cqw 1.35cqw}
+.g5 .ov .num{padding-top:.75cqw;font-size:2.25cqw}
 
 /* ---------- CHIPS ---------- */
 .chips{display:flex;gap:.7cqw;margin-top:1cqw;flex-wrap:wrap}
@@ -162,13 +164,18 @@ body{
 .tbl tr.total td{border-bottom:none;border-top:2px solid var(--ink);font-family:var(--display);
   font-weight:800;color:var(--ink);font-size:1.28cqw;padding-top:1cqw}
 .tbl tr.total td.inc{color:var(--dot)}
-.tbl.compact{margin-top:1.2cqw}
+.tbl.compact{margin-top:.9cqw;font-size:1.02cqw}
 .tbl .strike{text-decoration:line-through;text-decoration-color:#E5383B;text-decoration-thickness:2px}
-.tbl td .note{display:block;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
-.tbl.compact th{white-space:nowrap}
-.tbl.compact td{padding:.5cqw 1cqw}
-.tbl.compact td{padding:.58cqw 1cqw}
-.tbl.compact tr.total td{padding-top:.8cqw}
+.tbl td .tn{display:inline-flex;align-items:center;justify-content:center;width:1.45cqw;height:1.45cqw;margin-right:.6cqw;border-radius:50%;background:var(--ink);color:#fff;font-family:var(--display);font-weight:700;font-size:.7cqw;line-height:1;font-variant-numeric:tabular-nums;vertical-align:middle}
+.tbl td .st{display:inline-block;margin-left:.6cqw;padding:.12cqw .6cqw;border-radius:999px;font-size:.74cqw;font-weight:600;white-space:nowrap;vertical-align:middle}
+.tbl td .st-done{background:rgba(95,190,46,.16);color:#3C8A16}
+.tbl td .st-prog{background:rgba(59,130,246,.14);color:#1D4ED8}
+.tbl td .st-wait{background:#EEF1F4;color:var(--ink-soft)}
+.tbl td .st-appr{background:rgba(245,158,11,.16);color:#A15C07}
+.tbl td .note{display:block;padding-left:2.05cqw;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
+.tbl.compact th{white-space:nowrap;padding-bottom:.6cqw}
+.tbl.compact td{padding:.3cqw 1cqw;line-height:1.2}
+.tbl.compact tr.total td{padding-top:.6cqw}
 
 /* ---------- CALLOUT ---------- */
 .callout{
@@ -260,6 +267,18 @@ body{
 .shot-fig{display:flex;flex-direction:column;gap:.55cqw;min-height:0}
 .shot-fig .shot{margin-top:0;flex:1}
 .shot-cap{font-size:.9cqw;color:var(--muted);font-weight:600;text-align:center;line-height:1.3}
+
+/* ---------- ZOOM (lightbox) ---------- */
+.shot img{cursor:zoom-in}
+.lightbox{position:fixed;inset:0;z-index:1000;background:rgba(22,29,49,.88);display:none;
+  align-items:center;justify-content:center;padding:24px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;
+  background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.lightbox .lb-close{position:absolute;top:14px;right:18px;width:40px;height:40px;border-radius:50%;
+  border:none;background:rgba(255,255,255,.14);color:#fff;font-size:24px;line-height:1;cursor:pointer}
+.lightbox .lb-close:hover{background:rgba(255,255,255,.26)}
+@media print{.lightbox{display:none!important}}
 </style>
 </head>
 <body>
@@ -327,163 +346,180 @@ body{
     <div class="pad">
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimientos · Powered by WIP</div></div>
       <span class="badge mt-s">Requerimientos</span>
-      <h2 class="h-sec mt-s">10 desarrollos, un solo proyecto</h2>
+      <h2 class="h-sec mt-s">13 desarrollos, un solo proyecto</h2>
       
-      <div class="grid g5 mt">
-        <div class="card ov"><div class="c-top"><span class="idx">01</span><span class="dot"></span></div><h3>Integración Perito Ya</h3><div class="num">24<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">02</span><span class="dot"></span></div><h3>Formularios usables</h3><div class="num">6<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">03</span><span class="dot"></span></div><h3>APIs Simón</h3><div class="num">6<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">04</span><span class="dot"></span></div><h3>Usuarios activos</h3><div class="num">27<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">05</span><span class="dot"></span></div><h3>Alertas sin proveedor</h3><div class="num">27<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">06</span><span class="dot"></span></div><h3>Estadísticas en servicio</h3><div class="num">12<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">07</span><span class="dot"></span></div><h3>Módulo de gráficas</h3><div class="num">90<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">08</span><span class="dot"></span></div><h3>Reporte de costos</h3><div class="num">17<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">09</span><span class="dot"></span></div><h3>Revisión de fallidos</h3><div class="num">15<small>horas</small></div></div>
-        <div class="card ov"><div class="c-top"><span class="idx">10</span><span class="dot"></span></div><h3>Bloqueo de campos y perfiles</h3><div class="num">22<small>horas</small></div></div>
+      <div class="grid g5 mt-s">
+        <div class="card ov"><div class="c-top"><span class="idx">01</span><span class="dot"></span></div><h3>Integración Sigma</h3><div class="num">24<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">02</span><span class="dot"></span></div><h3>Integración Mawdy</h3><div class="num">24<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">03</span><span class="dot"></span></div><h3>Integración Connect</h3><div class="num">24<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">04</span><span class="dot"></span></div><h3>Integración Perito Ya</h3><div class="num">24<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">05</span><span class="dot"></span></div><h3>Formularios usables</h3><div class="num">6<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">06</span><span class="dot"></span></div><h3>APIs Simón</h3><div class="num">6<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">07</span><span class="dot"></span></div><h3>Usuarios activos</h3><div class="num">27<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">08</span><span class="dot"></span></div><h3>Alertas sin proveedor</h3><div class="num">27<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">09</span><span class="dot"></span></div><h3>Estadísticas en servicio</h3><div class="num">12<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">10</span><span class="dot"></span></div><h3>Módulo de gráficas</h3><div class="num">90<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">11</span><span class="dot"></span></div><h3>Reporte de costos</h3><div class="num">17<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">12</span><span class="dot"></span></div><h3>Revisión de fallidos</h3><div class="num">15<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">13</span><span class="dot"></span></div><h3>Bloqueo de campos y perfiles</h3><div class="num">22<small>horas</small></div></div>
       </div>
     </div>
     <div class="pagenum">04</div>
   </section>
 
 
-  <section class="slide shot-slide">
+  <section class="slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 01 · Powered by WIP</div></div>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimientos 01 – 03 · Powered by WIP</div></div>
       <span class="badge mt-s">Integraciones y datos</span>
-      <div class="shot-head">
-        <div class="rn">01</div>
-        <div class="rc"><h4>Integración Perito Ya</h4><p>Integramos Perito Ya con WIP para que, al crear un servicio en Perito Ya, se refleje automáticamente en WIP. Se elimina la carga manual y se ahorran horas de indexación.</p></div>
-        <div class="rmeta"><span class="chip lime">24 horas</span><span class="chip">3 semanas</span></div>
+      <h2 class="h-sec mt-s" style="font-size:3.4cqw">Integraciones con plataformas aliadas</h2>
+      <div class="mt">
+        <div class="req"><div class="rn">01</div><div class="rc"><h4>Integración Sigma</h4><p>Integramos Sigma con WIP para que, al crear un servicio en WIP, se refleje automáticamente en la plataforma de Sigma. Se elimina la carga manual y se ahorran horas de indexación.</p><div class="rmeta"><span class="chip lime">24 horas</span><span class="chip">3 semanas</span></div></div></div>
+        <div class="req"><div class="rn">02</div><div class="rc"><h4>Integración Mawdy</h4><p>Integramos Mawdy con WIP para que, al crear un servicio en WIP, se refleje automáticamente en la plataforma de Mawdy. Se elimina la carga manual y se ahorran horas de indexación.</p><div class="rmeta"><span class="chip lime">24 horas</span><span class="chip">3 semanas</span></div></div></div>
+        <div class="req"><div class="rn">03</div><div class="rc"><h4>Integración Connect</h4><p>Integramos Connect con WIP para que, al crear un servicio en WIP, se refleje automáticamente en la plataforma de Connect. Se elimina la carga manual y se ahorran horas de indexación.</p><div class="rmeta"><span class="chip lime">24 horas</span><span class="chip">3 semanas</span></div></div></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/servicios-de-perito-ya-reflejado-9f76f060.jpg" alt="Servicios de Perito Ya reflejados en la central de monitoreo de WIP"></div>
     </div>
     <div class="pagenum">05</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 02 · Powered by WIP</div></div>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 04 · Powered by WIP</div></div>
       <span class="badge mt-s">Integraciones y datos</span>
       <div class="shot-head">
-        <div class="rn">02</div>
-        <div class="rc"><h4>Formularios con principios de usabilidad</h4><p>Al cargar servicios desde la base de datos, web o API, el sistema reconocerá la empresa cliente. Hoy no lo hace al subir desde base de datos: la empresa debe quedar con el mismo nombre registrado en la plataforma.</p></div>
-        <div class="rmeta"><span class="chip lime">6 horas</span><span class="chip">1 semana</span></div>
+        <div class="rn">04</div>
+        <div class="rc"><h4>Integración Perito Ya</h4><p>Integramos Perito Ya con WIP para que, al crear un servicio en Perito Ya, se refleje automáticamente en WIP. Se elimina la carga manual y se ahorran horas de indexación.</p></div>
+        <div class="rmeta"><span class="chip lime">24 horas</span><span class="chip">3 semanas</span></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/formulario-de-creacion-de-servic-84530c08.jpg" alt="Formulario de creación de servicio con selección de cliente"></div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/servicios-de-perito-ya-reflejado-9f76f060.jpg" alt="Servicios de Perito Ya reflejados en la central de monitoreo de WIP"></div>
     </div>
     <div class="pagenum">06</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 03 · Powered by WIP</div></div>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 05 · Powered by WIP</div></div>
       <span class="badge mt-s">Integraciones y datos</span>
       <div class="shot-head">
-        <div class="rn">03</div>
-        <div class="rc"><h4>APIs Simón</h4><p>Creamos una nueva API que permite la carga de imágenes para que la app de Simón cargue fotos desde la integración y se visualicen dentro de los servicios en WIP.</p></div>
+        <div class="rn">05</div>
+        <div class="rc"><h4>Formularios con principios de usabilidad</h4><p>Al cargar servicios desde la base de datos, web o API, el sistema reconocerá la empresa cliente. Hoy no lo hace al subir desde base de datos: la empresa debe quedar con el mismo nombre registrado en la plataforma.</p></div>
         <div class="rmeta"><span class="chip lime">6 horas</span><span class="chip">1 semana</span></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/pestana-multimedia-del-servicio--8575d744.jpg" alt="Pestaña Multimedia del servicio con las fotos cargadas desde la app de Simón"></div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/formulario-de-creacion-de-servic-84530c08.jpg" alt="Formulario de creación de servicio con selección de cliente"></div>
     </div>
     <div class="pagenum">07</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 04 · Powered by WIP</div></div>
-      <span class="badge mt-s">Operación y monitoreo</span>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 06 · Powered by WIP</div></div>
+      <span class="badge mt-s">Integraciones y datos</span>
       <div class="shot-head">
-        <div class="rn">04</div>
-        <div class="rc"><h4>Usuarios activos en tiempo real</h4><p>El módulo de usuarios muestra si los operadores están en línea: nueva columna “Conexión” con punto verde “En línea”, tiempo de desconexión para los inactivos, y una pestaña de detalle con el log de conexiones y desconexiones filtrable por fecha.</p></div>
-        <div class="rmeta"><span class="chip lime">27 horas</span><span class="chip">5 semanas</span></div>
+        <div class="rn">06</div>
+        <div class="rc"><h4>APIs Simón</h4><p>Creamos una nueva API que permite la carga de imágenes para que la app de Simón cargue fotos desde la integración y se visualicen dentro de los servicios en WIP.</p></div>
+        <div class="rmeta"><span class="chip lime">6 horas</span><span class="chip">1 semana</span></div>
       </div>
-      <div class="shots"><div class="shot-fig"><div class="shot"><img loading="lazy" decoding="async" src="/img/lista-de-usuarios-con-estado-de--3e989dd5.jpg" alt="Lista de usuarios con estado de conexión"></div><div class="shot-cap">Lista de usuarios con la columna “Conexión” en tiempo real</div></div><div class="shot-fig"><div class="shot"><img loading="lazy" decoding="async" src="/img/log-de-conexion-filtrable-por-fe-02d96781.jpg" alt="Log de conexión filtrable por fecha"></div><div class="shot-cap">Detalle: log de conexiones y desconexiones filtrable por fecha</div></div></div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/pestana-multimedia-del-servicio--8575d744.jpg" alt="Pestaña Multimedia del servicio con las fotos cargadas desde la app de Simón"></div>
     </div>
     <div class="pagenum">08</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 05 · Powered by WIP</div></div>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 07 · Powered by WIP</div></div>
       <span class="badge mt-s">Operación y monitoreo</span>
       <div class="shot-head">
-        <div class="rn">05</div>
-        <div class="rc"><h4>Alertas de casos sin proveedor asignado</h4><p>Un semáforo en la central de monitoreo indica el tiempo sin proveedor asignado: naranja de 0 a 5 minutos, rojo después de 5. Un marcador superior muestra los servicios en alerta y, al hacer clic, filtra solo los del color elegido.</p></div>
+        <div class="rn">07</div>
+        <div class="rc"><h4>Usuarios activos en tiempo real</h4><p>El módulo de usuarios muestra si los operadores están en línea: nueva columna “Conexión” con punto verde “En línea”, tiempo de desconexión para los inactivos, y una pestaña de detalle con el log de conexiones y desconexiones filtrable por fecha.</p></div>
         <div class="rmeta"><span class="chip lime">27 horas</span><span class="chip">5 semanas</span></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/central-de-monitoreo-con-semafor-08f70e9f.jpg" alt="Central de monitoreo con semáforo de servicios sin proveedor"></div>
+      <div class="shots"><div class="shot-fig"><div class="shot"><img loading="lazy" decoding="async" src="/img/lista-de-usuarios-con-estado-de--3e989dd5.jpg" alt="Lista de usuarios con estado de conexión"></div><div class="shot-cap">Lista de usuarios con la columna “Conexión” en tiempo real</div></div><div class="shot-fig"><div class="shot"><img loading="lazy" decoding="async" src="/img/log-de-conexion-filtrable-por-fe-02d96781.jpg" alt="Log de conexión filtrable por fecha"></div><div class="shot-cap">Detalle: log de conexiones y desconexiones filtrable por fecha</div></div></div>
     </div>
     <div class="pagenum">09</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 06 · Powered by WIP</div></div>
-      <span class="badge mt-s">Analítica y reportes</span>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 08 · Powered by WIP</div></div>
+      <span class="badge mt-s">Operación y monitoreo</span>
       <div class="shot-head">
-        <div class="rn">06</div>
-        <div class="rc"><h4>Estadísticas en las pestañas de servicio</h4><p>Nueva pestaña dentro de los servicios con todas las estadísticas: las que ya tenía WIP y las nuevas solicitadas por Asisya.</p></div>
-        <div class="rmeta"><span class="chip lime">12 horas</span><span class="chip">2 semanas</span></div>
+        <div class="rn">08</div>
+        <div class="rc"><h4>Alertas de casos sin proveedor asignado</h4><p>Un semáforo en la central de monitoreo indica el tiempo sin proveedor asignado: naranja de 0 a 5 minutos, rojo después de 5. Un marcador superior muestra los servicios en alerta y, al hacer clic, filtra solo los del color elegido.</p></div>
+        <div class="rmeta"><span class="chip lime">27 horas</span><span class="chip">5 semanas</span></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/pestana-de-estadisticas-dentro-d-61f4cb36.jpg" alt="Pestaña de estadísticas dentro del detalle de un servicio"></div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/central-de-monitoreo-con-semafor-08f70e9f.jpg" alt="Central de monitoreo con semáforo de servicios sin proveedor"></div>
     </div>
     <div class="pagenum">10</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 07 · Powered by WIP</div></div>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 09 · Powered by WIP</div></div>
       <span class="badge mt-s">Analítica y reportes</span>
       <div class="shot-head">
-        <div class="rn">07</div>
-        <div class="rc"><h4>Módulo de gráficas</h4><p>Módulo que permite exportar múltiples gráficos e informes analíticos de la operación, ampliando las capacidades de reporte de la plataforma.</p></div>
-        <div class="rmeta"><span class="chip lime">90 horas</span><span class="chip">4 semanas</span></div>
+        <div class="rn">09</div>
+        <div class="rc"><h4>Estadísticas en las pestañas de servicio</h4><p>Nueva pestaña dentro de los servicios con todas las estadísticas: las que ya tenía WIP y las nuevas solicitadas por Asisya.</p></div>
+        <div class="rmeta"><span class="chip lime">12 horas</span><span class="chip">2 semanas</span></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/modulo-de-graficas-con-valores-y-5b3bf6a6.jpg" alt="Módulo de gráficas con valores y análisis por unidad de negocio"></div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/pestana-de-estadisticas-dentro-d-61f4cb36.jpg" alt="Pestaña de estadísticas dentro del detalle de un servicio"></div>
     </div>
     <div class="pagenum">11</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 08 · Powered by WIP</div></div>
-      <span class="badge mt-s">Tarifas y costos</span>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 10 · Powered by WIP</div></div>
+      <span class="badge mt-s">Analítica y reportes</span>
       <div class="shot-head">
-        <div class="rn">08</div>
-        <div class="rc"><h4>Reporte detallado de costos</h4><p>Al editar un servicio, cada opción muestra su valor (p. ej. 5 km → $18.500; grúa planchón liviano → $70.000). Al exportar en WIP, los valores se desglosan por ítem para ver el total con el detalle de cada servicio.</p></div>
-        <div class="rmeta"><span class="chip lime">17 horas</span><span class="chip">4 semanas</span></div>
+        <div class="rn">10</div>
+        <div class="rc"><h4>Módulo de gráficas</h4><p>Módulo que permite exportar múltiples gráficos e informes analíticos de la operación, ampliando las capacidades de reporte de la plataforma.</p></div>
+        <div class="rmeta"><span class="chip lime">90 horas</span><span class="chip">4 semanas</span></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/formulario-de-servicio-con-el-va-1cb76ab9.jpg" alt="Formulario de servicio con el valor desglosado por ítem"></div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/modulo-de-graficas-con-valores-y-5b3bf6a6.jpg" alt="Módulo de gráficas con valores y análisis por unidad de negocio"></div>
     </div>
     <div class="pagenum">12</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 09 · Powered by WIP</div></div>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 11 · Powered by WIP</div></div>
       <span class="badge mt-s">Tarifas y costos</span>
       <div class="shot-head">
-        <div class="rn">09</div>
-        <div class="rc"><h4>Revisión de porcentajes: fallidos locales y carreteros</h4><p>Ajustamos las tarifas automáticas para reconocer qué valores debe asumir en los servicios fallidos según sean locales o carreteros, multiplicando los porcentajes correspondientes según las variables de cada caso.</p></div>
-        <div class="rmeta"><span class="chip lime">15 horas</span><span class="chip">3 semanas</span></div>
+        <div class="rn">11</div>
+        <div class="rc"><h4>Reporte detallado de costos</h4><p>Al editar un servicio, cada opción muestra su valor (p. ej. 5 km → $18.500; grúa planchón liviano → $70.000). Al exportar en WIP, los valores se desglosan por ítem para ver el total con el detalle de cada servicio.</p></div>
+        <div class="rmeta"><span class="chip lime">17 horas</span><span class="chip">4 semanas</span></div>
       </div>
-      <div class="shot"><img loading="lazy" decoding="async" src="/img/configuracion-de-tarifado-automa-b8f1b96e.jpg" alt="Configuración de tarifado automático: porcentajes local vs. foráneo"></div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/formulario-de-servicio-con-el-va-1cb76ab9.jpg" alt="Formulario de servicio con el valor desglosado por ítem"></div>
     </div>
     <div class="pagenum">13</div>
   </section>
 
   <section class="slide shot-slide">
     <div class="pad">
-      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 10 · Powered by WIP</div></div>
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 12 · Powered by WIP</div></div>
+      <span class="badge mt-s">Tarifas y costos</span>
+      <div class="shot-head">
+        <div class="rn">12</div>
+        <div class="rc"><h4>Revisión de porcentajes: fallidos locales y carreteros</h4><p>Ajustamos las tarifas automáticas para reconocer qué valores debe asumir en los servicios fallidos según sean locales o carreteros, multiplicando los porcentajes correspondientes según las variables de cada caso.</p></div>
+        <div class="rmeta"><span class="chip lime">15 horas</span><span class="chip">3 semanas</span></div>
+      </div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/configuracion-de-tarifado-automa-b8f1b96e.jpg" alt="Configuración de tarifado automático: porcentajes local vs. foráneo"></div>
+    </div>
+    <div class="pagenum">14</div>
+  </section>
+
+  <section class="slide shot-slide">
+    <div class="pad">
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 13 · Powered by WIP</div></div>
       <span class="badge mt-s">Control y permisos</span>
       <div class="shot-head">
-        <div class="rn">10</div>
+        <div class="rn">13</div>
         <div class="rc"><h4>Bloqueo de campos y perfiles con nivel de autorización</h4><p>“Costo final” queda bloqueado cuando el servicio pasa a “Autorizado para facturación: Sí”, y “Facturado por el proveedor” solo se diligencia mediante carga masiva del reporte de facturación. Solo perfiles autorizados aprueban costos para facturación o los mueven según reglas definidas: Perfil 1 · Básico Call Center (con limitaciones), Perfil 2 · Auditoría y control de operaciones (aprobación de servicios) y Perfil 3 · Súper usuario.</p></div>
         <div class="rmeta"><span class="chip lime">22 horas</span><span class="chip">4 semanas</span></div>
       </div>
       <div class="shot"><img loading="lazy" decoding="async" src="/img/bloqueo-de-campos-autorizado-fact-3d7a91c2.jpg" alt="Campos Autorizado para facturación y Facturado por el proveedor en la edición del servicio"></div>
     </div>
-    <div class="pagenum">14</div>
+    <div class="pagenum">15</div>
   </section>
 
     <!-- 10 · COSTOS -->
@@ -491,26 +527,29 @@ body{
     <div class="pad">
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Inversión · Powered by WIP</div></div>
       <span class="badge mt-s">Inversión</span>
-      <h2 class="h-sec mt-s" style="font-size:3.6cqw">Detalle de la inversión</h2>
+      <h2 class="h-sec mt-s" style="font-size:3cqw">Backlog / Detalle de la inversión</h2>
       <table class="tbl compact">
         <thead><tr><th>Desarrollo</th><th style="text-align:right">Horas</th><th style="text-align:right">Valor</th><th style="text-align:right">Incluido en tu plan</th><th style="text-align:right">No incluido</th></tr></thead>
         <tbody>
-          <tr><td class="dev">Integración Perito Ya</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Formularios (usabilidad)</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
-          <tr><td class="dev">APIs Simón</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Usuarios activos en tiempo real</td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
-          <tr><td class="dev">Alertas de casos sin proveedor</td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
-          <tr><td class="dev">Estadísticas en pestañas de servicio</td><td class="n">12</td><td class="n">$1.680.000</td><td class="inc">$1.680.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Módulo de gráficas</td><td class="n">90</td><td class="n">$12.600.000</td><td class="inc">$12.600.000</td><td class="z"></td></tr>
-          <tr><td class="dev">Reporte detallado de costos</td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
-          <tr><td class="dev">Revisión de fallidos (locales/carreteros)</td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
-          <tr><td class="dev">Bloqueo de campos y perfiles de autorización <span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
-          <tr class="total"><td>Total</td><td class="n">246</td><td class="n">$34.440.000</td><td class="inc">$19.320.000</td><td class="add">$12.040.000</td></tr>
+          <tr><td class="dev"><span class="tn">01</span>Integración Sigma <span class="st st-wait">Espera del orden por Asisya</span></td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">02</span>Integración Mawdy <span class="st st-wait">Espera del orden por Asisya</span></td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">03</span>Integración Connect <span class="st st-wait">Espera del orden por Asisya</span></td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">04</span>Integración Perito Ya <span class="st st-wait">Espera del orden por Asisya</span></td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">05</span>Formularios (usabilidad) <span class="st st-done">Desarrollo finalizado</span></td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">06</span>APIs Simón <span class="st st-done">Desarrollo finalizado</span></td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">07</span>Usuarios activos en tiempo real <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
+          <tr><td class="dev"><span class="tn">08</span>Alertas de casos sin proveedor <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
+          <tr><td class="dev"><span class="tn">09</span>Estadísticas en pestañas de servicio <span class="st st-done">Desarrollo finalizado</span></td><td class="n">12</td><td class="n">$1.680.000</td><td class="inc">$1.680.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">10</span>Módulo de gráficas <span class="st st-prog">Desarrollo en curso</span></td><td class="n">90</td><td class="n">$12.600.000</td><td class="inc">$12.600.000</td><td class="z"></td></tr>
+          <tr><td class="dev"><span class="tn">11</span>Reporte detallado de costos <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
+          <tr><td class="dev"><span class="tn">12</span>Revisión de fallidos (locales/carreteros) <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
+          <tr><td class="dev"><span class="tn">13</span>Bloqueo de campos y perfiles de autorización  <span class="st st-appr">Espera de aprobación por Asisya</span><span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
+          <tr class="total"><td>Total</td><td class="n">318</td><td class="n">$44.520.000</td><td class="inc">$29.400.000</td><td class="add">$12.040.000</td></tr>
         </tbody>
       </table>
-      <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP<br>Valores sin IVA</div>
+      <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP · Valores sin IVA · Los desarrollos no incluidos se desarrollan en paralelo con los incluidos</div>
     </div>
-    <div class="pagenum">15</div>
+    <div class="pagenum">16</div>
   </section>
 
   <section class="slide">
@@ -521,15 +560,14 @@ body{
       <div class="gantt">
         <div class="grow-row gcap"><span class="gname"></span><div class="gmonths"><span>Mes 1 · Septiembre</span><span>Mes 2 · Octubre</span><span>Mes 3 · Noviembre</span></div></div>
         <div class="grow-row gcap"><span class="gname">Semana</span><div class="gweeks"><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span></div></div>
-        <div class="grow-row"><span class="gname">03 · APIs Simón</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:1"><span>1 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">02 · Formularios usables</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:1;--n:1"><span>1 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">06 · Estadísticas en servicio</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:2"><span>2 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">07 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:4;--n:4"><span>4 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">01 · Integración Perito Ya</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:8;--n:3"><span>3 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">06 · APIs Simón</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:1"><span>1 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">05 · Formularios usables</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:1;--n:1"><span>1 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">09 · Estadísticas en servicio</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:2"><span>2 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">10 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:4;--n:4"><span>4 sem</span></div></div></div>
       </div>
       <div class="footmark">Los desarrollos no se ejecutan en simultánea: se distribuyen por meses según su duración.</div>
     </div>
-    <div class="pagenum">16</div>
+    <div class="pagenum">17</div>
   </section>
 
   <!-- 12 · OBSERVACIONES -->
@@ -544,7 +582,7 @@ body{
         <div class="callout"><div class="ic">✎</div><p>Si se requieren <b>modificaciones especiales</b> después del desarrollo, se presentará una nueva cotización que especificará la razón, el costo y el tiempo de la operación.</p></div>
       </div>
     </div>
-    <div class="pagenum">17</div>
+    <div class="pagenum">18</div>
   </section>
 
   <!-- 13 · CIERRE -->
@@ -564,9 +602,27 @@ body{
         </div>
       </div>
     </div>
-    <div class="pagenum">18</div>
+    <div class="pagenum">19</div>
   </section>
 
 </div>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Imagen ampliada">
+  <button class="lb-close" type="button" aria-label="Cerrar">×</button>
+  <img alt="">
+</div>
+<script>
+(function(){
+  var lb=document.getElementById('lightbox'),big=lb.querySelector('img');
+  function close(){lb.classList.remove('open');big.removeAttribute('src');document.body.style.overflow='';}
+  document.querySelectorAll('.shot img').forEach(function(img){
+    img.addEventListener('click',function(){
+      big.src=img.currentSrc||img.src;big.alt=img.alt;
+      lb.classList.add('open');document.body.style.overflow='hidden';
+    });
+  });
+  lb.addEventListener('click',close);
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&lb.classList.contains('open'))close();});
+})();
+</script>
 </body>
 </html>
