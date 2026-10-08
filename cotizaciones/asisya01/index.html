@@ -162,13 +162,12 @@ body{
 .tbl tr.total td{border-bottom:none;border-top:2px solid var(--ink);font-family:var(--display);
   font-weight:800;color:var(--ink);font-size:1.28cqw;padding-top:1cqw}
 .tbl tr.total td.inc{color:var(--dot)}
-.tbl.compact{margin-top:1.2cqw}
+.tbl.compact{margin-top:.9cqw;font-size:1.02cqw}
 .tbl .strike{text-decoration:line-through;text-decoration-color:#E5383B;text-decoration-thickness:2px}
 .tbl td .note{display:block;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
-.tbl.compact th{white-space:nowrap}
-.tbl.compact td{padding:.5cqw 1cqw}
-.tbl.compact td{padding:.58cqw 1cqw}
-.tbl.compact tr.total td{padding-top:.8cqw}
+.tbl.compact th{white-space:nowrap;padding-bottom:.6cqw}
+.tbl.compact td{padding:.42cqw 1cqw;line-height:1.2}
+.tbl.compact tr.total td{padding-top:.6cqw}
 
 /* ---------- CALLOUT ---------- */
 .callout{
@@ -503,10 +502,13 @@ body{
     <div class="pad">
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Inversión · Powered by WIP</div></div>
       <span class="badge mt-s">Inversión</span>
-      <h2 class="h-sec mt-s" style="font-size:3.6cqw">Detalle de la inversión</h2>
+      <h2 class="h-sec mt-s" style="font-size:3cqw">Backlog / Detalle de la inversión</h2>
       <table class="tbl compact">
         <thead><tr><th>Desarrollo</th><th style="text-align:right">Horas</th><th style="text-align:right">Valor</th><th style="text-align:right">Incluido en tu plan</th><th style="text-align:right">No incluido</th></tr></thead>
         <tbody>
+          <tr><td class="dev">Integración Sigma</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev">Integración Mawdy</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
+          <tr><td class="dev">Integración Connect</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
           <tr><td class="dev">Integración Perito Ya</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
           <tr><td class="dev">Formularios (usabilidad)</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
           <tr><td class="dev">APIs Simón</td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
@@ -517,10 +519,10 @@ body{
           <tr><td class="dev">Reporte detallado de costos</td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
           <tr><td class="dev">Revisión de fallidos (locales/carreteros)</td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
           <tr><td class="dev">Bloqueo de campos y perfiles de autorización <span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
-          <tr class="total"><td>Total</td><td class="n">246</td><td class="n">$34.440.000</td><td class="inc">$19.320.000</td><td class="add">$12.040.000</td></tr>
+          <tr class="total"><td>Total</td><td class="n">318</td><td class="n">$44.520.000</td><td class="inc">$29.400.000</td><td class="add">$12.040.000</td></tr>
         </tbody>
       </table>
-      <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP<br>Valores sin IVA</div>
+      <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP · Valores sin IVA</div>
     </div>
     <div class="pagenum">15</div>
   </section>
