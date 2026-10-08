@@ -126,6 +126,7 @@ body{
 .grid{display:grid;gap:1.15cqw}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g2{grid-template-columns:repeat(2,1fr)}
+.g5{grid-template-columns:repeat(5,1fr)}
 
 /* ---------- CHIPS ---------- */
 .chips{display:flex;gap:.7cqw;margin-top:1cqw;flex-wrap:wrap}
@@ -161,6 +162,13 @@ body{
 .tbl tr.total td{border-bottom:none;border-top:2px solid var(--ink);font-family:var(--display);
   font-weight:800;color:var(--ink);font-size:1.28cqw;padding-top:1cqw}
 .tbl tr.total td.inc{color:var(--dot)}
+.tbl.compact{margin-top:1.2cqw}
+.tbl .strike{text-decoration:line-through;text-decoration-color:#E5383B;text-decoration-thickness:2px}
+.tbl td .note{display:block;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
+.tbl.compact th{white-space:nowrap}
+.tbl.compact td{padding:.5cqw 1cqw}
+.tbl.compact td{padding:.58cqw 1cqw}
+.tbl.compact tr.total td{padding-top:.8cqw}
 
 /* ---------- CALLOUT ---------- */
 .callout{
@@ -319,9 +327,9 @@ body{
     <div class="pad">
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimientos · Powered by WIP</div></div>
       <span class="badge mt-s">Requerimientos</span>
-      <h2 class="h-sec mt-s">9 desarrollos, un solo proyecto</h2>
+      <h2 class="h-sec mt-s">10 desarrollos, un solo proyecto</h2>
       
-      <div class="grid g3 mt">
+      <div class="grid g5 mt">
         <div class="card ov"><div class="c-top"><span class="idx">01</span><span class="dot"></span></div><h3>Integración Perito Ya</h3><div class="num">24<small>horas</small></div></div>
         <div class="card ov"><div class="c-top"><span class="idx">02</span><span class="dot"></span></div><h3>Formularios usables</h3><div class="num">6<small>horas</small></div></div>
         <div class="card ov"><div class="c-top"><span class="idx">03</span><span class="dot"></span></div><h3>APIs Simón</h3><div class="num">6<small>horas</small></div></div>
@@ -331,6 +339,7 @@ body{
         <div class="card ov"><div class="c-top"><span class="idx">07</span><span class="dot"></span></div><h3>Módulo de gráficas</h3><div class="num">90<small>horas</small></div></div>
         <div class="card ov"><div class="c-top"><span class="idx">08</span><span class="dot"></span></div><h3>Reporte de costos</h3><div class="num">17<small>horas</small></div></div>
         <div class="card ov"><div class="c-top"><span class="idx">09</span><span class="dot"></span></div><h3>Revisión de fallidos</h3><div class="num">15<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">10</span><span class="dot"></span></div><h3>Bloqueo de campos y perfiles</h3><div class="num">22<small>horas</small></div></div>
       </div>
     </div>
     <div class="pagenum">04</div>
@@ -463,13 +472,27 @@ body{
     <div class="pagenum">13</div>
   </section>
 
+  <section class="slide shot-slide">
+    <div class="pad">
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 10 · Powered by WIP</div></div>
+      <span class="badge mt-s">Control y permisos</span>
+      <div class="shot-head">
+        <div class="rn">10</div>
+        <div class="rc"><h4>Bloqueo de campos y perfiles con nivel de autorización</h4><p>“Costo final” queda bloqueado cuando el servicio pasa a “Autorizado para facturación: Sí”, y “Facturado por el proveedor” solo se diligencia mediante carga masiva del reporte de facturación. Solo perfiles autorizados aprueban costos para facturación o los mueven según reglas definidas: Perfil 1 · Básico Call Center (con limitaciones), Perfil 2 · Auditoría y control de operaciones (aprobación de servicios) y Perfil 3 · Súper usuario.</p></div>
+        <div class="rmeta"><span class="chip lime">22 horas</span><span class="chip">4 semanas</span></div>
+      </div>
+      <div class="shot"><img loading="lazy" decoding="async" src="/img/bloqueo-de-campos-autorizado-fact-3d7a91c2.jpg" alt="Campos Autorizado para facturación y Facturado por el proveedor en la edición del servicio"></div>
+    </div>
+    <div class="pagenum">14</div>
+  </section>
+
     <!-- 10 · COSTOS -->
   <section class="slide">
     <div class="pad">
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Inversión · Powered by WIP</div></div>
       <span class="badge mt-s">Inversión</span>
       <h2 class="h-sec mt-s" style="font-size:3.6cqw">Detalle de la inversión</h2>
-      <table class="tbl">
+      <table class="tbl compact">
         <thead><tr><th>Desarrollo</th><th style="text-align:right">Horas</th><th style="text-align:right">Valor</th><th style="text-align:right">Incluido en tu plan</th><th style="text-align:right">No incluido</th></tr></thead>
         <tbody>
           <tr><td class="dev">Integración Perito Ya</td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
@@ -481,12 +504,13 @@ body{
           <tr><td class="dev">Módulo de gráficas</td><td class="n">90</td><td class="n">$12.600.000</td><td class="inc">$12.600.000</td><td class="z"></td></tr>
           <tr><td class="dev">Reporte detallado de costos</td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
           <tr><td class="dev">Revisión de fallidos (locales/carreteros)</td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
-          <tr class="total"><td>Total</td><td class="n">224</td><td class="n">$31.360.000</td><td class="inc">$19.320.000</td><td class="add">$12.040.000</td></tr>
+          <tr><td class="dev">Bloqueo de campos y perfiles de autorización <span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
+          <tr class="total"><td>Total</td><td class="n">246</td><td class="n">$34.440.000</td><td class="inc">$19.320.000</td><td class="add">$12.040.000</td></tr>
         </tbody>
       </table>
       <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP<br>Valores sin IVA</div>
     </div>
-    <div class="pagenum">14</div>
+    <div class="pagenum">15</div>
   </section>
 
   <section class="slide">
@@ -499,13 +523,13 @@ body{
         <div class="grow-row gcap"><span class="gname">Semana</span><div class="gweeks"><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span></div></div>
         <div class="grow-row"><span class="gname">03 · APIs Simón</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:1"><span>1 sem</span></div></div></div>
         <div class="grow-row"><span class="gname">02 · Formularios usables</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:1;--n:1"><span>1 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">01 · Integración Perito Ya</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:3"><span>3 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">06 · Estadísticas en servicio</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:5;--n:2"><span>2 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">07 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:7;--n:4"><span>4 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">06 · Estadísticas en servicio</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:2"><span>2 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">07 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:4;--n:4"><span>4 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">01 · Integración Perito Ya</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:8;--n:3"><span>3 sem</span></div></div></div>
       </div>
       <div class="footmark">Los desarrollos no se ejecutan en simultánea: se distribuyen por meses según su duración.</div>
     </div>
-    <div class="pagenum">15</div>
+    <div class="pagenum">16</div>
   </section>
 
   <!-- 12 · OBSERVACIONES -->
@@ -520,7 +544,7 @@ body{
         <div class="callout"><div class="ic">✎</div><p>Si se requieren <b>modificaciones especiales</b> después del desarrollo, se presentará una nueva cotización que especificará la razón, el costo y el tiempo de la operación.</p></div>
       </div>
     </div>
-    <div class="pagenum">16</div>
+    <div class="pagenum">17</div>
   </section>
 
   <!-- 13 · CIERRE -->
@@ -540,7 +564,7 @@ body{
         </div>
       </div>
     </div>
-    <div class="pagenum">17</div>
+    <div class="pagenum">18</div>
   </section>
 
 </div>
