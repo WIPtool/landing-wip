@@ -348,7 +348,7 @@ body{
     <div class="pad">
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimientos · Powered by WIP</div></div>
       <span class="badge mt-s">Requerimientos</span>
-      <h2 class="h-sec mt-s">13 desarrollos, un solo proyecto</h2>
+      <h2 class="h-sec mt-s">14 desarrollos, un solo proyecto</h2>
       
       <div class="grid g5 mt-s">
         <div class="card ov"><div class="c-top"><span class="idx">01</span><span class="dot"></span></div><h3>Integración Sigma</h3><div class="num">24<small>horas</small></div></div>
@@ -364,6 +364,7 @@ body{
         <div class="card ov"><div class="c-top"><span class="idx">11</span><span class="dot"></span></div><h3>Reporte de costos</h3><div class="num">17<small>horas</small></div></div>
         <div class="card ov"><div class="c-top"><span class="idx">12</span><span class="dot"></span></div><h3>Revisión de fallidos</h3><div class="num">15<small>horas</small></div></div>
         <div class="card ov"><div class="c-top"><span class="idx">13</span><span class="dot"></span></div><h3>Bloqueo de campos y perfiles</h3><div class="num">22<small>horas</small></div></div>
+        <div class="card ov"><div class="c-top"><span class="idx">14</span><span class="dot"></span></div><h3>Km adicional en tarifados</h3><div class="num">12<small>horas</small></div></div>
       </div>
     </div>
     <div class="pagenum">04</div>
@@ -524,6 +525,20 @@ body{
     <div class="pagenum">15</div>
   </section>
 
+  <section class="slide shot-slide">
+    <div class="pad">
+      <div class="top"><div class="eyebrow"><b>Asisya</b> · Requerimiento 14 · Powered by WIP</div></div>
+      <span class="badge mt-s">Tarifas y costos</span>
+      <div class="shot-head">
+        <div class="rn">14</div>
+        <div class="rc"><h4>Km adicional en tarifados automáticos</h4><p>Cada grupo de tarifado automático cobra los kilómetros según los <b>km estimados</b> de la ruta (km estimated, predeterminado) o los <b>km reales</b> recorridos (km current). Se define un mínimo de km incluidos en el valor base; si el servicio lo supera, cada km por encima se cobra al valor del km adicional. Los km se cobran siempre hacia arriba: 3 km → 3 km; 3,1 km → 4 km; 3,9 km → 4 km; 4 km → 4 km.</p></div>
+        <div class="rmeta"><span class="chip lime">12 horas</span><span class="chip">2 semanas</span></div>
+      </div>
+      <div class="shot" style="display:flex;align-items:center;justify-content:center"><div style="height:100%;max-width:100%;aspect-ratio:1414/680;overflow:hidden"><img loading="lazy" decoding="async" style="height:auto;margin-top:-43.85%" src="/img/km-adicional-tarifado-automatico-070bc977.webp" alt="Crear grupo de tarifado automático con el cálculo de km: tipo de km, km mínimos incluidos y valor por km adicional"></div></div>
+    </div>
+    <div class="pagenum">16</div>
+  </section>
+
     <!-- 10 · COSTOS -->
   <section class="slide">
     <div class="pad">
@@ -546,12 +561,13 @@ body{
           <tr><td class="dev"><span class="tn">11</span>Reporte detallado de costos <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
           <tr><td class="dev"><span class="tn">12</span>Revisión de fallidos (locales/carreteros) <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
           <tr><td class="dev"><span class="tn">13</span>Bloqueo de campos y perfiles de autorización  <span class="st st-appr">Espera de aprobación por Asisya</span><span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
-          <tr class="total"><td>Total</td><td class="n">318</td><td class="n">$44.520.000</td><td class="inc">$29.400.000</td><td class="add">$12.040.000</td></tr>
+          <tr><td class="dev"><span class="tn">14</span>Km adicional en tarifados automáticos <span class="st st-wait">Por iniciar</span></td><td class="n">12</td><td class="n">$1.680.000</td><td class="inc">$1.680.000</td><td class="z"></td></tr>
+          <tr class="total"><td>Total</td><td class="n">330</td><td class="n">$46.200.000</td><td class="inc">$31.080.000</td><td class="add">$12.040.000</td></tr>
         </tbody>
       </table>
       <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP · Valores sin IVA · Los desarrollos no incluidos se desarrollan en paralelo con los incluidos</div>
     </div>
-    <div class="pagenum">16</div>
+    <div class="pagenum">17</div>
   </section>
 
   <section class="slide">
@@ -566,10 +582,11 @@ body{
         <div class="grow-row"><span class="gname">05 · Formularios usables</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:1;--n:1"><span>1 sem</span></div></div></div>
         <div class="grow-row"><span class="gname">09 · Estadísticas en servicio</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:2"><span>2 sem</span></div></div></div>
         <div class="grow-row"><span class="gname">10 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:4;--n:4"><span>4 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname">14 · Km adicional en tarifados</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:8;--n:2"><span>2 sem</span></div></div></div>
       </div>
       <div class="footmark">Los desarrollos no se ejecutan en simultánea: se distribuyen por meses según su duración.</div>
     </div>
-    <div class="pagenum">17</div>
+    <div class="pagenum">18</div>
   </section>
 
   <!-- 12 · OBSERVACIONES -->
@@ -584,7 +601,7 @@ body{
         <div class="callout"><div class="ic">✎</div><p>Si se requieren <b>modificaciones especiales</b> después del desarrollo, se presentará una nueva cotización que especificará la razón, el costo y el tiempo de la operación.</p></div>
       </div>
     </div>
-    <div class="pagenum">18</div>
+    <div class="pagenum">19</div>
   </section>
 
   <!-- 13 · CIERRE -->
@@ -604,7 +621,7 @@ body{
         </div>
       </div>
     </div>
-    <div class="pagenum">19</div>
+    <div class="pagenum">20</div>
   </section>
 
 </div>
