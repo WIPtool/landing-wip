@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-label="Un cliente escribe por WhatsApp a Sotrandes, el agente responde y el servicio queda creado en WIP">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-label="Un cliente pide una grúa por WhatsApp a Sotrandes, el agente responde y el servicio queda creado en WIP">
   <defs>
     <marker id="flecha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#161D31"/></marker>
     <filter id="sombra" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#161D31" flood-opacity="0.12"/></filter>
@@ -20,32 +20,31 @@
   <!-- Mensaje del cliente -->
   <rect x="132" y="196" width="380" height="118" rx="16" fill="#FFFFFF"/>
   <text font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">
-    <tspan x="152" y="228">Hola, necesito un traslado mañana</tspan>
-    <tspan x="152" y="254">a las 7:00 a. m. desde la Cra. 15 # 93-20</tspan>
-    <tspan x="152" y="280">hasta el Aeropuerto El Dorado.</tspan>
+    <tspan x="152" y="228">Hola, necesito una grúa. Mi carro</tspan>
+    <tspan x="152" y="254">está varado en la Cra. 15 # 93-20</tspan>
+    <tspan x="152" y="280">y va a un taller en la Av. Boyacá.</tspan>
   </text>
   <text x="492" y="302" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8A94A6">6:42 p. m.</text>
 
   <!-- Respuesta del agente -->
   <rect x="188" y="336" width="380" height="142" rx="16" fill="#D9FDD3"/>
   <text font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">
-    <tspan x="208" y="368">¡Con gusto! ¿A nombre de quién</tspan>
-    <tspan x="208" y="394">y cuántos pasajeros son?</tspan>
+    <tspan x="208" y="368">¡Con gusto! ¿Qué vehículo es</tspan>
+    <tspan x="208" y="394">y cuál es la placa?</tspan>
   </text>
   <text x="208" y="438" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#128C7E">Agente de Sotrandes · IA</text>
   <text x="548" y="466" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8A94A6">6:42 p. m. ✓✓</text>
 
   <!-- Cliente responde -->
   <rect x="132" y="500" width="300" height="70" rx="16" fill="#FFFFFF"/>
-  <text x="152" y="542" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">Laura Gómez, 2 pasajeros.</text>
+  <text x="152" y="542" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">Mazda 3, placa JKL 482.</text>
 
   <!-- Confirmación del agente -->
   <rect x="188" y="592" width="380" height="142" rx="16" fill="#D9FDD3"/>
   <text font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">
-    <tspan x="208" y="624">Listo, tu servicio quedó registrado</tspan>
-    <tspan x="208" y="650">para mañana a las 7:00 a. m.</tspan>
-    <tspan x="208" y="676">Te avisaremos cuando el conductor</tspan>
-    <tspan x="208" y="702">vaya en camino. ✅</tspan>
+    <tspan x="208" y="624">Listo, tu servicio de grúa quedó</tspan>
+    <tspan x="208" y="650">registrado. Te avisaremos cuando</tspan>
+    <tspan x="208" y="676">la grúa vaya en camino. ✅</tspan>
   </text>
   <text x="548" y="724" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8A94A6">6:43 p. m. ✓✓</text>
 
@@ -67,15 +66,15 @@
 
   <g font-family="Arial, Helvetica, sans-serif">
     <text x="900" y="292" font-size="15" fill="#8A94A6">CLIENTE</text>
-    <text x="900" y="320" font-size="22" font-weight="700" fill="#161D31">Laura Gómez · 2 pasajeros</text>
+    <text x="900" y="320" font-size="22" font-weight="700" fill="#161D31">Laura Gómez · Mazda 3 · JKL 482</text>
     <line x1="900" y1="342" x2="1480" y2="342" stroke="#ECEEF2" stroke-width="2"/>
     <text x="900" y="378" font-size="15" fill="#8A94A6">ORIGEN</text>
     <text x="900" y="406" font-size="21" fill="#161D31">Cra. 15 # 93-20, Bogotá</text>
     <text x="1210" y="378" font-size="15" fill="#8A94A6">DESTINO</text>
-    <text x="1210" y="406" font-size="21" fill="#161D31">Aeropuerto El Dorado</text>
+    <text x="1210" y="406" font-size="21" fill="#161D31">Taller · Av. Boyacá, Bogotá</text>
     <line x1="900" y1="428" x2="1480" y2="428" stroke="#ECEEF2" stroke-width="2"/>
-    <text x="900" y="464" font-size="15" fill="#8A94A6">FECHA Y HORA</text>
-    <text x="900" y="492" font-size="21" fill="#161D31">Mañana · 7:00 a. m.</text>
+    <text x="900" y="464" font-size="15" fill="#8A94A6">SERVICIO</text>
+    <text x="900" y="492" font-size="21" fill="#161D31">Grúa · inmediata</text>
     <text x="1210" y="464" font-size="15" fill="#8A94A6">CANAL</text>
     <circle cx="1221" cy="485" r="11" fill="#25D366"/>
     <text x="1242" y="492" font-size="21" fill="#161D31">WhatsApp</text>
