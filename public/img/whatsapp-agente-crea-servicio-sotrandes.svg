@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-label="Un cliente escribe por WhatsApp a Sotrandes, el agente responde y el servicio queda creado en WIP">
+  <defs>
+    <marker id="flecha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#161D31"/></marker>
+    <filter id="sombra" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="10" stdDeviation="16" flood-color="#161D31" flood-opacity="0.12"/></filter>
+  </defs>
+  <rect width="1600" height="860" fill="#F5F6F8"/>
+
+  <!-- Teléfono con WhatsApp -->
+  <g filter="url(#sombra)">
+    <rect x="90" y="40" width="520" height="780" rx="54" fill="#161D31"/>
+    <rect x="108" y="58" width="484" height="744" rx="40" fill="#EFEAE2"/>
+  </g>
+  <rect x="108" y="58" width="484" height="104" rx="40" fill="#075E54"/>
+  <rect x="108" y="118" width="484" height="44" fill="#075E54"/>
+  <circle cx="166" cy="114" r="26" fill="#D7F25C"/>
+  <text x="166" y="122" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="20" font-weight="700" fill="#161D31">S</text>
+  <text x="208" y="108" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#FFFFFF">Sotrandes</text>
+  <text x="208" y="134" font-family="Arial, Helvetica, sans-serif" font-size="16" fill="#CDEBE5">Agente virtual · en línea</text>
+
+  <!-- Mensaje del cliente -->
+  <rect x="132" y="196" width="380" height="118" rx="16" fill="#FFFFFF"/>
+  <text font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">
+    <tspan x="152" y="228">Hola, necesito un traslado mañana</tspan>
+    <tspan x="152" y="254">a las 7:00 a. m. desde la Cra. 15 # 93-20</tspan>
+    <tspan x="152" y="280">hasta el Aeropuerto El Dorado.</tspan>
+  </text>
+  <text x="492" y="302" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8A94A6">6:42 p. m.</text>
+
+  <!-- Respuesta del agente -->
+  <rect x="188" y="336" width="380" height="142" rx="16" fill="#D9FDD3"/>
+  <text font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">
+    <tspan x="208" y="368">¡Con gusto! ¿A nombre de quién</tspan>
+    <tspan x="208" y="394">y cuántos pasajeros son?</tspan>
+  </text>
+  <text x="208" y="438" font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" fill="#128C7E">Agente de Sotrandes · IA</text>
+  <text x="548" y="466" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8A94A6">6:42 p. m. ✓✓</text>
+
+  <!-- Cliente responde -->
+  <rect x="132" y="500" width="300" height="70" rx="16" fill="#FFFFFF"/>
+  <text x="152" y="542" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">Laura Gómez, 2 pasajeros.</text>
+
+  <!-- Confirmación del agente -->
+  <rect x="188" y="592" width="380" height="142" rx="16" fill="#D9FDD3"/>
+  <text font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">
+    <tspan x="208" y="624">Listo, tu servicio quedó registrado</tspan>
+    <tspan x="208" y="650">para mañana a las 7:00 a. m.</tspan>
+    <tspan x="208" y="676">Te avisaremos cuando el conductor</tspan>
+    <tspan x="208" y="702">vaya en camino. ✅</tspan>
+  </text>
+  <text x="548" y="724" text-anchor="end" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8A94A6">6:43 p. m. ✓✓</text>
+
+  <!-- Flecha -->
+  <line x1="650" y1="430" x2="822" y2="430" stroke="#161D31" stroke-width="4" stroke-linecap="round" marker-end="url(#flecha)"/>
+  <text x="736" y="402" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#161D31">Crea el servicio</text>
+  <text x="736" y="464" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#5B6478">sin digitar nada</text>
+
+  <!-- Tarjeta de servicio en WIP -->
+  <g filter="url(#sombra)">
+    <rect x="860" y="150" width="660" height="560" rx="28" fill="#FFFFFF"/>
+  </g>
+  <rect x="860" y="150" width="660" height="92" rx="28" fill="#161D31"/>
+  <rect x="860" y="214" width="660" height="28" fill="#161D31"/>
+  <text x="900" y="206" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="900" fill="#D7F25C">wip</text>
+  <text x="972" y="204" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#E8EAF1">Servicio creado automáticamente</text>
+  <rect x="1366" y="176" width="124" height="38" rx="19" fill="#D7F25C"/>
+  <text x="1428" y="201" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#161D31">Creado</text>
+
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="900" y="292" font-size="15" fill="#8A94A6">CLIENTE</text>
+    <text x="900" y="320" font-size="22" font-weight="700" fill="#161D31">Laura Gómez · 2 pasajeros</text>
+    <line x1="900" y1="342" x2="1480" y2="342" stroke="#ECEEF2" stroke-width="2"/>
+    <text x="900" y="378" font-size="15" fill="#8A94A6">ORIGEN</text>
+    <text x="900" y="406" font-size="21" fill="#161D31">Cra. 15 # 93-20, Bogotá</text>
+    <text x="1210" y="378" font-size="15" fill="#8A94A6">DESTINO</text>
+    <text x="1210" y="406" font-size="21" fill="#161D31">Aeropuerto El Dorado</text>
+    <line x1="900" y1="428" x2="1480" y2="428" stroke="#ECEEF2" stroke-width="2"/>
+    <text x="900" y="464" font-size="15" fill="#8A94A6">FECHA Y HORA</text>
+    <text x="900" y="492" font-size="21" fill="#161D31">Mañana · 7:00 a. m.</text>
+    <text x="1210" y="464" font-size="15" fill="#8A94A6">CANAL</text>
+    <circle cx="1221" cy="485" r="11" fill="#25D366"/>
+    <text x="1242" y="492" font-size="21" fill="#161D31">WhatsApp</text>
+    <line x1="900" y1="514" x2="1480" y2="514" stroke="#ECEEF2" stroke-width="2"/>
+  </g>
+  <rect x="900" y="542" width="580" height="128" rx="18" fill="#F3FADB"/>
+  <text font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#161D31">
+    <tspan x="926" y="584" font-weight="700">Sin operador digitando</tspan>
+    <tspan x="926" y="614">El agente atiende el chat de WhatsApp de Sotrandes</tspan>
+    <tspan x="926" y="642">y registra el servicio directamente en WIP.</tspan>
+  </text>
+</svg>
