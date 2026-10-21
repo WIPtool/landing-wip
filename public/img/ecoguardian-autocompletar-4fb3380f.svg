@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 860" role="img" aria-label="Formulario de crear servicio en WIP: al elegir el cliente, sus datos y campos personalizados se llenan solos">
+  <defs>
+    <filter id="sombra" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#161D31" flood-opacity="0.10"/></filter>
+  </defs>
+  <rect width="1600" height="860" fill="#F5F6F8"/>
+  <g filter="url(#sombra)"><rect x="40" y="36" width="1520" height="788" rx="24" fill="#FFFFFF"/></g>
+
+  <!-- Encabezado -->
+  <rect x="76" y="64" width="250" height="38" rx="19" fill="#161D31"/>
+  <text x="201" y="89" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Crear servicio: Automatización</text>
+  <rect x="1394" y="64" width="130" height="38" rx="10" fill="#22A06B"/>
+  <text x="1459" y="89" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="17" font-weight="700" fill="#FFFFFF">Crear</text>
+
+  <!-- Cliente seleccionado (centro arriba) -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="560" y="144" font-size="16" fill="#2C334A">Cliente</text>
+    <rect x="560" y="156" width="480" height="52" rx="10" fill="#FFFFFF" stroke="#161D31" stroke-width="2.5"/>
+    <text x="580" y="189" font-size="17" font-weight="700" fill="#161D31">CONJUNTO RESIDENCIAL MORELLI</text>
+    <text x="1020" y="189" text-anchor="end" font-size="15" fill="#6C7280">Tocancipá</text>
+    <rect x="560" y="224" width="480" height="64" rx="12" fill="#C8EB54"/>
+    <text x="584" y="252" font-size="17" font-weight="800" fill="#161D31">⚡ Datos del cliente cargados</text>
+    <text x="584" y="276" font-size="15" fill="#2C334A">12 campos se llenaron solos al elegir el cliente</text>
+  </g>
+
+  <!-- Columna izquierda: datos del usuario y origen -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="76" y="144" font-size="16" fill="#2C334A">Nombre del usuario</text>
+    <rect x="76" y="156" width="440" height="48" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="94" y="187" font-size="17" fill="#161D31">Administración Conjunto Morelli</text>
+
+    <text x="76" y="236" font-size="16" fill="#2C334A">Documento del usuario</text>
+    <rect x="76" y="248" width="440" height="48" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="94" y="279" font-size="17" fill="#161D31">901.234.567-8</text>
+
+    <text x="76" y="328" font-size="16" fill="#2C334A">Teléfono del usuario</text>
+    <rect x="76" y="340" width="440" height="48" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="94" y="371" font-size="17" fill="#161D31">+57 310 555 0142</text>
+
+    <text x="76" y="420" font-size="16" fill="#2C334A">Dirección de origen</text>
+    <rect x="76" y="432" width="440" height="48" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="94" y="463" font-size="17" fill="#161D31">Calle 9 # 5-40</text>
+
+    <text x="76" y="512" font-size="16" fill="#2C334A">Localidad de origen</text>
+    <rect x="76" y="524" width="440" height="48" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="94" y="555" font-size="17" fill="#161D31">Centro</text>
+
+    <text x="76" y="604" font-size="16" fill="#2C334A">Ciudad de origen</text>
+    <rect x="76" y="616" width="440" height="48" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="94" y="647" font-size="17" fill="#161D31">Tocancipá, Cundinamarca</text>
+
+    <text x="76" y="696" font-size="16" fill="#2C334A">Notas</text>
+    <rect x="76" y="708" width="440" height="84" rx="10" fill="#FFFFFF" stroke="#E7E9EE" stroke-width="2"/>
+    <text x="94" y="740" font-size="16" fill="#9AA1AD">Solo queda escribir lo propio de este servicio</text>
+  </g>
+
+  <!-- Centro: fecha y flecha explicativa -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="560" y="336" font-size="16" fill="#2C334A">Fecha programada</text>
+    <rect x="560" y="348" width="480" height="48" rx="10" fill="#FFFFFF" stroke="#E7E9EE" stroke-width="2"/>
+    <text x="580" y="379" font-size="17" fill="#161D31">03/11/2026 · 08:00</text>
+
+    <rect x="560" y="440" width="480" height="232" rx="16" fill="#F8F9FB"/>
+    <text x="588" y="480" font-size="18" font-weight="800" fill="#161D31">Antes</text>
+    <text x="588" y="508" font-size="16" fill="#2C334A">Se digita campo por campo cada vez</text>
+    <text x="588" y="532" font-size="16" fill="#2C334A">que se crea un servicio para el cliente.</text>
+    <line x1="588" y1="556" x2="1012" y2="556" stroke="#E7E9EE" stroke-width="2"/>
+    <text x="588" y="592" font-size="18" font-weight="800" fill="#161D31">Ahora</text>
+    <text x="588" y="620" font-size="16" fill="#2C334A">Se elige el cliente y sus datos ya quedan</text>
+    <text x="588" y="644" font-size="16" fill="#2C334A">en el formulario, sin errores de digitación.</text>
+  </g>
+
+  <!-- Columna derecha: campos personalizados -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="1084" y="144" font-size="16" fill="#3D6FD8">Campos personalizados</text>
+    <line x1="1084" y1="156" x2="1524" y2="156" stroke="#E7E9EE" stroke-width="2"/>
+
+    <text x="1084" y="190" font-size="16" fill="#2C334A">Correo electrónico</text>
+    <rect x="1084" y="202" width="440" height="46" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="1102" y="232" font-size="17" fill="#161D31">administracion@morelli.co</text>
+
+    <text x="1084" y="280" font-size="16" fill="#2C334A">NIT</text>
+    <rect x="1084" y="292" width="440" height="46" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="1102" y="322" font-size="17" fill="#161D31">901.234.567-8</text>
+
+    <text x="1084" y="370" font-size="16" fill="#2C334A">Persona de contacto</text>
+    <rect x="1084" y="382" width="440" height="46" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="1102" y="412" font-size="17" fill="#161D31">Laura Méndez</text>
+
+    <text x="1084" y="460" font-size="16" fill="#2C334A">Cargo</text>
+    <rect x="1084" y="472" width="440" height="46" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="1102" y="502" font-size="17" fill="#161D31">Administradora</text>
+
+    <text x="1084" y="550" font-size="16" fill="#2C334A">Componente</text>
+    <rect x="1084" y="562" width="440" height="46" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="1102" y="592" font-size="17" fill="#161D31">Puertas automáticas</text>
+
+    <text x="1084" y="640" font-size="16" fill="#2C334A">Frecuencia</text>
+    <rect x="1084" y="652" width="440" height="46" rx="10" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="1102" y="682" font-size="17" fill="#161D31">Mensual</text>
+
+    <rect x="1084" y="726" width="20" height="20" rx="4" fill="#F3FADB" stroke="#B4E12E" stroke-width="2"/>
+    <text x="1114" y="742" font-size="15" fill="#6C7280">Llenado automáticamente con los datos del cliente</text>
+  </g>
+  <rect x="1394" y="766" width="130" height="38" rx="10" fill="#22A06B"/>
+  <text x="1459" y="791" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#FFFFFF">Crear servicio</text>
+</svg>

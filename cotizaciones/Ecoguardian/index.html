@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Ecoguardian · WIP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F8; --ink:#161D31; --ink-soft:#2C334A; --gray:#6C7280; --muted:#9AA1AD;
+  --line:#E7E9EE; --line-soft:#EFF1F4; --card:#FFFFFF;
+  --lime:#C8EB54; --lime-deep:#B4E12E; --dot:#5FBE2E;
+  --display:'Archivo',-apple-system,system-ui,sans-serif;
+  --body:'Inter',-apple-system,system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(22,29,49,.05), 0 18px 44px rgba(22,29,49,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20px 60px;}
+.deck{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+.slide{container-type:size;position:relative;width:100%;aspect-ratio:16/9;border-radius:20px;border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);
+  background:linear-gradient(rgba(22,29,49,.035) 1px, transparent 1px) -1px -1px/44px 44px,linear-gradient(90deg, rgba(22,29,49,.035) 1px, transparent 1px) -1px -1px/44px 44px,var(--bg);}
+.pad{position:absolute;inset:0;padding:4.6cqw 5.2cqw 4.4cqw;display:flex;flex-direction:column;}
+.top{display:flex;justify-content:space-between;align-items:center;gap:2cqw}
+.eyebrow{font-size:1.15cqw;font-weight:500;color:var(--muted);letter-spacing:.02em;margin-left:auto;text-align:right;}
+.eyebrow b{color:var(--ink);font-weight:700}
+.logo{height:3.1cqw;width:auto;display:block}
+.badge{display:inline-flex;align-items:center;background:var(--lime);color:var(--ink);font-weight:800;font-size:1.02cqw;letter-spacing:.09em;text-transform:uppercase;padding:.62cqw 1.15cqw;border-radius:999px;align-self:flex-start;}
+.h1{font-family:var(--display);font-weight:800;color:var(--ink);line-height:.98;letter-spacing:-.02em;}
+.h-sec{font-family:var(--display);font-weight:800;color:var(--ink);font-size:4.35cqw;line-height:1.0;letter-spacing:-.02em;}
+.lead{font-size:1.85cqw;line-height:1.42;color:var(--gray);font-weight:400;max-width:66cqw;}
+.body{font-size:1.4cqw;line-height:1.55;color:var(--gray)}
+.mt-s{margin-top:1.4cqw}.mt{margin-top:2.2cqw}.mt-l{margin-top:2.9cqw}.grow{flex:1}
+.pagenum{position:absolute;right:5.2cqw;bottom:3.4cqw;font-size:1.15cqw;font-weight:600;color:var(--muted);letter-spacing:.04em;}
+.footmark{position:absolute;left:5.2cqw;bottom:3.4cqw;font-size:1.05cqw;font-weight:500;color:var(--muted);letter-spacing:.02em;max-width:80cqw}
+.card{background:var(--card);border:1px solid var(--line-soft);border-radius:1.1cqw;padding:1.7cqw 1.8cqw;box-shadow:0 1px 2px rgba(22,29,49,.04);}
+.card .c-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1cqw}
+.card h3{font-size:1.5cqw;font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-.01em}
+.card p{font-size:1.12cqw;line-height:1.42;color:var(--gray);margin-top:.75cqw}
+.dot{width:.72cqw;height:.72cqw;border-radius:50%;background:var(--dot);flex:none;margin-top:.55cqw;box-shadow:0 0 0 .35cqw rgba(95,190,46,.14)}
+.idx{font-family:var(--display);font-weight:700;font-size:1.15cqw;color:var(--lime-deep);letter-spacing:.02em}
+.num{font-family:var(--display);font-weight:800;font-size:2.9cqw;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.num small{font-family:var(--body);font-weight:500;font-size:1.05cqw;color:var(--muted);margin-left:.5cqw;letter-spacing:0}
+.ov{display:flex;flex-direction:column;padding:1.4cqw 1.55cqw}
+.ov h3{margin-top:.55cqw;font-size:1.42cqw;line-height:1.08}
+.ov .num{margin-top:auto;padding-top:1.15cqw;font-size:2.55cqw}
+.grid{display:grid;gap:1.15cqw}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.chips{display:flex;gap:.7cqw;margin-top:1cqw;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.4cqw;font-size:1.02cqw;font-weight:600;color:var(--ink-soft);background:#EEF1F4;border-radius:999px;padding:.42cqw .95cqw;}
+.chip.lime{background:rgba(200,235,84,.35);color:var(--ink)}
+.req{display:flex;gap:1.5cqw;padding:1.35cqw 0;border-top:1px solid var(--line-soft)}
+.req:first-of-type{border-top:none}
+.req .rn{font-family:var(--display);font-weight:800;font-size:2.3cqw;color:var(--lime-deep);line-height:1;min-width:3.4cqw;letter-spacing:-.02em}
+.req .rc{flex:1}
+.req h4{font-size:1.55cqw;font-weight:700;color:var(--ink);line-height:1.12;letter-spacing:-.01em}
+.req p{font-size:1.12cqw;line-height:1.42;color:var(--gray);margin-top:.5cqw;max-width:74cqw}
+.req .rmeta{display:flex;gap:.6cqw;margin-top:.85cqw}
+.callout{display:flex;gap:1.2cqw;align-items:flex-start;background:var(--card);border:1px solid var(--line-soft);border-radius:1.1cqw;padding:1.4cqw 1.7cqw;box-shadow:0 1px 2px rgba(22,29,49,.04);}
+.callout .ic{width:2.4cqw;height:2.4cqw;border-radius:50%;flex:none;background:var(--lime);display:flex;align-items:center;justify-content:center;font-size:1.3cqw;}
+.callout p{font-size:1.22cqw;line-height:1.5;color:var(--ink-soft)}
+.callout p b{color:var(--ink);font-weight:700}
+.cover .h1{font-size:6.6cqw}
+.metarow{display:flex;gap:2.4cqw;margin-top:2.2cqw}
+.metarow .m{font-size:1.2cqw;color:var(--gray)}
+.metarow .m b{display:block;color:var(--ink);font-weight:700;font-size:1.35cqw;margin-top:.25cqw}
+.forwho{display:flex;align-items:center;gap:1.2cqw;margin-top:2.4cqw}
+.fw-label{font-size:1.05cqw;color:var(--muted);font-weight:500;letter-spacing:.02em}
+.forname{font-family:var(--display);font-weight:900;font-size:3.4cqw;color:var(--ink);letter-spacing:-.015em;line-height:1}
+.fw-city{font-size:1.15cqw;color:var(--muted);font-weight:500;letter-spacing:.01em}
+.close .h1{font-size:5.4cqw}
+.contact{display:flex;gap:2.6cqw;margin-top:2.4cqw}
+.contact .ct{font-size:1.2cqw;color:var(--gray)}
+.contact .ct b{display:block;color:var(--ink);font-weight:700;font-size:1.4cqw;margin-top:.3cqw}
+.contact .ct b a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+/* Integration flow diagram */
+.flow{display:flex;align-items:stretch;gap:1.3cqw;margin-top:2.6cqw}
+.flow .node{width:20cqw;flex:none;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.9cqw 1.4cqw;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.5cqw}
+.flow .node.alt{background:var(--lime);color:var(--ink)}
+.flow .node .nlabel{font-family:var(--display);font-weight:900;font-size:2.1cqw;letter-spacing:-.01em;line-height:1}
+.flow .node .nsub{font-size:.98cqw;font-weight:500;opacity:.72}
+.flow .conns{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.05cqw}
+.flow .conn{background:var(--card);border:1px solid var(--line-soft);border-radius:1cqw;padding:1cqw 1.25cqw;box-shadow:0 1px 2px rgba(22,29,49,.04)}
+.flow .conn .ctop{display:flex;align-items:center;gap:.6cqw;font-family:var(--display);font-weight:800;font-size:1.18cqw;color:var(--ink)}
+.flow .conn .fnum{font-family:var(--display);font-weight:800;font-size:1.02cqw;color:var(--lime-deep);background:rgba(200,235,84,.32);border-radius:999px;padding:.15cqw .7cqw}
+.flow .conn .arw{margin-left:auto;font-size:1.35cqw;color:var(--lime-deep);font-weight:800}
+.flow .conn .arw.back{color:var(--gray)}
+.flow .conn p{font-size:1.0cqw;color:var(--gray);line-height:1.4;margin-top:.5cqw}
+/* Pricing options */
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:2.2cqw}
+.opt{background:var(--card);border:1px solid var(--line-soft);border-radius:1.2cqw;padding:1.9cqw 1.9cqw;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+.opt .oname{font-family:var(--display);font-weight:900;font-size:1.7cqw;color:var(--ink);letter-spacing:-.01em}
+.opt .odesc{font-size:1.0cqw;color:var(--muted);font-weight:500;margin-top:.3cqw;margin-bottom:.9cqw}
+.opt .oline{display:flex;justify-content:space-between;align-items:baseline;gap:1cqw;padding:.58cqw 0}
+.opt .ogroup{display:flex;align-items:center;gap:.7cqw;font-family:var(--display);font-size:.92cqw;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--dot);margin:1.1cqw 0 .2cqw}
+.opt .ogroup::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.opt .ogroup.first{margin-top:.4cqw}
+.opt .oline .lbl{font-size:1.08cqw;color:var(--gray);line-height:1.35;max-width:55%}
+.opt .oline .val{font-family:var(--display);font-weight:800;font-size:1.5cqw;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.opt .oline .val small{font-family:var(--body);font-weight:600;font-size:.82cqw;color:var(--muted);display:block;text-align:right;letter-spacing:0}
+.opt .ototal{margin-top:auto;padding-top:1.05cqw;margin-top:1.05cqw;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline}
+.opt .ototal .tl{font-family:var(--display);font-weight:800;font-size:1.3cqw;color:var(--ink)}
+.opt .ototal .tv{font-family:var(--display);font-weight:900;font-size:2.1cqw;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.opt .ototal .tv small{display:block;font-family:var(--body);font-weight:600;font-size:.82cqw;color:var(--dot);text-align:right;letter-spacing:0}
+.opt .onote{margin-top:auto;padding-top:1.1cqw;font-size:1.0cqw;color:var(--ink-soft);line-height:1.4}
+.opt .onote b{color:var(--ink);font-weight:700}
+.opt .omonthly{display:flex;align-items:baseline;gap:.7cqw;margin-top:.5cqw}
+.opt .omonthly .mv{font-family:var(--display);font-weight:900;font-size:2.5cqw;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.opt .omonthly .mu{font-size:1.1cqw;font-weight:700;color:var(--dot)}
+.opt .obreak{font-size:1.06cqw;color:var(--gray);line-height:1.45;margin-top:.7cqw}
+.opt .obreak b{color:var(--ink);font-weight:700}
+/* Logo del cliente y capturas */
+.clientlogo{width:8.5cqw;height:8.5cqw;object-fit:contain;display:block;border-radius:.8cqw;background:#fff}
+.shotwrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin-top:1.3cqw;padding-bottom:1.2cqw}
+img.shot{display:block;max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;border-radius:1cqw;border:1px solid var(--line);background:#fff;box-shadow:0 2px 4px rgba(22,29,49,.05),0 16px 38px rgba(22,29,49,.10)}
+/* Gantt (8-week) */
+.gantt{margin-top:1.8cqw;display:flex;flex-direction:column;gap:.62cqw}
+.grow-row{display:grid;grid-template-columns:23cqw 1fr;align-items:center;gap:1.1cqw}
+.gname{font-size:1.05cqw;font-weight:600;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gtrack{position:relative;height:2.0cqw;background:#EFF1F4;border-radius:.5cqw;overflow:hidden}
+.gtrack .glines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(12.5% - 1px),#E3E6EC calc(12.5% - 1px),#E3E6EC 12.5%)}
+.gbar{position:absolute;top:.22cqw;bottom:.22cqw;left:calc(var(--s) * 12.5%);width:calc(var(--n) * 12.5%);border-radius:.4cqw;background:linear-gradient(90deg,var(--lime-deep),var(--lime));box-shadow:0 1px 2px rgba(22,29,49,.08);display:flex;align-items:center;justify-content:center}
+.gbar span{font-size:.85cqw;font-weight:700;color:var(--ink);opacity:.8}
+.gmonths{display:flex;gap:.45cqw}
+.gmonths span{flex:1;text-align:center;font-size:1.0cqw;font-weight:700;color:var(--ink);background:rgba(200,235,84,.32);border-radius:.5cqw;padding:.42cqw 0;letter-spacing:.01em}
+.gweeks{display:flex}
+.gweeks span{flex:1;text-align:center;font-size:.85cqw;color:var(--muted);font-weight:600}
+.gcap .gname{color:var(--muted);font-weight:600;font-size:.9cqw}
+@media (max-width:640px){body{padding:16px 10px 40px}.deck{gap:16px}.slide{border-radius:14px}}
+@media print{body{background:#fff;padding:0}.deck{gap:0;max-width:none}.slide{box-shadow:none;border:none;border-radius:0;page-break-after:always;break-after:page;aspect-ratio:16/9}}
+</style>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="deck">
+<section class="slide cover">
+<div class="pad">
+<div class="top"><img class="logo" src="/img/wip-234a5a0a.png" alt="WIP"><div class="eyebrow"><b>Ecoguardian</b> · Propuesta comercial · Powered by WIP</div></div>
+<div class="grow" style="display:flex;flex-direction:column;justify-content:center">
+  <span class="badge">Propuesta comercial</span>
+  <h1 class="h1 mt-s">Servicios que se llenan<br>con los datos del cliente</h1>
+  <p class="lead mt">Para Ecoguardian. WIP, field service management de asistencias para LATAM.<br>Valoración del autocompletado de datos del cliente en la creación de servicios.</p>
+  <div class="forwho"><span class="fw-label">Preparado para</span><img class="clientlogo" src="/img/ecoguardian-502bd5b5.png" alt="Ecoguardian"></div>
+  <div class="metarow">
+    <div class="m">Fecha<b>21 oct 2026</b></div>
+    <div class="m">Preparado por<b>WIP · Aplicando SAS</b></div>
+    <div class="m">Estado<b>Propuesta inicial</b></div>
+  </div>
+</div>
+</div>
+<div class="pagenum">01</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Presentación · Powered by WIP</div></div>
+<span class="badge mt-s">Presentación</span>
+<h2 class="h-sec mt-s">Una propuesta hecha<br>a tu medida</h2>
+<p class="body mt" style="max-width:64cqw">Atendiendo a su amable solicitud, evaluamos detenidamente las condiciones presentadas y realizamos un análisis de impactos a nivel de arquitectura, con los hitos que nos permitieron estimar los esfuerzos de <b style="color:var(--ink);font-weight:600">diseñar, implementar y desplegar</b> los cambios requeridos. El resultado es esta propuesta comercial, con la valoración del autocompletado de datos del cliente al crear un servicio.</p>
+<p class="body mt-s" style="max-width:64cqw">Es una propuesta inicial: sus comentarios y sugerencias enriquecen el trabajo. Quedamos atentos para afinarla juntos.</p>
+<div class="grow"></div>
+<div class="callout"><div class="ic">🛡️</div><p>En el tiempo estimado están incluidas las <b>pruebas unitarias e integrales</b>, los <b>despliegues</b> y la gestión de <b>versionamiento y resiliencia</b> para garantizar la estabilidad de la plataforma.</p></div>
+</div>
+<div class="pagenum">02</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Equipo · Powered by WIP</div></div>
+<span class="badge mt-s">Equipo</span>
+<h2 class="h-sec mt-s">El equipo detrás del proyecto</h2>
+<div class="grid g3 mt">
+  <div class="card"><div class="c-top"><h3>Arquitecto de<br>Soluciones Senior</h3><span class="dot"></span></div><p>Diseña la solución a nivel de servicios, módulos y base de datos.</p></div>
+  <div class="card"><div class="c-top"><h3>Analista QA<br>Automatizador</h3><span class="dot"></span></div><p>Valida las historias de usuario y automatiza las pruebas para garantizar la funcionalidad en Producción.</p></div>
+  <div class="card"><div class="c-top"><h3>Desarrollador<br>Backend</h3><span class="dot"></span></div><p>Implementa los cambios en base de datos y los microservicios de acceso, y los documenta para el Front End.</p></div>
+  <div class="card"><div class="c-top"><h3>Desarrollador<br>Frontend</h3><span class="dot"></span></div><p>Integra los microservicios en una interfaz responsiva, segura y con estándares visuales.</p></div>
+  <div class="card"><div class="c-top"><h3>Desarrollador<br>Móvil</h3><span class="dot"></span></div><p>Integra los servicios en una interfaz móvil nativa, usable y segura.</p></div>
+  <div class="card"><div class="c-top"><h3>Ingeniero<br>DevOps / SRE</h3><span class="dot"></span></div><p>Especialista AWS Cloud Native. Automatiza los pipelines DEV/QA/Prod con IaC (Infrastructure as Code).</p></div>
+</div>
+</div>
+<div class="pagenum">03</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Alcance · Powered by WIP</div></div>
+<span class="badge mt-s">Alcance</span>
+<h2 class="h-sec mt-s" style="font-size:3.6cqw">Elegir el cliente y que el servicio se llene solo</h2>
+<p class="body mt-s" style="font-size:1.22cqw;max-width:80cqw">Al crear un servicio en WIP, en cuanto se selecciona el cliente se llenan automáticamente todos los campos que le corresponden. El operador solo completa lo propio de ese servicio, como la fecha y las notas.</p>
+<div class="grid g2 mt" style="margin-top:2cqw">
+  <div class="card"><div class="c-top"><h3>Datos del usuario</h3><span class="dot"></span></div><p>Nombre, documento y teléfono del usuario quedan cargados con los datos guardados del cliente.</p></div>
+  <div class="card"><div class="c-top"><h3>Ubicación de origen</h3><span class="dot"></span></div><p>Dirección, localidad y ciudad de origen se completan con la ubicación registrada del cliente.</p></div>
+  <div class="card"><div class="c-top"><h3>Campos personalizados</h3><span class="dot"></span></div><p>Correo electrónico, NIT, persona de contacto, cargo y demás campos personalizados de Ecoguardian.</p></div>
+  <div class="card"><div class="c-top"><h3>Más rápido y sin errores</h3><span class="dot"></span></div><p>Se elimina la digitación repetida en cada servicio y los errores al escribir los datos del cliente.</p></div>
+</div>
+</div>
+<div class="pagenum">04</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Hoy · Powered by WIP</div></div>
+<span class="badge mt-s">Hoy · Crear servicio</span>
+<h2 class="h-sec mt-s" style="font-size:2.7cqw">Hoy cada campo se digita a mano</h2>
+<p class="body mt-s" style="font-size:1.12cqw;max-width:76cqw">En el formulario de crear servicio, al elegir el cliente los demás campos (usuario, origen y campos personalizados) quedan vacíos y se diligencian uno por uno en cada servicio.</p>
+<div class="shotwrap"><img loading="lazy" decoding="async" class="shot" src="/img/ecoguardian-crear-servicio-hoy-84e28adc.png" alt="Formulario de crear servicio de Ecoguardian en WIP con la lista de clientes desplegada y los campos vacíos"></div>
+</div>
+<div class="pagenum">05</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Con el desarrollo · Powered by WIP</div></div>
+<span class="badge mt-s">Con el desarrollo</span>
+<h2 class="h-sec mt-s" style="font-size:2.7cqw">Se elige el cliente y sus datos ya están</h2>
+<p class="body mt-s" style="font-size:1.12cqw;max-width:76cqw">Al seleccionar el cliente, WIP carga sus datos de usuario, su ubicación de origen y sus campos personalizados. Los campos llenados automáticamente se pueden revisar y ajustar antes de crear el servicio.</p>
+<div class="shotwrap"><img loading="lazy" decoding="async" class="shot" src="/img/ecoguardian-autocompletar-4fb3380f.svg" alt="Formulario de crear servicio en WIP: al elegir el cliente, sus datos y campos personalizados se llenan solos"></div>
+</div>
+<div class="pagenum">06</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Inversión · Powered by WIP</div></div>
+<span class="badge mt-s">Inversión</span>
+<h2 class="h-sec mt-s" style="font-size:3.6cqw">Opciones de inversión</h2>
+<div class="opts">
+  <div class="opt">
+    <div class="oname">Opción 1</div>
+    <div class="odesc">Desarrollo · plan WIP mes a mes</div>
+    <div class="ogroup first">Desarrollo</div>
+    <div class="oline"><span class="lbl">Autocompletado de los datos del cliente al crear un servicio</span><span class="val">$599.000<small>valor del desarrollo</small></span></div>
+    <div class="ogroup">Plan WIP</div>
+    <div class="omonthly"><span class="mv">$195.000</span><span class="mu">/ mes</span></div>
+    <div class="obreak">El plan WIP se factura <b>mes a mes</b>.</div>
+    <div class="ototal"><span class="tl">Total del desarrollo</span><span class="tv">$599.000</span></div>
+  </div>
+  <div class="opt">
+    <div class="oname">Opción 2</div>
+    <div class="odesc">4 meses por adelantado · desarrollo incluido</div>
+    <div class="ogroup first">Incluye</div>
+    <div class="oline"><span class="lbl">Desarrollo de autocompletado</span><span class="val">Incluido<small>en vez de $599.000</small></span></div>
+    <div class="oline"><span class="lbl">Plan WIP</span><span class="val">$195.000<small>por mes × 4</small></span></div>
+    <div class="ototal"><span class="tl">Total</span><span class="tv">$780.000<small>4 meses por adelantado</small></span></div>
+  </div>
+</div>
+<div class="footmark">Valores en pesos colombianos (COP). Plan WIP: $195.000 al mes. En la Opción 2, al pagar 4 meses por adelantado ($780.000), el desarrollo queda incluido.</div>
+</div>
+<div class="pagenum">07</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Cronograma · Powered by WIP</div></div>
+<span class="badge mt-s">Cronograma</span>
+<h2 class="h-sec mt-s" style="font-size:3.4cqw">Plan de trabajo estimado</h2>
+<div class="gantt">
+  <div class="grow-row gcap"><span class="gname"></span><div class="gmonths"><span>Mes 1 · Noviembre</span><span>Mes 2 · Diciembre</span></div></div>
+  <div class="grow-row gcap"><span class="gname">Semana</span><div class="gweeks"><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span></div></div>
+  <div class="grow-row"><span class="gname">Análisis y diseño</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:1"><span>1 sem</span></div></div></div>
+  <div class="grow-row"><span class="gname">Autocompletado de datos del cliente</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:1;--n:1"><span>1 sem</span></div></div></div>
+  <div class="grow-row"><span class="gname">Pruebas integrales y despliegue</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:1"><span>1 sem</span></div></div></div>
+</div>
+<div class="footmark">3 semanas desde el 1 de noviembre. Cronograma estimado, sujeto a validación de alcance; las fases se ejecutan de forma secuencial.</div>
+</div>
+<div class="pagenum">08</div>
+</section>
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Ecoguardian</b> · Condiciones · Powered by WIP</div></div>
+<span class="badge mt-s">Condiciones</span>
+<h2 class="h-sec mt-s">Observaciones importantes</h2>
+<div class="grid mt" style="gap:1.15cqw">
+  <div class="callout"><div class="ic">✓</div><p>Los requerimientos deben ser <b>validados y aprobados por ambas entidades</b> antes de comenzar el proyecto.</p></div>
+  <div class="callout"><div class="ic">📦</div><p>Es responsabilidad del cliente la <b>entrega oportuna de materiales</b> (información, documentación o insumos), que se coordinará en los primeros 15 días. Cualquier retraso implicará un retraso en la entrega final.</p></div>
+  <div class="callout"><div class="ic">✎</div><p>Si se requieren <b>modificaciones especiales</b> después del desarrollo, se presentará una nueva cotización que especificará la razón, el costo y el tiempo de la operación.</p></div>
+</div>
+</div>
+<div class="pagenum">09</div>
+</section>
+<section class="slide close">
+<div class="pad">
+<div class="top"><img loading="lazy" decoding="async" class="logo" src="/img/wip-234a5a0a.png" alt="WIP"><div class="eyebrow"><b>Ecoguardian</b> · Siguiente paso · Powered by WIP</div></div>
+<div class="grow" style="display:flex;flex-direction:column;justify-content:center">
+  <span class="badge">Siguiente paso</span>
+  <h2 class="h1 mt-s">¿Conversamos?</h2>
+  <p class="lead mt">Esta es una propuesta inicial. Sus comentarios y ajustes enriquecen el trabajo: coordinemos una reunión para validar el alcance y afinar los detalles.</p>
+  <div class="contact">
+    <div class="ct">Contacto<b>Mikhail Forero Bedovskaia</b></div>
+    <div class="ct">Rol<b>COO · WIP</b></div>
+    <div class="ct">Web<b><a href="https://www.wiptool.com/" target="_blank" rel="noopener">wiptool.com</a></b></div>
+    <div class="ct">Instagram<b><a href="https://www.instagram.com/wip.tool/" target="_blank" rel="noopener">@wip.tool</a></b></div>
+  </div>
+</div>
+</div>
+<div class="pagenum">10</div>
+</section>
+</div>
+</body>
+</html>
