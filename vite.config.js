@@ -46,6 +46,8 @@ function cleanUrlsDev() {
           req.url = '/cotizaciones/sotrandes01/';
         } else if (req.url === '/cotizaciones/Hisercol01') {
           req.url = '/cotizaciones/Hisercol01/';
+        } else if (req.url === '/cotizaciones/GruasColon') {
+          req.url = '/cotizaciones/GruasColon/';
         } else if (req.url === '/cotizaciones/Surtigas') {
           req.url = '/cotizaciones/Surtigas/';
         } else if (req.url === '/cotizaciones/MiguelBustamante') {
@@ -80,6 +82,7 @@ export default defineConfig({
         cotizacionesHisercol01: resolve(__dirname, 'cotizaciones/Hisercol01/index.html'),
         cotizacionesMiguelBustamante: resolve(__dirname, 'cotizaciones/MiguelBustamante/index.html'),
         cotizacionesSurtigas: resolve(__dirname, 'cotizaciones/Surtigas/index.html'),
+        cotizacionesGruasColon: resolve(__dirname, 'cotizaciones/GruasColon/index.html'),
         inversionOnepager: resolve(__dirname, 'inversion/onepager/index.html'),
         informeFixitWipIA: resolve(__dirname, 'informeFixit/WipIA/index.html'),
         informeWipAviseAsistencia: resolve(__dirname, 'informeWip/AviseAsistencia/index.html'),

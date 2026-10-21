@@ -1,0 +1,116 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-label="Gastos de una grúa con foto de la factura como evidencia y registro del kilometraje con foto del odómetro">
+  <defs>
+    <filter id="sombra" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#161D31" flood-opacity="0.10"/></filter>
+  </defs>
+  <rect width="1600" height="900" fill="#F5F6F8"/>
+  <g filter="url(#sombra)"><rect x="40" y="36" width="1520" height="828" rx="24" fill="#FFFFFF"/></g>
+
+  <!-- Barra superior -->
+  <path d="M40 60 a24 24 0 0 1 24 -24 h1472 a24 24 0 0 1 24 24 v40 h-1520 z" fill="#161D31"/>
+  <text x="76" y="86" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="900" fill="#C8EB54">wip</text>
+  <text x="140" y="84" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#C9CEDA">Flota · Grúa 01 · Planchón · AB-1234</text>
+  <rect x="1360" y="58" width="168" height="36" rx="18" fill="#C8EB54"/>
+  <text x="1444" y="82" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#161D31">+ Registrar gasto</text>
+
+  <!-- Pestañas -->
+  <g font-family="Arial, Helvetica, sans-serif" font-size="17">
+    <text x="80" y="150" fill="#8A94A6">Documentos</text>
+    <text x="224" y="150" fill="#8A94A6">Kilometraje</text>
+    <text x="350" y="150" font-weight="700" fill="#161D31">Gastos</text>
+    <rect x="350" y="160" width="58" height="4" rx="2" fill="#C8EB54"/>
+    <text x="448" y="150" fill="#8A94A6">Servicios</text>
+    <line x1="80" y1="165" x2="1524" y2="165" stroke="#E7E9EE" stroke-width="2"/>
+  </g>
+
+  <!-- Resumen del mes -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="80" y="192" width="300" height="104" rx="16" fill="#161D31"/>
+    <text x="104" y="226" font-size="14" fill="#C9CEDA" letter-spacing="1">GASTOS DE OCTUBRE</text>
+    <text x="104" y="272" font-size="36" font-weight="800" fill="#C8EB54">$875</text>
+    <rect x="396" y="192" width="300" height="104" rx="16" fill="#F8F9FB" stroke="#EFF1F4"/>
+    <text x="420" y="226" font-size="14" fill="#8A94A6" letter-spacing="1">COMBUSTIBLE</text>
+    <text x="420" y="272" font-size="32" font-weight="800" fill="#161D31">$186</text>
+    <rect x="712" y="192" width="300" height="104" rx="16" fill="#F8F9FB" stroke="#EFF1F4"/>
+    <text x="736" y="226" font-size="14" fill="#8A94A6" letter-spacing="1">REPARACIONES Y MANTENIMIENTO</text>
+    <text x="736" y="272" font-size="32" font-weight="800" fill="#161D31">$675</text>
+  </g>
+
+  <!-- Lista de gastos -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="80" y="344" font-size="13" font-weight="700" fill="#8A94A6" letter-spacing="1">FECHA</text>
+    <text x="200" y="344" font-size="13" font-weight="700" fill="#8A94A6" letter-spacing="1">TIPO Y DETALLE</text>
+    <text x="760" y="344" font-size="13" font-weight="700" fill="#8A94A6" letter-spacing="1">VALOR</text>
+    <text x="890" y="344" font-size="13" font-weight="700" fill="#8A94A6" letter-spacing="1">EVIDENCIA</text>
+    <line x1="80" y1="360" x2="1012" y2="360" stroke="#EFF1F4" stroke-width="2"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <!-- fila 1 -->
+    <text x="80" y="404" font-size="17" fill="#6C7280">18 oct</text>
+    <rect x="200" y="384" width="118" height="28" rx="14" fill="#E8F0FE"/><text x="259" y="403" text-anchor="middle" font-size="14" font-weight="700" fill="#1D4ED8">Combustible</text>
+    <text x="332" y="404" font-size="17" fill="#161D31">42 galones · estación Vía Colón</text>
+    <text x="760" y="404" font-size="18" font-weight="700" fill="#161D31">$186</text>
+    <rect x="890" y="380" width="44" height="52" rx="6" fill="#FFFFFF" stroke="#D5DAE3"/><line x1="898" y1="394" x2="926" y2="394" stroke="#C3C9D4" stroke-width="3"/><line x1="898" y1="404" x2="922" y2="404" stroke="#C3C9D4" stroke-width="3"/><line x1="898" y1="414" x2="926" y2="414" stroke="#C3C9D4" stroke-width="3"/>
+    <text x="946" y="411" font-size="14" fill="#3C8A16">Factura ✔</text>
+    <line x1="80" y1="448" x2="1012" y2="448" stroke="#EFF1F4" stroke-width="2"/>
+    <!-- fila 2 -->
+    <text x="80" y="492" font-size="17" fill="#6C7280">15 oct</text>
+    <rect x="200" y="472" width="118" height="28" rx="14" fill="#FDF0D9"/><text x="259" y="491" text-anchor="middle" font-size="14" font-weight="700" fill="#A15C07">Reparación</text>
+    <text x="332" y="492" font-size="17" fill="#161D31">Cambio de pastillas de freno</text>
+    <text x="760" y="492" font-size="18" font-weight="700" fill="#161D31">$320</text>
+    <rect x="890" y="468" width="44" height="52" rx="6" fill="#D9DEE6"/><circle cx="905" cy="484" r="5" fill="#FFFFFF"/><path d="M890 514 l14 -14 l10 10 l8 -6 l12 10 v6 h-44 z" fill="#9AA1AD"/>
+    <text x="946" y="499" font-size="14" fill="#3C8A16">Foto ✔</text>
+    <line x1="80" y1="536" x2="1012" y2="536" stroke="#EFF1F4" stroke-width="2"/>
+    <!-- fila 3 -->
+    <text x="80" y="580" font-size="17" fill="#6C7280">11 oct</text>
+    <rect x="200" y="560" width="118" height="28" rx="14" fill="#EAF7E1"/><text x="259" y="579" text-anchor="middle" font-size="14" font-weight="700" fill="#3C8A16">Mantenimiento</text>
+    <text x="332" y="580" font-size="17" fill="#161D31">Cambio de aceite y filtro</text>
+    <text x="760" y="580" font-size="18" font-weight="700" fill="#161D31">$95</text>
+    <rect x="890" y="556" width="44" height="52" rx="6" fill="#FFFFFF" stroke="#D5DAE3"/><line x1="898" y1="570" x2="926" y2="570" stroke="#C3C9D4" stroke-width="3"/><line x1="898" y1="580" x2="922" y2="580" stroke="#C3C9D4" stroke-width="3"/><line x1="898" y1="590" x2="926" y2="590" stroke="#C3C9D4" stroke-width="3"/>
+    <text x="946" y="587" font-size="14" fill="#3C8A16">Factura ✔</text>
+    <line x1="80" y1="624" x2="1012" y2="624" stroke="#EFF1F4" stroke-width="2"/>
+    <!-- fila 4 -->
+    <text x="80" y="668" font-size="17" fill="#6C7280">9 oct</text>
+    <rect x="200" y="648" width="118" height="28" rx="14" fill="#EEF1F4"/><text x="259" y="667" text-anchor="middle" font-size="14" font-weight="700" fill="#2C334A">Peaje</text>
+    <text x="332" y="668" font-size="17" fill="#161D31">Corredor Norte</text>
+    <text x="760" y="668" font-size="18" font-weight="700" fill="#161D31">$14</text>
+    <rect x="890" y="644" width="44" height="52" rx="6" fill="#FFFFFF" stroke="#D5DAE3"/><line x1="898" y1="658" x2="926" y2="658" stroke="#C3C9D4" stroke-width="3"/><line x1="898" y1="668" x2="922" y2="668" stroke="#C3C9D4" stroke-width="3"/><line x1="898" y1="678" x2="926" y2="678" stroke="#C3C9D4" stroke-width="3"/>
+    <text x="946" y="675" font-size="14" fill="#3C8A16">Recibo ✔</text>
+    <line x1="80" y1="712" x2="1012" y2="712" stroke="#EFF1F4" stroke-width="2"/>
+    <!-- fila 5 -->
+    <text x="80" y="756" font-size="17" fill="#6C7280">5 oct</text>
+    <rect x="200" y="736" width="118" height="28" rx="14" fill="#FDF0D9"/><text x="259" y="755" text-anchor="middle" font-size="14" font-weight="700" fill="#A15C07">Repuesto</text>
+    <text x="332" y="756" font-size="17" fill="#161D31">Llanta trasera</text>
+    <text x="760" y="756" font-size="18" font-weight="700" fill="#161D31">$260</text>
+    <rect x="890" y="732" width="44" height="52" rx="6" fill="#D9DEE6"/><circle cx="905" cy="748" r="5" fill="#FFFFFF"/><path d="M890 778 l14 -14 l10 10 l8 -6 l12 10 v6 h-44 z" fill="#9AA1AD"/>
+    <text x="946" y="763" font-size="14" fill="#3C8A16">Foto ✔</text>
+  </g>
+
+  <!-- Kilometraje -->
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="1060" y="192" width="464" height="630" rx="20" fill="#F8F9FB" stroke="#EFF1F4"/>
+    <text x="1092" y="234" font-size="20" font-weight="800" fill="#161D31">Registro de kilometraje</text>
+    <!-- foto del odómetro -->
+    <rect x="1092" y="258" width="400" height="200" rx="14" fill="#1E2538"/>
+    <circle cx="1292" cy="368" r="86" fill="none" stroke="#2C3550" stroke-width="14"/>
+    <rect x="1182" y="336" width="220" height="56" rx="8" fill="#0C111C"/>
+    <text x="1292" y="375" text-anchor="middle" font-family="Courier New, monospace" font-size="34" font-weight="700" fill="#E8F3B5" letter-spacing="4">128450</text>
+    <text x="1292" y="418" text-anchor="middle" font-size="14" fill="#9AA1AD">km</text>
+    <rect x="1104" y="270" width="142" height="28" rx="14" fill="rgba(200,235,84,0.9)"/>
+    <text x="1175" y="289" text-anchor="middle" font-size="13" font-weight="700" fill="#161D31">Foto del odómetro</text>
+    <text x="1092" y="488" font-size="15" fill="#6C7280">18 oct · 7:42 a. m. · Carlos Ruiz</text>
+
+    <line x1="1092" y1="512" x2="1492" y2="512" stroke="#E7E9EE" stroke-width="2"/>
+    <text x="1092" y="550" font-size="16" fill="#6C7280">Inicio de octubre</text>
+    <text x="1492" y="550" text-anchor="end" font-size="18" font-weight="700" fill="#161D31">125.030 km</text>
+    <text x="1092" y="588" font-size="16" fill="#6C7280">Lectura de hoy</text>
+    <text x="1492" y="588" text-anchor="end" font-size="18" font-weight="700" fill="#161D31">128.450 km</text>
+    <line x1="1092" y1="608" x2="1492" y2="608" stroke="#E7E9EE" stroke-width="2"/>
+    <text x="1092" y="648" font-size="17" font-weight="700" fill="#161D31">Recorrido del mes</text>
+    <text x="1492" y="648" text-anchor="end" font-size="26" font-weight="800" fill="#161D31">3.420 km</text>
+
+    <rect x="1092" y="676" width="400" height="118" rx="14" fill="#F3FADB"/>
+    <text x="1116" y="712" font-size="16" font-weight="700" fill="#161D31">Costo por kilómetro</text>
+    <text x="1116" y="752" font-size="30" font-weight="800" fill="#161D31">$0,26 / km</text>
+    <text x="1116" y="778" font-size="14" fill="#2C334A">Gastos del mes ÷ km recorridos</text>
+  </g>
+</svg>
