@@ -58,6 +58,8 @@ function cleanUrlsDev() {
           req.url = '/inversion/onepager/';
         } else if (req.url === '/informeFixit/WipIA') {
           req.url = '/informeFixit/WipIA/';
+        } else if (req.url === '/informeWip/Prelegal') {
+          req.url = '/informeWip/Prelegal/';
         } else if (req.url === '/informeWip/AviseAsistencia') {
           req.url = '/informeWip/AviseAsistencia/';
         } else if (/^\/(blog|ebook|contacto|software-[\w-]+)(\/[\w-]+)*(\?.*)?$/.test(req.url)) {
@@ -89,6 +91,7 @@ export default defineConfig({
         inversionOnepager: resolve(__dirname, 'inversion/onepager/index.html'),
         informeFixitWipIA: resolve(__dirname, 'informeFixit/WipIA/index.html'),
         informeWipAviseAsistencia: resolve(__dirname, 'informeWip/AviseAsistencia/index.html'),
+        informeWipPrelegal: resolve(__dirname, 'informeWip/Prelegal/index.html'),
         politicaPrivacidad: resolve(__dirname, 'politica-privacidad.html'),
         terminosCondiciones: resolve(__dirname, 'terminos-condiciones.html'),
         politicaCookies: resolve(__dirname, 'politica-cookies.html'),
