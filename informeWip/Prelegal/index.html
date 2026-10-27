@@ -130,6 +130,16 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
 .fix td.hoy{color:#C23B31;font-weight:600}
 .new{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15cqw;margin-top:1.8cqw}
 .new .card .tag{display:inline-block;font-size:.85cqw;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--lime);color:var(--ink);border-radius:999px;padding:.3cqw .8cqw}
+.cropshot{flex:none;width:80%;margin:0 auto;overflow:hidden;border-radius:.9cqw;border:1px solid var(--line);background:#fff;box-shadow:0 2px 4px rgba(22,29,49,.05),0 14px 32px rgba(22,29,49,.08)}
+.cropshot img{display:block;max-width:none;width:200.3%;margin-left:-100.3%}
+.ahorro{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15cqw;margin-top:1.1cqw}
+.ahorro .card{background:var(--ink);border-color:var(--ink);padding:1cqw 1.4cqw}
+.ahorro .gn{font-family:var(--display);font-weight:900;font-size:2.8cqw;color:var(--lime);line-height:1;letter-spacing:-.02em}
+.ahorro h3{color:#fff;font-size:1.15cqw;margin-top:.6cqw}
+.ahorro p{color:#C9CEDA;font-size:.95cqw}
+.fix.sav{margin-top:1cqw;font-size:1cqw}.fix.sav td{padding:.42cqw .9cqw}
+.fix.sav td.n,.fix.sav th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fix.sav tr.tot td{font-weight:800;color:var(--ink);border-bottom:none;border-top:2px solid var(--ink)}
 @media (max-width:640px){body{padding:16px 10px 40px}.deck{gap:16px}.slide{border-radius:14px}}
 @media print{body{background:#fff;padding:0}.deck{gap:0;max-width:none}.slide{box-shadow:none;border:none;border-radius:0;page-break-after:always;break-after:page;aspect-ratio:16/9}}
 </style>
@@ -165,13 +175,13 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
     <div class="top"><div class="eyebrow"><b>Prelegal</b> · Resumen · Powered by WIP IA</div></div>
     <span class="badge mt-s">Resumen ejecutivo</span>
     <h2 class="h-sec mt-s">Mucha operación, pocos datos</h2>
-    <p class="body mt-s" style="max-width:70cqw">Prelegal gestionó <b style="color:var(--ink);font-weight:600">4.452 servicios</b> en WIP entre julio y octubre, con un cumplimiento de <b style="color:var(--ink);font-weight:600">89,8%</b> y <b style="color:var(--ink);font-weight:600">$893,9 millones</b> en valor de servicios (+7% frente al periodo anterior). La operación funciona, pero casi todo se registra a mano y sin evidencia: WIP sabe que el servicio se hizo, pero no <b style="color:var(--ink);font-weight:600">cómo, cuándo ni dónde</b>.</p>
+    <p class="body mt-s" style="max-width:70cqw">Prelegal gestionó <b style="color:var(--ink);font-weight:600">4.452 servicios</b> en WIP entre julio y octubre, con un cumplimiento de <b style="color:var(--ink);font-weight:600">89,8%</b>. La operación funciona, pero casi todo se registra a mano y sin evidencia: WIP sabe que el servicio se hizo, pero no <b style="color:var(--ink);font-weight:600">cómo, cuándo ni dónde</b>.</p>
     <div class="grow"></div>
     <div class="stats">
       <div class="stat"><div class="sn">4.452</div><div class="sl">Servicios gestionados</div><div class="sd">89,8% de cumplimiento</div></div>
       <div class="stat bad"><div class="sn">2<small>%</small></div><div class="sl">Servicios con fotos o evidencia</div><div class="sx">4.363 sin ninguna evidencia</div></div>
       <div class="stat bad"><div class="sn">29<small>%</small></div><div class="sl">Gestionados en línea desde la app del abogado</div><div class="sx">65% se cierran offline</div></div>
-      <div class="stat bad"><div class="sn">2<small>%</small></div><div class="sl">Servicios con semáforo de tiempos medido</div><div class="sx">98% sin medir</div></div>
+      <div class="stat bad"><div class="sn">36<small>%</small></div><div class="sl">Servicios creados en WIP cuando ya habían terminado</div><div class="sx">1.458 cargados después</div></div>
     </div>
     <div class="grow"></div>
   </div>
@@ -181,7 +191,7 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
 <section class="slide">
   <div class="pad">
     <div class="top"><div class="eyebrow"><b>Prelegal</b> · Volumen · Powered by WIP IA</div></div>
-    <span class="badge mt-s">Volumen y valor</span>
+    <span class="badge mt-s">Volumen</span>
     <h2 class="h-sec mt-s">Una operación grande y estable</h2>
     <div class="grid g2 mt" style="grid-template-columns:1.1fr .9fr;align-items:end">
       <div>
@@ -198,7 +208,7 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
       </div>
     </div>
     <div class="grow"></div>
-    <div class="callout"><div class="ic">📊</div><p>Entre <b>1.100 y 1.300 servicios al mes</b>, casi todos de asistencia jurídica con atención inmediata (100% «al instante»). El valor gestionado fue de <b>$893.883.117</b>, un 7% más que el periodo anterior. Con este volumen, cada dato que no se registra hoy es información que se pierde para siempre.</p></div>
+    <div class="callout"><div class="ic">📊</div><p>Entre <b>1.100 y 1.300 servicios al mes</b>, casi todos de asistencia jurídica con atención inmediata (100% «al instante»). Con este volumen, cada dato que no se registra hoy es información que se pierde para siempre.</p></div>
   </div>
   <div class="pagenum">03</div>
 </section>
@@ -209,11 +219,11 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
     <span class="badge mt-s">Lo que hoy no se está haciendo bien</span>
     <h2 class="h-sec mt-s" style="font-size:3.6cqw">Cinco hábitos que dejan a WIP sin datos</h2>
     <div class="diag">
-      <div class="card"><span class="idx">EVIDENCIA</span><h3 class="mt-s">No se suben fotos</h3><div class="big">98<small>%</small></div><p>de los servicios no tiene ni una foto o documento. Solo 89 de 4.452 tienen evidencia.</p></div>
+      <div class="card"><span class="idx">EVIDENCIA</span><h3 class="mt-s">No se suben fotos</h3><div class="big">98<small>%</small></div><p>de los servicios no tiene fotos. Como el abogado no las sube desde WIP, el call center tiene que pedirlas y cargarlas.</p></div>
       <div class="card"><span class="idx">TIEMPO REAL</span><h3 class="mt-s">El abogado no gestiona desde la app</h3><div class="big">65<small>%</small></div><p>de los servicios se gestiona offline. Solo el 29% avanza en línea, y cada mes son menos.</p></div>
       <div class="card"><span class="idx">KILÓMETROS</span><h3 class="mt-s">No hay recorridos reales</h3><div class="big">3,6<small>km</small></div><p>reales registrados frente a 19.183 km estimados. En septiembre y octubre: 0 km.</p></div>
       <div class="card"><span class="idx">ASIGNACIÓN</span><h3 class="mt-s">Sin accionamiento automático</h3><div class="big">36<small>h</small></div><p>tarda en promedio el abogado en aceptar un servicio. El proveedor acepta en 7 minutos.</p></div>
-      <div class="card"><span class="idx">TIEMPOS</span><h3 class="mt-s">El semáforo no mide</h3><div class="big">98<small>%</small></div><p>de los servicios queda «sin medir»: no se sabe cuáles se atendieron a tiempo y cuáles no.</p></div>
+      <div class="card"><span class="idx">CALL CENTER</span><h3 class="mt-s">Todo recae en el call center</h3><div class="big">98<small>%</small></div><p>de los servicios lo crea el call center, que además pide las fotos, llama al abogado y actualiza WIP.</p></div>
     </div>
     <div class="grow"></div>
     <div class="callout"><div class="ic">⚠️</div><p>Además quedan <b>264 servicios abiertos</b>: 212 esperando aprobación y 46 pendientes por asignar. Son servicios que siguen contando como pendientes y afectan el cumplimiento.</p></div>
@@ -225,10 +235,10 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
   <div class="pad">
     <div class="top"><div class="eyebrow"><b>Prelegal</b> · Evidencia · Powered by WIP IA</div></div>
     <span class="badge mt-s">Así se ve en tu Dashboard de Analíticas</span>
-    <h2 class="h-sec mt-s" style="font-size:3cqw">Sin medir, offline y sin evidencia</h2>
-    <p class="body mt-s" style="font-size:1.12cqw;max-width:78cqw">Indicadores de rendimiento de Prelegal (julio a octubre). Las líneas azules y moradas son los servicios <b style="color:var(--ink);font-weight:600">sin medir, offline y sin evidencia</b>; las rojas, los que sí se hicieron bien. En «Gestión», los servicios en línea bajan mes a mes.</p>
+    <h2 class="h-sec mt-s" style="font-size:3cqw">Offline y sin evidencia</h2>
+    <p class="body mt-s" style="font-size:1.12cqw;max-width:78cqw">Indicadores de rendimiento de Prelegal (julio a octubre). En «Gestión», los servicios en línea (rojo) bajan mes a mes y los offline (azul) son la mayoría. En «Multimedia», la línea azul son los servicios <b style="color:var(--ink);font-weight:600">sin ninguna foto ni documento</b>: casi todos.</p>
     <div class="grow"></div>
-    <img loading="lazy" decoding="async" class="shot" src="/img/prelegal-indicadores-13b6ffe1.png" alt="Indicadores de rendimiento de Prelegal en WIP: semáforo, urgencia, gestión y multimedia de julio a octubre de 2026">
+    <div class="cropshot"><img loading="lazy" decoding="async" src="/img/prelegal-indicadores-13b6ffe1.png" alt="Indicadores de gestión y multimedia de Prelegal en WIP, de julio a octubre de 2026"></div>
     <div class="shotcap">Fuente: platform.wiptool.com · Reportería › Dashboard de Analíticas · 1 jul – 27 oct 2026.</div>
     <div class="grow"></div>
   </div>
@@ -274,7 +284,7 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
     <span class="badge mt-s">Lo que viene en analítica</span>
     <h2 class="h-sec mt-s" style="font-size:3.2cqw">Dos módulos nuevos que van a depender de tus datos</h2>
     <div class="grid g2 mt-s">
-      <div class="card"><span class="idx">MÓDULO 1</span><h3 class="mt-s">Rendimiento de la operación</h3><p>Tiempos de respuesta y SLA, valores, kilómetros recorridos y precisión de las estimaciones, por servicio, cliente y periodo.</p></div>
+      <div class="card"><span class="idx">MÓDULO 1</span><h3 class="mt-s">Rendimiento de la operación</h3><p>Tiempos de respuesta, valores, kilómetros recorridos y precisión de las estimaciones, por servicio, cliente y periodo.</p></div>
       <div class="card"><span class="idx">MÓDULO 2</span><h3 class="mt-s">Ranking de colaboradores y operadores</h3><p>Quién es el mejor abogado y el mejor operador: servicios, cumplimiento, tiempo de respuesta y valor facturado de cada uno.</p></div>
     </div>
     <div class="grow"></div>
@@ -293,10 +303,9 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
     <h2 class="h-sec mt-s" style="font-size:3.4cqw">Qué cambiar desde ya</h2>
     <table class="fix">
       <tr><th>Tema</th><th>Hoy</th><th>Correctivo</th></tr>
-      <tr><td>Evidencia</td><td class="hoy">98% sin fotos</td><td>Cada abogado sube desde la app del colaborador las fotos y documentos del servicio. Se puede volver obligatorio en el formulario para que no se cierre sin evidencia.</td></tr>
+      <tr><td>Evidencia</td><td class="hoy">98% sin fotos</td><td>Cada abogado sube desde la app del colaborador las fotos y documentos del servicio, sin pasar por el call center. Se puede volver obligatorio en el formulario para que no se cierre sin evidencia.</td></tr>
       <tr><td>Seguimiento en tiempo real</td><td class="hoy">65% offline</td><td>El abogado avanza cada estado desde su app: acepta, «en camino», «en sitio» y finaliza. Así se registran solos los tiempos y los kilómetros reales.</td></tr>
       <tr><td>Accionamiento automático</td><td class="hoy">36 h para aceptar</td><td>Activar la asignación automática para que cada servicio llegue al abogado adecuado apenas se crea, sin depender de que alguien lo asigne a mano.</td></tr>
-      <tr><td>Semáforo y SLA</td><td class="hoy">98% sin medir</td><td>Configurar los tiempos objetivo por tipo de servicio para que el semáforo marque qué se atendió a tiempo y qué no.</td></tr>
       <tr><td>Registro en vivo</td><td class="hoy">36% creado al final</td><td>El call center crea el servicio apenas entra la solicitud y el abogado avanza cada estado en el momento; nada se carga después.</td></tr>
       <tr><td>Pendientes</td><td class="hoy">264 abiertos</td><td>Aprobar o cerrar los 212 servicios en espera de aprobación y asignar los 46 pendientes.</td></tr>
     </table>
@@ -315,7 +324,7 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
       <div class="card"><div class="fromto"><span class="from">2%</span><span class="arrow">→</span><span class="to">100%</span></div><h3>Servicios con evidencia</h3><p>Cada servicio respaldado ante el cliente y la aseguradora.</p></div>
       <div class="card"><div class="fromto"><span class="from">29%</span><span class="arrow">→</span><span class="to">100%</span></div><h3>Seguimiento en tiempo real</h3><p>La central ve dónde va cada abogado sin llamarlo.</p></div>
       <div class="card"><div class="fromto"><span class="from">0%</span><span class="arrow">→</span><span class="to">100%</span></div><h3>Kilómetros reales medidos</h3><p>Hoy se registra el 0,02% de los km estimados.</p></div>
-      <div class="card"><div class="fromto"><span class="from">2%</span><span class="arrow">→</span><span class="to">100%</span></div><h3>Servicios con SLA medido</h3><p>Se sabe qué se atendió a tiempo y qué no.</p></div>
+      <div class="card"><div class="fromto"><span class="from">64%</span><span class="arrow">→</span><span class="to">100%</span></div><h3>Servicios registrados en vivo</h3><p>Nada se carga después de terminado.</p></div>
     </div>
     <div class="gain">
       <div class="card"><div class="gn">−95%</div><h3>Tiempo para que el abogado acepte</h3><p>De 36 horas a minutos con asignación automática; el proveedor ya acepta en 7 minutos. Estimado WIP.</p></div>
@@ -326,6 +335,32 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
   </div>
   <div class="footmark">Los valores «hoy» salen del Dashboard de Analíticas y del Consolidado de servicios de Prelegal (1 jul – 27 oct 2026). Los marcados como «Estimado WIP» son proyecciones.</div>
   <div class="pagenum">10</div>
+</section>
+
+<section class="slide">
+  <div class="pad">
+    <div class="top"><div class="eyebrow"><b>Prelegal</b> · Ahorro · Powered by WIP IA</div></div>
+    <span class="badge mt-s">Ahorro estimado</span>
+    <h2 class="h-sec mt-s" style="font-size:3cqw">Cuánto tiempo del call center se libera</h2>
+    <p class="body mt-s" style="font-size:1.08cqw;max-width:82cqw">Como los abogados no suben las fotos desde WIP, <b style="color:var(--ink);font-weight:600">la operación recae en el call center</b>: pide la evidencia por llamada o WhatsApp, la recibe, la revisa y la carga. Solo este punto equivale a:</p>
+    <div class="ahorro">
+      <div class="card"><div class="gn">112 h</div><h3>al mes del call center</h3><p>1.116 servicios al mes sin fotos × 6 minutos.</p></div>
+      <div class="card"><div class="gn">$1,53 M</div><h3>de ahorro al mes</h3><p>Medio agente dedicado solo a pedir fotos.</p></div>
+      <div class="card"><div class="gn">$18,4 M</div><h3>de ahorro al año</h3><p>Solo con que el abogado suba la evidencia.</p></div>
+    </div>
+    <table class="fix sav">
+      <tr><th>Si se hace bien</th><th>Lo que hoy hace el call center</th><th class="n">Horas/mes</th><th class="n">Ahorro/mes</th></tr>
+      <tr><td>Fotos y evidencia</td><td>Pedir, recibir y cargar las fotos de 1.116 servicios (6 min c/u)</td><td class="n">112 h</td><td class="n">$1.530.000</td></tr>
+      <tr><td>Seguimiento en tiempo real</td><td>Llamar al abogado para saber cómo va en 743 servicios offline (2 llamadas de 3 min)</td><td class="n">74 h</td><td class="n">$1.020.000</td></tr>
+      <tr><td>Asignación automática</td><td>Llamar abogados hasta que uno tome cada uno de los 1.138 servicios (4 min c/u)</td><td class="n">76 h</td><td class="n">$1.040.000</td></tr>
+      <tr><td>Registro en vivo</td><td>Volver a digitar 373 servicios que se cargan cuando ya terminaron (3 min c/u)</td><td class="n">19 h</td><td class="n">$260.000</td></tr>
+      <tr><td>Valores completos</td><td>Conciliar 161 servicios sin valor antes de facturar (5 min c/u)</td><td class="n">13 h</td><td class="n">$180.000</td></tr>
+      <tr class="tot"><td>Total</td><td>Equivale a 1,5 personas de tiempo completo · <b>$48,4 millones al año</b></td><td class="n">294 h</td><td class="n">$4.030.000</td></tr>
+    </table>
+    <div class="grow"></div>
+  </div>
+  <div class="footmark">Estimado WIP con volúmenes reales del Consolidado (promedio mensual). Supuesto: agente a $2.600.000/mes con prestaciones, 190 h/mes.</div>
+  <div class="pagenum">11</div>
 </section>
 
 <section class="slide">
@@ -341,7 +376,7 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
     <div class="grow"></div>
     <div class="callout"><div class="ic">📞</div><p>Con la asignación por IA y WhatsApp en todos los servicios, <b>esperamos que el call center de nuestros clientes pueda atender más del doble de servicios</b> con el mismo equipo, y que mejore la atención. En Prelegal los picos están a las <b>14:00 (378 servicios) y entre las 20:00 y 21:00 (364 y 435)</b>: justo cuando más pesan las llamadas.</p></div>
   </div>
-  <div class="pagenum">11</div>
+  <div class="pagenum">12</div>
 </section>
 
 <section class="slide close">
@@ -359,7 +394,7 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
     </div>
   </div>
   <div class="footmark">Wip · Field Service Management para logísticas de asistencia en Latam 💛</div>
-  <div class="pagenum">12</div>
+  <div class="pagenum">13</div>
 </section>
 
 </div>
