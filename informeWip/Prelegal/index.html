@@ -146,6 +146,16 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
 .uso .ui{flex:none;width:1.8cqw;font-size:1.3cqw;line-height:1.2;text-align:center}
 .uso h3{font-size:1.1cqw;line-height:1.25}
 .uso p{font-size:.92cqw;margin-top:.15cqw;line-height:1.35}
+.frase{margin-top:1.6cqw;padding:1.6cqw 2cqw;border-radius:1cqw;background:var(--ink);color:#fff}
+.frase p{font-family:var(--display);font-weight:800;font-size:1.9cqw;line-height:1.25;letter-spacing:-.01em;color:#fff;max-width:none}
+.frase p em{font-style:normal;color:var(--lime)}
+.frase small{display:block;margin-top:.7cqw;font-size:1.02cqw;color:#C9CEDA;font-family:var(--body);font-weight:500;line-height:1.4}
+.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:1cqw;margin-top:1.4cqw}
+.plan .card{display:flex;flex-direction:column;padding:1.3cqw}
+.plan .num{font-family:var(--display);font-weight:900;font-size:2.2cqw;color:var(--ink);line-height:1}
+.plan .num::after{content:"";display:block;width:2.4cqw;height:.35cqw;background:var(--lime);border-radius:9px;margin-top:.5cqw}
+.plan h3{font-size:1.2cqw;margin-top:.6cqw}
+.plan p{font-size:.98cqw}
 @media (max-width:640px){body{padding:16px 10px 40px}.deck{gap:16px}.slide{border-radius:14px}}
 @media print{body{background:#fff;padding:0}.deck{gap:0;max-width:none}.slide{box-shadow:none;border:none;border-radius:0;page-break-after:always;break-after:page;aspect-ratio:16/9}}
 </style>
@@ -411,6 +421,27 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
   <div class="pagenum">13</div>
 </section>
 
+<section class="slide">
+  <div class="pad">
+    <div class="top"><div class="eyebrow"><b>Prelegal</b> · Acompañamiento · Powered by WIP IA</div></div>
+    <span class="badge mt-s">Acompañamiento WIP</span>
+    <h2 class="h-sec mt-s" style="font-size:3cqw">La herramienta no hace la diferencia, los datos sí</h2>
+    <div class="frase">
+      <p>No importa qué herramienta se use: <em>si los datos no se registran, no hay analítica, ni ahorro, ni mejora</em>.</p>
+      <small>WIP ya tiene la evidencia, el seguimiento en tiempo real, la asignación con IA, WhatsApp e Integraciones. El salto está en que el equipo de Prelegal los use todos los días, y en eso los acompañamos.</small>
+    </div>
+    <div class="plan">
+      <div class="card"><div class="num">01</div><h3>Recapacitación a los abogados</h3><p>Uso de la app del colaborador: aceptar el servicio, avanzar cada estado en vivo y subir fotos y documentos.</p></div>
+      <div class="card"><div class="num">02</div><h3>Recapacitación al call center</h3><p>Asignación automática, avisos por WhatsApp, pendientes y cómo dejar de digitar y perseguir datos a mano.</p></div>
+      <div class="card"><div class="num">03</div><h3>Reuniones de seguimiento</h3><p>Revisamos juntos los indicadores: evidencia, gestión en línea, kilómetros reales y registro en vivo.</p></div>
+      <div class="card"><div class="num">04</div><h3>Sesiones de actualizaciones</h3><p>Les presentamos cada novedad de WIP apenas sale, para que la aprovechen desde el primer día.</p></div>
+    </div>
+    <div class="grow"></div>
+    <div class="callout"><div class="ic">🚀</div><p>Nuestro objetivo es que Prelegal pase de <b>registrar al final a gestionar en vivo</b>, y lleve su operación a otro nivel con todo lo que WIP ya tiene disponible.</p></div>
+  </div>
+  <div class="pagenum">14</div>
+</section>
+
 <section class="slide close">
   <div class="pad">
     <div class="top"><img loading="lazy" decoding="async" class="logo" src="/img/wip-234a5a0a.png" alt="WIP"><div class="eyebrow"><b>Prelegal</b> · Cierre · Powered by WIP IA</div></div>
@@ -426,7 +457,7 @@ body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20
     </div>
   </div>
   <div class="footmark">Wip · Field Service Management para logísticas de asistencia en Latam 💛</div>
-  <div class="pagenum">14</div>
+  <div class="pagenum">15</div>
 </section>
 
 </div>
