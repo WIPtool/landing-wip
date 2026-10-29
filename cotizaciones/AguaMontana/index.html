@@ -202,25 +202,34 @@ img.shot{display:block;max-height:100%;max-width:100%;width:auto;height:auto;obj
 .plan .num::after{content:"";display:block;width:2.4cqw;height:.35cqw;background:var(--lime);border-radius:9px;margin-top:.5cqw}
 .plan h3{font-size:1.2cqw;margin-top:.6cqw}
 .plan p{font-size:.98cqw}
-.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2cqw;margin-top:1.7cqw}
-.pl{background:#fff;border:1px solid var(--line-soft);border-radius:1.2cqw;padding:1.3cqw 1.5cqw;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2cqw;margin-top:1.2cqw}
+.pl{background:#fff;border:1px solid var(--line-soft);border-radius:1.2cqw;padding:1cqw 1.4cqw;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
 .pl .rb{position:absolute;top:-.85cqw;right:1.4cqw;background:var(--lime);color:var(--ink);font-size:.78cqw;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:.3cqw .8cqw}
 .pl .pn{font-family:var(--display);font-weight:900;font-size:1.55cqw;color:var(--ink);letter-spacing:-.01em}
-.pl .pv{font-family:var(--display);font-weight:900;font-size:2.7cqw;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-top:.5cqw;font-variant-numeric:tabular-nums}
+.pl .pv{font-family:var(--display);font-weight:900;font-size:2.4cqw;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-top:.5cqw;font-variant-numeric:tabular-nums}
 .pl .pv small{font-family:var(--body);font-size:1cqw;font-weight:700;color:var(--dot);margin-left:.4cqw;letter-spacing:0}
 .pl .pinc{font-size:1.02cqw;color:var(--ink-soft);margin-top:.5cqw}.pl .pinc b{color:var(--ink)}
-.pl ul{list-style:none;margin-top:.8cqw;padding-top:.75cqw;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:.38cqw}
+.pl ul{list-style:none;margin-top:.6cqw;padding-top:.6cqw;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:.28cqw}
 .pl li{font-size:.95cqw;line-height:1.3;color:var(--ink-soft);display:flex;gap:.5cqw;align-items:baseline}
 .pl li i{font-style:normal;font-weight:800;color:var(--dot);flex:none;width:1cqw}
 .pl li b{color:var(--ink);font-weight:700;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
 .pl .p15{margin-top:auto;padding-top:.75cqw;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:.6cqw}
 .pl .p15 span{font-size:.92cqw;color:var(--muted);font-weight:600;line-height:1.25}
 .pl .p15 b{font-family:var(--display);font-weight:900;font-size:1.45cqw;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
-.pl ul{margin-bottom:.9cqw}
+.pl ul{margin-bottom:0}
 .pl.rec{background:var(--ink);border-color:var(--ink)}
 .pl.rec .pn,.pl.rec .pv,.pl.rec .pinc b,.pl.rec li b,.pl.rec .p15 b{color:#fff}
 .pl.rec .pv small{color:var(--lime)}.pl.rec .pinc,.pl.rec li{color:#C9CEDA}.pl.rec li i{color:var(--lime)}
 .pl.rec ul{border-top-color:rgba(255,255,255,.14)}.pl.rec .p15{border-top-color:var(--lime)}.pl.rec .p15 span{color:#C9CEDA}
+.planbot{display:grid;grid-template-columns:1fr 1.25fr;gap:1.2cqw;align-items:stretch}
+.planbot .callout{align-items:center}
+.train{display:flex;gap:1.3cqw;align-items:center;background:var(--ink);border-radius:1.1cqw;padding:1cqw 1.4cqw;box-shadow:var(--shadow);margin-right:4cqw}
+.train .tph{flex:none;width:13cqw;height:9.2cqw;border-radius:.8cqw;object-fit:cover;object-position:36% 40%;border:.25cqw solid var(--lime);background:#2C334A}
+.train .tph.ph{display:flex;align-items:center;justify-content:center;color:#9AA3B8;font-size:.9cqw;font-weight:700;border-style:dashed}
+.train .tb{display:inline-block;font-size:.72cqw;font-weight:800;letter-spacing:.09em;text-transform:uppercase;background:var(--lime);color:var(--ink);border-radius:999px;padding:.25cqw .7cqw}
+.train h3{font-family:var(--display);font-weight:800;font-size:1.35cqw;color:#fff;margin-top:.45cqw;line-height:1.15}
+.train p{font-size:.92cqw;line-height:1.38;color:#C9CEDA;margin-top:.35cqw}
+.train .tn{font-size:.9cqw;color:#fff;font-weight:700;margin-top:.45cqw}.train .tn span{color:var(--lime);font-weight:600}
 .pend{margin-top:2cqw;border:2px dashed var(--line);border-radius:1.2cqw;padding:2.4cqw;text-align:center;color:var(--muted);font-size:1.3cqw;line-height:1.5}
 .pend b{display:block;font-family:var(--display);font-size:2cqw;color:var(--ink);margin-bottom:.5cqw}
 
@@ -763,7 +772,7 @@ img.shot{display:block;max-height:100%;max-width:100%;width:auto;height:auto;obj
 <div class="pad">
 <div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Inversión · Powered by WIP</div></div>
 <span class="badge mt-s">Inversión</span>
-<h2 class="h-sec mt-s" style="font-size:3.4cqw">Planes a la medida de tu volumen de entregas</h2>
+<h2 class="h-sec mt-s" style="font-size:3cqw">Planes a la medida de tu volumen de entregas</h2>
 <div class="plans">
   <div class="pl">
     <div class="pn">Inicio</div>
@@ -776,7 +785,7 @@ img.shot{display:block;max-height:100%;max-width:100%;width:auto;height:auto;obj
       <li><i>✓</i>WhatsApp al cliente (app sin app)</li>
       <li><i>✓</i>Tarifado automático</li>
       <li><i>✓</i>Todos los módulos de esta propuesta</li>
-      <li><i>✓</i>Capacitación y acompañamiento presencial en la puesta en marcha</li>
+      <li><i>✓</i>Capacitación presencial incluida</li>
     </ul>
   </div>
   <div class="pl">
@@ -790,7 +799,7 @@ img.shot{display:block;max-height:100%;max-width:100%;width:auto;height:auto;obj
       <li><i>✓</i>WhatsApp al cliente (app sin app)</li>
       <li><i>✓</i>Tarifado automático</li>
       <li><i>✓</i>Todos los módulos de esta propuesta</li>
-      <li><i>✓</i>Capacitación y acompañamiento presencial en la puesta en marcha</li>
+      <li><i>✓</i>Capacitación presencial incluida</li>
     </ul>
   </div>
   <div class="pl">
@@ -804,12 +813,22 @@ img.shot{display:block;max-height:100%;max-width:100%;width:auto;height:auto;obj
       <li><i>✓</i>WhatsApp al cliente (app sin app)</li>
       <li><i>✓</i>Tarifado automático</li>
       <li><i>✓</i>Todos los módulos de esta propuesta</li>
-      <li><i>✓</i>Capacitación y acompañamiento presencial en la puesta en marcha</li>
+      <li><i>✓</i>Capacitación presencial incluida</li>
     </ul>
   </div>
 </div>
 <div class="grow"></div>
-<div class="callout"><div class="ic">💰</div><p><b>Los tres planes incluyen todo lo de esta propuesta</b>, más el <b>proceso de capacitación y el acompañamiento presencial en la puesta en marcha</b>. Cambian las entregas incluidas, el valor de la entrega adicional y las integraciones. <b>Para tomar el servicio se pagan mínimo 2 meses por anticipado.</b></p></div>
+<div class="planbot">
+  <div class="callout"><div class="ic">💰</div><p><b>Los tres planes incluyen todo lo de esta propuesta.</b> Cambian las entregas incluidas, el valor de la entrega adicional y las integraciones.<br><b>Para tomar el servicio se pagan mínimo 2 meses por anticipado.</b></p></div>
+  <div class="train">
+    <img class="tph" src="/img/capacitacion-presencial-15e0d5a5.jpg" alt="Capacitación presencial de WIP con el equipo de operación">
+    <div><span class="tb">Incluido · Capacitación presencial</span>
+      <h3>Vamos a sus instalaciones a capacitarlos</h3>
+      <p>Una persona de nuestro equipo va a Costa Rica, capacita a coordinadores y repartidores y los acompaña en la puesta en marcha, para que el proceso quede claro y ajustado a Agua Montaña.</p>
+      <div class="tn">Equipo de implementación WIP <span>· presencial en Costa Rica</span></div>
+    </div>
+  </div>
+</div>
 <div class="footmark" style="bottom:1.7cqw">Valores mensuales en dólares (USD). Mínimo 2 meses por anticipado para tomar el servicio. Si se supera el cupo, nada se bloquea.</div>
 </div>
 <div class="pagenum">16</div>
