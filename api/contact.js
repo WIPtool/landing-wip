@@ -2,7 +2,7 @@ import { enviarEventoMeta } from './_meta-capi.js';
 
 const RESEND_API_URL = 'https://api.resend.com/emails';
 // Flujo F1 de n8n: crea el contacto como oportunidad en Kommo con su Origen (ruta difícil de adivinar; solo recibe datos).
-const N8N_LEADS_URL = process.env.N8N_LEADS_URL || 'https://wiptool.app.n8n.cloud/webhook/leads-sitio-4f9b2c7e1a8d43e6b0d5';
+const N8N_LEADS_URL = process.env.N8N_LEADS_URL || 'https://n8n.wiptool.com/webhook/leads-sitio-4f9b2c7e1a8d43e6b0d5';
 
 // Le pasa el formulario a n8n; si n8n falla o tarda, el formulario sigue funcionando (el correo ya salió).
 async function enviarAKommo(datos) {
