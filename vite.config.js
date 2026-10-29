@@ -54,6 +54,8 @@ function cleanUrlsDev() {
           req.url = '/cotizaciones/Surtigas/';
         } else if (req.url === '/cotizaciones/MiguelBustamante') {
           req.url = '/cotizaciones/MiguelBustamante/';
+        } else if (req.url === '/cotizaciones/AguaMontana') {
+          req.url = '/cotizaciones/AguaMontana/';
         } else if (req.url === '/inversion/onepager') {
           req.url = '/inversion/onepager/';
         } else if (req.url === '/informeFixit/WipIA') {
@@ -88,6 +90,7 @@ export default defineConfig({
         cotizacionesSurtigas: resolve(__dirname, 'cotizaciones/Surtigas/index.html'),
         cotizacionesGruasColon: resolve(__dirname, 'cotizaciones/GruasColon/index.html'),
         cotizacionesEcoguardian: resolve(__dirname, 'cotizaciones/Ecoguardian/index.html'),
+        cotizacionesAguaMontana: resolve(__dirname, 'cotizaciones/AguaMontana/index.html'),
         inversionOnepager: resolve(__dirname, 'inversion/onepager/index.html'),
         informeFixitWipIA: resolve(__dirname, 'informeFixit/WipIA/index.html'),
         informeWipAviseAsistencia: resolve(__dirname, 'informeWip/AviseAsistencia/index.html'),

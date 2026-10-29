@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Agua Montaña · WIP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F7F8; --ink:#161D31; --ink-soft:#2C334A; --gray:#6C7280; --muted:#9AA1AD;
+  --line:#E7E9EE; --line-soft:#EFF1F4; --card:#FFFFFF;
+  --lime:#C8EB54; --lime-deep:#B4E12E; --dot:#5FBE2E;
+  --display:'Archivo',-apple-system,system-ui,sans-serif;
+  --body:'Inter',-apple-system,system-ui,sans-serif;
+  --shadow:0 1px 2px rgba(22,29,49,.05), 0 18px 44px rgba(22,29,49,.07);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body{font-family:var(--body);background:#E8EAEE;color:var(--ink);padding:34px 20px 60px;}
+.deck{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:26px}
+.slide{container-type:size;position:relative;width:100%;aspect-ratio:16/9;border-radius:20px;border:1px solid var(--line);overflow:hidden;box-shadow:var(--shadow);
+  background:linear-gradient(rgba(22,29,49,.035) 1px, transparent 1px) -1px -1px/44px 44px,linear-gradient(90deg, rgba(22,29,49,.035) 1px, transparent 1px) -1px -1px/44px 44px,var(--bg);}
+.pad{position:absolute;inset:0;padding:4.6cqw 5.2cqw 4.4cqw;display:flex;flex-direction:column;}
+.top{display:flex;justify-content:space-between;align-items:center;gap:2cqw}
+.eyebrow{font-size:1.15cqw;font-weight:500;color:var(--muted);letter-spacing:.02em;margin-left:auto;text-align:right;}
+.eyebrow b{color:var(--ink);font-weight:700}
+.logo{height:3.1cqw;width:auto;display:block}
+.badge{display:inline-flex;align-items:center;background:var(--lime);color:var(--ink);font-weight:800;font-size:1.02cqw;letter-spacing:.09em;text-transform:uppercase;padding:.62cqw 1.15cqw;border-radius:999px;align-self:flex-start;}
+.h1{font-family:var(--display);font-weight:800;color:var(--ink);line-height:.98;letter-spacing:-.02em;}
+.h-sec{font-family:var(--display);font-weight:800;color:var(--ink);font-size:4.35cqw;line-height:1.0;letter-spacing:-.02em;}
+.lead{font-size:1.85cqw;line-height:1.42;color:var(--gray);font-weight:400;max-width:66cqw;}
+.body{font-size:1.4cqw;line-height:1.55;color:var(--gray)}
+.mt-s{margin-top:1.4cqw}.mt{margin-top:2.2cqw}.mt-l{margin-top:2.9cqw}.grow{flex:1}
+.pagenum{position:absolute;right:5.2cqw;bottom:3.4cqw;font-size:1.15cqw;font-weight:600;color:var(--muted);letter-spacing:.04em;}
+.footmark{position:absolute;left:5.2cqw;bottom:3.4cqw;font-size:1.05cqw;font-weight:500;color:var(--muted);letter-spacing:.02em;max-width:80cqw}
+.card{background:var(--card);border:1px solid var(--line-soft);border-radius:1.1cqw;padding:1.7cqw 1.8cqw;box-shadow:0 1px 2px rgba(22,29,49,.04);}
+.card .c-top{display:flex;justify-content:space-between;align-items:flex-start;gap:1cqw}
+.card h3{font-size:1.5cqw;font-weight:700;color:var(--ink);line-height:1.1;letter-spacing:-.01em}
+.card p{font-size:1.12cqw;line-height:1.42;color:var(--gray);margin-top:.75cqw}
+.dot{width:.72cqw;height:.72cqw;border-radius:50%;background:var(--dot);flex:none;margin-top:.55cqw;box-shadow:0 0 0 .35cqw rgba(95,190,46,.14)}
+.idx{font-family:var(--display);font-weight:700;font-size:1.15cqw;color:var(--lime-deep);letter-spacing:.02em}
+.num{font-family:var(--display);font-weight:800;font-size:2.9cqw;color:var(--ink);line-height:1;letter-spacing:-.02em}
+.num small{font-family:var(--body);font-weight:500;font-size:1.05cqw;color:var(--muted);margin-left:.5cqw;letter-spacing:0}
+.ov{display:flex;flex-direction:column;padding:1.4cqw 1.55cqw}
+.ov h3{margin-top:.55cqw;font-size:1.42cqw;line-height:1.08}
+.ov .num{margin-top:auto;padding-top:1.15cqw;font-size:2.55cqw}
+.grid{display:grid;gap:1.15cqw}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
+.chips{display:flex;gap:.7cqw;margin-top:1cqw;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:.4cqw;font-size:1.02cqw;font-weight:600;color:var(--ink-soft);background:#EEF1F4;border-radius:999px;padding:.42cqw .95cqw;}
+.chip.lime{background:rgba(200,235,84,.35);color:var(--ink)}
+.req{display:flex;gap:1.5cqw;padding:1.35cqw 0;border-top:1px solid var(--line-soft)}
+.req:first-of-type{border-top:none}
+.req .rn{font-family:var(--display);font-weight:800;font-size:2.3cqw;color:var(--lime-deep);line-height:1;min-width:3.4cqw;letter-spacing:-.02em}
+.req .rc{flex:1}
+.req h4{font-size:1.55cqw;font-weight:700;color:var(--ink);line-height:1.12;letter-spacing:-.01em}
+.req p{font-size:1.12cqw;line-height:1.42;color:var(--gray);margin-top:.5cqw;max-width:74cqw}
+.req .rmeta{display:flex;gap:.6cqw;margin-top:.85cqw}
+.callout{display:flex;gap:1.2cqw;align-items:flex-start;background:var(--card);border:1px solid var(--line-soft);border-radius:1.1cqw;padding:1.4cqw 1.7cqw;box-shadow:0 1px 2px rgba(22,29,49,.04);}
+.callout .ic{width:2.4cqw;height:2.4cqw;border-radius:50%;flex:none;background:var(--lime);display:flex;align-items:center;justify-content:center;font-size:1.3cqw;}
+.callout p{font-size:1.22cqw;line-height:1.5;color:var(--ink-soft)}
+.callout p b{color:var(--ink);font-weight:700}
+.cover .h1{font-size:6.6cqw}
+.metarow{display:flex;gap:2.4cqw;margin-top:2.2cqw}
+.metarow .m{font-size:1.2cqw;color:var(--gray)}
+.metarow .m b{display:block;color:var(--ink);font-weight:700;font-size:1.35cqw;margin-top:.25cqw}
+.forwho{display:flex;align-items:center;gap:1.2cqw;margin-top:2.4cqw}
+.fw-label{font-size:1.05cqw;color:var(--muted);font-weight:500;letter-spacing:.02em}
+.forname{font-family:var(--display);font-weight:900;font-size:3.4cqw;color:var(--ink);letter-spacing:-.015em;line-height:1}
+.fw-city{font-size:1.15cqw;color:var(--muted);font-weight:500;letter-spacing:.01em}
+.close .h1{font-size:5.4cqw}
+.contact{display:flex;gap:2.6cqw;margin-top:2.4cqw}
+.contact .ct{font-size:1.2cqw;color:var(--gray)}
+.contact .ct b{display:block;color:var(--ink);font-weight:700;font-size:1.4cqw;margin-top:.3cqw}
+.contact .ct b a{color:inherit;text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px}
+/* Integration flow diagram */
+.flow{display:flex;align-items:stretch;gap:1.3cqw;margin-top:2.6cqw}
+.flow .node{width:20cqw;flex:none;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.9cqw 1.4cqw;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:.5cqw}
+.flow .node.alt{background:var(--lime);color:var(--ink)}
+.flow .node .nlabel{font-family:var(--display);font-weight:900;font-size:2.1cqw;letter-spacing:-.01em;line-height:1}
+.flow .node .nsub{font-size:.98cqw;font-weight:500;opacity:.72}
+.flow .conns{flex:1;display:flex;flex-direction:column;justify-content:center;gap:1.05cqw}
+.flow .conn{background:var(--card);border:1px solid var(--line-soft);border-radius:1cqw;padding:1cqw 1.25cqw;box-shadow:0 1px 2px rgba(22,29,49,.04)}
+.flow .conn .ctop{display:flex;align-items:center;gap:.6cqw;font-family:var(--display);font-weight:800;font-size:1.18cqw;color:var(--ink)}
+.flow .conn .fnum{font-family:var(--display);font-weight:800;font-size:1.02cqw;color:var(--lime-deep);background:rgba(200,235,84,.32);border-radius:999px;padding:.15cqw .7cqw}
+.flow .conn .arw{margin-left:auto;font-size:1.35cqw;color:var(--lime-deep);font-weight:800}
+.flow .conn .arw.back{color:var(--gray)}
+.flow .conn p{font-size:1.0cqw;color:var(--gray);line-height:1.4;margin-top:.5cqw}
+/* Pricing options */
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:1.4cqw;margin-top:2.2cqw}
+.opt{background:var(--card);border:1px solid var(--line-soft);border-radius:1.2cqw;padding:1.9cqw 1.9cqw;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+.opt .oname{font-family:var(--display);font-weight:900;font-size:1.7cqw;color:var(--ink);letter-spacing:-.01em}
+.opt .odesc{font-size:1.0cqw;color:var(--muted);font-weight:500;margin-top:.3cqw;margin-bottom:.9cqw}
+.opt .oline{display:flex;justify-content:space-between;align-items:baseline;gap:1cqw;padding:.58cqw 0}
+.opt .ogroup{display:flex;align-items:center;gap:.7cqw;font-family:var(--display);font-size:.92cqw;font-weight:800;letter-spacing:.11em;text-transform:uppercase;color:var(--dot);margin:1.1cqw 0 .2cqw}
+.opt .ogroup::after{content:"";flex:1;height:1px;background:var(--line-soft)}
+.opt .ogroup.first{margin-top:.4cqw}
+.opt .oline .lbl{font-size:1.08cqw;color:var(--gray);line-height:1.35;max-width:55%}
+.opt .oline .val{font-family:var(--display);font-weight:800;font-size:1.5cqw;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums;text-align:right}
+.opt .oline .val small{font-family:var(--body);font-weight:600;font-size:.82cqw;color:var(--muted);display:block;text-align:right;letter-spacing:0}
+.opt .ototal{margin-top:auto;padding-top:1.05cqw;margin-top:1.05cqw;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline}
+.opt .ototal .tl{font-family:var(--display);font-weight:800;font-size:1.3cqw;color:var(--ink)}
+.opt .ototal .tv{font-family:var(--display);font-weight:900;font-size:2.1cqw;color:var(--ink);font-variant-numeric:tabular-nums;text-align:right}
+.opt .ototal .tv small{display:block;font-family:var(--body);font-weight:600;font-size:.82cqw;color:var(--dot);text-align:right;letter-spacing:0}
+.opt .onote{margin-top:auto;padding-top:1.1cqw;font-size:1.0cqw;color:var(--ink-soft);line-height:1.4}
+.opt .onote b{color:var(--ink);font-weight:700}
+.opt .omonthly{display:flex;align-items:baseline;gap:.7cqw;margin-top:.5cqw}
+.opt .omonthly .mv{font-family:var(--display);font-weight:900;font-size:2.5cqw;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.opt .omonthly .mu{font-size:1.1cqw;font-weight:700;color:var(--dot)}
+.opt .obreak{font-size:1.06cqw;color:var(--gray);line-height:1.45;margin-top:.7cqw}
+.opt .obreak b{color:var(--ink);font-weight:700}
+/* Logo del cliente y capturas */
+.clientlogo{width:8.5cqw;height:8.5cqw;object-fit:contain;display:block;border-radius:.8cqw;background:#fff}
+.shotwrap{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;margin-top:1.3cqw;padding-bottom:1.2cqw}
+img.shot{display:block;max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain;border-radius:1cqw;border:1px solid var(--line);background:#fff;box-shadow:0 2px 4px rgba(22,29,49,.05),0 16px 38px rgba(22,29,49,.10)}
+/* Gantt (8-week) */
+.gantt{margin-top:1.8cqw;display:flex;flex-direction:column;gap:.62cqw}
+.grow-row{display:grid;grid-template-columns:23cqw 1fr;align-items:center;gap:1.1cqw}
+.gname{font-size:1.05cqw;font-weight:600;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gtrack{position:relative;height:2.0cqw;background:#EFF1F4;border-radius:.5cqw;overflow:hidden}
+.gtrack .glines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(12.5% - 1px),#E3E6EC calc(12.5% - 1px),#E3E6EC 12.5%)}
+.gbar{position:absolute;top:.22cqw;bottom:.22cqw;left:calc(var(--s) * 12.5%);width:calc(var(--n) * 12.5%);border-radius:.4cqw;background:linear-gradient(90deg,var(--lime-deep),var(--lime));box-shadow:0 1px 2px rgba(22,29,49,.08);display:flex;align-items:center;justify-content:center}
+.gbar span{font-size:.85cqw;font-weight:700;color:var(--ink);opacity:.8}
+.gmonths{display:flex;gap:.45cqw}
+.gmonths span{flex:1;text-align:center;font-size:1.0cqw;font-weight:700;color:var(--ink);background:rgba(200,235,84,.32);border-radius:.5cqw;padding:.42cqw 0;letter-spacing:.01em}
+.gweeks{display:flex}
+.gweeks span{flex:1;text-align:center;font-size:.85cqw;color:var(--muted);font-weight:600}
+.gcap .gname{color:var(--muted);font-weight:600;font-size:.9cqw}
+/* Agua Montaña */
+.forname{font-family:var(--display);font-weight:900;font-size:3.2cqw;color:var(--ink);letter-spacing:-.015em;line-height:1}
+.amlogo{width:17cqw;height:6.6cqw;object-fit:cover;object-position:50% 49%;display:block;border-radius:.8cqw;background:#fff;border:1px solid var(--line-soft)}
+.cover2{display:grid;grid-template-columns:1.08fr .92fr;gap:3cqw;align-items:center;flex:1}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:1.3cqw;margin-top:1.6cqw}
+.vs .card{padding:1.4cqw 1.6cqw}
+.vs .vt{font-family:var(--display);font-weight:800;font-size:1.5cqw;color:var(--ink)}
+.vs .vt small{display:block;font-family:var(--body);font-weight:600;font-size:.95cqw;color:var(--muted);margin-bottom:.3cqw;letter-spacing:.04em;text-transform:uppercase}
+.vs ul{list-style:none;margin-top:.9cqw;display:flex;flex-direction:column;gap:.55cqw}
+.vs li{font-size:1.1cqw;line-height:1.35;color:var(--ink-soft);display:flex;gap:.6cqw;align-items:flex-start}
+.vs li i{font-style:normal;font-weight:800;flex:none;width:1.3cqw}
+.vs .no li i{color:#C23B31}.vs .si li i{color:var(--dot)}
+.vs .si{background:var(--ink);border-color:var(--ink)}
+.vs .si .vt,.vs .si li{color:#fff}.vs .si .vt small{color:#C9CEDA}
+.diag{display:grid;grid-template-columns:repeat(5,1fr);gap:1cqw;margin-top:1.6cqw}
+.diag .card{padding:1.3cqw 1.2cqw;display:flex;flex-direction:column}
+.diag .big{font-family:var(--display);font-weight:800;font-size:2.5cqw;color:#C23B31;line-height:1;letter-spacing:-.02em;margin-top:.6cqw}
+.diag .big small{font-family:var(--body);font-size:1cqw;color:var(--muted);font-weight:600;margin-left:.3cqw}
+.diag h3{font-size:1.18cqw}
+.diag p{font-size:.93cqw;line-height:1.36}
+.ahorro{display:grid;grid-template-columns:repeat(3,1fr);gap:1.15cqw;margin-top:1.1cqw}
+.ahorro .card{background:var(--ink);border-color:var(--ink);padding:1cqw 1.4cqw}
+.ahorro .gn{font-family:var(--display);font-weight:900;font-size:2.8cqw;color:var(--lime);line-height:1;letter-spacing:-.02em}
+.ahorro h3{color:#fff;font-size:1.15cqw;margin-top:.6cqw}
+.ahorro p{color:#C9CEDA;font-size:.95cqw}
+.fix{width:100%;border-collapse:collapse;margin-top:1cqw;font-size:1cqw}
+.fix th{text-align:left;font-weight:600;color:var(--muted);font-size:.9cqw;text-transform:uppercase;letter-spacing:.05em;padding:0 .9cqw .6cqw;border-bottom:1px solid var(--line)}
+.fix td{padding:.42cqw .9cqw;border-bottom:1px solid var(--line-soft);color:var(--ink-soft);vertical-align:top;line-height:1.38}
+.fix td:first-child{font-weight:700;color:var(--ink);white-space:nowrap}
+.fix td.n,.fix th.n{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.fix tr.tot td{font-weight:800;color:var(--ink);border-bottom:none;border-top:2px solid var(--ink)}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1cqw;margin-top:1.6cqw}
+.steps .card{display:flex;flex-direction:column;padding:1.3cqw 1.2cqw;position:relative}
+.steps .num{font-family:var(--display);font-weight:900;font-size:2.2cqw;color:var(--ink);line-height:1}
+.steps .num::after{content:"";display:block;width:2.4cqw;height:.35cqw;background:var(--lime);border-radius:9px;margin-top:.5cqw}
+.steps h3{font-size:1.18cqw;margin-top:.6cqw}
+.steps p{font-size:.95cqw}
+.steps .ia{position:absolute;top:1cqw;right:1cqw;font-size:.72cqw;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--lime);color:var(--ink);border-radius:999px;padding:.25cqw .6cqw}
+.duo{display:grid;grid-template-columns:1.05fr .95fr;gap:1.6cqw;margin-top:1.4cqw;align-items:start}
+.duo.m{align-items:center}
+.feat{display:flex;flex-direction:column;gap:.7cqw}
+.feat .card{padding:.95cqw 1.2cqw;display:flex;gap:.9cqw;align-items:flex-start}
+.feat .ic{flex:none;width:2.2cqw;height:2.2cqw;border-radius:.6cqw;background:rgba(200,235,84,.35);display:flex;align-items:center;justify-content:center;font-size:1.15cqw}
+.feat h3{font-size:1.18cqw;line-height:1.2}
+.feat p{font-size:.98cqw;margin-top:.25cqw;line-height:1.38}
+.g2s{display:grid;grid-template-columns:1fr 1fr;gap:.9cqw}
+.g2s .card{padding:1.1cqw 1.2cqw}.g2s .card h3{font-size:1.2cqw}.g2s .card p{font-size:.95cqw;margin-top:.4cqw}
+.wa{background:#E5DDD5;border-radius:1.1cqw;padding:.9cqw;display:flex;flex-direction:column;gap:.45cqw;box-shadow:var(--shadow);border:1px solid var(--line)}
+.wa .wh{display:flex;align-items:center;gap:.7cqw;background:#075E54;color:#fff;border-radius:.7cqw;padding:.6cqw .9cqw;font-size:1cqw;font-weight:700}
+.wa .wh i{width:1.9cqw;height:1.9cqw;border-radius:50%;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:900;font-size:1cqw}
+.wa .wh small{display:block;font-weight:500;opacity:.8;font-size:.82cqw}
+.wa .msg{background:#fff;border-radius:.7cqw;padding:.5cqw .8cqw;font-size:.9cqw;line-height:1.3;color:var(--ink);max-width:90%;align-self:flex-start;box-shadow:0 1px 1px rgba(0,0,0,.06)}
+.wa .msg.me{background:#DCF8C6;align-self:flex-end}
+.wa .msg .t{display:block;font-size:.75cqw;color:var(--muted);text-align:right;margin-top:.2cqw}
+.wa .msg a{color:#0B6E99;text-decoration:underline}
+.wa .msg .tag{display:inline-block;font-size:.7cqw;font-weight:800;letter-spacing:.06em;text-transform:uppercase;background:var(--lime);color:var(--ink);border-radius:999px;padding:.15cqw .55cqw;margin-bottom:.3cqw}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1.15cqw;margin-top:1.6cqw}
+.meta .card{display:flex;flex-direction:column;gap:.5cqw;padding:1.4cqw}
+.meta .fromto{display:flex;align-items:baseline;gap:.6cqw;font-family:var(--display);font-weight:800;letter-spacing:-.02em}
+.meta .from{font-size:1.9cqw;color:#C23B31}
+.meta .arrow{font-size:1.5cqw;color:var(--muted)}
+.meta .to{font-size:2.9cqw;color:var(--ink)}
+.meta h3{font-size:1.2cqw}
+.meta p{font-size:.98cqw;margin-top:0}
+.frase{margin-top:1.4cqw;padding:1.5cqw 2cqw;border-radius:1cqw;background:var(--ink);color:#fff}
+.frase p{font-family:var(--display);font-weight:800;font-size:1.8cqw;line-height:1.25;letter-spacing:-.01em;color:#fff;max-width:none}
+.frase p em{font-style:normal;color:var(--lime)}
+.frase small{display:block;margin-top:.6cqw;font-size:1.02cqw;color:#C9CEDA;font-family:var(--body);font-weight:500;line-height:1.4}
+.plan{display:grid;grid-template-columns:repeat(4,1fr);gap:1cqw;margin-top:1.4cqw}
+.plan .card{display:flex;flex-direction:column;padding:1.3cqw}
+.plan .num{font-family:var(--display);font-weight:900;font-size:2.2cqw;color:var(--ink);line-height:1}
+.plan .num::after{content:"";display:block;width:2.4cqw;height:.35cqw;background:var(--lime);border-radius:9px;margin-top:.5cqw}
+.plan h3{font-size:1.2cqw;margin-top:.6cqw}
+.plan p{font-size:.98cqw}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2cqw;margin-top:1.7cqw}
+.pl{background:#fff;border:1px solid var(--line-soft);border-radius:1.2cqw;padding:1.3cqw 1.5cqw;box-shadow:var(--shadow);display:flex;flex-direction:column;position:relative}
+.pl .rb{position:absolute;top:-.85cqw;right:1.4cqw;background:var(--lime);color:var(--ink);font-size:.78cqw;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border-radius:999px;padding:.3cqw .8cqw}
+.pl .pn{font-family:var(--display);font-weight:900;font-size:1.55cqw;color:var(--ink);letter-spacing:-.01em}
+.pl .pv{font-family:var(--display);font-weight:900;font-size:2.7cqw;color:var(--ink);letter-spacing:-.02em;line-height:1;margin-top:.5cqw;font-variant-numeric:tabular-nums}
+.pl .pv small{font-family:var(--body);font-size:1cqw;font-weight:700;color:var(--dot);margin-left:.4cqw;letter-spacing:0}
+.pl .pinc{font-size:1.02cqw;color:var(--ink-soft);margin-top:.5cqw}.pl .pinc b{color:var(--ink)}
+.pl ul{list-style:none;margin-top:.8cqw;padding-top:.75cqw;border-top:1px solid var(--line-soft);display:flex;flex-direction:column;gap:.38cqw}
+.pl li{font-size:.95cqw;line-height:1.3;color:var(--ink-soft);display:flex;gap:.5cqw;align-items:baseline}
+.pl li i{font-style:normal;font-weight:800;color:var(--dot);flex:none;width:1cqw}
+.pl li b{color:var(--ink);font-weight:700;margin-left:auto;white-space:nowrap;font-variant-numeric:tabular-nums}
+.pl .p15{margin-top:auto;padding-top:.75cqw;border-top:2px solid var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:.6cqw}
+.pl .p15 span{font-size:.92cqw;color:var(--muted);font-weight:600;line-height:1.25}
+.pl .p15 b{font-family:var(--display);font-weight:900;font-size:1.45cqw;color:var(--ink);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pl ul{margin-bottom:.9cqw}
+.pl.rec{background:var(--ink);border-color:var(--ink)}
+.pl.rec .pn,.pl.rec .pv,.pl.rec .pinc b,.pl.rec li b,.pl.rec .p15 b{color:#fff}
+.pl.rec .pv small{color:var(--lime)}.pl.rec .pinc,.pl.rec li{color:#C9CEDA}.pl.rec li i{color:var(--lime)}
+.pl.rec ul{border-top-color:rgba(255,255,255,.14)}.pl.rec .p15{border-top-color:var(--lime)}.pl.rec .p15 span{color:#C9CEDA}
+.pend{margin-top:2cqw;border:2px dashed var(--line);border-radius:1.2cqw;padding:2.4cqw;text-align:center;color:var(--muted);font-size:1.3cqw;line-height:1.5}
+.pend b{display:block;font-family:var(--display);font-size:2cqw;color:var(--ink);margin-bottom:.5cqw}
+
+/* ===== mockups de wiptool.com/equipos ===== */
+.mk-vars{--navy-brand:#161D31;--salmon:#FF6C6C;--muted-d:#6C7280;--mono:'Inter',ui-monospace,monospace;--limeb:#DBFF57}
+.mock{width:100%;border-radius:1.429cqw;overflow:hidden;background:#fff;border:0.089cqw solid rgba(22,29,49,.10);box-shadow:0 1.607cqw 3.929cqw rgba(22,29,49,.16);color:var(--navy-brand)}
+.mock-bar{display:flex;align-items:center;gap:0.625cqw;padding:0.982cqw 1.25cqw;background:#eef1f7;border-bottom:0.089cqw solid rgba(22,29,49,.06);position:relative}
+.mock-bar .d{width:0.893cqw;height:0.893cqw;border-radius:50%}
+.mock-bar .d.r{background:#ff6058}.mock-bar .d.y{background:#ffbd2e}.mock-bar .d.g{background:#28c840}
+.mock-url{position:absolute;left:50%;transform:translateX(-50%);background:#fff;border:0.089cqw solid rgba(22,29,49,.08);border-radius:0.714cqw;padding:0.446cqw 1.429cqw;font-size:0.982cqw;color:var(--muted-d);white-space:nowrap}
+/* mapa en vivo (portada) */
+.radar{padding:1.964cqw;border-radius:2.143cqw;position:relative;background:#121a2e;border:0.089cqw solid rgba(255,255,255,.12);box-shadow:0 2.679cqw 6.25cqw rgba(22,29,49,.35);animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-0.893cqw)}}
+.radar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25cqw}
+.radar-title{font-family:var(--mono);font-size:1.071cqw;letter-spacing:.14em;text-transform:uppercase;color:#9AA3B8}
+.live{display:inline-flex;align-items:center;gap:0.625cqw;font-family:var(--mono);font-size:0.982cqw;color:var(--limeb);letter-spacing:.1em}
+.live .pulse{width:0.714cqw;height:0.714cqw;border-radius:50%;background:var(--limeb);animation:pulse 1.8s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(219,255,87,.5)}70%{box-shadow:0 0 0 0.893cqw rgba(219,255,87,0)}100%{box-shadow:0 0 0 0 rgba(219,255,87,0)}}
+.map{position:relative;height:26.786cqw;border-radius:1.429cqw;overflow:hidden;border:0.089cqw solid rgba(255,255,255,.12);
+  background:linear-gradient(rgba(255,255,255,.045) 0.089cqw,transparent 0.089cqw) 0 0/3.571cqw 3.571cqw,linear-gradient(90deg,rgba(255,255,255,.045) 0.089cqw,transparent 0.089cqw) 0 0/3.571cqw 3.571cqw,radial-gradient(120% 120% at 50% 30%,#182136,#0c1120)}
+.map svg{position:absolute;inset:0;width:100%;height:100%}
+.hroute-bg{fill:none;stroke:rgba(255,255,255,.12);stroke-width:2.5;stroke-linecap:round}
+.hroute{fill:none;stroke:var(--limeb);stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;filter:drop-shadow(0 0 0.536cqw rgba(219,255,87,.55));animation:draw 3.4s ease .6s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.ptA-ring,.ptB-ring{fill:none;stroke-width:1.5;opacity:.5}.ptA-ring{stroke:var(--limeb)}.ptB-ring{stroke:var(--salmon)}
+.ptA-dot{fill:var(--limeb)}.ptB-dot{fill:var(--salmon)}
+.collab-halo{fill:rgba(255,255,255,.18)}.collab-core{fill:#fff}
+.collab-tag-bg{fill:#161D31;stroke:rgba(255,255,255,.3);stroke-width:1}
+.collab-tag-tx{fill:#fff;font-size:0.893cqw;font-weight:700;font-family:var(--body)}
+.hpt{position:absolute;font-family:var(--mono);font-size:0.938cqw;color:#fff;background:rgba(12,17,32,.75);border:0.089cqw solid rgba(255,255,255,.14);padding:0.357cqw 0.714cqw;border-radius:0.625cqw;white-space:nowrap}
+.hpt-a{left:8%;bottom:9%}.hpt-b{right:8%;top:14%}
+.radar-foot{display:flex;justify-content:space-between;margin-top:1.071cqw;font-family:var(--mono);font-size:1.027cqw;color:#9AA3B8}
+.radar-foot b{color:var(--limeb);font-weight:700}
+/* central de monitoreo: mapa con muchos camiones */
+.dash-map{position:relative;height:25.179cqw;background:url("/img/mapa-cobertura-b89b0b1a.webp") center/cover no-repeat}
+.live-pill{position:absolute;top:1.071cqw;right:1.071cqw;display:inline-flex;align-items:center;gap:0.625cqw;background:var(--limeb);color:var(--navy-brand);font-weight:700;font-size:1.071cqw;padding:0.536cqw 1.071cqw;border-radius:1.786cqw;box-shadow:0 0.714cqw 1.964cqw rgba(0,0,0,.18);z-index:6}
+.live-pill .ld{width:0.625cqw;height:0.625cqw;border-radius:50%;background:var(--navy-brand);animation:blink 1.6s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.routes{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.routes path{fill:none;stroke:rgba(22,29,49,.30);stroke-width:2;stroke-dasharray:5 7;stroke-linecap:round}
+.legend-card{position:absolute;top:1.071cqw;left:1.071cqw;background:rgba(255,255,255,.94);border:0.089cqw solid rgba(22,29,49,.06);border-radius:1.25cqw;padding:0.893cqw 1.25cqw;display:flex;gap:1.429cqw;box-shadow:0 1.071cqw 3.036cqw rgba(22,29,49,.18);z-index:6}
+.legend-card .lc{display:flex;flex-direction:column;align-items:center;gap:0.446cqw}
+.legend-card .cnt{width:2.857cqw;height:2.857cqw;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.25cqw;color:#fff}
+.legend-card .cnt.enroute{background:var(--salmon)}.legend-card .cnt.avail{background:var(--limeb);color:var(--navy-brand)}.legend-card .cnt.client{background:var(--navy-brand)}
+.legend-card .lb{font-size:0.938cqw;color:var(--muted-d);font-weight:600;white-space:nowrap}
+.mk{position:absolute;width:3.036cqw;height:3.036cqw;margin:-1.518cqw 0 0 -1.518cqw;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:1.071cqw;border:0.179cqw solid #fff;box-shadow:0 0.536cqw 1.429cqw rgba(22,29,49,.30);z-index:4;will-change:transform}
+.mk svg{width:1.607cqw;height:1.607cqw;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.mk.avail{background:var(--limeb);color:var(--navy-brand)}.mk.enroute{background:var(--salmon);color:#fff}.mk.client{background:var(--navy-brand);color:#fff}
+.mk.client::after{content:"";position:absolute;left:50%;bottom:-0.714cqw;width:0.536cqw;height:0.536cqw;border-radius:50%;background:var(--navy-brand);transform:translateX(-50%);box-shadow:0 0 0 0.357cqw rgba(22,29,49,.16)}
+.go-a{animation:goA 6s ease-in-out infinite}.go-b{animation:goB 7.6s ease-in-out infinite}.go-c{animation:goC 6.8s ease-in-out infinite}.go-d{animation:goD 8.2s ease-in-out infinite}
+.go-e{animation:goA 9s ease-in-out infinite reverse}.go-f{animation:goC 7.2s ease-in-out infinite reverse}
+@keyframes goA{0%{transform:translate(0,0)}50%{transform:translate(4.821cqw,-2.679cqw)}100%{transform:translate(0,0)}}
+@keyframes goB{0%{transform:translate(0,0)}50%{transform:translate(3.75cqw,3.036cqw)}100%{transform:translate(0,0)}}
+@keyframes goC{0%{transform:translate(0,0)}50%{transform:translate(-4.286cqw,-1.964cqw)}100%{transform:translate(0,0)}}
+@keyframes goD{0%{transform:translate(0,0)}50%{transform:translate(2.679cqw,3.75cqw)}100%{transform:translate(0,0)}}
+.drift-a{animation:driftA 5s ease-in-out infinite}.drift-b{animation:driftB 6s ease-in-out infinite}
+@keyframes driftA{0%,100%{transform:translate(0,0)}50%{transform:translate(1.161cqw,-0.982cqw)}}
+@keyframes driftB{0%,100%{transform:translate(0,0)}50%{transform:translate(-0.982cqw,1.161cqw)}}
+/* asignación */
+.asig{position:relative;height:22.5cqw;padding:1.429cqw;background:#f4f6fb}
+.asig-pill{position:absolute;bottom:1.071cqw;right:1.071cqw;background:var(--limeb);color:var(--navy-brand);font-size:0.982cqw;font-weight:700;padding:0.446cqw 0.982cqw;border-radius:1.429cqw;z-index:6}
+.asig-grid{position:absolute;inset:1.429cqw;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:0.714cqw;z-index:1}
+.asig-grid .cell{background:#e6eaf1;border-radius:0.714cqw}
+.asig-line{position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none}
+.asig-line line{stroke:#9ccf1f;stroke-width:1.6;stroke-linecap:round;stroke-dasharray:4 3;animation:asigFlow 1.1s linear infinite}
+@keyframes asigFlow{to{stroke-dashoffset:-14}}
+.asig-mk{position:absolute;width:2.679cqw;height:2.679cqw;margin:-1.339cqw 0 0 -1.339cqw;border-radius:50%;display:grid;place-items:center;font-size:0.982cqw;font-weight:700;border:0.179cqw solid #fff;box-shadow:0 0.357cqw 1.071cqw rgba(22,29,49,.3);z-index:3}
+.asig-mk.tech,.asig-mk.avail{background:var(--limeb);color:var(--navy-brand)}.asig-mk.enroute{background:var(--salmon);color:#fff}.asig-mk.service{background:var(--salmon);color:#fff;font-size:1.161cqw}
+.asig-mk.pick{animation:asigPick 2s ease-in-out infinite}
+@keyframes asigPick{0%,100%{box-shadow:0 0.357cqw 1.071cqw rgba(22,29,49,.3),0 0 0 0 rgba(219,255,87,.6)}50%{box-shadow:0 0.357cqw 1.071cqw rgba(22,29,49,.3),0 0 0 0.804cqw rgba(219,255,87,0)}}
+.asig-mk.d1{animation:asigDrift1 5s ease-in-out infinite}.asig-mk.d2{animation:asigDrift2 6s ease-in-out infinite}
+@keyframes asigDrift1{0%,100%{transform:translate(0,0)}50%{transform:translate(1.429cqw,0.982cqw)}}
+@keyframes asigDrift2{0%,100%{transform:translate(0,0)}50%{transform:translate(1.071cqw,-1.161cqw)}}
+.asig-tip{position:absolute;transform:translate(-50%,-108%);background:#fff;border:0.089cqw solid rgba(22,29,49,.08);border-radius:0.893cqw;padding:0.714cqw 0.982cqw;box-shadow:0 1.071cqw 2.679cqw rgba(22,29,49,.20);z-index:7;white-space:nowrap;display:flex;flex-direction:column;gap:0.089cqw}
+.asig-tip b{font-size:1.116cqw;color:var(--navy-brand)}.asig-tip span{font-size:0.982cqw;color:var(--muted-d)}.asig-tip i{color:#3fa34d;font-style:normal;font-weight:700}
+/* trazabilidad */
+.trz{padding:1.607cqw 1.786cqw}
+.trz-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25cqw}
+.trz-head b{font-size:1.25cqw}
+.chip-live{background:rgba(219,255,87,.35);color:#5f7d10;font-size:0.982cqw;font-weight:700;padding:0.357cqw 0.804cqw;border-radius:1.25cqw}
+.trz-line{list-style:none;position:relative;margin-left:0.536cqw;padding-left:1.786cqw;overflow:hidden}
+.trz-line::before{content:"";position:absolute;left:0.357cqw;top:0.536cqw;bottom:1.25cqw;width:0.179cqw;background:#e6eaf1}
+.trz-line::after{content:"";position:absolute;left:0.357cqw;top:0.536cqw;width:0.179cqw;border-radius:0.179cqw;background:var(--limeb);height:0;animation:trzFill 5.4s ease-in-out infinite}
+.trz-line li{position:relative;padding-bottom:1.161cqw}.trz-line li:last-child{padding-bottom:0}
+.trz-line li::before{content:"";position:absolute;left:-1.786cqw;top:0.268cqw;width:0.893cqw;height:0.893cqw;border-radius:50%;background:#cfd6e2;border:0.179cqw solid #fff}
+.trz-line li:nth-child(1)::before{animation:trzD1 5.4s ease-in-out infinite}.trz-line li:nth-child(2)::before{animation:trzD2 5.4s ease-in-out infinite}.trz-line li:nth-child(3)::before{animation:trzD3 5.4s ease-in-out infinite}.trz-line li:nth-child(4)::before{animation:trzD4 5.4s ease-in-out infinite}
+@keyframes trzFill{0%,8%{height:0}54%{height:72%}90%{height:72%}96%,100%{height:0}}
+@keyframes trzD1{0%,8%{background:#cfd6e2;transform:scale(1);box-shadow:none}12%{background:var(--limeb);transform:scale(1.4);box-shadow:0 0 0 0.357cqw rgba(219,255,87,.45)}16%,90%{background:var(--limeb);transform:scale(1);box-shadow:none}96%,100%{background:#cfd6e2;transform:scale(1);box-shadow:none}}
+@keyframes trzD2{0%,22%{background:#cfd6e2;transform:scale(1);box-shadow:none}26%{background:var(--limeb);transform:scale(1.4);box-shadow:0 0 0 0.357cqw rgba(219,255,87,.45)}30%,90%{background:var(--limeb);transform:scale(1);box-shadow:none}96%,100%{background:#cfd6e2;transform:scale(1);box-shadow:none}}
+@keyframes trzD3{0%,36%{background:#cfd6e2;transform:scale(1);box-shadow:none}40%{background:var(--limeb);transform:scale(1.4);box-shadow:0 0 0 0.357cqw rgba(219,255,87,.45)}44%,90%{background:var(--limeb);transform:scale(1);box-shadow:none}96%,100%{background:#cfd6e2;transform:scale(1);box-shadow:none}}
+@keyframes trzD4{0%,50%{background:#cfd6e2;transform:scale(1);box-shadow:none}54%{background:var(--limeb);transform:scale(1.4);box-shadow:0 0 0 0.357cqw rgba(219,255,87,.45)}58%,90%{background:var(--limeb);transform:scale(1);box-shadow:none}96%,100%{background:#cfd6e2;transform:scale(1);box-shadow:none}}
+.trz-line .tt{font-size:0.982cqw;font-weight:700;color:var(--muted-d);margin-right:0.893cqw;font-variant-numeric:tabular-nums}
+.trz-line .tl{font-size:1.161cqw;color:var(--navy-brand)}
+.trz-line li:not(.done):not(.now) .tl{color:var(--muted-d)}
+.trz-foot{margin-top:1.071cqw;padding-top:0.982cqw;border-top:0.089cqw solid #eef1f7;font-size:1.161cqw;color:var(--muted-d);display:flex;justify-content:space-between}
+.trz-foot b{color:var(--navy-brand);font-size:1.339cqw}
+/* tarifa */
+.tar{padding:1.607cqw 1.786cqw}
+.tar-cli{font-size:1.071cqw;color:var(--muted-d);margin-bottom:1.071cqw}.tar-cli b{color:var(--navy-brand)}
+.tar-rows{list-style:none;display:flex;flex-direction:column;gap:0.893cqw}
+.tar-rows li{display:flex;justify-content:space-between;gap:1.071cqw;font-size:1.205cqw;color:var(--navy-brand)}
+.tar-rows li span:first-child{color:var(--muted-d)}.tar-rows li span:last-child{font-weight:600;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.tar-total{display:flex;justify-content:space-between;align-items:center;margin-top:1.071cqw;padding-top:1.071cqw;border-top:0.089cqw solid #eef1f7;font-size:1.25cqw;font-weight:600}
+.tar-total b{font-size:1.964cqw;color:var(--navy-brand);font-variant-numeric:tabular-nums}
+.tar-note{margin-top:0.893cqw;background:rgba(219,255,87,.3);color:#5f7d10;font-size:1.027cqw;font-weight:700;padding:0.625cqw 0.893cqw;border-radius:0.804cqw;display:inline-block}
+/* evidencias */
+.evi{padding:1.429cqw 1.607cqw}
+.evi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0.714cqw}
+.evi-grid>div{border-radius:0.893cqw;height:5.893cqw;display:grid;place-items:center;font-size:0.982cqw;font-weight:600}
+.evi-ph{background:#e6eaf1;color:#9aa3b8}.evi-ph svg{width:1.964cqw;height:1.964cqw;stroke:#9aa3b8;fill:none;stroke-width:1.6}
+.evi-doc{background:#fef0f0;color:#d14b4b;display:flex;flex-direction:column;gap:0.446cqw}.evi-doc svg{width:1.786cqw;height:1.786cqw;stroke:#d14b4b;fill:none;stroke-width:1.6}
+.evi-sign{background:#f2f8dd;color:#5f7d10;display:flex;flex-direction:column;gap:0.268cqw}.evi-sign svg{width:3.036cqw;height:1.607cqw;stroke:#5f7d10;fill:none;stroke-width:1.8}
+.evi-pay{background:#eaf1ff;color:#2C6BED;display:flex;flex-direction:column;gap:0.268cqw}
+.evi-more{background:var(--navy-brand);color:#fff;font-size:1.25cqw}
+.evi-note{margin-top:1.071cqw;font-size:1.071cqw;font-weight:600;color:#5f7d10;display:flex;align-items:center;gap:0.625cqw}
+.evi-note::before{content:"";width:0.714cqw;height:0.714cqw;border-radius:50%;background:var(--limeb)}
+/* reportes */
+.rep{padding:1.429cqw 1.607cqw}
+.rep-filters{display:flex;gap:0.536cqw;margin-bottom:1.071cqw;flex-wrap:wrap;align-items:center}
+.rep-filters span{font-size:0.982cqw;font-weight:600;padding:0.446cqw 0.893cqw;border-radius:1.25cqw;background:#eef1f7;color:var(--muted-d)}
+.rep-filters span.on{background:var(--navy-brand);color:#fff}.rep-filters .exp{margin-left:auto;background:var(--limeb);color:var(--navy-brand)}
+.rep-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:0.714cqw;margin-bottom:1.071cqw}
+.rep-kpis div{background:#f4f6fb;border-radius:0.893cqw;padding:0.893cqw;text-align:center}
+.rep-kpis b{display:block;font-size:1.607cqw;color:var(--navy-brand)}.rep-kpis span{font-size:0.938cqw;color:var(--muted-d)}
+.rep-chart{display:flex;align-items:flex-end;gap:0.714cqw;height:6.25cqw}
+.rep-chart span{flex:1;background:linear-gradient(180deg,var(--limeb),#bfe23f);border-radius:0.446cqw 0.446cqw 0 0;min-height:0.536cqw}
+/* portal corporativo */
+.corp{padding:1.339cqw;background:#f4f6fb;display:flex;flex-direction:column;gap:0.893cqw}
+.corp-head{display:flex;align-items:center;gap:0.893cqw}
+.corp-av{width:3.393cqw;height:3.393cqw;border-radius:0.982cqw;background:var(--navy-brand);color:var(--limeb);display:grid;place-items:center;font-weight:700;font-size:1.161cqw;flex:none}
+.corp-head b{font-size:1.205cqw;color:var(--navy-brand);display:block;line-height:1.2}.corp-head > div span{font-size:0.982cqw;color:var(--muted-d)}
+.corp-live{margin-left:auto;font-family:var(--mono);font-size:0.938cqw;color:#2f9e57;font-weight:700;letter-spacing:.04em}
+.corp-cta{background:var(--limeb);color:var(--navy-brand);border:none;border-radius:0.893cqw;padding:0.982cqw;font-weight:700;font-size:1.161cqw;font-family:var(--body)}
+.corp-list{list-style:none;display:flex;flex-direction:column;gap:0.714cqw;margin:0;padding:0}
+.corp-list li{display:flex;align-items:center;justify-content:space-between;background:#fff;border:0.089cqw solid rgba(22,29,49,.08);border-radius:0.893cqw;padding:0.893cqw 1.071cqw}
+.corp-svc{font-size:1.116cqw;font-weight:600;color:var(--navy-brand)}
+.corp-st{font-family:var(--mono);font-size:0.893cqw;font-weight:700;padding:0.268cqw 0.804cqw;border-radius:1.25cqw;letter-spacing:.03em}
+.corp-st.enroute{background:rgba(255,108,108,.15);color:#d64b4b;animation:corpPulse 1.8s ease-in-out infinite}.corp-st.done{background:rgba(47,158,87,.14);color:#2f9e57}
+@keyframes corpPulse{0%,100%{opacity:1}50%{opacity:.5}}
+.corp-foot{font-family:var(--mono);font-size:0.982cqw;color:var(--muted-d);text-align:center}
+/* whatsapp animado */
+.wa .msg{opacity:0}
+.wa .msg:nth-child(2){animation:wamPop 11s ease-in-out infinite}
+.wa .msg:nth-child(3){animation:wamPop 11s ease-in-out infinite 1.4s}
+.wa .msg:nth-child(4){animation:wamPop 11s ease-in-out infinite 2.8s}
+.wa .msg:nth-child(5){animation:wamPop 11s ease-in-out infinite 4.2s}
+.wa .msg:nth-child(6){animation:wamPop 11s ease-in-out infinite 5.6s}
+@keyframes wamPop{0%{opacity:0;transform:translateY(0.893cqw) scale(.96)}4%{opacity:1;transform:translateY(-0.179cqw) scale(1.01)}7%{transform:translateY(0) scale(1)}80%{opacity:1;transform:none}88%,100%{opacity:0;transform:translateY(0.536cqw) scale(.98)}}
+@media (prefers-reduced-motion:reduce){.mk-vars *{animation:none !important}.wa .msg{opacity:1}}
+@media print{.mk-vars *{animation:none !important}.wa .msg{opacity:1}.hroute{stroke-dashoffset:0}}
+
+@media (max-width:640px){body{padding:16px 10px 40px}.deck{gap:16px}.slide{border-radius:14px}}
+@media print{body{background:#fff;padding:0}.deck{gap:0;max-width:none}.slide{box-shadow:none;border:none;border-radius:0;page-break-after:always;break-after:page;aspect-ratio:16/9}}
+</style>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="deck mk-vars">
+
+<section class="slide cover">
+<div class="pad">
+<div class="top"><img class="logo" src="/img/wip-234a5a0a.png" alt="WIP"><div class="eyebrow"><b>Agua Montaña</b> · Propuesta comercial · Powered by WIP</div></div>
+<div class="cover2">
+  <div>
+    <span class="badge">Propuesta comercial · WIP Equipos</span>
+    <h1 class="h1 mt-s" style="font-size:4.2cqw">Cada entrega de agua, ruteada sola y avisada por WhatsApp</h1>
+    <p class="lead mt" style="font-size:1.45cqw;max-width:none">Para Agua Montaña, Costa Rica. WIP es el software de control de personal en campo con IA que reemplaza el Excel y el teléfono: las solicitudes se rutean solas, el cliente se entera de cada paso y la operación queda medida, con evidencia y conectada a tu facturación.</p>
+    <div class="forwho" style="margin-top:1.8cqw"><span class="fw-label">Preparado para</span><img class="amlogo" src="/img/aguamontana-1e2d5282.png" alt="Agua Montaña · Agua pura de manantial"><span class="fw-city">Costa Rica</span></div>
+    <div class="metarow" style="margin-top:1.6cqw">
+      <div class="m">Fecha<b>29 oct 2026</b></div>
+      <div class="m">Preparado por<b>WIP · Aplicando SAS</b></div>
+      <div class="m">Estado<b>Propuesta inicial</b></div>
+    </div>
+  </div>
+  <div class="radar">
+    <div class="radar-head"><span class="radar-title">Tu pedido · N° WIP 2841</span><span class="live"><span class="pulse"></span>EN CAMINO</span></div>
+    <div class="map">
+      <svg viewBox="0 0 560 340" preserveAspectRatio="none" aria-hidden="true">
+        <path class="hroute-bg" d="M 70 288 C 150 250, 150 165, 250 162 S 400 118, 466 84"></path>
+        <path id="hpath" class="hroute" d="M 70 288 C 150 250, 150 165, 250 162 S 400 118, 466 84" pathLength="1"></path>
+        <circle class="ptA-ring" cx="70" cy="288" r="10"></circle><circle class="ptA-dot" cx="70" cy="288" r="5"></circle>
+        <circle class="ptB-ring" cx="466" cy="84" r="11"></circle><circle class="ptB-dot" cx="466" cy="84" r="5.5"></circle>
+        <g><circle class="collab-halo" r="13"></circle><circle class="collab-core" r="7"></circle>
+          <g transform="translate(0,-19)"><rect class="collab-tag-bg" x="-34" y="-11" width="68" height="17" rx="8"></rect><text class="collab-tag-tx" x="0" y="1.5" text-anchor="middle" dominant-baseline="middle">Tu repartidor</text></g>
+          <animateMotion dur="7s" repeatCount="indefinite" rotate="0" keyPoints="0;1;1" keyTimes="0;0.82;1" calcMode="linear"><mpath href="#hpath"></mpath></animateMotion>
+          <animate attributeName="opacity" dur="7s" repeatCount="indefinite" values="0;1;1;1;0" keyTimes="0;0.05;0.7;0.9;1" calcMode="linear"></animate>
+        </g>
+      </svg>
+      <span class="hpt hpt-a">Planta</span><span class="hpt hpt-b">Cliente</span>
+    </div>
+    <div class="radar-foot"><span>Carlos M. · En camino</span><span>Llega en <b>08:12</b></span></div>
+  </div>
+</div>
+</div>
+<div class="pagenum">01</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Presentación · Powered by WIP</div></div>
+<span class="badge mt-s">Presentación</span>
+<h2 class="h-sec mt-s">De Excel y teléfono<br>a una operación que se mueve sola</h2>
+<p class="body mt" style="max-width:68cqw">Hoy Agua Montaña recibe pedidos por teléfono, los anota en Excel, arma las rutas a mano y responde una por una las llamadas de «¿a qué hora llega mi agua?». Funciona, pero depende de la memoria y del tiempo de las personas, y nada queda medido.</p>
+<p class="body mt-s" style="max-width:68cqw">Esta propuesta muestra cómo quedaría la operación completa en WIP: <b style="color:var(--ink);font-weight:600">inteligencia artificial para asignar y rutear cada solicitud</b>, <b style="color:var(--ink);font-weight:600">notificaciones por WhatsApp al cliente en todo el proceso</b>, evidencia desde la app del repartidor, formas de pago registradas en cada entrega y conexión con tu facturación. Todo sobre la misma plataforma que ya usan empresas de servicios y logística en toda LATAM.</p>
+<div class="grow"></div>
+<div class="callout"><div class="ic">🚀</div><p>La <b>implementación, la configuración de los flujos y la capacitación de tu equipo están incluidas</b>, sin costo de arranque, y <b>sin cláusulas de permanencia</b>. Empiezas en días, no en meses.</p></div>
+</div>
+<div class="pagenum">02</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Hoy · Powered by WIP</div></div>
+<span class="badge mt-s">Hoy</span>
+<h2 class="h-sec mt-s" style="font-size:3.6cqw">Coordinar entregas con Excel y teléfono tiene un costo</h2>
+<div class="vs">
+  <div class="card no"><div class="vt"><small>La operación a ciegas</small>Sin WIP</div><ul>
+    <li><i>✕</i>Los pedidos viven en llamadas, chats sueltos y una hoja de cálculo.</li>
+    <li><i>✕</i>Las rutas se arman a mano cada mañana y cambian con cada llamada.</li>
+    <li><i>✕</i>Nadie sabe dónde va cada repartidor ni cuántas entregas le faltan.</li>
+    <li><i>✕</i>El cliente llama todo el día: «¿ya viene?», «¿a qué hora llega?».</li>
+    <li><i>✕</i>No hay foto ni firma de la entrega: el reclamo se resuelve de palabra.</li>
+    <li><i>✕</i>El cobro, los envases y la factura se concilian después, a mano.</li>
+  </ul></div>
+  <div class="card si"><div class="vt"><small>La operación con visibilidad</small>Con WIP</div><ul>
+    <li><i>✓</i>Cada pedido, cliente y repartidor en un solo lugar, desde el primer día.</li>
+    <li><i>✓</i>La IA asigna y rutea cada solicitud sola: por cercanía, zona y capacidad.</li>
+    <li><i>✓</i>Ubicación de cada repartidor en el mapa, en tiempo real, sin GPS extra.</li>
+    <li><i>✓</i>El cliente se entera solo por WhatsApp y sigue la entrega en vivo.</li>
+    <li><i>✓</i>Foto, firma y envases devueltos quedan en la app al momento de entregar.</li>
+    <li><i>✓</i>Forma de pago registrada y datos listos para tu facturación.</li>
+  </ul></div>
+</div>
+</div>
+<div class="pagenum">03</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Dónde se pierde dinero · Powered by WIP</div></div>
+<span class="badge mt-s">Dónde se está perdiendo dinero hoy</span>
+<h2 class="h-sec mt-s" style="font-size:3.6cqw">Cinco fugas que una operación manual no ve</h2>
+<div class="diag">
+  <div class="card"><span class="idx">LLAMADAS</span><h3 class="mt-s">Perseguir y ser perseguido</h3><div class="big">3<small>min</small></div><p>por cada llamada de «¿ya viene?» o para confirmar con el repartidor. En una operación manual, 4 de cada 10 entregas generan al menos una.</p></div>
+  <div class="card"><span class="idx">DIGITACIÓN</span><h3 class="mt-s">El pedido se escribe dos veces</h3><div class="big">4<small>min</small></div><p>por pedido entre tomarlo por teléfono, pasarlo al Excel, dictárselo al repartidor y volverlo a escribir para facturar.</p></div>
+  <div class="card"><span class="idx">RUTAS</span><h3 class="mt-s">Kilómetros de más</h3><div class="big">10<small>%</small></div><p>de los kilómetros se pueden ahorrar con rutas armadas por cercanía en vez de por orden de llamada. Son combustible, tiempo y desgaste.</p></div>
+  <div class="card"><span class="idx">EVIDENCIA</span><h3 class="mt-s">Reclamos sin prueba</h3><div class="big">20<small>min</small></div><p>cuesta resolver cada «no me llegó» o «llegó incompleto» sin foto, firma ni hora de entrega. Y muchas veces se termina reponiendo.</p></div>
+  <div class="card"><span class="idx">COBRO</span><h3 class="mt-s">Lo que no se concilia</h3><div class="big">5<small>%</small></div><p>de las entregas termina con un error de cobro, envases sin registrar o un pago que no cuadra. Cada uno se arregla a mano al final del mes.</p></div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">👁️</div><p>Lo más caro no es ninguna de las cinco: es que hoy <b>ninguna se mide</b>. Sin datos no se sabe qué repartidor cumple, qué zona se demora ni qué cliente reclama más. Con WIP queda medido desde la primera semana. <span style="color:var(--muted);font-size:.95cqw">Valores de referencia de WIP para operaciones que pasan de Excel y teléfono a la plataforma; se afinan con los datos de Agua Montaña.</span></p></div>
+</div>
+<div class="pagenum">04</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Ahorro estimado · Powered by WIP</div></div>
+<span class="badge mt-s">Ahorro estimado</span>
+<h2 class="h-sec mt-s" style="font-size:3.2cqw">Cuánto gana Agua Montaña por cada 1.000 entregas al mes</h2>
+<div class="ahorro">
+  <div class="card"><div class="gn">131 h</div><h3>de trabajo manual que desaparecen</h3><p>Al mes, por cada 1.000 entregas: llamadas, digitación, armado de rutas, reclamos y conciliación.</p></div>
+  <div class="card"><div class="gn">US$ 865</div><h3>de ahorro al mes</h3><p>Entre tiempo del equipo y combustible, con el costo de hora de Costa Rica. Equivale a 0,7 personas de tiempo completo.</p></div>
+  <div class="card"><div class="gn">US$ 10.400</div><h3>al año, por cada 1.000 entregas mensuales</h3><p>Con las 15.000 entregas que hace Agua Montaña al mes, son cerca de <b style="color:#fff">US$ 13.000 cada mes</b>.</p></div>
+</div>
+<table class="fix">
+  <tr><th>Si se hace con WIP</th><th>Lo que hoy se hace a mano</th><th class="n">Horas/mes</th><th class="n">Ahorro/mes</th></tr>
+  <tr><td>Avisos por WhatsApp</td><td>Atender 400 llamadas de «¿ya viene?» y de confirmación (3 min c/u)</td><td class="n">20 h</td><td class="n">US$ 100</td></tr>
+  <tr><td>Pedido digital</td><td>Tomar, pasar a Excel y dictar 1.000 pedidos (4 min c/u)</td><td class="n">67 h</td><td class="n">US$ 335</td></tr>
+  <tr><td>Ruteo automático</td><td>Armar y reorganizar las rutas cada día (1 h/día) y 600 km de más al mes</td><td class="n">26 h</td><td class="n">US$ 340</td></tr>
+  <tr><td>Evidencia en la app</td><td>Resolver 30 reclamos sin foto ni firma (20 min c/u)</td><td class="n">10 h</td><td class="n">US$ 50</td></tr>
+  <tr><td>Pago y envases registrados</td><td>Conciliar 50 entregas con errores de cobro o envases (10 min c/u)</td><td class="n">8 h</td><td class="n">US$ 40</td></tr>
+  <tr class="tot"><td>Total</td><td>Equivale a 0,7 personas de tiempo completo · <b>US$ 10.400 al año</b></td><td class="n">131 h</td><td class="n">US$ 865</td></tr>
+</table>
+<div class="footmark">Estimado WIP por cada 1.000 entregas al mes. Supuestos: hora del equipo a US$ 5 (salario mínimo de Costa Rica con cargas sociales ÷ 190 h), 6 km por entrega, US$ 0,35 por km, 40% de entregas con llamada, 3% con reclamo y 5% con error de cobro. Se ajusta con los datos reales.</div>
+</div>
+<div class="pagenum">05</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Cómo funciona · Powered by WIP</div></div>
+<span class="badge mt-s">WIP con IA · De punta a punta</span>
+<h2 class="h-sec mt-s" style="font-size:3.4cqw">Así viaja un pedido en WIP, sin que nadie lo persiga</h2>
+<div class="steps">
+  <div class="card"><div class="num">01</div><h3>Entra la solicitud</h3><p>Por teléfono, WhatsApp, el portal del cliente corporativo o por API desde tu sistema. Si el cliente ya existe, sus datos se llenan solos.</p></div>
+  <div class="card"><span class="ia">IA</span><div class="num">02</div><h3>Se rutea sola</h3><p>WIP asigna al repartidor más cercano con cupo, según la zona, la prioridad y la ruta del día. Sin llamar a nadie.</p></div>
+  <div class="card"><div class="num">03</div><h3>El cliente se entera</h3><p>Recibe por WhatsApp que su pedido fue creado, el día de la entrega, el aviso de «va en camino» con enlace en vivo y el cierre.</p></div>
+  <div class="card"><div class="num">04</div><h3>Se entrega con evidencia</h3><p>El repartidor marca llegada, toma la foto, recoge la firma, registra los envases devueltos y la forma de pago desde la app.</p></div>
+  <div class="card"><div class="num">05</div><h3>Se factura y se mide</h3><p>La tarifa se calcula sola, los datos pasan a tu facturación y el servicio queda en los reportes: tiempos, cumplimiento y calificación.</p></div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">🧠</div><p>Lo que hoy hace la persona que coordina (anotar, decidir a quién mandar, avisar, confirmar y cuadrar) <b>lo hace WIP automáticamente</b>. El equipo se dedica a vender y a atender excepciones, no a perseguir.</p></div>
+</div>
+<div class="pagenum">06</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Ruteo automático · Powered by WIP</div></div>
+<span class="badge mt-s">IA · Ruteo automático de todas las solicitudes</span>
+<h2 class="h-sec mt-s" style="font-size:3.2cqw">Cada solicitud se asigna sola, con el criterio que tú definas</h2>
+<div class="duo m" style="grid-template-columns:1.1fr .9fr">
+  <div class="g2s">
+    <div class="card"><div class="c-top"><h3>Por cercanía y zona</h3><span class="dot"></span></div><p>El pedido va al repartidor más cercano o al que cubre esa zona, con su ubicación real en ese momento.</p></div>
+    <div class="card"><div class="c-top"><h3>Por prioridad y horario</h3><span class="dot"></span></div><p>Corporativos, urgencias y franjas acordadas pasan primero. Las entregas recurrentes se programan solas.</p></div>
+    <div class="card"><div class="c-top"><h3>Por capacidad y ruta del día</h3><span class="dot"></span></div><p>Respeta cuántos bidones caben en cada vehículo y ordena las paradas para recorrer menos kilómetros.</p></div>
+    <div class="card"><div class="c-top"><h3>Reasignación en vivo</h3><span class="dot"></span></div><p>Si un repartidor no acepta a tiempo, se vara o un cliente cancela, WIP reasigna y avisa la nueva hora por WhatsApp.</p></div>
+  </div>
+  <div class="mock"><div class="mock-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="mock-url">dashboard.wiptool.com</span></div>
+    <div class="asig"><span class="asig-pill">Asignado ✓</span>
+      <div class="asig-grid"><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span><span class="cell"></span></div>
+      <svg class="asig-line" viewBox="0 0 100 100" preserveAspectRatio="none"><line x1="43" y1="55" x2="65" y2="48"></line></svg>
+      <span class="asig-mk service" style="left:43%;top:55%">💧</span><span class="asig-mk tech pick" style="left:65%;top:48%">CM</span><span class="asig-mk enroute d1" style="left:20%;top:36%">LR</span><span class="asig-mk enroute d2" style="left:26%;top:76%">AS</span><span class="asig-mk avail" style="left:82%;top:64%">JP</span>
+      <div class="asig-tip" style="left:47%;top:30%"><b>Carlos M. · Pedido #2841</b><span>2,1 km · <i>Disponible</i> · 14 bidones libres</span></div>
+    </div>
+  </div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">⚙️</div><p>Es <b>100% automático y autogestionado</b>: configuras las reglas una vez y WIP las aplica a todas las solicitudes, las de hoy y las programadas. Puedes dejarlo todo automático o revisar solo las excepciones antes de confirmar.</p></div>
+</div>
+<div class="pagenum">07</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · WhatsApp al cliente · Powered by WIP</div></div>
+<span class="badge mt-s">Notificaciones por WhatsApp · App sin app</span>
+<h2 class="h-sec mt-s" style="font-size:3.2cqw">Tu cliente se entera de todo sin descargar nada</h2>
+<div class="duo">
+  <div class="feat">
+    <div class="card"><div class="ic">📝</div><div><h3>Cuando se crea el pedido</h3><p>Confirmación inmediata con el número de pedido, lo que va a recibir y la fecha de entrega.</p></div></div>
+    <div class="card"><div class="ic">📅</div><div><h3>El día de la entrega</h3><p>Aviso en la mañana con la franja estimada, para que haya alguien en casa o en la oficina para recibir.</p></div></div>
+    <div class="card"><div class="ic">🚚</div><div><h3>Cuando el repartidor va en camino</h3><p>Nombre del repartidor y un <b>enlace para seguirlo en tiempo real</b> en el mapa, con el tiempo estimado de llegada.</p></div></div>
+    <div class="card"><div class="ic">⭐</div><div><h3>Cuando finaliza</h3><p>Resumen de la entrega y la posibilidad de <b>calificar la atención</b> y chatear, directo en WhatsApp.</p></div></div>
+  </div>
+  <div class="wa">
+    <div class="wh"><i>AM</i><div>Agua Montaña<small>Cuenta de empresa · en línea</small></div></div>
+    <div class="msg"><span class="tag">Pedido creado</span><br>¡Hola Laura! 👋 Recibimos tu pedido <b>#2841</b>: 3 bidones de 5 galones. Entrega programada para el <b>jueves 30 de octubre</b>.<span class="t">8:14 a. m.</span></div>
+    <div class="msg"><span class="tag">Día de entrega</span><br>Buenos días 🌞 Hoy te llevamos tu agua entre <b>9:00 y 11:00 a. m.</b><span class="t">7:02 a. m.</span></div>
+    <div class="msg"><span class="tag">En camino</span><br>🚚 <b>Carlos</b> va en camino con tu pedido. Síguelo en tiempo real aquí: <a>wip.to/s/2841</a> · Llega en ~12 min.<span class="t">9:41 a. m.</span></div>
+    <div class="msg me">¡Perfecto, gracias! 🙌<span class="t">9:42 a. m.</span></div>
+    <div class="msg"><span class="tag">Entregado</span><br>✅ Entregamos 3 bidones y recogimos 3 envases. ¿Cómo calificarías la atención? ⭐⭐⭐⭐⭐<span class="t">9:58 a. m.</span></div>
+  </div>
+</div>
+</div>
+<div class="pagenum">08</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Central de monitoreo · Powered by WIP</div></div>
+<span class="badge mt-s">Ubicación en tiempo real · Trazabilidad y tiempos</span>
+<h2 class="h-sec mt-s" style="font-size:3cqw">Tu central de monitoreo: toda la flota en un mapa vivo</h2>
+<div class="duo" style="grid-template-columns:1.25fr .75fr;margin-top:1.1cqw">
+  <div class="mock"><div class="mock-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="mock-url">dashboard.wiptool.com · Mapa de la operación</span></div>
+    <div class="dash-map">
+      <span class="live-pill"><span class="ld"></span>En vivo</span>
+      <div class="legend-card"><div class="lc"><span class="cnt enroute">14</span><span class="lb">En camino</span></div><div class="lc"><span class="cnt avail">9</span><span class="lb">Disponibles</span></div><div class="lc"><span class="cnt client">11</span><span class="lb">Con cliente</span></div></div>
+      <svg class="routes" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M12 78 C 25 60, 35 65, 46 50 S 70 30, 86 22"/><path d="M20 22 C 30 40, 45 35, 58 62 S 78 80, 90 70"/><path d="M8 45 C 22 48, 30 30, 50 28 S 72 45, 94 40"/></svg>
+      <span class="mk enroute go-a" style="left:14%;top:76%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk enroute go-b" style="left:30%;top:24%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk enroute go-c" style="left:62%;top:60%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk enroute go-d" style="left:48%;top:48%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk enroute go-e" style="left:78%;top:34%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk enroute go-f" style="left:86%;top:72%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk enroute go-b" style="left:10%;top:40%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk enroute go-c" style="left:40%;top:84%"><svg viewBox="0 0 24 24"><path d="M3 6h11v9H3z"/><path d="M14 9h3.5L21 12v3h-7z"/><circle cx="7" cy="17.5" r="1.6"/><circle cx="17" cy="17.5" r="1.6"/></svg></span>
+      <span class="mk avail drift-a" style="left:22%;top:56%">JM</span>
+      <span class="mk avail drift-b" style="left:70%;top:18%">AT</span>
+      <span class="mk avail drift-a" style="left:56%;top:30%">DH</span>
+      <span class="mk avail drift-b" style="left:92%;top:52%">RP</span>
+      <span class="mk client" style="left:36%;top:62%">TM</span>
+      <span class="mk client" style="left:66%;top:82%">GS</span>
+      <span class="mk client" style="left:84%;top:16%">LV</span>
+      <span class="mk client" style="left:48%;top:14%">PA</span>
+    </div>
+  </div>
+  <div class="mock"><div class="mock-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="mock-url">Central de monitoreo</span></div>
+    <div class="trz"><div class="trz-head"><b>Pedido #2841</b><span class="chip-live">● En curso</span></div>
+      <ul class="trz-line"><li class="done"><span class="tt">08:14</span><span class="tl">Creado</span></li><li class="done"><span class="tt">08:15</span><span class="tl">Asignado por IA a Carlos M.</span></li><li class="done"><span class="tt">09:41</span><span class="tl">En camino · cliente avisado</span></li><li class="now"><span class="tt">09:53</span><span class="tl">Llegó donde el cliente</span></li><li><span class="tt">--:--</span><span class="tl">Entrega con foto y firma</span></li></ul>
+      <div class="trz-foot"><span>Tiempo de respuesta <b>12 min</b></span><span>Hoy <b>38 / 52</b></span></div>
+    </div>
+  </div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">📍</div><p><b>Sin GPS ni rastreadores:</b> la ubicación sale de la app de WIP en el celular de cada repartidor. Ves quién está disponible, quién va en camino y quién ya llegó, cada entrega con su línea de tiempo, y las demoras te llegan como alerta sin escribirle a nadie.</p></div>
+</div>
+<div class="pagenum">09</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Evidencia y pago · Powered by WIP</div></div>
+<span class="badge mt-s">App del repartidor · Evidencia y formas de pago</span>
+<h2 class="h-sec mt-s" style="font-size:3.2cqw">La entrega queda probada y cobrada en el mismo momento</h2>
+<div class="duo m" style="grid-template-columns:1.1fr .9fr">
+  <div class="g2s">
+    <div class="card"><div class="c-top"><h3>Foto y firma</h3><span class="dot"></span></div><p>Los bidones en el sitio, con hora y ubicación, y la firma de quien recibe. Se acaba el «yo no recibí nada».</p></div>
+    <div class="card"><div class="c-top"><h3>Envases devueltos</h3><span class="dot"></span></div><p>Cuántos bidones se entregan y cuántos se recogen, por cliente. El saldo de envases deja de llevarse en un cuaderno.</p></div>
+    <div class="card"><div class="c-top"><h3>Forma de pago</h3><span class="dot"></span></div><p>Efectivo, SINPE Móvil, tarjeta o crédito corporativo: el repartidor registra cómo pagó el cliente y el monto, y el cierre de caja sale solo.</p></div>
+    <div class="card"><div class="c-top"><h3>Formularios a tu medida</h3><span class="dot"></span></div><p>Tú defines qué se pide en cada tipo de entrega y WIP no deja cerrar el servicio sin eso. Funciona sin señal y sincroniza después.</p></div>
+  </div>
+  <div class="mock"><div class="mock-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="mock-url">Evidencias · Pedido #2841</span></div>
+    <div class="evi"><div class="evi-grid">
+      <div class="evi-ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M8 5l1.5-2h5L16 5"/></svg></div><div class="evi-ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M8 5l1.5-2h5L16 5"/></svg></div><div class="evi-ph"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="12" cy="12" r="3"/><path d="M8 5l1.5-2h5L16 5"/></svg></div>
+      <div class="evi-sign"><svg viewBox="0 0 36 20"><path d="M2 14 C 6 4, 10 20, 14 10 S 24 2, 34 12"/></svg>Firma · Laura R.</div>
+      <div class="evi-pay">💳<span>SINPE · US$ 49</span></div>
+      <div class="evi-doc"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6z"/><path d="M14 2v6h6"/></svg>Factura.pdf</div>
+    </div>
+    <div class="evi-note">3 bidones entregados · 3 envases recogidos · subido desde el sitio</div></div>
+  </div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">📸</div><p>La evidencia se sube <b>en tiempo real desde el lugar de la entrega</b> y queda ordenada en cada pedido: nadie tiene que perseguir al repartidor por fotos, y cada «no me llegó» se responde en segundos con foto, firma, hora y ubicación.</p></div>
+</div>
+<div class="pagenum">10</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Facturación y tarifas · Powered by WIP</div></div>
+<span class="badge mt-s">Tarifas automáticas · Conexión con facturación</span>
+<h2 class="h-sec mt-s" style="font-size:3.2cqw">Cada entrega sale con su valor y llega a tu facturación</h2>
+<div class="duo m" style="grid-template-columns:1.15fr .85fr">
+  <div class="feat">
+    <div class="card"><div class="ic">🧮</div><div><h3>Tarifas automáticas</h3><p>Precio por producto, por cliente, por zona o por volumen; recargos por urgencia o distancia. WIP calcula el valor de cada entrega con tus reglas, sin cálculo a mano ni errores de cobro.</p></div></div>
+    <div class="card"><div class="ic">🧾</div><div><h3>Conexión con tu facturación</h3><p>Al finalizar la entrega, WIP envía cliente, productos, valor y forma de pago a tu sistema de facturación por el módulo de Integraciones, para que la factura electrónica salga sin volver a digitar.</p></div></div>
+    <div class="card"><div class="ic">🔌</div><div><h3>Integraciones por API</h3><p>Pedidos que entran desde tu web, tu tienda o WhatsApp Business; estados que avisan a otros sistemas; webhooks por cada cambio. Nuestro equipo de integraciones te acompaña.</p></div></div>
+  </div>
+  <div class="mock"><div class="mock-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="mock-url">Tarifa automática</span></div>
+    <div class="tar"><div class="tar-cli">Cliente: <b>Hotel Vista Arenal</b> · Entrega corporativa</div>
+      <ul class="tar-rows"><li><span>Bidón 5 galones × 10</span><span>US$ 50,00</span></li><li><span>Zona · Escazú</span><span>US$ 3,00</span></li><li><span>Descuento corporativo</span><span>− US$ 4,00</span></li></ul>
+      <div class="tar-total"><span>Total de la entrega</span><b>US$ 49,00</b></div><div class="tar-note">Calculado según tus reglas ✓ · enviado a facturación</div></div>
+  </div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">🤖</div><p><b>Y la IA también atiende:</b> un agente de WhatsApp con IA puede recibir los pedidos recurrentes, confirmar la dirección y responder «¿cuándo llega mi agua?» sin que tu equipo intervenga, y el pedido entra directo a WIP para rutearse solo.</p></div>
+</div>
+<div class="pagenum">11</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Reportes y clientes corporativos · Powered by WIP</div></div>
+<span class="badge mt-s">Reportes · Portal del cliente corporativo</span>
+<h2 class="h-sec mt-s" style="font-size:3.2cqw">Números para decidir y un portal para tus clientes empresa</h2>
+<div class="duo m" style="grid-template-columns:1fr 1fr;gap:2cqw">
+  <div>
+    <div class="mock"><div class="mock-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="mock-url">Reportes</span></div>
+      <div class="rep"><div class="rep-filters"><span class="on">Mes</span><span>Zona</span><span>Repartidor</span><span class="exp">Exportar ↓</span></div>
+        <div class="rep-kpis"><div><b>14.820</b><span>Entregas</span></div><div><b>11 min</b><span>Respuesta prom.</span></div><div><b>97%</b><span>A tiempo</span></div></div>
+        <div class="rep-chart"><span style="height:40%"></span><span style="height:62%"></span><span style="height:50%"></span><span style="height:78%"></span><span style="height:66%"></span><span style="height:90%"></span><span style="height:72%"></span></div></div>
+    </div>
+    <p class="body mt-s" style="font-size:1.02cqw">Entregas por día, zona, repartidor y cliente; tiempos, cumplimiento, calificación, envases y cobros. Filtrables, exportables o conectados a tu BI.</p>
+  </div>
+  <div>
+    <div class="mock"><div class="mock-bar"><span class="d r"></span><span class="d y"></span><span class="d g"></span><span class="mock-url">portal.wiptool.com</span></div>
+      <div class="corp"><div class="corp-head"><span class="corp-av">HV</span><div><b>Hotel Vista Arenal</b><span>Cliente corporativo</span></div><span class="corp-live">● En vivo</span></div>
+        <div class="corp-cta">+ Solicitar entrega</div>
+        <ul class="corp-list"><li><span class="corp-svc">#2841 · 10 bidones</span><span class="corp-st enroute">En camino</span></li><li><span class="corp-svc">#2790 · 10 bidones</span><span class="corp-st done">Entregado</span></li><li><span class="corp-svc">#2731 · 12 bidones</span><span class="corp-st done">Entregado</span></li></ul>
+        <div class="corp-foot">Trazabilidad y consolidado del mes ✓</div></div>
+    </div>
+    <p class="body mt-s" style="font-size:1.02cqw">Hoteles, oficinas y comercios piden desde su propio perfil, ven sus entregas en tiempo real y reciben su consolidado del mes para facturar.</p>
+  </div>
+</div>
+</div>
+<div class="pagenum">12</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Beneficios · Powered by WIP</div></div>
+<span class="badge mt-s">Lo que cambia</span>
+<h2 class="h-sec mt-s" style="font-size:3.4cqw">Agua Montaña antes y después de WIP</h2>
+<div class="meta">
+  <div class="card"><div class="fromto"><span class="from">0%</span><span class="arrow">→</span><span class="to">100%</span></div><h3>Entregas con foto, firma y hora</h3><p>Cada reclamo se resuelve con evidencia, no de palabra.</p></div>
+  <div class="card"><div class="fromto"><span class="from">Excel</span><span class="arrow">→</span><span class="to">0</span></div><h3>Pedidos digitados a mano</h3><p>Entran una sola vez y viajan solos hasta la factura.</p></div>
+  <div class="card"><div class="fromto"><span class="from">1 h</span><span class="arrow">→</span><span class="to">0 min</span></div><h3>Armando rutas cada día</h3><p>La IA rutea y reorganiza; el coordinador solo revisa excepciones.</p></div>
+  <div class="card"><div class="fromto"><span class="from">Todo el día</span><span class="arrow">→</span><span class="to">−80%</span></div><h3>Llamadas de «¿ya viene?»</h3><p>El cliente sigue su entrega en vivo por WhatsApp.</p></div>
+</div>
+<div class="frase">
+  <p>Lo que hoy se resuelve con memoria y teléfono, <em>queda medido, automático y a la vista</em>: cumplimiento, tiempos, calificación del cliente y cobro de cada entrega.</p>
+  <small>Y con los mismos datos, WIP te muestra qué zonas se demoran, qué repartidor cumple y qué clientes crecen, para decidir con números y no con intuición.</small>
+</div>
+</div>
+<div class="pagenum">13</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Implementación · Powered by WIP</div></div>
+<span class="badge mt-s">Implementación · En días, no en meses</span>
+<h2 class="h-sec mt-s" style="font-size:3.4cqw">Arrancamos de cero, acompañados</h2>
+<p class="body mt-s" style="font-size:1.15cqw;max-width:78cqw">Agua Montaña no tiene que saber de software: nuestro equipo configura WIP a la medida de la operación, carga los datos y capacita al equipo. La implementación, la parametrización y la capacitación están incluidas.</p>
+<div class="plan">
+  <div class="card"><div class="num">01</div><h3>Parametrización</h3><p>Tipos de entrega, productos, zonas, tarifas, reglas de ruteo, formularios de evidencia y mensajes de WhatsApp con tu marca.</p></div>
+  <div class="card"><div class="num">02</div><h3>Carga de datos</h3><p>Clientes, direcciones, entregas recurrentes y repartidores pasan del Excel a WIP. Los clientes corporativos reciben su portal.</p></div>
+  <div class="card"><div class="num">03</div><h3>Capacitación</h3><p>App del repartidor, central de monitoreo y reportes. Sesiones en español, cortas y prácticas, con material para el equipo.</p></div>
+  <div class="card"><div class="num">04</div><h3>Arranque acompañado</h3><p>Las primeras semanas revisamos juntos los indicadores, ajustamos reglas y conectamos la facturación y las integraciones.</p></div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">🤝</div><p><b>Soporte real, en español y en tu horario.</b> Después del arranque seguimos con reuniones de seguimiento y te presentamos cada novedad de WIP apenas sale, para que la aproveches desde el primer día.</p></div>
+</div>
+<div class="pagenum">14</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Inversión · Powered by WIP</div></div>
+<span class="badge mt-s">Inversión</span>
+<h2 class="h-sec mt-s" style="font-size:3.4cqw">Planes a la medida de tu volumen de entregas</h2>
+<div class="plans">
+  <div class="pl">
+    <div class="pn">Inicio</div>
+    <div class="pv">US$ 3.710<small>/ mes</small></div>
+    <div class="pinc"><b>7.000 entregas</b> incluidas al mes</div>
+    <ul>
+      <li><i>+</i>Entrega adicional<b>US$ 0,53</b></li>
+      <li><i>✓</i>Integraciones<b>2</b></li>
+      <li><i>✓</i>IA: ruteo y asignación automática</li>
+      <li><i>✓</i>WhatsApp al cliente (app sin app)</li>
+      <li><i>✓</i>Tarifado automático</li>
+      <li><i>✓</i>Todos los módulos de esta propuesta</li>
+    </ul>
+    <div class="p15"><span>Con 15.000<br>entregas al mes</span><b>US$ 7.950</b></div>
+  </div>
+  <div class="pl rec"><span class="rb">Recomendado para 15.000 entregas</span>
+    <div class="pn">Pro</div>
+    <div class="pv">US$ 4.800<small>/ mes</small></div>
+    <div class="pinc"><b>12.000 entregas</b> incluidas al mes</div>
+    <ul>
+      <li><i>+</i>Entrega adicional<b>US$ 0,40</b></li>
+      <li><i>✓</i>Integraciones<b>Ilimitadas</b></li>
+      <li><i>✓</i>IA: ruteo y asignación automática</li>
+      <li><i>✓</i>WhatsApp al cliente (app sin app)</li>
+      <li><i>✓</i>Tarifado automático</li>
+      <li><i>✓</i>Todos los módulos de esta propuesta</li>
+    </ul>
+    <div class="p15"><span>Con 15.000<br>entregas al mes</span><b>US$ 6.000</b></div>
+  </div>
+  <div class="pl">
+    <div class="pn">Avanzado</div>
+    <div class="pv">US$ 7.000<small>/ mes</small></div>
+    <div class="pinc"><b>20.000 entregas</b> incluidas al mes</div>
+    <ul>
+      <li><i>+</i>Entrega adicional<b>US$ 0,35</b></li>
+      <li><i>✓</i>Integraciones<b>Ilimitadas</b></li>
+      <li><i>✓</i>IA: ruteo y asignación automática</li>
+      <li><i>✓</i>WhatsApp al cliente (app sin app)</li>
+      <li><i>✓</i>Tarifado automático</li>
+      <li><i>✓</i>Todos los módulos de esta propuesta</li>
+    </ul>
+    <div class="p15"><span>Con 15.000<br>entregas al mes</span><b>US$ 7.000</b></div>
+  </div>
+</div>
+<div class="grow"></div>
+<div class="callout"><div class="ic">💰</div><p>Con 15.000 entregas al mes, el <b>Plan Pro</b> cuesta <b>US$ 6.000</b> (US$ 0,40 por entrega) frente a un ahorro estimado de <b>cerca de US$ 13.000 al mes</b>: WIP se paga más de dos veces. El <b>Avanzado</b> deja espacio para crecer hasta 20.000 entregas sin cobros adicionales.</p></div>
+<div class="footmark" style="bottom:1.7cqw">Valores mensuales en dólares (USD). Sin permanencia. Implementación y capacitación incluidas.</div>
+</div>
+<div class="pagenum">15</div>
+</section>
+
+<section class="slide">
+<div class="pad">
+<div class="top"><div class="eyebrow"><b>Agua Montaña</b> · Condiciones · Powered by WIP</div></div>
+<span class="badge mt-s">Condiciones</span>
+<h2 class="h-sec mt-s">Observaciones importantes</h2>
+<div class="grid mt" style="gap:1.15cqw">
+  <div class="callout"><div class="ic">✓</div><p><b>Sin cláusulas de permanencia.</b> El plan se factura mes a mes y se puede subir, bajar o cancelar cuando Agua Montaña lo decida. Las entregas que superen el cupo se cobran al valor de entrega adicional del plan; nada se bloquea.</p></div>
+  <div class="callout"><div class="ic">📦</div><p>Para la implementación, Agua Montaña entrega la <b>información base de la operación</b> (clientes, zonas, productos, tarifas y repartidores) en las primeras dos semanas; con eso la puesta en marcha se hace en días.</p></div>
+  <div class="callout"><div class="ic">🔌</div><p>Las <b>integraciones incluidas en el plan</b> (2 en Inicio, ilimitadas en Pro y Avanzado) cubren la conexión con el sistema de facturación y con otros sistemas de Agua Montaña. Un desarrollo a la medida fuera de este alcance se cotiza aparte, con costo y tiempo definidos antes de empezar.</p></div>
+  <div class="callout"><div class="ic">💬</div><p>Los mensajes de WhatsApp al cliente final salen por la <b>plataforma oficial de WhatsApp Business</b>, con el nombre y el número de Agua Montaña.</p></div>
+</div>
+</div>
+<div class="pagenum">16</div>
+</section>
+
+<section class="slide close">
+<div class="pad">
+<div class="top"><img loading="lazy" decoding="async" class="logo" src="/img/wip-234a5a0a.png" alt="WIP"><div class="eyebrow"><b>Agua Montaña</b> · Siguiente paso · Powered by WIP</div></div>
+<div class="grow" style="display:flex;flex-direction:column;justify-content:center">
+  <span class="badge">Siguiente paso</span>
+  <h2 class="h1 mt-s">¿Lo vemos en vivo?</h2>
+  <p class="lead mt">Esta es una propuesta inicial. Agendemos una demo con un pedido real de Agua Montaña, de la solicitud a la factura, y afinemos juntos las reglas de ruteo, los mensajes y el plan.</p>
+  <div class="contact">
+    <div class="ct">Contacto<b>Mikhail Forero Bedovskaia</b></div>
+    <div class="ct">Rol<b>COO · WIP</b></div>
+    <div class="ct">Web<b><a href="https://www.wiptool.com/equipos" target="_blank" rel="noopener">wiptool.com/equipos</a></b></div>
+    <div class="ct">Instagram<b><a href="https://www.instagram.com/wip.tool/" target="_blank" rel="noopener">@wip.tool</a></b></div>
+  </div>
+</div>
+</div>
+<div class="pagenum">17</div>
+</section>
+</div>
+</body>
+</html>
