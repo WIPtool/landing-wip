@@ -169,7 +169,7 @@
   .step .sd{font-size:1.1cqw;color:var(--muted);line-height:1.35}
 
   /* cronograma con fechas: una columna por día hábil, con un respiro entre semanas */
-  .gantt{display:grid;grid-template-columns:25cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(3,1fr);column-gap:.3cqw;row-gap:.9cqw;align-items:center;margin-top:1.3cqw}
+  .gantt{display:grid;grid-template-columns:25cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(3,1fr) .8cqw 5cqw;column-gap:.3cqw;row-gap:.75cqw;align-items:center;margin-top:1.1cqw}
   .gantt .gw{font-size:.86cqw;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);padding-bottom:.4cqw;border-bottom:1px solid var(--line);white-space:nowrap}
   .gantt .gw.go{color:var(--ink);border-bottom-color:var(--ink)}
   .gantt .gm{font-size:1.08cqw;font-weight:800;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
@@ -182,9 +182,11 @@
   .gantt .gl,.gantt .gm{grid-column:1}
   .gantt .gl .t{font-size:1.3cqw;font-weight:800;line-height:1.1}
   .gantt .gl .d{font-size:.98cqw;color:var(--muted);line-height:1.3;margin-top:.25cqw}
-  .gantt .gb{height:2.9cqw;border-radius:100px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 1cqw;font-size:1cqw;font-weight:800;white-space:nowrap}
+  .gantt .gb{height:2.9cqw;border-radius:100px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:.6cqw;padding:0 1cqw;font-size:1cqw;font-weight:800;white-space:nowrap}
   .gantt .gb small{font-size:.86cqw;font-weight:700;color:rgba(23,26,36,.62)}
   .gantt .gb.pr{background:var(--card);box-shadow:inset 0 0 0 2px var(--ink)}
+  .gantt .gb.vv{justify-content:center;padding:0}
+  .gantt .gd.nx{border-style:dashed}
   .gantt .gb.go{background:none;justify-content:center;padding:0;font-size:1.9cqw;overflow:visible}
   .gantt .gf{font-size:1.2cqw;font-weight:900;white-space:nowrap;padding-left:.5cqw}
 
@@ -679,15 +681,15 @@
   <div class="hdr"><span class="wlogo"></span> · Implementación</div>
   <div class="pad">
     <span class="badge">Plan de implementación</span>
-    <h1 class="d d-lg" style="margin:2cqw 0 .4cqw">Arrancamos el 2 de noviembre,<br>operamos el miércoles 25</h1>
-    <p class="sub" style="max-width:none">Parametrización, capacitación virtual, go live el 25 y seguimiento presencial del equipo WIP.</p>
+    <h1 class="d d-lg" style="margin:1.4cqw 0 .4cqw">Arrancamos el 2 de noviembre,<br>operamos el miércoles 25</h1>
+    <p class="sub" style="max-width:none">Parametrización, capacitación virtual, go live el 25, acompañamiento presencial y después virtual 24/7.</p>
     <div class="gantt">
       <div></div>
       <div class="gw" style="grid-column:2/7">2 – 6 nov</div>
       <div class="gw" style="grid-column:8/13">9 – 13 nov</div>
       <div class="gw" style="grid-column:14/19">16 – 20 nov</div>
       <div class="gw go" style="grid-column:20/25">23 – 27 nov</div>
-      <div class="gw" style="grid-column:26/29">30 nov – 2 dic</div>
+      <div class="gw" style="grid-column:26/29">30 nov–2 dic</div>
 
       <div class="gm">Nov · Dic 2026</div>
       <div class="gd"><span>Lun</span><b>2</b></div><div class="gd"><span>Mar</span><b>3</b></div><div class="gd"><span>Mié</span><b>4</b></div><div class="gd"><span>Jue</span><b>5</b></div><div class="gd"><span>Vie</span><b>6</b></div>
@@ -699,23 +701,26 @@
       <div class="gd"><span>Lun</span><b>23</b></div><div class="gd"><span>Mar</span><b>24</b></div><div class="gd go"><i>🎊</i><span>Mié</span><b>25</b></div><div class="gd"><span>Jue</span><b>26</b></div><div class="gd"><span>Vie</span><b>27</b></div>
       <div></div>
       <div class="gd"><span>Lun</span><b>30</b></div><div class="gd"><span>Mar</span><b>1</b></div><div class="gd"><span>Mié</span><b>2</b></div>
+      <div></div>
+      <div class="gd nx"><span>Desde</span><b>3 dic</b></div>
 
       <div class="gl"><div class="t">Parametrización y líderes</div><div class="d">Configuramos WIP y capacitamos a Alfredo, Alberto y Michel de la Rosa.</div></div>
       <div class="gb" style="grid-column:2/13">Virtual <small>2 – 13 nov</small></div>
 
-      <div class="gl"><div class="t">Capacitación del equipo Auxilia</div><div class="d">Call center y equipo de operación.</div></div>
+      <div class="gl"><div class="t">Capacitación equipo y proveedores</div><div class="d">Call center, equipo de operación y proveedores de Auxilia.</div></div>
       <div class="gb" style="grid-column:14/21">Virtual <small>16 – 23 nov</small></div>
 
       <div class="gl"><div class="t">Inicio de operación</div><div class="d">Soporte dedicado de WIP desde el primer servicio.</div></div>
       <div class="gb go" style="grid-column:22/23">🎉</div>
       <div class="gf" style="grid-column:23/29">¡Go live! 🥳</div>
 
-      <div class="gl"><div class="t">Seguimiento presencial</div><div class="d">El equipo WIP acompaña la operación en sitio.</div></div>
-      <div class="gb pr" style="grid-column:23/29">Presencial <small>26 nov – 2 dic</small></div>
+      <div class="gl"><div class="t">Acompañamiento del equipo WIP</div><div class="d">Presencial del 26 nov al 2 dic y, después, virtual 24/7.</div></div>
+      <div class="gb pr" style="grid-column:23/29">En sitio <small>26 nov–2 dic</small></div>
+      <div class="gb vv" style="grid-column:30/31">24/7 →</div>
     </div>
-    <div style="margin-top:1.4cqw;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.2cqw 1.8cqw;display:flex;align-items:center;gap:1.4cqw">
-      <span style="flex:none;background:var(--lime);color:var(--ink);font-weight:800;font-size:1cqw;letter-spacing:.05em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:100px">Integraciones · en paralelo</span>
-      <span style="font-size:1.15cqw;color:#D6DAE4;line-height:1.35">Se trabajan desde el 2 de noviembre con su propio cronograma, acordado con Auxilia, para lograr el alcance pactado.</span>
+    <div style="margin-top:1.2cqw;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.2cqw 1.8cqw;display:flex;align-items:center;gap:1.4cqw">
+      <span style="flex:none;background:var(--lime);color:var(--ink);font-weight:800;font-size:1cqw;letter-spacing:.05em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:100px">En paralelo</span>
+      <span style="font-size:1.15cqw;color:#D6DAE4;line-height:1.35">Trabajamos las integraciones desde el 2 de noviembre, con su propio cronograma acordado con Auxilia, y en desarrollo hacemos todos los ajustes necesarios.</span>
     </div>
   </div>
   <div class="pg">15</div>
