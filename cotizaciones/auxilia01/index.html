@@ -169,21 +169,24 @@
   .step .sd{font-size:1.1cqw;color:var(--muted);line-height:1.35}
 
   /* cronograma con fechas: una columna por día hábil, con un respiro entre semanas */
-  .gantt{display:grid;grid-template-columns:25cqw repeat(5,1fr) 1.4cqw repeat(5,1fr) 1.4cqw 1.25fr;column-gap:.5cqw;row-gap:1.1cqw;align-items:center;margin-top:1.8cqw}
-  .gantt .gw{font-size:.92cqw;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);padding-bottom:.45cqw;border-bottom:1px solid var(--line)}
+  .gantt{display:grid;grid-template-columns:25cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(3,1fr);column-gap:.3cqw;row-gap:.9cqw;align-items:center;margin-top:1.3cqw}
+  .gantt .gw{font-size:.86cqw;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);padding-bottom:.4cqw;border-bottom:1px solid var(--line);white-space:nowrap}
   .gantt .gw.go{color:var(--ink);border-bottom-color:var(--ink)}
-  .gantt .gm{font-size:1.14cqw;font-weight:800;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
-  .gantt .gd{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:.8cqw;padding:.55cqw 0}
-  .gantt .gd span{display:block;font-size:.84cqw;font-weight:700;color:var(--muted-2);text-transform:uppercase}
-  .gantt .gd b{display:block;font-size:1.5cqw;font-weight:900;line-height:1.05}
+  .gantt .gm{font-size:1.08cqw;font-weight:800;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
+  .gantt .gd{position:relative;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:.6cqw;padding:.45cqw 0}
+  .gantt .gd span{display:block;font-size:.72cqw;font-weight:700;color:var(--muted-2);text-transform:uppercase}
+  .gantt .gd b{display:block;font-size:1.22cqw;font-weight:900;line-height:1.05}
   .gantt .gd.go{background:var(--ink);border-color:var(--ink);color:#fff}
   .gantt .gd.go span{color:var(--lime)}
+  .gantt .gd i{position:absolute;top:-1.25cqw;right:-.9cqw;font-size:1.35cqw;font-style:normal;line-height:1}
   .gantt .gl,.gantt .gm{grid-column:1}
-  .gantt .gl .t{font-size:1.38cqw;font-weight:800;line-height:1.1}
-  .gantt .gl .d{font-size:1.04cqw;color:var(--muted);line-height:1.3;margin-top:.25cqw}
-  .gantt .gb{height:3.1cqw;border-radius:100px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 1.3cqw;font-size:1.08cqw;font-weight:800;white-space:nowrap}
-  .gantt .gb small{font-size:.92cqw;font-weight:700;color:rgba(23,26,36,.62)}
-  .gantt .gb.go{background:var(--ink);color:var(--lime);justify-content:center;padding:0 .6cqw}
+  .gantt .gl .t{font-size:1.3cqw;font-weight:800;line-height:1.1}
+  .gantt .gl .d{font-size:.98cqw;color:var(--muted);line-height:1.3;margin-top:.25cqw}
+  .gantt .gb{height:2.9cqw;border-radius:100px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 1cqw;font-size:1cqw;font-weight:800;white-space:nowrap}
+  .gantt .gb small{font-size:.86cqw;font-weight:700;color:rgba(23,26,36,.62)}
+  .gantt .gb.pr{background:var(--card);box-shadow:inset 0 0 0 2px var(--ink)}
+  .gantt .gb.go{background:none;justify-content:center;padding:0;font-size:1.9cqw;overflow:visible}
+  .gantt .gf{font-size:1.2cqw;font-weight:900;white-space:nowrap;padding-left:.5cqw}
 
   /* investment */
   .plan{background:var(--card);border:1px solid var(--line);border-radius:1.6cqw;padding:2.6cqw;display:flex;flex-direction:column}
@@ -676,33 +679,43 @@
   <div class="hdr"><span class="wlogo"></span> · Implementación</div>
   <div class="pad">
     <span class="badge">Plan de implementación</span>
-    <h1 class="d d-lg" style="margin:2cqw 0 .4cqw">Capacitamos del 16 al 27,<br>operamos el 30 de noviembre</h1>
-    <p class="sub" style="max-width:none">Dos semanas de capacitación y el lunes 30 Auxilia empieza a operar en WIP, con acompañamiento en cada fase.</p>
+    <h1 class="d d-lg" style="margin:2cqw 0 .4cqw">Arrancamos el 2 de noviembre,<br>operamos el miércoles 25</h1>
+    <p class="sub" style="max-width:none">Parametrización, capacitación virtual, go live el 25 y seguimiento presencial del equipo WIP.</p>
     <div class="gantt">
       <div></div>
-      <div class="gw" style="grid-column:2/7">Semana 1 · Capacitación</div>
-      <div class="gw" style="grid-column:8/13">Semana 2 · Capacitación</div>
-      <div class="gw go" style="grid-column:14/15">Inicio</div>
+      <div class="gw" style="grid-column:2/7">2 – 6 nov</div>
+      <div class="gw" style="grid-column:8/13">9 – 13 nov</div>
+      <div class="gw" style="grid-column:14/19">16 – 20 nov</div>
+      <div class="gw go" style="grid-column:20/25">23 – 27 nov</div>
+      <div class="gw" style="grid-column:26/29">30 nov – 2 dic</div>
 
-      <div class="gm">Noviembre 2026</div>
+      <div class="gm">Nov · Dic 2026</div>
+      <div class="gd"><span>Lun</span><b>2</b></div><div class="gd"><span>Mar</span><b>3</b></div><div class="gd"><span>Mié</span><b>4</b></div><div class="gd"><span>Jue</span><b>5</b></div><div class="gd"><span>Vie</span><b>6</b></div>
+      <div></div>
+      <div class="gd"><span>Lun</span><b>9</b></div><div class="gd"><span>Mar</span><b>10</b></div><div class="gd"><span>Mié</span><b>11</b></div><div class="gd"><span>Jue</span><b>12</b></div><div class="gd"><span>Vie</span><b>13</b></div>
+      <div></div>
       <div class="gd"><span>Lun</span><b>16</b></div><div class="gd"><span>Mar</span><b>17</b></div><div class="gd"><span>Mié</span><b>18</b></div><div class="gd"><span>Jue</span><b>19</b></div><div class="gd"><span>Vie</span><b>20</b></div>
       <div></div>
-      <div class="gd"><span>Lun</span><b>23</b></div><div class="gd"><span>Mar</span><b>24</b></div><div class="gd"><span>Mié</span><b>25</b></div><div class="gd"><span>Jue</span><b>26</b></div><div class="gd"><span>Vie</span><b>27</b></div>
+      <div class="gd"><span>Lun</span><b>23</b></div><div class="gd"><span>Mar</span><b>24</b></div><div class="gd go"><i>🎊</i><span>Mié</span><b>25</b></div><div class="gd"><span>Jue</span><b>26</b></div><div class="gd"><span>Vie</span><b>27</b></div>
       <div></div>
-      <div class="gd go"><span>Lun</span><b>30</b></div>
+      <div class="gd"><span>Lun</span><b>30</b></div><div class="gd"><span>Mar</span><b>1</b></div><div class="gd"><span>Mié</span><b>2</b></div>
 
-      <div class="gl"><div class="t">Kickoff y capacitación del equipo</div><div class="d">Equipo de Auxilia, call center y líderes del proyecto.</div></div>
-      <div class="gb" style="grid-column:2/7">Equipo Auxilia <small>16 – 20 nov</small></div>
+      <div class="gl"><div class="t">Parametrización y líderes</div><div class="d">Configuramos WIP y capacitamos a Alfredo, Alberto y Michel de la Rosa.</div></div>
+      <div class="gb" style="grid-column:2/13">Virtual <small>2 – 13 nov</small></div>
 
-      <div class="gl"><div class="t">Capacitación a la red</div><div class="d">Proveedores, técnicos en campo y demás actores de la operación.</div></div>
-      <div class="gb" style="grid-column:8/13">Red de proveedores <small>23 – 27 nov</small></div>
+      <div class="gl"><div class="t">Capacitación del equipo Auxilia</div><div class="d">Call center y equipo de operación.</div></div>
+      <div class="gb" style="grid-column:14/21">Virtual <small>16 – 23 nov</small></div>
 
-      <div class="gl"><div class="t">Inicio de operación</div><div class="d">Go live con soporte dedicado de WIP desde el primer servicio.</div></div>
-      <div class="gb go" style="grid-column:14/15">Go live</div>
+      <div class="gl"><div class="t">Inicio de operación</div><div class="d">Soporte dedicado de WIP desde el primer servicio.</div></div>
+      <div class="gb go" style="grid-column:22/23">🎉</div>
+      <div class="gf" style="grid-column:23/29">¡Go live! 🥳</div>
+
+      <div class="gl"><div class="t">Seguimiento presencial</div><div class="d">El equipo WIP acompaña la operación en sitio.</div></div>
+      <div class="gb pr" style="grid-column:23/29">Presencial <small>26 nov – 2 dic</small></div>
     </div>
-    <div style="margin-top:1.8cqw;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.2cqw 1.8cqw;display:flex;align-items:center;gap:1.4cqw">
+    <div style="margin-top:1.4cqw;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.2cqw 1.8cqw;display:flex;align-items:center;gap:1.4cqw">
       <span style="flex:none;background:var(--lime);color:var(--ink);font-weight:800;font-size:1cqw;letter-spacing:.05em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:100px">Integraciones · en paralelo</span>
-      <span style="font-size:1.15cqw;color:#D6DAE4;line-height:1.35">Se trabajan desde el 16 de noviembre con su propio cronograma, acordado con Auxilia, para lograr el alcance pactado.</span>
+      <span style="font-size:1.15cqw;color:#D6DAE4;line-height:1.35">Se trabajan desde el 2 de noviembre con su propio cronograma, acordado con Auxilia, para lograr el alcance pactado.</span>
     </div>
   </div>
   <div class="pg">15</div>
