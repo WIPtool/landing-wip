@@ -168,6 +168,23 @@
   .step .st{font-size:1.54cqw;font-weight:800;line-height:1.05;margin-bottom:.7cqw}
   .step .sd{font-size:1.1cqw;color:var(--muted);line-height:1.35}
 
+  /* cronograma con fechas: una columna por día hábil, con un respiro entre semanas */
+  .gantt{display:grid;grid-template-columns:25cqw repeat(5,1fr) 1.4cqw repeat(5,1fr) 1.4cqw 1.25fr;column-gap:.5cqw;row-gap:1.1cqw;align-items:center;margin-top:1.8cqw}
+  .gantt .gw{font-size:.92cqw;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);padding-bottom:.45cqw;border-bottom:1px solid var(--line)}
+  .gantt .gw.go{color:var(--ink);border-bottom-color:var(--ink)}
+  .gantt .gm{font-size:1.14cqw;font-weight:800;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
+  .gantt .gd{text-align:center;background:var(--card);border:1px solid var(--line);border-radius:.8cqw;padding:.55cqw 0}
+  .gantt .gd span{display:block;font-size:.84cqw;font-weight:700;color:var(--muted-2);text-transform:uppercase}
+  .gantt .gd b{display:block;font-size:1.5cqw;font-weight:900;line-height:1.05}
+  .gantt .gd.go{background:var(--ink);border-color:var(--ink);color:#fff}
+  .gantt .gd.go span{color:var(--lime)}
+  .gantt .gl,.gantt .gm{grid-column:1}
+  .gantt .gl .t{font-size:1.38cqw;font-weight:800;line-height:1.1}
+  .gantt .gl .d{font-size:1.04cqw;color:var(--muted);line-height:1.3;margin-top:.25cqw}
+  .gantt .gb{height:3.1cqw;border-radius:100px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:space-between;padding:0 1.3cqw;font-size:1.08cqw;font-weight:800;white-space:nowrap}
+  .gantt .gb small{font-size:.92cqw;font-weight:700;color:rgba(23,26,36,.62)}
+  .gantt .gb.go{background:var(--ink);color:var(--lime);justify-content:center;padding:0 .6cqw}
+
   /* investment */
   .plan{background:var(--card);border:1px solid var(--line);border-radius:1.6cqw;padding:2.6cqw;display:flex;flex-direction:column}
   .plan.hi{background:var(--ink);color:#fff;border-color:var(--ink)}
@@ -659,19 +676,34 @@
   <div class="hdr"><span class="wlogo"></span> · Implementación</div>
   <div class="pad">
     <span class="badge">Plan de implementación</span>
-    <h1 class="d d-lg" style="margin:2cqw 0 .4cqw">De la firma al go live<br>en 4 semanas <span style="color:var(--muted-2);font-size:1.94cqw">*</span></h1>
-    <p class="sub" style="max-width:none;margin-bottom:1.4cqw">Estamos listos cuando Auxilia lo esté. Con acompañamiento de WIP en cada fase.</p>
-    <div class="steps">
-      <div class="step"><div class="sn">1</div><div class="sw">Semana 1</div><div class="st">Kickoff y parametrización</div><div class="sd">Levantamiento del proyecto: configuración, estructura, reglas por unidad y definición de las integraciones necesarias.</div></div>
-      <div class="step"><div class="sn">2</div><div class="sw">Semana 1</div><div class="st">Capacitación del equipo</div><div class="sd">Formación al equipo de Auxilia y a los líderes del proyecto.</div></div>
-      <div class="step"><div class="sn">3</div><div class="sw">Semana 2 a 3</div><div class="st">Capacitación a la red</div><div class="sd">Proveedores y demás actores de la operación.</div></div>
-      <div class="step"><div class="sn">4</div><div class="sw">Semana 4</div><div class="st">Go live</div><div class="sd">Operación en vivo con soporte dedicado de WIP.</div></div>
+    <h1 class="d d-lg" style="margin:2cqw 0 .4cqw">Capacitamos del 16 al 27,<br>operamos el 30 de noviembre</h1>
+    <p class="sub" style="max-width:none">Dos semanas de capacitación y el lunes 30 Auxilia empieza a operar en WIP, con acompañamiento en cada fase.</p>
+    <div class="gantt">
+      <div></div>
+      <div class="gw" style="grid-column:2/7">Semana 1 · Capacitación</div>
+      <div class="gw" style="grid-column:8/13">Semana 2 · Capacitación</div>
+      <div class="gw go" style="grid-column:14/15">Inicio</div>
+
+      <div class="gm">Noviembre 2026</div>
+      <div class="gd"><span>Lun</span><b>16</b></div><div class="gd"><span>Mar</span><b>17</b></div><div class="gd"><span>Mié</span><b>18</b></div><div class="gd"><span>Jue</span><b>19</b></div><div class="gd"><span>Vie</span><b>20</b></div>
+      <div></div>
+      <div class="gd"><span>Lun</span><b>23</b></div><div class="gd"><span>Mar</span><b>24</b></div><div class="gd"><span>Mié</span><b>25</b></div><div class="gd"><span>Jue</span><b>26</b></div><div class="gd"><span>Vie</span><b>27</b></div>
+      <div></div>
+      <div class="gd go"><span>Lun</span><b>30</b></div>
+
+      <div class="gl"><div class="t">Kickoff y capacitación del equipo</div><div class="d">Equipo de Auxilia, call center y líderes del proyecto.</div></div>
+      <div class="gb" style="grid-column:2/7">Equipo Auxilia <small>16 – 20 nov</small></div>
+
+      <div class="gl"><div class="t">Capacitación a la red</div><div class="d">Proveedores, técnicos en campo y demás actores de la operación.</div></div>
+      <div class="gb" style="grid-column:8/13">Red de proveedores <small>23 – 27 nov</small></div>
+
+      <div class="gl"><div class="t">Inicio de operación</div><div class="d">Go live con soporte dedicado de WIP desde el primer servicio.</div></div>
+      <div class="gb go" style="grid-column:14/15">Go live</div>
     </div>
-    <div style="margin-top:1.4cqw;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.3cqw 1.8cqw;display:flex;align-items:center;gap:1.4cqw">
-      <span style="flex:none;background:var(--lime);color:var(--ink);font-weight:800;font-size:1cqw;letter-spacing:.05em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:100px">Integraciones · transversal</span>
-      <span style="font-size:1.15cqw;color:#D6DAE4;line-height:1.35">Se establece el cronograma oficial y se desarrollan en paralelo desde la semana 1 hasta el go live, para lograr el alcance acordado.</span>
+    <div style="margin-top:1.8cqw;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.2cqw 1.8cqw;display:flex;align-items:center;gap:1.4cqw">
+      <span style="flex:none;background:var(--lime);color:var(--ink);font-weight:800;font-size:1cqw;letter-spacing:.05em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:100px">Integraciones · en paralelo</span>
+      <span style="font-size:1.15cqw;color:#D6DAE4;line-height:1.35">Se trabajan desde el 16 de noviembre con su propio cronograma, acordado con Auxilia, para lograr el alcance pactado.</span>
     </div>
-    <div class="note">* Tiempos generales de referencia. El cronograma real lo marca el ritmo y la disponibilidad de Auxilia, y la complejidad de las integraciones, distinto en cada empresa.</div>
   </div>
   <div class="pg">15</div>
 </section>
@@ -742,7 +774,7 @@
       </div>
       <div class="col">
         <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">1</div><div class="tx" style="font-size:1.67cqw"><b>Confirmación interna de Auxilia</b></div></div>
-        <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">2</div><div class="tx" style="font-size:1.67cqw"><b>Definición de fecha de arranque</b></div></div>
+        <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">2</div><div class="tx" style="font-size:1.67cqw"><b>Confirmación de las fechas del cronograma</b></div></div>
         <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">3</div><div class="tx" style="font-size:1.67cqw"><b>Envío de material técnico complementario</b></div></div>
       </div>
     </div>
