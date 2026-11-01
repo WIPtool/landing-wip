@@ -18,6 +18,8 @@ export const GUIDES = {
   colaborador: {
     path: '/academy/guia-colaborador',
     img: '/img/academy/guia-colaborador-wip.jpg',
+    // /img se cachea un ano: el ?v obliga a pedir de nuevo las capturas y la imagen cuando se reemplazan en la misma ruta.
+    imgV: 2, shotsV: 2,
     file: 'guia-wip-colaboradores.jpg',
     title: 'Guía para colaboradores: descarga la app de WIP | WIP Academy',
     description: 'Paso a paso con imágenes para que tus colaboradores descarguen la app Wip colaboradores, se registren y se conecten con tu empresa.',
@@ -31,7 +33,7 @@ export const GUIDES = {
     path: '/academy/guia-operador',
     img: '/img/academy/guia-operador-wip.jpg',
     // /img se cachea un ano: el ?v obliga a pedir la imagen de nuevo (la ruta estuvo publicada en 404 antes de existir).
-    imgV: 1,
+    imgV: 2,
     file: 'guia-wip-operadores.jpg',
     title: 'Guía para operadores: entra a la plataforma de WIP | WIP Academy',
     description: 'Paso a paso con imágenes para que tus operadores creen su cuenta en la plataforma web de WIP y se conecten con tu empresa.',
@@ -53,7 +55,7 @@ export const guideSteps = (g, imgBase = '/img') => g.steps.map((s, i) => {
   let media = '';
   if (s.img && !g.web) {
     media = `
-            <div class="phone"><img src="${imgBase}/academy/${g.shots}/${s.img}.jpg" width="540" height="1200" alt="${alt}" loading="lazy" decoding="async"></div>`;
+            <div class="phone"><img src="${imgBase}/academy/${g.shots}/${s.img}.jpg${g.shotsV ? `?v=${g.shotsV}` : ''}" width="540" height="1200" alt="${alt}" loading="lazy" decoding="async"></div>`;
   } else if (s.img) {
     media = fs.existsSync(shotFile(g, s))
       ? `

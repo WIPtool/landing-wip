@@ -292,8 +292,7 @@ export const appSteps = [
 // Guia para operadores (plataforma web, capturas de escritorio en public/img/academy/plataforma/).
 // En los textos, **x** es un boton o etiqueta de la plataforma (va en negrita, tal cual) y [x](url) un enlace.
 export const webSteps = [
-  { img: '1-entrar', title: 'Entra a la plataforma', text: 'Abre [https://platform.wiptool.com/login](https://platform.wiptool.com/login) en el navegador de tu computador.' },
-  { img: '2-crear-cuenta', title: 'Crea tu cuenta', text: 'Toca **Crear Cuenta**, en el panel de la izquierda, o **Regístrate**, debajo de **Iniciar sesión**. Si ya tienes cuenta en WIP, inicia sesión y pasa al paso 6.' },
+  { img: '2-crear-cuenta', title: 'Entra a la plataforma y crea tu cuenta', text: 'Abre [https://platform.wiptool.com/login](https://platform.wiptool.com/login) en el navegador de tu computador y toca **Crear Cuenta**, en el panel de la izquierda, o **Regístrate**, debajo de **Iniciar sesión**. Si ya tienes cuenta en WIP, inicia sesión y pasa al paso 5.' },
   { img: '3-datos', title: 'Escribe tus datos', text: 'Escribe tu correo, tu nombre y tus apellidos, y toca **Siguiente**.' },
   { img: '4-verificar-correo', title: 'Verifica tu correo', text: 'Te llega un código a tu correo. Escríbelo y toca **Siguiente**. Si no te llega, revisa la carpeta de spam o toca **Reenviar correo electrónico de verificación**.' },
   { img: '5-contrasena', title: 'Crea tu contraseña', text: 'Escribe tu contraseña, confírmala y toca **Finalizar**. La plataforma te lleva de nuevo al inicio de sesión.' },
