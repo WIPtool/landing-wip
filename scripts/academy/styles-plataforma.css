@@ -1,0 +1,21 @@
+/* ---------- Guia para operadores: capturas de escritorio de la plataforma web ---------- */
+/* Se suma a styles.css solo en /academy/guia-operador (y su imagen descargable). Las tarjetas son
+   mas anchas que las de la guia del colaborador para que las capturas horizontales se lean. */
+.steps--web{grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr))}
+.step b{font-weight:700;color:var(--navy)}
+.step a{font-weight:600;color:var(--lime-text);text-decoration:underline;text-underline-offset:2px;overflow-wrap:anywhere}
+/* Marco de navegador: las capturas son 1600x1000 (16:10) */
+.screen{position:relative;margin-top:auto;width:100%;padding:20px 5px 5px;border-radius:12px;background:var(--navy);box-shadow:var(--shadow-float)}
+.screen::before{content:"";position:absolute;top:7px;left:10px;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);box-shadow:11px 0 0 rgba(255,255,255,.35),22px 0 0 rgba(255,255,255,.35)}
+.screen img,.screen__ph{width:100%;height:auto;aspect-ratio:16/10;border-radius:6px;background:#fff;object-fit:cover;object-position:top left}
+.screen__ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--surface-low);color:var(--navy-soft);font-size:13px;font-weight:600}
+/* Paso final: mismo tratamiento que en la guia del colaborador, con lista y captura */
+.step--done .step__list{list-style:none;display:grid;gap:8px;max-width:600px;margin:12px auto 22px;text-align:left}
+.step--done .step__list li{position:relative;padding-left:20px;font-size:15.5px;color:rgba(255,255,255,.82)}
+.step--done .step__list li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--lime)}
+.step--done b{color:#fff}
+.step--done .screen{max-width:640px;background:rgba(255,255,255,.14);box-shadow:none}
+@media(max-width:600px){
+  .screen{padding:16px 4px 4px;border-radius:10px}
+  .screen::before{top:5px;left:8px;width:6px;height:6px;box-shadow:9px 0 0 rgba(255,255,255,.35),18px 0 0 rgba(255,255,255,.35)}
+}

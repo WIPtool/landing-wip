@@ -288,3 +288,21 @@ export const appSteps = [
   { img: '8-conectar-empresa', title: 'Busca tu empresa y toca “Conectar”', text: 'Escribe el nombre de la empresa para la que trabajas y toca Conectar para enviarle tu solicitud.' },
   { done: true, title: 'Espera a que tu empresa te acepte', text: 'Tu empresa recibe la solicitud. Cuando te acepte, ya puedes recibir y gestionar tus servicios desde la app.' },
 ];
+
+// Guia para operadores (plataforma web, capturas de escritorio en public/img/academy/plataforma/).
+// En los textos, **x** es un boton o etiqueta de la plataforma (va en negrita, tal cual) y [x](url) un enlace.
+export const webSteps = [
+  { img: '1-entrar', title: 'Entra a la plataforma', text: 'Abre [https://platform.wiptool.com/login](https://platform.wiptool.com/login) en el navegador de tu computador.' },
+  { img: '2-crear-cuenta', title: 'Crea tu cuenta', text: 'Toca **Crear Cuenta**, arriba en la pantalla. Si ya tienes cuenta en WIP, inicia sesión y pasa al paso 6.' },
+  { img: '3-datos', title: 'Escribe tus datos', text: 'Escribe tu correo, tu nombre y tus apellidos, y toca **Siguiente**.' },
+  { img: '4-verificar-correo', title: 'Verifica tu correo', text: 'Te llega un código a tu correo. Escríbelo y toca **Siguiente**. Si no te llega, revisa la carpeta de spam o toca **Reenviar correo electrónico de verificación**.' },
+  { img: '5-contrasena', title: 'Crea tu contraseña', text: 'Escribe tu contraseña, confírmala y toca **Finalizar**. La plataforma te lleva de nuevo al inicio de sesión.' },
+  { img: '6-mi-red', title: 'Inicia sesión', text: 'Entra con tu correo y tu contraseña. Como todavía no estás en ninguna empresa, la plataforma te abre **Mi red**.' },
+  { img: '7-buscar-empresa', title: 'Busca tu empresa', text: 'En la barra **Buscar una empresa**, escribe el nombre de la empresa que te invitó. Es el nombre que aparece en el mensaje de invitación.' },
+  { img: '8-enviar-solicitud', title: 'Envía la solicitud', text: 'Toca **Conectar** en la tarjeta de la empresa y confirma con **Enviar solicitud**. Puedes ver tu solicitud en **Solicitudes → Enviadas**.' },
+  { done: true, img: '9-elegir-empresa', title: 'Espera la aceptación y empieza a trabajar', list: [
+    'Cuando la empresa acepte tu solicitud, elígela en el selector **Empresa** de la barra superior y empieza a gestionar sus servicios.',
+    'No uses **Crear empresa**: eso crea una empresa nueva, distinta de la que te invitó.',
+    'Si no ves las opciones de operador, pídele a tu empresa que revise tu rol en **Configuración → Usuarios**.',
+  ] },
+];

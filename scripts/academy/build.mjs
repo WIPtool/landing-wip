@@ -1,12 +1,12 @@
-// Genera academy/index.html y academy/guia-colaborador/index.html (paginas estaticas),
-// los redirects de las URLs antiguas en vercel.json y la entrada del sitemap.
+// Genera academy/index.html, academy/guia-colaborador/index.html y academy/guia-operador/index.html
+// (paginas estaticas), los redirects de las URLs antiguas en vercel.json y la entrada del sitemap.
 // Uso: node scripts/academy/build.mjs
-// La imagen descargable de la guia se genera aparte con scripts/academy/poster.mjs.
+// Las imagenes descargables de las guias se generan aparte con scripts/academy/poster.mjs.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { courses } from './data.mjs';
-import { GUIDE_PATH, GUIDE_IMG, GUIDE_H1, GUIDE_LEAD, guideSteps } from './guide.mjs';
+import { GUIDES, guideSteps, missingShots } from './guide.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
@@ -78,7 +78,7 @@ const panels = courses.map((c, ci) => {
           <h2>${esc(c.name)}</h2>
           <p>${esc(c.desc)}</p>
           <span class="course__count">${c.lessons.length} videos</span>
-          ${c.slug === 'colaborador' ? `<a class="course__guide" href="${GUIDE_PATH}">Guía para que tu colaborador se conecte con tu empresa <span aria-hidden="true">→</span></a>` : ''}
+          ${c.slug === 'colaborador' ? `<a class="course__guide" href="${GUIDES.colaborador.path}">Guía para que tu colaborador se conecte con tu empresa <span aria-hidden="true">→</span></a>` : ''}${c.slug === 'usuarios' ? `<a class="course__guide" href="${GUIDES.operador.path}">Guía para que tu operador se conecte con tu empresa <span aria-hidden="true">→</span></a>` : ''}
         </div>
         <div class="course__layout">
           <div class="stage">${lessons}
@@ -93,29 +93,30 @@ const panels = courses.map((c, ci) => {
     </section>`;
 }).join('');
 
-// ---------- Guia grafica: descarga de la app de colaborador ----------
-const downloadBtn = `<a class="btn-guide" href="${GUIDE_IMG}" download="guia-wip-colaboradores.jpg" data-ev="academy_guia_descarga"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5 20h14v-2H5Zm7-3 6-6-1.4-1.4-3.6 3.6V4h-2v9.2L7.4 9.6 6 11Z"/></svg>Descargar guía en imagen</a>`;
-
-const guideMain = `
+// ---------- Guias graficas: colaborador (app) y operador (plataforma web) ----------
+const guideMain = (g) => {
+  const downloadBtn = `<a class="btn-guide" href="${g.img}" download="${g.file}" data-ev="academy_guia_descarga"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5 20h14v-2H5Zm7-3 6-6-1.4-1.4-3.6 3.6V4h-2v9.2L7.4 9.6 6 11Z"/></svg>Descargar guía en imagen</a>`;
+  return `
   <section class="guide guide--page">
     <div class="container">
       <div class="guide__head">
-        <span class="eyebrow">Guía para colaboradores</span>
-        <h1>${GUIDE_H1}</h1>
-        <p>${GUIDE_LEAD}</p>
+        <span class="eyebrow">${g.eyebrow}</span>
+        <h1>${g.h1}</h1>
+        <p>${g.lead}</p>
         <div class="guide__actions">
           ${downloadBtn}
           <button class="btn-guide btn-guide--ghost" type="button" data-share>Compartir enlace</button>
         </div>
       </div>
-      <ol class="steps">${guideSteps()}
+      <ol class="steps${g.web ? ' steps--web' : ''}">${guideSteps(g)}
       </ol>
       <div class="guide__foot">
         ${downloadBtn}
-        <a class="guide__back" href="/academy#colaborador">Ver los cursos en video para colaboradores →</a>
+        <a class="guide__back" href="${g.back.href}">${g.back.text}</a>
       </div>
     </div>
   </section>`;
+};
 
 const guideClient = `(function(){
   var b=document.querySelector('[data-share]');
@@ -150,8 +151,10 @@ const jsonld = {
 
 const css = read('scripts/academy/styles.css');
 const client = read('scripts/academy/client.js');
+// Fila de accesos del hero de /academy (colaborador y operador)
+const academyCss = '.hero__ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:22px}\n.hero__ctas .hero__cta{margin-top:0}\n';
 
-const layout = ({ title, description, url, jsonld: ld, main, script, yt }) => `<!DOCTYPE html>
+const layout = ({ title, description, url, jsonld: ld, main, script, yt, extraCss = '' }) => `<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -199,7 +202,7 @@ window.addEventListener('load',function(){
 </script>
 ${yt ? '<link rel="preconnect" href="https://i.ytimg.com">\n' : ''}<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-${css}</style>
+${css}${extraCss}</style>
 </head>
 <body>
 <header class="topbar">
@@ -229,7 +232,10 @@ const academyMain = `
       <span class="eyebrow">Academy</span>
       <h1>Conoce los cursos para dominar nuestro software y potencia tu empresa</h1>
       <p>Cursos completamente gratuitos para ti</p>
-      <a class="hero__cta" href="${GUIDE_PATH}">¿Eres colaborador? Mira cómo descargar la app →</a>
+      <div class="hero__ctas">
+        <a class="hero__cta" href="${GUIDES.colaborador.path}">¿Eres colaborador? Mira cómo descargar la app →</a>
+        <a class="hero__cta" href="${GUIDES.operador.path}">¿Eres operador? Mira cómo entrar a la plataforma →</a>
+      </div>
     </div>
   </section>
 
@@ -244,17 +250,20 @@ const academyMain = `
 ${panels}
 `;
 
-const html = layout({ title: TITLE, description: DESCRIPTION, url: '/academy', jsonld, main: academyMain, script: client, yt: true });
-const guideHtml = layout({
-  title: 'Guía para colaboradores: descarga la app de WIP | WIP Academy',
-  description: 'Paso a paso con imágenes para que tus colaboradores descarguen la app Wip colaboradores, se registren y se conecten con tu empresa.',
-  url: GUIDE_PATH, main: guideMain, script: guideClient,
-});
+const html = layout({ title: TITLE, description: DESCRIPTION, url: '/academy', jsonld, main: academyMain, script: client, yt: true, extraCss: academyCss });
 
 fs.mkdirSync(path.join(root, 'academy'), { recursive: true });
 fs.writeFileSync(path.join(root, 'academy/index.html'), html);
-fs.mkdirSync(path.join(root, 'academy/guia-colaborador'), { recursive: true });
-fs.writeFileSync(path.join(root, 'academy/guia-colaborador/index.html'), guideHtml);
+for (const g of Object.values(GUIDES)) {
+  const guideHtml = layout({
+    title: g.title, description: g.description, url: g.path, main: guideMain(g), script: guideClient,
+    extraCss: g.web ? read('scripts/academy/styles-plataforma.css') : '',
+  });
+  fs.mkdirSync(path.join(root, g.path.slice(1)), { recursive: true });
+  fs.writeFileSync(path.join(root, g.path.slice(1), 'index.html'), guideHtml);
+  const missing = missingShots(g);
+  if (missing.length) console.log(`${g.path}: faltan ${missing.length} capturas (se ve un marcador): ${missing.join(', ')}`);
+}
 
 // ---------- Redirects de las URLs antiguas (WordPress) ----------
 const vercelPath = path.join(root, 'vercel.json');

@@ -1,21 +1,29 @@
-// Genera la imagen descargable de la guia (public/img/academy/guia-colaborador-wip.jpg)
-// a partir de los mismos pasos de la pagina. Volver a correrlo si cambian los pasos o
-// las capturas. Requiere Playwright con Chromium (no es dependencia del proyecto):
+// Genera la imagen descargable de una guia (public/img/academy/guia-colaborador-wip.jpg o
+// guia-operador-wip.jpg) a partir de los mismos pasos de la pagina. Volver a correrlo si cambian
+// los pasos o las capturas. Requiere Playwright con Chromium (no es dependencia del proyecto):
 //   npm i --no-save playwright && npx playwright install chromium
-//   node scripts/academy/poster.mjs
+//   node scripts/academy/poster.mjs              (guia del colaborador)
+//   node scripts/academy/poster.mjs operador     (guia del operador)
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { chromium } from 'playwright';
-import { GUIDE_PATH, GUIDE_IMG, GUIDE_H1, GUIDE_LEAD, guideSteps } from './guide.mjs';
+import { GUIDES, guideSteps, missingShots } from './guide.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
 const pub = path.join(root, 'public');
 
+const g = GUIDES[process.argv[2] || 'colaborador'];
+if (!g) throw new Error(`Guia desconocida: ${process.argv[2]} (opciones: ${Object.keys(GUIDES).join(', ')})`);
+// Sin todas las capturas la imagen saldria con marcadores: mejor no generarla.
+const missing = missingShots(g);
+if (missing.length) throw new Error(`Faltan capturas en public/: ${missing.join(', ')}`);
+
 // Las rutas absolutas (/fonts, /img) se vuelven relativas a public/ via <base>.
-const css = fs.readFileSync(path.join(here, 'styles.css'), 'utf8').replace(/url\('\/fonts\//g, "url('fonts/");
+const css = (fs.readFileSync(path.join(here, 'styles.css'), 'utf8')
+  + (g.web ? fs.readFileSync(path.join(here, 'styles-plataforma.css'), 'utf8') : '')).replace(/url\('\/fonts\//g, "url('fonts/");
 
 const html = `<!DOCTYPE html>
 <html lang="es"><head><meta charset="UTF-8">
@@ -27,8 +35,8 @@ body{width:1080px;background:var(--surface)}
 .poster__top .eyebrow{color:var(--lime);margin-bottom:10px}
 .poster__top h1{color:#fff;font-size:44px}
 .poster__top p{margin-top:12px;font-size:19px;color:rgba(255,255,255,.85)}
-.steps{grid-template-columns:repeat(3,1fr);gap:18px;margin:28px 28px 0;padding:0}
-.step--done{grid-column:auto;justify-content:center}
+.steps{grid-template-columns:repeat(${g.web ? 2 : 3},1fr);gap:18px;margin:28px 28px 0;padding:0}
+.step--done{grid-column:${g.web ? '1/-1' : 'auto'};justify-content:center}
 .step--done h3{font-size:22px}
 .poster__foot{text-align:center;padding:28px 24px 36px;font-size:17px;color:var(--navy-soft)}
 .poster__foot b{color:var(--navy)}
@@ -36,13 +44,13 @@ body{width:1080px;background:var(--surface)}
 <body>
   <div class="poster__top">
     <img src="img/wip-logo-lima-94w.png" alt="WIP">
-    <span class="eyebrow">Guía para colaboradores</span>
-    <h1>${GUIDE_H1}</h1>
-    <p>${GUIDE_LEAD}</p>
+    <span class="eyebrow">${g.eyebrow}</span>
+    <h1>${g.h1}</h1>
+    <p>${g.lead}</p>
   </div>
-  <ol class="steps">${guideSteps('img').replace(/ loading="lazy"/g, '')}
+  <ol class="steps">${guideSteps(g, 'img').replace(/ loading="lazy"/g, '')}
   </ol>
-  <p class="poster__foot">Mira esta guía en línea: <b>wiptool.com${GUIDE_PATH}</b></p>
+  <p class="poster__foot">Mira esta guía en línea: <b>wiptool.com${g.path}</b></p>
 </body></html>`;
 
 const tmp = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'wip-poster-')), 'poster.html');
@@ -51,7 +59,7 @@ const browser = await chromium.launch(process.env.CHROMIUM_PATH ? { executablePa
 const page = await browser.newPage({ viewport: { width: 1080, height: 1000 }, deviceScaleFactor: 1.5 });
 await page.goto(pathToFileURL(tmp).href, { waitUntil: 'networkidle' });
 await page.evaluate(() => Promise.all([document.fonts.ready, ...[...document.images].map((i) => i.decode())]));
-const out = path.join(pub, GUIDE_IMG);
+const out = path.join(pub, g.img);
 await page.screenshot({ path: out, fullPage: true, type: 'jpeg', quality: 85 });
 await browser.close();
 console.log(`${path.relative(root, out)}: ${(fs.statSync(out).size / 1024).toFixed(0)} KB`);

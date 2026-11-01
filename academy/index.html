@@ -237,6 +237,8 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
   .footer__bottom{flex-direction:column;align-items:flex-start}
 }
 @media(prefers-reduced-motion:reduce){.btn-guide,.course__guide,.hero__cta,.card,.player__thumb,.player__play{transition:none}.card:hover{transform:none}}
+.hero__ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 12px;margin-top:22px}
+.hero__ctas .hero__cta{margin-top:0}
 </style>
 </head>
 <body>
@@ -256,7 +258,10 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
       <span class="eyebrow">Academy</span>
       <h1>Conoce los cursos para dominar nuestro software y potencia tu empresa</h1>
       <p>Cursos completamente gratuitos para ti</p>
-      <a class="hero__cta" href="/academy/guia-colaborador">¿Eres colaborador? Mira cómo descargar la app →</a>
+      <div class="hero__ctas">
+        <a class="hero__cta" href="/academy/guia-colaborador">¿Eres colaborador? Mira cómo descargar la app →</a>
+        <a class="hero__cta" href="/academy/guia-operador">¿Eres operador? Mira cómo entrar a la plataforma →</a>
+      </div>
     </div>
   </section>
 
@@ -335,7 +340,7 @@ h1{font-size:clamp(28px,4.6vw,48px);font-weight:800;letter-spacing:-0.03em;line-
           <h2>Crear y configurar tu cuenta de usuario</h2>
           <p>Descubre cómo crear y configurar tu cuenta de usuario en nuestra plataforma. Conéctate a empresas, actualiza tus datos y mantén tu perfil al día de manera sencilla y rápida.</p>
           <span class="course__count">5 videos</span>
-          
+          <a class="course__guide" href="/academy/guia-operador">Guía para que tu operador se conecte con tu empresa <span aria-hidden="true">→</span></a>
         </div>
         <div class="course__layout">
           <div class="stage">
