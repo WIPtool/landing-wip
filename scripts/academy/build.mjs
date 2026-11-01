@@ -95,7 +95,7 @@ const panels = courses.map((c, ci) => {
 
 // ---------- Guias graficas: colaborador (app) y operador (plataforma web) ----------
 const guideMain = (g) => {
-  const downloadBtn = `<a class="btn-guide" href="${g.img}" download="${g.file}" data-ev="academy_guia_descarga"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5 20h14v-2H5Zm7-3 6-6-1.4-1.4-3.6 3.6V4h-2v9.2L7.4 9.6 6 11Z"/></svg>Descargar guía en imagen</a>`;
+  const downloadBtn = `<a class="btn-guide" href="${g.img}${g.imgV ? `?v=${g.imgV}` : ''}" download="${g.file}" data-ev="academy_guia_descarga"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M5 20h14v-2H5Zm7-3 6-6-1.4-1.4-3.6 3.6V4h-2v9.2L7.4 9.6 6 11Z"/></svg>Descargar guía en imagen</a>`;
   return `
   <section class="guide guide--page">
     <div class="container">

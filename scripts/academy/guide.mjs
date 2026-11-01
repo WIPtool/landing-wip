@@ -30,6 +30,8 @@ export const GUIDES = {
   operador: {
     path: '/academy/guia-operador',
     img: '/img/academy/guia-operador-wip.jpg',
+    // /img se cachea un ano: el ?v obliga a pedir la imagen de nuevo (la ruta estuvo publicada en 404 antes de existir).
+    imgV: 1,
     file: 'guia-wip-operadores.jpg',
     title: 'Guía para operadores: entra a la plataforma de WIP | WIP Academy',
     description: 'Paso a paso con imágenes para que tus operadores creen su cuenta en la plataforma web de WIP y se conecten con tu empresa.',
