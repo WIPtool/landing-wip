@@ -279,7 +279,7 @@ export const courses = [
 // img: captura en public/img/academy/app/<img>.jpg (540x1200).
 export const appSteps = [
   { img: '1-buscar-wip', title: 'Busca “Wip” en la Play Store', text: 'Abre la Play Store en tu celular y escribe “wip” en el buscador.' },
-  { img: '2-wip-colaboradores', title: 'Instala “Wip colaboradores”', text: 'En los resultados aparece Wip colaboradores. Tócala y presiona Instalar (o Abrir, si ya la tenías).' },
+  { img: '2-wip-colaboradores', title: 'Instala “Wip colaboradores”', text: 'En los resultados aparece Wip colaboradores. Tócala y presiona Instalar.' },
   { img: '3-registrate', title: 'Abre la app y toca “Regístrate”', text: 'Cuando termine la descarga, abre la app y, debajo de Iniciar sesión, toca Regístrate.' },
   { img: '4-registro', title: 'Completa tus datos', text: 'Escribe tu correo, tu nombre y tu apellido, y sigue los pasos hasta terminar el registro.' },
   { img: '5-permisos', title: 'Permite notificaciones y ubicación', text: 'Al ingresar a la app, acepta los permisos de notificaciones y de ubicación. La app te muestra cómo dejar la ubicación activa todo el tiempo y precisa: sigue esos pasos.' },
