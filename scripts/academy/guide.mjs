@@ -19,7 +19,7 @@ export const GUIDES = {
     path: '/academy/guia-colaborador',
     img: '/img/academy/guia-colaborador-wip.jpg',
     // /img se cachea un ano: el ?v obliga a pedir de nuevo las capturas y la imagen cuando se reemplazan en la misma ruta.
-    imgV: 2, shotsV: 2,
+    imgV: 3, shotsV: 2,
     file: 'guia-wip-colaboradores.jpg',
     title: 'Guía para colaboradores: descarga la app de WIP | WIP Academy',
     description: 'Paso a paso con imágenes para que tus colaboradores descarguen la app Wip colaboradores, se registren y se conecten con tu empresa.',
