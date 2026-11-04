@@ -242,14 +242,15 @@ body{
 .grow-row{display:grid;grid-template-columns:21cqw 1fr;align-items:center;gap:1.1cqw}
 .gname{font-size:1.05cqw;font-weight:600;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gtrack{position:relative;height:1.75cqw;background:#EFF1F4;border-radius:.5cqw;overflow:hidden}
-.gtrack .glines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.3333% - 1px),#E3E6EC calc(8.3333% - 1px),#E3E6EC 8.3333%)}
-.gbar{position:absolute;top:.2cqw;bottom:.2cqw;left:calc(var(--s) * 8.3333%);width:calc(var(--n) * 8.3333%);border-radius:.4cqw;background:linear-gradient(90deg,var(--lime-deep),var(--lime));box-shadow:0 1px 2px rgba(22,29,49,.08);display:flex;align-items:center;justify-content:center}
+.gtrack .glines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100% / var(--cols,12) - 1px),#E3E6EC calc(100% / var(--cols,12) - 1px),#E3E6EC calc(100% / var(--cols,12)))}
+.gbar{position:absolute;top:.2cqw;bottom:.2cqw;left:calc(var(--s) * 100% / var(--cols,12));width:calc(var(--n) * 100% / var(--cols,12));border-radius:.4cqw;background:linear-gradient(90deg,var(--lime-deep),var(--lime));box-shadow:0 1px 2px rgba(22,29,49,.08);display:flex;align-items:center;justify-content:center}
 .gbar span{font-size:.82cqw;font-weight:700;color:var(--ink);opacity:.75}
 .gmonths{display:flex;gap:.45cqw}
 .gmonths span{flex:1;text-align:center;font-size:1.0cqw;font-weight:700;color:var(--ink);background:rgba(200,235,84,.32);border-radius:.5cqw;padding:.42cqw 0;letter-spacing:.01em}
 .gweeks{display:flex}
 .gweeks span{flex:1;text-align:center;font-size:.8cqw;color:var(--muted);font-weight:600}
 .gcap .gname{color:var(--muted);font-weight:600;font-size:.9cqw}
+.gp{display:inline-block;min-width:1.9cqw;margin-right:.45cqw;padding:.08cqw .35cqw;border-radius:.3cqw;background:rgba(200,235,84,.45);color:var(--ink);font-size:.72cqw;font-weight:700;text-align:center}
 
 /* ---------- SHOT SLIDES (capturas) ---------- */
 .shot-slide .pad{display:flex;flex-direction:column}
@@ -575,16 +576,20 @@ body{
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Cronograma · Powered by WIP</div></div>
       <span class="badge mt-s">Cronograma</span>
       <h2 class="h-sec mt-s" style="font-size:3.4cqw">Plan de trabajo</h2>
-      <div class="gantt">
-        <div class="grow-row gcap"><span class="gname"></span><div class="gmonths"><span>Mes 1 · Septiembre</span><span>Mes 2 · Octubre</span><span>Mes 3 · Noviembre</span></div></div>
-        <div class="grow-row gcap"><span class="gname">Semana</span><div class="gweeks"><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span></div></div>
-        <div class="grow-row"><span class="gname">06 · APIs Simón</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:1"><span>1 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">05 · Formularios usables</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:1;--n:1"><span>1 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">09 · Estadísticas en servicio</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:2"><span>2 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">10 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:4;--n:4"><span>4 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">14 · Km adicional en tarifados</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:8;--n:2"><span>2 sem</span></div></div></div>
+      <div class="gantt" style="--cols:20">
+        <div class="grow-row gcap"><span class="gname"></span><div class="gmonths"><span>Octubre</span><span>Noviembre</span><span>Diciembre</span><span>Enero 2027</span><span>Febrero</span></div></div>
+        <div class="grow-row gcap"><span class="gname">Semana</span><div class="gweeks"><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span></div></div>
+        <div class="grow-row"><span class="gname">10 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:4"><span>4 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>11 · Reporte detallado de costos</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:4;--n:4"><span>4 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>12 · Revisión de fallidos</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:8;--n:3"><span>3 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>13 · Bloqueo de campos y perfiles</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:11;--n:4"><span>4 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>14 · Km adicional en tarifados</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:15;--n:2"><span>2 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P2</span>02 · Integración Mawdy</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:8;--n:3"><span>3 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P3</span>03 · Integración Connect</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:11;--n:3"><span>3 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P4</span>04 · Integración Perito Ya</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:14;--n:3"><span>3 sem</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P5</span>01 · Integración Sigma</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:17;--n:3"><span>3 sem</span></div></div></div>
       </div>
-      <div class="footmark">Los desarrollos no se ejecutan en simultánea: se distribuyen por meses según su duración.</div>
+      <div class="footmark">Al terminar el módulo de gráficas siguen los desarrollos P1, uno tras otro. En paralelo, desde diciembre, las integraciones en orden de prioridad (P2 a P5).</div>
     </div>
     <div class="pagenum">18</div>
   </section>
