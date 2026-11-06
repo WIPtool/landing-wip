@@ -1,0 +1,24 @@
+<!-- ===================== ANTES DE IRTE: INFORME GRATIS ===================== -->
+<div class="xm" id="xm" role="dialog" aria-modal="true" aria-labelledby="xm-t" hidden>
+  <div class="xm__box">
+    <button class="xm__x" type="button" aria-label="Cerrar">×</button>
+    <span class="xm__tag">Gratis · Informe 2026</span>
+    <h2 id="xm-t">Antes de irte: Asistencias en Colombia 2026</h2>
+    <p>Cómo se reparte la operación entre aseguradoras, asistencias y proveedores, y cuándo se dispara la demanda, con datos de más de 185.000 servicios.</p>
+    <form class="xm__f" id="xmForm" novalidate>
+      <p class="hp-field" hidden aria-hidden="true"><label>No llenar si eres humano: <input name="bot-field" tabindex="-1"></label></p>
+      <fieldset class="perfil"><legend>Soy</legend>
+        <label><input type="radio" name="xperfil" value="Aseguradora o empresa de asistencia"{{XP_CORP}}><span>Aseguradora o empresa de asistencia</span></label>
+        <label><input type="radio" name="xperfil" value="Proveedor de asistencia"{{XP_PROV}}><span>Proveedor de asistencia</span></label>
+      </fieldset>
+      <div class="field"><label for="x-nombre">Nombre</label><input id="x-nombre" name="nombre" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="x-empresa">Empresa</label><input id="x-empresa" name="empresa" type="text" autocomplete="organization" required></div>
+      <div class="field full"><label for="x-correo">Correo de trabajo</label><input id="x-correo" name="email" type="email" autocomplete="email" required></div>
+      <div class="field full"><label for="x-cargo">Cargo (opcional)</label><input id="x-cargo" name="cargo" type="text" autocomplete="organization-title"></div>
+      <p class="xm__err" hidden>Revisa los campos. Si el problema sigue, escríbenos a comercial@wiptool.com.</p>
+      <button class="btn btn--lime" type="submit">Quiero el informe</button>
+    </form>
+    <p class="xm__note">Un correo con el informe. Sin spam. <a href="/politica-privacidad" target="_blank" rel="noopener">Política de privacidad</a></p>
+    <div class="contact-ok xm__ok" hidden><b>¡Listo! Te lo enviamos a tu correo.</b><span>Lo recibes en menos de 24 horas hábiles.</span></div>
+  </div>
+</div>

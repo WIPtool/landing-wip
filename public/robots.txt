@@ -7,4 +7,18 @@ Disallow: /api/
 # (vercel.json); si se bloquearan con Disallow, Google no podria leer el noindex y podria
 # indexar la URL "sin contenido" si se descubre por un enlace compartido.
 
+# Buscadores con IA: se nombran para dejar explícito que pueden leer y citar el sitio.
+# Cada bot usa solo su propio grupo, por eso cada uno repite el Disallow de /api/.
+User-agent: GPTBot
+Allow: /
+Disallow: /api/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
+
 Sitemap: https://www.wiptool.com/sitemap.xml

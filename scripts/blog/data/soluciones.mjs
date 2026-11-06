@@ -64,6 +64,8 @@ export const soluciones = [
 
   {
     slug: 'software-empresas-de-asistencia',
+    // La página se arma a mano (landing de Wip IA para aseguradoras); build.mjs no la genera, solo la enlaza.
+    propia: true,
     nav: 'Aseguradoras y empresas de asistencia',
     title: 'Software para aseguradoras y empresas de asistencia | WIP',
     desc: 'Software para aseguradoras y empresas de asistencia vial y hogar: asigna cada caso a tu red de proveedores, controla el SLA y avisa al asegurado por WhatsApp.',

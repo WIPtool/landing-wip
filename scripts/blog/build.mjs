@@ -574,6 +574,7 @@ const check = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" strok
 for (const s of soluciones) {
   if (s.title.length > 62) throw new Error(`titulo largo en ${s.slug}: ${s.title.length}`);
   if (s.desc.length > 160) throw new Error(`descripcion larga en ${s.slug}: ${s.desc.length}`);
+  if (s.propia) continue;
   const url = `/${s.slug}`;
   const cards = (items, cls, h = 'h3') => items.map(([t, p]) => `
           <li class="${cls}"><${h}>${esc(t)}</${h}><p>${esc(p)}</p></li>`).join('');

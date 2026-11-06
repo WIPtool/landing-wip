@@ -66,7 +66,7 @@ function cleanUrlsDev() {
           req.url = '/informeWip/Prelegal/';
         } else if (req.url === '/informeWip/AviseAsistencia') {
           req.url = '/informeWip/AviseAsistencia/';
-        } else if (/^\/(blog|ebook|contacto|software-[\w-]+)(\/[\w-]+)*(\?.*)?$/.test(req.url)) {
+        } else if (/^\/(blog|ebook|contacto|proveedores-de-asistencia|preguntas-frecuentes|software-[\w-]+)(\/[\w-]+)*(\?.*)?$/.test(req.url)) {
           const [p, q] = req.url.split('?');
           req.url = p + '/' + (q ? '?' + q : '');
         }
@@ -84,6 +84,8 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, 'index.html'),
         equipos: resolve(__dirname, 'equipos/index.html'),
+        proveedoresDeAsistencia: resolve(__dirname, 'proveedores-de-asistencia/index.html'),
+        preguntasFrecuentes: resolve(__dirname, 'preguntas-frecuentes/index.html'),
         cotizacionesAsisya01: resolve(__dirname, 'cotizaciones/asisya01/index.html'),
         cotizacionesAuxilia01: resolve(__dirname, 'cotizaciones/auxilia01/index.html'),
         cotizacionesSotrandes01: resolve(__dirname, 'cotizaciones/sotrandes01/index.html'),
