@@ -864,11 +864,11 @@ body[data-page="corp"] .nav.is-menu .nav__burger span{background:transparent}
 }
 
 /* Hero de la home: el orbe y "¿De qué lado de las asistencias estás?" van justo antes de las dos puertas */
-.hero__side{margin-top:48px;opacity:0;animation:blurIn .8s var(--ease-out) 1.75s forwards}
-.hero__side .orb{position:relative;display:block;width:46px;height:46px;margin:0 auto 18px;box-shadow:0 0 0 2px rgba(219,255,87,.9),0 0 24px rgba(219,255,87,.35),0 0 50px rgba(47,123,255,.35)}
+.hero__side{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:48px;opacity:0;animation:blurIn .8s var(--ease-out) 1.75s forwards}
+.hero__side .orb{position:relative;display:block;width:46px;height:46px;margin:0;flex:none;box-shadow:0 0 0 2px rgba(219,255,87,.9),0 0 24px rgba(219,255,87,.35),0 0 50px rgba(47,123,255,.35)}
 .hero__side .orb__eyes{gap:6px}
 .hero__side .orb__eyes i{width:5px;height:12px;border-radius:4px}
-.hero__side .h2{margin-top:0;font-weight:400;letter-spacing:-.02em;color:#fff}
+.hero__q{font-family:'Satoshi',system-ui,sans-serif;font-weight:400;font-size:clamp(18px,1.6vw,21px);color:#fff}
 .hero .hero__side + .doors{margin-top:30px;animation-delay:1.95s}
 
 /* Títulos en Roboto */
@@ -945,7 +945,7 @@ window.addEventListener('message',function(e){
     <h1><span class="w" style="--d:0">WIP,</span> <span class="w" style="--d:1">un</span> <span class="w" style="--d:2">call</span> <span class="w" style="--d:3">center</span> <span class="w" style="--d:4">inteligente</span> <span class="w" style="--d:5">que</span> <span class="w" style="--d:6">opera</span> <span class="w" style="--d:7">asistencias</span> <span class="new">contigo.</span></h1>
     <div class="hero__side">
       <div class="orb" aria-hidden="true"><div class="orb__eyes"><i></i><i></i></div></div>
-      <p class="h2">¿De qué lado estás?</p>
+      <p class="hero__q">¿De qué lado estás?</p>
     </div>
     <div class="doors">
       <a class="door door--lime" href="/software-empresas-de-asistencia"><small>Soy aseguradora o empresa de asistencia</small><b>Wip Corporativo</b></a>

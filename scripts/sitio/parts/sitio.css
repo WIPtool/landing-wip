@@ -218,9 +218,9 @@ body[data-page="corp"] .nav.is-menu .nav__burger span{background:transparent}
 }
 
 /* Hero de la home: el orbe y "¿De qué lado de las asistencias estás?" van justo antes de las dos puertas */
-.hero__side{margin-top:48px;opacity:0;animation:blurIn .8s var(--ease-out) 1.75s forwards}
-.hero__side .orb{position:relative;display:block;width:46px;height:46px;margin:0 auto 18px;box-shadow:0 0 0 2px rgba(219,255,87,.9),0 0 24px rgba(219,255,87,.35),0 0 50px rgba(47,123,255,.35)}
+.hero__side{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:48px;opacity:0;animation:blurIn .8s var(--ease-out) 1.75s forwards}
+.hero__side .orb{position:relative;display:block;width:46px;height:46px;margin:0;flex:none;box-shadow:0 0 0 2px rgba(219,255,87,.9),0 0 24px rgba(219,255,87,.35),0 0 50px rgba(47,123,255,.35)}
 .hero__side .orb__eyes{gap:6px}
 .hero__side .orb__eyes i{width:5px;height:12px;border-radius:4px}
-.hero__side .h2{margin-top:0;font-weight:400;letter-spacing:-.02em;color:#fff}
+.hero__q{font-family:'Satoshi',system-ui,sans-serif;font-weight:400;font-size:clamp(18px,1.6vw,21px);color:#fff}
 .hero .hero__side + .doors{margin-top:30px;animation-delay:1.95s}
