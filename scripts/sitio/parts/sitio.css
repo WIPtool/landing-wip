@@ -214,3 +214,9 @@ body[data-page="corp"] .nav.is-menu .nav__burger span{background:transparent}
   body[data-page="corp"] .nav__links > a:not(.nav__cta),body[data-page="corp"] .nav__dd > button{color:#4a5468}
   body[data-page="corp"] .nav__links > a:not(.nav__cta):hover,body[data-page="corp"] .nav__dd > button:hover,body[data-page="corp"] .nav__dd.is-open > button{color:var(--navy);background:#f3f5f9}
 }
+
+/* Hero de la home: el orbe y "¿De qué lado de las asistencias estás?" van justo antes de las dos puertas */
+.hero__side{margin-top:48px;opacity:0;animation:blurIn .8s var(--ease-out) 1.75s forwards}
+.hero__side .orb{position:relative;display:block;margin:0 auto 22px}
+.hero__side .h2{margin-top:0}
+.hero .hero__side + .doors{margin-top:30px;animation-delay:1.95s}

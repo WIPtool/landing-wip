@@ -861,6 +861,12 @@ body[data-page="corp"] .nav.is-menu .nav__burger span{background:transparent}
   body[data-page="corp"] .nav__links > a:not(.nav__cta):hover,body[data-page="corp"] .nav__dd > button:hover,body[data-page="corp"] .nav__dd.is-open > button{color:var(--navy);background:#f3f5f9}
 }
 
+/* Hero de la home: el orbe y "¿De qué lado de las asistencias estás?" van justo antes de las dos puertas */
+.hero__side{margin-top:48px;opacity:0;animation:blurIn .8s var(--ease-out) 1.75s forwards}
+.hero__side .orb{position:relative;display:block;margin:0 auto 22px}
+.hero__side .h2{margin-top:0}
+.hero .hero__side + .doors{margin-top:30px;animation-delay:1.95s}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -934,7 +940,10 @@ window.addEventListener('message',function(e){
   <div class="wrap">
     <h1><span class="w" style="--d:0">WIP,</span> <span class="w" style="--d:1">un</span> <span class="w" style="--d:2">call</span> <span class="w" style="--d:3">center</span> <span class="w" style="--d:4">inteligente</span> <span class="w" style="--d:5">que</span> <span class="w" style="--d:6">opera</span> <span class="w" style="--d:7">asistencias</span> <span class="new">contigo.</span></h1>
     <p class="hero__sub">No prestamos asistencias: <b>somos la tecnología que las opera.</b></p>
-    <p class="hero__ask">¿De qué lado estás?</p>
+    <div class="hero__side">
+      <div class="orb" aria-hidden="true"><div class="orb__eyes"><i></i><i></i></div></div>
+      <p class="h2">¿De qué lado de las asistencias <span class="lime">estás?</span></p>
+    </div>
     <div class="doors">
       <a class="door door--lime" href="/software-empresas-de-asistencia"><small>Soy aseguradora o empresa de asistencia</small><b>Wip Corporativo</b></a>
       <a class="door door--lime" href="/proveedores-de-asistencia"><small>Soy proveedor de asistencia</small><b>Wip Proveedores</b></a>
@@ -1048,17 +1057,6 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 <div class="faq-more rv"><a href="/preguntas-frecuentes">Ver todas las preguntas frecuentes</a></div>
-
-<section class="outro">
-  <div class="wrap rv">
-    <div class="orb" aria-hidden="true"><div class="orb__eyes"><i></i><i></i></div></div>
-    <p class="h2">¿De qué lado de las asistencias <span>estás?</span></p>
-    <div class="doors" style="margin:34px auto 0;opacity:1;animation:none;text-align:left">
-      <a class="door door--lime" href="/software-empresas-de-asistencia"><small>Soy aseguradora o empresa de asistencia</small><b>Wip Corporativo</b></a>
-      <a class="door door--lime" href="/proveedores-de-asistencia"><small>Soy proveedor de asistencia</small><b>Wip Proveedores</b></a>
-    </div>
-  </div>
-</section>
 
 </main>
 
