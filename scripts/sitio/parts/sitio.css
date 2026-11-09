@@ -153,3 +153,15 @@ html body .ops__no{font-size:clamp(48px,7vw,96px)}
 html body .pain b,html body .trio h3,html body .funnel__in h3,html body .paste h3{font-size:clamp(17px,1.6vw,20px)}
 html body .step b,html body .mode b{font-size:17px}
 html body .xm h2{font-size:clamp(22px,2.8vw,28px)}
+
+/* Hero de la home: la pregunta va en su propia línea y la puerta de aseguradoras es la principal */
+.hero__ask{margin-top:30px;font-family:var(--display);font-weight:700;font-size:clamp(17px,1.5vw,20px);letter-spacing:-.01em;color:#fff;opacity:0;animation:blurIn .7s var(--ease-out) 1.7s forwards}
+.hero .hero__ask + .doors{margin-top:16px}
+.doors{grid-template-columns:1.25fr 1fr;max-width:640px}
+.door--corp{background:var(--lime);border-color:var(--lime);color:var(--navy);box-shadow:0 14px 44px rgba(219,255,87,.28)}
+.door--corp small{color:rgba(11,16,32,.72)}
+.door--corp b{font-size:22px}
+.door--corp::after{background:var(--navy);color:var(--lime)}
+.door--corp:hover{background:#e6ff7a;border-color:#e6ff7a;box-shadow:0 18px 54px rgba(219,255,87,.4)}
+.door--corp:hover::after{background:var(--navy);color:var(--lime)}
+@media(max-width:520px){.doors{grid-template-columns:1fr}}
