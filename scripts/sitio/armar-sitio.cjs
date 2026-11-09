@@ -101,6 +101,7 @@ const CAL_URL = 'https://calendly.com/comercial-wiptool/acercamiento-wip';
 const demoBtn = (cls = 'btn btn--lime') => `<a href="${CAL_URL}" class="${cls}" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'${CAL_URL}'});return false;}">Agenda una demo</a>`;
 const MELI_URL = 'https://wa.me/573005124111?text=' + encodeURIComponent('Hola Meli, soy proveedor de asistencia y quiero conocer Wip');
 const meliBtn = (cls = 'btn btn--lime', txt = 'Escríbele a Meli por WhatsApp') => `<a href="${MELI_URL}" class="${cls}" target="_blank" rel="noopener" data-cta="meli">${txt}</a>`;
+// Barra de lanzamiento: sin uso por ahora (se quitó el aviso del piloto); se deja para la próxima oferta.
 const bar = (txt) => `<div class="topbar" id="bar">${txt}<button type="button" aria-label="Cerrar aviso">×</button></div>`;
 
 // Asignación: la quinta regla es "si no acepta, al siguiente" (no rutas).
@@ -180,22 +181,22 @@ const pages = [
   { key: 'home', out: 'index.html', path: '/', body: 'home.html',
     title: 'Wip · Plataforma para operar asistencias, con Wip IA',
     desc: 'Wip es la plataforma para operar asistencias: aseguradoras, empresas de asistencia y proveedores reciben, asignan, siguen y facturan cada servicio con IA.',
-    bar: bar('<small>Lanzamiento Wip IA</small><span>Piloto de 30 días para aseguradoras y empresas de asistencia.</span><a href="/software-empresas-de-asistencia#contacto">Aplica →</a>'),
+    bar: '',
     navCta: demoBtn('btn btn--lime nav__cta'), xp: '' },
   { key: 'corp', out: 'software-empresas-de-asistencia/index.html', path: '/software-empresas-de-asistencia', body: 'aseguradoras.html',
     title: 'Software para empresas de asistencia y aseguradoras | Wip',
     desc: 'Toda tu red de proveedores medida por ANS, calidad y costo. Wip IA recibe el caso, asigna por convenio, avisa al asegurado y alerta antes de incumplir.',
-    bar: bar('<small>Lanzamiento Wip IA</small><span>Piloto de 30 días en una ciudad y una línea de servicio.</span><a href="#contacto">Aplica →</a>'),
+    bar: '',
     navCta: demoBtn('btn btn--lime nav__cta'), xp: 'corp' },
   { key: 'prov', out: 'proveedores-de-asistencia/index.html', path: '/proveedores-de-asistencia', body: 'proveedores.html',
     title: 'Software para proveedores de asistencia | Wip',
     desc: 'Grúas, hogar, médicos y veterinarios: todas las plataformas de tus aseguradoras en un solo lugar, una sola app y la cuenta de cobro desde el reporte.',
-    bar: bar('<small>Lanzamiento Wip IA</small><span>Todas tus aseguradoras en un solo lugar. Planes desde $195.000 COP al mes.</span>' + meliBtn('', 'Habla con Meli →')),
+    bar: '',
     navCta: meliBtn('btn btn--lime nav__cta', 'Habla con Meli'), xp: 'prov' },
   { key: 'faq', out: 'preguntas-frecuentes/index.html', path: '/preguntas-frecuentes', body: 'preguntas.html',
     title: 'Preguntas frecuentes sobre software para asistencias | Wip',
     desc: 'Qué es un software para empresas de asistencia, cómo se mide el ANS de una red de proveedores y cómo Wip sirve a proveedores de varias aseguradoras.',
-    bar: bar('<small>Lanzamiento Wip IA</small><span>La plataforma para operar asistencias, con IA.</span><a href="/software-empresas-de-asistencia">Conócela →</a>'),
+    bar: '',
     navCta: demoBtn('btn btn--lime nav__cta'), xp: '' },
 ];
 

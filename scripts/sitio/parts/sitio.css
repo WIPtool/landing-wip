@@ -130,3 +130,26 @@ body.has-bar .phero--faq{padding-top:196px}
 .xm__err{grid-column:1/-1;font-size:13.5px;color:#ff8a8a}
 .xm__ok{margin-top:20px}
 @media(max-width:520px){.xm__f{grid-template-columns:1fr}}
+
+/* ===== Escala tipográfica más contenida: títulos más pequeños para una página más armónica =====
+   Va con "html body" delante para ganarle a las reglas de títulos que vienen después en la hoja. */
+html body .hero h1{font-size:clamp(32px,4.4vw,60px);line-height:1.02;letter-spacing:-.04em}
+html body .hero__sub{font-size:clamp(16px,1.4vw,18px)}
+html body .phero h1{font-size:clamp(30px,3.6vw,48px);line-height:1.05;letter-spacing:-.035em}
+html body .phero--long h1{font-size:clamp(28px,3.4vw,46px)}
+html body .h2{font-size:clamp(26px,3.2vw,40px);line-height:1.08;letter-spacing:-.03em}
+html body .split .h2,html body .chaos__a .h2,html body .faq-group .h2{font-size:clamp(24px,2.8vw,36px)}
+html body .lead{font-size:clamp(15.5px,1.3vw,17.5px)}
+html body .statement p:first-child{font-size:clamp(24px,3vw,38px)}
+html body .statement p:nth-child(2){font-size:clamp(26px,3.4vw,44px)}
+html body .statement p:nth-child(3){font-size:clamp(15.5px,1.3vw,17.5px)}
+html body .what .big{font-size:clamp(19px,2vw,25px)}
+html body .nums b,html body .calc__big{font-size:clamp(28px,3vw,40px)}
+html body .peak b,html body .proof b{font-size:clamp(34px,4vw,50px)}
+html body .wcard h3{font-size:clamp(22px,2.4vw,30px)}
+html body .band p{font-size:clamp(20px,2.4vw,28px)}
+html body .kicker{font-size:clamp(21px,2.6vw,32px)}
+html body .ops__no{font-size:clamp(48px,7vw,96px)}
+html body .pain b,html body .trio h3,html body .funnel__in h3,html body .paste h3{font-size:clamp(17px,1.6vw,20px)}
+html body .step b,html body .mode b{font-size:17px}
+html body .xm h2{font-size:clamp(22px,2.8vw,28px)}
