@@ -803,7 +803,9 @@ html body .xm h2{font-size:clamp(22px,2.8vw,28px)}
 /* Hero de la home: la pregunta va en su propia línea y las dos puertas van en lima */
 .hero__ask{margin-top:30px;font-family:var(--display);font-weight:700;font-size:clamp(17px,1.5vw,20px);letter-spacing:-.01em;color:#fff;opacity:0;animation:blurIn .7s var(--ease-out) 1.7s forwards}
 .hero .hero__ask + .doors{margin-top:16px}
-.doors{grid-template-columns:1fr 1fr;max-width:640px}
+.doors{grid-template-columns:1fr 1fr;max-width:700px}
+/* Las dos puertas tienen el mismo alto y el nombre de la solución queda abajo, en la misma línea */
+.door--lime{justify-content:flex-end}
 .door--lime{background:var(--lime);border-color:var(--lime);color:var(--navy);box-shadow:0 14px 44px rgba(219,255,87,.28)}
 .door--lime small{color:rgba(11,16,32,.72)}
 .door--lime b{font-size:22px}
@@ -860,6 +862,37 @@ body[data-page="corp"] .nav.is-menu .nav__burger span{background:transparent}
   body[data-page="corp"] .nav__links > a:not(.nav__cta),body[data-page="corp"] .nav__dd > button{color:#4a5468}
   body[data-page="corp"] .nav__links > a:not(.nav__cta):hover,body[data-page="corp"] .nav__dd > button:hover,body[data-page="corp"] .nav__dd.is-open > button{color:var(--navy);background:#f3f5f9}
 }
+
+/* Hero de la home: el orbe y "¿De qué lado de las asistencias estás?" van justo antes de las dos puertas */
+.hero__side{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:48px;opacity:0;animation:blurIn .8s var(--ease-out) 1.75s forwards}
+.hero__side .orb{position:relative;display:block;width:46px;height:46px;margin:0;flex:none;box-shadow:0 0 0 2px rgba(219,255,87,.9),0 0 24px rgba(219,255,87,.35),0 0 50px rgba(47,123,255,.35)}
+.hero__side .orb__eyes{gap:6px}
+.hero__side .orb__eyes i{width:5px;height:12px;border-radius:4px}
+.hero__q{font-family:'Satoshi',system-ui,sans-serif;font-weight:400;font-size:clamp(18px,1.6vw,21px);color:#fff}
+.hero .hero__side + .doors{margin-top:30px;animation-delay:1.95s}
+
+/* Espacio para el video de Wip IA en "¿Qué es WIP?" (16:9) */
+.vid{position:relative;max-width:980px;margin:48px auto 0;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#0f1629;border:1px solid var(--line);box-shadow:0 40px 100px rgba(0,0,0,.4),0 0 0 1px rgba(219,255,87,.06)}
+.vid video,.vid iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vid__ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:var(--muted);font-size:14px;
+  background:radial-gradient(ellipse at 50% 40%,rgba(47,123,255,.18),transparent 65%)}
+.vid__play{width:68px;height:68px;border-radius:50%;background:var(--lime);position:relative;box-shadow:0 0 40px rgba(219,255,87,.35)}
+.vid__play::after{content:"";position:absolute;left:27px;top:22px;border-style:solid;border-width:12px 0 12px 19px;border-color:transparent transparent transparent var(--navy)}
+
+/* Aseguradoras: el video va en el hero y la solución se cuenta paso a paso */
+.vid--hero{margin:0;max-width:none;width:100%}
+.pasos{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px);align-items:start}
+.pasos__head{position:sticky;top:110px}
+.pasos__head .btn{margin-top:28px}
+.pasos__list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.pasos__list li{display:flex;gap:18px;align-items:flex-start;padding:22px 24px;border-radius:var(--r);background:var(--card);border:1px solid var(--line)}
+.pasos__list b{display:block;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.015em;line-height:1.2}
+.pasos__list p{margin-top:6px;font-size:15px;color:var(--soft)}
+.pasos__n{flex:none;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:16px;background:var(--lime);color:var(--navy)}
+@media(max-width:900px){.pasos{grid-template-columns:1fr}.pasos__head{position:static}}
+body[data-page="corp"] main .pasos__list li{box-shadow:0 18px 44px rgba(11,16,32,.06)}
+body[data-page="corp"] main .vid{border-color:transparent;box-shadow:0 30px 80px rgba(11,16,32,.18)}
+body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -935,23 +968,16 @@ window.addEventListener('message',function(e){
     <div class="rv in">
       <span class="eyebrow">Wip para aseguradoras y empresas de asistencia</span>
       <h1>Toda tu red de proveedores, medida por ANS, calidad y costo, <span class="lime">en una sola herramienta.</span></h1>
-      <p class="lead">Wip IA recibe cada caso, lo asigna según las reglas de cada convenio, avisa al asegurado en vivo y te alerta antes de que un servicio incumpla.</p>
+      <p class="lead">Sabes qué servicio va a fallar antes de que pase, pagas solo lo que se cumplió y tu asegurado ve su asistencia en vivo.</p>
       <div class="phero__cta">
         <a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="btn btn--lime" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a>
         <a href="#como" class="btn btn--ghost">Cómo funciona</a>
       </div>
     </div>
-    <div class="live rv in" aria-label="Así sigue Wip IA un caso de la aseguradora">
-      <div class="live__h"><div><small>Caso #10482 · por API</small><b>Grúa liviana · ANS 45 min</b></div><span class="live__t"><span>En curso</span> · <b>00:00:00</b></span></div>
-      <ol class="live__steps">
-        <li data-t="4"><i></i>Caso recibido</li>
-        <li data-t="38"><i></i>Asignado por convenio</li>
-        <li data-t="52"><i></i>Asegurado avisado</li>
-        <li data-t="2280"><i></i>ANS cumplido</li>
-        <li data-t="2930"><i></i>Evidencias y cierre</li>
-        <li data-t="2990"><i></i>Listo para facturar</li>
-      </ol>
-      <p class="live__foot">Si un servicio va a incumplir, Wip IA te avisa antes, no después.</p>
+    <!-- Espacio para el video de Wip IA para aseguradoras (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
+         <video src="/video/wip-ia-aseguradoras.mp4" poster="/video/wip-ia-aseguradoras.jpg" muted loop playsinline autoplay preload="none"></video> -->
+    <div class="vid vid--hero rv in" id="video-aseguradoras">
+      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip IA para aseguradoras</span></div>
     </div>
   </div>
 </section>
@@ -960,139 +986,45 @@ window.addEventListener('message',function(e){
 <section class="sec" id="dolor" style="padding-top:clamp(50px,7vw,90px)">
   <div class="wrap">
     <div class="head rv">
-      <span class="eyebrow">Lo que muestran los datos</span>
+      <span class="eyebrow">Tu operación hoy</span>
       <h2 class="h2">1 de cada 6 asistencias <span class="lime">no termina en finalizada.</span></h2>
-      <p class="lead">El problema no es solo el servicio que falla. Es enterarte tarde, cuando el asegurado ya llamó a quejarse.</p>
+      <p class="lead">Y casi siempre te enteras tarde: cuando el asegurado ya llamó, cuando el proveedor ya cobró o cuando el informe del mes ya está en el comité.</p>
     </div>
-    <div class="peaks">
-      <div class="peak card rv"><b>10,8 %</b><span>de las asistencias se cancelan</span></div>
-      <div class="peak card rv" style="--rd:.08s"><b>2,1 %</b><span>terminan fallidas</span></div>
-      <div class="peak card rv" style="--rd:.16s"><b>1,9 %</b><span>las rechaza el proveedor</span></div>
+    <div class="pains">
+      <div class="pain rv"><i>Hoy</i><b>Te enteras del incumplimiento cuando ya pasó</b><p>Nadie te avisa que un servicio va tarde hasta que el asegurado se queja.</p></div>
+      <div class="pain rv" style="--rd:.08s"><i>Hoy</i><b>Tu equipo vive al teléfono</b><p>Llamando proveedores para asignar y respondiendo "¿dónde está mi grúa?".</p></div>
+      <div class="pain rv" style="--rd:.16s"><i>Hoy</i><b>Pagas lo que nadie verificó</b><p>Kilómetros que no se recorrieron, servicios cobrados dos veces y tarifas fuera del convenio.</p></div>
+      <div class="pain rv" style="--rd:.24s"><i>Hoy</i><b>El informe del mes, en Excel</b><p>Días cruzando datos para saber qué proveedor cumple y cuánto te cuesta cada servicio.</p></div>
     </div>
-    <span class="src rv">Asistencias operadas en Wip en los últimos 12 meses, datos agregados de la plataforma.</span>
-    <div class="pains pains--3">
-      <div class="pain rv"><i>Hoy</i><b>No sabes a tiempo qué servicio va a fallar</b><p>El ANS se incumple sin aviso y te enteras por el asegurado o en el informe del mes.</p></div>
-      <div class="pain rv" style="--rd:.08s"><i>Hoy</i><b>El costo de la red, sin control</b><p>Kilómetros que no cuadran, servicios cobrados dos veces y tarifas que no son las del convenio.</p></div>
-      <div class="pain rv" style="--rd:.16s"><i>Hoy</i><b>Quedar mal con el asegurado</b><p>No sabe quién va ni cuándo llega, y llama una y otra vez a tu call center.</p></div>
-    </div>
+    <span class="src rv">1 de cada 6: asistencias canceladas, fallidas o rechazadas por el proveedor en Wip durante los últimos 12 meses.</span>
   </div>
 </section>
 
-<!-- ===================== CÓMO FUNCIONA ===================== -->
+<!-- ===================== PASO A PASO ===================== -->
 <section class="sec" id="como" style="padding-top:0">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Wip IA</span>
-      <h2 class="h2">Cada caso, de la solicitud <span class="lime">a la factura.</span></h2>
+  <div class="wrap pasos">
+    <div class="pasos__head rv">
+      <span class="eyebrow">Así lo resuelve Wip IA</span>
+      <h2 class="h2">Cada caso, paso a paso, <span class="lime">sin perderlo de vista.</span></h2>
+      <p class="lead">Wip IA hace el trabajo repetitivo. Tu equipo supervisa y decide en las novedades.</p>
+      <a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="btn btn--lime" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a>
     </div>
-    <div class="steps steps--row">
-      <div class="step card rv"><span class="n">1</span><div><b>Recibe el caso</b><p>Desde la plataforma de la aseguradora, por API o por WhatsApp.</p></div></div>
-      <div class="step card rv" style="--rd:.08s"><span class="n">2</span><div><b>Asigna según el convenio</b><p>Al proveedor que corresponde por las reglas de cada convenio.</p></div></div>
-      <div class="step card rv" style="--rd:.16s"><span class="n">3</span><div><b>Avisa al asegurado en vivo</b><p>Quién va, cuándo llega y el cierre, sin que tenga que llamar.</p></div></div>
-      <div class="step card rv" style="--rd:.24s"><span class="n">4</span><div><b>Sigue el ANS</b><p>Y alerta a tu equipo antes de incumplir, cuando todavía hay tiempo de actuar.</p></div></div>
-    </div>
-    <div class="assign">
-      <div class="modes rv" role="tablist" aria-label="Reglas de asignación">
-        <button class="mode is-on" role="tab" aria-selected="true" data-m="0"><b>Por cercanía</b><span>El proveedor más cerca del asegurado</span></button>
-        <button class="mode" role="tab" aria-selected="false" data-m="1"><b>Programados</b><span>Servicios agendados a la hora exacta</span></button>
-        <button class="mode" role="tab" aria-selected="false" data-m="2"><b>Por prioridad</b><span>Lo urgente se atiende primero</span></button>
-        <button class="mode" role="tab" aria-selected="false" data-m="3"><b>Por tarifa del convenio</b><span>La tarifa pactada para cada tipo de servicio</span></button>
-        <button class="mode" role="tab" aria-selected="false" data-m="4"><b>Si no acepta, al siguiente</b><span>El caso pasa de proveedor hasta que alguien lo toma</span></button>
-      </div>
-      <div class="map rv" style="--rd:.1s" aria-hidden="true">
-        <svg viewBox="0 0 100 62" preserveAspectRatio="none">
-          <line class="ln" x1="54" y1="34" x2="41" y2="24" vector-effect="non-scaling-stroke"/>
-        </svg>
-        <svg viewBox="0 0 100 62" style="overflow:visible">
-          <circle class="as-ring" cx="54" cy="34" r="1.4"/>
-          <circle class="as" cx="54" cy="34" r="1.6"/>
-        </svg>
-        <span class="map__as" style="left:54%;top:54.8%">Asegurado</span>
-        <span class="map__lbl">2,1 km · llega en 9 min</span>
-        <span class="map__live"><i></i>En vivo</span>
-      </div>
-    </div>
+    <ol class="pasos__list">
+      <li class="rv"><span class="pasos__n">1</span><div><b>Recibe el caso donde ya llega</b><p>Desde la plataforma de la aseguradora, por API o por WhatsApp. Nadie lo vuelve a digitar.</p></div></li>
+      <li class="rv"><span class="pasos__n">2</span><div><b>Lo asigna según cada convenio</b><p>Al proveedor que corresponde por cercanía, prioridad y tarifa. Si no acepta, pasa al siguiente.</p></div></li>
+      <li class="rv"><span class="pasos__n">3</span><div><b>Avisa al asegurado en vivo</b><p>Quién va y cuándo llega, por WhatsApp. Tu call center deja de contestar "¿dónde está mi grúa?".</p></div></li>
+      <li class="rv"><span class="pasos__n">4</span><div><b>Te alerta antes de incumplir</b><p>Sigue el ANS de cada servicio y te avisa cuando todavía hay tiempo de actuar, no después.</p></div></li>
+      <li class="rv"><span class="pasos__n">5</span><div><b>Revisa cada cobro antes de pagar</b><p>Marca los kilómetros que no cuadran y los servicios cobrados dos veces. Lo que cumple queda listo para facturar con la tarifa del convenio.</p></div></li>
+      <li class="rv"><span class="pasos__n">6</span><div><b>Te da el informe en segundos</b><p>Le preguntas a Wipi qué proveedor incumplió más o cuánto cuesta cada servicio, y te responde con los datos.</p></div></li>
+    </ol>
   </div>
 </section>
 
-<!-- ===================== FUGAS ===================== -->
-<section class="sec" id="fugas" style="padding-top:0">
-  <div class="wrap">
-    <div class="split">
-      <div class="rv">
-        <span class="eyebrow">Control de costos</span>
-        <h2 class="h2">Detecta las fugas <span class="lime">antes de pagar.</span></h2>
-        <p class="lead">Wip IA revisa cada servicio y te muestra lo que no cuadra. Lo que sí cumple queda listo para facturar con la tarifa correcta.</p>
-        <ul class="ticks">
-          <li>Servicios a punto de incumplir el ANS</li>
-          <li>Kilómetros cobrados que no cuadran con el recorrido</li>
-          <li>El mismo servicio cobrado dos veces</li>
-        </ul>
-      </div>
-      <div class="audit card rv" style="--rd:.1s">
-        <div class="audit__row"><code>SRV-10490</code><span>A 12 min de incumplir el ANS</span><em class="st-hold">Alerta</em></div>
-        <div class="audit__row"><code>SRV-10484</code><span>12 km cobrados, 8 km recorridos</span><em class="st-hold">Revisar</em></div>
-        <div class="audit__row"><code>SRV-10481</code><span>Mismo servicio cobrado dos veces</span><em class="st-hold">Revisar</em></div>
-        <div class="audit__row"><code>SRV-10478</code><span>Tarifa del convenio aplicada</span><em class="st-ok">Listo para facturar</em></div>
-        <div class="audit__sum"><span>Datos de ejemplo</span><span><b>3 por revisar</b> antes de pagar</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== WIPI ===================== -->
-<section class="sec" id="wipi" style="padding-top:0">
-  <div class="wrap">
-    <div class="split">
-      <div class="rv">
-        <span class="eyebrow">Wipi, la IA de Wip</span>
-        <h2 class="h2">Pregúntale a Wipi. <span class="lime">Le ayuda a todo tu equipo.</span></h2>
-        <p class="lead">Wipi vive dentro de la plataforma. Tu equipo le pide lo que necesita, en sus palabras, y Wipi lo hace.</p>
-        <ul class="ticks">
-          <li>Crear servicios</li>
-          <li>Configurar convenios y tarifas</li>
-          <li>Sacar informes de ANS, calidad y costo</li>
-        </ul>
-      </div>
-      <div class="ask card rv" style="--rd:.1s">
-        <div class="ask__q">¿Qué proveedor de grúas incumplió más ANS en Antioquia este mes?</div>
-        <table class="ask__t">
-          <thead><tr><th>Proveedor</th><th>ANS incumplido</th><th>Servicios</th></tr></thead>
-          <tbody>
-            <tr><td>Grúas del Valle</td><td>14 %</td><td>37</td></tr>
-            <tr><td>Remolques Express</td><td>9 %</td><td>21</td></tr>
-            <tr><td>Auxilio Vial Andino</td><td>6 %</td><td>12</td></tr>
-          </tbody>
-        </table>
-        <div class="ask__q" style="margin-top:14px">Sube la tarifa de grúa liviana del convenio A a $190.000 desde el lunes.</div>
-        <span class="ex">Ejemplos con datos y proveedores ficticios.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SE CONECTA ===================== -->
+<!-- ===================== SIN CAMBIAR LO QUE FUNCIONA ===================== -->
 <section class="sec" id="integra" style="padding-top:0">
   <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Se conecta con tu operación</span>
-      <h2 class="h2">Sin reemplazar <span class="lime">lo que ya funciona.</span></h2>
-    </div>
-    <div class="trust4">
-      <div class="card rv"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span><b>Plataforma, API o WhatsApp</b><p>Los casos llegan por donde ya llegan hoy.</p></div>
-      <div class="card rv" style="--rd:.08s"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span><b>Cada convenio con sus reglas</b><p>Tarifas, ANS y proveedores por aseguradora, producto o convenio.</p></div>
-      <div class="card rv" style="--rd:.16s"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 7.7-7 9-4-1.3-7-4.6-7-9V6l7-3z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Trazabilidad</b><p>Quién hizo qué y cuándo en cada servicio, con fotos, horas y firma.</p></div>
-      <div class="card rv" style="--rd:.24s"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19V5"/><path d="M4 19h16"/><path d="m8 15 3-4 3 2 4-6"/></svg></span><b>Todas las verticales</b><p>Vial, hogar, médica, jurídica, veterinaria y la que venga.</p></div>
-    </div>
-    <div class="nums">
-      <div class="rv"><b>193.885</b><span>servicios gestionados en los últimos 12 meses</span></div>
-      <div class="rv" style="--rd:.08s"><b>354</b><span>tipos de asistencia configurados</span></div>
-      <div class="rv" style="--rd:.16s"><b>13</b><span>verticales</span></div>
-      <div class="rv" style="--rd:.24s"><b>5</b><span>países: Colombia, Honduras, Guatemala, República Dominicana y México</span></div>
-    </div>
-    <span class="src rv">Datos agregados de la plataforma Wip.</span>
-    <div class="band rv">
-      <p>Mira tu red de proveedores medida en Wip.<small>Te mostramos Wip IA con un caso como el tuyo, en una demo.</small></p>
+    <div class="band band--plain rv">
+      <p>Se conecta con tu operación, sin reemplazar lo que ya funciona.<small>Recibe casos de la plataforma de la aseguradora, por API o WhatsApp. Cada convenio mantiene sus reglas, tarifas y ANS, y cada servicio queda con su trazabilidad: quién hizo qué, cuándo, con fotos y firma.</small></p>
       <div class="band__ctas"><a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="btn btn--lime" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a></div>
     </div>
   </div>
@@ -1142,9 +1074,7 @@ window.addEventListener('message',function(e){
   <div class="wrap">
     <div class="head rv"><h2 class="h2">Preguntas <span class="lime">frecuentes</span></h2></div>
     <div class="faq rv">
-      <details name="faq" open><summary>¿Qué es un software para empresas de asistencia?</summary><p>Es la herramienta con la que una aseguradora o empresa de asistencia recibe los casos de sus asegurados, los asigna a su red de proveedores, sigue el ANS de cada servicio y controla lo que paga. Wip es un software para empresas de asistencia con IA.</p></details>
-      <details name="faq"><summary>¿En qué se diferencia de un software de servicios en campo?</summary><p>Un software de servicios en campo organiza a los técnicos de una sola empresa. Uno para asistencias maneja tres actores, la aseguradora, la empresa de asistencia y la red de proveedores, cada uno con sus convenios, tarifas y ANS. Wip está hecho para ese modelo.</p></details>
-      <details name="faq"><summary>¿Cómo se mide el ANS de una red de proveedores?</summary><p>Se compara, servicio por servicio, el tiempo real de cada etapa (asignación, llegada y cierre) contra el tiempo pactado en el convenio. Wip lo mide solo, lo muestra por proveedor, ciudad y tipo de servicio, y alerta antes de que un servicio incumpla.</p></details>
+      <details name="faq" open><summary>¿Cómo se mide el ANS de una red de proveedores?</summary><p>Se compara, servicio por servicio, el tiempo real de cada etapa (asignación, llegada y cierre) contra el tiempo pactado en el convenio. Wip lo mide solo, lo muestra por proveedor, ciudad y tipo de servicio, y alerta antes de que un servicio incumpla.</p></details>
       <details name="faq"><summary>¿Cómo detecta Wip las fugas de costo?</summary><p>Revisa cada servicio antes de pagarlo y marca los que están a punto de incumplir, los kilómetros cobrados que no cuadran con el recorrido y el mismo servicio cobrado dos veces. Lo que cumple queda listo para facturar con la tarifa del convenio.</p></details>
       <details name="faq"><summary>¿Wip reemplaza los sistemas que ya tenemos?</summary><p>No. Wip recibe los casos desde la plataforma de la aseguradora, por API o por WhatsApp, y se conecta con la operación que ya existe, sin reemplazar lo que funciona.</p></details>
       <details name="faq"><summary>¿Cuánto tarda la implementación?</summary><p>Depende de cuántos convenios, proveedores e integraciones tenga la operación. En la demo se arma el cronograma: configuración, capacitación del equipo y de la red, e inicio de operación con acompañamiento del equipo Wip.</p></details>
@@ -1266,22 +1196,6 @@ window.addEventListener('message',function(e){
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "¿Qué es un software para empresas de asistencia?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Es la herramienta con la que una aseguradora o empresa de asistencia recibe los casos de sus asegurados, los asigna a su red de proveedores, sigue el ANS de cada servicio y controla lo que paga. Wip es un software para empresas de asistencia con IA."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿En qué se diferencia de un software de servicios en campo?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Un software de servicios en campo organiza a los técnicos de una sola empresa. Uno para asistencias maneja tres actores, la aseguradora, la empresa de asistencia y la red de proveedores, cada uno con sus convenios, tarifas y ANS. Wip está hecho para ese modelo."
-      }
-    },
     {
       "@type": "Question",
       "name": "¿Cómo se mide el ANS de una red de proveedores?",

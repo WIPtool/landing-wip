@@ -151,7 +151,7 @@ const Q = {
 };
 const FAQ = {
   home: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos],
-  corp: [Q.software, Q.campo, Q.ans, Q.fugas, Q.reemplaza, Q.implementa, Q.costoCorp],
+  corp: [Q.ans, Q.fugas, Q.reemplaza, Q.implementa, Q.costoCorp],
   prov: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.cobro, Q.costoProv],
 };
 const GROUPS = [
