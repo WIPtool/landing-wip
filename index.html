@@ -1027,7 +1027,7 @@ window.addEventListener('message',function(e){
       </div>
       <div class="stats__row">
         <div><span class="stats__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg></span><b data-count="354">354</b><span>tipos de asistencia configurados</span></div>
-        <div><span class="stats__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><b data-count="13">13</b><span>verticales: vial, hogar, médica, jurídica, veterinaria y más</span></div>
+        <div><span class="stats__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5z"/><path d="m3 13 9 5 9-5"/></svg></span><b data-count="13" data-pre="+">+13</b><span>verticales: vial, hogar, médica, jurídica, veterinaria y más</span></div>
         <div><span class="stats__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18z"/></svg></span><b>LATAM</b><span>disponible en toda la región</span></div>
       </div>
     </div>
@@ -1386,11 +1386,11 @@ window.addEventListener('message',function(e){
   var stats=document.querySelector(".stats");
   if(stats&&!reduce){
     var nums=[].slice.call(stats.querySelectorAll("[data-count]"));
-    nums.forEach(function(n){n.textContent="0";});
+    nums.forEach(function(n){n.textContent=(n.getAttribute("data-pre")||"")+"0";});
     whenVisible(stats,function(){
       nums.forEach(function(n){
         var fin=+n.getAttribute("data-count"), t0=performance.now();
-        var paso=function(t){var p=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-p,3);n.textContent=Math.round(fin*e);if(p<1)requestAnimationFrame(paso);};
+        var paso=function(t){var p=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-p,3);n.textContent=(n.getAttribute("data-pre")||"")+Math.round(fin*e);if(p<1)requestAnimationFrame(paso);};
         requestAnimationFrame(paso);
       });
     },{threshold:.4});
