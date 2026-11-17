@@ -940,6 +940,19 @@ body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 @media(max-width:900px){.worlds{grid-template-columns:1fr}.wcard--corp ul{grid-template-columns:1fr}.wcard--prov{margin:0}}
 @media(prefers-reduced-motion:reduce){.wcard--corp::after{animation:none}}
 
+/* Los dos mundos del mismo tamaño; Wip Corporativo destaca por el fondo azul intenso,
+   Wip Proveedores pasa a un fondo oscuro discreto */
+.worlds{grid-template-columns:1fr 1fr}
+.wcard--prov{margin:0}
+.wcard--corp{background:radial-gradient(ellipse at 85% 0%,rgba(219,255,87,.22),transparent 55%),linear-gradient(150deg,#2f7bff 0%,#1d4fd1 40%,#132d84 100%);
+  border-color:rgba(219,255,87,.45);box-shadow:0 40px 110px rgba(47,123,255,.45),0 0 0 1px rgba(255,255,255,.08) inset}
+.wcard--corp::before{display:none}
+.wcard--corp p{color:rgba(255,255,255,.86)}
+.wcard--corp .wcard__tier{color:#fff;border-color:rgba(255,255,255,.45)}
+.wcard--prov{background:rgba(22,29,49,.7);color:#fff;border:1px solid var(--line)}
+.wcard--prov p{color:var(--soft)}
+.wcard--prov .btn--navy{background:#fff;color:var(--navy)}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
