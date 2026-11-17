@@ -910,6 +910,19 @@ body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 @media(max-width:900px){.stats{grid-template-columns:1fr}.stats__main{border-right:0;border-bottom:1px solid var(--line)}}
 @media(max-width:600px){.stats__row{grid-template-columns:1fr}.stats__row > div{border-left:0;border-top:1px solid var(--line)}.stats__row > div:first-child{border-top:0}}
 
+/* "¿Qué es WIP?" sin negrilla: la idea principal en blanco y el resto en gris, todo en peso normal */
+.what .big{font-weight:400;letter-spacing:-.01em}
+
+/* Cifras de apoyo: centradas, con ícono, conteo al aparecer y un brillo al pasar el mouse */
+.stats__row > div{align-items:center;text-align:center;justify-content:center;position:relative;transition:background .3s ease}
+.stats__row > div::after{content:"";position:absolute;left:30%;right:30%;bottom:0;height:2px;border-radius:2px;background:var(--lime);opacity:0;transform:scaleX(.4);transition:opacity .3s ease,transform .4s var(--ease-out)}
+.stats__row > div:hover{background:rgba(255,255,255,.03)}
+.stats__row > div:hover::after{opacity:1;transform:none}
+.stats__ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px;color:var(--lime);background:rgba(219,255,87,.1);border:1px solid rgba(219,255,87,.28);box-shadow:0 0 24px rgba(219,255,87,.12)}
+.stats__row b{background:linear-gradient(180deg,#fff 40%,#c9d4ea);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stats__row span{max-width:200px}
+.stats__flags{justify-content:center}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1404,6 +1417,20 @@ window.addEventListener('message',function(e){
         })
         .catch(function(){btn.disabled=false;btn.textContent='Quiero el informe';xerr.hidden=false;});
     });
+  }
+
+  /* Cifras de la home: cuentan desde cero cuando aparecen */
+  var stats=document.querySelector(".stats");
+  if(stats&&!reduce){
+    var nums=[].slice.call(stats.querySelectorAll("[data-count]"));
+    nums.forEach(function(n){n.textContent="0";});
+    whenVisible(stats,function(){
+      nums.forEach(function(n){
+        var fin=+n.getAttribute("data-count"), t0=performance.now();
+        var paso=function(t){var p=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-p,3);n.textContent=Math.round(fin*e);if(p<1)requestAnimationFrame(paso);};
+        requestAnimationFrame(paso);
+      });
+    },{threshold:.4});
   }
 
   /* La cuenta del call center inteligente */

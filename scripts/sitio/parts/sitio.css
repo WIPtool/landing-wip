@@ -266,3 +266,13 @@ body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 
 /* "¿Qué es WIP?" sin negrilla: la idea principal en blanco y el resto en gris, todo en peso normal */
 .what .big{font-weight:400;letter-spacing:-.01em}
+
+/* Cifras de apoyo: centradas, con ícono, conteo al aparecer y un brillo al pasar el mouse */
+.stats__row > div{align-items:center;text-align:center;justify-content:center;position:relative;transition:background .3s ease}
+.stats__row > div::after{content:"";position:absolute;left:30%;right:30%;bottom:0;height:2px;border-radius:2px;background:var(--lime);opacity:0;transform:scaleX(.4);transition:opacity .3s ease,transform .4s var(--ease-out)}
+.stats__row > div:hover{background:rgba(255,255,255,.03)}
+.stats__row > div:hover::after{opacity:1;transform:none}
+.stats__ic{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;margin-bottom:16px;color:var(--lime);background:rgba(219,255,87,.1);border:1px solid rgba(219,255,87,.28);box-shadow:0 0 24px rgba(219,255,87,.12)}
+.stats__row b{background:linear-gradient(180deg,#fff 40%,#c9d4ea);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.stats__row span{max-width:200px}
+.stats__flags{justify-content:center}

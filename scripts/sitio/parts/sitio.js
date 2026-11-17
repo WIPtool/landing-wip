@@ -97,3 +97,17 @@
     });
   }
 
+  /* Cifras de la home: cuentan desde cero cuando aparecen */
+  var stats=document.querySelector(".stats");
+  if(stats&&!reduce){
+    var nums=[].slice.call(stats.querySelectorAll("[data-count]"));
+    nums.forEach(function(n){n.textContent="0";});
+    whenVisible(stats,function(){
+      nums.forEach(function(n){
+        var fin=+n.getAttribute("data-count"), t0=performance.now();
+        var paso=function(t){var p=Math.min(1,(t-t0)/1200),e=1-Math.pow(1-p,3);n.textContent=Math.round(fin*e);if(p<1)requestAnimationFrame(paso);};
+        requestAnimationFrame(paso);
+      });
+    },{threshold:.4});
+  }
+
