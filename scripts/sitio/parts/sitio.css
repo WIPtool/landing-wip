@@ -276,3 +276,5 @@ body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 .stats__row b{background:linear-gradient(180deg,#fff 40%,#c9d4ea);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
 .stats__row span{max-width:200px}
 .stats__flags{justify-content:center}
+/* Íconos, números y textos arrancan a la misma altura en las tres columnas */
+.stats__row > div{justify-content:flex-start;padding-top:clamp(32px,3.6vw,48px)}
