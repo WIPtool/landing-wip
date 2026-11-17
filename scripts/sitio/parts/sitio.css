@@ -263,3 +263,6 @@ body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 .stats__flags li{font-size:12px;font-weight:700;padding:4px 9px;border-radius:var(--pill);background:rgba(255,255,255,.07);border:1px solid var(--line);color:var(--soft)}
 @media(max-width:900px){.stats{grid-template-columns:1fr}.stats__main{border-right:0;border-bottom:1px solid var(--line)}}
 @media(max-width:600px){.stats__row{grid-template-columns:1fr}.stats__row > div{border-left:0;border-top:1px solid var(--line)}.stats__row > div:first-child{border-top:0}}
+
+/* "¿Qué es WIP?" sin negrilla: la idea principal en blanco y el resto en gris, todo en peso normal */
+.what .big{font-weight:400;letter-spacing:-.01em}
