@@ -278,3 +278,18 @@ body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 .stats__flags{justify-content:center}
 /* Íconos, números y textos arrancan a la misma altura en las tres columnas */
 .stats__row > div{justify-content:flex-start;padding-top:clamp(32px,3.6vw,48px)}
+
+/* Los dos mundos: Wip Corporativo es la tarjeta principal, más ancha y con acabado premium */
+.worlds{grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);align-items:stretch}
+.wcard--corp{background:linear-gradient(155deg,#16255a 0%,#0e1733 45%,#0b1020 100%);border:1px solid rgba(219,255,87,.32);
+  box-shadow:0 40px 100px rgba(47,123,255,.22),0 0 0 1px rgba(219,255,87,.08) inset,0 0 60px rgba(219,255,87,.08)}
+.wcard--corp::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(115deg,transparent 30%,rgba(219,255,87,.07) 45%,transparent 60%);background-size:250% 100%;animation:shine 6s ease-in-out infinite}
+@keyframes shine{0%,60%{background-position:120% 0}100%{background-position:-120% 0}}
+.wcard__top{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.wcard__tier{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);padding:6px 12px;border-radius:var(--pill);border:1px solid rgba(219,255,87,.35)}
+.wcard--corp h3{font-size:clamp(26px,2.8vw,36px)}
+.wcard--corp ul{display:grid;grid-template-columns:1fr 1fr;gap:12px 22px}
+.wcard--prov{margin:22px 0}
+@media(max-width:900px){.worlds{grid-template-columns:1fr}.wcard--corp ul{grid-template-columns:1fr}.wcard--prov{margin:0}}
+@media(prefers-reduced-motion:reduce){.wcard--corp::after{animation:none}}
