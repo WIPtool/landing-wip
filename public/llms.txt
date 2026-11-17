@@ -5,6 +5,7 @@
 Wip no presta asistencias: es la tecnología con la que se operan. Empresa: Aplicando S.A.S. Opera en Colombia, Honduras, Guatemala, República Dominicana y México.
 
 Datos agregados de la plataforma:
+- Más de 4 millones de asistencias gestionadas con Wip en Latinoamérica.
 - 193.885 servicios gestionados en los últimos 12 meses.
 - 354 tipos de asistencia configurados en 13 verticales.
 - Mezcla de asistencias del último año: vial 50 %, jurídica 18 %, hogar 16 %, médica 11 %, veterinaria 6 %.
