@@ -953,6 +953,17 @@ body[data-page="corp"] main .vid{--muted:#8a93a8;--line:rgba(255,255,255,.12)}
 .wcard--prov p{color:var(--soft)}
 .wcard--prov .btn--navy{background:#fff;color:var(--navy)}
 
+/* Wip Corporativo en el lima de Wip: texto azul oscuro y acentos invertidos */
+.wcard--corp{background:radial-gradient(ellipse at 85% 0%,rgba(255,255,255,.45),transparent 55%),linear-gradient(150deg,#e6ff7a 0%,var(--lime) 45%,#c8ee3f 100%);
+  color:var(--navy);border-color:var(--lime);box-shadow:0 40px 110px rgba(219,255,87,.28),0 0 0 1px rgba(255,255,255,.35) inset}
+.wcard--corp::after{background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 45%,transparent 60%);background-size:250% 100%}
+.wcard--corp p{color:rgba(11,16,32,.78)}
+.wcard--corp .wcard__badge{background:var(--navy);color:var(--lime)}
+.wcard--corp .wcard__tier{color:var(--navy);border-color:rgba(11,16,32,.35)}
+.wcard--corp li::before{background:var(--navy);color:var(--lime)}
+.wcard--corp .btn--lime{background:var(--navy);color:var(--lime)}
+.wcard--corp:hover{box-shadow:0 46px 120px rgba(219,255,87,.36),0 0 0 1px rgba(255,255,255,.35) inset}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
