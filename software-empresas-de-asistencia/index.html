@@ -1636,6 +1636,8 @@ body[data-page="corp"]{font-weight:400}
 }
 .sx-nums__row .sx-num b,.sx-nums__row .sx-num b span{font-weight:400}
 .sx-nums__row .sx-num b span{display:inline;margin:0;padding:0;border:0;font-size:inherit;letter-spacing:inherit;text-transform:none}
+.sx-nums__row > .sx-num{padding-top:clamp(20px,2vw,28px)}
+.sx-num__i{margin-bottom:clamp(12px,1.4vw,18px)}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -1719,7 +1721,6 @@ window.addEventListener('message',function(e){
 <!-- ===================== CIFRAS (estilo SpaceX) ===================== -->
 <section class="sx-nums" id="cifras">
   <div class="wrap">
-    <span class="sx-k sx-nums__k">Wip en cifras</span>
     <div class="sx-nums__row">
       <div class="sx-num rv"><span class="sx-num__i">01</span><b><i class="sx-plus">+</i><span data-sx-count="4">4</span><small> millones</small></b><span class="sx-num__l">Servicios gestionados</span></div>
       <div class="sx-num rv" style="--rd:.08s"><span class="sx-num__i">02</span><b><i class="sx-plus">+</i><span data-sx-count="354">354</span></b><span class="sx-num__l">Tipos de asistencia</span></div>
