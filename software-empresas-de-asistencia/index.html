@@ -1584,6 +1584,12 @@ body[data-page="corp"] main #faq{background:#f5f5f7;padding-top:clamp(70px,9vw,1
   .sx-nums__row b{font-size:clamp(34px,10vw,48px)}
 }
 .sx-nums__row b small{font-size:.5em;font-weight:700;letter-spacing:0}
+/* Hero sin video de fondo y video en su propia sección, después de las cifras */
+.sx-hero{min-height:82vh;min-height:82svh}
+.sx-video{background:#000;padding:0 0 clamp(70px,9vw,110px)}
+.sx-video__vid{max-width:none;margin:0;border-radius:28px;border-color:rgba(255,255,255,.1)}
+body[data-page="corp"] main .sx-video__vid{--muted:#86868b}
+.sx-video__vid video{width:100%;height:100%;object-fit:cover}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -1654,11 +1660,7 @@ window.addEventListener('message',function(e){
 <main>
 <!-- ===================== HERO (pantalla completa, mezcla de SpaceX y Apple) ===================== -->
 <section class="sx-hero" id="inicio">
-  <!-- Espacio para el video del hero (pantalla completa). Cuando esté listo, reemplazar el contenido de .sx-hero__media por:
-       <video src="/video/wip-corporativo-hero.mp4" poster="/video/wip-corporativo-hero.jpg" muted loop playsinline autoplay preload="metadata"></video> -->
-  <div class="sx-hero__media" id="video-hero-corporativo">
-    <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
-  </div>
+  <div class="sx-hero__media" aria-hidden="true"></div>
   <div class="wrap sx-hero__copy rv in">
     <h1 class="sx-h1">Wip Corporativo</h1>
     <p class="sx-hero__sub">Opera tus asistencias y tu red de proveedores <span class="ap-lime">en tiempo real.</span></p>
@@ -1676,6 +1678,17 @@ window.addEventListener('message',function(e){
       <div class="rv" style="--rd:.08s"><b data-sx-count="354" data-pre="+">+354</b><span>Tipos de asistencia</span></div>
       <div class="rv" style="--rd:.16s"><b data-sx-count="13" data-pre="+">+13</b><span>Verticales en LATAM</span></div>
       <div class="rv" style="--rd:.24s"><b>24/7</b><span>Soporte a tu operación</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== VIDEO ===================== -->
+<section class="sx-video" id="video">
+  <div class="wrap">
+    <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
+         <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
+    <div class="vid sx-video__vid rv" id="video-hero-corporativo">
+      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
     </div>
   </div>
 </section>
