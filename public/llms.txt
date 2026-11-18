@@ -8,7 +8,6 @@ Datos agregados de la plataforma:
 - Más de 4 millones de asistencias gestionadas con Wip en Latinoamérica.
 - 193.885 servicios gestionados en los últimos 12 meses.
 - 354 tipos de asistencia configurados en 13 verticales.
-- Mezcla de asistencias del último año: vial 50 %, jurídica 18 %, hogar 16 %, médica 11 %, veterinaria 6 %.
 - 1 de cada 6 asistencias no termina en finalizada: 10,8 % canceladas, 2,1 % fallidas, 1,9 % rechazadas por el proveedor.
 - Las asistencias crecieron 60 % en dos años; la veterinaria se multiplicó por cinco.
 
