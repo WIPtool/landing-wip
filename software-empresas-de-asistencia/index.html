@@ -1515,6 +1515,76 @@ body[data-page="corp"] main #faq{background:#f5f5f7;padding-top:clamp(70px,9vw,1
 .ap-nums__row b{white-space:nowrap;font-size:clamp(40px,4.6vw,66px)}
 .ap-vert b{margin-top:52px;padding-top:0}
 
+/* ============ Mezcla con SpaceX: pantalla completa, mayúsculas y botones rectangulares ============ */
+.sx-k{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.sx-dot{width:8px;height:8px;border-radius:50%;background:#ff4d4d;box-shadow:0 0 0 0 rgba(255,77,77,.6);animation:sxPulse 1.6s ease-out infinite}
+@keyframes sxPulse{to{box-shadow:0 0 0 10px rgba(255,77,77,0)}}
+.sx-h1,.sx-h2{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+.sx-h1{font-size:clamp(42px,6.4vw,84px)}
+.sx-h2{font-size:clamp(32px,4.4vw,56px);margin-top:14px}
+.sx-btn{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 26px;border:2px solid currentColor;border-radius:0;background:transparent;color:#f0f0fa;font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;position:relative;overflow:hidden;isolation:isolate;transition:color .3s}
+.sx-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:#f0f0fa;transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out)}
+.sx-btn:hover{color:#000}
+.sx-btn:hover::before{transform:scaleY(1)}
+.sx-btn__ar{width:0;height:0;border-style:solid;border-width:6px 0 6px 9px;border-color:transparent transparent transparent currentColor}
+
+/* Hero a pantalla completa */
+.sx-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;background:#000;color:#f0f0fa;overflow:hidden}
+.sx-hero__media{position:absolute;inset:0;background:radial-gradient(ellipse at 75% 35%,rgba(47,123,255,.35),transparent 55%),radial-gradient(ellipse at 20% 90%,rgba(219,255,87,.16),transparent 50%),#05070d}
+.sx-hero__media video{width:100%;height:100%;object-fit:cover}
+.sx-hero__media .vid__ph{position:absolute;inset:0;padding-bottom:30vh;color:#86868b}
+.sx-hero::after{content:"";position:absolute;inset:auto 0 0;height:65%;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);pointer-events:none}
+.sx-hero__copy{position:relative;z-index:1;width:100%;padding-bottom:clamp(60px,10vh,110px)}
+.sx-hero__sub{margin-top:18px;max-width:640px;font-family:var(--display);font-weight:700;font-size:clamp(20px,2.1vw,27px);line-height:1.2}
+.sx-hero__p{margin-top:12px;max-width:600px;font-size:17px;line-height:1.5;color:#c7c7cf}
+.sx-hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.sx-hero__cta .btn{min-height:52px;border-radius:0;padding:0 26px;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+.sx-hero__down{position:absolute;z-index:1;left:50%;bottom:22px;width:22px;height:22px;margin-left:-11px;border-right:2px solid #f0f0fa;border-bottom:2px solid #f0f0fa;transform:rotate(45deg);opacity:.7;animation:sxDown 1.8s ease-in-out infinite}
+@keyframes sxDown{50%{transform:translateY(8px) rotate(45deg)}}
+
+/* Franja en vivo (como la lista de próximos lanzamientos) */
+.sx-live{background:#000;color:#f0f0fa;padding:28px 0 clamp(50px,7vw,80px);border-top:1px solid rgba(255,255,255,.12)}
+.sx-live__h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px}
+.sx-live__note{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#86868b}
+.sx-live__list{list-style:none;margin:0;padding:0}
+.sx-live__list li{display:grid;grid-template-columns:200px minmax(0,1fr) auto;align-items:center;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.12)}
+.sx-live__t{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#86868b}
+.sx-live__list b{font-family:var(--display);font-size:clamp(17px,1.7vw,22px);text-transform:uppercase;letter-spacing:.02em}
+.sx-live__list em{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c7c7cf}
+.sx-live__list em.go{color:var(--lime)}
+.sx-live__list em.on{color:#6aa6ff}
+
+/* Paneles de novedades a pantalla completa */
+.sx-panel{min-height:92vh;display:flex;align-items:center;background:#000;color:#f0f0fa;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.08);overflow:hidden}
+.sx-panel__in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px);align-items:center;width:100%}
+.sx-panel--flip .sx-panel__copy{order:2}
+.sx-panel__copy p{margin:18px 0 30px;max-width:460px;font-size:17px;line-height:1.55;color:#c7c7cf}
+.sx-panel__vis{position:relative;min-height:clamp(320px,42vw,520px);display:grid;place-items:center;align-content:center;gap:22px;border-radius:28px;background:radial-gradient(ellipse at 50% 100%,rgba(219,255,87,.2),transparent 60%),radial-gradient(ellipse at 80% 10%,rgba(47,123,255,.32),transparent 60%),#0b1020;border:1px solid rgba(255,255,255,.08)}
+
+/* Cifras estilo SpaceX */
+.sx-nums{background:#000;color:#f0f0fa;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.08)}
+.sx-nums__row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+.sx-nums__row b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(40px,4.8vw,68px);line-height:1;white-space:nowrap;letter-spacing:-.01em}
+.sx-nums__row span{display:block;margin-top:12px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#86868b}
+.sx-nums__row > div{padding-top:20px;border-top:2px solid var(--lime)}
+.sx-nums__row b span{display:inline;margin:0;font-size:inherit;letter-spacing:inherit;color:inherit;text-transform:none}
+
+/* Titulares de sección con el toque de SpaceX en las zonas oscuras */
+.ap--ink .ap-cat__k,.ap--black .ap-cat__k{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+
+@media(max-width:900px){
+  .sx-panel{min-height:0}
+  .sx-panel__in{grid-template-columns:1fr}
+  .sx-panel--flip .sx-panel__copy{order:0}
+  .sx-nums__row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sx-live__list li{grid-template-columns:1fr;gap:4px}
+}
+@media(max-width:700px){
+  .sx-hero__cta .btn,.sx-hero__cta .sx-btn{width:100%;justify-content:center}
+  .sx-nums__row b{font-size:clamp(34px,10vw,48px)}
+}
+.sx-nums__row b small{font-size:.5em;font-weight:700;letter-spacing:0}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1582,22 +1652,31 @@ window.addEventListener('message',function(e){
 </header>
 
 <main>
-<!-- ===================== HERO (estructura inspirada en Apple Business) ===================== -->
-<section class="ap ap--black ap-hero" id="inicio">
+<!-- ===================== HERO (pantalla completa, mezcla de SpaceX y Apple) ===================== -->
+<section class="sx-hero" id="inicio">
+  <!-- Espacio para el video del hero (pantalla completa). Cuando esté listo, reemplazar el contenido de .sx-hero__media por:
+       <video src="/video/wip-corporativo-hero.mp4" poster="/video/wip-corporativo-hero.jpg" muted loop playsinline autoplay preload="metadata"></video> -->
+  <div class="sx-hero__media" id="video-hero-corporativo">
+    <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
+  </div>
+  <div class="wrap sx-hero__copy rv in">
+    <h1 class="sx-h1">Wip Corporativo</h1>
+    <p class="sx-hero__sub">Opera tus asistencias y tu red de proveedores <span class="ap-lime">en tiempo real.</span></p>
+    <p class="sx-hero__p">En nuestra línea corporativa trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
+    <div class="sx-hero__cta"><a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="btn btn--lime" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a><a href="#plataforma" class="sx-btn">Conoce la plataforma<i class="sx-btn__ar" aria-hidden="true"></i></a></div>
+  </div>
+  <a href="#en-vivo" class="sx-hero__down" aria-label="Bajar a la siguiente sección"></a>
+</section>
+
+<!-- ===================== EN VIVO (como la lista de lanzamientos de SpaceX) ===================== -->
+<section class="sx-live" id="en-vivo">
   <div class="wrap">
-    <!-- Espacio para el video del hero (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
-         <video src="/video/wip-corporativo-hero.mp4" poster="/video/wip-corporativo-hero.jpg" muted loop playsinline autoplay preload="metadata"></video> -->
-    <div class="vid ap-hero__vid rv in" id="video-hero-corporativo">
-      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
-    </div>
-    <div class="ap-hero__copy rv in">
-      <h1 class="ap-hero__t">Wip Corporativo</h1>
-      <div>
-        <p class="ap-hero__h">Opera tus asistencias y tu red de proveedores <span class="ap-lime">en tiempo real.</span></p>
-        <p class="ap-hero__p">En nuestra línea corporativa trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
-        <div class="ap-hero__cta"><a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="btn btn--lime" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a><a href="#plataforma" class="ap-link">Conoce la plataforma</a></div>
-      </div>
-    </div>
+    <div class="sx-live__h"><span class="sx-k"><i class="sx-dot"></i>En vivo en Wip</span><span class="sx-live__note">Servicios de ejemplo</span></div>
+    <ul class="sx-live__list" aria-label="Servicios de ejemplo en curso">
+      <li><span class="sx-live__t">10:42 a. m. · Bogotá</span><b>Grúa liviana #10482</b><em class="go">En camino · llega en 9 min</em></li>
+      <li><span class="sx-live__t">10:44 a. m. · Medellín</span><b>Cerrajería hogar #10487</b><em class="on">Proveedor asignado</em></li>
+      <li><span class="sx-live__t">10:45 a. m. · Cali</span><b>Médico a domicilio #10491</b><em>En servicio</em></li>
+    </ul>
   </div>
 </section>
 
@@ -1637,43 +1716,56 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<!-- ===================== NOVEDADES ===================== -->
-<section class="ap ap--black" id="novedades">
-  <div class="wrap">
-    <h2 class="ap-h2 rv">Novedades.</h2>
-  </div>
-  <div class="ap-rail" data-rail>
-    <ul class="ap-rail__track">
-      <li class="ap-tile rv">
-        <div class="ap-tile__vis ap-tile__vis--wipi" aria-hidden="true">
+<!-- ===================== NOVEDADES (paneles a pantalla completa) ===================== -->
+<section class="sx-panel" id="novedades">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
+      <span class="sx-k">Novedad</span>
+      <h2 class="sx-h2">Wipi, la IA de Wip</h2>
+      <p>Tu IA dentro de la plataforma. Crea servicios, configura convenios y tarifas y te entrega informes, con solo pedírselo.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis ap-tile__vis--wipi rv" style="--rd:.1s" aria-hidden="true">
           <div class="orb ap-tile__orb"><div class="orb__eyes"><i></i><i></i></div></div>
           <div class="ap-tile__chips"><span>Crear servicio</span><span>Asignar proveedor</span><span>Configurar convenio</span><span>Sacar informe</span></div>
-        </div>
-        <p class="ap-tile__p"><b>Wipi.</b> La IA de Wip, dentro de tu plataforma. Crea servicios, configura convenios y tarifas y te entrega informes, con solo pedírselo.</p>
-      </li>
-      <li class="ap-tile rv" style="--rd:.06s">
-        <div class="ap-tile__vis" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="sx-panel sx-panel--flip">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
+      <span class="sx-k">Novedad</span>
+      <h2 class="sx-h2">Multiservicios</h2>
+      <p>Un evento, todos sus servicios. Grúa, desplazamiento y custodia, cada uno con su prestador y en un solo lugar.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis  rv" style="--rd:.1s" aria-hidden="true">
           <div class="ap-ms">
             <div class="ap-ms__h"><b>Evento #3021</b><span>Choque · Av. Boyacá</span></div>
             <div class="ap-ms__r"><i class="dot g"></i><span>Grúa</span><em>Grúas del Pacífico</em></div>
             <div class="ap-ms__r"><i class="dot y"></i><span>Desplazamiento</span><em>Movilidad Andina</em></div>
             <div class="ap-ms__r"><i class="dot p"></i><span>Custodia</span><em>Custodias del Norte</em></div>
           </div>
-        </div>
-        <p class="ap-tile__p"><b>Multiservicios.</b> Un evento, todos sus servicios. Grúa, desplazamiento y custodia, cada uno con su prestador y en un solo lugar.</p>
-      </li>
-      <li class="ap-tile rv" style="--rd:.12s">
-        <div class="ap-tile__vis" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="sx-panel">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
+      <span class="sx-k">Novedad</span>
+      <h2 class="sx-h2">Ubicación por WhatsApp</h2>
+      <p>Tu equipo pide la dirección por WhatsApp, el cliente comparte su ubicación y el servicio se actualiza solo. Con el número y el nombre de tu empresa.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis  rv" style="--rd:.1s" aria-hidden="true">
           <div class="ap-wa">
             <div class="ap-wa__row"><span>Solicitar dirección por WhatsApp:</span><b>Origen</b><b class="on">Origen y destino</b></div>
             <div class="asg__msg u">📍 Ubicación compartida</div>
             <div class="asg__msg a">Listo, ya tenemos tu ubicación. Va en camino tu grúa.</div>
           </div>
-        </div>
-        <p class="ap-tile__p"><b>Ubicación por WhatsApp.</b> Tu equipo pide la dirección por WhatsApp, el cliente comparte su ubicación y el servicio se actualiza solo. Con el número y el nombre de tu empresa.</p>
-      </li>
-    </ul>
-    <div class="wrap ap-rail__nav"><button type="button" class="ap-arrow" data-dir="-1" aria-label="Anterior"></button><button type="button" class="ap-arrow" data-dir="1" aria-label="Siguiente"></button></div>
+    </div>
   </div>
 </section>
 
@@ -1921,13 +2013,14 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<!-- ===================== CIFRAS ===================== -->
-<section class="ap ap--black ap-nums" id="cifras">
+<!-- ===================== CIFRAS (estilo SpaceX) ===================== -->
+<section class="sx-nums" id="cifras">
   <div class="wrap">
-    <div class="ap-nums__row">
-      <p class="rv"><b>+4 millones</b> de servicios gestionados en Wip.</p>
-      <p class="rv" style="--rd:.08s"><b>+354</b> tipos de asistencia configurados.</p>
-      <p class="rv" style="--rd:.16s"><b>+13</b> verticales de asistencias, en toda LATAM.</p>
+    <div class="sx-nums__row">
+      <div class="rv"><b><span data-sx-count="4" data-pre="+">+4</span><small> millones</small></b><span>Servicios gestionados</span></div>
+      <div class="rv" style="--rd:.08s"><b data-sx-count="354" data-pre="+">+354</b><span>Tipos de asistencia</span></div>
+      <div class="rv" style="--rd:.16s"><b data-sx-count="13" data-pre="+">+13</b><span>Verticales en LATAM</span></div>
+      <div class="rv" style="--rd:.24s"><b>24/7</b><span>Soporte a tu operación</span></div>
     </div>
   </div>
 </section>
@@ -2452,6 +2545,20 @@ window.addEventListener('message',function(e){
       b.setAttribute("aria-expanded",open);
     });
   });
+
+  /* Cifras estilo SpaceX: cuentan hasta su valor al aparecer */
+  var sxNums=document.querySelector(".sx-nums");
+  if(sxNums&&!reduce){
+    var sxEls=[].slice.call(sxNums.querySelectorAll("[data-sx-count]"));
+    sxEls.forEach(function(n){n.textContent=(n.getAttribute("data-pre")||"")+"0";});
+    whenVisible(sxNums,function(){
+      sxEls.forEach(function(n){
+        var fin=+n.getAttribute("data-sx-count"), t0=performance.now();
+        var paso=function(t){var p=Math.min(1,(t-t0)/1400),e=1-Math.pow(1-p,3);n.textContent=(n.getAttribute("data-pre")||"")+Math.round(fin*e);if(p<1)requestAnimationFrame(paso);};
+        requestAnimationFrame(paso);
+      });
+    },{threshold:.4});
+  }
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
   if(calc){

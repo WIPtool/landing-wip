@@ -1,19 +1,28 @@
-<!-- ===================== HERO (estructura inspirada en Apple Business) ===================== -->
-<section class="ap ap--black ap-hero" id="inicio">
+<!-- ===================== HERO (pantalla completa, mezcla de SpaceX y Apple) ===================== -->
+<section class="sx-hero" id="inicio">
+  <!-- Espacio para el video del hero (pantalla completa). Cuando esté listo, reemplazar el contenido de .sx-hero__media por:
+       <video src="/video/wip-corporativo-hero.mp4" poster="/video/wip-corporativo-hero.jpg" muted loop playsinline autoplay preload="metadata"></video> -->
+  <div class="sx-hero__media" id="video-hero-corporativo">
+    <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
+  </div>
+  <div class="wrap sx-hero__copy rv in">
+    <h1 class="sx-h1">Wip Corporativo</h1>
+    <p class="sx-hero__sub">Opera tus asistencias y tu red de proveedores <span class="ap-lime">en tiempo real.</span></p>
+    <p class="sx-hero__p">En nuestra línea corporativa trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
+    <div class="sx-hero__cta">{{DEMO_BTN}}<a href="#plataforma" class="sx-btn">Conoce la plataforma<i class="sx-btn__ar" aria-hidden="true"></i></a></div>
+  </div>
+  <a href="#en-vivo" class="sx-hero__down" aria-label="Bajar a la siguiente sección"></a>
+</section>
+
+<!-- ===================== EN VIVO (como la lista de lanzamientos de SpaceX) ===================== -->
+<section class="sx-live" id="en-vivo">
   <div class="wrap">
-    <!-- Espacio para el video del hero (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
-         <video src="/video/wip-corporativo-hero.mp4" poster="/video/wip-corporativo-hero.jpg" muted loop playsinline autoplay preload="metadata"></video> -->
-    <div class="vid ap-hero__vid rv in" id="video-hero-corporativo">
-      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
-    </div>
-    <div class="ap-hero__copy rv in">
-      <h1 class="ap-hero__t">Wip Corporativo</h1>
-      <div>
-        <p class="ap-hero__h">Opera tus asistencias y tu red de proveedores <span class="ap-lime">en tiempo real.</span></p>
-        <p class="ap-hero__p">En nuestra línea corporativa trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
-        <div class="ap-hero__cta">{{DEMO_BTN}}<a href="#plataforma" class="ap-link">Conoce la plataforma</a></div>
-      </div>
-    </div>
+    <div class="sx-live__h"><span class="sx-k"><i class="sx-dot"></i>En vivo en Wip</span><span class="sx-live__note">Servicios de ejemplo</span></div>
+    <ul class="sx-live__list" aria-label="Servicios de ejemplo en curso">
+      <li><span class="sx-live__t">10:42 a. m. · Bogotá</span><b>Grúa liviana #10482</b><em class="go">En camino · llega en 9 min</em></li>
+      <li><span class="sx-live__t">10:44 a. m. · Medellín</span><b>Cerrajería hogar #10487</b><em class="on">Proveedor asignado</em></li>
+      <li><span class="sx-live__t">10:45 a. m. · Cali</span><b>Médico a domicilio #10491</b><em>En servicio</em></li>
+    </ul>
   </div>
 </section>
 
@@ -53,43 +62,56 @@
   </div>
 </section>
 
-<!-- ===================== NOVEDADES ===================== -->
-<section class="ap ap--black" id="novedades">
-  <div class="wrap">
-    <h2 class="ap-h2 rv">Novedades.</h2>
-  </div>
-  <div class="ap-rail" data-rail>
-    <ul class="ap-rail__track">
-      <li class="ap-tile rv">
-        <div class="ap-tile__vis ap-tile__vis--wipi" aria-hidden="true">
+<!-- ===================== NOVEDADES (paneles a pantalla completa) ===================== -->
+<section class="sx-panel" id="novedades">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
+      <span class="sx-k">Novedad</span>
+      <h2 class="sx-h2">Wipi, la IA de Wip</h2>
+      <p>Tu IA dentro de la plataforma. Crea servicios, configura convenios y tarifas y te entrega informes, con solo pedírselo.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis ap-tile__vis--wipi rv" style="--rd:.1s" aria-hidden="true">
           <div class="orb ap-tile__orb"><div class="orb__eyes"><i></i><i></i></div></div>
           <div class="ap-tile__chips"><span>Crear servicio</span><span>Asignar proveedor</span><span>Configurar convenio</span><span>Sacar informe</span></div>
-        </div>
-        <p class="ap-tile__p"><b>Wipi.</b> La IA de Wip, dentro de tu plataforma. Crea servicios, configura convenios y tarifas y te entrega informes, con solo pedírselo.</p>
-      </li>
-      <li class="ap-tile rv" style="--rd:.06s">
-        <div class="ap-tile__vis" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="sx-panel sx-panel--flip">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
+      <span class="sx-k">Novedad</span>
+      <h2 class="sx-h2">Multiservicios</h2>
+      <p>Un evento, todos sus servicios. Grúa, desplazamiento y custodia, cada uno con su prestador y en un solo lugar.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis  rv" style="--rd:.1s" aria-hidden="true">
           <div class="ap-ms">
             <div class="ap-ms__h"><b>Evento #3021</b><span>Choque · Av. Boyacá</span></div>
             <div class="ap-ms__r"><i class="dot g"></i><span>Grúa</span><em>Grúas del Pacífico</em></div>
             <div class="ap-ms__r"><i class="dot y"></i><span>Desplazamiento</span><em>Movilidad Andina</em></div>
             <div class="ap-ms__r"><i class="dot p"></i><span>Custodia</span><em>Custodias del Norte</em></div>
           </div>
-        </div>
-        <p class="ap-tile__p"><b>Multiservicios.</b> Un evento, todos sus servicios. Grúa, desplazamiento y custodia, cada uno con su prestador y en un solo lugar.</p>
-      </li>
-      <li class="ap-tile rv" style="--rd:.12s">
-        <div class="ap-tile__vis" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="sx-panel">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
+      <span class="sx-k">Novedad</span>
+      <h2 class="sx-h2">Ubicación por WhatsApp</h2>
+      <p>Tu equipo pide la dirección por WhatsApp, el cliente comparte su ubicación y el servicio se actualiza solo. Con el número y el nombre de tu empresa.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis  rv" style="--rd:.1s" aria-hidden="true">
           <div class="ap-wa">
             <div class="ap-wa__row"><span>Solicitar dirección por WhatsApp:</span><b>Origen</b><b class="on">Origen y destino</b></div>
             <div class="asg__msg u">📍 Ubicación compartida</div>
             <div class="asg__msg a">Listo, ya tenemos tu ubicación. Va en camino tu grúa.</div>
           </div>
-        </div>
-        <p class="ap-tile__p"><b>Ubicación por WhatsApp.</b> Tu equipo pide la dirección por WhatsApp, el cliente comparte su ubicación y el servicio se actualiza solo. Con el número y el nombre de tu empresa.</p>
-      </li>
-    </ul>
-    <div class="wrap ap-rail__nav"><button type="button" class="ap-arrow" data-dir="-1" aria-label="Anterior"></button><button type="button" class="ap-arrow" data-dir="1" aria-label="Siguiente"></button></div>
+    </div>
   </div>
 </section>
 
@@ -337,13 +359,14 @@
   </div>
 </section>
 
-<!-- ===================== CIFRAS ===================== -->
-<section class="ap ap--black ap-nums" id="cifras">
+<!-- ===================== CIFRAS (estilo SpaceX) ===================== -->
+<section class="sx-nums" id="cifras">
   <div class="wrap">
-    <div class="ap-nums__row">
-      <p class="rv"><b>+4 millones</b> de servicios gestionados en Wip.</p>
-      <p class="rv" style="--rd:.08s"><b>+354</b> tipos de asistencia configurados.</p>
-      <p class="rv" style="--rd:.16s"><b>+13</b> verticales de asistencias, en toda LATAM.</p>
+    <div class="sx-nums__row">
+      <div class="rv"><b><span data-sx-count="4" data-pre="+">+4</span><small> millones</small></b><span>Servicios gestionados</span></div>
+      <div class="rv" style="--rd:.08s"><b data-sx-count="354" data-pre="+">+354</b><span>Tipos de asistencia</span></div>
+      <div class="rv" style="--rd:.16s"><b data-sx-count="13" data-pre="+">+13</b><span>Verticales en LATAM</span></div>
+      <div class="rv" style="--rd:.24s"><b>24/7</b><span>Soporte a tu operación</span></div>
     </div>
   </div>
 </section>

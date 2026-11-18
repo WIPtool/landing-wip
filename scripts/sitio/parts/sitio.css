@@ -868,3 +868,73 @@ body[data-page="corp"] main #faq{background:#f5f5f7;padding-top:clamp(70px,9vw,1
 .ap-hero__vid video{width:100%;height:100%;object-fit:cover}
 .ap-nums__row b{white-space:nowrap;font-size:clamp(40px,4.6vw,66px)}
 .ap-vert b{margin-top:52px;padding-top:0}
+
+/* ============ Mezcla con SpaceX: pantalla completa, mayúsculas y botones rectangulares ============ */
+.sx-k{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime)}
+.sx-dot{width:8px;height:8px;border-radius:50%;background:#ff4d4d;box-shadow:0 0 0 0 rgba(255,77,77,.6);animation:sxPulse 1.6s ease-out infinite}
+@keyframes sxPulse{to{box-shadow:0 0 0 10px rgba(255,77,77,0)}}
+.sx-h1,.sx-h2{font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1}
+.sx-h1{font-size:clamp(42px,6.4vw,84px)}
+.sx-h2{font-size:clamp(32px,4.4vw,56px);margin-top:14px}
+.sx-btn{display:inline-flex;align-items:center;gap:14px;min-height:52px;padding:0 26px;border:2px solid currentColor;border-radius:0;background:transparent;color:#f0f0fa;font-size:14px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;position:relative;overflow:hidden;isolation:isolate;transition:color .3s}
+.sx-btn::before{content:"";position:absolute;inset:0;z-index:-1;background:#f0f0fa;transform:scaleY(0);transform-origin:bottom;transition:transform .3s var(--ease-out)}
+.sx-btn:hover{color:#000}
+.sx-btn:hover::before{transform:scaleY(1)}
+.sx-btn__ar{width:0;height:0;border-style:solid;border-width:6px 0 6px 9px;border-color:transparent transparent transparent currentColor}
+
+/* Hero a pantalla completa */
+.sx-hero{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;background:#000;color:#f0f0fa;overflow:hidden}
+.sx-hero__media{position:absolute;inset:0;background:radial-gradient(ellipse at 75% 35%,rgba(47,123,255,.35),transparent 55%),radial-gradient(ellipse at 20% 90%,rgba(219,255,87,.16),transparent 50%),#05070d}
+.sx-hero__media video{width:100%;height:100%;object-fit:cover}
+.sx-hero__media .vid__ph{position:absolute;inset:0;padding-bottom:30vh;color:#86868b}
+.sx-hero::after{content:"";position:absolute;inset:auto 0 0;height:65%;background:linear-gradient(0deg,rgba(0,0,0,.9),transparent);pointer-events:none}
+.sx-hero__copy{position:relative;z-index:1;width:100%;padding-bottom:clamp(60px,10vh,110px)}
+.sx-hero__sub{margin-top:18px;max-width:640px;font-family:var(--display);font-weight:700;font-size:clamp(20px,2.1vw,27px);line-height:1.2}
+.sx-hero__p{margin-top:12px;max-width:600px;font-size:17px;line-height:1.5;color:#c7c7cf}
+.sx-hero__cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.sx-hero__cta .btn{min-height:52px;border-radius:0;padding:0 26px;font-size:14px;letter-spacing:.12em;text-transform:uppercase}
+.sx-hero__down{position:absolute;z-index:1;left:50%;bottom:22px;width:22px;height:22px;margin-left:-11px;border-right:2px solid #f0f0fa;border-bottom:2px solid #f0f0fa;transform:rotate(45deg);opacity:.7;animation:sxDown 1.8s ease-in-out infinite}
+@keyframes sxDown{50%{transform:translateY(8px) rotate(45deg)}}
+
+/* Franja en vivo (como la lista de próximos lanzamientos) */
+.sx-live{background:#000;color:#f0f0fa;padding:28px 0 clamp(50px,7vw,80px);border-top:1px solid rgba(255,255,255,.12)}
+.sx-live__h{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:16px}
+.sx-live__note{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#86868b}
+.sx-live__list{list-style:none;margin:0;padding:0}
+.sx-live__list li{display:grid;grid-template-columns:200px minmax(0,1fr) auto;align-items:center;gap:20px;padding:18px 0;border-top:1px solid rgba(255,255,255,.12)}
+.sx-live__t{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#86868b}
+.sx-live__list b{font-family:var(--display);font-size:clamp(17px,1.7vw,22px);text-transform:uppercase;letter-spacing:.02em}
+.sx-live__list em{font-style:normal;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#c7c7cf}
+.sx-live__list em.go{color:var(--lime)}
+.sx-live__list em.on{color:#6aa6ff}
+
+/* Paneles de novedades a pantalla completa */
+.sx-panel{min-height:92vh;display:flex;align-items:center;background:#000;color:#f0f0fa;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.08);overflow:hidden}
+.sx-panel__in{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,80px);align-items:center;width:100%}
+.sx-panel--flip .sx-panel__copy{order:2}
+.sx-panel__copy p{margin:18px 0 30px;max-width:460px;font-size:17px;line-height:1.55;color:#c7c7cf}
+.sx-panel__vis{position:relative;min-height:clamp(320px,42vw,520px);display:grid;place-items:center;align-content:center;gap:22px;border-radius:28px;background:radial-gradient(ellipse at 50% 100%,rgba(219,255,87,.2),transparent 60%),radial-gradient(ellipse at 80% 10%,rgba(47,123,255,.32),transparent 60%),#0b1020;border:1px solid rgba(255,255,255,.08)}
+
+/* Cifras estilo SpaceX */
+.sx-nums{background:#000;color:#f0f0fa;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.08)}
+.sx-nums__row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(20px,3vw,40px)}
+.sx-nums__row b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(40px,4.8vw,68px);line-height:1;white-space:nowrap;letter-spacing:-.01em}
+.sx-nums__row span{display:block;margin-top:12px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#86868b}
+.sx-nums__row > div{padding-top:20px;border-top:2px solid var(--lime)}
+.sx-nums__row b span{display:inline;margin:0;font-size:inherit;letter-spacing:inherit;color:inherit;text-transform:none}
+
+/* Titulares de sección con el toque de SpaceX en las zonas oscuras */
+.ap--ink .ap-cat__k,.ap--black .ap-cat__k{font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+
+@media(max-width:900px){
+  .sx-panel{min-height:0}
+  .sx-panel__in{grid-template-columns:1fr}
+  .sx-panel--flip .sx-panel__copy{order:0}
+  .sx-nums__row{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .sx-live__list li{grid-template-columns:1fr;gap:4px}
+}
+@media(max-width:700px){
+  .sx-hero__cta .btn,.sx-hero__cta .sx-btn{width:100%;justify-content:center}
+  .sx-nums__row b{font-size:clamp(34px,10vw,48px)}
+}
+.sx-nums__row b small{font-size:.5em;font-weight:700;letter-spacing:0}

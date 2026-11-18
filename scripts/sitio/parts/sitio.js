@@ -200,3 +200,17 @@
       b.setAttribute("aria-expanded",open);
     });
   });
+
+  /* Cifras estilo SpaceX: cuentan hasta su valor al aparecer */
+  var sxNums=document.querySelector(".sx-nums");
+  if(sxNums&&!reduce){
+    var sxEls=[].slice.call(sxNums.querySelectorAll("[data-sx-count]"));
+    sxEls.forEach(function(n){n.textContent=(n.getAttribute("data-pre")||"")+"0";});
+    whenVisible(sxNums,function(){
+      sxEls.forEach(function(n){
+        var fin=+n.getAttribute("data-sx-count"), t0=performance.now();
+        var paso=function(t){var p=Math.min(1,(t-t0)/1400),e=1-Math.pow(1-p,3);n.textContent=(n.getAttribute("data-pre")||"")+Math.round(fin*e);if(p<1)requestAnimationFrame(paso);};
+        requestAnimationFrame(paso);
+      });
+    },{threshold:.4});
+  }
