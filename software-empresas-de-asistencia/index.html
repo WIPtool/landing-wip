@@ -1107,6 +1107,17 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 .change__list li:last-child{border-bottom:0}
 #respaldo .head .lead{margin-left:auto;margin-right:auto;max-width:620px}
 
+/* Lo que cambia para ti: seis tarjetas cortas en lugar de frases gigantes */
+.gains{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px}
+.gain{padding:clamp(22px,2.4vw,30px);border-radius:24px;background:#f6f7f2;border:1px solid var(--line)}
+.gain__n{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;background:var(--navy);color:var(--lime);font-family:var(--display);font-weight:800;font-size:14px}
+.gain b{display:block;margin-top:16px;font-family:var(--display);font-weight:700;font-size:clamp(19px,1.7vw,22px);line-height:1.2;letter-spacing:-.02em}
+.gain p{margin-top:8px;font-size:15px;color:var(--soft)}
+.gain--lime{background:var(--lime);border-color:var(--lime)}
+.gain--lime p{color:rgba(11,16,32,.75)}
+@media(max-width:900px){.gains{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.gains{grid-template-columns:1fr}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1380,15 +1391,17 @@ window.addEventListener('message',function(e){
 <!-- ===================== LO QUE CAMBIA PARA TI ===================== -->
 <section class="sec" id="cambia" style="padding-top:0">
   <div class="wrap">
-    <div class="change rv">
+    <div class="head rv">
       <span class="eyebrow">Lo que cambia para ti</span>
-      <ol class="change__list">
-        <li>Te enteras <span class="lime">antes</span>, no después.</li>
-        <li>Llegas al comité con <span class="lime">respuestas</span>.</li>
-        <li>Tu equipo deja de apagar incendios y se dedica a <span class="lime">mejorar</span>.</li>
-        <li>Tu red trabaja mejor, y tu asegurado <span class="lime">lo nota</span>.</li>
-        <li>Demuestras con datos lo bien que <span class="lime">opera tu área</span>.</li>
-      </ol>
+      <h2 class="h2">Tu operación, <span class="lime">bajo control.</span></h2>
+    </div>
+    <div class="gains">
+      <article class="gain rv"><span class="gain__n">01</span><b>Te enteras antes.</b><p>Wip IA te avisa cuando un servicio va a incumplir, no cuando el asegurado ya llamó.</p></article>
+      <article class="gain rv" style="--rd:.06s"><span class="gain__n">02</span><b>Llegas al comité con respuestas.</b><p>ANS, costo y proveedores, en datos listos para presentar.</p></article>
+      <article class="gain rv" style="--rd:.12s"><span class="gain__n">03</span><b>Tu equipo deja de apagar incendios.</b><p>Lo repetitivo lo hace Wip IA. Tu equipo se dedica a mejorar.</p></article>
+      <article class="gain rv"><span class="gain__n">04</span><b>Tu red trabaja mejor.</b><p>Reglas claras, una sola app y la comunicación en el mismo lugar.</p></article>
+      <article class="gain rv" style="--rd:.06s"><span class="gain__n">05</span><b>Tu asegurado lo nota.</b><p>Sabe quién va, cuándo llega y cómo terminó, sin tener que llamar.</p></article>
+      <article class="gain gain--lime rv" style="--rd:.12s"><span class="gain__n">06</span><b>Y tú lo puedes demostrar.</b><p>Cada resultado de tu área, medido y a la vista.</p></article>
     </div>
   </div>
 </section>
