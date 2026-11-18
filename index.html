@@ -1091,6 +1091,22 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 .papp .on{background:rgba(47,123,255,.25);color:#9cc2ff}
 .papp .done{background:rgba(255,255,255,.1);color:#c1c9d6}
 
+/* Wip Corporativo, hablándole a quien responde por la operación */
+.you{max-width:820px;margin:0 auto;text-align:center}
+.you .lead{max-width:680px;margin-left:auto;margin-right:auto}
+.moments{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:44px}
+.moment{display:flex;flex-direction:column;padding:clamp(24px,2.6vw,32px);border-radius:26px;background:#f6f7f2;border:1px solid var(--line)}
+.moment__t{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:var(--pill);background:var(--navy);color:var(--lime)}
+.moment b{display:block;margin-top:18px;font-family:var(--display);font-weight:700;font-size:clamp(20px,1.9vw,24px);line-height:1.15;letter-spacing:-.02em}
+.moment p{margin-top:10px;font-size:15px;color:var(--soft)}
+@media(max-width:900px){.moments{grid-template-columns:1fr}}
+
+.change{max-width:900px;margin:0 auto;text-align:center}
+.change__list{list-style:none;margin-top:22px;display:flex;flex-direction:column;gap:6px;counter-reset:c}
+.change__list li{font-family:var(--display);font-weight:700;font-size:clamp(24px,3.4vw,44px);line-height:1.15;letter-spacing:-.035em;padding:14px 0;border-bottom:1px solid var(--line)}
+.change__list li:last-child{border-bottom:0}
+#respaldo .head .lead{margin-left:auto;margin-right:auto;max-width:620px}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
