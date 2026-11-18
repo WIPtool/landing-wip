@@ -1118,6 +1118,11 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 @media(max-width:900px){.gains{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.gains{grid-template-columns:1fr}}
 
+/* Cifras de la escala: cuatro columnas, la última con los años de experiencia */
+.scale__row{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1040px}
+.scale__row span{max-width:220px;margin-left:auto;margin-right:auto}
+@media(max-width:900px){.scale__row{grid-template-columns:1fr 1fr;row-gap:24px}.scale__row > div:nth-child(3){border-left:0}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}

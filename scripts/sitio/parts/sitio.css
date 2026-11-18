@@ -471,3 +471,8 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 .gain--lime p{color:rgba(11,16,32,.75)}
 @media(max-width:900px){.gains{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.gains{grid-template-columns:1fr}}
+
+/* Cifras de la escala: cuatro columnas, la última con los años de experiencia */
+.scale__row{grid-template-columns:repeat(4,minmax(0,1fr));max-width:1040px}
+.scale__row span{max-width:220px;margin-left:auto;margin-right:auto}
+@media(max-width:900px){.scale__row{grid-template-columns:1fr 1fr;row-gap:24px}.scale__row > div:nth-child(3){border-left:0}}
