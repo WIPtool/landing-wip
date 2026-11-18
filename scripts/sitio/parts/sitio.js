@@ -101,7 +101,7 @@
   var stats=document.querySelector(".stats");
   if(stats&&!reduce){
     var nums=[].slice.call(stats.querySelectorAll("[data-count]"));
-    nums.forEach(function(n){n.textContent=(n.getAttribute("data-pre")||"")+"0";});
+    nums.forEach(function(n){n.textContent="0";});
     whenVisible(stats,function(){
       nums.forEach(function(n){
         var fin=+n.getAttribute("data-count"), t0=performance.now();

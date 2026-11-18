@@ -1612,6 +1612,30 @@ body[data-page="corp"]{font-weight:400}
 .sx-hero .sx-btn:hover{color:#fff}
 .sx-hero__down{border-color:var(--navy)}
 .sx-hero + .sx-nums{border-top:0}
+/* Cifras con toque exclusivo: panel con líneas finas, índice, número con degradado y brillo superior */
+.sx-nums{background:#000;padding:clamp(60px,8vw,100px) 0}
+.sx-nums__k{margin-bottom:20px;color:#86868b}
+.sx-nums__row{position:relative;gap:0;border-radius:28px;border:1px solid rgba(255,255,255,.1);background:radial-gradient(ellipse at 50% -40%,rgba(219,255,87,.12),transparent 60%),linear-gradient(180deg,#0d1322,#06080e);overflow:hidden}
+.sx-nums__row::before{content:"";position:absolute;left:10%;right:10%;top:0;height:1px;background:linear-gradient(90deg,transparent,var(--lime),transparent);opacity:.8}
+.sx-nums__row > .sx-num{position:relative;padding:clamp(28px,3vw,44px) clamp(22px,2.4vw,36px);border-top:0;transition:background .4s ease}
+.sx-num + .sx-num{border-left:1px solid rgba(255,255,255,.08)}
+.sx-num:hover{background:rgba(255,255,255,.025)}
+.sx-num__i{display:block;margin-bottom:clamp(26px,3vw,40px);font-size:12px;font-weight:500;letter-spacing:.18em;color:#5d6475}
+.sx-nums__row .sx-num b{display:flex;align-items:baseline;font-size:clamp(44px,5vw,72px);font-weight:300;letter-spacing:-.045em;background:linear-gradient(180deg,#fff 30%,#9aa3b5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sx-nums__row .sx-num b small{font-size:.36em;font-weight:500;letter-spacing:-.01em;margin-left:.3em}
+.sx-plus{font-style:normal;font-weight:300;color:var(--lime);-webkit-text-fill-color:var(--lime);margin-right:.04em}
+.sx-num__l{display:block;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#a1a1a6}
+@media(max-width:900px){
+  .sx-num:nth-child(3){border-left:0}
+  .sx-num:nth-child(n+3){border-top:1px solid rgba(255,255,255,.08)}
+}
+@media(max-width:480px){
+  .sx-nums__row{grid-template-columns:1fr}
+  .sx-num + .sx-num{border-left:0;border-top:1px solid rgba(255,255,255,.08)}
+  .sx-num__i{margin-bottom:16px}
+}
+.sx-nums__row .sx-num b,.sx-nums__row .sx-num b span{font-weight:400}
+.sx-nums__row .sx-num b span{display:inline;margin:0;padding:0;border:0;font-size:inherit;letter-spacing:inherit;text-transform:none}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -2076,7 +2100,7 @@ window.addEventListener('message',function(e){
   var stats=document.querySelector(".stats");
   if(stats&&!reduce){
     var nums=[].slice.call(stats.querySelectorAll("[data-count]"));
-    nums.forEach(function(n){n.textContent=(n.getAttribute("data-pre")||"")+"0";});
+    nums.forEach(function(n){n.textContent="0";});
     whenVisible(stats,function(){
       nums.forEach(function(n){
         var fin=+n.getAttribute("data-count"), t0=performance.now();
