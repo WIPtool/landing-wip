@@ -1053,3 +1053,8 @@ body[data-page="corp"]{font-weight:400}
 .sx-h2--mix{text-transform:none;letter-spacing:-.02em}
 .sx-h2--mix .sx-logo{filter:brightness(0) invert(1);opacity:.95;height:.9em;vertical-align:-.1em;margin-left:.08em}
 .ap-fact__t{font-weight:400;letter-spacing:-.01em}
+/* Hero: subtítulo en una sola línea y texto más ancho */
+.sx-hero__sub{max-width:none}
+.sx-hero__p{max-width:860px}
+@media(min-width:1000px){.sx-hero__sub{white-space:nowrap;font-size:clamp(24px,2.3vw,32px)}}
+.sx-hero__p{max-width:980px}
