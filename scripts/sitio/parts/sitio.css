@@ -997,3 +997,7 @@ body[data-page="corp"]{font-weight:400}
 .ap-fact__chips{position:absolute;left:30px;right:30px;bottom:76px;display:flex;flex-wrap:wrap;gap:8px}
 .ap-fact__chips span{font-size:13px;font-weight:600;padding:7px 12px;border-radius:var(--pill);background:rgba(11,16,32,.1);color:var(--navy)}
 .ap-fact__chips span:first-child{background:var(--navy);color:var(--lime)}
+/* Cifras dentro de la franja blanca del hero */
+.sx-nums{background:#fff;padding:0 0 clamp(60px,8vw,100px);border-top:0}
+.sx-hero__copy{padding-bottom:clamp(90px,12vh,130px)}
+.sx-nums__row{box-shadow:0 30px 80px rgba(11,16,32,.18)}
