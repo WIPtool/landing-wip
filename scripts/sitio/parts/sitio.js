@@ -171,3 +171,32 @@
     }
   }
 
+
+  /* Carriles de tarjetas (Datos duros, Novedades, Verticales): flechas que avanzan una tarjeta */
+  [].forEach.call(document.querySelectorAll("[data-rail]"),function(rail){
+    var track=rail.querySelector(".ap-rail__track"), btns=rail.querySelectorAll(".ap-arrow");
+    if(!track) return;
+    var upd=function(){
+      var max=track.scrollWidth-track.clientWidth-2;
+      [].forEach.call(btns,function(b){b.disabled=+b.getAttribute("data-dir")<0?track.scrollLeft<=2:track.scrollLeft>=max;});
+      rail.classList.toggle("is-static",max<=0);
+    };
+    [].forEach.call(btns,function(b){
+      b.addEventListener("click",function(){
+        var li=track.querySelector("li"), step=li?li.getBoundingClientRect().width+20:track.clientWidth*.8;
+        track.scrollBy({left:step*+b.getAttribute("data-dir"),behavior:reduce?"auto":"smooth"});
+      });
+    });
+    track.addEventListener("scroll",upd,{passive:true});
+    window.addEventListener("resize",upd);
+    upd();
+  });
+
+  /* Tarjetas de Datos duros: el botón + muestra el detalle */
+  [].forEach.call(document.querySelectorAll(".ap-plus"),function(b){
+    b.addEventListener("click",function(){
+      var card=b.closest(".ap-fact"), open=!card.classList.contains("is-open");
+      card.classList.toggle("is-open",open);
+      b.setAttribute("aria-expanded",open);
+    });
+  });

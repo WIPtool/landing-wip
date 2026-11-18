@@ -1,45 +1,102 @@
-<!-- ===================== HERO ===================== -->
-<section class="ahero" id="inicio">
+<!-- ===================== HERO (estructura inspirada en Apple Business) ===================== -->
+<section class="ap ap--black ap-hero" id="inicio">
   <div class="wrap">
-    <div class="ahero__copy rv in">
-      <span class="eyebrow">Wip Corporativo</span>
-      <h1>Opera tus asistencias y tu red de proveedores <span class="lime">en tiempo real.</span></h1>
-      <p class="lead">En nuestra línea corporativa trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
-      <div class="ahero__cta">
-        {{DEMO_BTN}}
-        <a href="#plataforma" class="btn btn--ghost">Conoce la plataforma</a>
-      </div>
-    </div>
     <!-- Espacio para el video del hero (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
          <video src="/video/wip-corporativo-hero.mp4" poster="/video/wip-corporativo-hero.jpg" muted loop playsinline autoplay preload="metadata"></video> -->
-    <div class="vid ahero__vid rv in" id="video-hero-corporativo">
+    <div class="vid ap-hero__vid rv in" id="video-hero-corporativo">
       <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
     </div>
-  </div>
-</section>
-
-<!-- ===================== ESCALA ===================== -->
-<section class="sec scale" id="escala">
-  <div class="wrap">
-    <p class="scale__big rv"><span class="lime">+4 millones</span> de servicios gestionados en Wip.</p>
-    <p class="scale__sub rv">Hecho para operaciones a gran escala, en todas las verticales de asistencia y en toda LATAM.</p>
-    <div class="scale__row rv">
-      <div><b>+354</b><span>tipos de asistencia configurados</span></div>
-      <div><b>+13</b><span>verticales de asistencias</span></div>
-      <div><b>24/7</b><span>soporte a tu operación</span></div>
-      <div><b>+8 años</b><span>de experiencia creando tecnología para logísticas de asistencia</span></div>
+    <div class="ap-hero__copy rv in">
+      <h1 class="ap-hero__t">Wip Corporativo</h1>
+      <div>
+        <p class="ap-hero__h">Opera tus asistencias y tu red de proveedores <span class="ap-lime">en tiempo real.</span></p>
+        <p class="ap-hero__p">En nuestra línea corporativa trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
+        <div class="ap-hero__cta">{{DEMO_BTN}}<a href="#plataforma" class="ap-link">Conoce la plataforma</a></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== LA PLATAFORMA (RECORRIDO CON CAPTURAS) ===================== -->
-<section class="sec" id="plataforma" style="padding-top:0">
+<!-- ===================== DATOS DUROS ===================== -->
+<section class="ap ap--gray" id="datos">
   <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">La plataforma</span>
-      <h2 class="h2">Toda tu operación. <span class="lime">Una sola plataforma.</span></h2>
-      <p class="lead">Así se ve Wip por dentro, en una operación real.</p>
-    </div>
+    <h2 class="ap-h2 rv">Wip y tu operación, el mejor equipo. <span class="ap-mute">Datos duros.</span></h2>
+  </div>
+  <div class="ap-rail" data-rail>
+    <ul class="ap-rail__track">
+      <li class="ap-fact ap-fact--img rv"><img src="/img/plataforma/monitoreo-central.webp" alt="" loading="lazy" decoding="async">
+        <div class="ap-fact__front"><span class="ap-fact__k">Escala</span><p class="ap-fact__t">+4 millones de servicios gestionados en Wip.</p></div>
+        <div class="ap-fact__back"><span class="ap-fact__k">Escala</span><p>Wip está hecho para operaciones de alto volumen: miles de servicios, varias unidades de negocio y cientos de proveedores, en la misma plataforma.</p></div>
+        <button type="button" class="ap-plus" aria-expanded="false" aria-label="Más sobre la escala de Wip"></button></li>
+      <li class="ap-fact ap-fact--lime rv" style="--rd:.06s">
+        <div class="ap-fact__front"><span class="ap-fact__k">Verticales</span><p class="ap-fact__t">+354 tipos de asistencia configurados, en +13 verticales.</p><span class="ap-fact__big">+354</span></div>
+        <div class="ap-fact__back"><span class="ap-fact__k">Verticales</span><p>Vial, hogar, médica, jurídica, veterinaria, movilidad y viajes, siniestros de autos, tecnología, orientación telefónica, exequial y la que venga. Cada una con sus reglas, tarifas y ANS.</p></div>
+        <button type="button" class="ap-plus" aria-expanded="false" aria-label="Más sobre las verticales"></button></li>
+      <li class="ap-fact ap-fact--orb rv" style="--rd:.12s">
+        <div class="ap-fact__front"><span class="ap-fact__k">Wip IA</span><p class="ap-fact__t">Wipi crea servicios, configura convenios y te entrega informes.</p><div class="orb ap-fact__orb" aria-hidden="true"><div class="orb__eyes"><i></i><i></i></div></div></div>
+        <div class="ap-fact__back"><span class="ap-fact__k">Wip IA</span><p>Wipi es la IA de Wip dentro de la plataforma. Le pides lo que necesitas con tus palabras y lo hace contigo, con tu equipo al mando.</p></div>
+        <button type="button" class="ap-plus" aria-expanded="false" aria-label="Más sobre Wipi"></button></li>
+      <li class="ap-fact ap-fact--img rv" style="--rd:.18s"><img src="/img/plataforma/mapa-red.webp" alt="" loading="lazy" decoding="async">
+        <div class="ap-fact__front"><span class="ap-fact__k">Asignación</span><p class="ap-fact__t">El proveedor correcto para cada caso, en segundos.</p></div>
+        <div class="ap-fact__back"><span class="ap-fact__k">Asignación</span><p>Por cercanía, por tarifa del convenio, por proveedor preferido, por prioridad o programado a la hora exacta. Si no acepta, pasa al siguiente.</p></div>
+        <button type="button" class="ap-plus" aria-expanded="false" aria-label="Más sobre la asignación"></button></li>
+      <li class="ap-fact ap-fact--ink rv" style="--rd:.24s">
+        <div class="ap-fact__front"><span class="ap-fact__k">Soporte</span><p class="ap-fact__t">Soporte 24/7 para tu operación.</p><span class="ap-fact__big">24/7</span></div>
+        <div class="ap-fact__back"><span class="ap-fact__k">Soporte</span><p>Tu operación no para, y nuestro equipo tampoco. Te acompañamos desde la implementación y durante toda la operación, con tu equipo y tu red.</p></div>
+        <button type="button" class="ap-plus" aria-expanded="false" aria-label="Más sobre el soporte"></button></li>
+      <li class="ap-fact ap-fact--img rv" style="--rd:.3s"><img src="/img/plataforma/evidencias.webp" alt="" loading="lazy" decoding="async">
+        <div class="ap-fact__front"><span class="ap-fact__k">Experiencia</span><p class="ap-fact__t">+8 años creando tecnología para logísticas de asistencia.</p></div>
+        <div class="ap-fact__back"><span class="ap-fact__k">Experiencia</span><p>Conocemos cómo funciona el mercado de asistencias por dentro. Por eso Wip habla el idioma de tu operación: convenios, ANS, proveedores, novedades y visado.</p></div>
+        <button type="button" class="ap-plus" aria-expanded="false" aria-label="Más sobre la experiencia de Wip"></button></li>
+    </ul>
+    <div class="wrap ap-rail__nav"><button type="button" class="ap-arrow" data-dir="-1" aria-label="Anterior"></button><button type="button" class="ap-arrow" data-dir="1" aria-label="Siguiente"></button></div>
+  </div>
+</section>
+
+<!-- ===================== NOVEDADES ===================== -->
+<section class="ap ap--black" id="novedades">
+  <div class="wrap">
+    <h2 class="ap-h2 rv">Novedades.</h2>
+  </div>
+  <div class="ap-rail" data-rail>
+    <ul class="ap-rail__track">
+      <li class="ap-tile rv">
+        <div class="ap-tile__vis ap-tile__vis--wipi" aria-hidden="true">
+          <div class="orb ap-tile__orb"><div class="orb__eyes"><i></i><i></i></div></div>
+          <div class="ap-tile__chips"><span>Crear servicio</span><span>Asignar proveedor</span><span>Configurar convenio</span><span>Sacar informe</span></div>
+        </div>
+        <p class="ap-tile__p"><b>Wipi.</b> La IA de Wip, dentro de tu plataforma. Crea servicios, configura convenios y tarifas y te entrega informes, con solo pedírselo.</p>
+      </li>
+      <li class="ap-tile rv" style="--rd:.06s">
+        <div class="ap-tile__vis" aria-hidden="true">
+          <div class="ap-ms">
+            <div class="ap-ms__h"><b>Evento #3021</b><span>Choque · Av. Boyacá</span></div>
+            <div class="ap-ms__r"><i class="dot g"></i><span>Grúa</span><em>Grúas del Pacífico</em></div>
+            <div class="ap-ms__r"><i class="dot y"></i><span>Desplazamiento</span><em>Movilidad Andina</em></div>
+            <div class="ap-ms__r"><i class="dot p"></i><span>Custodia</span><em>Custodias del Norte</em></div>
+          </div>
+        </div>
+        <p class="ap-tile__p"><b>Multiservicios.</b> Un evento, todos sus servicios. Grúa, desplazamiento y custodia, cada uno con su prestador y en un solo lugar.</p>
+      </li>
+      <li class="ap-tile rv" style="--rd:.12s">
+        <div class="ap-tile__vis" aria-hidden="true">
+          <div class="ap-wa">
+            <div class="ap-wa__row"><span>Solicitar dirección por WhatsApp:</span><b>Origen</b><b class="on">Origen y destino</b></div>
+            <div class="asg__msg u">📍 Ubicación compartida</div>
+            <div class="asg__msg a">Listo, ya tenemos tu ubicación. Va en camino tu grúa.</div>
+          </div>
+        </div>
+        <p class="ap-tile__p"><b>Ubicación por WhatsApp.</b> Tu equipo pide la dirección por WhatsApp, el cliente comparte su ubicación y el servicio se actualiza solo. Con el número y el nombre de tu empresa.</p>
+      </li>
+    </ul>
+    <div class="wrap ap-rail__nav"><button type="button" class="ap-arrow" data-dir="-1" aria-label="Anterior"></button><button type="button" class="ap-arrow" data-dir="1" aria-label="Siguiente"></button></div>
+  </div>
+</section>
+
+<!-- ===================== LA PLATAFORMA (RECORRIDO ANIMADO) ===================== -->
+<section class="ap ap--white" id="plataforma">
+  <div class="wrap">
+    <h2 class="ap-h2 rv">La plataforma y tu red,<br><span class="ap-mute">trabajando como una sola.</span></h2>
     <div class="tour rv" id="tour">
       <div class="tour__tabs" role="tablist" aria-label="Recorrido por la plataforma">
         <button type="button" role="tab" aria-selected="true" aria-controls="tp-0" id="tt-0" class="is-on"><b>Monitoreo central</b><span>Toda tu operación, en una pantalla</span></button>
@@ -241,41 +298,73 @@
       </div>
       <span class="ex" style="text-align:center">Así funciona Wip, con datos de ejemplo.</span>
     </div>
-    <div class="more more--2">
-      <article class="more__i rv"><span class="tile__k">Wipi</span><b>Pregúntale a Wipi.</b><p>Crea servicios, configura convenios y tarifas, y te entrega informes.</p></article>
-      <article class="more__i rv" style="--rd:.06s"><span class="tile__k">Multiservicios</span><b>Un evento, todos sus servicios.</b><p>Grúa, desplazamiento y custodia, cada uno con su prestador.</p></article>
+  </div>
+</section>
+
+<!-- ===================== POR QUÉ WIP (CATEGORÍAS) ===================== -->
+<section class="ap ap--ink" id="por-que">
+  <div class="wrap">
+    <div class="ap-cat rv">
+      <span class="ap-cat__k">Wip IA</span>
+      <h2 class="ap-h2">IA que opera contigo.<br><span class="ap-mute">Con tu equipo al mando.</span></h2>
+      <div class="ap-cat__grid">
+        <p><b>Te enteras antes.</b> Wip IA te avisa cuando un servicio va a incumplir, no cuando el asegurado ya llamó.</p>
+        <p><b>Lo repetitivo lo hace Wip IA.</b> Asigna, avisa y hace seguimiento, para que tu equipo se dedique a mejorar la operación.</p>
+        <p><b>Pregúntale a Wipi.</b> Crea servicios, configura convenios y tarifas y te entrega informes, con solo pedírselo.</p>
+      </div>
+      <div class="ap-stat"><b>24/7</b><span>Wip es tu call center inteligente, todos los días del año.</span></div>
+    </div>
+    <div class="ap-cat rv">
+      <span class="ap-cat__k">Costos</span>
+      <h2 class="ap-h2">Cada tarifa, calculada sola.<br><span class="ap-mute">Pagas lo que se cumplió.</span></h2>
+      <div class="ap-cat__grid">
+        <p><b>Reglas de cada convenio.</b> Valor base, kilómetros adicionales, horario nocturno y festivos, con las reglas de cada convenio y cada proveedor.</p>
+        <p><b>Fallidos y cancelados.</b> Cada caso se liquida según lo que pasó en campo, con su evidencia.</p>
+        <p><b>Llegas al comité con respuestas.</b> ANS, costo y proveedores, en datos listos para presentar.</p>
+      </div>
+      <div class="ap-stat"><b>1</b><span>sola plataforma para operar, liquidar y medir cada servicio.</span></div>
+    </div>
+    <div class="ap-cat rv">
+      <span class="ap-cat__k">Control</span>
+      <h2 class="ap-h2">Trazabilidad en cada paso.<br><span class="ap-mute">A todos los niveles.</span></h2>
+      <div class="ap-cat__grid">
+        <p><b>Seguridad corporativa.</b> Acceso por roles, trazabilidad de cada acción y registro de conexiones.</p>
+        <p><b>Evidencia desde campo.</b> Fotos, firma y horas de cada etapa quedan guardadas en el servicio, listas para auditar.</p>
+        <p><b>Se integra con tus herramientas.</b> Plataformas de aseguradoras, API, SFTP, ERP y WhatsApp, sin reemplazar lo que funciona.</p>
+      </div>
+      <div class="ap-stat"><b>+8 años</b><span>de experiencia creando tecnología para logísticas de asistencia.</span></div>
     </div>
   </div>
 </section>
 
-<!-- ===================== WIP EN ACCIÓN (VIDEO) ===================== -->
-<section class="sec" id="en-accion" style="padding-top:0">
+<!-- ===================== CIFRAS ===================== -->
+<section class="ap ap--black ap-nums" id="cifras">
   <div class="wrap">
-    <div class="vband rv">
-      <div class="vband__copy">
-        <span class="eyebrow">Wip IA en acción</span>
-        <h2 class="h2">Mira cómo opera Wip un día de alto volumen.</h2>
-        <p class="lead">Del caso que entra al servicio que se factura, sin que tu equipo tenga que perseguir a nadie.</p>
-        <div class="ahero__cta">{{DEMO_BTN}}</div>
-      </div>
-      <!-- Espacio para el video de Wip IA para aseguradoras (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
-           <video src="/video/wip-ia-aseguradoras.mp4" poster="/video/wip-ia-aseguradoras.jpg" muted loop playsinline autoplay preload="none"></video> -->
-      <div class="vid vband__vid" id="video-aseguradoras">
-        <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip IA para aseguradoras</span></div>
-      </div>
+    <div class="ap-nums__row">
+      <p class="rv"><b>+4 millones</b> de servicios gestionados en Wip.</p>
+      <p class="rv" style="--rd:.08s"><b>+354</b> tipos de asistencia configurados.</p>
+      <p class="rv" style="--rd:.16s"><b>+13</b> verticales de asistencias, en toda LATAM.</p>
     </div>
   </div>
 </section>
 
-<!-- ===================== TU RED DE PROVEEDORES ===================== -->
-<section class="sec" id="red" style="padding-top:0">
+{{CLIENTES}}
+
+<!-- ===================== TU RED (TARJETA DESTACADA) ===================== -->
+<section class="ap ap--white" id="red">
   <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Tu red de proveedores</span>
-      <h2 class="h2">Toda tu red, en todo el país, <span class="lime">en un solo lugar.</span></h2>
-      <p class="lead">Tus proveedores tienen una experiencia pensada para ellos, con todo lo que necesitan para prestar el mejor servicio. Y tú tienes el control de toda la red, en todas tus asistencias.</p>
-    </div>
-    <div class="red">
+    <div class="ap-promo rv">
+      <div class="ap-promo__copy">
+        <span class="ap-cat__k">Tu red de proveedores</span>
+        <h2 class="ap-promo__t">Toda tu red, en todo el país. En un solo lugar.</h2>
+        <ul class="ap-promo__list">
+          <li><b>Una app pensada para el proveedor.</b> Recibe, acepta y gestiona sus servicios, con la tarifa de su convenio a la vista.</li>
+          <li><b>Chat en vivo en cada servicio.</b> Novedades y autorizaciones, con la trazabilidad de quién autorizó qué y cuándo.</li>
+          <li><b>Datos claros de tu red.</b> ANS, calificación, tiempos y costo por proveedor, ciudad y tipo de servicio.</li>
+        </ul>
+        <a href="/proveedores-de-asistencia" class="ap-link">Conoce Wip para proveedores</a>
+      </div>
+      <div class="red ap-promo__vis">
       <div class="red__vis rv" aria-hidden="true">
         <div class="papp">
           <div class="papp__h"><b>Mis servicios</b><span>Grúas del Pacífico · hoy 3</span></div>
@@ -295,77 +384,44 @@
           <div class="red__score-r"><span>Remolques Express</span><em class="low">ANS 86 %</em><i>★ 4,2</i></div>
         </div>
       </div>
-      <ul class="red__list">
-        <li class="rv"><span class="red__ic">1</span><div><b>Asigna a tu red en segundos</b><p>Por cercanía, convenio o prioridad. Si un proveedor no acepta, el servicio pasa al siguiente.</p></div></li>
-        <li class="rv"><span class="red__ic">2</span><div><b>Una app pensada para el proveedor</b><p>Recibe, acepta y gestiona sus servicios en un solo lugar, con la tarifa de su convenio a la vista.</p></div></li>
-        <li class="rv"><span class="red__ic">3</span><div><b>Chat en vivo, en tiempo real</b><p>Te comunicas con cada proveedor dentro de cada servicio, sin llamadas ni chats sueltos.</p></div></li>
-        <li class="rv"><span class="red__ic">4</span><div><b>Evidencias desde campo</b><p>Fotos, firma y horas de cada etapa quedan guardadas en el servicio, listas para auditar.</p></div></li>
-        <li class="rv"><span class="red__ic">5</span><div><b>Novedades y autorizaciones</b><p>Se resuelven en el mismo chat, con la trazabilidad de quién autorizó qué y cuándo.</p></div></li>
-        <li class="rv"><span class="red__ic">6</span><div><b>Datos claros de tu red</b><p>ANS, calificación, tiempos y costo por proveedor, ciudad y tipo de servicio.</p></div></li>
-        <li class="rv"><span class="red__ic">7</span><div><b>Todas tus asistencias, a nivel nacional</b><p>Proveedores de vial, hogar, médica, jurídica, veterinaria y más, en cualquier ciudad del país.</p></div></li>
-        <li class="rv"><span class="red__ic">8</span><div><b>Tu red crece contigo</b><p>Suma proveedores nuevos por ciudad y tipo de servicio, cada uno con sus reglas y tarifas.</p></div></li>
-      </ul>
+      </div>
     </div>
     <span class="ex" style="text-align:center">Nombres y cifras de ejemplo.</span>
   </div>
 </section>
 
-<!-- ===================== ECOSISTEMA ===================== -->
-<section class="sec" id="ecosistema" style="padding-top:0">
+<!-- ===================== VERTICALES ===================== -->
+<section class="ap ap--white" id="verticales" style="padding-top:0">
   <div class="wrap">
-    <div class="eco rv">
-      <span class="eyebrow">Tu ecosistema</span>
-      <h2 class="h2">Todo tu ecosistema de servicios, <span class="lime">en Wip.</span></h2>
-      <p class="lead">Cada aseguradora, unidad de negocio y convenio con sus propias reglas, tarifas y ANS.</p>
-      <div class="eco__chips">
-        <span>Vial</span><span>Hogar</span><span>Médica</span><span>Jurídica</span><span>Veterinaria</span><span>Movilidad y viajes</span><span>Siniestros de autos</span><span>Tecnología</span><span>Orientación telefónica</span><span>Exequial</span><span>Y la que venga</span>
-      </div>
-    </div>
+    <h2 class="ap-h2 rv">Una solución<br><span class="ap-mute">para cada asistencia.</span></h2>
+  </div>
+  <div class="ap-rail" data-rail>
+    <ul class="ap-rail__track">
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">🚗</span><b>Vial</b><p>Grúa, paso de corriente, cambio de llanta y cerrajería vehicular.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">🏠</span><b>Hogar</b><p>Plomería, cerrajería, electricidad y vidriería.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">🩺</span><b>Médica</b><p>Médico a domicilio, orientación médica y traslados.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">⚖️</span><b>Jurídica</b><p>Asesoría legal y acompañamiento en casos de tránsito.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">🐾</span><b>Veterinaria</b><p>Consulta veterinaria y orientación para mascotas.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">🧳</span><b>Movilidad y viajes</b><p>Conductor elegido, traslados y asistencia en viaje.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">🛠️</span><b>Siniestros de autos</b><p>Atención del siniestro, con cada servicio del evento en un solo lugar.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">💻</span><b>Tecnología</b><p>Soporte técnico para equipos y dispositivos.</p></li>
+      <li class="ap-vert rv"><span class="ap-vert__ic" aria-hidden="true">📞</span><b>Orientación telefónica</b><p>Líneas de orientación con su seguimiento y su ANS.</p></li>
+      <li class="ap-vert ap-vert--lime rv"><span class="ap-vert__ic" aria-hidden="true">＋</span><b>Y la que venga</b><p>Configura cualquier asistencia con sus reglas, tarifas y ANS.</p></li>
+    </ul>
+    <div class="wrap ap-rail__nav"><button type="button" class="ap-arrow" data-dir="-1" aria-label="Anterior"></button><button type="button" class="ap-arrow" data-dir="1" aria-label="Siguiente"></button></div>
   </div>
 </section>
 
-<!-- ===================== LO QUE CAMBIA PARA TI ===================== -->
-<section class="sec" id="cambia" style="padding-top:0">
+<!-- ===================== DA EL SIGUIENTE PASO ===================== -->
+<section class="ap ap--white" id="siguiente-paso" style="padding-top:0">
   <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Lo que cambia para ti</span>
-      <h2 class="h2">Tu operación, <span class="lime">bajo control.</span></h2>
-    </div>
-    <div class="gains">
-      <article class="gain rv"><span class="gain__n">01</span><b>Te enteras antes.</b><p>Wip IA te avisa cuando un servicio va a incumplir, no cuando el asegurado ya llamó.</p></article>
-      <article class="gain rv" style="--rd:.06s"><span class="gain__n">02</span><b>Llegas al comité con respuestas.</b><p>ANS, costo y proveedores, en datos listos para presentar.</p></article>
-      <article class="gain rv" style="--rd:.12s"><span class="gain__n">03</span><b>Tu equipo deja de apagar incendios.</b><p>Lo repetitivo lo hace Wip IA. Tu equipo se dedica a mejorar.</p></article>
-      <article class="gain rv"><span class="gain__n">04</span><b>Tu red trabaja mejor.</b><p>Reglas claras, una sola app y la comunicación en el mismo lugar.</p></article>
-      <article class="gain rv" style="--rd:.06s"><span class="gain__n">05</span><b>Tu asegurado lo nota.</b><p>Sabe quién va, cuándo llega y cómo terminó, sin tener que llamar.</p></article>
-      <article class="gain gain--lime rv" style="--rd:.12s"><span class="gain__n">06</span><b>Y tú lo puedes demostrar.</b><p>Cada resultado de tu área, medido y a la vista.</p></article>
+    <h2 class="ap-h2 rv">Da el siguiente paso.</h2>
+    <div class="ap-next">
+      <div class="ap-next__i rv"><span class="ap-next__ic" aria-hidden="true">📅</span><div><b>Agenda una demo</b><p>Te mostramos Wip con un caso como el tuyo.</p>{{DEMO_BTN}}</div></div>
+      <div class="ap-next__i rv" style="--rd:.06s"><span class="ap-next__ic" aria-hidden="true">💬</span><div><b>Habla con nuestro equipo</b><p>Cuéntanos cómo es tu operación y te acompañamos desde la implementación.</p><a href="#contacto" class="ap-link">Escríbenos</a></div></div>
     </div>
   </div>
 </section>
-
-<!-- ===================== RESPALDO ===================== -->
-<section class="sec" id="respaldo" style="padding-top:0">
-  <div class="wrap">
-    <div class="head rv">
-      <span class="eyebrow">Respaldo</span>
-      <h2 class="h2">No estás solo <span class="lime">en esto.</span></h2>
-      <p class="lead">Detrás de Wip hay un equipo que conoce el mundo de las asistencias y responde contigo, todos los días.</p>
-    </div>
-    <div class="backs">
-      <div class="back rv"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.4-3 7.7-7 9-4-1.3-7-4.6-7-9V6l7-3z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Seguridad corporativa</b><p>Acceso por roles, trazabilidad de cada acción y registro de conexiones.</p></div>
-      <div class="back rv" style="--rd:.05s"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><b>Soporte 24/7</b><p>Tu operación no para, y nuestro equipo tampoco.</p></div>
-      <div class="back rv" style="--rd:.1s"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="9" r="2.5"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 15c2.8 0 6 1.6 6 5"/></svg></span><b>Acompañamiento continuo</b><p>Desde la implementación y durante toda la operación, con tu equipo y tu red.</p></div>
-      <div class="back rv"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></span><b>Velocidad de desarrollo</b><p>Lo que tu operación necesita, desarrollado rápido y a tu medida.</p></div>
-      <div class="back rv" style="--rd:.05s"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></svg></span><b>Se integra con tus herramientas</b><p>Plataformas de aseguradoras, API, SFTP, ERP y WhatsApp, sin reemplazar lo que funciona.</p></div>
-      <div class="back rv" style="--rd:.1s"><span class="tic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></span><b>Hecho para gran escala</b><p>Miles de servicios, varias unidades de negocio y cientos de proveedores, en la misma plataforma.</p></div>
-    </div>
-    <div class="band rv">
-      <p>Haz que tu operación hable por ti.<small>Te mostramos Wip con un caso como el tuyo, en una demo.</small></p>
-      <div class="band__ctas">{{DEMO_BTN}}</div>
-    </div>
-  </div>
-</section>
-
-{{CLIENTES}}
 
 {{FAQ}}
 
