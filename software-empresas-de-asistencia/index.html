@@ -1154,6 +1154,33 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 @media(max-width:1000px){.more{grid-template-columns:1fr 1fr}}
 @media(max-width:560px){.more{grid-template-columns:1fr}}
 
+/* Tu red de proveedores: vista del producto a la izquierda (fija al bajar) y ocho capacidades a la derecha */
+.red{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(28px,4vw,60px);margin-top:48px;align-items:start}
+.red__vis{position:sticky;top:110px;display:flex;flex-direction:column;gap:12px;padding:clamp(20px,2.4vw,28px);border-radius:28px;background:linear-gradient(160deg,#16255a,#0b1020);box-shadow:0 30px 80px rgba(11,16,32,.22)}
+.red__vis .papp{margin-top:0}
+.red__chat{display:flex;flex-direction:column;gap:8px;padding:14px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1)}
+.red__chat .convo__m--p{background:#fff;color:var(--navy)}
+.red__chat .convo__m--o{background:var(--lime);color:var(--navy)}
+.red__chat .convo__m--o small{color:#3d4a12}
+.red__pics{display:flex;align-items:center;gap:6px}
+.red__pics i{width:46px;height:34px;border-radius:8px;background:linear-gradient(135deg,#3a4a6e,#1c2640);border:1px solid rgba(255,255,255,.15)}
+.red__pics span{margin-left:6px;font-size:12px;color:#8a93a8}
+.red__score{padding:14px 16px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff}
+.red__score-h{display:flex;justify-content:space-between;align-items:baseline;padding-bottom:8px;font-size:12.5px;color:#8a93a8}
+.red__score-h b{font-size:15px;color:#fff}
+.red__score-r{display:grid;grid-template-columns:1fr auto auto;gap:12px;align-items:center;padding:9px 0;border-top:1px solid rgba(255,255,255,.08);font-size:14px}
+.red__score-r em{font-style:normal;font-weight:700;font-size:12px;padding:4px 9px;border-radius:var(--pill);background:rgba(219,255,87,.18);color:var(--lime)}
+.red__score-r em.low{background:rgba(255,108,108,.16);color:#ff8a8a}
+.red__score-r i{font-style:normal;font-size:12.5px;color:#c1c9d6}
+.red__list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.red__list li{display:flex;flex-direction:column;gap:12px;padding:20px;border-radius:22px;background:#f6f7f2;border:1px solid var(--line)}
+.red__ic{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--lime);color:var(--navy);font-family:var(--display);font-weight:800;font-size:14px}
+.red__list b{display:block;font-family:var(--display);font-weight:700;font-size:17px;line-height:1.2;letter-spacing:-.015em}
+.red__list p{margin-top:6px;font-size:14px;color:var(--soft)}
+@media(max-width:1000px){.red{grid-template-columns:1fr}.red__vis{position:static}}
+@media(max-width:560px){.red__list{grid-template-columns:1fr}}
+body[data-page="corp"] main .red__vis{--soft:#c1c9d6;--muted:#8a93a8}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1315,46 +1342,46 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<!-- ===================== PROVEEDOR Y ASEGURADO ===================== -->
-<section class="sec" id="experiencia" style="padding-top:0">
+<!-- ===================== TU RED DE PROVEEDORES ===================== -->
+<section class="sec" id="red" style="padding-top:0">
   <div class="wrap">
     <div class="head rv">
-      <span class="eyebrow">Experiencia</span>
-      <h2 class="h2">Una gran experiencia <span class="lime">en cada lado.</span></h2>
+      <span class="eyebrow">Tu red de proveedores</span>
+      <h2 class="h2">Toda tu red, en todo el país, <span class="lime">en un solo lugar.</span></h2>
+      <p class="lead">Tus proveedores tienen una experiencia pensada para ellos, con todo lo que necesitan para prestar el mejor servicio. Y tú tienes el control de toda la red, en todas tus asistencias.</p>
     </div>
-    <div class="duo">
-      <article class="duo__card duo__card--prov rv">
-        <span class="tile__k">Para tu red de proveedores</span>
-        <h3>Tus proveedores trabajan mejor.</h3>
-        <ul class="ticks">
-          <li>Reciben y aceptan servicios en una sola app</li>
-          <li>Saben cuánto van a cobrar, con la tarifa de su convenio</li>
-          <li>Reportan estados, fotos, firma y horas desde campo</li>
-          <li>Resuelven novedades y autorizaciones en el chat del servicio</li>
-        </ul>
-        <div class="papp" aria-hidden="true">
-          <div class="papp__h"><b>Mis servicios</b><span>Hoy · 3</span></div>
+    <div class="red">
+      <div class="red__vis rv" aria-hidden="true">
+        <div class="papp">
+          <div class="papp__h"><b>Mis servicios</b><span>Grúas del Pacífico · hoy 3</span></div>
           <div class="papp__r"><div><b>Grúa liviana</b><span>Calle 80 con 68 · $185.000</span></div><em class="go">Aceptar</em></div>
           <div class="papp__r"><div><b>Cerrajería</b><span>Cra. 15 # 93 · $120.000</span></div><em class="on">En camino</em></div>
           <div class="papp__r"><div><b>Paso de corriente</b><span>Av. Boyacá · $95.000</span></div><em class="done">Finalizado</em></div>
         </div>
-      </article>
-      <article class="duo__card duo__card--user rv" style="--rd:.08s">
-        <span class="tile__k">Para tu asegurado</span>
-        <h3>Una experiencia 100 % digital.</h3>
-        <div class="phone phone--mini" id="chat">
-          <div class="phone__top"><span class="phone__av" aria-hidden="true"></span><div><b>Tu empresa</b><span>En línea</span></div></div>
-          <div class="phone__body" aria-live="off">
-            <div class="msg msg--u">Hola, mi carro se varó. Necesito una grúa.</div>
-            <div class="msg msg--a">Claro. Compárteme tu ubicación y te la envío ya.</div>
-            <div class="msg msg--u">📍 Ubicación compartida</div>
-            <div class="msg msg--a">Va en camino Grúas del Pacífico, llega en 18 min. Te aviso cada paso por aquí.</div>
-            <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
-          </div>
+        <div class="red__chat">
+          <div class="convo__m convo__m--p"><small>Grúas del Pacífico</small>Llegué al sitio. Te dejo las fotos de recogida.</div>
+          <div class="red__pics"><i></i><i></i><i></i><span>3 fotos · 10:39 a. m.</span></div>
+          <div class="convo__m convo__m--o"><small>Operación</small>Recibido. Autorizado el km adicional.</div>
         </div>
-        <p class="duo__note">Pide por WhatsApp, comparte su ubicación, ve quién va y cuándo llega, envía fotos y califica al final. Los mensajes salen con el número y el nombre de tu empresa.</p>
-      </article>
+        <div class="red__score">
+          <div class="red__score-h"><b>Tu red este mes</b><span>Bogotá · Vial</span></div>
+          <div class="red__score-r"><span>Grúas del Pacífico</span><em>ANS 97 %</em><i>★ 4,9</i></div>
+          <div class="red__score-r"><span>Auxilio Vial Andino</span><em>ANS 94 %</em><i>★ 4,7</i></div>
+          <div class="red__score-r"><span>Remolques Express</span><em class="low">ANS 86 %</em><i>★ 4,2</i></div>
+        </div>
+      </div>
+      <ul class="red__list">
+        <li class="rv"><span class="red__ic">1</span><div><b>Asigna a tu red en segundos</b><p>Por cercanía, convenio o prioridad. Si un proveedor no acepta, el servicio pasa al siguiente.</p></div></li>
+        <li class="rv"><span class="red__ic">2</span><div><b>Una app pensada para el proveedor</b><p>Recibe, acepta y gestiona sus servicios en un solo lugar, con la tarifa de su convenio a la vista.</p></div></li>
+        <li class="rv"><span class="red__ic">3</span><div><b>Chat en vivo, en tiempo real</b><p>Te comunicas con cada proveedor dentro de cada servicio, sin llamadas ni chats sueltos.</p></div></li>
+        <li class="rv"><span class="red__ic">4</span><div><b>Evidencias desde campo</b><p>Fotos, firma y horas de cada etapa quedan guardadas en el servicio, listas para auditar.</p></div></li>
+        <li class="rv"><span class="red__ic">5</span><div><b>Novedades y autorizaciones</b><p>Se resuelven en el mismo chat, con la trazabilidad de quién autorizó qué y cuándo.</p></div></li>
+        <li class="rv"><span class="red__ic">6</span><div><b>Datos claros de tu red</b><p>ANS, calificación, tiempos y costo por proveedor, ciudad y tipo de servicio.</p></div></li>
+        <li class="rv"><span class="red__ic">7</span><div><b>Todas tus asistencias, a nivel nacional</b><p>Proveedores de vial, hogar, médica, jurídica, veterinaria y más, en cualquier ciudad del país.</p></div></li>
+        <li class="rv"><span class="red__ic">8</span><div><b>Tu red crece contigo</b><p>Suma proveedores nuevos por ciudad y tipo de servicio, cada uno con sus reglas y tarifas.</p></div></li>
+      </ul>
     </div>
+    <span class="ex" style="text-align:center">Nombres y cifras de ejemplo.</span>
   </div>
 </section>
 
