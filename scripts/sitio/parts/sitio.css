@@ -1061,3 +1061,4 @@ body[data-page="corp"]{font-weight:400}
 .sx-hero__copy{padding-bottom:clamp(150px,20vh,210px)}
 .sx-hero__down{bottom:48px}
 .sx-nums{padding-top:24px}
+.sx-hero__copy{padding-top:clamp(160px,20vh,220px)}
