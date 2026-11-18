@@ -1181,6 +1181,19 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 @media(max-width:560px){.red__list{grid-template-columns:1fr}}
 body[data-page="corp"] main .red__vis{--soft:#c1c9d6;--muted:#8a93a8}
 
+/* Recorrido: paneles en vivo (mapa de asignación y chat del asegurado) y captura vertical de tarifas */
+.tour__frame--live{aspect-ratio:16/9;display:grid;place-items:center;background:#0f1629}
+.tour__frame--map{background:#0f1629}
+.tour__frame--map .map{width:100%;border:0;border-radius:0}
+.tour__frame--soft{background:linear-gradient(160deg,#eef3d8,#f6f7f2 50%,#e9eef8)}
+.tour__frame--soft .phone--mini{margin:18px 0 0;max-width:340px}
+.tour__frame--soft .phone__body{height:260px}
+.tour__frame--tall{background:#f4f4f6}
+.tour__frame--tall img{width:auto;max-width:100%;max-height:560px;margin:0 auto;object-fit:contain}
+.more--2{grid-template-columns:1fr 1fr}
+@media(max-width:560px){.more--2{grid-template-columns:1fr}}
+body[data-page="corp"] main .tour__frame--live .phone{--soft:#c1c9d6;--muted:#8a93a8;--line:rgba(255,255,255,.12);color:#fff}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1309,9 +1322,12 @@ window.addEventListener('message',function(e){
     <div class="tour rv" id="tour">
       <div class="tour__tabs" role="tablist" aria-label="Recorrido por la plataforma">
         <button type="button" role="tab" aria-selected="true" aria-controls="tp-0" id="tt-0" class="is-on"><b>Monitoreo central</b><span>Toda tu operación, en una pantalla</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-1" id="tt-1" tabindex="-1"><b>Tu red en el mapa</b><span>Quién está en camino, en servicio o libre</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-2" id="tt-2" tabindex="-1"><b>La ruta de cada servicio</b><span>Ruta sugerida y seguimiento en vivo</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-3" id="tt-3" tabindex="-1"><b>Evidencias</b><span>Fotos, documentos y guías del servicio</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-1" id="tt-1" tabindex="-1"><b>Asignación inteligente</b><span>Por cercanía, tarifa, proveedor y más</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-2" id="tt-2" tabindex="-1"><b>Tarifas automáticas</b><span>Cada servicio, liquidado con su convenio</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-3" id="tt-3" tabindex="-1"><b>Tu red en el mapa</b><span>Quién está en camino, en servicio o libre</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-4" id="tt-4" tabindex="-1"><b>La ruta de cada servicio</b><span>Ruta sugerida y seguimiento en vivo</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-5" id="tt-5" tabindex="-1"><b>Evidencias</b><span>Fotos, documentos y guías del servicio</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-6" id="tt-6" tabindex="-1"><b>Experiencia del cliente</b><span>Por WhatsApp o en tu propia app</span></button>
       </div>
       <div class="tour__stage">
         <figure class="tour__panel is-on" role="tabpanel" id="tp-0" aria-labelledby="tt-0">
@@ -1319,25 +1335,54 @@ window.addEventListener('message',function(e){
           <figcaption><b>Sabes en qué va cada servicio, sin llamar a nadie.</b> Estados en vivo, servicios por asignar, responsables y el cumplimiento del día, filtrados por unidad de negocio.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-1" aria-labelledby="tt-1" hidden>
+          <div class="tour__frame tour__frame--map"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="map" aria-hidden="true">
+              <svg viewBox="0 0 100 62" preserveAspectRatio="none"><line class="ln" x1="54" y1="34" x2="41" y2="24" vector-effect="non-scaling-stroke"/></svg>
+              <svg viewBox="0 0 100 62" style="overflow:visible"><circle class="as-ring" cx="54" cy="34" r="1.4"/><circle class="as" cx="54" cy="34" r="1.6"/></svg>
+              <span class="map__as" style="left:54%;top:54.8%">Asegurado</span>
+              <span class="map__lbl">2,1 km · llega en 9 min</span>
+              <span class="map__live"><i></i>En vivo</span>
+            </div>
+          </div>
+          <figcaption><b>El proveedor correcto para cada caso, en segundos.</b> Por cercanía, por tarifa del convenio, por proveedor preferido, por prioridad o programado a la hora exacta. Si no acepta, pasa al siguiente. Y todos los flujos que tu operación necesite.</figcaption>
+        </figure>
+        <figure class="tour__panel" role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden>
+          <div class="tour__frame tour__frame--tall"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/tarifas-automaticas.webp" alt="Configuración de un grupo de tarifado automático en Wip: valor base, fallidos, cancelados y cálculo de kilómetros" width="1414" height="1300" loading="lazy" decoding="async"></div>
+          <figcaption><b>Cada tarifa, calculada sola.</b> Valor base, kilómetros adicionales, horario nocturno, festivos, fallidos y cancelados, con las reglas de cada convenio y cada proveedor.</figcaption>
+        </figure>
+        <figure class="tour__panel" role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden>
           <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/mapa-red.webp" alt="Mapa de Wip con los técnicos de la red en camino, en servicio y disponibles" width="1777" height="700" loading="lazy" decoding="async"></div>
           <figcaption><b>Toda tu red, en vivo sobre el mapa.</b> Ves quién está en camino, quién está en servicio y quién está disponible para el próximo caso.</figcaption>
         </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden>
+        <figure class="tour__panel" role="tabpanel" id="tp-4" aria-labelledby="tt-4" hidden>
           <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/ruta-servicio.webp" alt="Servicio en Wip con la ruta sugerida desde el origen hasta el destino" width="1702" height="695" loading="lazy" decoding="async"></div>
           <figcaption><b>Cada servicio con su ruta.</b> Wip sugiere el recorrido de origen a destino y lo sigue en vivo, junto con su estadística, trazabilidad y chats.</figcaption>
         </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden>
+        <figure class="tour__panel" role="tabpanel" id="tp-5" aria-labelledby="tt-5" hidden>
           <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/evidencias.webp" alt="Pestaña Multimedia de un servicio en Wip con las fotos de evidencia" width="1714" height="660" loading="lazy" decoding="async"></div>
           <figcaption><b>La evidencia de cada servicio, en un solo lugar.</b> Fotos con fecha y ubicación, documentos y guías, listos para descargar cuando los necesites.</figcaption>
+        </figure>
+        <figure class="tour__panel" role="tabpanel" id="tp-6" aria-labelledby="tt-6" hidden>
+          <div class="tour__frame tour__frame--live tour__frame--soft"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="phone phone--mini" id="chat">
+              <div class="phone__top"><span class="phone__av" aria-hidden="true"></span><div><b>Tu empresa</b><span>En línea</span></div></div>
+              <div class="phone__body" aria-live="off">
+                <div class="msg msg--u">Hola, mi carro se varó. Necesito una grúa.</div>
+                <div class="msg msg--a">Claro. Compárteme tu ubicación y te la envío ya.</div>
+                <div class="msg msg--u">📍 Ubicación compartida</div>
+                <div class="msg msg--a">Va en camino Grúas del Pacífico, llega en 18 min. Te aviso cada paso por aquí.</div>
+                <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+              </div>
+            </div>
+          </div>
+          <figcaption><b>Tu asegurado, 100 % digital.</b> Pide por WhatsApp o desde la app de tu empresa, comparte su ubicación, ve quién va y cuándo llega, envía fotos y califica al final. Todo con el nombre y la marca de tu empresa.</figcaption>
         </figure>
       </div>
       <span class="ex" style="text-align:center">Capturas reales de la plataforma con datos de ejemplo.</span>
     </div>
-    <div class="more">
-      <article class="more__i rv"><span class="tile__k">Tarifas</span><b>Cada tarifa, calculada sola.</b><p>Valor base, km adicionales, nocturno, festivos y fallidos, por convenio.</p></article>
-      <article class="more__i rv" style="--rd:.06s"><span class="tile__k">Tu red</span><b>Habla con tu red sin levantar el teléfono.</b><p>Novedades y autorizaciones en el chat de cada servicio.</p></article>
-      <article class="more__i rv" style="--rd:.12s"><span class="tile__k">Wipi</span><b>Pregúntale a Wipi.</b><p>Crea servicios, configura convenios y te entrega informes.</p></article>
-      <article class="more__i rv" style="--rd:.18s"><span class="tile__k">Multiservicios</span><b>Un evento, todos sus servicios.</b><p>Grúa, desplazamiento y custodia, cada uno con su prestador.</p></article>
+    <div class="more more--2">
+      <article class="more__i rv"><span class="tile__k">Wipi</span><b>Pregúntale a Wipi.</b><p>Crea servicios, configura convenios y tarifas, y te entrega informes.</p></article>
+      <article class="more__i rv" style="--rd:.06s"><span class="tile__k">Multiservicios</span><b>Un evento, todos sus servicios.</b><p>Grúa, desplazamiento y custodia, cada uno con su prestador.</p></article>
     </div>
   </div>
 </section>

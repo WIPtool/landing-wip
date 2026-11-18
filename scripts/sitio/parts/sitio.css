@@ -534,3 +534,16 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 @media(max-width:1000px){.red{grid-template-columns:1fr}.red__vis{position:static}}
 @media(max-width:560px){.red__list{grid-template-columns:1fr}}
 body[data-page="corp"] main .red__vis{--soft:#c1c9d6;--muted:#8a93a8}
+
+/* Recorrido: paneles en vivo (mapa de asignación y chat del asegurado) y captura vertical de tarifas */
+.tour__frame--live{aspect-ratio:16/9;display:grid;place-items:center;background:#0f1629}
+.tour__frame--map{background:#0f1629}
+.tour__frame--map .map{width:100%;border:0;border-radius:0}
+.tour__frame--soft{background:linear-gradient(160deg,#eef3d8,#f6f7f2 50%,#e9eef8)}
+.tour__frame--soft .phone--mini{margin:18px 0 0;max-width:340px}
+.tour__frame--soft .phone__body{height:260px}
+.tour__frame--tall{background:#f4f4f6}
+.tour__frame--tall img{width:auto;max-width:100%;max-height:560px;margin:0 auto;object-fit:contain}
+.more--2{grid-template-columns:1fr 1fr}
+@media(max-width:560px){.more--2{grid-template-columns:1fr}}
+body[data-page="corp"] main .tour__frame--live .phone{--soft:#c1c9d6;--muted:#8a93a8;--line:rgba(255,255,255,.12);color:#fff}
