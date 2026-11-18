@@ -111,3 +111,21 @@
     },{threshold:.4});
   }
 
+  /* Recorrido de la plataforma: cada pestaña muestra su captura */
+  var tour=document.getElementById("tour");
+  if(tour){
+    var tt=[].slice.call(tour.querySelectorAll("[role=tab]")), tp=[].slice.call(tour.querySelectorAll("[role=tabpanel]"));
+    var tourShow=function(k,focus){
+      tt.forEach(function(b,i){var on=i===k;b.classList.toggle("is-on",on);b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1;});
+      tp.forEach(function(p,i){var on=i===k;p.hidden=!on;p.classList.toggle("is-on",on);});
+      if(focus) tt[k].focus();
+    };
+    tt.forEach(function(b,i){
+      b.addEventListener("click",function(){tourShow(i);});
+      b.addEventListener("keydown",function(e){
+        if(e.key==="ArrowDown"||e.key==="ArrowRight"){e.preventDefault();tourShow((i+1)%tt.length,true);}
+        if(e.key==="ArrowUp"||e.key==="ArrowLeft"){e.preventDefault();tourShow((i+tt.length-1)%tt.length,true);}
+      });
+    });
+  }
+

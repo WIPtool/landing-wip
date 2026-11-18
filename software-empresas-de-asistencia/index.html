@@ -1123,6 +1123,37 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 .scale__row span{max-width:220px;margin-left:auto;margin-right:auto}
 @media(max-width:900px){.scale__row{grid-template-columns:1fr 1fr;row-gap:24px}.scale__row > div:nth-child(3){border-left:0}}
 
+/* Recorrido de la plataforma con capturas reales: pestañas a la izquierda, captura grande en marco de navegador */
+.tour{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-top:48px;align-items:start}
+.tour > .ex{grid-column:1/-1}
+.tour__tabs{display:flex;flex-direction:column;gap:8px}
+.tour__tabs button{text-align:left;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:#f6f7f2;transition:background .25s,border-color .25s,box-shadow .25s}
+.tour__tabs b{display:block;font-size:16px}
+.tour__tabs span{display:block;margin-top:3px;font-size:13.5px;color:var(--muted)}
+.tour__tabs button:hover{border-color:#cfd5df}
+.tour__tabs button.is-on{background:var(--navy);border-color:var(--navy);box-shadow:0 18px 40px rgba(11,16,32,.18)}
+.tour__tabs button.is-on b{color:#fff}
+.tour__tabs button.is-on span{color:var(--lime)}
+.tour__tabs button:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.tour__panel{margin:0}
+.tour__panel[hidden]{display:none}
+.tour__panel.is-on{animation:trackIn .5s var(--ease-out)}
+.tour__frame{position:relative;border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 80px rgba(11,16,32,.16);padding-top:30px}
+.tour__frame::before{content:"";position:absolute;left:0;right:0;top:0;height:30px;background:#eef0f4;border-bottom:1px solid var(--line)}
+.tour__dots{position:absolute;top:10px;left:14px;display:flex;gap:6px;z-index:1}
+.tour__dots i{width:10px;height:10px;border-radius:50%;background:#d6dae2}
+.tour__dots i:first-child{background:#ff6c6c}.tour__dots i:nth-child(2){background:#f5c451}.tour__dots i:nth-child(3){background:#7bd35a}
+.tour__frame img{width:100%;height:auto;display:block}
+.tour__panel figcaption{margin-top:16px;font-size:15.5px;color:var(--soft);max-width:760px}
+.tour__panel figcaption b{color:var(--navy)}
+@media(max-width:1000px){.tour{grid-template-columns:1fr}.tour__tabs{flex-direction:row;overflow-x:auto;padding-bottom:4px}.tour__tabs button{flex:none;width:230px}}
+.more{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}
+.more__i{padding:22px;border-radius:22px;background:#f6f7f2;border:1px solid var(--line)}
+.more__i b{display:block;margin-top:10px;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2;letter-spacing:-.015em}
+.more__i p{margin-top:6px;font-size:14px;color:var(--soft)}
+@media(max-width:1000px){.more{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.more{grid-template-columns:1fr}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1240,100 +1271,47 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<!-- ===================== LA PLATAFORMA (BENTO) ===================== -->
+<!-- ===================== LA PLATAFORMA (RECORRIDO CON CAPTURAS) ===================== -->
 <section class="sec" id="plataforma" style="padding-top:0">
   <div class="wrap">
     <div class="head rv">
       <span class="eyebrow">La plataforma</span>
       <h2 class="h2">Toda tu operación. <span class="lime">Una sola plataforma.</span></h2>
+      <p class="lead">Así se ve Wip por dentro, en una operación real.</p>
     </div>
-    <div class="bento">
-
-      <article class="tile tile--dark tile--w4 rv">
-        <span class="tile__k">Wip IA</span>
-        <h3>Wip IA opera cada caso.</h3>
-        <p>Recibe la solicitud, la asigna según cada convenio, avisa al asegurado y sigue el ANS. Si algo va a fallar, te alerta antes.</p>
-        <ul class="flowui" aria-hidden="true">
-          <li class="on"><i></i>Caso recibido por API</li>
-          <li class="on"><i></i>Asignado por convenio</li>
-          <li class="on"><i></i>Asegurado avisado</li>
-          <li class="warn"><i></i>ANS en riesgo · 12 min</li>
-        </ul>
-      </article>
-
-      <article class="tile tile--w2 rv" style="--rd:.06s">
-        <span class="tile__k">Asignación</span>
-        <h3>El proveedor correcto, en segundos.</h3>
-        <p>Por cercanía, prioridad, tarifa o programación. Si no acepta, pasa al siguiente.</p>
-        <div class="radar" aria-hidden="true"><i class="r1"></i><i class="r2"></i><i class="r3"></i><span></span></div>
-      </article>
-
-      <article class="tile tile--w2 rv">
-        <span class="tile__k">Tarifas</span>
-        <h3>Cada tarifa, calculada sola.</h3>
-        <p>Valor base, kilómetros adicionales, horario nocturno, festivos y fallidos, con las reglas de cada convenio.</p>
-        <div class="bill" aria-hidden="true">
-          <div><span>Valor base</span><b>$130.000</b></div>
-          <div><span>Km adicional × 8</span><b>$20.000</b></div>
-          <div><span>Horario nocturno</span><b>$6.000</b></div>
-          <div class="bill__t"><span>Total del servicio</span><b>$156.000</b></div>
-        </div>
-      </article>
-
-      <article class="tile tile--w4 rv" style="--rd:.06s">
-        <span class="tile__k">Comunicación con tu red</span>
-        <h3>Habla con tu red sin levantar el teléfono.</h3>
-        <p>Cada servicio tiene su chat. Novedades, autorizaciones y evidencias quedan en el mismo lugar, con su trazabilidad.</p>
-        <div class="convo" aria-hidden="true">
-          <div class="convo__m convo__m--p"><small>Grúas del Pacífico</small>El cliente no está en el sitio. ¿Esperamos?</div>
-          <div class="convo__m convo__m--o"><small>Operación</small>Autorizado esperar 15 minutos. Ya lo contactamos.</div>
-          <div class="convo__m convo__m--p"><small>Grúas del Pacífico</small>Listo, ya llegó. Iniciamos el servicio.</div>
-        </div>
-      </article>
-
-      <article class="tile tile--w3 rv">
-        <span class="tile__k">Monitoreo central</span>
-        <h3>Toda tu operación, en una pantalla.</h3>
-        <p>Semáforo de ANS, servicios sin proveedor y cumplimiento del día, en vivo.</p>
-        <div class="mon" aria-hidden="true">
-          <div class="mon__r"><span>Grúa por varada</span><em class="ok">En camino</em></div>
-          <div class="mon__r"><span>Cerrajería</span><em class="wait">Esperando aprobación</em></div>
-          <div class="mon__r"><span>Médico a domicilio</span><em class="late">9 min tarde</em></div>
-          <div class="mon__r"><span>Desplazamiento</span><em class="ok">En camino</em></div>
-        </div>
-      </article>
-
-      <article class="tile tile--w3 tile--shot rv" style="--rd:.06s">
-        <span class="tile__k">Gráficas y datos</span>
-        <h3>Datos para decidir, no para buscar.</h3>
-        <p>Valores, tiempos, kilómetros, ranking de proveedores y satisfacción, por unidad de negocio.</p>
-        <div class="shotimg"><img src="/img/modulo-de-graficas-con-valores-y-5b3bf6a6.jpg" alt="Módulo de gráficas de Wip con valores y análisis por unidad de negocio" width="1250" height="800" loading="lazy" decoding="async"></div>
-      </article>
-
-      <article class="tile tile--lime tile--w3 rv">
-        <span class="tile__k">Wipi, la IA de Wip</span>
-        <h3>Pregúntale a Wipi.</h3>
-        <p>Crea servicios, configura convenios y tarifas, y te entrega el informe que necesitas.</p>
-        <div class="ask2" aria-hidden="true">
-          <div class="ask2__q">¿Qué proveedor de grúas incumplió más ANS este mes?</div>
-          <div class="ask2__a"><b>Grúas del Valle</b>, 14 % de 37 servicios. Te dejo el detalle por ciudad.</div>
-        </div>
-      </article>
-
-      <article class="tile tile--w3 rv" style="--rd:.06s">
-        <span class="tile__k">Multiservicios</span>
-        <h3>Un evento. Todos sus servicios.</h3>
-        <p>Grúa, desplazamiento y custodia en un mismo evento, cada uno asignado a su prestador.</p>
-        <div class="event" aria-hidden="true">
-          <b>Evento E26-1008</b>
-          <span><i class="ok"></i>Grúa · asignada</span>
-          <span><i class="ok"></i>Desplazamiento · asignado</span>
-          <span><i class="wait"></i>Custodia · pendiente por asignar</span>
-        </div>
-      </article>
-
+    <div class="tour rv" id="tour">
+      <div class="tour__tabs" role="tablist" aria-label="Recorrido por la plataforma">
+        <button type="button" role="tab" aria-selected="true" aria-controls="tp-0" id="tt-0" class="is-on"><b>Monitoreo central</b><span>Toda tu operación, en una pantalla</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-1" id="tt-1" tabindex="-1"><b>Tu red en el mapa</b><span>Quién está en camino, en servicio o libre</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-2" id="tt-2" tabindex="-1"><b>La ruta de cada servicio</b><span>Ruta sugerida y seguimiento en vivo</span></button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="tp-3" id="tt-3" tabindex="-1"><b>Evidencias</b><span>Fotos, documentos y guías del servicio</span></button>
+      </div>
+      <div class="tour__stage">
+        <figure class="tour__panel is-on" role="tabpanel" id="tp-0" aria-labelledby="tt-0">
+          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/monitoreo-central.webp" alt="Monitoreo central de Wip: servicios activos, estados, semáforo de ANS y cumplimiento del día" width="1885" height="700" loading="lazy" decoding="async"></div>
+          <figcaption><b>Sabes en qué va cada servicio, sin llamar a nadie.</b> Estados en vivo, servicios por asignar, responsables y el cumplimiento del día, filtrados por unidad de negocio.</figcaption>
+        </figure>
+        <figure class="tour__panel" role="tabpanel" id="tp-1" aria-labelledby="tt-1" hidden>
+          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/mapa-red.webp" alt="Mapa de Wip con los técnicos de la red en camino, en servicio y disponibles" width="1777" height="700" loading="lazy" decoding="async"></div>
+          <figcaption><b>Toda tu red, en vivo sobre el mapa.</b> Ves quién está en camino, quién está en servicio y quién está disponible para el próximo caso.</figcaption>
+        </figure>
+        <figure class="tour__panel" role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden>
+          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/ruta-servicio.webp" alt="Servicio en Wip con la ruta sugerida desde el origen hasta el destino" width="1702" height="695" loading="lazy" decoding="async"></div>
+          <figcaption><b>Cada servicio con su ruta.</b> Wip sugiere el recorrido de origen a destino y lo sigue en vivo, junto con su estadística, trazabilidad y chats.</figcaption>
+        </figure>
+        <figure class="tour__panel" role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden>
+          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/evidencias.webp" alt="Pestaña Multimedia de un servicio en Wip con las fotos de evidencia" width="1714" height="660" loading="lazy" decoding="async"></div>
+          <figcaption><b>La evidencia de cada servicio, en un solo lugar.</b> Fotos con fecha y ubicación, documentos y guías, listos para descargar cuando los necesites.</figcaption>
+        </figure>
+      </div>
+      <span class="ex" style="text-align:center">Capturas reales de la plataforma con datos de ejemplo.</span>
     </div>
-    <span class="ex" style="text-align:center">Nombres y valores de ejemplo.</span>
+    <div class="more">
+      <article class="more__i rv"><span class="tile__k">Tarifas</span><b>Cada tarifa, calculada sola.</b><p>Valor base, km adicionales, nocturno, festivos y fallidos, por convenio.</p></article>
+      <article class="more__i rv" style="--rd:.06s"><span class="tile__k">Tu red</span><b>Habla con tu red sin levantar el teléfono.</b><p>Novedades y autorizaciones en el chat de cada servicio.</p></article>
+      <article class="more__i rv" style="--rd:.12s"><span class="tile__k">Wipi</span><b>Pregúntale a Wipi.</b><p>Crea servicios, configura convenios y te entrega informes.</p></article>
+      <article class="more__i rv" style="--rd:.18s"><span class="tile__k">Multiservicios</span><b>Un evento, todos sus servicios.</b><p>Grúa, desplazamiento y custodia, cada uno con su prestador.</p></article>
+    </div>
   </div>
 </section>
 
@@ -1791,6 +1769,24 @@ window.addEventListener('message',function(e){
         requestAnimationFrame(paso);
       });
     },{threshold:.4});
+  }
+
+  /* Recorrido de la plataforma: cada pestaña muestra su captura */
+  var tour=document.getElementById("tour");
+  if(tour){
+    var tt=[].slice.call(tour.querySelectorAll("[role=tab]")), tp=[].slice.call(tour.querySelectorAll("[role=tabpanel]"));
+    var tourShow=function(k,focus){
+      tt.forEach(function(b,i){var on=i===k;b.classList.toggle("is-on",on);b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1;});
+      tp.forEach(function(p,i){var on=i===k;p.hidden=!on;p.classList.toggle("is-on",on);});
+      if(focus) tt[k].focus();
+    };
+    tt.forEach(function(b,i){
+      b.addEventListener("click",function(){tourShow(i);});
+      b.addEventListener("keydown",function(e){
+        if(e.key==="ArrowDown"||e.key==="ArrowRight"){e.preventDefault();tourShow((i+1)%tt.length,true);}
+        if(e.key==="ArrowUp"||e.key==="ArrowLeft"){e.preventDefault();tourShow((i+tt.length-1)%tt.length,true);}
+      });
+    });
   }
 
   /* La cuenta del call center inteligente */

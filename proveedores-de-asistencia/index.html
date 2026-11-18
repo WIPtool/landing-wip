@@ -1123,6 +1123,37 @@ body[data-page="corp"] main .duo__card--user .phone{--soft:#c1c9d6;--muted:#8a93
 .scale__row span{max-width:220px;margin-left:auto;margin-right:auto}
 @media(max-width:900px){.scale__row{grid-template-columns:1fr 1fr;row-gap:24px}.scale__row > div:nth-child(3){border-left:0}}
 
+/* Recorrido de la plataforma con capturas reales: pestañas a la izquierda, captura grande en marco de navegador */
+.tour{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(20px,3vw,40px);margin-top:48px;align-items:start}
+.tour > .ex{grid-column:1/-1}
+.tour__tabs{display:flex;flex-direction:column;gap:8px}
+.tour__tabs button{text-align:left;padding:16px 18px;border-radius:18px;border:1px solid var(--line);background:#f6f7f2;transition:background .25s,border-color .25s,box-shadow .25s}
+.tour__tabs b{display:block;font-size:16px}
+.tour__tabs span{display:block;margin-top:3px;font-size:13.5px;color:var(--muted)}
+.tour__tabs button:hover{border-color:#cfd5df}
+.tour__tabs button.is-on{background:var(--navy);border-color:var(--navy);box-shadow:0 18px 40px rgba(11,16,32,.18)}
+.tour__tabs button.is-on b{color:#fff}
+.tour__tabs button.is-on span{color:var(--lime)}
+.tour__tabs button:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
+.tour__panel{margin:0}
+.tour__panel[hidden]{display:none}
+.tour__panel.is-on{animation:trackIn .5s var(--ease-out)}
+.tour__frame{position:relative;border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line);box-shadow:0 30px 80px rgba(11,16,32,.16);padding-top:30px}
+.tour__frame::before{content:"";position:absolute;left:0;right:0;top:0;height:30px;background:#eef0f4;border-bottom:1px solid var(--line)}
+.tour__dots{position:absolute;top:10px;left:14px;display:flex;gap:6px;z-index:1}
+.tour__dots i{width:10px;height:10px;border-radius:50%;background:#d6dae2}
+.tour__dots i:first-child{background:#ff6c6c}.tour__dots i:nth-child(2){background:#f5c451}.tour__dots i:nth-child(3){background:#7bd35a}
+.tour__frame img{width:100%;height:auto;display:block}
+.tour__panel figcaption{margin-top:16px;font-size:15.5px;color:var(--soft);max-width:760px}
+.tour__panel figcaption b{color:var(--navy)}
+@media(max-width:1000px){.tour{grid-template-columns:1fr}.tour__tabs{flex-direction:row;overflow-x:auto;padding-bottom:4px}.tour__tabs button{flex:none;width:230px}}
+.more{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:40px}
+.more__i{padding:22px;border-radius:22px;background:#f6f7f2;border:1px solid var(--line)}
+.more__i b{display:block;margin-top:10px;font-family:var(--display);font-weight:700;font-size:18px;line-height:1.2;letter-spacing:-.015em}
+.more__i p{margin-top:6px;font-size:14px;color:var(--soft)}
+@media(max-width:1000px){.more{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.more{grid-template-columns:1fr}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1653,6 +1684,24 @@ window.addEventListener('message',function(e){
         requestAnimationFrame(paso);
       });
     },{threshold:.4});
+  }
+
+  /* Recorrido de la plataforma: cada pestaña muestra su captura */
+  var tour=document.getElementById("tour");
+  if(tour){
+    var tt=[].slice.call(tour.querySelectorAll("[role=tab]")), tp=[].slice.call(tour.querySelectorAll("[role=tabpanel]"));
+    var tourShow=function(k,focus){
+      tt.forEach(function(b,i){var on=i===k;b.classList.toggle("is-on",on);b.setAttribute("aria-selected",on);b.tabIndex=on?0:-1;});
+      tp.forEach(function(p,i){var on=i===k;p.hidden=!on;p.classList.toggle("is-on",on);});
+      if(focus) tt[k].focus();
+    };
+    tt.forEach(function(b,i){
+      b.addEventListener("click",function(){tourShow(i);});
+      b.addEventListener("keydown",function(e){
+        if(e.key==="ArrowDown"||e.key==="ArrowRight"){e.preventDefault();tourShow((i+1)%tt.length,true);}
+        if(e.key==="ArrowUp"||e.key==="ArrowLeft"){e.preventDefault();tourShow((i+tt.length-1)%tt.length,true);}
+      });
+    });
   }
 
   /* La cuenta del call center inteligente */
