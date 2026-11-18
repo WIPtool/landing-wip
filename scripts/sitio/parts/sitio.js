@@ -222,3 +222,15 @@
     wvSet(0);
     if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
   }
+
+  /* Plataforma: los carriles corren por su lado y luego se unen en la tarjeta de Wip */
+  var mrg=document.getElementById("mrg");
+  if(mrg){
+    var mrgCut=function(){if(!mrg.classList.contains("cut")){mrg.classList.add("cut");}};
+    if(reduce){mrgCut();}
+    else{
+      var mrgIntro=mrg.querySelector(".mrg__intro");
+      if(mrgIntro) mrgIntro.addEventListener("click",mrgCut);
+      whenVisible(mrg,function(){mrg.classList.add("play");setTimeout(mrgCut,4600);},{threshold:.35});
+    }
+  }

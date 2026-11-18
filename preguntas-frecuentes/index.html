@@ -1709,6 +1709,73 @@ body[data-page="corp"]{font-weight:400}
 .sx-nums{padding-top:24px}
 .sx-hero__copy{padding-top:clamp(160px,20vh,220px)}
 
+/* ============ Plataforma: carriles que corren solos y se unen en la tarjeta de Wip (referente HyperFrames "pagina web") ============ */
+@property --x{syntax:'<percentage>';inherits:true;initial-value:0%}
+.mrg{position:relative;margin-top:clamp(32px,4vw,56px)}
+.mrg__card{position:relative;padding:clamp(18px,2.4vw,30px);border-radius:20px;background:#fff;border:1.5px solid #cfd2d8;visibility:hidden}
+.mrg.cut .mrg__card{visibility:visible;animation:mrgWhip .85s cubic-bezier(.12,.9,.25,1) both}
+@keyframes mrgWhip{from{transform:translateX(24%)}to{transform:none}}
+.mrg__card .tour{margin-top:18px}
+.mrg__top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mrg__chip{display:inline-block;padding:10px 18px;border-radius:12px;background:#eceef2;font-size:15px;font-weight:500;color:var(--navy)}
+.mrg.cut .mrg__chip{animation:mrgChip .45s ease-out .7s both}
+@keyframes mrgChip{from{transform:translateX(15px)}to{transform:none}}
+.mrg__pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:9px 16px 9px 12px;border-radius:var(--pill);background:var(--navy);color:var(--lime);font-size:14px;font-weight:600;opacity:0}
+.mrg.cut .mrg__pill{animation:mrgPill .5s ease-out 1s both}
+@keyframes mrgPill{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.mrg__ring{position:relative;width:10px;height:10px;border-radius:50%;background:var(--lime)}
+.mrg__ring::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--lime);opacity:.6;animation:ping 1.8s ease-out infinite}
+
+/* Intro: suelo de papel, carriles finos, nodos y etiquetas */
+.mrg__intro{position:absolute;inset:0;border-radius:20px;background:#f7f5f1;overflow:hidden;cursor:pointer}
+.mrg.cut .mrg__intro{display:none}
+.mrg__ticks i{position:absolute;width:26px;height:1.5px;background:#d8d2ca}
+.mrg__ticks i:nth-child(1){left:12%;top:8%}.mrg__ticks i:nth-child(2){left:38%;top:16%}.mrg__ticks i:nth-child(3){left:66%;top:6%}.mrg__ticks i:nth-child(4){left:84%;top:19%}.mrg__ticks i:nth-child(5){left:24%;top:22%}.mrg__ticks i:nth-child(6){left:52%;top:24%}
+.mrg.play .mrg__ticks{animation:mrgTicks 1.9s ease-out both}
+@keyframes mrgTicks{0%{transform:none;opacity:1}53%{transform:translateX(-200px);opacity:1}70%{opacity:1}100%{transform:translateX(-350px);opacity:0}}
+.mrg__lane{position:absolute;left:0;right:0;top:var(--y);height:0;--x:var(--x0)}
+.mrg__rule{position:absolute;left:0;top:-1.5px;height:3px;width:max(0px,calc(var(--x) - 14px));background:#272624}
+.mrg__node{position:absolute;left:var(--x);top:-8px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--navy);box-shadow:0 0 0 3px var(--lime)}
+.mrg__badge{position:absolute;left:var(--x);bottom:24px;transform:translateX(-50%) scale(var(--s0)) rotate(-3deg);transform-origin:50% 100%}
+.mrg__badge-in{display:flex;align-items:center;gap:8px;white-space:nowrap;padding:8px 14px;border-radius:11px;background:#fff;border:1px solid #d2cec9;font-size:clamp(12px,1.25vw,15px);font-weight:500;color:#20201e;transform-origin:50% 100%;position:relative}
+.mrg__badge-in::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-7px;border-style:solid;border-width:8px 7px 0;border-color:#cfd3e6 transparent transparent}
+.mrg__ic{width:14px;height:14px;fill:var(--navy);flex:none}
+.mrg.play .mrg__lane{animation:mrgLane 4.6s both}
+@keyframes mrgLane{0%{--x:var(--x0);animation-timing-function:cubic-bezier(.16,1,.3,1)}22%{--x:var(--x1)}26%{--x:var(--x1);animation-timing-function:cubic-bezier(.6,0,.9,.4)}58%{--x:115%}100%{--x:115%}}
+.mrg.play .mrg__badge{animation:mrgBadgeIn 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes mrgBadgeIn{to{transform:translateX(-50%) scale(1) rotate(-2.2deg)}}
+.mrg.play .mrg__badge-in{animation:mrgBadgeOut .62s cubic-bezier(.55,0,.9,.5) calc(1.24s + var(--k) * .05s) both}
+@keyframes mrgBadgeOut{to{transform:scale(0) rotate(9deg)}}
+
+/* Titulares que entran palabra por palabra */
+.mrg__hl{position:absolute;left:0;right:0;top:6%;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(24px,3.4vw,46px);line-height:1.12;letter-spacing:-.02em;color:#20201e}
+.mrg__l{display:block}
+.mrg__l--acc{color:#5f8a00}
+.mrg__w{display:inline-block;opacity:0}
+.mrg.play .mrg__hl--a{animation:mrgHlA 3.7s both}
+@keyframes mrgHlA{0%{transform:translateX(30%);animation-timing-function:cubic-bezier(.16,1,.3,1)}27%{transform:translateX(0);animation-timing-function:linear}61%{transform:translateX(-4%);animation-timing-function:cubic-bezier(.6,0,.9,.4)}100%{transform:translateX(-140%)}}
+.mrg.play .mrg__hl--a .mrg__w{animation:mrgWord .5s ease-out calc(var(--i) * .13s) both}
+.mrg.play .mrg__hl--a .mrg__l--acc .mrg__w{animation-delay:calc(.45s + var(--i) * .13s)}
+.mrg.play .mrg__hl--b{animation:mrgHlB 1.6s cubic-bezier(.16,1,.3,1) 3s both}
+@keyframes mrgHlB{from{transform:translateX(8%)}to{transform:translateX(-4%)}}
+.mrg.play .mrg__hl--b .mrg__w{animation:mrgWord .43s ease-out calc(3s + var(--i) * .11s) both}
+.mrg.play .mrg__hl--b .mrg__l--acc .mrg__w{animation-delay:calc(3.4s + var(--i) * .11s)}
+@keyframes mrgWord{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.mrg__skip{position:absolute;right:18px;bottom:16px;padding:8px 14px;border:1px solid #d2cec9;border-radius:var(--pill);background:#fff;font-size:13px;font-weight:500;color:#20201e;cursor:pointer}
+.mrg__skip:hover{border-color:#20201e}
+@media(max-width:700px){
+  .mrg__badge-in{padding:6px 10px;gap:6px}
+  .mrg__ic{width:11px;height:11px}
+  .mrg__hl{top:4%}
+}
+@media(prefers-reduced-motion:reduce){.mrg__intro{display:none}.mrg__card{visibility:visible}}
+@media(max-width:700px){
+  .mrg__lane:nth-of-type(1){--x0:90%!important;--x1:60%!important}.mrg__lane:nth-of-type(2){--x0:20%!important;--x1:40%!important}.mrg__lane:nth-of-type(3){--x0:50%!important;--x1:62%!important}
+  .mrg__lane:nth-of-type(4){--x0:10%!important;--x1:36%!important}.mrg__lane:nth-of-type(5){--x0:80%!important;--x1:58%!important}.mrg__lane:nth-of-type(6){--x0:15%!important;--x1:42%!important}.mrg__lane:nth-of-type(7){--x0:40%!important;--x1:56%!important}
+  .mrg__hl{font-size:22px;padding:0 12px}
+  .mrg__lane{top:calc(18% + (var(--y) - 30%) * 1.1)}
+}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2329,6 +2396,18 @@ window.addEventListener('message',function(e){
     var wvK=0, wvSet=function(k){wv.setAttribute("data-v",String(k));[].forEach.call(wvChips,function(c){c.classList.toggle("is-on",c.getAttribute("data-v")===String(k));});};
     wvSet(0);
     if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
+  }
+
+  /* Plataforma: los carriles corren por su lado y luego se unen en la tarjeta de Wip */
+  var mrg=document.getElementById("mrg");
+  if(mrg){
+    var mrgCut=function(){if(!mrg.classList.contains("cut")){mrg.classList.add("cut");}};
+    if(reduce){mrgCut();}
+    else{
+      var mrgIntro=mrg.querySelector(".mrg__intro");
+      if(mrgIntro) mrgIntro.addEventListener("click",mrgCut);
+      whenVisible(mrg,function(){mrg.classList.add("play");setTimeout(mrgCut,4600);},{threshold:.35});
+    }
   }
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');

@@ -1709,6 +1709,73 @@ body[data-page="corp"]{font-weight:400}
 .sx-nums{padding-top:24px}
 .sx-hero__copy{padding-top:clamp(160px,20vh,220px)}
 
+/* ============ Plataforma: carriles que corren solos y se unen en la tarjeta de Wip (referente HyperFrames "pagina web") ============ */
+@property --x{syntax:'<percentage>';inherits:true;initial-value:0%}
+.mrg{position:relative;margin-top:clamp(32px,4vw,56px)}
+.mrg__card{position:relative;padding:clamp(18px,2.4vw,30px);border-radius:20px;background:#fff;border:1.5px solid #cfd2d8;visibility:hidden}
+.mrg.cut .mrg__card{visibility:visible;animation:mrgWhip .85s cubic-bezier(.12,.9,.25,1) both}
+@keyframes mrgWhip{from{transform:translateX(24%)}to{transform:none}}
+.mrg__card .tour{margin-top:18px}
+.mrg__top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.mrg__chip{display:inline-block;padding:10px 18px;border-radius:12px;background:#eceef2;font-size:15px;font-weight:500;color:var(--navy)}
+.mrg.cut .mrg__chip{animation:mrgChip .45s ease-out .7s both}
+@keyframes mrgChip{from{transform:translateX(15px)}to{transform:none}}
+.mrg__pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:9px 16px 9px 12px;border-radius:var(--pill);background:var(--navy);color:var(--lime);font-size:14px;font-weight:600;opacity:0}
+.mrg.cut .mrg__pill{animation:mrgPill .5s ease-out 1s both}
+@keyframes mrgPill{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
+.mrg__ring{position:relative;width:10px;height:10px;border-radius:50%;background:var(--lime)}
+.mrg__ring::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--lime);opacity:.6;animation:ping 1.8s ease-out infinite}
+
+/* Intro: suelo de papel, carriles finos, nodos y etiquetas */
+.mrg__intro{position:absolute;inset:0;border-radius:20px;background:#f7f5f1;overflow:hidden;cursor:pointer}
+.mrg.cut .mrg__intro{display:none}
+.mrg__ticks i{position:absolute;width:26px;height:1.5px;background:#d8d2ca}
+.mrg__ticks i:nth-child(1){left:12%;top:8%}.mrg__ticks i:nth-child(2){left:38%;top:16%}.mrg__ticks i:nth-child(3){left:66%;top:6%}.mrg__ticks i:nth-child(4){left:84%;top:19%}.mrg__ticks i:nth-child(5){left:24%;top:22%}.mrg__ticks i:nth-child(6){left:52%;top:24%}
+.mrg.play .mrg__ticks{animation:mrgTicks 1.9s ease-out both}
+@keyframes mrgTicks{0%{transform:none;opacity:1}53%{transform:translateX(-200px);opacity:1}70%{opacity:1}100%{transform:translateX(-350px);opacity:0}}
+.mrg__lane{position:absolute;left:0;right:0;top:var(--y);height:0;--x:var(--x0)}
+.mrg__rule{position:absolute;left:0;top:-1.5px;height:3px;width:max(0px,calc(var(--x) - 14px));background:#272624}
+.mrg__node{position:absolute;left:var(--x);top:-8px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--navy);box-shadow:0 0 0 3px var(--lime)}
+.mrg__badge{position:absolute;left:var(--x);bottom:24px;transform:translateX(-50%) scale(var(--s0)) rotate(-3deg);transform-origin:50% 100%}
+.mrg__badge-in{display:flex;align-items:center;gap:8px;white-space:nowrap;padding:8px 14px;border-radius:11px;background:#fff;border:1px solid #d2cec9;font-size:clamp(12px,1.25vw,15px);font-weight:500;color:#20201e;transform-origin:50% 100%;position:relative}
+.mrg__badge-in::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-7px;border-style:solid;border-width:8px 7px 0;border-color:#cfd3e6 transparent transparent}
+.mrg__ic{width:14px;height:14px;fill:var(--navy);flex:none}
+.mrg.play .mrg__lane{animation:mrgLane 4.6s both}
+@keyframes mrgLane{0%{--x:var(--x0);animation-timing-function:cubic-bezier(.16,1,.3,1)}22%{--x:var(--x1)}26%{--x:var(--x1);animation-timing-function:cubic-bezier(.6,0,.9,.4)}58%{--x:115%}100%{--x:115%}}
+.mrg.play .mrg__badge{animation:mrgBadgeIn 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes mrgBadgeIn{to{transform:translateX(-50%) scale(1) rotate(-2.2deg)}}
+.mrg.play .mrg__badge-in{animation:mrgBadgeOut .62s cubic-bezier(.55,0,.9,.5) calc(1.24s + var(--k) * .05s) both}
+@keyframes mrgBadgeOut{to{transform:scale(0) rotate(9deg)}}
+
+/* Titulares que entran palabra por palabra */
+.mrg__hl{position:absolute;left:0;right:0;top:6%;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(24px,3.4vw,46px);line-height:1.12;letter-spacing:-.02em;color:#20201e}
+.mrg__l{display:block}
+.mrg__l--acc{color:#5f8a00}
+.mrg__w{display:inline-block;opacity:0}
+.mrg.play .mrg__hl--a{animation:mrgHlA 3.7s both}
+@keyframes mrgHlA{0%{transform:translateX(30%);animation-timing-function:cubic-bezier(.16,1,.3,1)}27%{transform:translateX(0);animation-timing-function:linear}61%{transform:translateX(-4%);animation-timing-function:cubic-bezier(.6,0,.9,.4)}100%{transform:translateX(-140%)}}
+.mrg.play .mrg__hl--a .mrg__w{animation:mrgWord .5s ease-out calc(var(--i) * .13s) both}
+.mrg.play .mrg__hl--a .mrg__l--acc .mrg__w{animation-delay:calc(.45s + var(--i) * .13s)}
+.mrg.play .mrg__hl--b{animation:mrgHlB 1.6s cubic-bezier(.16,1,.3,1) 3s both}
+@keyframes mrgHlB{from{transform:translateX(8%)}to{transform:translateX(-4%)}}
+.mrg.play .mrg__hl--b .mrg__w{animation:mrgWord .43s ease-out calc(3s + var(--i) * .11s) both}
+.mrg.play .mrg__hl--b .mrg__l--acc .mrg__w{animation-delay:calc(3.4s + var(--i) * .11s)}
+@keyframes mrgWord{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
+.mrg__skip{position:absolute;right:18px;bottom:16px;padding:8px 14px;border:1px solid #d2cec9;border-radius:var(--pill);background:#fff;font-size:13px;font-weight:500;color:#20201e;cursor:pointer}
+.mrg__skip:hover{border-color:#20201e}
+@media(max-width:700px){
+  .mrg__badge-in{padding:6px 10px;gap:6px}
+  .mrg__ic{width:11px;height:11px}
+  .mrg__hl{top:4%}
+}
+@media(prefers-reduced-motion:reduce){.mrg__intro{display:none}.mrg__card{visibility:visible}}
+@media(max-width:700px){
+  .mrg__lane:nth-of-type(1){--x0:90%!important;--x1:60%!important}.mrg__lane:nth-of-type(2){--x0:20%!important;--x1:40%!important}.mrg__lane:nth-of-type(3){--x0:50%!important;--x1:62%!important}
+  .mrg__lane:nth-of-type(4){--x0:10%!important;--x1:36%!important}.mrg__lane:nth-of-type(5){--x0:80%!important;--x1:58%!important}.mrg__lane:nth-of-type(6){--x0:15%!important;--x1:42%!important}.mrg__lane:nth-of-type(7){--x0:40%!important;--x1:56%!important}
+  .mrg__hl{font-size:22px;padding:0 12px}
+  .mrg__lane{top:calc(18% + (var(--y) - 30%) * 1.1)}
+}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1878,206 +1945,224 @@ window.addEventListener('message',function(e){
 <section class="ap ap--white" id="plataforma">
   <div class="wrap">
     <h2 class="ap-h2 rv">La plataforma y tu red,<br><span class="ap-mute">trabajando como una sola.</span></h2>
-    <div class="tour rv" id="tour">
-      <div class="tour__tabs" role="tablist" aria-label="Recorrido por la plataforma">
-        <button type="button" role="tab" aria-selected="true" aria-controls="tp-0" id="tt-0" class="is-on"><b>Monitoreo central</b><span>Toda tu operación, en una pantalla</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-1" id="tt-1" tabindex="-1"><b>Asignación inteligente</b><span>Por cercanía, tarifa, proveedor y más</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-2" id="tt-2" tabindex="-1"><b>Tarifas automáticas</b><span>Cada servicio, liquidado con su convenio</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-3" id="tt-3" tabindex="-1"><b>Tu red en el mapa</b><span>Quién está en camino, en servicio o libre</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-4" id="tt-4" tabindex="-1"><b>La ruta de cada servicio</b><span>Ruta sugerida y seguimiento en vivo</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-5" id="tt-5" tabindex="-1"><b>Evidencias</b><span>Fotos, documentos y guías del servicio</span></button>
-        <button type="button" role="tab" aria-selected="false" aria-controls="tp-6" id="tt-6" tabindex="-1"><b>Experiencia del cliente</b><span>Por WhatsApp o en tu propia app</span></button>
+    <div class="mrg" id="mrg">
+      <div class="mrg__card">
+        <div class="mrg__top"><span class="mrg__chip">Plataforma Wip</span><span class="mrg__pill"><i class="mrg__ring"></i>Todo conectado</span></div>
+      <div class="tour" id="tour">
+        <div class="tour__tabs" role="tablist" aria-label="Recorrido por la plataforma">
+          <button type="button" role="tab" aria-selected="true" aria-controls="tp-0" id="tt-0" class="is-on"><b>Monitoreo central</b><span>Toda tu operación, en una pantalla</span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="tp-1" id="tt-1" tabindex="-1"><b>Asignación inteligente</b><span>Por cercanía, tarifa, proveedor y más</span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="tp-2" id="tt-2" tabindex="-1"><b>Tarifas automáticas</b><span>Cada servicio, liquidado con su convenio</span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="tp-3" id="tt-3" tabindex="-1"><b>Tu red en el mapa</b><span>Quién está en camino, en servicio o libre</span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="tp-4" id="tt-4" tabindex="-1"><b>La ruta de cada servicio</b><span>Ruta sugerida y seguimiento en vivo</span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="tp-5" id="tt-5" tabindex="-1"><b>Evidencias</b><span>Fotos, documentos y guías del servicio</span></button>
+          <button type="button" role="tab" aria-selected="false" aria-controls="tp-6" id="tt-6" tabindex="-1"><b>Experiencia del cliente</b><span>Por WhatsApp o en tu propia app</span></button>
+        </div>
+        <div class="tour__stage">
+          <figure class="tour__panel is-on" role="tabpanel" id="tp-0" aria-labelledby="tt-0">
+            <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="asg" data-s="0" aria-hidden="true">
+                <p class="asg__title"><span data-s="0">Toda tu operación, <b>en una pantalla</b></span><span data-s="1">Detecta lo que está <b>en riesgo</b></span><span data-s="2">Tu cumplimiento, <b>en vivo</b></span><span data-s="3">Tu operación, <b>bajo control</b></span></p>
+                <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+                <div class="asg__card">
+                  <div class="asg__s" data-s="0">
+                    <b class="asg__h">Monitoreo central · hoy</b>
+                    <div class="asg__kpis asg__in"><div class="lm"><b>128</b><span>Servicios activos</span></div><div><b>6</b><span>Por asignar</span></div><div><b>41</b><span>En camino</span></div><div><b>312</b><span>Finalizados</span></div></div>
+                  </div>
+                  <div class="asg__s" data-s="1">
+                    <b class="asg__h">Servicios activos</b>
+                    <div class="asg__tabs"><span class="on">Todas</span><span>Vial</span><span>Hogar</span><span>Salud</span></div>
+                    <ul class="asg__rows"><li><span><i class="dot g"></i>#10482 · Grúa liviana</span><em>En camino</em></li><li class="risk"><span><i class="dot r"></i>#10487 · Cerrajería</span><em>ANS en riesgo</em></li><li><span><i class="dot y"></i>#10491 · Paso de corriente</span><em>Por asignar</em></li></ul>
+                    <p class="asg__note m-hide">Semáforo de ANS en cada servicio, sin llamar a nadie.</p>
+                  </div>
+                  <div class="asg__s" data-s="2">
+                    <b class="asg__h">Cumplimiento del día</b>
+                    <div class="asg__big">94 %</div>
+                    <div class="asg__bar"><i style="--w:94%"></i></div>
+                    <p class="asg__note">Filtrado por unidad de negocio, ciudad y tipo de servicio.</p>
+                  </div>
+                </div>
+                <div class="asg__orbit"><span>Estados</span><span>ANS</span><span>Alertas</span><span>Unidades</span></div>
+              </div>
+            </div>
+            <figcaption><b>Sabes en qué va cada servicio, sin llamar a nadie.</b> Estados en vivo, servicios por asignar, responsables y el cumplimiento del día, filtrados por unidad de negocio.</figcaption>
+          </figure>
+          <figure class="tour__panel" role="tabpanel" id="tp-1" aria-labelledby="tt-1" hidden>
+            <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="asg" data-s="0" aria-hidden="true">
+                <p class="asg__title"><span data-s="0">Recibe casos de <b>todas tus plataformas</b></span><span data-s="1">Asigna a tu red <b>automáticamente</b></span><span data-s="2">Si no acepta, <b>pasa al siguiente</b></span><span data-s="3">Tu red, <b>conectada en vivo</b></span></p>
+                <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+                <div class="asg__card">
+                  <div class="asg__s" data-s="0">
+                    <b class="asg__h">Nuevo caso</b>
+                    <div class="asg__srcs"><span>Plataforma de la aseguradora</span><span>API</span><span>WhatsApp</span></div>
+                    <div class="asg__drop"><i></i><div><b>Caso #10482 recibido</b><span>Grúa liviana · Calle 80 con 68</span></div></div>
+                  </div>
+                  <div class="asg__s" data-s="1">
+                    <b class="asg__h">Asignar servicio</b>
+                    <div class="asg__tabs"><span class="on">Por cercanía</span><span>Por tarifa</span><span>Por proveedor</span></div>
+                    <ul class="asg__rows"><li class="pick"><span>Grúas del Valle</span><em>1,4 km</em></li><li><span>Grúas del Pacífico</span><em>2,1 km</em></li><li><span>Remolques Express</span><em>3,8 km</em></li></ul>
+                    <span class="asg__btn">Asignar automáticamente</span>
+                    <i class="asg__cursor"></i>
+                  </div>
+                  <div class="asg__s" data-s="2">
+                    <b class="asg__h">Respuesta de la red</b>
+                    <ul class="asg__resp"><li class="no"><span>Grúas del Valle</span><em>No aceptó</em></li><li class="yes"><span>Grúas del Pacífico</span><em>Aceptó · llega en 9 min</em></li></ul>
+                    <p class="asg__note">Wip IA pasó el caso al siguiente proveedor en 40 segundos.</p>
+                  </div>
+                </div>
+                <div class="asg__orbit"><span>WhatsApp</span><span>ANS</span><span>Mapa</span><span>Tarifa</span></div>
+              </div>
+            </div>
+            <figcaption><b>El proveedor correcto para cada caso, en segundos.</b> Por cercanía, por tarifa del convenio, por proveedor preferido, por prioridad o programado a la hora exacta. Si no acepta, pasa al siguiente. Y todos los flujos que tu operación necesite.</figcaption>
+          </figure>
+          <figure class="tour__panel" role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden>
+            <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="asg" data-s="0" aria-hidden="true">
+                <p class="asg__title"><span data-s="0">Cada convenio, <b>con sus reglas</b></span><span data-s="1">Wip calcula <b>cada tarifa</b></span><span data-s="2">Listo para <b>liquidar</b></span><span data-s="3">Tus tarifas, <b>siempre al día</b></span></p>
+                <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+                <div class="asg__card">
+                  <div class="asg__s" data-s="0">
+                    <b class="asg__h">Grupo de tarifado</b>
+                    <div class="asg__srcs asg__in"><span>Valor base</span><span>Km adicional</span><span>Nocturno</span><span>Festivo</span><span>Fallido</span><span>Cancelado</span></div>
+                    <div class="asg__drop"><i data-ic="$"></i><div><b>Convenio Vial Premium</b><span>Reglas del convenio y del proveedor</span></div></div>
+                  </div>
+                  <div class="asg__s" data-s="1">
+                    <b class="asg__h">Servicio #10482 · Grúa liviana</b>
+                    <ul class="asg__rows asg__in"><li><span>Valor base</span><em>$150.000</em></li><li><span>8 km adicionales</span><em>$24.000</em></li><li><span>Recargo festivo</span><em>$30.000</em></li><li class="tot pick"><span>Total del servicio</span><em>$204.000</em></li></ul>
+                  </div>
+                  <div class="asg__s" data-s="2">
+                    <b class="asg__h">Liquidación</b>
+                    <ul class="asg__resp"><li><span>Grúas del Pacífico</span><em>Tarifa del proveedor</em></li><li class="yes"><span>#10482 · Liquidado</span><em>$204.000</em></li></ul>
+                    <p class="asg__note">Calculado solo, con la regla de cada convenio y cada proveedor.</p>
+                  </div>
+                </div>
+                <div class="asg__orbit"><span>Convenio</span><span>Km</span><span>Festivo</span><span>Nocturno</span></div>
+              </div>
+            </div>
+            <figcaption><b>Cada tarifa, calculada sola.</b> Valor base, kilómetros adicionales, horario nocturno, festivos, fallidos y cancelados, con las reglas de cada convenio y cada proveedor.</figcaption>
+          </figure>
+          <figure class="tour__panel" role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden>
+            <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="asg" data-s="0" aria-hidden="true">
+                <p class="asg__title"><span data-s="0">Tu red, <b>en vivo sobre el mapa</b></span><span data-s="1">Ve quién está <b>disponible</b></span><span data-s="2">Listo para <b>el próximo caso</b></span><span data-s="3">Toda tu red, <b>a la vista</b></span></p>
+                <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+                <div class="asg__card">
+                  <div class="asg__s" data-s="0">
+                    <div class="asg__legend"><span><i class="dot y"></i>En camino</span><span><i class="dot g"></i>En servicio</span><span><i class="dot p"></i>Disponible</span></div>
+                    <div class="asg__map"><span class="pin y" style="left:22%;top:30%"></span><span class="pin g" style="left:48%;top:22%"></span><span class="pin p" style="left:66%;top:55%"></span><span class="pin y" style="left:35%;top:70%"></span><span class="pin g" style="left:80%;top:30%"></span><span class="pin p" style="left:56%;top:82%"></span></div>
+                  </div>
+                  <div class="asg__s" data-s="1">
+                    <b class="asg__h">Técnicos cerca del caso</b>
+                    <ul class="asg__rows"><li><span><i class="dot y"></i>Grúas del Pacífico</span><em>En camino</em></li><li><span><i class="dot g"></i>Auxilio Vial Andino</span><em>En servicio</em></li><li class="pick"><span><i class="dot p"></i>Remolques Express</span><em>Disponible</em></li></ul>
+                  </div>
+                  <div class="asg__s" data-s="2">
+                    <b class="asg__h">Próximo caso</b>
+                    <div class="asg__drop"><i data-ic="✓"></i><div><b>Remolques Express</b><span>Disponible a 1,8 km del asegurado</span></div></div>
+                    <span class="asg__btn">Asignar</span><i class="asg__cursor"></i>
+                  </div>
+                </div>
+                <div class="asg__orbit"><span>En camino</span><span>En servicio</span><span>Disponible</span><span>GPS</span></div>
+              </div>
+            </div>
+            <figcaption><b>Toda tu red, en vivo sobre el mapa.</b> Ves quién está en camino, quién está en servicio y quién está disponible para el próximo caso.</figcaption>
+          </figure>
+          <figure class="tour__panel" role="tabpanel" id="tp-4" aria-labelledby="tt-4" hidden>
+            <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="asg" data-s="0" aria-hidden="true">
+                <p class="asg__title"><span data-s="0">Ruta sugerida, <b>de origen a destino</b></span><span data-s="1">Seguimiento <b>en vivo</b></span><span data-s="2">Todo queda <b>en el servicio</b></span><span data-s="3">Cada servicio, <b>con su ruta</b></span></p>
+                <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+                <div class="asg__card">
+                  <div class="asg__s" data-s="0">
+                    <b class="asg__h">#10482 · Grúa liviana</b>
+                    <div class="asg__map"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M14 46 C 28 46, 30 20, 46 24 S 70 44, 86 14"/></svg><span class="ab" style="left:14%;top:76%">A</span><span class="ab" style="left:86%;top:23%">B</span><span class="lbl">12,4 km · 26 min</span></div>
+                  </div>
+                  <div class="asg__s" data-s="1">
+                    <b class="asg__h">Estados del servicio</b>
+                    <ul class="asg__steps asg__in"><li><i></i>Asignado<em>10:12 a. m.</em></li><li><i></i>En camino<em>10:14 a. m.</em></li><li><i></i>Llegó al sitio<em>10:31 a. m.</em></li><li class="wait"><i></i>Finalizado<em>en curso</em></li></ul>
+                  </div>
+                  <div class="asg__s" data-s="2">
+                    <b class="asg__h">En el servicio #10482</b>
+                    <div class="asg__srcs asg__in"><span>Ruta</span><span>Estadística</span><span>Trazabilidad</span><span>Chats</span></div>
+                    <div class="asg__drop"><i data-ic="↗"></i><div><b>Todo en un solo lugar</b><span>Quién hizo qué y a qué hora</span></div></div>
+                  </div>
+                </div>
+                <div class="asg__orbit"><span>Origen</span><span>Destino</span><span>Chats</span><span>Trazabilidad</span></div>
+              </div>
+            </div>
+            <figcaption><b>Cada servicio con su ruta.</b> Wip sugiere el recorrido de origen a destino y lo sigue en vivo, junto con su estadística, trazabilidad y chats.</figcaption>
+          </figure>
+          <figure class="tour__panel" role="tabpanel" id="tp-5" aria-labelledby="tt-5" hidden>
+            <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="asg" data-s="0" aria-hidden="true">
+                <p class="asg__title"><span data-s="0">Fotos desde <b>campo</b></span><span data-s="1">Documentos y <b>guías</b></span><span data-s="2">Lista para <b>auditar</b></span><span data-s="3">La evidencia, <b>en un solo lugar</b></span></p>
+                <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+                <div class="asg__card">
+                  <div class="asg__s" data-s="0">
+                    <b class="asg__h">Multimedia · #10482</b>
+                    <div class="asg__pics asg__in"><div><span>Recogida</span></div><div><span>Traslado</span></div><div><span>Entrega</span></div></div>
+                    <p class="asg__note">Cada foto con fecha, hora y ubicación.</p>
+                  </div>
+                  <div class="asg__s" data-s="1">
+                    <b class="asg__h">Documentos del servicio</b>
+                    <ul class="asg__rows short"><li class="pick"><span>Guía del servicio.pdf</span><em>240 KB</em></li><li><span>Acta de entrega.pdf</span><em>180 KB</em></li><li><span>Firma del asegurado</span><em>10:39 a. m.</em></li></ul>
+                    <span class="asg__btn">Descargar</span><i class="asg__cursor"></i>
+                  </div>
+                  <div class="asg__s" data-s="2">
+                    <b class="asg__h">Servicio #10482</b>
+                    <ul class="asg__resp"><li><span>3 fotos · 2 documentos · firma</span><em>Completo</em></li><li class="yes"><span>Evidencia lista</span><em>Para auditar</em></li></ul>
+                    <p class="asg__note">Lista para descargar cuando la necesites.</p>
+                  </div>
+                </div>
+                <div class="asg__orbit"><span>Fotos</span><span>Firma</span><span>Guías</span><span>Ubicación</span></div>
+              </div>
+            </div>
+            <figcaption><b>La evidencia de cada servicio, en un solo lugar.</b> Fotos con fecha y ubicación, documentos y guías, listos para descargar cuando los necesites.</figcaption>
+          </figure>
+          <figure class="tour__panel" role="tabpanel" id="tp-6" aria-labelledby="tt-6" hidden>
+            <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="asg" data-s="0" aria-hidden="true">
+                <p class="asg__title"><span data-s="0">Tu asegurado pide <b>por WhatsApp</b></span><span data-s="1">Ve quién va y <b>cuándo llega</b></span><span data-s="2">Y califica <b>al final</b></span><span data-s="3">Tu marca, <b>100 % digital</b></span></p>
+                <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+                <div class="asg__card">
+                  <div class="asg__s" data-s="0">
+                    <b class="asg__h">Tu empresa · En línea</b>
+                    <div class="asg__in" style="display:flex;flex-direction:column;gap:8px"><div class="asg__msg u">Hola, mi carro se varó. Necesito una grúa.</div><div class="asg__msg a">Claro. Compárteme tu ubicación y te la envío ya.</div><div class="asg__msg u">📍 Ubicación compartida</div></div>
+                  </div>
+                  <div class="asg__s" data-s="1">
+                    <b class="asg__h">Tu empresa · En línea</b>
+                    <div class="asg__msg a">Va en camino Grúas del Pacífico. Te aviso cada paso por aquí.</div>
+                    <div class="asg__drop"><i data-ic="⏱"></i><div><b>Llega en 18 min</b><span>Sigue la grúa en vivo desde el chat</span></div></div>
+                  </div>
+                  <div class="asg__s" data-s="2">
+                    <b class="asg__h">¿Cómo te atendimos?</b>
+                    <div class="asg__stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
+                    <div class="asg__msg u">Muy rápido, gracias.</div>
+                    <p class="asg__note">Con el nombre y la marca de tu empresa.</p>
+                  </div>
+                </div>
+                <div class="asg__orbit"><span>WhatsApp</span><span>App propia</span><span>Ubicación</span><span>Calificación</span></div>
+              </div>
+            </div>
+            <figcaption><b>Tu asegurado, 100 % digital.</b> Pide por WhatsApp o desde la app de tu empresa, comparte su ubicación, ve quién va y cuándo llega, envía fotos y califica al final. Todo con el nombre y la marca de tu empresa.</figcaption>
+          </figure>
+        </div>
+        <span class="ex" style="text-align:center">Así funciona Wip, con datos de ejemplo.</span>
       </div>
-      <div class="tour__stage">
-        <figure class="tour__panel is-on" role="tabpanel" id="tp-0" aria-labelledby="tt-0">
-          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" data-s="0" aria-hidden="true">
-              <p class="asg__title"><span data-s="0">Toda tu operación, <b>en una pantalla</b></span><span data-s="1">Detecta lo que está <b>en riesgo</b></span><span data-s="2">Tu cumplimiento, <b>en vivo</b></span><span data-s="3">Tu operación, <b>bajo control</b></span></p>
-              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
-              <div class="asg__card">
-                <div class="asg__s" data-s="0">
-                  <b class="asg__h">Monitoreo central · hoy</b>
-                  <div class="asg__kpis asg__in"><div class="lm"><b>128</b><span>Servicios activos</span></div><div><b>6</b><span>Por asignar</span></div><div><b>41</b><span>En camino</span></div><div><b>312</b><span>Finalizados</span></div></div>
-                </div>
-                <div class="asg__s" data-s="1">
-                  <b class="asg__h">Servicios activos</b>
-                  <div class="asg__tabs"><span class="on">Todas</span><span>Vial</span><span>Hogar</span><span>Salud</span></div>
-                  <ul class="asg__rows"><li><span><i class="dot g"></i>#10482 · Grúa liviana</span><em>En camino</em></li><li class="risk"><span><i class="dot r"></i>#10487 · Cerrajería</span><em>ANS en riesgo</em></li><li><span><i class="dot y"></i>#10491 · Paso de corriente</span><em>Por asignar</em></li></ul>
-                  <p class="asg__note m-hide">Semáforo de ANS en cada servicio, sin llamar a nadie.</p>
-                </div>
-                <div class="asg__s" data-s="2">
-                  <b class="asg__h">Cumplimiento del día</b>
-                  <div class="asg__big">94 %</div>
-                  <div class="asg__bar"><i style="--w:94%"></i></div>
-                  <p class="asg__note">Filtrado por unidad de negocio, ciudad y tipo de servicio.</p>
-                </div>
-              </div>
-              <div class="asg__orbit"><span>Estados</span><span>ANS</span><span>Alertas</span><span>Unidades</span></div>
-            </div>
-          </div>
-          <figcaption><b>Sabes en qué va cada servicio, sin llamar a nadie.</b> Estados en vivo, servicios por asignar, responsables y el cumplimiento del día, filtrados por unidad de negocio.</figcaption>
-        </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-1" aria-labelledby="tt-1" hidden>
-          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" data-s="0" aria-hidden="true">
-              <p class="asg__title"><span data-s="0">Recibe casos de <b>todas tus plataformas</b></span><span data-s="1">Asigna a tu red <b>automáticamente</b></span><span data-s="2">Si no acepta, <b>pasa al siguiente</b></span><span data-s="3">Tu red, <b>conectada en vivo</b></span></p>
-              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
-              <div class="asg__card">
-                <div class="asg__s" data-s="0">
-                  <b class="asg__h">Nuevo caso</b>
-                  <div class="asg__srcs"><span>Plataforma de la aseguradora</span><span>API</span><span>WhatsApp</span></div>
-                  <div class="asg__drop"><i></i><div><b>Caso #10482 recibido</b><span>Grúa liviana · Calle 80 con 68</span></div></div>
-                </div>
-                <div class="asg__s" data-s="1">
-                  <b class="asg__h">Asignar servicio</b>
-                  <div class="asg__tabs"><span class="on">Por cercanía</span><span>Por tarifa</span><span>Por proveedor</span></div>
-                  <ul class="asg__rows"><li class="pick"><span>Grúas del Valle</span><em>1,4 km</em></li><li><span>Grúas del Pacífico</span><em>2,1 km</em></li><li><span>Remolques Express</span><em>3,8 km</em></li></ul>
-                  <span class="asg__btn">Asignar automáticamente</span>
-                  <i class="asg__cursor"></i>
-                </div>
-                <div class="asg__s" data-s="2">
-                  <b class="asg__h">Respuesta de la red</b>
-                  <ul class="asg__resp"><li class="no"><span>Grúas del Valle</span><em>No aceptó</em></li><li class="yes"><span>Grúas del Pacífico</span><em>Aceptó · llega en 9 min</em></li></ul>
-                  <p class="asg__note">Wip IA pasó el caso al siguiente proveedor en 40 segundos.</p>
-                </div>
-              </div>
-              <div class="asg__orbit"><span>WhatsApp</span><span>ANS</span><span>Mapa</span><span>Tarifa</span></div>
-            </div>
-          </div>
-          <figcaption><b>El proveedor correcto para cada caso, en segundos.</b> Por cercanía, por tarifa del convenio, por proveedor preferido, por prioridad o programado a la hora exacta. Si no acepta, pasa al siguiente. Y todos los flujos que tu operación necesite.</figcaption>
-        </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden>
-          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" data-s="0" aria-hidden="true">
-              <p class="asg__title"><span data-s="0">Cada convenio, <b>con sus reglas</b></span><span data-s="1">Wip calcula <b>cada tarifa</b></span><span data-s="2">Listo para <b>liquidar</b></span><span data-s="3">Tus tarifas, <b>siempre al día</b></span></p>
-              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
-              <div class="asg__card">
-                <div class="asg__s" data-s="0">
-                  <b class="asg__h">Grupo de tarifado</b>
-                  <div class="asg__srcs asg__in"><span>Valor base</span><span>Km adicional</span><span>Nocturno</span><span>Festivo</span><span>Fallido</span><span>Cancelado</span></div>
-                  <div class="asg__drop"><i data-ic="$"></i><div><b>Convenio Vial Premium</b><span>Reglas del convenio y del proveedor</span></div></div>
-                </div>
-                <div class="asg__s" data-s="1">
-                  <b class="asg__h">Servicio #10482 · Grúa liviana</b>
-                  <ul class="asg__rows asg__in"><li><span>Valor base</span><em>$150.000</em></li><li><span>8 km adicionales</span><em>$24.000</em></li><li><span>Recargo festivo</span><em>$30.000</em></li><li class="tot pick"><span>Total del servicio</span><em>$204.000</em></li></ul>
-                </div>
-                <div class="asg__s" data-s="2">
-                  <b class="asg__h">Liquidación</b>
-                  <ul class="asg__resp"><li><span>Grúas del Pacífico</span><em>Tarifa del proveedor</em></li><li class="yes"><span>#10482 · Liquidado</span><em>$204.000</em></li></ul>
-                  <p class="asg__note">Calculado solo, con la regla de cada convenio y cada proveedor.</p>
-                </div>
-              </div>
-              <div class="asg__orbit"><span>Convenio</span><span>Km</span><span>Festivo</span><span>Nocturno</span></div>
-            </div>
-          </div>
-          <figcaption><b>Cada tarifa, calculada sola.</b> Valor base, kilómetros adicionales, horario nocturno, festivos, fallidos y cancelados, con las reglas de cada convenio y cada proveedor.</figcaption>
-        </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden>
-          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" data-s="0" aria-hidden="true">
-              <p class="asg__title"><span data-s="0">Tu red, <b>en vivo sobre el mapa</b></span><span data-s="1">Ve quién está <b>disponible</b></span><span data-s="2">Listo para <b>el próximo caso</b></span><span data-s="3">Toda tu red, <b>a la vista</b></span></p>
-              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
-              <div class="asg__card">
-                <div class="asg__s" data-s="0">
-                  <div class="asg__legend"><span><i class="dot y"></i>En camino</span><span><i class="dot g"></i>En servicio</span><span><i class="dot p"></i>Disponible</span></div>
-                  <div class="asg__map"><span class="pin y" style="left:22%;top:30%"></span><span class="pin g" style="left:48%;top:22%"></span><span class="pin p" style="left:66%;top:55%"></span><span class="pin y" style="left:35%;top:70%"></span><span class="pin g" style="left:80%;top:30%"></span><span class="pin p" style="left:56%;top:82%"></span></div>
-                </div>
-                <div class="asg__s" data-s="1">
-                  <b class="asg__h">Técnicos cerca del caso</b>
-                  <ul class="asg__rows"><li><span><i class="dot y"></i>Grúas del Pacífico</span><em>En camino</em></li><li><span><i class="dot g"></i>Auxilio Vial Andino</span><em>En servicio</em></li><li class="pick"><span><i class="dot p"></i>Remolques Express</span><em>Disponible</em></li></ul>
-                </div>
-                <div class="asg__s" data-s="2">
-                  <b class="asg__h">Próximo caso</b>
-                  <div class="asg__drop"><i data-ic="✓"></i><div><b>Remolques Express</b><span>Disponible a 1,8 km del asegurado</span></div></div>
-                  <span class="asg__btn">Asignar</span><i class="asg__cursor"></i>
-                </div>
-              </div>
-              <div class="asg__orbit"><span>En camino</span><span>En servicio</span><span>Disponible</span><span>GPS</span></div>
-            </div>
-          </div>
-          <figcaption><b>Toda tu red, en vivo sobre el mapa.</b> Ves quién está en camino, quién está en servicio y quién está disponible para el próximo caso.</figcaption>
-        </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-4" aria-labelledby="tt-4" hidden>
-          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" data-s="0" aria-hidden="true">
-              <p class="asg__title"><span data-s="0">Ruta sugerida, <b>de origen a destino</b></span><span data-s="1">Seguimiento <b>en vivo</b></span><span data-s="2">Todo queda <b>en el servicio</b></span><span data-s="3">Cada servicio, <b>con su ruta</b></span></p>
-              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
-              <div class="asg__card">
-                <div class="asg__s" data-s="0">
-                  <b class="asg__h">#10482 · Grúa liviana</b>
-                  <div class="asg__map"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M14 46 C 28 46, 30 20, 46 24 S 70 44, 86 14"/></svg><span class="ab" style="left:14%;top:76%">A</span><span class="ab" style="left:86%;top:23%">B</span><span class="lbl">12,4 km · 26 min</span></div>
-                </div>
-                <div class="asg__s" data-s="1">
-                  <b class="asg__h">Estados del servicio</b>
-                  <ul class="asg__steps asg__in"><li><i></i>Asignado<em>10:12 a. m.</em></li><li><i></i>En camino<em>10:14 a. m.</em></li><li><i></i>Llegó al sitio<em>10:31 a. m.</em></li><li class="wait"><i></i>Finalizado<em>en curso</em></li></ul>
-                </div>
-                <div class="asg__s" data-s="2">
-                  <b class="asg__h">En el servicio #10482</b>
-                  <div class="asg__srcs asg__in"><span>Ruta</span><span>Estadística</span><span>Trazabilidad</span><span>Chats</span></div>
-                  <div class="asg__drop"><i data-ic="↗"></i><div><b>Todo en un solo lugar</b><span>Quién hizo qué y a qué hora</span></div></div>
-                </div>
-              </div>
-              <div class="asg__orbit"><span>Origen</span><span>Destino</span><span>Chats</span><span>Trazabilidad</span></div>
-            </div>
-          </div>
-          <figcaption><b>Cada servicio con su ruta.</b> Wip sugiere el recorrido de origen a destino y lo sigue en vivo, junto con su estadística, trazabilidad y chats.</figcaption>
-        </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-5" aria-labelledby="tt-5" hidden>
-          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" data-s="0" aria-hidden="true">
-              <p class="asg__title"><span data-s="0">Fotos desde <b>campo</b></span><span data-s="1">Documentos y <b>guías</b></span><span data-s="2">Lista para <b>auditar</b></span><span data-s="3">La evidencia, <b>en un solo lugar</b></span></p>
-              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
-              <div class="asg__card">
-                <div class="asg__s" data-s="0">
-                  <b class="asg__h">Multimedia · #10482</b>
-                  <div class="asg__pics asg__in"><div><span>Recogida</span></div><div><span>Traslado</span></div><div><span>Entrega</span></div></div>
-                  <p class="asg__note">Cada foto con fecha, hora y ubicación.</p>
-                </div>
-                <div class="asg__s" data-s="1">
-                  <b class="asg__h">Documentos del servicio</b>
-                  <ul class="asg__rows short"><li class="pick"><span>Guía del servicio.pdf</span><em>240 KB</em></li><li><span>Acta de entrega.pdf</span><em>180 KB</em></li><li><span>Firma del asegurado</span><em>10:39 a. m.</em></li></ul>
-                  <span class="asg__btn">Descargar</span><i class="asg__cursor"></i>
-                </div>
-                <div class="asg__s" data-s="2">
-                  <b class="asg__h">Servicio #10482</b>
-                  <ul class="asg__resp"><li><span>3 fotos · 2 documentos · firma</span><em>Completo</em></li><li class="yes"><span>Evidencia lista</span><em>Para auditar</em></li></ul>
-                  <p class="asg__note">Lista para descargar cuando la necesites.</p>
-                </div>
-              </div>
-              <div class="asg__orbit"><span>Fotos</span><span>Firma</span><span>Guías</span><span>Ubicación</span></div>
-            </div>
-          </div>
-          <figcaption><b>La evidencia de cada servicio, en un solo lugar.</b> Fotos con fecha y ubicación, documentos y guías, listos para descargar cuando los necesites.</figcaption>
-        </figure>
-        <figure class="tour__panel" role="tabpanel" id="tp-6" aria-labelledby="tt-6" hidden>
-          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" data-s="0" aria-hidden="true">
-              <p class="asg__title"><span data-s="0">Tu asegurado pide <b>por WhatsApp</b></span><span data-s="1">Ve quién va y <b>cuándo llega</b></span><span data-s="2">Y califica <b>al final</b></span><span data-s="3">Tu marca, <b>100 % digital</b></span></p>
-              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
-              <div class="asg__card">
-                <div class="asg__s" data-s="0">
-                  <b class="asg__h">Tu empresa · En línea</b>
-                  <div class="asg__in" style="display:flex;flex-direction:column;gap:8px"><div class="asg__msg u">Hola, mi carro se varó. Necesito una grúa.</div><div class="asg__msg a">Claro. Compárteme tu ubicación y te la envío ya.</div><div class="asg__msg u">📍 Ubicación compartida</div></div>
-                </div>
-                <div class="asg__s" data-s="1">
-                  <b class="asg__h">Tu empresa · En línea</b>
-                  <div class="asg__msg a">Va en camino Grúas del Pacífico. Te aviso cada paso por aquí.</div>
-                  <div class="asg__drop"><i data-ic="⏱"></i><div><b>Llega en 18 min</b><span>Sigue la grúa en vivo desde el chat</span></div></div>
-                </div>
-                <div class="asg__s" data-s="2">
-                  <b class="asg__h">¿Cómo te atendimos?</b>
-                  <div class="asg__stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
-                  <div class="asg__msg u">Muy rápido, gracias.</div>
-                  <p class="asg__note">Con el nombre y la marca de tu empresa.</p>
-                </div>
-              </div>
-              <div class="asg__orbit"><span>WhatsApp</span><span>App propia</span><span>Ubicación</span><span>Calificación</span></div>
-            </div>
-          </div>
-          <figcaption><b>Tu asegurado, 100 % digital.</b> Pide por WhatsApp o desde la app de tu empresa, comparte su ubicación, ve quién va y cuándo llega, envía fotos y califica al final. Todo con el nombre y la marca de tu empresa.</figcaption>
-        </figure>
       </div>
-      <span class="ex" style="text-align:center">Así funciona Wip, con datos de ejemplo.</span>
+      <div class="mrg__intro" aria-hidden="true">
+        <span class="mrg__ticks"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+        <p class="mrg__hl mrg__hl--a"><span class="mrg__l"><span class="mrg__w" style="--i:0">Cada</span> <span class="mrg__w" style="--i:1">parte</span> <span class="mrg__w" style="--i:2">de</span> <span class="mrg__w" style="--i:3">tu</span> <span class="mrg__w" style="--i:4">operación</span></span><span class="mrg__l mrg__l--acc"><span class="mrg__w" style="--i:0">corre</span> <span class="mrg__w" style="--i:1">por</span> <span class="mrg__w" style="--i:2">su</span> <span class="mrg__w" style="--i:3">lado</span></span></p>
+        <p class="mrg__hl mrg__hl--b"><span class="mrg__l"><span class="mrg__w" style="--i:0">y</span> <span class="mrg__w" style="--i:1">en</span> <span class="mrg__w" style="--i:2">Wip</span> <span class="mrg__w" style="--i:3">todo</span> <span class="mrg__w" style="--i:4">se</span> <span class="mrg__w" style="--i:5">une</span></span><span class="mrg__l mrg__l--acc"><span class="mrg__w" style="--i:0">en</span> <span class="mrg__w" style="--i:1">una</span> <span class="mrg__w" style="--i:2">sola</span> <span class="mrg__w" style="--i:3">plataforma</span></span></p>
+        <div class="mrg__lane" style="--y:30%;--x0:92%;--x1:60%;--s0:0.85;--k:0"><i class="mrg__rule"></i><i class="mrg__node"></i><span class="mrg__badge"><span class="mrg__badge-in"><svg class="mrg__ic" viewBox="0 0 12 12" aria-hidden="true"><circle cx="2" cy="2" r="1.4"/><circle cx="6" cy="2" r="1.4"/><circle cx="10" cy="2" r="1.4"/><circle cx="2" cy="6" r="1.4"/><circle cx="6" cy="6" r="1.4"/><circle cx="10" cy="6" r="1.4"/><circle cx="2" cy="10" r="1.4"/><circle cx="6" cy="10" r="1.4"/><circle cx="10" cy="10" r="1.4"/></svg>Monitoreo central</span></span></div>
+        <div class="mrg__lane" style="--y:40%;--x0:20%;--x1:30%;--s0:0.66;--k:1"><i class="mrg__rule"></i><i class="mrg__node"></i><span class="mrg__badge"><span class="mrg__badge-in"><svg class="mrg__ic" viewBox="0 0 12 12" aria-hidden="true"><circle cx="2" cy="2" r="1.4"/><circle cx="6" cy="2" r="1.4"/><circle cx="10" cy="2" r="1.4"/><circle cx="2" cy="6" r="1.4"/><circle cx="6" cy="6" r="1.4"/><circle cx="10" cy="6" r="1.4"/><circle cx="2" cy="10" r="1.4"/><circle cx="6" cy="10" r="1.4"/><circle cx="10" cy="10" r="1.4"/></svg>Asignación inteligente</span></span></div>
+        <div class="mrg__lane" style="--y:50%;--x0:52%;--x1:74%;--s0:0.56;--k:2"><i class="mrg__rule"></i><i class="mrg__node"></i><span class="mrg__badge"><span class="mrg__badge-in"><svg class="mrg__ic" viewBox="0 0 12 12" aria-hidden="true"><circle cx="2" cy="2" r="1.4"/><circle cx="6" cy="2" r="1.4"/><circle cx="10" cy="2" r="1.4"/><circle cx="2" cy="6" r="1.4"/><circle cx="6" cy="6" r="1.4"/><circle cx="10" cy="6" r="1.4"/><circle cx="2" cy="10" r="1.4"/><circle cx="6" cy="10" r="1.4"/><circle cx="10" cy="10" r="1.4"/></svg>Tarifas automáticas</span></span></div>
+        <div class="mrg__lane" style="--y:60%;--x0:4%;--x1:18%;--s0:0.45;--k:3"><i class="mrg__rule"></i><i class="mrg__node"></i><span class="mrg__badge"><span class="mrg__badge-in"><svg class="mrg__ic" viewBox="0 0 12 12" aria-hidden="true"><circle cx="2" cy="2" r="1.4"/><circle cx="6" cy="2" r="1.4"/><circle cx="10" cy="2" r="1.4"/><circle cx="2" cy="6" r="1.4"/><circle cx="6" cy="6" r="1.4"/><circle cx="10" cy="6" r="1.4"/><circle cx="2" cy="10" r="1.4"/><circle cx="6" cy="10" r="1.4"/><circle cx="10" cy="10" r="1.4"/></svg>Tu red en el mapa</span></span></div>
+        <div class="mrg__lane" style="--y:70%;--x0:72%;--x1:48%;--s0:0.8;--k:4"><i class="mrg__rule"></i><i class="mrg__node"></i><span class="mrg__badge"><span class="mrg__badge-in"><svg class="mrg__ic" viewBox="0 0 12 12" aria-hidden="true"><circle cx="2" cy="2" r="1.4"/><circle cx="6" cy="2" r="1.4"/><circle cx="10" cy="2" r="1.4"/><circle cx="2" cy="6" r="1.4"/><circle cx="6" cy="6" r="1.4"/><circle cx="10" cy="6" r="1.4"/><circle cx="2" cy="10" r="1.4"/><circle cx="6" cy="10" r="1.4"/><circle cx="10" cy="10" r="1.4"/></svg>La ruta de cada servicio</span></span></div>
+        <div class="mrg__lane" style="--y:80%;--x0:10%;--x1:36%;--s0:0.5;--k:5"><i class="mrg__rule"></i><i class="mrg__node"></i><span class="mrg__badge"><span class="mrg__badge-in"><svg class="mrg__ic" viewBox="0 0 12 12" aria-hidden="true"><circle cx="2" cy="2" r="1.4"/><circle cx="6" cy="2" r="1.4"/><circle cx="10" cy="2" r="1.4"/><circle cx="2" cy="6" r="1.4"/><circle cx="6" cy="6" r="1.4"/><circle cx="10" cy="6" r="1.4"/><circle cx="2" cy="10" r="1.4"/><circle cx="6" cy="10" r="1.4"/><circle cx="10" cy="10" r="1.4"/></svg>Evidencias</span></span></div>
+        <div class="mrg__lane" style="--y:90%;--x0:44%;--x1:82%;--s0:0.33;--k:6"><i class="mrg__rule"></i><i class="mrg__node"></i><span class="mrg__badge"><span class="mrg__badge-in"><svg class="mrg__ic" viewBox="0 0 12 12" aria-hidden="true"><circle cx="2" cy="2" r="1.4"/><circle cx="6" cy="2" r="1.4"/><circle cx="10" cy="2" r="1.4"/><circle cx="2" cy="6" r="1.4"/><circle cx="6" cy="6" r="1.4"/><circle cx="10" cy="6" r="1.4"/><circle cx="2" cy="10" r="1.4"/><circle cx="6" cy="10" r="1.4"/><circle cx="10" cy="10" r="1.4"/></svg>Experiencia del cliente</span></span></div>
+        <button type="button" class="mrg__skip">Ver la plataforma</button>
+      </div>
     </div>
   </div>
 </section>
@@ -2704,6 +2789,18 @@ window.addEventListener('message',function(e){
     var wvK=0, wvSet=function(k){wv.setAttribute("data-v",String(k));[].forEach.call(wvChips,function(c){c.classList.toggle("is-on",c.getAttribute("data-v")===String(k));});};
     wvSet(0);
     if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
+  }
+
+  /* Plataforma: los carriles corren por su lado y luego se unen en la tarjeta de Wip */
+  var mrg=document.getElementById("mrg");
+  if(mrg){
+    var mrgCut=function(){if(!mrg.classList.contains("cut")){mrg.classList.add("cut");}};
+    if(reduce){mrgCut();}
+    else{
+      var mrgIntro=mrg.querySelector(".mrg__intro");
+      if(mrgIntro) mrgIntro.addEventListener("click",mrgCut);
+      whenVisible(mrg,function(){mrg.classList.add("play");setTimeout(mrgCut,4600);},{threshold:.35});
+    }
   }
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
