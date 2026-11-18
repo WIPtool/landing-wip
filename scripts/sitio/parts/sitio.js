@@ -147,3 +147,14 @@
     }
   }
 
+  /* Asignación inteligente: las escenas cambian solas (recibe, asigna, reasigna, red conectada) */
+  var asg=document.getElementById("asg");
+  if(asg){
+    if(reduce){asg.setAttribute("data-s","1");}
+    else{
+      var sc=0, asgTimer=null;
+      var asgGo=function(){asg.setAttribute("data-s",String(sc));sc=(sc+1)%4;};
+      whenVisible(asg,function(){asgGo();asgTimer=setInterval(asgGo,3600);},{threshold:.3});
+    }
+  }
+

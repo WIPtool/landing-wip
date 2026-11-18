@@ -82,13 +82,30 @@
           <figcaption><b>Sabes en qué va cada servicio, sin llamar a nadie.</b> Estados en vivo, servicios por asignar, responsables y el cumplimiento del día, filtrados por unidad de negocio.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-1" aria-labelledby="tt-1" hidden>
-          <div class="tour__frame tour__frame--map"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="map" aria-hidden="true">
-              <svg viewBox="0 0 100 62" preserveAspectRatio="none"><line class="ln" x1="54" y1="34" x2="41" y2="24" vector-effect="non-scaling-stroke"/></svg>
-              <svg viewBox="0 0 100 62" style="overflow:visible"><circle class="as-ring" cx="54" cy="34" r="1.4"/><circle class="as" cx="54" cy="34" r="1.6"/></svg>
-              <span class="map__as" style="left:54%;top:54.8%">Asegurado</span>
-              <span class="map__lbl">2,1 km · llega en 9 min</span>
-              <span class="map__live"><i></i>En vivo</span>
+          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="asg" id="asg" data-s="0" aria-hidden="true">
+              <p class="asg__title"><span data-s="0">Recibe casos de <b>todas tus plataformas</b></span><span data-s="1">Asigna a tu red <b>automáticamente</b></span><span data-s="2">Si no acepta, <b>pasa al siguiente</b></span><span data-s="3">Tu red, <b>conectada en vivo</b></span></p>
+              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+              <div class="asg__card">
+                <div class="asg__s" data-s="0">
+                  <b class="asg__h">Nuevo caso</b>
+                  <div class="asg__srcs"><span>Plataforma de la aseguradora</span><span>API</span><span>WhatsApp</span></div>
+                  <div class="asg__drop"><i></i><div><b>Caso #10482 recibido</b><span>Grúa liviana · Calle 80 con 68</span></div></div>
+                </div>
+                <div class="asg__s" data-s="1">
+                  <b class="asg__h">Asignar servicio</b>
+                  <div class="asg__tabs"><span class="on">Por cercanía</span><span>Por tarifa</span><span>Por proveedor</span></div>
+                  <ul class="asg__rows"><li><span>Grúas del Valle</span><em>1,4 km</em></li><li><span>Grúas del Pacífico</span><em>2,1 km</em></li><li><span>Remolques Express</span><em>3,8 km</em></li><li><span>Auxilio Vial Andino</span><em>5,2 km</em></li></ul>
+                  <span class="asg__btn">Asignar automáticamente</span>
+                  <i class="asg__cursor"></i>
+                </div>
+                <div class="asg__s" data-s="2">
+                  <b class="asg__h">Respuesta de la red</b>
+                  <ul class="asg__resp"><li class="no"><span>Grúas del Valle</span><em>No aceptó</em></li><li class="yes"><span>Grúas del Pacífico</span><em>Aceptó · llega en 9 min</em></li></ul>
+                  <p class="asg__note">Wip IA pasó el caso al siguiente proveedor en 40 segundos.</p>
+                </div>
+              </div>
+              <div class="asg__orbit"><span>WhatsApp</span><span>ANS</span><span>Mapa</span><span>Tarifa</span></div>
             </div>
           </div>
           <figcaption><b>El proveedor correcto para cada caso, en segundos.</b> Por cercanía, por tarifa del convenio, por proveedor preferido, por prioridad o programado a la hora exacta. Si no acepta, pasa al siguiente. Y todos los flujos que tu operación necesite.</figcaption>
