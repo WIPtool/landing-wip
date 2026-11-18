@@ -1593,6 +1593,14 @@ body[data-page="corp"] main .sx-video__vid{--muted:#86868b}
 /* Wip Corporativo: toda la página en Roboto (títulos y texto) */
 body[data-page="corp"],body[data-page="corp"] *{font-family:'Roboto',system-ui,-apple-system,'Segoe UI',sans-serif!important}
 body[data-page="corp"]{font-weight:400}
+/* Hero corporativo centrado, con la letra del título del home (Roboto 800, sin mayúsculas) */
+.sx-hero__copy{text-align:center;display:flex;flex-direction:column;align-items:center}
+.sx-hero .sx-h1{text-transform:none;font-weight:800;letter-spacing:-.045em;line-height:.98;font-size:clamp(42px,6vw,84px);text-shadow:0 4px 40px rgba(11,16,32,.6)}
+.sx-hero__sub{max-width:760px;font-weight:800;letter-spacing:-.03em;font-size:clamp(22px,2.4vw,32px);line-height:1.12}
+.sx-hero__p{max-width:640px}
+.sx-hero__cta{justify-content:center}
+.sx-hero{align-items:center}
+.sx-hero__copy{padding:clamp(110px,14vh,150px) 24px clamp(70px,10vh,110px)}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -1666,7 +1674,7 @@ window.addEventListener('message',function(e){
   <div class="sx-hero__media" aria-hidden="true"></div>
   <div class="wrap sx-hero__copy rv in">
     <h1 class="sx-h1">Wip Corporativo</h1>
-    <p class="sx-hero__sub">Opera tus asistencias y tu red de proveedores <span class="ap-lime">en tiempo real.</span></p>
+    <p class="sx-hero__sub">Opera tus asistencias y tu red de proveedores <span class="ap-lime" style="white-space:nowrap">en tiempo real.</span></p>
     <p class="sx-hero__p">En nuestra línea corporativa trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
     <div class="sx-hero__cta"><a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="btn btn--lime" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a><a href="#plataforma" class="sx-btn">Conoce la plataforma<i class="sx-btn__ar" aria-hidden="true"></i></a></div>
   </div>
