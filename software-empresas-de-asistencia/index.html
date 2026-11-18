@@ -1647,6 +1647,16 @@ body[data-page="corp"]{font-weight:400}
 .sx-nums{background:#fff;padding:0 0 clamp(60px,8vw,100px);border-top:0}
 .sx-hero__copy{padding-bottom:clamp(90px,12vh,130px)}
 .sx-nums__row{box-shadow:0 30px 80px rgba(11,16,32,.18)}
+/* Panel de cifras en blanco */
+.sx-nums__row{background:#fff;border-color:#e6e8ee;box-shadow:0 24px 60px rgba(11,16,32,.08)}
+.sx-nums__row::before{background:linear-gradient(90deg,transparent,#b6e000,transparent)}
+.sx-num + .sx-num{border-left-color:#eceef3}
+.sx-num:hover{background:#fafbf6}
+.sx-nums__row .sx-num b{background:linear-gradient(180deg,var(--navy) 35%,#4a5468);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sx-plus{color:#7fa600;-webkit-text-fill-color:#7fa600}
+.sx-num__l{color:#6b7385;border-top-color:#eceef3}
+@media(max-width:900px){.sx-num:nth-child(n+3){border-top-color:#eceef3}}
+@media(max-width:480px){.sx-num + .sx-num{border-top-color:#eceef3}}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
