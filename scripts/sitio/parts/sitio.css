@@ -1129,3 +1129,6 @@ body[data-page="corp"]{font-weight:400}
   .mrg__hl{font-size:22px;padding:0 12px}
   .mrg__lane{top:calc(18% + (var(--y) - 30%) * 1.1)}
 }
+.mrg__replay{margin-left:auto;padding:8px 14px;border:1px solid #d6d9e0;border-radius:var(--pill);background:#fff;font-size:13px;font-weight:500;color:#4a5468;cursor:pointer}
+.mrg__replay:hover{border-color:var(--navy);color:var(--navy)}
+.mrg__replay::before{content:"↻ "}
