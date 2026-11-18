@@ -1049,3 +1049,4 @@ body[data-page="corp"]{font-weight:400}
 @keyframes wvGlow{50%{transform:scaleX(.8);opacity:.45}}
 #wv-chips span{transition:background .35s,color .35s,border-color .35s}
 #wv-chips span.is-on{background:var(--lime);color:var(--navy);border-color:var(--lime)}
+.sx-logo{display:inline-block;height:.95em;width:auto;vertical-align:-.08em;margin-left:.06em}
