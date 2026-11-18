@@ -1683,6 +1683,18 @@ body[data-page="corp"]{font-weight:400}
 .ap-fact__map .rt{stroke:rgba(11,16,32,.7);stroke-width:3.5;stroke-linejoin:round}
 .ap-fact__map .cl{fill:var(--navy);stroke:#fff;stroke-width:3}
 .ap-fact__map .ring{stroke:rgba(11,16,32,.5);transform-origin:165px 285px}
+/* Wipi flotante que cambia de accesorio (diadema, ubicación, antena, gafas, corbatín e informe) */
+.wv{--wc:#ff8a4c;position:relative;width:150px;height:170px;display:grid;justify-items:center}
+.wv[data-v="1"]{--wc:#dbff57}.wv[data-v="2"]{--wc:#4f8cff}.wv[data-v="3"]{--wc:#8f6bff}.wv[data-v="4"]{--wc:#ff6b6b}
+.wv__float{position:relative;width:110px;height:110px;margin-top:40px;animation:bob 3s ease-in-out infinite}
+.wv .ap-tile__orb{position:absolute;inset:0;animation:none;box-shadow:0 0 0 3px var(--wc),0 0 46px color-mix(in srgb,var(--wc) 55%,transparent),0 0 100px rgba(47,123,255,.35);transition:box-shadow .5s ease}
+.wv__a{position:absolute;left:-20px;top:-60px;width:150px;height:190px;overflow:visible;opacity:0;transform:scale(.6) translateY(10px);transition:opacity .35s ease,transform .45s cubic-bezier(.34,1.56,.64,1);z-index:2;pointer-events:none}
+.wv[data-v="0"] .wv__a[data-v="0"],.wv[data-v="1"] .wv__a[data-v="1"],.wv[data-v="2"] .wv__a[data-v="2"],.wv[data-v="3"] .wv__a[data-v="3"],.wv[data-v="4"] .wv__a[data-v="4"]{opacity:1;transform:none}
+.wv__glow{position:absolute;left:50%;bottom:6px;width:70px;height:12px;margin-left:-35px;border-radius:50%;background:var(--wc);filter:blur(8px);opacity:.7;transition:background .5s ease;animation:wvGlow 3s ease-in-out infinite}
+.wv__shadow{position:absolute;left:50%;bottom:-6px;width:56px;height:8px;margin-left:-28px;border-radius:50%;background:rgba(255,255,255,.12);filter:blur(3px)}
+@keyframes wvGlow{50%{transform:scaleX(.8);opacity:.45}}
+#wv-chips span{transition:background .35s,color .35s,border-color .35s}
+#wv-chips span.is-on{background:var(--lime);color:var(--navy);border-color:var(--lime)}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -1841,8 +1853,18 @@ window.addEventListener('message',function(e){
       <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
     </div>
     <div class="sx-panel__vis ap-tile__vis--wipi rv" style="--rd:.1s" aria-hidden="true">
-          <div class="orb ap-tile__orb"><div class="orb__eyes"><i></i><i></i></div></div>
-          <div class="ap-tile__chips"><span>Crear servicio</span><span>Asignar proveedor</span><span>Configurar convenio</span><span>Sacar informe</span></div>
+          <div class="wv" id="wv" data-v="0">
+            <div class="wv__float">
+              <svg class="wv__a" data-v="0" viewBox="0 -40 150 190"><path d="M24 78a51 51 0 0 1 102 0" fill="none" stroke="#ff8a4c" stroke-width="9" stroke-linecap="round"/><rect x="10" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><rect x="120" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><path d="M20 96c0 22 14 34 36 36" fill="none" stroke="#ff8a4c" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="132" r="6" fill="#ff8a4c"/></svg>
+              <svg class="wv__a" data-v="1" viewBox="0 -40 150 190"><path d="M75 26c-13-16-24-27-24-41a24 24 0 0 1 48 0c0 14-11 25-24 41z" fill="#dbff57" stroke="#0b1020" stroke-width="3"/><circle cx="75" cy="-15" r="8" fill="#0b1020"/></svg>
+              <svg class="wv__a" data-v="2" viewBox="0 -40 150 190"><path d="M75 21V-2" stroke="#0b1020" stroke-width="4" stroke-linecap="round"/><circle cx="75" cy="-6" r="6.5" fill="#4f8cff"/><path d="M60-18a21 21 0 0 0 0 24M90-18a21 21 0 0 1 0 24M50-26a33 33 0 0 0 0 40M100-26a33 33 0 0 1 0 40" fill="none" stroke="#4f8cff" stroke-width="3.5" stroke-linecap="round"/></svg>
+              <svg class="wv__a" data-v="3" viewBox="0 -40 150 190"><circle cx="62" cy="75" r="16" fill="rgba(79,140,255,.18)" stroke="#4f8cff" stroke-width="4.5"/><circle cx="88" cy="75" r="16" fill="rgba(79,140,255,.18)" stroke="#4f8cff" stroke-width="4.5"/><path d="M73 72h4" stroke="#4f8cff" stroke-width="4"/><path d="M46 71l-14-4M104 71l14-4" stroke="#4f8cff" stroke-width="4" stroke-linecap="round"/></svg>
+              <svg class="wv__a" data-v="4" viewBox="0 -40 150 190"><path d="M75 126l-18-10v20zM75 126l18-10v20z" fill="#ff6b6b"/><circle cx="75" cy="126" r="5" fill="#e04848"/><rect x="108" y="-6" width="34" height="30" rx="7" fill="#fff" stroke="#0b1020" stroke-width="3"/><rect x="116" y="10" width="5" height="8" rx="1" fill="#4f8cff"/><rect x="123" y="5" width="5" height="13" rx="1" fill="#4f8cff"/><rect x="130" y="1" width="5" height="17" rx="1" fill="#4f8cff"/></svg>
+              <div class="orb ap-tile__orb"><div class="orb__eyes"><i></i><i></i></div></div>
+            </div>
+            <span class="wv__glow"></span><span class="wv__shadow"></span>
+          </div>
+          <div class="ap-tile__chips" id="wv-chips"><span data-v="0">Atender 24/7</span><span data-v="1">Asignar proveedor</span><span data-v="2">Seguimiento en vivo</span><span data-v="3">Configurar convenio</span><span data-v="4">Sacar informe</span></div>
     </div>
   </div>
 </section>
@@ -2661,6 +2683,14 @@ window.addEventListener('message',function(e){
         requestAnimationFrame(paso);
       });
     },{threshold:.4});
+  }
+
+  /* Wipi flotante: cambia de accesorio y resalta la tarea que corresponde */
+  var wv=document.getElementById("wv"), wvChips=document.querySelectorAll("#wv-chips span");
+  if(wv){
+    var wvK=0, wvSet=function(k){wv.setAttribute("data-v",String(k));[].forEach.call(wvChips,function(c){c.classList.toggle("is-on",c.getAttribute("data-v")===String(k));});};
+    wvSet(0);
+    if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
   }
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');

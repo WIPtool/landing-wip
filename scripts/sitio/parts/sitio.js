@@ -214,3 +214,11 @@
       });
     },{threshold:.4});
   }
+
+  /* Wipi flotante: cambia de accesorio y resalta la tarea que corresponde */
+  var wv=document.getElementById("wv"), wvChips=document.querySelectorAll("#wv-chips span");
+  if(wv){
+    var wvK=0, wvSet=function(k){wv.setAttribute("data-v",String(k));[].forEach.call(wvChips,function(c){c.classList.toggle("is-on",c.getAttribute("data-v")===String(k));});};
+    wvSet(0);
+    if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
+  }

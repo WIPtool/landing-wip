@@ -1683,6 +1683,18 @@ body[data-page="corp"]{font-weight:400}
 .ap-fact__map .rt{stroke:rgba(11,16,32,.7);stroke-width:3.5;stroke-linejoin:round}
 .ap-fact__map .cl{fill:var(--navy);stroke:#fff;stroke-width:3}
 .ap-fact__map .ring{stroke:rgba(11,16,32,.5);transform-origin:165px 285px}
+/* Wipi flotante que cambia de accesorio (diadema, ubicación, antena, gafas, corbatín e informe) */
+.wv{--wc:#ff8a4c;position:relative;width:150px;height:170px;display:grid;justify-items:center}
+.wv[data-v="1"]{--wc:#dbff57}.wv[data-v="2"]{--wc:#4f8cff}.wv[data-v="3"]{--wc:#8f6bff}.wv[data-v="4"]{--wc:#ff6b6b}
+.wv__float{position:relative;width:110px;height:110px;margin-top:40px;animation:bob 3s ease-in-out infinite}
+.wv .ap-tile__orb{position:absolute;inset:0;animation:none;box-shadow:0 0 0 3px var(--wc),0 0 46px color-mix(in srgb,var(--wc) 55%,transparent),0 0 100px rgba(47,123,255,.35);transition:box-shadow .5s ease}
+.wv__a{position:absolute;left:-20px;top:-60px;width:150px;height:190px;overflow:visible;opacity:0;transform:scale(.6) translateY(10px);transition:opacity .35s ease,transform .45s cubic-bezier(.34,1.56,.64,1);z-index:2;pointer-events:none}
+.wv[data-v="0"] .wv__a[data-v="0"],.wv[data-v="1"] .wv__a[data-v="1"],.wv[data-v="2"] .wv__a[data-v="2"],.wv[data-v="3"] .wv__a[data-v="3"],.wv[data-v="4"] .wv__a[data-v="4"]{opacity:1;transform:none}
+.wv__glow{position:absolute;left:50%;bottom:6px;width:70px;height:12px;margin-left:-35px;border-radius:50%;background:var(--wc);filter:blur(8px);opacity:.7;transition:background .5s ease;animation:wvGlow 3s ease-in-out infinite}
+.wv__shadow{position:absolute;left:50%;bottom:-6px;width:56px;height:8px;margin-left:-28px;border-radius:50%;background:rgba(255,255,255,.12);filter:blur(3px)}
+@keyframes wvGlow{50%{transform:scaleX(.8);opacity:.45}}
+#wv-chips span{transition:background .35s,color .35s,border-color .35s}
+#wv-chips span.is-on{background:var(--lime);color:var(--navy);border-color:var(--lime)}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -2318,6 +2330,14 @@ window.addEventListener('message',function(e){
         requestAnimationFrame(paso);
       });
     },{threshold:.4});
+  }
+
+  /* Wipi flotante: cambia de accesorio y resalta la tarea que corresponde */
+  var wv=document.getElementById("wv"), wvChips=document.querySelectorAll("#wv-chips span");
+  if(wv){
+    var wvK=0, wvSet=function(k){wv.setAttribute("data-v",String(k));[].forEach.call(wvChips,function(c){c.classList.toggle("is-on",c.getAttribute("data-v")===String(k));});};
+    wvSet(0);
+    if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
   }
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
