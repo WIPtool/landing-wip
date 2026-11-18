@@ -223,25 +223,17 @@
     if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
   }
 
-  /* Plataforma: los carriles corren por su lado y luego se unen en la tarjeta de Wip.
-     Arranca cuando la sección está bien a la vista y se repite cada vez que vuelves a ella. */
-  var mrg=document.getElementById("mrg");
-  if(mrg){
-    var mrgT=null;
-    var mrgCut=function(){clearTimeout(mrgT);mrg.classList.add("cut");};
-    var mrgPlay=function(){clearTimeout(mrgT);mrg.classList.remove("play","cut");void mrg.offsetWidth;mrg.classList.add("play");mrgT=setTimeout(mrgCut,4600);};
-    var mrgReplay=mrg.querySelector(".mrg__replay");
-    if(reduce){mrgCut();if(mrgReplay)mrgReplay.hidden=true;}
-    else{
-      var mrgIntro=mrg.querySelector(".mrg__intro");
-      if(mrgIntro) mrgIntro.addEventListener("click",mrgCut);
-      if(mrgReplay) mrgReplay.addEventListener("click",function(){mrg.scrollIntoView({block:"start",behavior:"smooth"});mrgPlay();});
-      if("IntersectionObserver" in window){
-        var mrgArmed=true;
-        new IntersectionObserver(function(es){es.forEach(function(e){
-          if((e.intersectionRatio>=.55||e.intersectionRect.height>=innerHeight*.6)&&mrgArmed){mrgArmed=false;mrgPlay();}
-          else if(!e.isIntersecting){mrgArmed=true;}
-        });},{threshold:[0,.2,.3,.4,.5,.55]}).observe(mrg);
-      } else mrgCut();
-    }
+  /* Plataforma: tablero donde un punto aterriza en el centro y abre la tarjeta de Wip; luego aparece cada ítem, despacio */
+  var brd=document.getElementById("brd"), brdH=document.getElementById("brd-h");
+  if(brd){
+    if(reduce){brd.classList.add("play","done");}
+    else if("IntersectionObserver" in window){
+      var brdT=null, brdArmed=true;
+      var brdPlay=function(){clearTimeout(brdT);brd.classList.remove("play","done");if(brdH)brdH.classList.remove("pulse");void brd.offsetWidth;brd.classList.add("play");
+        brdT=setTimeout(function(){brd.classList.add("done");if(brdH)brdH.classList.add("pulse");},6200);};
+      new IntersectionObserver(function(es){es.forEach(function(e){
+        if((e.intersectionRatio>=.5||e.intersectionRect.height>=innerHeight*.6)&&brdArmed){brdArmed=false;brdPlay();}
+        else if(!e.isIntersecting){brdArmed=true;}
+      });},{threshold:[0,.2,.3,.4,.5]}).observe(brd);
+    } else brd.classList.add("play","done");
   }
