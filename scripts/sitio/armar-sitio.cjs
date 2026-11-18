@@ -185,7 +185,7 @@ const pages = [
     navCta: demoBtn('btn btn--lime nav__cta'), xp: '' },
   { key: 'corp', out: 'software-empresas-de-asistencia/index.html', path: '/software-empresas-de-asistencia', body: 'aseguradoras.html',
     title: 'Software para empresas de asistencia y aseguradoras | Wip',
-    desc: 'Toda tu red de proveedores medida por ANS, calidad y costo. Wip IA recibe el caso, asigna por convenio, avisa al asegurado y alerta antes de incumplir.',
+    desc: 'Opera tus asistencias y tu red de proveedores con IA: tarifas automáticas, comunicación con tu red, monitoreo de ANS y datos. +4 millones de servicios en Wip.',
     bar: '',
     navCta: demoBtn('btn btn--lime nav__cta'), xp: 'corp' },
   { key: 'prov', out: 'proveedores-de-asistencia/index.html', path: '/proveedores-de-asistencia', body: 'proveedores.html',
