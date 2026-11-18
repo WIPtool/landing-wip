@@ -147,14 +147,27 @@
     }
   }
 
-  /* Asignación inteligente: las escenas cambian solas (recibe, asigna, reasigna, red conectada) */
-  var asg=document.getElementById("asg");
-  if(asg){
-    if(reduce){asg.setAttribute("data-s","1");}
-    else{
-      var sc=0, asgTimer=null;
-      var asgGo=function(){asg.setAttribute("data-s",String(sc));sc=(sc+1)%4;};
-      whenVisible(asg,function(){asgGo();asgTimer=setInterval(asgGo,3600);},{threshold:.3});
+  /* Recorrido animado: cada pestaña tiene su escena; avanza sola mientras la pestaña está a la vista */
+  var scenes=[].slice.call(document.querySelectorAll(".asg"));
+  if(scenes.length){
+    var asgSet=function(el,k){
+      el.setAttribute("data-s",String(k));
+      [].forEach.call(el.querySelectorAll("[data-s]"),function(x){x.classList.toggle("is-on",x.getAttribute("data-s")===String(k));});
+      el._k=k;
+    };
+    scenes.forEach(function(el){asgSet(el,reduce?1:0);});
+    if(!reduce){
+      var asgInt=null;
+      var asgTick=function(){
+        scenes.forEach(function(el){
+          var open=!el.closest("[hidden]");
+          if(!open){el._was=false;return;}
+          if(!el._was){el._was=true;asgSet(el,0);return;}
+          asgSet(el,(el._k+1)%4);
+        });
+      };
+      whenVisible(scenes[0].closest(".tour")||scenes[0],function(){asgTick();asgInt=setInterval(asgTick,3600);},{threshold:.2});
+      if(tour) tour.addEventListener("click",function(e){if(e.target.closest("[role=tab]")) scenes.forEach(function(el){if(!el.closest("[hidden]")){el._was=true;asgSet(el,0);}});if(asgInt){clearInterval(asgInt);asgInt=setInterval(asgTick,3600);}});
     }
   }
 

@@ -10,20 +10,10 @@
         <a href="#plataforma" class="btn btn--ghost">Conoce la plataforma</a>
       </div>
     </div>
-    <!-- Ventana de Wipi: recibe una orden y la ejecuta paso a paso (idea tomada del hero de Dapta, adaptada a Wip) -->
-    <div class="wwin rv in" id="wwin" aria-label="Así trabaja Wipi, la IA de Wip">
-      <div class="wwin__bar"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Wipi · la IA de Wip</span></div>
-      <div class="wwin__body">
-        <p class="wwin__hi">Hola, ¿en qué te ayudo con tu operación?</p>
-        <div class="wwin__chips" aria-hidden="true"><span>Crear servicio</span><span>Asignar proveedor</span><span>Configurar convenio</span><span>Sacar informe</span></div>
-        <div class="wwin__in"><span class="wwin__typed" data-text="Crea un servicio de grúa para la placa KLM482 y asígnalo al proveedor más cercano">Crea un servicio de grúa para la placa KLM482 y asígnalo al proveedor más cercano</span><i class="wwin__caret" aria-hidden="true"></i><span class="wwin__send" aria-hidden="true"></span></div>
-        <ul class="wwin__steps">
-          <li><i></i>Póliza validada · <b>Plan Auto Plus</b></li>
-          <li><i></i>Servicio creado · <b>#10482</b></li>
-          <li><i></i>Proveedor asignado · <b>Grúas del Pacífico, a 2,1 km</b></li>
-          <li><i></i>Asegurado avisado por WhatsApp · <b>llega en 9 min</b></li>
-        </ul>
-      </div>
+    <!-- Espacio para el video del hero (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
+         <video src="/video/wip-corporativo-hero.mp4" poster="/video/wip-corporativo-hero.jpg" muted loop playsinline autoplay preload="metadata"></video> -->
+    <div class="vid ahero__vid rv in" id="video-hero-corporativo">
+      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
     </div>
   </div>
 </section>
@@ -38,22 +28,6 @@
       <div><b>+13</b><span>verticales de asistencias</span></div>
       <div><b>24/7</b><span>soporte a tu operación</span></div>
       <div><b>+8 años</b><span>de experiencia creando tecnología para logísticas de asistencia</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== PARA TI ===================== -->
-<section class="sec" id="para-ti" style="padding-top:0">
-  <div class="wrap">
-    <div class="you rv">
-      <span class="eyebrow">Para ti</span>
-      <h2 class="h2">Tu nombre va en <span class="lime">cada servicio.</span></h2>
-      <p class="lead">Cuando una grúa no llega, el asegurado no llama al proveedor: llama a tu empresa. Y la pregunta termina en tu escritorio. Respondes por miles de servicios que no controlas del todo, y aun así quieres que cada uno salga bien.</p>
-    </div>
-    <div class="moments">
-      <article class="moment rv"><span class="moment__t">Un festivo, 10 p. m.</span><b>El volumen se dispara y tu equipo no da abasto.</b><p>Necesitas saber qué servicio está en riesgo antes de que se caiga, no cuando el asegurado ya se quejó.</p></article>
-      <article class="moment rv" style="--rd:.08s"><span class="moment__t">El lunes, frente al comité</span><b>Te preguntan por el ANS, el costo y los proveedores.</b><p>Necesitas respuestas con datos, no un Excel armado a última hora.</p></article>
-      <article class="moment rv" style="--rd:.16s"><span class="moment__t">Cada fin de mes</span><b>Revisas cobros que no cuadran.</b><p>Necesitas pagar solo lo que se cumplió, sin pelear con cada proveedor de tu red.</p></article>
     </div>
   </div>
 </section>
@@ -78,12 +52,36 @@
       </div>
       <div class="tour__stage">
         <figure class="tour__panel is-on" role="tabpanel" id="tp-0" aria-labelledby="tt-0">
-          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/monitoreo-central.webp" alt="Monitoreo central de Wip: servicios activos, estados, semáforo de ANS y cumplimiento del día" width="1885" height="700" loading="lazy" decoding="async"></div>
+          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="asg" data-s="0" aria-hidden="true">
+              <p class="asg__title"><span data-s="0">Toda tu operación, <b>en una pantalla</b></span><span data-s="1">Detecta lo que está <b>en riesgo</b></span><span data-s="2">Tu cumplimiento, <b>en vivo</b></span><span data-s="3">Tu operación, <b>bajo control</b></span></p>
+              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+              <div class="asg__card">
+                <div class="asg__s" data-s="0">
+                  <b class="asg__h">Monitoreo central · hoy</b>
+                  <div class="asg__kpis asg__in"><div class="lm"><b>128</b><span>Servicios activos</span></div><div><b>6</b><span>Por asignar</span></div><div><b>41</b><span>En camino</span></div><div><b>312</b><span>Finalizados</span></div></div>
+                </div>
+                <div class="asg__s" data-s="1">
+                  <b class="asg__h">Servicios activos</b>
+                  <div class="asg__tabs"><span class="on">Todas</span><span>Vial</span><span>Hogar</span><span>Salud</span></div>
+                  <ul class="asg__rows"><li><span><i class="dot g"></i>#10482 · Grúa liviana</span><em>En camino</em></li><li class="risk"><span><i class="dot r"></i>#10487 · Cerrajería</span><em>ANS en riesgo</em></li><li><span><i class="dot y"></i>#10491 · Paso de corriente</span><em>Por asignar</em></li></ul>
+                  <p class="asg__note m-hide">Semáforo de ANS en cada servicio, sin llamar a nadie.</p>
+                </div>
+                <div class="asg__s" data-s="2">
+                  <b class="asg__h">Cumplimiento del día</b>
+                  <div class="asg__big">94 %</div>
+                  <div class="asg__bar"><i style="--w:94%"></i></div>
+                  <p class="asg__note">Filtrado por unidad de negocio, ciudad y tipo de servicio.</p>
+                </div>
+              </div>
+              <div class="asg__orbit"><span>Estados</span><span>ANS</span><span>Alertas</span><span>Unidades</span></div>
+            </div>
+          </div>
           <figcaption><b>Sabes en qué va cada servicio, sin llamar a nadie.</b> Estados en vivo, servicios por asignar, responsables y el cumplimiento del día, filtrados por unidad de negocio.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-1" aria-labelledby="tt-1" hidden>
           <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="asg" id="asg" data-s="0" aria-hidden="true">
+            <div class="asg" data-s="0" aria-hidden="true">
               <p class="asg__title"><span data-s="0">Recibe casos de <b>todas tus plataformas</b></span><span data-s="1">Asigna a tu red <b>automáticamente</b></span><span data-s="2">Si no acepta, <b>pasa al siguiente</b></span><span data-s="3">Tu red, <b>conectada en vivo</b></span></p>
               <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
               <div class="asg__card">
@@ -95,7 +93,7 @@
                 <div class="asg__s" data-s="1">
                   <b class="asg__h">Asignar servicio</b>
                   <div class="asg__tabs"><span class="on">Por cercanía</span><span>Por tarifa</span><span>Por proveedor</span></div>
-                  <ul class="asg__rows"><li><span>Grúas del Valle</span><em>1,4 km</em></li><li><span>Grúas del Pacífico</span><em>2,1 km</em></li><li><span>Remolques Express</span><em>3,8 km</em></li><li><span>Auxilio Vial Andino</span><em>5,2 km</em></li></ul>
+                  <ul class="asg__rows"><li class="pick"><span>Grúas del Valle</span><em>1,4 km</em></li><li><span>Grúas del Pacífico</span><em>2,1 km</em></li><li><span>Remolques Express</span><em>3,8 km</em></li></ul>
                   <span class="asg__btn">Asignar automáticamente</span>
                   <i class="asg__cursor"></i>
                 </div>
@@ -111,38 +109,137 @@
           <figcaption><b>El proveedor correcto para cada caso, en segundos.</b> Por cercanía, por tarifa del convenio, por proveedor preferido, por prioridad o programado a la hora exacta. Si no acepta, pasa al siguiente. Y todos los flujos que tu operación necesite.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-2" aria-labelledby="tt-2" hidden>
-          <div class="tour__frame tour__frame--tall"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/tarifas-automaticas.webp" alt="Configuración de un grupo de tarifado automático en Wip: valor base, fallidos, cancelados y cálculo de kilómetros" width="1414" height="1300" loading="lazy" decoding="async"></div>
+          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="asg" data-s="0" aria-hidden="true">
+              <p class="asg__title"><span data-s="0">Cada convenio, <b>con sus reglas</b></span><span data-s="1">Wip calcula <b>cada tarifa</b></span><span data-s="2">Listo para <b>liquidar</b></span><span data-s="3">Tus tarifas, <b>siempre al día</b></span></p>
+              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+              <div class="asg__card">
+                <div class="asg__s" data-s="0">
+                  <b class="asg__h">Grupo de tarifado</b>
+                  <div class="asg__srcs asg__in"><span>Valor base</span><span>Km adicional</span><span>Nocturno</span><span>Festivo</span><span>Fallido</span><span>Cancelado</span></div>
+                  <div class="asg__drop"><i data-ic="$"></i><div><b>Convenio Vial Premium</b><span>Reglas del convenio y del proveedor</span></div></div>
+                </div>
+                <div class="asg__s" data-s="1">
+                  <b class="asg__h">Servicio #10482 · Grúa liviana</b>
+                  <ul class="asg__rows asg__in"><li><span>Valor base</span><em>$150.000</em></li><li><span>8 km adicionales</span><em>$24.000</em></li><li><span>Recargo festivo</span><em>$30.000</em></li><li class="tot pick"><span>Total del servicio</span><em>$204.000</em></li></ul>
+                </div>
+                <div class="asg__s" data-s="2">
+                  <b class="asg__h">Liquidación</b>
+                  <ul class="asg__resp"><li><span>Grúas del Pacífico</span><em>Tarifa del proveedor</em></li><li class="yes"><span>#10482 · Liquidado</span><em>$204.000</em></li></ul>
+                  <p class="asg__note">Calculado solo, con la regla de cada convenio y cada proveedor.</p>
+                </div>
+              </div>
+              <div class="asg__orbit"><span>Convenio</span><span>Km</span><span>Festivo</span><span>Nocturno</span></div>
+            </div>
+          </div>
           <figcaption><b>Cada tarifa, calculada sola.</b> Valor base, kilómetros adicionales, horario nocturno, festivos, fallidos y cancelados, con las reglas de cada convenio y cada proveedor.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-3" aria-labelledby="tt-3" hidden>
-          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/mapa-red.webp" alt="Mapa de Wip con los técnicos de la red en camino, en servicio y disponibles" width="1777" height="700" loading="lazy" decoding="async"></div>
+          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="asg" data-s="0" aria-hidden="true">
+              <p class="asg__title"><span data-s="0">Tu red, <b>en vivo sobre el mapa</b></span><span data-s="1">Ve quién está <b>disponible</b></span><span data-s="2">Listo para <b>el próximo caso</b></span><span data-s="3">Toda tu red, <b>a la vista</b></span></p>
+              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+              <div class="asg__card">
+                <div class="asg__s" data-s="0">
+                  <div class="asg__legend"><span><i class="dot y"></i>En camino</span><span><i class="dot g"></i>En servicio</span><span><i class="dot p"></i>Disponible</span></div>
+                  <div class="asg__map"><span class="pin y" style="left:22%;top:30%"></span><span class="pin g" style="left:48%;top:22%"></span><span class="pin p" style="left:66%;top:55%"></span><span class="pin y" style="left:35%;top:70%"></span><span class="pin g" style="left:80%;top:30%"></span><span class="pin p" style="left:56%;top:82%"></span></div>
+                </div>
+                <div class="asg__s" data-s="1">
+                  <b class="asg__h">Técnicos cerca del caso</b>
+                  <ul class="asg__rows"><li><span><i class="dot y"></i>Grúas del Pacífico</span><em>En camino</em></li><li><span><i class="dot g"></i>Auxilio Vial Andino</span><em>En servicio</em></li><li class="pick"><span><i class="dot p"></i>Remolques Express</span><em>Disponible</em></li></ul>
+                </div>
+                <div class="asg__s" data-s="2">
+                  <b class="asg__h">Próximo caso</b>
+                  <div class="asg__drop"><i data-ic="✓"></i><div><b>Remolques Express</b><span>Disponible a 1,8 km del asegurado</span></div></div>
+                  <span class="asg__btn">Asignar</span><i class="asg__cursor"></i>
+                </div>
+              </div>
+              <div class="asg__orbit"><span>En camino</span><span>En servicio</span><span>Disponible</span><span>GPS</span></div>
+            </div>
+          </div>
           <figcaption><b>Toda tu red, en vivo sobre el mapa.</b> Ves quién está en camino, quién está en servicio y quién está disponible para el próximo caso.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-4" aria-labelledby="tt-4" hidden>
-          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/ruta-servicio.webp" alt="Servicio en Wip con la ruta sugerida desde el origen hasta el destino" width="1702" height="695" loading="lazy" decoding="async"></div>
+          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="asg" data-s="0" aria-hidden="true">
+              <p class="asg__title"><span data-s="0">Ruta sugerida, <b>de origen a destino</b></span><span data-s="1">Seguimiento <b>en vivo</b></span><span data-s="2">Todo queda <b>en el servicio</b></span><span data-s="3">Cada servicio, <b>con su ruta</b></span></p>
+              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+              <div class="asg__card">
+                <div class="asg__s" data-s="0">
+                  <b class="asg__h">#10482 · Grúa liviana</b>
+                  <div class="asg__map"><svg viewBox="0 0 100 60" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M14 46 C 28 46, 30 20, 46 24 S 70 44, 86 14"/></svg><span class="ab" style="left:14%;top:76%">A</span><span class="ab" style="left:86%;top:23%">B</span><span class="lbl">12,4 km · 26 min</span></div>
+                </div>
+                <div class="asg__s" data-s="1">
+                  <b class="asg__h">Estados del servicio</b>
+                  <ul class="asg__steps asg__in"><li><i></i>Asignado<em>10:12 a. m.</em></li><li><i></i>En camino<em>10:14 a. m.</em></li><li><i></i>Llegó al sitio<em>10:31 a. m.</em></li><li class="wait"><i></i>Finalizado<em>en curso</em></li></ul>
+                </div>
+                <div class="asg__s" data-s="2">
+                  <b class="asg__h">En el servicio #10482</b>
+                  <div class="asg__srcs asg__in"><span>Ruta</span><span>Estadística</span><span>Trazabilidad</span><span>Chats</span></div>
+                  <div class="asg__drop"><i data-ic="↗"></i><div><b>Todo en un solo lugar</b><span>Quién hizo qué y a qué hora</span></div></div>
+                </div>
+              </div>
+              <div class="asg__orbit"><span>Origen</span><span>Destino</span><span>Chats</span><span>Trazabilidad</span></div>
+            </div>
+          </div>
           <figcaption><b>Cada servicio con su ruta.</b> Wip sugiere el recorrido de origen a destino y lo sigue en vivo, junto con su estadística, trazabilidad y chats.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-5" aria-labelledby="tt-5" hidden>
-          <div class="tour__frame"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><img src="/img/plataforma/evidencias.webp" alt="Pestaña Multimedia de un servicio en Wip con las fotos de evidencia" width="1714" height="660" loading="lazy" decoding="async"></div>
+          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="asg" data-s="0" aria-hidden="true">
+              <p class="asg__title"><span data-s="0">Fotos desde <b>campo</b></span><span data-s="1">Documentos y <b>guías</b></span><span data-s="2">Lista para <b>auditar</b></span><span data-s="3">La evidencia, <b>en un solo lugar</b></span></p>
+              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+              <div class="asg__card">
+                <div class="asg__s" data-s="0">
+                  <b class="asg__h">Multimedia · #10482</b>
+                  <div class="asg__pics asg__in"><div><span>Recogida</span></div><div><span>Traslado</span></div><div><span>Entrega</span></div></div>
+                  <p class="asg__note">Cada foto con fecha, hora y ubicación.</p>
+                </div>
+                <div class="asg__s" data-s="1">
+                  <b class="asg__h">Documentos del servicio</b>
+                  <ul class="asg__rows short"><li class="pick"><span>Guía del servicio.pdf</span><em>240 KB</em></li><li><span>Acta de entrega.pdf</span><em>180 KB</em></li><li><span>Firma del asegurado</span><em>10:39 a. m.</em></li></ul>
+                  <span class="asg__btn">Descargar</span><i class="asg__cursor"></i>
+                </div>
+                <div class="asg__s" data-s="2">
+                  <b class="asg__h">Servicio #10482</b>
+                  <ul class="asg__resp"><li><span>3 fotos · 2 documentos · firma</span><em>Completo</em></li><li class="yes"><span>Evidencia lista</span><em>Para auditar</em></li></ul>
+                  <p class="asg__note">Lista para descargar cuando la necesites.</p>
+                </div>
+              </div>
+              <div class="asg__orbit"><span>Fotos</span><span>Firma</span><span>Guías</span><span>Ubicación</span></div>
+            </div>
+          </div>
           <figcaption><b>La evidencia de cada servicio, en un solo lugar.</b> Fotos con fecha y ubicación, documentos y guías, listos para descargar cuando los necesites.</figcaption>
         </figure>
         <figure class="tour__panel" role="tabpanel" id="tp-6" aria-labelledby="tt-6" hidden>
-          <div class="tour__frame tour__frame--live tour__frame--soft"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="phone phone--mini" id="chat">
-              <div class="phone__top"><span class="phone__av" aria-hidden="true"></span><div><b>Tu empresa</b><span>En línea</span></div></div>
-              <div class="phone__body" aria-live="off">
-                <div class="msg msg--u">Hola, mi carro se varó. Necesito una grúa.</div>
-                <div class="msg msg--a">Claro. Compárteme tu ubicación y te la envío ya.</div>
-                <div class="msg msg--u">📍 Ubicación compartida</div>
-                <div class="msg msg--a">Va en camino Grúas del Pacífico, llega en 18 min. Te aviso cada paso por aquí.</div>
-                <div class="typing" aria-hidden="true"><i></i><i></i><i></i></div>
+          <div class="tour__frame tour__frame--live tour__frame--asg"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <div class="asg" data-s="0" aria-hidden="true">
+              <p class="asg__title"><span data-s="0">Tu asegurado pide <b>por WhatsApp</b></span><span data-s="1">Ve quién va y <b>cuándo llega</b></span><span data-s="2">Y califica <b>al final</b></span><span data-s="3">Tu marca, <b>100 % digital</b></span></p>
+              <div class="asg__bot"><div class="orb asg__orb"><div class="orb__eyes"><i></i><i></i></div></div><span class="asg__shadow"></span></div>
+              <div class="asg__card">
+                <div class="asg__s" data-s="0">
+                  <b class="asg__h">Tu empresa · En línea</b>
+                  <div class="asg__in" style="display:flex;flex-direction:column;gap:8px"><div class="asg__msg u">Hola, mi carro se varó. Necesito una grúa.</div><div class="asg__msg a">Claro. Compárteme tu ubicación y te la envío ya.</div><div class="asg__msg u">📍 Ubicación compartida</div></div>
+                </div>
+                <div class="asg__s" data-s="1">
+                  <b class="asg__h">Tu empresa · En línea</b>
+                  <div class="asg__msg a">Va en camino Grúas del Pacífico. Te aviso cada paso por aquí.</div>
+                  <div class="asg__drop"><i data-ic="⏱"></i><div><b>Llega en 18 min</b><span>Sigue la grúa en vivo desde el chat</span></div></div>
+                </div>
+                <div class="asg__s" data-s="2">
+                  <b class="asg__h">¿Cómo te atendimos?</b>
+                  <div class="asg__stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></div>
+                  <div class="asg__msg u">Muy rápido, gracias.</div>
+                  <p class="asg__note">Con el nombre y la marca de tu empresa.</p>
+                </div>
               </div>
+              <div class="asg__orbit"><span>WhatsApp</span><span>App propia</span><span>Ubicación</span><span>Calificación</span></div>
             </div>
           </div>
           <figcaption><b>Tu asegurado, 100 % digital.</b> Pide por WhatsApp o desde la app de tu empresa, comparte su ubicación, ve quién va y cuándo llega, envía fotos y califica al final. Todo con el nombre y la marca de tu empresa.</figcaption>
         </figure>
       </div>
-      <span class="ex" style="text-align:center">Capturas reales de la plataforma con datos de ejemplo.</span>
+      <span class="ex" style="text-align:center">Así funciona Wip, con datos de ejemplo.</span>
     </div>
     <div class="more more--2">
       <article class="more__i rv"><span class="tile__k">Wipi</span><b>Pregúntale a Wipi.</b><p>Crea servicios, configura convenios y tarifas, y te entrega informes.</p></article>
