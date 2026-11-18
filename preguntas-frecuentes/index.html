@@ -1194,6 +1194,44 @@ body[data-page="corp"] main .red__vis{--soft:#c1c9d6;--muted:#8a93a8}
 @media(max-width:560px){.more--2{grid-template-columns:1fr}}
 body[data-page="corp"] main .tour__frame--live .phone{--soft:#c1c9d6;--muted:#8a93a8;--line:rgba(255,255,255,.12);color:#fff}
 
+/* Hero de Wip Corporativo: ventana de Wipi sobre un resplandor lima y azul (inspirado en Dapta) */
+.ahero{overflow:hidden}
+.ahero::before{content:"";position:absolute;left:50%;top:58%;width:min(1200px,140vw);height:520px;transform:translateX(-50%);border-radius:50%;
+  background:radial-gradient(ellipse at 30% 50%,rgba(219,255,87,.55),transparent 60%),radial-gradient(ellipse at 72% 45%,rgba(47,123,255,.35),transparent 62%);filter:blur(60px);pointer-events:none;z-index:0}
+.ahero > .wrap{position:relative;z-index:1}
+.wwin{max-width:860px;margin:52px auto 0;border-radius:22px;background:#0f1629;color:#fff;border:1px solid rgba(255,255,255,.08);box-shadow:0 40px 110px rgba(11,16,32,.35);overflow:hidden;text-align:left}
+.wwin__bar{position:relative;display:flex;align-items:center;justify-content:center;height:38px;font-size:12.5px;color:#8a93a8;border-bottom:1px solid rgba(255,255,255,.07)}
+.wwin__bar .tour__dots{top:14px}
+.wwin__body{padding:clamp(22px,3.4vw,40px)}
+.wwin__hi{text-align:center;font-family:var(--display);font-weight:700;font-size:clamp(22px,2.6vw,32px);letter-spacing:-.02em}
+.wwin__chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:18px}
+.wwin__chips span{padding:8px 14px;border-radius:var(--pill);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:13.5px;color:#c1c9d6}
+.wwin__in{position:relative;display:flex;align-items:center;min-height:62px;margin-top:20px;padding:14px 64px 14px 18px;border-radius:16px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);font-size:15.5px;color:#fff}
+.wwin__caret{display:inline-block;width:2px;height:18px;margin-left:2px;background:var(--lime);animation:caretBlink 1s steps(1) infinite}
+@keyframes caretBlink{50%{opacity:0}}
+.wwin__send{position:absolute;right:12px;top:50%;width:38px;height:38px;margin-top:-19px;border-radius:12px;background:var(--lime)}
+.wwin__send::after{content:"";position:absolute;left:13px;top:11px;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent var(--navy)}
+.wwin__steps{list-style:none;margin-top:14px;padding:14px 18px;border-radius:16px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);display:flex;flex-direction:column;gap:10px;min-height:150px}
+.wwin__steps li{display:flex;align-items:center;gap:10px;font-size:14.5px;color:#c1c9d6;opacity:.25;transition:opacity .4s ease}
+.wwin__steps li b{color:var(--lime);font-weight:700}
+.wwin__steps li i{flex:none;position:relative;width:20px;height:20px;border-radius:50%;border:2px solid rgba(255,255,255,.2)}
+.wwin__steps li.now{opacity:1}
+.wwin__steps li.now i{border-color:var(--lime);border-top-color:transparent;animation:spin .8s linear infinite}
+.wwin__steps li.ok{opacity:1}
+.wwin__steps li.ok i{background:var(--lime);border-color:var(--lime)}
+.wwin__steps li.ok i::after{content:"✓";position:absolute;inset:0;display:grid;place-items:center;color:var(--navy);font-weight:900;font-size:11px;font-style:normal}
+
+/* Wip IA en acción: franja de color con el video (inspirado en la franja de video de Dapta) */
+.vband{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(24px,4vw,56px);align-items:center;padding:clamp(28px,4.4vw,56px);border-radius:36px;
+  background:radial-gradient(ellipse at 0% 100%,rgba(219,255,87,.9),transparent 55%),radial-gradient(ellipse at 100% 0%,rgba(47,123,255,.85),transparent 60%),linear-gradient(135deg,#16255a,#0b1020);color:#fff}
+.vband .eyebrow{color:var(--lime)!important}
+.vband .h2{color:#fff}
+.vband .lead{color:#dfe5f0!important}
+.vband .ahero__cta{justify-content:flex-start}
+.vband__vid{margin:0;max-width:none;width:100%;border-color:rgba(255,255,255,.15)}
+@media(max-width:900px){.vband{grid-template-columns:1fr}}
+body[data-page="corp"] main .vband,body[data-page="corp"] main .wwin{--soft:#c1c9d6;--muted:#8a93a8;--line:rgba(255,255,255,.12)}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1720,6 +1758,24 @@ window.addEventListener('message',function(e){
         if(e.key==="ArrowUp"||e.key==="ArrowLeft"){e.preventDefault();tourShow((i+tt.length-1)%tt.length,true);}
       });
     });
+  }
+
+  /* Ventana de Wipi: escribe la orden y la ejecuta paso a paso, en bucle */
+  var wwin=document.getElementById("wwin");
+  if(wwin){
+    var typed=wwin.querySelector(".wwin__typed"), full=typed.getAttribute("data-text"), steps=[].slice.call(wwin.querySelectorAll(".wwin__steps li"));
+    var paint=function(i){steps.forEach(function(li,k){li.classList.toggle("ok",k<i);li.classList.toggle("now",k===i);});};
+    if(reduce){paint(steps.length);}
+    else{
+      var cycle=function(){
+        typed.textContent="";paint(-1);var n=0;
+        var tipo=setInterval(function(){n++;typed.textContent=full.slice(0,n);if(n>=full.length){clearInterval(tipo);
+          var i=0;paint(0);
+          var paso=setInterval(function(){i++;paint(i);if(i>=steps.length){clearInterval(paso);setTimeout(cycle,4200);}},950);
+        }},38);
+      };
+      whenVisible(wwin,cycle,{threshold:.3});
+    }
   }
 
   /* La cuenta del call center inteligente */

@@ -10,10 +10,20 @@
         <a href="#plataforma" class="btn btn--ghost">Conoce la plataforma</a>
       </div>
     </div>
-    <!-- Espacio para el video de Wip IA para aseguradoras (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
-         <video src="/video/wip-ia-aseguradoras.mp4" poster="/video/wip-ia-aseguradoras.jpg" muted loop playsinline autoplay preload="none"></video> -->
-    <div class="vid vid--wide rv in" id="video-aseguradoras">
-      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip IA para aseguradoras</span></div>
+    <!-- Ventana de Wipi: recibe una orden y la ejecuta paso a paso (idea tomada del hero de Dapta, adaptada a Wip) -->
+    <div class="wwin rv in" id="wwin" aria-label="Así trabaja Wipi, la IA de Wip">
+      <div class="wwin__bar"><span class="tour__dots" aria-hidden="true"><i></i><i></i><i></i></span><span>Wipi · la IA de Wip</span></div>
+      <div class="wwin__body">
+        <p class="wwin__hi">Hola, ¿en qué te ayudo con tu operación?</p>
+        <div class="wwin__chips" aria-hidden="true"><span>Crear servicio</span><span>Asignar proveedor</span><span>Configurar convenio</span><span>Sacar informe</span></div>
+        <div class="wwin__in"><span class="wwin__typed" data-text="Crea un servicio de grúa para la placa KLM482 y asígnalo al proveedor más cercano">Crea un servicio de grúa para la placa KLM482 y asígnalo al proveedor más cercano</span><i class="wwin__caret" aria-hidden="true"></i><span class="wwin__send" aria-hidden="true"></span></div>
+        <ul class="wwin__steps">
+          <li><i></i>Póliza validada · <b>Plan Auto Plus</b></li>
+          <li><i></i>Servicio creado · <b>#10482</b></li>
+          <li><i></i>Proveedor asignado · <b>Grúas del Pacífico, a 2,1 km</b></li>
+          <li><i></i>Asegurado avisado por WhatsApp · <b>llega en 9 min</b></li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -120,6 +130,25 @@
     <div class="more more--2">
       <article class="more__i rv"><span class="tile__k">Wipi</span><b>Pregúntale a Wipi.</b><p>Crea servicios, configura convenios y tarifas, y te entrega informes.</p></article>
       <article class="more__i rv" style="--rd:.06s"><span class="tile__k">Multiservicios</span><b>Un evento, todos sus servicios.</b><p>Grúa, desplazamiento y custodia, cada uno con su prestador.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WIP EN ACCIÓN (VIDEO) ===================== -->
+<section class="sec" id="en-accion" style="padding-top:0">
+  <div class="wrap">
+    <div class="vband rv">
+      <div class="vband__copy">
+        <span class="eyebrow">Wip IA en acción</span>
+        <h2 class="h2">Mira cómo opera Wip un día de alto volumen.</h2>
+        <p class="lead">Del caso que entra al servicio que se factura, sin que tu equipo tenga que perseguir a nadie.</p>
+        <div class="ahero__cta">{{DEMO_BTN}}</div>
+      </div>
+      <!-- Espacio para el video de Wip IA para aseguradoras (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
+           <video src="/video/wip-ia-aseguradoras.mp4" poster="/video/wip-ia-aseguradoras.jpg" muted loop playsinline autoplay preload="none"></video> -->
+      <div class="vid vband__vid" id="video-aseguradoras">
+        <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip IA para aseguradoras</span></div>
+      </div>
     </div>
   </div>
 </section>

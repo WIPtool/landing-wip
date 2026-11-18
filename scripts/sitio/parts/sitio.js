@@ -129,3 +129,21 @@
     });
   }
 
+  /* Ventana de Wipi: escribe la orden y la ejecuta paso a paso, en bucle */
+  var wwin=document.getElementById("wwin");
+  if(wwin){
+    var typed=wwin.querySelector(".wwin__typed"), full=typed.getAttribute("data-text"), steps=[].slice.call(wwin.querySelectorAll(".wwin__steps li"));
+    var paint=function(i){steps.forEach(function(li,k){li.classList.toggle("ok",k<i);li.classList.toggle("now",k===i);});};
+    if(reduce){paint(steps.length);}
+    else{
+      var cycle=function(){
+        typed.textContent="";paint(-1);var n=0;
+        var tipo=setInterval(function(){n++;typed.textContent=full.slice(0,n);if(n>=full.length){clearInterval(tipo);
+          var i=0;paint(0);
+          var paso=setInterval(function(){i++;paint(i);if(i>=steps.length){clearInterval(paso);setTimeout(cycle,4200);}},950);
+        }},38);
+      };
+      whenVisible(wwin,cycle,{threshold:.3});
+    }
+  }
+
