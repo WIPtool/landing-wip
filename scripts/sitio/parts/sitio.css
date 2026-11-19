@@ -1220,3 +1220,12 @@ body[data-page="corp"]{font-weight:400}
 @keyframes monChg{0%{background:rgba(219,255,87,.16)}100%{background:transparent}}
 .mon__r--chg .mon__st{animation:monPop .45s cubic-bezier(.2,1.4,.4,1)}
 @keyframes monPop{0%{transform:scale(.7);opacity:.3}100%{transform:none;opacity:1}}
+
+/* Wip y tu operación: tarjeta Experiencia del cliente con mensajes */
+.ap-fact--cx .ap-fact__front{background:none}
+.ap-cx{position:absolute;left:24px;right:24px;bottom:28px;display:flex;flex-direction:column;gap:10px;z-index:0}
+.ap-cx__m{max-width:86%;padding:11px 14px;border-radius:16px;font-size:15px;line-height:1.35;box-shadow:0 6px 18px rgba(11,16,32,.12)}
+.ap-cx__m.in{align-self:flex-start;background:#fff;color:var(--navy);border-bottom-left-radius:5px}
+.ap-cx__m.out{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:5px}
+.ap-fact--cx.is-open .ap-cx{opacity:0}
+@media(max-width:480px){.ap-cx__m{font-size:13px;padding:9px 12px}}
