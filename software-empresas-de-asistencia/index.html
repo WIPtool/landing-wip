@@ -1709,132 +1709,69 @@ body[data-page="corp"]{font-weight:400}
 .sx-nums{padding-top:24px}
 .sx-hero__copy{padding-top:clamp(160px,20vh,220px)}
 
-/* ============ Plataforma: carriles que corren solos y se unen en la tarjeta de Wip (referente HyperFrames "pagina web") ============ */
-@property --x{syntax:'<percentage>';inherits:true;initial-value:0%}
-.mrg{position:relative;margin-top:clamp(32px,4vw,56px)}
-.mrg__card{position:relative;padding:clamp(18px,2.4vw,30px);border-radius:20px;background:#fff;border:1.5px solid #cfd2d8;visibility:hidden}
-.mrg.cut .mrg__card{visibility:visible;animation:mrgWhip .85s cubic-bezier(.12,.9,.25,1) both}
-@keyframes mrgWhip{from{transform:translateX(24%)}to{transform:none}}
-.mrg__card .tour{margin-top:18px}
-.mrg__top{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.mrg__chip{display:inline-block;padding:10px 18px;border-radius:12px;background:#eceef2;font-size:15px;font-weight:500;color:var(--navy)}
-.mrg.cut .mrg__chip{animation:mrgChip .45s ease-out .7s both}
-@keyframes mrgChip{from{transform:translateX(15px)}to{transform:none}}
-.mrg__pill{position:relative;display:inline-flex;align-items:center;gap:10px;padding:9px 16px 9px 12px;border-radius:var(--pill);background:var(--navy);color:var(--lime);font-size:14px;font-weight:600;opacity:0}
-.mrg.cut .mrg__pill{animation:mrgPill .5s ease-out 1s both}
-@keyframes mrgPill{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:none}}
-.mrg__ring{position:relative;width:10px;height:10px;border-radius:50%;background:var(--lime)}
-.mrg__ring::after{content:"";position:absolute;inset:-5px;border-radius:50%;border:2px solid var(--lime);opacity:.6;animation:ping 1.8s ease-out infinite}
+/* ============ Plataforma: tablero de tarjetas (referente HyperFrames "pagina web", board.html) ============
+   Mismo sistema que el referente: escenario de 1280x720 escalado, tarjetas de 292 px, columnas en 67/494/921,
+   filas 432 px aparte; solo una fila se ve completa y el tablero sube despacio para leer cada una. */
+.brd{position:relative;margin-top:clamp(32px,4vw,56px);--k:.86}
+.brd__stage{position:relative;aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#f9f7f3;box-shadow:inset 0 0 0 1px #ebe7e0}
+.brd__scale{position:absolute;left:0;top:0;width:1280px;height:720px;transform:scale(var(--k));transform-origin:0 0}
+.brd__v{position:absolute;top:0;width:1px;height:720px;background:repeating-linear-gradient(to bottom,#a9a4af 0 10px,transparent 10px 19px);opacity:0}
+.brd__v--0{left:426.7px}.brd__v--1{left:853.3px}
+.brd__h{position:absolute;left:0;top:var(--hy);width:1280px;height:1px;background:repeating-linear-gradient(to right,#a9a4af 0 10px,transparent 10px 19px);opacity:0}
+.brd__board{position:absolute;left:0;top:0;width:1280px;height:720px}
+.brd__c{position:absolute;left:var(--bx);top:var(--by);width:292px;height:292px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#f9f7f3;font-family:var(--display)}
+.brd__c--light{color:#222220}
+.brd__chip{position:absolute;inset:0;z-index:-1;border-radius:74px;background:var(--c);opacity:0}
+.brd__c--light .brd__chip[style],.brd__c[style*="#ffffff"] .brd__chip{box-shadow:inset 0 0 0 1px #e2ded6}
+.brd__c b{font-size:25px;font-weight:500;line-height:30px;max-width:240px}
+.brd__c span{margin-top:4px;font-size:22px;font-weight:300;line-height:28px;opacity:.8}
+.brd__c img{width:118px;height:auto;margin-bottom:6px}
+.brd__c > b,.brd__c > span,.brd__c > img{opacity:0}
+.brd__tail{position:absolute;inset:0;width:1280px;height:720px;overflow:visible;pointer-events:none}
+.brd__tail path{fill:none;stroke:#0b1020;stroke-width:52;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;opacity:0}
+.brd__dot{position:absolute;left:0;top:0;width:72px;height:72px;margin:-36px 0 0 -36px;border-radius:50%;background:#0b1020;opacity:0}
 
-/* Intro: suelo de papel, carriles finos, nodos y etiquetas */
-.mrg__intro{position:absolute;inset:0;border-radius:20px;background:#f7f5f1;overflow:hidden;cursor:pointer}
-.mrg.cut .mrg__intro{display:none}
-.mrg__ticks i{position:absolute;width:26px;height:1.5px;background:#d8d2ca}
-.mrg__ticks i:nth-child(1){left:12%;top:8%}.mrg__ticks i:nth-child(2){left:38%;top:16%}.mrg__ticks i:nth-child(3){left:66%;top:6%}.mrg__ticks i:nth-child(4){left:84%;top:19%}.mrg__ticks i:nth-child(5){left:24%;top:22%}.mrg__ticks i:nth-child(6){left:52%;top:24%}
-.mrg.play .mrg__ticks{animation:mrgTicks 1.9s ease-out both}
-@keyframes mrgTicks{0%{transform:none;opacity:1}53%{transform:translateX(-200px);opacity:1}70%{opacity:1}100%{transform:translateX(-350px);opacity:0}}
-.mrg__lane{position:absolute;left:0;right:0;top:var(--y);height:0;--x:var(--x0)}
-.mrg__rule{position:absolute;left:0;top:-1.5px;height:3px;width:max(0px,calc(var(--x) - 14px));background:#272624}
-.mrg__node{position:absolute;left:var(--x);top:-8px;width:16px;height:16px;margin-left:-8px;border-radius:50%;background:var(--navy);box-shadow:0 0 0 3px var(--lime)}
-.mrg__badge{position:absolute;left:var(--x);bottom:24px;transform:translateX(-50%) scale(var(--s0)) rotate(-3deg);transform-origin:50% 100%}
-.mrg__badge-in{display:flex;align-items:center;gap:8px;white-space:nowrap;padding:8px 14px;border-radius:11px;background:#fff;border:1px solid #d2cec9;font-size:clamp(12px,1.25vw,15px);font-weight:500;color:#20201e;transform-origin:50% 100%;position:relative}
-.mrg__badge-in::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-7px;border-style:solid;border-width:8px 7px 0;border-color:#cfd3e6 transparent transparent}
-.mrg__ic{width:14px;height:14px;fill:var(--navy);flex:none}
-.mrg.play .mrg__lane{animation:mrgLane 4.6s both}
-@keyframes mrgLane{0%{--x:var(--x0);animation-timing-function:cubic-bezier(.16,1,.3,1)}22%{--x:var(--x1)}26%{--x:var(--x1);animation-timing-function:cubic-bezier(.6,0,.9,.4)}58%{--x:115%}100%{--x:115%}}
-.mrg.play .mrg__badge{animation:mrgBadgeIn 1s cubic-bezier(.16,1,.3,1) both}
-@keyframes mrgBadgeIn{to{transform:translateX(-50%) scale(1) rotate(-2.2deg)}}
-.mrg.play .mrg__badge-in{animation:mrgBadgeOut .62s cubic-bezier(.55,0,.9,.5) calc(1.24s + var(--k) * .05s) both}
-@keyframes mrgBadgeOut{to{transform:scale(0) rotate(9deg)}}
-
-/* Titulares que entran palabra por palabra */
-.mrg__hl{position:absolute;left:0;right:0;top:6%;text-align:center;font-family:var(--display);font-weight:600;font-size:clamp(24px,3.4vw,46px);line-height:1.12;letter-spacing:-.02em;color:#20201e}
-.mrg__l{display:block}
-.mrg__l--acc{color:#5f8a00}
-.mrg__w{display:inline-block;opacity:0}
-.mrg.play .mrg__hl--a{animation:mrgHlA 3.7s both}
-@keyframes mrgHlA{0%{transform:translateX(30%);animation-timing-function:cubic-bezier(.16,1,.3,1)}27%{transform:translateX(0);animation-timing-function:linear}61%{transform:translateX(-4%);animation-timing-function:cubic-bezier(.6,0,.9,.4)}100%{transform:translateX(-140%)}}
-.mrg.play .mrg__hl--a .mrg__w{animation:mrgWord .5s ease-out calc(var(--i) * .13s) both}
-.mrg.play .mrg__hl--a .mrg__l--acc .mrg__w{animation-delay:calc(.45s + var(--i) * .13s)}
-.mrg.play .mrg__hl--b{animation:mrgHlB 1.6s cubic-bezier(.16,1,.3,1) 3s both}
-@keyframes mrgHlB{from{transform:translateX(8%)}to{transform:translateX(-4%)}}
-.mrg.play .mrg__hl--b .mrg__w{animation:mrgWord .43s ease-out calc(3s + var(--i) * .11s) both}
-.mrg.play .mrg__hl--b .mrg__l--acc .mrg__w{animation-delay:calc(3.4s + var(--i) * .11s)}
-@keyframes mrgWord{from{opacity:0;transform:translateX(40px)}to{opacity:1;transform:none}}
-.mrg__skip{position:absolute;right:18px;bottom:16px;padding:8px 14px;border:1px solid #d2cec9;border-radius:var(--pill);background:#fff;font-size:13px;font-weight:500;color:#20201e;cursor:pointer}
-.mrg__skip:hover{border-color:#20201e}
-@media(max-width:700px){
-  .mrg__badge-in{padding:6px 10px;gap:6px}
-  .mrg__ic{width:11px;height:11px}
-  .mrg__hl{top:4%}
-}
-@media(prefers-reduced-motion:reduce){.mrg__intro{display:none}.mrg__card{visibility:visible}}
-@media(max-width:700px){
-  .mrg__lane:nth-of-type(1){--x0:90%!important;--x1:60%!important}.mrg__lane:nth-of-type(2){--x0:20%!important;--x1:40%!important}.mrg__lane:nth-of-type(3){--x0:50%!important;--x1:62%!important}
-  .mrg__lane:nth-of-type(4){--x0:10%!important;--x1:36%!important}.mrg__lane:nth-of-type(5){--x0:80%!important;--x1:58%!important}.mrg__lane:nth-of-type(6){--x0:15%!important;--x1:42%!important}.mrg__lane:nth-of-type(7){--x0:40%!important;--x1:56%!important}
-  .mrg__hl{font-size:22px;padding:0 12px}
-  .mrg__lane{top:calc(18% + (var(--y) - 30%) * 1.1)}
-}
-.mrg__replay{margin-left:auto;padding:8px 14px;border:1px solid #d6d9e0;border-radius:var(--pill);background:#fff;font-size:13px;font-weight:500;color:#4a5468;cursor:pointer}
-.mrg__replay:hover{border-color:var(--navy);color:var(--navy)}
-.mrg__replay::before{content:"↻ "}
-
-/* ============ Plataforma: tablero de tarjetas (referente HyperFrames "pagina web", tablero de colores) ============ */
-.brd{position:relative;margin-top:clamp(32px,4vw,56px);padding:clamp(28px,4vw,64px) clamp(16px,3vw,48px);border-radius:28px;background:#eceef2;overflow:hidden}
-.brd__grid i{position:absolute;opacity:0}
-.brd__grid .v1,.brd__grid .v2{top:0;bottom:0;width:1px;background:repeating-linear-gradient(180deg,#a9adb8 0 10px,transparent 10px 19px)}
-.brd__grid .h1,.brd__grid .h2{left:0;right:0;height:1px;background:repeating-linear-gradient(90deg,#a9adb8 0 10px,transparent 10px 19px)}
-.brd__grid .v1{left:33.333%}.brd__grid .v2{left:66.666%}.brd__grid .h1{top:33.333%}.brd__grid .h2{top:66.666%}
-.brd.play .brd__grid .v1{animation:brdV1 1s cubic-bezier(.16,1,.3,1) .6s both}
-.brd.play .brd__grid .v2{animation:brdV2 1s cubic-bezier(.16,1,.3,1) .6s both}
-.brd.play .brd__grid .h1{animation:brdH1 1s cubic-bezier(.16,1,.3,1) .6s both}
-.brd.play .brd__grid .h2{animation:brdH2 1s cubic-bezier(.16,1,.3,1) .6s both}
-@keyframes brdV1{from{opacity:1;transform:translateX(9vw)}to{opacity:1;transform:none}}
-@keyframes brdV2{from{opacity:1;transform:translateX(-9vw)}to{opacity:1;transform:none}}
-@keyframes brdH1{from{opacity:1;transform:translateY(60px)}to{opacity:1;transform:none}}
-@keyframes brdH2{from{opacity:1;transform:translateY(-60px)}to{opacity:1;transform:none}}
-.brd__dot{position:absolute;left:50%;top:50%;width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;background:#0b1020;opacity:0;z-index:2}
-.brd.play .brd__dot{animation:brdDot .75s both}
-@keyframes brdDot{0%{opacity:1;transform:translate(-34vw,-22vh) scale(.9);animation-timing-function:cubic-bezier(.3,0,.7,1)}18%{transform:translate(-26vw,-28vh) scale(.9);animation-timing-function:cubic-bezier(.16,1,.3,1)}80%{opacity:1;transform:none}93%{opacity:1;transform:scale(1.3)}100%{opacity:0;transform:scale(1.3)}}
-.brd__cards{position:relative;z-index:1;list-style:none;margin:0 auto;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,3vw,44px);max-width:900px}
-.brd__c{position:relative;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:clamp(14px,2vw,26px);text-align:center;color:#0b1020}
-.brd__c--l{color:#f5f7fb}
-.brd__c--wip{color:#c1c9d6}
-.brd__c::before{content:"";position:absolute;inset:0;z-index:-1;border-radius:25%;background:var(--c)}
-.brd__c[style*="#fbfbfb"]::before{box-shadow:inset 0 0 0 1px #dfe2e8}
-.brd__c b{font-size:clamp(16px,1.7vw,22px);font-weight:500;line-height:1.2;letter-spacing:-.01em}
-.brd__c span{font-size:clamp(13px,1.25vw,16px);font-weight:300;line-height:1.35;opacity:.72;max-width:22ch}
-.brd__c img{width:clamp(70px,8vw,104px);height:auto}
-/* Pop: la superficie entra al 65 % y crece sin rebote; el texto aparece completo de una vez */
-.brd.play .brd__c::before{animation:brdPop .5s linear var(--d) both}
-@keyframes brdPop{0%{opacity:0;transform:scale(.65);border-radius:48%}1%{opacity:1}100%{opacity:1;transform:none;border-radius:25%}}
-.brd.play .brd__c > *{animation:brdTxt .01s steps(1) calc(var(--d) + .08s) both}
-@keyframes brdTxt{from{visibility:hidden}to{visibility:visible}}
-.brd:not(.play) .brd__c::before{opacity:0}
-.brd:not(.play) .brd__c > *{visibility:hidden}
-/* Cuando todo está a la vista, el tablero ondula suave, cada columna a su ritmo */
-.brd.done .brd__c{animation:brdWave 5s ease-in-out calc(var(--col) * .45s) infinite}
-@keyframes brdWave{0%,100%{transform:none}50%{transform:translateY(-8px)}}
-/* Palabras del título que destellan en verde al terminar */
+/* Secuencia (lenta para leer): punto que entra en curva, tarjeta central, tarjetas que se abren, tablero que sube fila por fila */
+.brd.play .brd__tail path{pathLength:1;animation:brdTail .3s steps(4,end) both}
+@keyframes brdTail{0%{opacity:1;stroke-dashoffset:.2;stroke-dasharray:.25 1}100%{opacity:0;stroke-dashoffset:-.8;stroke-dasharray:.05 1}}
+.brd.play .brd__dot{animation:brdDot .8s both}
+@keyframes brdDot{0%{opacity:1;transform:translate(560px,220px) scale(1.1);animation-timing-function:cubic-bezier(.16,1,.3,1)}75%{opacity:1;transform:translate(640px,360px) scale(1)}90%{opacity:1;transform:translate(640px,360px) scale(1.25)}100%{opacity:0;transform:translate(640px,360px) scale(1.25)}}
+.brd.play .brd__v,.brd.play .brd__h{animation:brdGrid 1s cubic-bezier(.16,1,.3,1) .7s both}
+@keyframes brdGrid{from{opacity:1;transform:scale(.92)}to{opacity:1;transform:none}}
+.brd.play .brd__chip{animation:brdPop .25s linear var(--t) both}
+@keyframes brdPop{0%{opacity:1;transform:scale(.65);border-radius:47%}100%{opacity:1;transform:none;border-radius:74px}}
+.brd.play .brd__c > b,.brd.play .brd__c > span,.brd.play .brd__c > img{animation:brdLbl .01s linear var(--t) both}
+@keyframes brdLbl{to{opacity:1}}
+.brd.play .brd__c > span{animation-name:brdLbl2}
+@keyframes brdLbl2{to{opacity:.8}}
+.brd.play .brd__board{animation:brdScroll 16s cubic-bezier(.65,0,.35,1) .3s infinite}
+@keyframes brdScroll{0%,26%{transform:none}35%,56%{transform:translateY(-432px)}65%,86%{transform:translateY(-864px)}96%,100%{transform:none}}
+/* Las columnas se mecen un poco, cada una a su ritmo (como el tablero del referente) */
+.brd.play .brd__c{animation:brdSway 4s ease-in-out calc(2.4s + var(--col) * .35s) infinite}
+@keyframes brdSway{0%,100%{translate:0 0}50%{translate:0 12px}}
+/* Palabras del título que destellan en verde al terminar la primera fila */
 #brd-h.pulse .brd__pw{animation:brdFlash .6s steps(1) both}
 #brd-h.pulse .brd__pw + .brd__pw{animation-delay:.3s}
-@keyframes brdFlash{0%{background:var(--lime);color:var(--navy)}40%{background:transparent;color:inherit}60%{background:var(--lime);color:var(--navy)}100%{background:var(--lime);color:var(--navy)}}
+@keyframes brdFlash{0%{background:var(--lime);color:var(--navy)}40%{background:transparent;color:inherit}60%,100%{background:var(--lime);color:var(--navy)}}
 .brd__pw{border-radius:.12em;padding:0 .08em}
+
+/* Celular: tablero en dos columnas, sin escenario, cada tarjeta aparece en orden */
 @media(max-width:700px){
-  .brd__grid{display:none}
-  .brd__cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .brd__c--wip{grid-column:1/-1;aspect-ratio:auto;min-height:150px;order:-1}
-  .brd__c b{font-size:15px}.brd__c span{font-size:12.5px}
+  .brd__stage{aspect-ratio:auto;padding:16px;border-radius:20px}
+  .brd__scale{position:static;width:auto;height:auto;transform:none}
+  .brd__v,.brd__h,.brd__tail,.brd__dot,.brd__c--n{display:none}
+  .brd__board{position:static;width:auto;height:auto;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .brd.play .brd__board{animation:none}
+  .brd__c{position:relative;left:auto;top:auto;width:auto;height:auto;aspect-ratio:1;padding:10px}
+  .brd__c--wip{grid-column:1/-1;aspect-ratio:auto;min-height:130px;order:-1}
+  .brd__chip{border-radius:28%}
+  .brd__c b{font-size:16px;line-height:20px}.brd__c span{font-size:14px;line-height:18px}.brd__c img{width:84px}
+  .brd.play .brd__chip,.brd.play .brd__c > *{animation-delay:calc(var(--t) * .35)!important}
+  .brd.play .brd__c{animation:none}
 }
-@media(prefers-reduced-motion:reduce){.brd .brd__c::before{opacity:1}.brd .brd__c > *{visibility:visible}}
-/* Texto de las tarjetas: aparece con opacidad (más fiable que visibility) */
-.brd__c span{opacity:1;color:color-mix(in srgb,currentColor 72%,transparent)}
-.brd.play .brd__c > *{animation:brdTxt2 .25s ease-out calc(var(--d) + .1s) both}
-@keyframes brdTxt2{from{opacity:0;visibility:visible}to{opacity:1;visibility:visible}}
-.brd:not(.play) .brd__c > *{visibility:visible;opacity:0}
-.brd.done .brd__c > *{animation:none;opacity:1;visibility:visible}
-.brd{padding:clamp(24px,3vw,44px) clamp(16px,3vw,48px)}
-.brd__cards{max-width:min(760px,calc((100vh - 200px) * 1.05));gap:clamp(14px,2.2vw,28px)}
+@media(prefers-reduced-motion:reduce){.brd__chip,.brd__v,.brd__h{opacity:1}.brd__c > b,.brd__c > img{opacity:1}.brd__c > span{opacity:.8}}
+.brd__c{isolation:isolate;z-index:1}
+.brd.play .brd__tail path{animation:brdTail .3s steps(4,end) both}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -2006,19 +1943,28 @@ window.addEventListener('message',function(e){
   <div class="wrap">
     <h2 class="ap-h2 rv" id="brd-h">La plataforma y tu red,<br><span class="ap-mute">trabajando como <span class="brd__pw">una</span> <span class="brd__pw">sola.</span></span></h2>
     <div class="brd" id="brd">
-      <span class="brd__grid" aria-hidden="true"><i class="v1"></i><i class="v2"></i><i class="h1"></i><i class="h2"></i></span>
-      <span class="brd__dot" aria-hidden="true"></span>
-      <ul class="brd__cards" aria-label="Lo que hace la plataforma Wip">
-        <li class="brd__c brd__c--l" style="--c:#16255a;--d:1.20s;--col:0"><b>Monitoreo central</b><span>Toda tu operación, en una pantalla</span></li>
-        <li class="brd__c brd__c--d" style="--c:#dbff57;--d:1.75s;--col:1"><b>Asignación inteligente</b><span>Por cercanía, tarifa, proveedor y más</span></li>
-        <li class="brd__c brd__c--l" style="--c:#2f55d4;--d:2.30s;--col:2"><b>Tarifas automáticas</b><span>Cada servicio, liquidado con su convenio</span></li>
-        <li class="brd__c brd__c--d" style="--c:#eaffb0;--d:2.85s;--col:0"><b>Tu red en el mapa</b><span>Quién está en camino, en servicio o libre</span></li>
-        <li class="brd__c brd__c--wip" style="--c:#0b1020;--d:.7s;--col:1"><img src="/img/wip-logo-lima-554349d3.png" alt="Wip" width="108" height="60"><span>Toda tu operación conectada</span></li>
-        <li class="brd__c brd__c--d" style="--c:#fbfbfb;--d:3.40s;--col:2"><b>La ruta de cada servicio</b><span>Ruta sugerida y seguimiento en vivo</span></li>
-        <li class="brd__c brd__c--l" style="--c:#2a3557;--d:3.95s;--col:0"><b>Evidencias</b><span>Fotos, documentos y guías del servicio</span></li>
-        <li class="brd__c brd__c--d" style="--c:#b9f24a;--d:4.50s;--col:1"><b>Experiencia del cliente</b><span>Por WhatsApp o en tu propia app</span></li>
-        <li class="brd__c brd__c--d" style="--c:#e7e3ff;--d:5.05s;--col:2"><b>Wipi, tu IA 24/7</b><span>Crea, asigna, calcula, notifica e informa</span></li>
-      </ul>
+      <div class="brd__stage">
+        <div class="brd__scale">
+          <i class="brd__v brd__v--0" aria-hidden="true"></i><i class="brd__v brd__v--1" aria-hidden="true"></i>
+          <div class="brd__board" role="list" aria-label="Lo que hace la plataforma Wip">
+          <i class="brd__h" style="--hy:144px" aria-hidden="true"></i><i class="brd__h" style="--hy:576px" aria-hidden="true"></i><i class="brd__h" style="--hy:1008px" aria-hidden="true"></i>
+          <div class="brd__c brd__c--n" aria-hidden="true" style="--bx:67.3px;--by:-210px;--c:#A19D92;--t:1.6s;--col:0"><i class="brd__chip"></i></div>
+          <div class="brd__c brd__c--n" aria-hidden="true" style="--bx:494px;--by:-210px;--c:#D4D0CB;--t:1.45s;--col:1"><i class="brd__chip"></i></div>
+          <div class="brd__c brd__c--n" aria-hidden="true" style="--bx:920.7px;--by:-210px;--c:#EAE7E2;--t:1.6s;--col:2"><i class="brd__chip"></i></div>
+          <div class="brd__c" style="--bx:67.3px;--by:214px;--c:#16255a;--t:1.3s;--col:0"><i class="brd__chip"></i><b>Monitoreo central</b><span>en tiempo real</span></div>
+          <div class="brd__c brd__c--wip" style="--bx:494px;--by:214px;--c:#0b1020;--t:0.75s;--col:1"><i class="brd__chip"></i><img src="/img/wip-logo-lima-554349d3.png" alt="Wip" width="108" height="60"><span>todo conectado</span></div>
+          <div class="brd__c" style="--bx:920.7px;--by:214px;--c:#2f7bff;--t:1.05s;--col:2"><i class="brd__chip"></i><b>Asignación inteligente</b><span>por cercanía</span></div>
+          <div class="brd__c brd__c--light" style="--bx:67.3px;--by:646px;--c:#dbff57;--t:1.75s;--col:0"><i class="brd__chip"></i><b>Tarifas automáticas</b><span>por convenio</span></div>
+          <div class="brd__c brd__c--light" style="--bx:494px;--by:646px;--c:#ffffff;--t:1.95s;--col:1"><i class="brd__chip"></i><b>Tu red</b><span>en el mapa</span></div>
+          <div class="brd__c" style="--bx:920.7px;--by:646px;--c:#2f55d4;--t:2.15s;--col:2"><i class="brd__chip"></i><b>La ruta</b><span>de cada servicio</span></div>
+          <div class="brd__c" style="--bx:67.3px;--by:1078px;--c:#20201e;--t:9.3s;--col:0"><i class="brd__chip"></i><b>Evidencias</b><span>listas para auditar</span></div>
+          <div class="brd__c brd__c--light" style="--bx:494px;--by:1078px;--c:#eaffb0;--t:9.5s;--col:1"><i class="brd__chip"></i><b>Experiencia del cliente</b><span>por WhatsApp</span></div>
+          <div class="brd__c" style="--bx:920.7px;--by:1078px;--c:#8f6bff;--t:9.7s;--col:2"><i class="brd__chip"></i><b>Wipi</b><span>tu IA 24/7</span></div>
+          </div>
+          <svg class="brd__tail" viewBox="0 0 1280 720" aria-hidden="true"><path pathLength="1" d="M222 295 Q254 228 305 199 Q400 150 520 200 Q600 240 640 360"/></svg>
+          <span class="brd__dot" aria-hidden="true"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -2647,19 +2593,22 @@ window.addEventListener('message',function(e){
     if(!reduce) whenVisible(wv,function(){setInterval(function(){wvK=(wvK+1)%5;wvSet(wvK);},2400);},{threshold:.3});
   }
 
-  /* Plataforma: tablero donde un punto aterriza en el centro y abre la tarjeta de Wip; luego aparece cada ítem, despacio */
+  /* Plataforma: tablero del referente (escenario 1280x720 escalado al ancho); arranca a la vista y se repite al volver */
   var brd=document.getElementById("brd"), brdH=document.getElementById("brd-h");
   if(brd){
-    if(reduce){brd.classList.add("play","done");}
+    var brdStage=brd.querySelector(".brd__stage");
+    var brdFit=function(){if(brdStage)brd.style.setProperty("--k",(brdStage.clientWidth/1280).toFixed(4));};
+    brdFit(); window.addEventListener("resize",brdFit);
+    if(reduce){brd.classList.add("play");}
     else if("IntersectionObserver" in window){
       var brdT=null, brdArmed=true;
-      var brdPlay=function(){clearTimeout(brdT);brd.classList.remove("play","done");if(brdH)brdH.classList.remove("pulse");void brd.offsetWidth;brd.classList.add("play");
-        brdT=setTimeout(function(){brd.classList.add("done");if(brdH)brdH.classList.add("pulse");},6200);};
+      var brdPlay=function(){clearTimeout(brdT);brd.classList.remove("play");if(brdH)brdH.classList.remove("pulse");void brd.offsetWidth;brd.classList.add("play");
+        brdT=setTimeout(function(){if(brdH)brdH.classList.add("pulse");},2600);};
       new IntersectionObserver(function(es){es.forEach(function(e){
-        if((e.intersectionRatio>=.5||e.intersectionRect.height>=innerHeight*.6)&&brdArmed){brdArmed=false;brdPlay();}
+        if((e.intersectionRatio>=.6||e.intersectionRect.height>=innerHeight*.6)&&brdArmed){brdArmed=false;brdPlay();}
         else if(!e.isIntersecting){brdArmed=true;}
-      });},{threshold:[0,.2,.3,.4,.5]}).observe(brd);
-    } else brd.classList.add("play","done");
+      });},{threshold:[0,.2,.4,.6]}).observe(brd);
+    } else brd.classList.add("play");
   }
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
