@@ -1787,6 +1787,10 @@ body[data-page="corp"]{font-weight:400}
 .sx-plus{font-weight:800;margin-right:.02em}
 .sx-nums__row .sx-num .sx-num__l{text-transform:none;letter-spacing:0;font-size:17px;font-weight:400;line-height:1.4;color:#4a5468}
 
+/* Panel asignación por cercanía: fila elegida */
+.ap-ms--near .ap-ms__r.on{border-color:rgba(219,255,87,.55);background:rgba(219,255,87,.08)}
+.ap-ms--near .ap-ms__r.on em{color:#dbff57}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -1928,6 +1932,25 @@ window.addEventListener('message',function(e){
 </section>
 
 <section class="sx-panel">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
+      <span class="sx-k">Asignación inteligente</span>
+      <h2 class="sx-h2">Asignación por cercanía</h2>
+      <p>Wip ubica a tus proveedores disponibles más cerca del cliente y asigna el servicio al mejor, sin llamar uno por uno.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis  rv" style="--rd:.1s" aria-hidden="true">
+          <div class="ap-ms ap-ms--near">
+            <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span>Cliente en Calle 80</span></div>
+            <div class="ap-ms__r on"><i class="dot g"></i><span>Grúas del Pacífico</span><em>1,2 km · Asignado</em></div>
+            <div class="ap-ms__r"><i class="dot y"></i><span>Movilidad Andina</span><em>3,8 km</em></div>
+            <div class="ap-ms__r"><i class="dot p"></i><span>Grúas Express</span><em>6,5 km</em></div>
+          </div>
+    </div>
+  </div>
+</section>
+
+<section class="sx-panel sx-panel--flip">
   <div class="wrap sx-panel__in">
     <div class="sx-panel__copy rv">
       <span class="sx-k">Novedad</span>

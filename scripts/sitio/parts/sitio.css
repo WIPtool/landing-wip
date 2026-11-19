@@ -1140,3 +1140,7 @@ body[data-page="corp"]{font-weight:400}
 .sx-nums__row .sx-num b small{font-weight:800;letter-spacing:-.03em;-webkit-text-fill-color:var(--navy)}
 .sx-plus{font-weight:800;margin-right:.02em}
 .sx-nums__row .sx-num .sx-num__l{text-transform:none;letter-spacing:0;font-size:17px;font-weight:400;line-height:1.4;color:#4a5468}
+
+/* Panel asignación por cercanía: fila elegida */
+.ap-ms--near .ap-ms__r.on{border-color:rgba(219,255,87,.55);background:rgba(219,255,87,.08)}
+.ap-ms--near .ap-ms__r.on em{color:#dbff57}
