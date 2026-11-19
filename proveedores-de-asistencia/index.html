@@ -2048,6 +2048,21 @@ body[data-page="prov"] main .btn--lime{border-radius:10px;min-height:52px;displa
 @media(prefers-reduced-motion:reduce){.pv-hero__media img{animation:none}.pv-hero__media img:first-child{opacity:.5}.pv-checks li{opacity:1}}
 .pv-panel .pv-h2{font-size:clamp(30px,3.5vw,50px);line-height:1.02}
 
+/* Proveedores: hero y cierre en el verde de Wip (lima), sin fotos */
+.pv-hero,.pv-cta{background:radial-gradient(ellipse at 85% 15%,rgba(255,255,255,.45),transparent 50%),radial-gradient(ellipse at 10% 110%,rgba(155,214,0,.45),transparent 55%),var(--lime);color:var(--navy)}
+.pv-hero::after{display:none}
+.pv-hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(11,16,32,.12) 1.1px,transparent 1.6px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 80% 75% at 70% 40%,#000 25%,transparent 100%);mask-image:radial-gradient(ellipse 80% 75% at 70% 40%,#000 25%,transparent 100%);pointer-events:none}
+.pv-hero .pv-k{color:#3d5200}
+.pv-hero .pv-h1,.pv-cta .pv-h2{color:var(--navy)}
+.pv-hero__sub{color:var(--navy)}
+.pv-hero__p,.pv-cta p{color:rgba(11,16,32,.75)}
+.pv-hero .btn--lime,.pv-cta .btn--lime{background:var(--navy);color:var(--lime);box-shadow:none}
+.pv-hero .btn--lime:hover,.pv-cta .btn--lime:hover{box-shadow:0 10px 30px rgba(11,16,32,.25)}
+.pv-hero .pv-btn,.pv-cta .pv-btn{color:var(--navy)}
+.pv-hero .pv-btn:hover,.pv-cta .pv-btn:hover{background:var(--navy);color:var(--lime)}
+.pv-hero__down{border-color:var(--navy)}
+body[data-page="prov"] .nav__in{background:rgba(11,16,32,.9);border-color:rgba(255,255,255,.08)}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2117,12 +2132,6 @@ window.addEventListener('message',function(e){
 <main>
 <!-- ===================== HERO PROVEEDORES (estilo SpaceX, fondo verde) ===================== -->
 <section class="pv-hero" id="inicio">
-  <div class="pv-hero__media" aria-hidden="true">
-    <img src="/img/proveedores/grua.webp" alt="" style="--i:0">
-    <img src="/img/proveedores/llanta.webp" alt="" style="--i:1">
-    <img src="/img/proveedores/mecanica.webp" alt="" style="--i:2">
-    <img src="/img/proveedores/ambulancia.webp" alt="" style="--i:3">
-  </div>
   <div class="wrap pv-hero__copy rv in">
     <span class="pv-k">Wip para proveedores de asistencia</span>
     <h1 class="pv-h1">Todas tus plataformas.<br>Un solo lugar.</h1>
