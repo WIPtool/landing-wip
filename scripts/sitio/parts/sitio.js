@@ -233,7 +233,7 @@
     var monSet=function(i,st){var r=monRows[i];if(!r)return;var b=r.querySelector(".mon__st"),sem=r.querySelector(".mon__sem");
       b.className="mon__st mon__st--"+st;b.textContent=MS[st][0];sem.className="mon__sem mon__sem--"+MS[st][1];
       r.classList.remove("mon__r--chg");void r.offsetWidth;r.classList.add("mon__r--chg");};
-    var monSteps=[[4,"ec"],[1,"ac"],[6,"fi"],[5,"ec"],[4,"fi"],[1,"ec"],[5,"fi"],[1,"fi"]];
+    var monSteps=[[4,"ec"],[1,"ac"],[3,"fi"],[1,"ec"],[4,"fi"],[1,"fi"]];
     var monK=0,monTimer=null;
     var monTick=function(){ if(monK<monSteps.length){monSet(monSteps[monK][0],monSteps[monK][1]);monK++;}
       else{monInit.forEach(function(st,i){monSet(i,st);});monK=0;} };
