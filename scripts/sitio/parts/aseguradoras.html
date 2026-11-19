@@ -42,13 +42,24 @@
       <p>Wip ubica a tus proveedores disponibles más cerca del cliente y asigna el servicio al mejor, sin llamar uno por uno.</p>
       <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
     </div>
-    <div class="sx-panel__vis  rv" style="--rd:.1s" aria-hidden="true">
-          <div class="ap-ms ap-ms--near">
-            <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span>Cliente en Calle 80</span></div>
-            <div class="ap-ms__r on"><i class="dot g"></i><span>Grúas del Pacífico</span><em>1,2 km · Asignado</em></div>
-            <div class="ap-ms__r"><i class="dot y"></i><span>Movilidad Andina</span><em>3,8 km</em></div>
-            <div class="ap-ms__r"><i class="dot p"></i><span>Grúas Express</span><em>6,5 km</em></div>
-          </div>
+    <div class="sx-panel__vis sx-panel__vis--map rv" style="--rd:.1s" aria-hidden="true">
+          <svg class="amap" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid meet">
+            <g class="amap__st"><path d="M-400 60H1000"/><path d="M-400 140H1000"/><path d="M-400 300H1000"/><path d="M-400 380H1000"/><path d="M-400 460H1000"/><path d="M70 -400V920"/><path d="M170 -400V920"/><path d="M260 -400V920"/><path d="M440 -400V920"/><path d="M530 -400V920"/></g>
+            <g class="amap__av"><path d="M-400 220H1000"/><path d="M350 -400V920"/><path d="M-200 700L800 -150"/></g>
+            <rect class="amap__park" x="448" y="308" width="74" height="64" rx="6"/>
+            <circle class="amap__range" cx="350" cy="300" r="140"/>
+            <path class="amap__route" d="M260 220H350V300"/>
+            <path class="amap__flow" d="M260 220H350V300"/>
+            <g class="amap__pv amap__pv--y"><circle cx="530" cy="140" r="9"/></g>
+            <g class="amap__pv amap__pv--p"><circle cx="70" cy="460" r="9"/></g>
+            <g class="amap__pv amap__pv--g"><circle class="amap__halo" cx="260" cy="220" r="16"/><circle cx="260" cy="220" r="10"/></g>
+            <circle class="amap__ping" cx="350" cy="300" r="14"/>
+            <circle class="amap__cli" cx="350" cy="300" r="11"/>
+            <g class="amap__chip amap__chip--on"><rect x="70" y="160" width="260" height="40" rx="12"/><text x="86" y="185"><tspan class="b">Grúas del Pacífico</tspan><tspan dx="8">1,2 km · Asignado</tspan></text></g>
+            <g class="amap__chip"><rect x="292" y="322" width="140" height="34" rx="11"/><text x="306" y="344"><tspan class="b">Cliente</tspan><tspan dx="6">Calle 80</tspan></text></g>
+            <g class="amap__chip"><rect x="392" y="92" width="150" height="34" rx="11"/><text x="405" y="114">Movilidad Andina<tspan dx="6" class="m">3,8 km</tspan></text></g>
+            <g class="amap__chip"><rect x="88" y="474" width="132" height="34" rx="11"/><text x="101" y="496">Grúas Express<tspan dx="6" class="m">6,5 km</tspan></text></g>
+          </svg>
     </div>
   </div>
 </section>

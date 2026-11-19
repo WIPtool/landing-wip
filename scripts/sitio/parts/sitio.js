@@ -224,6 +224,11 @@
   }
 
   /* Plataforma: tablero del referente (escenario 1280x720 escalado al ancho); arranca a la vista y se repite al volver */
+  /* Mapa de asignación: cada etiqueta se ajusta al ancho de su texto */
+  [].forEach.call(document.querySelectorAll(".amap__chip"),function(g){
+    var t=g.querySelector("text"), r=g.querySelector("rect");
+    try{ var w=t.getBBox().width; if(w>0) r.setAttribute("width",Math.ceil(w+(parseFloat(t.getAttribute("x"))-parseFloat(r.getAttribute("x")))*2)); }catch(e){}
+  });
   [].forEach.call(document.querySelectorAll(".brd"),function(brd){
     var brdH=brd.id==="brd"?document.getElementById("brd-h"):null;
     var brdStage=brd.querySelector(".brd__stage");

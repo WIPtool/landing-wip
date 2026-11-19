@@ -1806,6 +1806,28 @@ body[data-page="corp"]{font-weight:400}
 @keyframes msLive{70%{box-shadow:0 0 0 7px rgba(219,255,87,0)}100%{box-shadow:0 0 0 0 rgba(219,255,87,0)}}
 @media(prefers-reduced-motion:reduce){.ap-ms__live::before{animation:none}}
 
+/* Panel asignación: mapa con proveedores y ruta al cliente */
+.sx-panel__vis--map{overflow:hidden;display:block}
+.amap{position:absolute;inset:0;width:100%;height:100%;overflow:visible;font-family:var(--display)}
+.amap__st path{stroke:rgba(255,255,255,.045);stroke-width:7;fill:none}
+.amap__av path{stroke:rgba(255,255,255,.075);stroke-width:14;fill:none}
+.amap__park{fill:rgba(219,255,87,.06)}
+.amap__range{fill:rgba(219,255,87,.04);stroke:rgba(219,255,87,.35);stroke-width:1.5;stroke-dasharray:5 7}
+.amap__route{fill:none;stroke:rgba(219,255,87,.25);stroke-width:10;stroke-linecap:round;stroke-linejoin:round}
+.amap__flow{fill:none;stroke:#dbff57;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:10 12;animation:amapFlow 1.2s linear infinite}
+@keyframes amapFlow{to{stroke-dashoffset:-22}}
+.amap__pv circle{stroke:#0b1020;stroke-width:3}
+.amap__pv--g circle{fill:#9be15d}.amap__pv--y circle{fill:#ffd84d}.amap__pv--p circle{fill:#8f6bff}
+.amap__pv--g .amap__halo{fill:rgba(155,225,93,.25);stroke:none}
+.amap__cli{fill:#dbff57;stroke:#0b1020;stroke-width:4}
+.amap__ping{fill:none;stroke:#dbff57;stroke-width:2;transform-origin:350px 300px;animation:amapPing 2s ease-out infinite}
+@keyframes amapPing{0%{transform:scale(1);opacity:.9}100%{transform:scale(3.2);opacity:0}}
+.amap__chip rect{fill:rgba(15,20,36,.92);stroke:rgba(255,255,255,.12)}
+.amap__chip text{font-size:13px;fill:#9aa3b5}.amap__chip .b{fill:#fff;font-weight:600}.amap__chip .m{fill:#9aa3b5}
+.amap__chip--on rect{stroke:rgba(219,255,87,.6);fill:rgba(24,32,20,.95)}.amap__chip--on text tspan:last-child{fill:#dbff57;font-weight:600}
+.amap__chip--ok rect{fill:#dbff57;stroke:none}.amap__chip--ok text{fill:#0b1020;font-weight:700;font-size:12px}
+@media(prefers-reduced-motion:reduce){.amap__flow,.amap__ping{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2429,6 +2451,11 @@ window.addEventListener('message',function(e){
   }
 
   /* Plataforma: tablero del referente (escenario 1280x720 escalado al ancho); arranca a la vista y se repite al volver */
+  /* Mapa de asignación: cada etiqueta se ajusta al ancho de su texto */
+  [].forEach.call(document.querySelectorAll(".amap__chip"),function(g){
+    var t=g.querySelector("text"), r=g.querySelector("rect");
+    try{ var w=t.getBBox().width; if(w>0) r.setAttribute("width",Math.ceil(w+(parseFloat(t.getAttribute("x"))-parseFloat(r.getAttribute("x")))*2)); }catch(e){}
+  });
   [].forEach.call(document.querySelectorAll(".brd"),function(brd){
     var brdH=brd.id==="brd"?document.getElementById("brd-h"):null;
     var brdStage=brd.querySelector(".brd__stage");
