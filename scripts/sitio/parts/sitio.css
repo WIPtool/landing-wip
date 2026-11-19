@@ -1416,3 +1416,12 @@ body[data-page="prov"] main .btn--lime{border-radius:10px;min-height:52px;displa
 .pv-hero .pv-btn:hover,.pv-cta .pv-btn:hover{background:var(--navy);color:var(--lime)}
 .pv-hero__down{border-color:var(--navy)}
 body[data-page="prov"] .nav__in{background:rgba(11,16,32,.9);border-color:rgba(255,255,255,.08)}
+
+/* Proveedores: hero con video al lado */
+.pv-hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:center;padding-top:clamp(120px,16vh,170px);padding-bottom:clamp(100px,14vh,150px)}
+.pv-hero__grid .pv-hero__copy{padding:0}
+.pv-hero__grid .pv-h1{font-size:clamp(40px,5.4vw,84px)}
+.pv-hero__vid{margin:0;max-width:none;width:100%;background:var(--navy);border:0;box-shadow:0 30px 70px rgba(11,16,32,.3)}
+.pv-hero__vid .vid__ph{color:#c1c9d6}
+@media(max-width:900px){.pv-hero__grid{grid-template-columns:1fr;padding-top:110px}}
+.pv-hero__grid .pv-hero__sub{font-size:clamp(18px,1.7vw,23px)}

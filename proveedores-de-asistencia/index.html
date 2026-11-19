@@ -2063,6 +2063,15 @@ body[data-page="prov"] main .btn--lime{border-radius:10px;min-height:52px;displa
 .pv-hero__down{border-color:var(--navy)}
 body[data-page="prov"] .nav__in{background:rgba(11,16,32,.9);border-color:rgba(255,255,255,.08)}
 
+/* Proveedores: hero con video al lado */
+.pv-hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,64px);align-items:center;padding-top:clamp(120px,16vh,170px);padding-bottom:clamp(100px,14vh,150px)}
+.pv-hero__grid .pv-hero__copy{padding:0}
+.pv-hero__grid .pv-h1{font-size:clamp(40px,5.4vw,84px)}
+.pv-hero__vid{margin:0;max-width:none;width:100%;background:var(--navy);border:0;box-shadow:0 30px 70px rgba(11,16,32,.3)}
+.pv-hero__vid .vid__ph{color:#c1c9d6}
+@media(max-width:900px){.pv-hero__grid{grid-template-columns:1fr;padding-top:110px}}
+.pv-hero__grid .pv-hero__sub{font-size:clamp(18px,1.7vw,23px)}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2132,12 +2141,19 @@ window.addEventListener('message',function(e){
 <main>
 <!-- ===================== HERO PROVEEDORES (estilo SpaceX, fondo verde) ===================== -->
 <section class="pv-hero" id="inicio">
-  <div class="wrap pv-hero__copy rv in">
+  <div class="wrap pv-hero__grid">
+  <div class="pv-hero__copy rv in">
     <span class="pv-k">Wip para proveedores de asistencia</span>
     <h1 class="pv-h1">Todas tus plataformas.<br>Un solo lugar.</h1>
     <p class="pv-hero__sub">Grúas, hogar, médicos y veterinarios a domicilio.</p>
     <p class="pv-hero__p">Los servicios de todas tus aseguradoras y asistencias en Wip, una sola app para tus técnicos, Wip IA atendiendo las novedades y la cuenta de cobro lista desde el reporte.</p>
     <div class="pv-hero__cta"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="btn btn--lime" target="_blank" rel="noopener" data-cta="meli">Escríbele a Meli por WhatsApp</a><a href="/equipos#planes" class="pv-btn">Ver planes</a></div>
+  </div>
+    <!-- Espacio para el video de Wip Proveedores (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
+         <video src="/video/wip-proveedores.mp4" poster="/video/wip-proveedores.jpg" controls playsinline preload="metadata"></video> -->
+    <div class="vid pv-hero__vid rv in" id="video-hero-proveedores">
+      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Proveedores</span></div>
+    </div>
   </div>
   <a href="#cifras" class="pv-hero__down" aria-label="Bajar a la siguiente sección"></a>
 </section>
