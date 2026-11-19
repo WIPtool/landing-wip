@@ -1859,6 +1859,14 @@ body[data-page="corp"]{font-weight:400}
 /* Panel tarifas: montos alineados */
 .ap-tar .ap-ms__r em{font-variant-numeric:tabular-nums}.ap-tar .ap-ms__r.on em b{font-size:15px;color:#dbff57}
 
+/* Central de monitoreo: cambio de estado y responsable Proveedor */
+.mon__rp:not(.on){background:rgba(79,140,255,.16);color:#a9c4ff}
+.mon__st,.mon__sem{transition:background-color .4s ease,color .4s ease}
+.mon__r--chg{animation:monChg 1.2s ease-out}
+@keyframes monChg{0%{background:rgba(219,255,87,.16)}100%{background:transparent}}
+.mon__r--chg .mon__st{animation:monPop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes monPop{0%{transform:scale(.7);opacity:.3}100%{transform:none;opacity:1}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2482,6 +2490,26 @@ window.addEventListener('message',function(e){
   }
 
   /* Plataforma: tablero del referente (escenario 1280x720 escalado al ancho); arranca a la vista y se repite al volver */
+  /* Central de monitoreo: los estados de los servicios van cambiando */
+  var mon=document.querySelector(".mon");
+  if(mon&&!reduce){
+    var MS={fa:["Fallido","r"],ap:["Esperando aprobación","y"],fi:["Finalizado","g"],ac:["Aceptado","g"],ec:["En camino","y"]};
+    var monRows=mon.querySelectorAll(".mon__r:not(.mon__r--h)");
+    var monInit=[].map.call(monRows,function(r){var b=r.querySelector(".mon__st");return (b.className.match(/mon__st--(w+)/)||[])[1];});
+    var monSet=function(i,st){var r=monRows[i];if(!r)return;var b=r.querySelector(".mon__st"),sem=r.querySelector(".mon__sem");
+      b.className="mon__st mon__st--"+st;b.textContent=MS[st][0];sem.className="mon__sem mon__sem--"+MS[st][1];
+      r.classList.remove("mon__r--chg");void r.offsetWidth;r.classList.add("mon__r--chg");};
+    var monSteps=[[4,"ec"],[1,"ac"],[6,"fi"],[5,"ec"],[4,"fi"],[1,"ec"],[5,"fi"],[1,"fi"]];
+    var monK=0,monTimer=null;
+    var monTick=function(){ if(monK<monSteps.length){monSet(monSteps[monK][0],monSteps[monK][1]);monK++;}
+      else{monInit.forEach(function(st,i){monSet(i,st);});monK=0;} };
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting){if(!monTimer)monTimer=setInterval(monTick,2200);}
+        else{clearInterval(monTimer);monTimer=null;}
+      });},{threshold:.3}).observe(mon);
+    }
+  }
   /* Mapa de asignación: cada etiqueta se ajusta al ancho de su texto */
   [].forEach.call(document.querySelectorAll(".amap__chip"),function(g){
     var t=g.querySelector("text"), r=g.querySelector("rect");

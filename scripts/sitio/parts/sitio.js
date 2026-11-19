@@ -224,6 +224,26 @@
   }
 
   /* Plataforma: tablero del referente (escenario 1280x720 escalado al ancho); arranca a la vista y se repite al volver */
+  /* Central de monitoreo: los estados de los servicios van cambiando */
+  var mon=document.querySelector(".mon");
+  if(mon&&!reduce){
+    var MS={fa:["Fallido","r"],ap:["Esperando aprobación","y"],fi:["Finalizado","g"],ac:["Aceptado","g"],ec:["En camino","y"]};
+    var monRows=mon.querySelectorAll(".mon__r:not(.mon__r--h)");
+    var monInit=[].map.call(monRows,function(r){var b=r.querySelector(".mon__st");return (b.className.match(/mon__st--(w+)/)||[])[1];});
+    var monSet=function(i,st){var r=monRows[i];if(!r)return;var b=r.querySelector(".mon__st"),sem=r.querySelector(".mon__sem");
+      b.className="mon__st mon__st--"+st;b.textContent=MS[st][0];sem.className="mon__sem mon__sem--"+MS[st][1];
+      r.classList.remove("mon__r--chg");void r.offsetWidth;r.classList.add("mon__r--chg");};
+    var monSteps=[[4,"ec"],[1,"ac"],[6,"fi"],[5,"ec"],[4,"fi"],[1,"ec"],[5,"fi"],[1,"fi"]];
+    var monK=0,monTimer=null;
+    var monTick=function(){ if(monK<monSteps.length){monSet(monSteps[monK][0],monSteps[monK][1]);monK++;}
+      else{monInit.forEach(function(st,i){monSet(i,st);});monK=0;} };
+    if("IntersectionObserver" in window){
+      new IntersectionObserver(function(es){es.forEach(function(e){
+        if(e.isIntersecting){if(!monTimer)monTimer=setInterval(monTick,2200);}
+        else{clearInterval(monTimer);monTimer=null;}
+      });},{threshold:.3}).observe(mon);
+    }
+  }
   /* Mapa de asignación: cada etiqueta se ajusta al ancho de su texto */
   [].forEach.call(document.querySelectorAll(".amap__chip"),function(g){
     var t=g.querySelector("text"), r=g.querySelector("rect");

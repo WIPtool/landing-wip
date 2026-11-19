@@ -1212,3 +1212,11 @@ body[data-page="corp"]{font-weight:400}
 
 /* Panel tarifas: montos alineados */
 .ap-tar .ap-ms__r em{font-variant-numeric:tabular-nums}.ap-tar .ap-ms__r.on em b{font-size:15px;color:#dbff57}
+
+/* Central de monitoreo: cambio de estado y responsable Proveedor */
+.mon__rp:not(.on){background:rgba(79,140,255,.16);color:#a9c4ff}
+.mon__st,.mon__sem{transition:background-color .4s ease,color .4s ease}
+.mon__r--chg{animation:monChg 1.2s ease-out}
+@keyframes monChg{0%{background:rgba(219,255,87,.16)}100%{background:transparent}}
+.mon__r--chg .mon__st{animation:monPop .45s cubic-bezier(.2,1.4,.4,1)}
+@keyframes monPop{0%{transform:scale(.7);opacity:.3}100%{transform:none;opacity:1}}
