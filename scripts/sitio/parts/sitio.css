@@ -1229,3 +1229,15 @@ body[data-page="corp"]{font-weight:400}
 .ap-cx__m.out{align-self:flex-end;background:var(--navy);color:#fff;border-bottom-right-radius:5px}
 .ap-fact--cx.is-open .ap-cx{opacity:0}
 @media(max-width:480px){.ap-cx__m{font-size:13px;padding:9px 12px}}
+
+/* Tu operación y Wip: tarjetas por rol, compactas */
+.rols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:clamp(28px,3.5vw,48px)}
+.rol{display:flex;flex-direction:column;min-height:280px;padding:26px 24px;border-radius:24px;background:#0b1020;color:#fff;font-family:var(--display)}
+.rol--lime{background:var(--lime);color:var(--navy)}
+.rol__ic{width:34px;height:34px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;margin-bottom:auto;opacity:.9}
+.rol:not(.rol--lime) .rol__ic{stroke:var(--lime)}
+.rol__k{margin-top:28px;font-size:13px;font-weight:600;opacity:.75}
+.rol__t{margin-top:6px;font-size:clamp(19px,1.6vw,22px);line-height:1.2;font-weight:400;letter-spacing:-.01em}
+.rol__x{margin-top:12px;font-size:14px;line-height:1.45;opacity:.7}
+@media(max-width:1000px){.rols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.rols{grid-template-columns:1fr;gap:12px}.rol{min-height:0;padding:22px 20px}.rol__ic{margin-bottom:0}.rol__k{margin-top:18px}}
