@@ -1828,6 +1828,16 @@ body[data-page="corp"]{font-weight:400}
 .amap__chip--ok rect{fill:#dbff57;stroke:none}.amap__chip--ok text{fill:#0b1020;font-weight:700;font-size:12px}
 @media(prefers-reduced-motion:reduce){.amap__flow,.amap__ping{animation:none}}
 
+/* Panel evidencias y chat */
+.ap-ev__ph{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.ap-ev__t{position:relative;aspect-ratio:1;border-radius:12px;padding:10px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border:1px solid rgba(255,255,255,.1)}
+.ap-ev__t--1{background:linear-gradient(160deg,#3a4a6b,#1a2238)}.ap-ev__t--2{background:linear-gradient(160deg,#4b5a3a,#1d2416)}.ap-ev__t--3{background:linear-gradient(160deg,#f4f5f0,#d9dccf);color:#0b1020}
+.ap-ev__t svg{position:absolute;top:10px;left:10px;width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;opacity:.7}
+.ap-ev__t b{font-size:12.5px;font-weight:600}.ap-ev__t em{font-style:normal;font-size:11px;opacity:.7}
+.ap-ev__t::after{content:"✓";position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:50%;background:#dbff57;color:#0b1020;font-size:11px;font-weight:800;display:grid;place-items:center}
+.ap-ev__chat{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+.ap-ev__chat .asg__msg{font-size:13px}.ap-ev__chat small{display:block;margin-bottom:3px;font-size:11px;color:#dbff57;font-weight:600}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
