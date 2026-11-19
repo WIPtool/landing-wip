@@ -229,7 +229,7 @@
   if(mon&&!reduce){
     var MS={fa:["Fallido","r"],ap:["Esperando aprobación","y"],fi:["Finalizado","g"],ac:["Aceptado","g"],ec:["En camino","y"]};
     var monRows=mon.querySelectorAll(".mon__r:not(.mon__r--h)");
-    var monInit=[].map.call(monRows,function(r){var b=r.querySelector(".mon__st");return (b.className.match(/mon__st--(w+)/)||[])[1];});
+    var monInit=[].map.call(monRows,function(r){var b=r.querySelector(".mon__st");return (b.className.match(/mon__st--([a-z]+)/)||[])[1];});
     var monSet=function(i,st){var r=monRows[i];if(!r)return;var b=r.querySelector(".mon__st"),sem=r.querySelector(".mon__sem");
       b.className="mon__st mon__st--"+st;b.textContent=MS[st][0];sem.className="mon__sem mon__sem--"+MS[st][1];
       r.classList.remove("mon__r--chg");void r.offsetWidth;r.classList.add("mon__r--chg");};
