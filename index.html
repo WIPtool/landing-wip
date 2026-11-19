@@ -1773,6 +1773,10 @@ body[data-page="corp"]{font-weight:400}
 .brd__c{isolation:isolate;z-index:1}
 .brd.play .brd__tail path{animation:brdTail .3s steps(4,end) both}
 
+/* Hero corporativo: cuadrícula de puntos muy tenue */
+.sx-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(11,16,32,.13) 1.1px,transparent 1.6px);background-size:26px 26px;background-position:center;-webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 45%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 75% 70% at 50% 45%,#000 30%,transparent 100%)}
+.sx-hero__copy{position:relative;z-index:1}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}

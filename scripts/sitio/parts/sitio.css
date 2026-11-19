@@ -1126,3 +1126,7 @@ body[data-page="corp"]{font-weight:400}
 @media(prefers-reduced-motion:reduce){.brd__chip,.brd__v,.brd__h{opacity:1}.brd__c > b,.brd__c > img{opacity:1}.brd__c > span{opacity:.8}}
 .brd__c{isolation:isolate;z-index:1}
 .brd.play .brd__tail path{animation:brdTail .3s steps(4,end) both}
+
+/* Hero corporativo: cuadrícula de puntos muy tenue */
+.sx-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(11,16,32,.13) 1.1px,transparent 1.6px);background-size:26px 26px;background-position:center;-webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 45%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 75% 70% at 50% 45%,#000 30%,transparent 100%)}
+.sx-hero__copy{position:relative;z-index:1}
