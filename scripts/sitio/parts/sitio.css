@@ -1191,3 +1191,6 @@ body[data-page="corp"]{font-weight:400}
 .ap-ev__t::after{content:"✓";position:absolute;top:8px;right:8px;width:18px;height:18px;border-radius:50%;background:#dbff57;color:#0b1020;font-size:11px;font-weight:800;display:grid;place-items:center}
 .ap-ev__chat{display:flex;flex-direction:column;gap:8px;margin-top:4px}
 .ap-ev__chat .asg__msg{font-size:13px}.ap-ev__chat small{display:block;margin-bottom:3px;font-size:11px;color:#dbff57;font-weight:600}
+
+/* Subtítulo bajo el título de las franjas */
+.sx-h2__sub{display:block;margin-top:.35em;font-size:max(.42em,17px);line-height:1.15;letter-spacing:0;text-transform:none;font-weight:600;color:#a1a1a6}
