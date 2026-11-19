@@ -42,6 +42,8 @@ function cleanUrlsDev() {
           req.url = '/equipos/';
         } else if (req.url === '/cotizaciones/asisya01') {
           req.url = '/cotizaciones/asisya01/';
+        } else if (req.url === '/cotizaciones/asisya01/tarifas') {
+          req.url = '/cotizaciones/asisya01/tarifas/';
         } else if (req.url === '/cotizaciones/auxilia01') {
           req.url = '/cotizaciones/auxilia01/';
         } else if (req.url === '/cotizaciones/sotrandes01') {
@@ -85,6 +87,7 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         equipos: resolve(__dirname, 'equipos/index.html'),
         cotizacionesAsisya01: resolve(__dirname, 'cotizaciones/asisya01/index.html'),
+        cotizacionesAsisya01Tarifas: resolve(__dirname, 'cotizaciones/asisya01/tarifas/index.html'),
         cotizacionesAuxilia01: resolve(__dirname, 'cotizaciones/auxilia01/index.html'),
         cotizacionesSotrandes01: resolve(__dirname, 'cotizaciones/sotrandes01/index.html'),
         cotizacionesHisercol01: resolve(__dirname, 'cotizaciones/Hisercol01/index.html'),
