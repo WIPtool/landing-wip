@@ -1242,6 +1242,6 @@ body[data-page="corp"]{font-weight:400}
 @media(max-width:1000px){.rols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.rols{grid-template-columns:1fr;gap:12px}.rol{min-height:0;padding:22px 20px}.rol__ic{margin-bottom:0}.rol__k{margin-top:18px}}
 
-/* Franja tarifas: fondo de la imagen más oscuro, como el resto de la sección */
-.sx-panel__vis--dark{background:radial-gradient(ellipse at 50% 110%,rgba(219,255,87,.07),transparent 55%),radial-gradient(ellipse at 85% 0%,rgba(47,123,255,.1),transparent 55%),#05070d;border-color:rgba(255,255,255,.06)}
-.sx-panel__vis--dark .ap-ms{box-shadow:0 0 40px rgba(47,123,255,.12)}
+/* Franjas: fondo de las imágenes más oscuro, como el resto de la sección */
+.sx-panel__vis--dark,.sx-panel .sx-panel__vis{background:radial-gradient(ellipse at 50% 110%,rgba(219,255,87,.07),transparent 55%),radial-gradient(ellipse at 85% 0%,rgba(47,123,255,.1),transparent 55%),#05070d;border-color:rgba(255,255,255,.06)}
+.sx-panel .sx-panel__vis .ap-ms{box-shadow:0 0 40px rgba(47,123,255,.12)}
