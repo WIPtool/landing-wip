@@ -1144,3 +1144,7 @@ body[data-page="corp"]{font-weight:400}
 /* Panel asignación por cercanía: fila elegida */
 .ap-ms--near .ap-ms__r.on{border-color:rgba(219,255,87,.55);background:rgba(219,255,87,.08)}
 .ap-ms--near .ap-ms__r.on em{color:#dbff57}
+
+/* Cifras sin verde */
+.sx-nums .sx-plus{color:var(--navy);-webkit-text-fill-color:var(--navy)}
+.sx-nums .sx-nums__row::before{display:none}
