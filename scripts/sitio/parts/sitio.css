@@ -1425,3 +1425,17 @@ body[data-page="prov"] .nav__in{background:rgba(11,16,32,.9);border-color:rgba(2
 .pv-hero__vid .vid__ph{color:#c1c9d6}
 @media(max-width:900px){.pv-hero__grid{grid-template-columns:1fr;padding-top:110px}}
 .pv-hero__grid .pv-hero__sub{font-size:clamp(18px,1.7vw,23px)}
+
+/* Franja red conectada: mapa con proveedores en vivo alrededor de Wip */
+.rmap__ln{stroke:rgba(219,255,87,.35);stroke-width:1.5;stroke-dasharray:4 6;fill:none;animation:amapFlow 1.4s linear var(--d) infinite}
+.rmap__pv circle{stroke:#0b1020;stroke-width:3}
+.rmap__pv--g circle{fill:#9be15d}.rmap__pv--y circle{fill:#ffd84d}.rmap__pv--p circle{fill:#8f6bff}
+.rmap__pv .rmap__ring{fill:none;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:rmapRing 2.6s ease-out var(--d) infinite}
+.rmap__pv--g .rmap__ring{stroke:#9be15d}.rmap__pv--y .rmap__ring{stroke:#ffd84d}.rmap__pv--p .rmap__ring{stroke:#8f6bff}
+@keyframes rmapRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.6);opacity:0}}
+.rmap__hub{fill:#0b1020;stroke:#dbff57;stroke-width:2.5}
+.rmap__hubring{fill:none;stroke:#dbff57;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:rmapRing 2.2s ease-out infinite}
+.amap__chip .g{fill:#9be15d}.amap__chip .y{fill:#ffd84d}
+.rmap__leg text{font-size:12px;fill:#9aa3b5}.rmap__leg circle.g{fill:#9be15d}.rmap__leg circle.y{fill:#ffd84d}.rmap__leg circle.p{fill:#8f6bff}
+@media(prefers-reduced-motion:reduce){.rmap__ln,.rmap__ring,.rmap__hubring{animation:none}}
+.amap__chip .p{fill:#b9a3ff}

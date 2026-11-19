@@ -2072,6 +2072,20 @@ body[data-page="prov"] .nav__in{background:rgba(11,16,32,.9);border-color:rgba(2
 @media(max-width:900px){.pv-hero__grid{grid-template-columns:1fr;padding-top:110px}}
 .pv-hero__grid .pv-hero__sub{font-size:clamp(18px,1.7vw,23px)}
 
+/* Franja red conectada: mapa con proveedores en vivo alrededor de Wip */
+.rmap__ln{stroke:rgba(219,255,87,.35);stroke-width:1.5;stroke-dasharray:4 6;fill:none;animation:amapFlow 1.4s linear var(--d) infinite}
+.rmap__pv circle{stroke:#0b1020;stroke-width:3}
+.rmap__pv--g circle{fill:#9be15d}.rmap__pv--y circle{fill:#ffd84d}.rmap__pv--p circle{fill:#8f6bff}
+.rmap__pv .rmap__ring{fill:none;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:rmapRing 2.6s ease-out var(--d) infinite}
+.rmap__pv--g .rmap__ring{stroke:#9be15d}.rmap__pv--y .rmap__ring{stroke:#ffd84d}.rmap__pv--p .rmap__ring{stroke:#8f6bff}
+@keyframes rmapRing{0%{transform:scale(1);opacity:.8}100%{transform:scale(2.6);opacity:0}}
+.rmap__hub{fill:#0b1020;stroke:#dbff57;stroke-width:2.5}
+.rmap__hubring{fill:none;stroke:#dbff57;stroke-width:2;transform-box:fill-box;transform-origin:center;animation:rmapRing 2.2s ease-out infinite}
+.amap__chip .g{fill:#9be15d}.amap__chip .y{fill:#ffd84d}
+.rmap__leg text{font-size:12px;fill:#9aa3b5}.rmap__leg circle.g{fill:#9be15d}.rmap__leg circle.y{fill:#ffd84d}.rmap__leg circle.p{fill:#8f6bff}
+@media(prefers-reduced-motion:reduce){.rmap__ln,.rmap__ring,.rmap__hubring{animation:none}}
+.amap__chip .p{fill:#b9a3ff}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2208,6 +2222,33 @@ window.addEventListener('message',function(e){
 <section class="sx-panel sx-panel--flip">
   <div class="wrap sx-panel__in">
     <div class="sx-panel__copy rv">
+      <span class="sx-k">Tu red</span>
+      <h2 class="sx-h2">Toda tu red de proveedores conectada en tiempo real</h2>
+      <p>Cada proveedor y cada técnico de tu red, conectados a Wip. Ves en el mapa quién está disponible, quién va en camino y quién está en servicio, y le avisas a toda tu red al instante.</p>
+      <a href="#siguiente-paso" class="sx-btn">Quiero verlo<i class="sx-btn__ar" aria-hidden="true"></i></a>
+    </div>
+    <div class="sx-panel__vis sx-panel__vis--map rv" style="--rd:.1s" aria-hidden="true">
+          <svg class="amap rmap" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid meet">
+            <g class="amap__st"><path d="M-400 60H1000"/><path d="M-400 140H1000"/><path d="M-400 300H1000"/><path d="M-400 380H1000"/><path d="M-400 460H1000"/><path d="M70 -400V920"/><path d="M170 -400V920"/><path d="M260 -400V920"/><path d="M440 -400V920"/><path d="M530 -400V920"/></g>
+            <g class="amap__av"><path d="M-400 220H1000"/><path d="M350 -400V920"/><path d="M-200 700L800 -150"/></g>
+            <g><path class="rmap__ln" style="--d:0.00s" d="M300 260L110 110"/><path class="rmap__ln" style="--d:0.23s" d="M300 260L220 70"/><path class="rmap__ln" style="--d:0.46s" d="M300 260L470 90"/><path class="rmap__ln" style="--d:0.69s" d="M300 260L540 230"/><path class="rmap__ln" style="--d:0.92s" d="M300 260L500 400"/><path class="rmap__ln" style="--d:1.15s" d="M300 260L360 450"/><path class="rmap__ln" style="--d:1.38s" d="M300 260L150 420"/><path class="rmap__ln" style="--d:1.61s" d="M300 260L60 280"/><path class="rmap__ln" style="--d:1.84s" d="M300 260L230 330"/><path class="rmap__ln" style="--d:2.07s" d="M300 260L410 170"/></g>
+            <g class="rmap__pv rmap__pv--g" style="--d:0.00s"><circle class="rmap__ring" cx="110" cy="110" r="9"/><circle cx="110" cy="110" r="8"/></g><g class="rmap__pv rmap__pv--y" style="--d:0.31s"><circle class="rmap__ring" cx="220" cy="70" r="9"/><circle cx="220" cy="70" r="8"/></g><g class="rmap__pv rmap__pv--g" style="--d:0.62s"><circle class="rmap__ring" cx="470" cy="90" r="9"/><circle cx="470" cy="90" r="8"/></g><g class="rmap__pv rmap__pv--p" style="--d:0.93s"><circle class="rmap__ring" cx="540" cy="230" r="9"/><circle cx="540" cy="230" r="8"/></g><g class="rmap__pv rmap__pv--g" style="--d:1.24s"><circle class="rmap__ring" cx="500" cy="400" r="9"/><circle cx="500" cy="400" r="8"/></g><g class="rmap__pv rmap__pv--y" style="--d:1.55s"><circle class="rmap__ring" cx="360" cy="450" r="9"/><circle cx="360" cy="450" r="8"/></g><g class="rmap__pv rmap__pv--g" style="--d:1.86s"><circle class="rmap__ring" cx="150" cy="420" r="9"/><circle cx="150" cy="420" r="8"/></g><g class="rmap__pv rmap__pv--p" style="--d:2.17s"><circle class="rmap__ring" cx="60" cy="280" r="9"/><circle cx="60" cy="280" r="8"/></g><g class="rmap__pv rmap__pv--g" style="--d:2.48s"><circle class="rmap__ring" cx="230" cy="330" r="9"/><circle cx="230" cy="330" r="8"/></g><g class="rmap__pv rmap__pv--y" style="--d:2.79s"><circle class="rmap__ring" cx="410" cy="170" r="9"/><circle cx="410" cy="170" r="8"/></g>
+            <circle class="rmap__hubring" cx="300" cy="260" r="30"/>
+            <circle class="rmap__hub" cx="300" cy="260" r="26"/>
+            <image href="/img/wip-logo-lima-554349d3.png" x="281" y="249" width="38" height="21"/>
+            <g class="amap__chip amap__chip--on"><rect x="190" y="304" width="220" height="38" rx="12"/><text x="204" y="328"><tspan class="b">46 proveedores</tspan><tspan dx="8">conectados</tspan></text></g>
+            <g class="amap__chip"><rect x="20" y="24" width="190" height="34" rx="11"/><text x="34" y="46"><tspan class="b">Grúas del Pacífico</tspan><tspan dx="6" class="p">En servicio</tspan></text></g>
+            <g class="amap__chip"><rect x="380" y="34" width="200" height="34" rx="11"/><text x="394" y="56"><tspan class="b">Auxilio Vial Andino</tspan><tspan dx="6" class="g">Disponible</tspan></text></g>
+            <g class="amap__chip"><rect x="380" y="458" width="190" height="34" rx="11"/><text x="394" y="480"><tspan class="b">Remolques Sur</tspan><tspan dx="6" class="y">En camino</tspan></text></g>
+            <g class="rmap__leg"><circle cx="34" cy="486" r="5" class="g"/><text x="44" y="490">Disponible</text><circle cx="124" cy="486" r="5" class="y"/><text x="134" y="490">En camino</text><circle cx="210" cy="486" r="5" class="p"/><text x="220" y="490">En servicio</text></g>
+          </svg>
+    </div>
+  </div>
+</section>
+
+<section class="sx-panel">
+  <div class="wrap sx-panel__in">
+    <div class="sx-panel__copy rv">
       <span class="sx-k">24/7</span>
       <h2 class="sx-h2">Central de monitoreo<span class="sx-h2__sub">Trazabilidad en tiempo real de cada servicio</span></h2>
       <p>Tu central de monitoreo de asistencias 24/7, con todos tus proveedores conectados en Wip. Ves las novedades y los tiempos de cada proveedor y cada técnico, y envías notificaciones a toda tu red.</p>
@@ -2229,7 +2270,7 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<section class="sx-panel">
+<section class="sx-panel sx-panel--flip">
   <div class="wrap sx-panel__in">
     <div class="sx-panel__copy rv">
       <span class="sx-k">Trazabilidad</span>
@@ -2254,7 +2295,7 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<section class="sx-panel sx-panel--flip">
+<section class="sx-panel">
   <div class="wrap sx-panel__in">
     <div class="sx-panel__copy rv">
       <span class="sx-k">Costos</span>
@@ -2274,7 +2315,7 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<section class="sx-panel">
+<section class="sx-panel sx-panel--flip">
   <div class="wrap sx-panel__in">
     <div class="sx-panel__copy rv">
       <span class="sx-k">Novedad</span>
