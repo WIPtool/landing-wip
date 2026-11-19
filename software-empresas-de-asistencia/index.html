@@ -1892,6 +1892,29 @@ body[data-page="corp"]{font-weight:400}
 .sx-panel__vis--dark,.sx-panel .sx-panel__vis{background:radial-gradient(ellipse at 50% 110%,rgba(219,255,87,.07),transparent 55%),radial-gradient(ellipse at 85% 0%,rgba(47,123,255,.1),transparent 55%),#05070d;border-color:rgba(255,255,255,.06)}
 .sx-panel .sx-panel__vis .ap-ms{box-shadow:0 0 40px rgba(47,123,255,.12)}
 
+/* Creado para operaciones a gran escala: tarjetas con ícono y franja de experiencia */
+.gs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(32px,4vw,52px)}
+.gs__c{position:relative;display:flex;flex-direction:column;padding:28px 26px 26px;border-radius:24px;background:linear-gradient(180deg,#26262a,#18181b);border:1px solid rgba(255,255,255,.08);overflow:hidden;transition:border-color .3s ease,transform .3s ease}
+.gs__c::before{content:"";position:absolute;left:26px;right:26px;top:0;height:1px;background:linear-gradient(90deg,transparent,rgba(219,255,87,.7),transparent)}
+.gs__c:hover{border-color:rgba(219,255,87,.35);transform:translateY(-3px)}
+.gs__ic{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:rgba(219,255,87,.12);border:1px solid rgba(219,255,87,.3)}
+.gs__ic svg{width:24px;height:24px;fill:none;stroke:var(--lime);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.gs__c h3{margin-top:22px;font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:-.01em;color:#fff}
+.gs__c p{margin-top:8px;font-size:16px;line-height:1.5;color:#a1a1a6}
+.gs__chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:22px}
+.gs__chips span{padding:6px 11px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:12.5px;font-weight:600;color:#d7dbe6}
+.gs__tl{position:relative;display:flex;justify-content:space-between;margin-top:auto;padding-top:26px}
+.gs__tl::before{content:"";position:absolute;left:6px;right:6px;top:31px;height:2px;background:linear-gradient(90deg,var(--lime),rgba(219,255,87,.25))}
+.gs__tl span{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:4px;font-size:12.5px;font-weight:600;color:#d7dbe6}
+.gs__tl span:nth-child(2){align-items:center}.gs__tl span:last-child{align-items:flex-end}
+.gs__tl i{width:12px;height:12px;border-radius:50%;background:var(--lime);box-shadow:0 0 0 4px rgba(219,255,87,.15);margin-bottom:6px}
+.gs__tl em{font-style:normal;font-weight:400;color:#86868b}
+.gs__band{position:relative;display:flex;align-items:center;gap:12px 28px;flex-wrap:wrap;margin-top:16px;padding:clamp(28px,3.5vw,44px) clamp(26px,3.5vw,48px);border-radius:24px;overflow:hidden;background:radial-gradient(ellipse at 100% 50%,rgba(219,255,87,.16),transparent 55%),#000;border:1px solid rgba(255,255,255,.08)}
+.gs__band::after{content:"";position:absolute;right:0;top:0;bottom:0;width:45%;background-image:radial-gradient(circle,rgba(219,255,87,.35) 1.2px,transparent 1.7px);background-size:18px 18px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 70%);mask-image:linear-gradient(90deg,transparent,#000 70%);opacity:.55;pointer-events:none}
+.gs__band b{position:relative;z-index:1;font-family:var(--display);font-weight:800;font-size:clamp(52px,6.5vw,88px);line-height:.95;letter-spacing:-.04em;color:var(--lime)}
+.gs__band span{position:relative;z-index:1;max-width:440px;font-size:clamp(18px,1.7vw,22px);font-weight:600;line-height:1.3;color:#f5f5f7}
+@media(max-width:900px){.gs{grid-template-columns:1fr}.gs__band::after{width:70%}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2195,12 +2218,30 @@ window.addEventListener('message',function(e){
     <div class="ap-cat rv">
       <span class="ap-cat__k">Control</span>
       <h2 class="ap-h2">Creado para operaciones<br><span class="ap-mute">a gran escala.</span></h2>
-      <div class="ap-cat__grid">
-        <p><b>Seguridad corporativa.</b> Acceso por roles, trazabilidad de cada acción y registro de conexiones.</p>
-        <p><b>Evidencia desde campo.</b> Fotos, firma y horas de cada etapa quedan guardadas en el servicio, listas para auditar.</p>
-        <p><b>Se integra con tus herramientas.</b> Plataformas de aseguradoras, API, SFTP, ERP y WhatsApp, sin reemplazar lo que funciona.</p>
+      <div class="gs">
+        <div class="gs__c rv">
+          <span class="gs__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h3>Seguridad corporativa</h3>
+          <p>Acceso por roles, trazabilidad de cada acción y registro de conexiones.</p>
+          <div class="gs__chips" aria-hidden="true"><span>Roles</span><span>Trazabilidad</span><span>Conexiones</span></div>
+        </div>
+        <div class="gs__c rv" style="--rd:.08s">
+          <span class="gs__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
+          <h3>Evidencia desde campo</h3>
+          <p>Fotos, firma y horas de cada etapa quedan guardadas en el servicio, listas para auditar.</p>
+          <div class="gs__tl" aria-hidden="true"><span><i></i>Llegada<em>10:42</em></span><span><i></i>Servicio<em>10:49</em></span><span><i></i>Cierre<em>11:15</em></span></div>
+        </div>
+        <div class="gs__c rv" style="--rd:.16s">
+          <span class="gs__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg></span>
+          <h3>Se integra con tus herramientas</h3>
+          <p>Plataformas de aseguradoras, API, SFTP, ERP y WhatsApp, sin reemplazar lo que funciona.</p>
+          <div class="gs__chips" aria-hidden="true"><span>Aseguradoras</span><span>API</span><span>SFTP</span><span>ERP</span><span>WhatsApp</span></div>
+        </div>
       </div>
-      <div class="ap-stat"><b>+8 años</b><span>de experiencia creando tecnología para logísticas de asistencia.</span></div>
+      <div class="gs__band rv">
+        <b>+8 años</b>
+        <span>de experiencia creando tecnología para logísticas de asistencia.</span>
+      </div>
     </div>
   </div>
 </section>
