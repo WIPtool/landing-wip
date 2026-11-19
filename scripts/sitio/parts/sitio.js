@@ -224,8 +224,8 @@
   }
 
   /* Plataforma: tablero del referente (escenario 1280x720 escalado al ancho); arranca a la vista y se repite al volver */
-  var brd=document.getElementById("brd"), brdH=document.getElementById("brd-h");
-  if(brd){
+  [].forEach.call(document.querySelectorAll(".brd"),function(brd){
+    var brdH=brd.id==="brd"?document.getElementById("brd-h"):null;
     var brdStage=brd.querySelector(".brd__stage");
     var brdFit=function(){if(brdStage)brd.style.setProperty("--k",(brdStage.clientWidth/1280).toFixed(4));};
     brdFit(); window.addEventListener("resize",brdFit);
@@ -239,4 +239,4 @@
         else if(!e.isIntersecting){brdArmed=true;}
       });},{threshold:[0,.2,.4,.6]}).observe(brd);
     } else brd.classList.add("play");
-  }
+  });

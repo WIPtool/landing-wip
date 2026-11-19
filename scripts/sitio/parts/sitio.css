@@ -1148,3 +1148,8 @@ body[data-page="corp"]{font-weight:400}
 /* Cifras sin verde */
 .sx-nums .sx-plus{color:var(--navy);-webkit-text-fill-color:var(--navy)}
 .sx-nums .sx-nums__row::before{display:none}
+
+/* Verticales en formato tablero: 4 filas, ciclo más largo */
+.brd--vert.play .brd__board{animation:brdScroll4 21s cubic-bezier(.65,0,.35,1) .3s infinite}
+@keyframes brdScroll4{0%,20%{transform:none}27%,43%{transform:translateY(-432px)}50%,66%{transform:translateY(-864px)}73%,89%{transform:translateY(-1296px)}97%,100%{transform:none}}
+@media(max-width:700px){.brd--vert .brd__c[style*="--by:1510px"]:not(.brd__c--n):last-of-type{grid-column:auto}.brd--vert.play .brd__board{animation:none}}

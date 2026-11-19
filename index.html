@@ -1795,6 +1795,11 @@ body[data-page="corp"]{font-weight:400}
 .sx-nums .sx-plus{color:var(--navy);-webkit-text-fill-color:var(--navy)}
 .sx-nums .sx-nums__row::before{display:none}
 
+/* Verticales en formato tablero: 4 filas, ciclo más largo */
+.brd--vert.play .brd__board{animation:brdScroll4 21s cubic-bezier(.65,0,.35,1) .3s infinite}
+@keyframes brdScroll4{0%,20%{transform:none}27%,43%{transform:translateY(-432px)}50%,66%{transform:translateY(-864px)}73%,89%{transform:translateY(-1296px)}97%,100%{transform:none}}
+@media(max-width:700px){.brd--vert .brd__c[style*="--by:1510px"]:not(.brd__c--n):last-of-type{grid-column:auto}.brd--vert.play .brd__board{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2381,8 +2386,8 @@ window.addEventListener('message',function(e){
   }
 
   /* Plataforma: tablero del referente (escenario 1280x720 escalado al ancho); arranca a la vista y se repite al volver */
-  var brd=document.getElementById("brd"), brdH=document.getElementById("brd-h");
-  if(brd){
+  [].forEach.call(document.querySelectorAll(".brd"),function(brd){
+    var brdH=brd.id==="brd"?document.getElementById("brd-h"):null;
     var brdStage=brd.querySelector(".brd__stage");
     var brdFit=function(){if(brdStage)brd.style.setProperty("--k",(brdStage.clientWidth/1280).toFixed(4));};
     brdFit(); window.addEventListener("resize",brdFit);
@@ -2396,7 +2401,7 @@ window.addEventListener('message',function(e){
         else if(!e.isIntersecting){brdArmed=true;}
       });},{threshold:[0,.2,.4,.6]}).observe(brd);
     } else brd.classList.add("play");
-  }
+  });
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
   if(calc){
