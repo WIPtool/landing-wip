@@ -1800,6 +1800,12 @@ body[data-page="corp"]{font-weight:400}
 @keyframes brdScroll4{0%,20%{transform:none}27%,43%{transform:translateY(-432px)}50%,66%{transform:translateY(-864px)}73%,89%{transform:translateY(-1296px)}97%,100%{transform:none}}
 @media(max-width:700px){.brd--vert .brd__c[style*="--by:1510px"]:not(.brd__c--n):last-of-type{grid-column:auto}.brd--vert.play .brd__board{animation:none}}
 
+/* Panel red de proveedores conectada */
+.ap-ms__live{display:inline-flex;align-items:center;gap:6px;color:#dbff57!important}
+.ap-ms__live::before{content:"";width:7px;height:7px;border-radius:50%;background:#dbff57;box-shadow:0 0 0 0 rgba(219,255,87,.6);animation:msLive 1.8s ease-out infinite}
+@keyframes msLive{70%{box-shadow:0 0 0 7px rgba(219,255,87,0)}100%{box-shadow:0 0 0 0 rgba(219,255,87,0)}}
+@media(prefers-reduced-motion:reduce){.ap-ms__live::before{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
