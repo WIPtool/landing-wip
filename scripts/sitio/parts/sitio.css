@@ -1133,3 +1133,10 @@ body[data-page="corp"]{font-weight:400}
 
 /* Hero corporativo: botones un poco redondeados */
 .sx-hero .sx-hero__cta a,.sx-hero .sx-hero__cta button{border-radius:10px!important}
+
+/* Cifras con la misma letra del hero: números como el título, etiquetas como el párrafo */
+.sx-nums__row .sx-num b,.sx-nums__row .sx-num b span{font-weight:800;letter-spacing:-.045em}
+.sx-nums__row .sx-num b{background:none;color:var(--navy);-webkit-text-fill-color:var(--navy)}
+.sx-nums__row .sx-num b small{font-weight:800;letter-spacing:-.03em;-webkit-text-fill-color:var(--navy)}
+.sx-plus{font-weight:800;margin-right:.02em}
+.sx-nums__row .sx-num .sx-num__l{text-transform:none;letter-spacing:0;font-size:17px;font-weight:400;line-height:1.4;color:#4a5468}
