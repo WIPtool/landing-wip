@@ -206,8 +206,8 @@ for (const p of pages) {
   let main = part(p.body);
   let c = corpCheck(contacto, p.key === 'prov');
   if (p.key === 'corp') {
-    c = rep(c, '<h2 class="h2">Mira WIP en vivo <span class="lime">con un caso como el tuyo</span></h2>', '<h2 class="h2">Mira Wip IA <span class="lime">operando tu red</span></h2>');
-    c = rep(c, 'Cuéntanos de qué lado de las asistencias estás y cómo operas hoy. Te mostramos WIP operando tu día a día.', 'Cuéntanos cómo opera hoy tu red de proveedores y te mostramos Wip en vivo con un caso como el tuyo.');
+    c = rep(c, '<h2 class="h2">Mira WIP en vivo <span class="lime">con un caso como el tuyo</span></h2>', '<h2 class="h2">Conversemos y conoce <span class="lime">Wip por dentro</span></h2>');
+    c = rep(c, 'Cuéntanos de qué lado de las asistencias estás y cómo operas hoy. Te mostramos WIP operando tu día a día.', 'Una charla corta con nuestro equipo: nos cuentas cómo opera tu red y te mostramos Wip con un caso como el tuyo.');
     // Formulario solo para corporativos: sin la opción de proveedor.
     c = rep(c, between(c, '        <fieldset class="perfil">', '</fieldset>\n'), '        <input type="hidden" name="perfil" value="Aseguradora o empresa de asistencia">\n');
     c = rep(c, '<h3>¿Prefieres que te contactemos?</h3>', '<h3>¿Prefieres que te contactemos?</h3>\n      <p class="form__for">Para aseguradoras y empresas de asistencia</p>');
