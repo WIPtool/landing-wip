@@ -244,6 +244,23 @@
       });},{threshold:.3}).observe(mon);
     }
   }
+  /* Home: la captura de Wip va sobre la pantalla del portátil con una transformación de perspectiva */
+  var cxShot=document.getElementById("cx-shot");
+  if(cxShot){
+    var cxPhoto=cxShot.querySelector(".cx-shot__photo"), cxScr=cxShot.querySelector(".cx-shot__screen");
+    var CX=[[723,152],[1455,361],[1449,893],[726,643]], CXW=1440, CXH=900, CXI=2000;
+    var cxFit=function(){
+      var k=cxPhoto.clientWidth/CXI; if(!k)return;
+      var p=CX.map(function(q){return [q[0]*k,q[1]*k];});
+      var x0=p[0][0],y0=p[0][1],x1=p[1][0],y1=p[1][1],x2=p[2][0],y2=p[2][1],x3=p[3][0],y3=p[3][1];
+      var dx1=x1-x2,dx2=x3-x2,dx3=x0-x1+x2-x3,dy1=y1-y2,dy2=y3-y2,dy3=y0-y1+y2-y3;
+      var den=dx1*dy2-dx2*dy1, g=(dx3*dy2-dx2*dy3)/den, h=(dx1*dy3-dx3*dy1)/den;
+      var a=x1-x0+g*x1,b=x3-x0+h*x3,c=x0,d=y1-y0+g*y1,e=y3-y0+h*y3,f=y0;
+      cxScr.style.transform="matrix3d("+[a/CXW,d/CXW,0,g/CXW,b/CXH,e/CXH,0,h/CXH,0,0,1,0,c,f,0,1].join(",")+")";
+      cxScr.classList.add("on");
+    };
+    if(cxPhoto.complete)cxFit(); cxPhoto.addEventListener("load",cxFit); window.addEventListener("resize",cxFit);
+  }
   /* Mapa de asignación: cada etiqueta se ajusta al ancho de su texto */
   [].forEach.call(document.querySelectorAll(".amap__chip"),function(g){
     var t=g.querySelector("text"), r=g.querySelector("rect");
