@@ -1,29 +1,111 @@
-<!-- ===================== WIP CORPORATIVO, estructura de crafted.is con colores de Wip ===================== -->
-<section class="cf-hero" id="inicio">
-  <div class="wrap cf-hero__in">
-    <span class="cx-pill rv in"><i aria-hidden="true"></i>Wip Corporativo · aseguradoras y empresas de asistencia</span>
-    <h1 class="cf-h1 rv in" style="--rd:.05s">Opera tus asistencias y tu red de proveedores, <span>en tiempo real</span></h1>
-    <p class="cf-sub rv in" style="--rd:.1s">Trabajamos con empresas de alto volumen de servicios, con múltiples redes de proveedores y técnicos en campo, en todas las verticales de asistencia del mercado. Wip es tu call center inteligente 24/7.</p>
-    <div class="cf-ctas rv in" style="--rd:.15s">{{DEMO_CX}}<a class="cx-btn" href="#plataforma">Conoce la plataforma</a></div>
+<!-- ===================== WIP CORPORATIVO, formato de incident.io en blanco con colores de Wip ===================== -->
+<section class="ix-hero" id="inicio">
+  <div class="wrap ix-hero__in">
+    <h1 class="ix-h1 rv in">Opera tus asistencias y tu red de proveedores, <span>en tiempo real</span></h1>
+    <p class="ix-sub rv in" style="--rd:.06s">La plataforma con IA para aseguradoras y empresas de asistencia con alto volumen de servicios, múltiples redes de proveedores y técnicos en campo. Wip es tu call center inteligente 24/7.</p>
+    <div class="ix-ctas rv in" style="--rd:.12s">{{DEMO_IX}}<a class="ix-btn ix-btn--soft" href="#plataforma">Conoce la plataforma</a></div>
+  </div>
+  <div class="wrap">
+    <div class="ix-shot rv in" style="--rd:.18s">
+      <div class="ix-shot__bar"><i></i><i></i><i></i><span>Wip · Monitoreo central</span><em class="ix-live">En vivo</em></div>
+      <img src="/img/home/wip-pantalla.webp" alt="Monitoreo central de Wip con los servicios del día (datos difuminados)" width="1440" height="900" fetchpriority="high">
+    </div>
   </div>
 </section>
 
-<section class="cf-work" id="plataforma">
-  <div class="wrap cf-stack">
-    <article class="cf-card cf-card--photo" style="--i:0">
-      <header class="cf-card__h"><div><span class="cf-k">Monitoreo</span><h3>Todos tus servicios en una pantalla</h3><p>Cada servicio de asistencia, su estado, su responsable y su semáforo de ANS, en tiempo real.</p></div><div class="cf-chips" aria-hidden="true"><span>Tiempo real</span><span>ANS</span></div></header>
-      <div class="cf-card__b">
-        <div class="cx-shot" id="cx-shot">
-          <img class="cx-shot__photo" src="/img/home/portatil.webp" alt="Portátil con el monitoreo central de Wip" width="2000" height="1421" loading="lazy">
-          <div class="cx-shot__screen" aria-hidden="true"><img src="/img/home/wip-pantalla.webp" alt="" width="1440" height="900" loading="lazy"></div>
-          <div class="cx-tags" aria-hidden="true"><span class="cx-tag--live">En vivo</span><span>Monitoreo central</span></div>
-        </div>
+<section class="ix-story" id="video">
+  <div class="wrap ix-story__in">
+    <div class="ix-story__copy rv">
+      <span class="ix-k">Wip Corporativo</span>
+      <h2 class="ix-h2">+4 millones de servicios gestionados en Wip</h2>
+      <p>Aseguradoras y empresas de asistencia operan su red en Wip, en todas las verticales: vial, hogar, médica, jurídica, veterinaria y más.</p>
+      <div class="ix-nums"><div><b>+354</b><span>tipos de asistencia</span></div><div><b>+13</b><span>verticales en LATAM</span></div><div><b>24/7</b><span>soporte a tu operación</span></div></div>
+    </div>
+    <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
+         <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
+    <div class="rv" style="--rd:.08s"><div class="vid ix-vid" id="video-hero-corporativo">
+      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
+    </div></div>
+  </div>
+</section>
+
+<section class="ix-ps" id="por-que">
+  <div class="wrap">
+    <div class="ix-toggle rv" role="tablist" aria-label="Problema y solución">
+      <button type="button" class="on" role="tab" aria-selected="true" data-ps="0">Problema</button><button type="button" role="tab" aria-selected="false" data-ps="1">Solución</button>
+    </div>
+    <div class="ix-ps__panes rv">
+      <div class="ix-ps__pane on" data-ps="0">
+        <h2 class="ix-h2">Una red grande es difícil de controlar</h2>
+        <p>Cuando la operación crece, el control se reparte entre llamadas, chats sueltos y hojas de cálculo. El ANS se revisa tarde, las novedades se pierden y cada cobro se revisa a mano.</p>
       </div>
-    </article>
-    <article class="cf-card" style="--i:1">
-      <header class="cf-card__h"><div><span class="cf-k">Asignación</span><h3>Asignación inteligente de servicios a tu red</h3><p>Wip ubica a tus proveedores disponibles más cerca del cliente y asigna el servicio al mejor, sin llamar uno por uno.</p></div><div class="cf-chips" aria-hidden="true"><span>Por cercanía</span><span>Por tarifa</span><span>Por prioridad</span></div></header>
-      <div class="cf-card__b">
-        <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
+      <div class="ix-ps__pane" data-ps="1">
+        <h2 class="ix-h2">Tu equipo y Wip IA, trabajando juntos</h2>
+        <p>Desde que entra el servicio hasta el cierre y el cobro, Wip IA hace el trabajo repetitivo y tu equipo decide lo que necesita criterio. Toda tu red, en una sola plataforma.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="ix-arch-sec" id="plataforma">
+  <div class="wrap">
+    <h2 class="ix-h1 ix-h1--sec rv">Conoce la plataforma que opera <span>tus asistencias</span></h2>
+    <div class="ix-arch rv">
+      <div class="ix-arch__col"><span class="ix-arch__t">Canales</span><span class="ix-arch__i">Plataforma web</span><span class="ix-arch__i">App del técnico</span><span class="ix-arch__i">WhatsApp</span><span class="ix-arch__i">API</span><span class="ix-arch__i">Wipi</span></div>
+      <span class="ix-arch__arrow" aria-hidden="true">→</span>
+      <div class="ix-arch__col ix-arch__col--main"><span class="ix-arch__t">Módulos</span><span class="ix-arch__i">Monitoreo central</span><span class="ix-arch__i">Asignación inteligente</span><span class="ix-arch__i">Central de monitoreo 24/7</span><span class="ix-arch__i">Evidencias y chat</span><span class="ix-arch__i">Tarifas automáticas</span><span class="ix-arch__i">Reportería</span></div>
+      <span class="ix-arch__arrow" aria-hidden="true">←</span>
+      <div class="ix-arch__col"><span class="ix-arch__t">Tu operación</span><span class="ix-arch__i">Convenios y tarifas</span><span class="ix-arch__i">Red de proveedores</span><span class="ix-arch__i">Técnicos en campo</span><span class="ix-arch__i">+354 tipos de asistencia</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="ix-ai" id="wipi">
+  <div class="wrap ix-ai__in">
+    <div class="ix-ai__copy rv">
+      <span class="ix-k">Wip IA</span>
+      <h2 class="ix-h2">Con Wipi, la IA de Wip</h2>
+      <p>Wipi trabaja dentro de la plataforma con las reglas de tu operación. Le pides lo que necesitas con tus palabras.</p>
+      <ul class="ix-list">
+        <li>Crea servicios y los asigna al mejor proveedor</li>
+        <li>Calcula tarifas con las reglas de cada convenio</li>
+        <li>Notifica novedades a tu equipo y a tu red</li>
+        <li>Te entrega informes, con solo pedírselo</li>
+      </ul>
+    </div>
+    <div class="ix-ai__vis rv" style="--rd:.08s">
+      <div class="sx-panel__vis ap-tile__vis--wipi" aria-hidden="true">
+          <div class="wv" id="wv" data-v="0">
+            <div class="wv__float">
+              <svg class="wv__a" data-v="0" viewBox="0 -40 150 190"><path d="M24 78a51 51 0 0 1 102 0" fill="none" stroke="#ff8a4c" stroke-width="9" stroke-linecap="round"/><rect x="10" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><rect x="120" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><path d="M20 96c0 22 14 34 36 36" fill="none" stroke="#ff8a4c" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="132" r="6" fill="#ff8a4c"/></svg>
+              <svg class="wv__a" data-v="1" viewBox="0 -40 150 190"><path d="M75 26c-13-16-24-27-24-41a24 24 0 0 1 48 0c0 14-11 25-24 41z" fill="#dbff57" stroke="#0b1020" stroke-width="3"/><circle cx="75" cy="-15" r="8" fill="#0b1020"/></svg>
+              <svg class="wv__a" data-v="2" viewBox="0 -40 150 190"><path d="M75 21V-2" stroke="#0b1020" stroke-width="4" stroke-linecap="round"/><circle cx="75" cy="-6" r="6.5" fill="#4f8cff"/><path d="M60-18a21 21 0 0 0 0 24M90-18a21 21 0 0 1 0 24M50-26a33 33 0 0 0 0 40M100-26a33 33 0 0 1 0 40" fill="none" stroke="#4f8cff" stroke-width="3.5" stroke-linecap="round"/></svg>
+              <svg class="wv__a" data-v="3" viewBox="0 -40 150 190"><circle cx="62" cy="75" r="16" fill="rgba(79,140,255,.18)" stroke="#4f8cff" stroke-width="4.5"/><circle cx="88" cy="75" r="16" fill="rgba(79,140,255,.18)" stroke="#4f8cff" stroke-width="4.5"/><path d="M73 72h4" stroke="#4f8cff" stroke-width="4"/><path d="M46 71l-14-4M104 71l14-4" stroke="#4f8cff" stroke-width="4" stroke-linecap="round"/></svg>
+              <svg class="wv__a" data-v="4" viewBox="0 -40 150 190"><path d="M75 126l-18-10v20zM75 126l18-10v20z" fill="#ff6b6b"/><circle cx="75" cy="126" r="5" fill="#e04848"/><rect x="108" y="-6" width="34" height="30" rx="7" fill="#fff" stroke="#0b1020" stroke-width="3"/><rect x="116" y="10" width="5" height="8" rx="1" fill="#4f8cff"/><rect x="123" y="5" width="5" height="13" rx="1" fill="#4f8cff"/><rect x="130" y="1" width="5" height="17" rx="1" fill="#4f8cff"/></svg>
+              <div class="orb ap-tile__orb"><div class="orb__eyes"><i></i><i></i></div></div>
+            </div>
+            <span class="wv__glow"></span><span class="wv__shadow"></span>
+          </div>
+          <div class="ap-tile__chips" id="wv-chips"><span data-v="0">Atender 24/7</span><span data-v="1">Asignar proveedor</span><span data-v="2">Seguimiento en vivo</span><span data-v="3">Configurar convenio</span><span data-v="4">Sacar informe</span></div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<section class="ix-mods-sec" id="novedades">
+  <div class="wrap">
+    <h2 class="ix-h1 ix-h1--sec rv">Todo tu ciclo de asistencias, <span>en un solo lugar</span></h2>
+    <p class="ix-lead rv">Asignación, red, monitoreo, evidencias y tarifas, hechos para trabajar juntos desde que entra el servicio hasta el cobro.</p>
+  <div class="ix-mod" id="asignacion">
+    <div class="ix-mod__copy rv">
+      <span class="ix-k">Asignación</span>
+      <h3 class="ix-h3">Asignación inteligente de servicios a tu red</h3>
+      <p>Wip ubica a tus proveedores disponibles más cerca del cliente y asigna el servicio al mejor, sin llamar uno por uno.</p>
+      <div class="ix-chips"><span>Por cercanía</span><span>Por tarifa</span><span>Por prioridad</span></div>
+      <a href="#siguiente-paso" class="ix-link">Agenda una demo <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="ix-mod__vis rv" style="--rd:.08s">
+      <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
           <svg class="amap" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid meet">
             <g class="amap__st"><path d="M-400 60H1000"/><path d="M-400 140H1000"/><path d="M-400 300H1000"/><path d="M-400 380H1000"/><path d="M-400 460H1000"/><path d="M70 -400V920"/><path d="M170 -400V920"/><path d="M260 -400V920"/><path d="M440 -400V920"/><path d="M530 -400V920"/></g>
             <g class="amap__av"><path d="M-400 220H1000"/><path d="M350 -400V920"/><path d="M-200 700L800 -150"/></g>
@@ -42,12 +124,18 @@
             <g class="amap__chip"><rect x="88" y="474" width="132" height="34" rx="11"/><text x="101" y="496">Grúas Express<tspan dx="6" class="m">6,5 km</tspan></text></g>
           </svg>
     </div>
-      </div>
-    </article>
-    <article class="cf-card" style="--i:2">
-      <header class="cf-card__h"><div><span class="cf-k">Tu red</span><h3>Toda tu red de proveedores conectada</h3><p>Ves en el mapa quién está disponible, quién va en camino y quién está en servicio, y le avisas a toda tu red al instante.</p></div><div class="cf-chips" aria-hidden="true"><span>Disponible</span><span>En camino</span><span>En servicio</span></div></header>
-      <div class="cf-card__b">
-        <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
+    </div>
+  </div>
+  <div class="ix-mod ix-mod--flip" id="red-conectada">
+    <div class="ix-mod__copy rv">
+      <span class="ix-k">Tu red</span>
+      <h3 class="ix-h3">Toda tu red de proveedores conectada en tiempo real</h3>
+      <p>Ves en el mapa quién está disponible, quién va en camino y quién está en servicio, y le avisas a toda tu red al instante.</p>
+      <div class="ix-chips"><span>Disponible</span><span>En camino</span><span>En servicio</span></div>
+      <a href="#siguiente-paso" class="ix-link">Agenda una demo <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="ix-mod__vis rv" style="--rd:.08s">
+      <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
           <svg class="amap rmap" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid meet">
             <g class="amap__st"><path d="M-400 60H1000"/><path d="M-400 140H1000"/><path d="M-400 300H1000"/><path d="M-400 380H1000"/><path d="M-400 460H1000"/><path d="M70 -400V920"/><path d="M170 -400V920"/><path d="M260 -400V920"/><path d="M440 -400V920"/><path d="M530 -400V920"/></g>
             <g class="amap__av"><path d="M-400 220H1000"/><path d="M350 -400V920"/><path d="M-200 700L800 -150"/></g>
@@ -63,12 +151,18 @@
             <g class="rmap__leg"><circle cx="34" cy="486" r="5" class="g"/><text x="44" y="490">Disponible</text><circle cx="124" cy="486" r="5" class="y"/><text x="134" y="490">En camino</text><circle cx="210" cy="486" r="5" class="p"/><text x="220" y="490">En servicio</text></g>
           </svg>
     </div>
-      </div>
-    </article>
-    <article class="cf-card" style="--i:3">
-      <header class="cf-card__h"><div><span class="cf-k">24/7</span><h3>Central de monitoreo</h3><p>Trazabilidad en tiempo real de cada servicio: novedades y tiempos de cada proveedor y cada técnico.</p></div><div class="cf-chips" aria-hidden="true"><span>Novedades</span><span>Tiempos</span><span>Notificaciones</span></div></header>
-      <div class="cf-card__b">
-        <div class="sx-panel__vis " aria-hidden="true">
+    </div>
+  </div>
+  <div class="ix-mod" id="monitoreo">
+    <div class="ix-mod__copy rv">
+      <span class="ix-k">Central de monitoreo 24/7</span>
+      <h3 class="ix-h3">Trazabilidad en tiempo real de cada servicio</h3>
+      <p>Las novedades y los tiempos de cada proveedor y cada técnico, con el semáforo de ANS en vivo.</p>
+      <div class="ix-chips"><span>Novedades</span><span>Tiempos</span><span>ANS</span></div>
+      <a href="#siguiente-paso" class="ix-link">Agenda una demo <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="ix-mod__vis rv" style="--rd:.08s">
+      <div class="sx-panel__vis " aria-hidden="true">
           <div class="ap-ms mon">
             <div class="ap-ms__h"><b>Central de monitoreo 24/7</b><span class="ap-ms__live">En vivo</span></div>
             <div class="mon__t">
@@ -81,12 +175,18 @@
             </div>
           </div>
     </div>
-      </div>
-    </article>
-    <article class="cf-card" style="--i:4">
-      <header class="cf-card__h"><div><span class="cf-k">Trazabilidad</span><h3>Evidencias y chat en cada servicio</h3><p>El técnico sube las evidencias desde campo y tú las tienes en segundos. Con el chat del servicio das autorizaciones y resuelves novedades.</p></div><div class="cf-chips" aria-hidden="true"><span>Fotos</span><span>Firma</span><span>Chat</span></div></header>
-      <div class="cf-card__b">
-        <div class="sx-panel__vis " aria-hidden="true">
+    </div>
+  </div>
+  <div class="ix-mod ix-mod--flip" id="evidencias">
+    <div class="ix-mod__copy rv">
+      <span class="ix-k">Trazabilidad</span>
+      <h3 class="ix-h3">Evidencias y chat en cada servicio</h3>
+      <p>El técnico sube las evidencias desde campo y tú las tienes en segundos. Con el chat del servicio das autorizaciones y resuelves novedades.</p>
+      <div class="ix-chips"><span>Fotos</span><span>Firma</span><span>Chat</span></div>
+      <a href="#siguiente-paso" class="ix-link">Agenda una demo <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="ix-mod__vis rv" style="--rd:.08s">
+      <div class="sx-panel__vis " aria-hidden="true">
           <div class="ap-ms ap-ev">
             <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span class="ap-ms__live">Evidencias en vivo</span></div>
             <div class="ap-ev__ph">
@@ -100,12 +200,18 @@
             </div>
           </div>
     </div>
-      </div>
-    </article>
-    <article class="cf-card" style="--i:5">
-      <header class="cf-card__h"><div><span class="cf-k">Costos</span><h3>Tarifas automáticas por servicio y convenio</h3><p>Valor base, kilómetros adicionales, horario nocturno, festivos, fallidos y cancelados, con las reglas de cada convenio.</p></div><div class="cf-chips" aria-hidden="true"><span>Convenios</span><span>Liquidación</span></div></header>
-      <div class="cf-card__b">
-        <div class="sx-panel__vis sx-panel__vis--dark" aria-hidden="true">
+    </div>
+  </div>
+  <div class="ix-mod" id="tarifas">
+    <div class="ix-mod__copy rv">
+      <span class="ix-k">Costos</span>
+      <h3 class="ix-h3">Tarifas automáticas por servicio y convenio</h3>
+      <p>Valor base, kilómetros adicionales, horario nocturno, festivos, fallidos y cancelados, con las reglas de cada convenio.</p>
+      <div class="ix-chips"><span>Convenios</span><span>Liquidación</span><span>Conciliación</span></div>
+      <a href="#siguiente-paso" class="ix-link">Agenda una demo <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="ix-mod__vis rv" style="--rd:.08s">
+      <div class="sx-panel__vis sx-panel__vis--dark" aria-hidden="true">
           <div class="ap-ms ap-ms--near ap-tar">
             <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span>Convenio vial</span></div>
             <div class="ap-ms__r"><i class="dot g"></i><span>Valor base</span><em>$180.000</em></div>
@@ -114,105 +220,15 @@
             <div class="ap-ms__r on"><i class="dot g"></i><span><b>Total liquidado</b></span><em><b>$264.000</b> · Calculado</em></div>
           </div>
     </div>
-      </div>
-    </article>
-    <article class="cf-card" style="--i:6">
-      <header class="cf-card__h"><div><span class="cf-k">Wipi</span><h3>Wipi, la IA de Wip</h3><p>Crea servicios, asigna cada servicio al mejor proveedor, calcula tarifas, notifica novedades y te entrega informes, con solo pedírselo.</p></div><div class="cf-chips" aria-hidden="true"><span>IA</span><span>24/7</span></div></header>
-      <div class="cf-card__b">
-        <div class="sx-panel__vis ap-tile__vis--wipi" aria-hidden="true">
-          <div class="wv" id="wv" data-v="0">
-            <div class="wv__float">
-              <svg class="wv__a" data-v="0" viewBox="0 -40 150 190"><path d="M24 78a51 51 0 0 1 102 0" fill="none" stroke="#ff8a4c" stroke-width="9" stroke-linecap="round"/><rect x="10" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><rect x="120" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><path d="M20 96c0 22 14 34 36 36" fill="none" stroke="#ff8a4c" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="132" r="6" fill="#ff8a4c"/></svg>
-              <svg class="wv__a" data-v="1" viewBox="0 -40 150 190"><path d="M75 26c-13-16-24-27-24-41a24 24 0 0 1 48 0c0 14-11 25-24 41z" fill="#dbff57" stroke="#0b1020" stroke-width="3"/><circle cx="75" cy="-15" r="8" fill="#0b1020"/></svg>
-              <svg class="wv__a" data-v="2" viewBox="0 -40 150 190"><path d="M75 21V-2" stroke="#0b1020" stroke-width="4" stroke-linecap="round"/><circle cx="75" cy="-6" r="6.5" fill="#4f8cff"/><path d="M60-18a21 21 0 0 0 0 24M90-18a21 21 0 0 1 0 24M50-26a33 33 0 0 0 0 40M100-26a33 33 0 0 1 0 40" fill="none" stroke="#4f8cff" stroke-width="3.5" stroke-linecap="round"/></svg>
-              <svg class="wv__a" data-v="3" viewBox="0 -40 150 190"><circle cx="62" cy="75" r="16" fill="rgba(79,140,255,.18)" stroke="#4f8cff" stroke-width="4.5"/><circle cx="88" cy="75" r="16" fill="rgba(79,140,255,.18)" stroke="#4f8cff" stroke-width="4.5"/><path d="M73 72h4" stroke="#4f8cff" stroke-width="4"/><path d="M46 71l-14-4M104 71l14-4" stroke="#4f8cff" stroke-width="4" stroke-linecap="round"/></svg>
-              <svg class="wv__a" data-v="4" viewBox="0 -40 150 190"><path d="M75 126l-18-10v20zM75 126l18-10v20z" fill="#ff6b6b"/><circle cx="75" cy="126" r="5" fill="#e04848"/><rect x="108" y="-6" width="34" height="30" rx="7" fill="#fff" stroke="#0b1020" stroke-width="3"/><rect x="116" y="10" width="5" height="8" rx="1" fill="#4f8cff"/><rect x="123" y="5" width="5" height="13" rx="1" fill="#4f8cff"/><rect x="130" y="1" width="5" height="17" rx="1" fill="#4f8cff"/></svg>
-              <div class="orb ap-tile__orb"><div class="orb__eyes"><i></i><i></i></div></div>
-            </div>
-            <span class="wv__glow"></span><span class="wv__shadow"></span>
-          </div>
-          <div class="ap-tile__chips" id="wv-chips"><span data-v="0">Atender 24/7</span><span data-v="1">Asignar proveedor</span><span data-v="2">Seguimiento en vivo</span><span data-v="3">Configurar convenio</span><span data-v="4">Sacar informe</span></div>
     </div>
-      </div>
-    </article>
+  </div>
   </div>
 </section>
 
-<section class="cf-state" id="por-que">
+<section class="ix-verts" id="verticales">
   <div class="wrap">
-    <h2 class="cf-h2 rv">Creado para operaciones a gran escala. <span>Hecho por gente que conoce las asistencias por dentro.</span></h2>
-    <p class="cf-lead rv">Llevamos más de 8 años creando tecnología para logísticas de asistencia. Conocemos la operación por dentro: el call center, la base del proveedor y el técnico en campo.</p>
-    <div class="gs cf-feats">
-        <div class="gs__c rv">
-          <span class="gs__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
-          <h3>Seguridad corporativa</h3>
-          <p>Acceso por roles, trazabilidad de cada acción y registro de conexiones.</p>
-          <div class="gs__chips" aria-hidden="true"><span>Roles</span><span>Trazabilidad</span><span>Conexiones</span></div>
-        </div>
-        <div class="gs__c rv" style="--rd:.08s">
-          <span class="gs__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg></span>
-          <h3>Evidencia desde campo</h3>
-          <p>Fotos, firma y horas de cada etapa quedan guardadas en el servicio, listas para auditar.</p>
-          <div class="gs__tl" aria-hidden="true"><span><i></i>Llegada<em>10:42</em></span><span><i></i>Servicio<em>10:49</em></span><span><i></i>Cierre<em>11:15</em></span></div>
-        </div>
-        <div class="gs__c rv" style="--rd:.16s">
-          <span class="gs__ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3v5M15 3v5"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v4"/></svg></span>
-          <h3>Se integra con tus herramientas</h3>
-          <p>Plataformas de aseguradoras, API, SFTP, ERP y WhatsApp, sin reemplazar lo que funciona.</p>
-          <div class="gs__chips" aria-hidden="true"><span>Aseguradoras</span><span>API</span><span>SFTP</span><span>ERP</span><span>WhatsApp</span></div>
-        </div>
-    </div>
-  </div>
-</section>
-
-<section class="cf-video" id="video">
-  <div class="wrap">
-    <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
-         <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
-    <div class="cf-frame rv">
-      <div class="vid cf-video__vid" id="video-hero-corporativo">
-      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
-    </div>
-    </div>
-  </div>
-</section>
-
-<section class="cf-roles" id="datos">
-  <div class="wrap">
-    <h2 class="cf-h2 rv">Tu operación y Wip, <span>el mejor equipo.</span></h2>
-    <div class="rols">
-    <div class="rol rol--lime rv">
-      <svg class="rol__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3h8a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"/><path d="M9 8h6M9 11.5h4"/><circle cx="12" cy="17" r="1"/></svg>
-      <span class="rol__k">Experiencia del cliente</span>
-      <p class="rol__t">Tu cliente sabe en todo momento cómo va su servicio.</p>
-      <p class="rol__x">Avisos por WhatsApp con el nombre de tu empresa y ubicación compartida.</p>
-    </div>
-    <div class="rol rv" style="--rd:.06s">
-      <svg class="rol__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-1a8 8 0 0 1 16 0v1"/><rect x="3" y="13" width="4" height="6" rx="1.5"/><rect x="17" y="13" width="4" height="6" rx="1.5"/><path d="M19 19c0 1.5-2 2.5-5 2.5"/></svg>
-      <span class="rol__k">Call center y operación interna</span>
-      <p class="rol__t">Tu equipo crea, asigna y sigue cada servicio en una sola pantalla.</p>
-      <p class="rol__x">Novedades, autorizaciones y ANS en vivo, con Wipi apoyando 24/7.</p>
-    </div>
-    <div class="rol rv" style="--rd:.12s">
-      <svg class="rol__ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21V9l9-5 9 5v12"/><path d="M8 21v-6h8v6"/><path d="M8 11h.01M12 11h.01M16 11h.01"/></svg>
-      <span class="rol__k">Base del proveedor</span>
-      <p class="rol__t">Cada proveedor de tu red opera desde su propia base en Wip.</p>
-      <p class="rol__x">Recibe tus servicios, los asigna a sus técnicos y reporta novedades.</p>
-    </div>
-    <div class="rol rv" style="--rd:.18s">
-      <svg class="rol__ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/><path d="M9.5 4.5 12 3l2.5 1.5"/></svg>
-      <span class="rol__k">Colaboradores en campo</span>
-      <p class="rol__t">Tus técnicos trabajan con una sola app, conectados a la central.</p>
-      <p class="rol__x">Suben fotos, firma y tiempos en tiempo real y chatean con la central.</p>
-    </div>
-    </div>
-  </div>
-</section>
-
-<section class="cf-verts" id="verticales">
-  <div class="wrap">
-    <h2 class="cf-h2 rv">Una solución <span>para cada asistencia.</span></h2>
-    <div class="cf-frame cf-frame--paper">
+    <h2 class="ix-h1 ix-h1--sec rv">Una solución <span>para cada asistencia</span></h2>
+    <div class="ix-frame">
       <div class="brd brd--vert" id="brd-vert">
       <div class="brd__stage">
         <div class="brd__scale">
@@ -247,57 +263,13 @@
   </div>
 </section>
 
-<section class="cf-about" id="cifras">
-  <div class="wrap cf-about__in">
-    <div class="rv">
-      <h2 class="cf-h2">+4 millones de servicios. <span>Desde los dos lados de la operación.</span></h2>
-      <p class="cf-lead">Wip conecta a aseguradoras, empresas de asistencia y proveedores. Por eso entendemos lo que necesita quien opera la red y lo que necesita quien presta el servicio.</p>
-    </div>
-    <div class="cf-nums rv" style="--rd:.08s">
-      <div><b>+4M</b><span>Servicios gestionados</span></div>
-      <div><b>+354</b><span>Tipos de asistencia</span></div>
-      <div><b>+13</b><span>Verticales en LATAM</span></div>
-      <div><b>24/7</b><span>Soporte a tu operación</span></div>
-    </div>
-  </div>
-</section>
-
 {{CLIENTES}}
 
-<section class="cf-photos" id="red">
-  <div class="wrap">
-    <h2 class="cf-h2 rv">Toda tu red, en todo el país. <span>Para cada tipo de servicio.</span></h2>
-    <div class="cf-frame rv">
-      <div class="pslide cf-pslide" role="img" aria-label="Proveedores de asistencia: grúa, cambio de llanta, mecánica y ambulancia">
-        <figure class="pslide__f pslide__f--grua" style="--i:0"><img src="/img/proveedores/grua.webp" alt="" loading="lazy" decoding="async"><figcaption>Grúa</figcaption></figure>
-        <figure class="pslide__f pslide__f--llanta" style="--i:1"><img src="/img/proveedores/llanta.webp" alt="" loading="lazy" decoding="async"><figcaption>Cambio de llanta</figcaption></figure>
-        <figure class="pslide__f pslide__f--mecanica" style="--i:2"><img src="/img/proveedores/mecanica.webp" alt="" loading="lazy" decoding="async"><figcaption>Mecánica</figcaption></figure>
-        <figure class="pslide__f pslide__f--ambulancia" style="--i:3"><img src="/img/proveedores/ambulancia.webp" alt="" loading="lazy" decoding="async"><figcaption>Ambulancia</figcaption></figure>
-        <div class="pslide__dots" aria-hidden="true"><i style="--i:0"></i><i style="--i:1"></i><i style="--i:2"></i><i style="--i:3"></i></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cf-cta" id="siguiente-paso">
-  <div class="wrap cf-cta__in">
-    <div class="rv">
-      <h2 class="cf-h2">Hablemos de <span>tu operación.</span></h2>
-      <p class="cf-lead">Agenda una demo y te mostramos Wip en vivo con un caso como el tuyo.</p>
-    </div>
-    <div class="cf-plan rv" style="--rd:.08s">
-      <span class="cf-k">Implementación acompañada</span>
-      <b class="cf-plan__t">Wip Corporativo</b>
-      <p>Cronograma a la medida de tus convenios, tu red y tus integraciones.</p>
-      {{DEMO_CX}}
-      <ul>
-        <li>Configuración de tus convenios y tarifas</li>
-        <li>Integración con tu plataforma, por API o WhatsApp</li>
-        <li>Capacitación de tu equipo y de tu red</li>
-        <li>Inicio de operación con el equipo Wip</li>
-        <li>Wipi y Wip IA operando contigo 24/7</li>
-      </ul>
-    </div>
+<section class="ix-cta" id="siguiente-paso">
+  <div class="wrap ix-cta__in rv">
+    <h2 class="ix-h1">Mira Wip operando <span>tu red</span></h2>
+    <p>Agenda una demo y te mostramos Wip en vivo con un caso como el tuyo: configuración de tus convenios, integración con tu plataforma y acompañamiento del equipo Wip.</p>
+    <div class="ix-ctas">{{DEMO_IX}}<a class="ix-btn ix-btn--soft" href="#contacto">Escríbenos</a></div>
   </div>
 </section>
 

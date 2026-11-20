@@ -261,6 +261,13 @@
     };
     if(cxPhoto.complete)cxFit(); cxPhoto.addEventListener("load",cxFit); window.addEventListener("resize",cxFit);
   }
+  /* Corporativo: interruptor Problema / Solución */
+  [].forEach.call(document.querySelectorAll(".ix-toggle"),function(t){
+    var sec=t.closest("section");
+    t.addEventListener("click",function(ev){var b=ev.target.closest("button[data-ps]");if(!b)return;var k=b.getAttribute("data-ps");
+      [].forEach.call(t.querySelectorAll("button"),function(x){var on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-selected",on?"true":"false");});
+      [].forEach.call(sec.querySelectorAll(".ix-ps__pane"),function(p){p.classList.toggle("on",p.getAttribute("data-ps")===k);});});
+  });
   /* Mapa de asignación: cada etiqueta se ajusta al ancho de su texto */
   [].forEach.call(document.querySelectorAll(".amap__chip"),function(g){
     var t=g.querySelector("text"), r=g.querySelector("rect");
