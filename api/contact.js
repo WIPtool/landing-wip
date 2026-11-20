@@ -1,4 +1,5 @@
 import { enviarEventoMeta } from './_meta-capi.js';
+import { revisarEnvio } from './_antispam.js';
 
 const RESEND_API_URL = 'https://api.resend.com/emails';
 // Flujo F1 de n8n: crea el contacto como oportunidad en Kommo con su Origen (ruta difícil de adivinar; solo recibe datos).
@@ -31,10 +32,15 @@ export default async function handler(req, res) {
 
   const data = req.body || {};
 
-  // Honeypot: si el campo oculto viene lleno, es un bot. Respondemos ok sin enviar nada.
-  if (data['bot-field']) {
+  // Filtro de bots (ver _antispam.js). A los bloqueados se les responde ok sin enviar nada,
+  // para que no sepan que fueron detectados.
+  const revision = revisarEnvio(req, data);
+  if (revision.nivel === 'bloqueado') {
+    console.warn('Lead bloqueado como bot:', revision.motivos.join('; '), '|', data.email || '-');
     return res.status(200).json({ ok: true });
   }
+  const sospechoso = revision.nivel === 'sospechoso';
+  if (sospechoso) console.warn('Lead marcado como posible spam:', revision.motivos.join('; '), '|', data.email || '-');
 
   const { nombre, email, empresa, telefono, servicios, necesidad } = data;
   if (!nombre || !email || !empresa) {
@@ -50,7 +56,11 @@ export default async function handler(req, res) {
   const to = process.env.CONTACT_TO_EMAIL || 'comercial@wiptool.com';
   const from = process.env.CONTACT_FROM_EMAIL || 'WIP Web <onboarding@resend.dev>';
 
+  const avisoSpam = sospechoso
+    ? `<p style="background:#fff3cd;padding:10px;border-radius:6px"><b>Posible spam.</b> No se creó en Kommo ni se reportó a Meta. Motivos: ${escapeHtml(revision.motivos.join(', '))}. Si es un cliente real, créalo a mano en Kommo.</p>`
+    : '';
   const html = `
+    ${avisoSpam}
     <h2>Nuevo lead desde wiptool.com</h2>
     <p><b>Nombre:</b> ${escapeHtml(nombre)}</p>
     <p><b>Correo:</b> ${escapeHtml(email)}</p>
@@ -71,7 +81,7 @@ export default async function handler(req, res) {
         from,
         to,
         reply_to: email,
-        subject: `Nuevo lead: ${empresa}`,
+        subject: `${sospechoso ? '[Posible spam] ' : ''}Nuevo lead: ${empresa}`,
         html,
       }),
     });
@@ -80,6 +90,9 @@ export default async function handler(req, res) {
       console.error('Resend error', r.status, await r.text());
       return res.status(502).json({ error: 'No se pudo enviar el correo' });
     }
+
+    // Los sospechosos solo llegan por correo: no ensucian Kommo ni las conversiones de Meta.
+    if (sospechoso) return res.status(200).json({ ok: true });
 
     await enviarAKommo({
       tipo: 'formulario_contacto', nombre, email, empresa, telefono: telefono || '', servicios: servicios || '', necesidad: necesidad || '',
