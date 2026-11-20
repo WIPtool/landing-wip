@@ -2858,6 +2858,14 @@ body[data-page="corp"] .footer{background:#000;border-top:1px solid rgba(255,255
 
 @media(max-width:900px){.spx-nums__row{grid-template-columns:1fr 1fr}.spx-panel{min-height:0}.spx-panel__in{grid-template-columns:1fr}.spx-panel--flip .spx-panel__copy{order:0}.spx-vid{aspect-ratio:16/9}}
 
+/* Corporativo: hero blanco solo con el título, centrado, con puntos muy suaves */
+.spx-hero--white{align-items:center;justify-content:center;background:#fff;text-align:center}
+.spx-hero--white::after{display:none}
+.spx-hero--white::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(11,16,32,.12) 1px,transparent 1.5px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 75% 70% at 50% 50%,#000 30%,transparent 100%)}
+.spx-hero--white .spx-hero__copy{padding:0;display:flex;justify-content:center}
+.spx-hero--white .spx-h1{color:var(--navy);margin:0 auto}
+.spx-hero--white .spx-down{border-color:var(--navy)}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
