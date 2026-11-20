@@ -1866,3 +1866,17 @@ body[data-page="home"] main .wcard--prov .btn{background:transparent;color:var(-
 @media(prefers-reduced-motion:reduce){.cx-hero .cx-btn,.cx-hero .cx-btn::after{animation:none}}
 body[data-page="home"] .home-video{padding-top:clamp(20px,3vw,40px)}
 body[data-page="home"] .home-video .vid{margin-top:0}
+
+/* Home: cuadrícula de puntos muy tenue solo en el hero, Wipi con la pregunta y puertas lima con brillo */
+.cx-hero{position:relative}
+.cx-hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(circle,rgba(193,201,214,.16) 1px,transparent 1.5px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 75% 65% at 50% 35%,#000 30%,transparent 100%);mask-image:radial-gradient(ellipse 75% 65% at 50% 35%,#000 30%,transparent 100%)}
+.cx-hero > .wrap{position:relative;z-index:1}
+.cx-side{margin-top:34px;animation-delay:.3s}
+.cx-doors{margin:22px auto 0;width:100%;max-width:760px;text-align:left;animation-delay:.45s}
+.cx-doors .door--lime{overflow:hidden;isolation:isolate;transition:transform .25s cubic-bezier(.2,1.4,.4,1),box-shadow .25s ease,background .25s ease}
+.cx-doors .door--lime::before{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;z-index:-1;background:linear-gradient(100deg,transparent,rgba(255,255,255,.7),transparent);transform:skewX(-20deg);animation:cxShine 3.6s ease-in-out infinite}
+.cx-doors .door--lime + .door--lime::before{animation-delay:1.8s}
+.cx-doors .door--lime:hover{transform:translateY(-4px) scale(1.02)}
+.cx-doors .door--lime:hover::after{transform:translateX(3px)}
+@media(max-width:600px){.cx-doors{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.cx-doors .door--lime::before{animation:none}}
