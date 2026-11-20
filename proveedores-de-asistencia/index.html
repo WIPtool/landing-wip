@@ -2627,6 +2627,18 @@ body[data-page="home"] main .wcard--prov li::before{background:#2f7bff;color:#ff
 .wcard--prov .wcard__pics img{border-color:rgba(255,255,255,.15)}
 body[data-page="home"] main .wcard--prov .btn{background:#2f7bff!important;color:#fff!important}
 
+/* Soluciones: ambas tarjetas del mismo tamaño y del mismo verde */
+body[data-page="home"] main .worlds{grid-template-columns:1fr 1fr}
+body[data-page="home"] main .worlds .wcard--prov{padding:clamp(28px,3.4vw,44px)!important;border:1.5px solid transparent!important;background:radial-gradient(ellipse at 100% 0%,rgba(255,255,255,.55),transparent 50%) padding-box,radial-gradient(circle,rgba(11,16,32,.09) 1px,transparent 1.5px) 0 0/22px 22px padding-box,linear-gradient(150deg,#f0ffb0 0%,#dbff57 45%,#a9dc2e 100%) padding-box,linear-gradient(rgba(11,16,32,.15),rgba(11,16,32,.15)) border-box!important;color:var(--navy)!important;box-shadow:0 30px 80px rgba(219,255,87,.18)!important}
+body[data-page="home"] main .wcard--prov .wcard__badge{background:var(--navy);color:var(--lime)}
+body[data-page="home"] main .wcard--prov h3{color:var(--navy);font-size:clamp(28px,3vw,40px)}
+body[data-page="home"] main .wcard--prov p{color:#2a3246}
+body[data-page="home"] main .wcard--prov li{color:var(--navy);font-weight:600}
+body[data-page="home"] main .wcard--prov li::before{background:var(--navy);color:var(--lime)}
+.wcard--prov .wcard__pics img{border-color:rgba(11,16,32,.12)}
+body[data-page="home"] main .wcard--prov .btn{background:var(--navy)!important;color:var(--lime)!important}
+@media(max-width:900px){body[data-page="home"] main .worlds{grid-template-columns:1fr}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
