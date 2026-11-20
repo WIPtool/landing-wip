@@ -1955,3 +1955,28 @@ body[data-page="home"] main .worlds .wcard--corp::before{background-color:transp
 .wcard__pics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:auto 0 22px}
 .wcard__pics img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:14px;border:2px solid rgba(11,16,32,.12)}
 body[data-page="home"] main .wcard--prov .btn{margin-top:0}
+
+/* Soluciones: Corporativo en verde Wip (premium) y Proveedores en azul Wip */
+body[data-page="home"] main .worlds .wcard--corp{background:radial-gradient(ellipse at 100% 0%,rgba(255,255,255,.55),transparent 50%) padding-box,radial-gradient(circle,rgba(11,16,32,.09) 1px,transparent 1.5px) 0 0/22px 22px padding-box,linear-gradient(150deg,#f0ffb0 0%,#dbff57 45%,#a9dc2e 100%) padding-box,conic-gradient(from var(--wca),#0b1020,rgba(11,16,32,.15) 30%,rgba(11,16,32,.15) 70%,#0b1020) border-box!important;color:var(--navy)!important;box-shadow:0 30px 80px rgba(219,255,87,.18)!important}
+body[data-page="home"] main .worlds .wcard--corp::before{display:none!important}
+body[data-page="home"] main .wcard--corp h3{color:var(--navy)}
+body[data-page="home"] main .wcard--corp p{color:#2a3246}
+body[data-page="home"] main .wcard--corp li{color:var(--navy);font-weight:600}
+body[data-page="home"] main .wcard--corp li::before{background:var(--navy);color:var(--lime)}
+.wcard--corp .wcard__prem{background:var(--navy);color:var(--lime);box-shadow:0 6px 18px rgba(11,16,32,.25)}
+.wcard--corp .wcard__prem svg{fill:var(--lime)}
+body[data-page="home"] main .wcard--corp .wcard__badge{color:var(--navy);border-color:rgba(11,16,32,.55)}
+body[data-page="home"] main .wcard--corp .wcard__tier{color:#2a3246;border-color:rgba(11,16,32,.25)}
+.wcard--corp .wcard__stats{border-color:rgba(11,16,32,.15)}
+.wcard--corp .wcard__stats div + div{border-left-color:rgba(11,16,32,.15)}
+.wcard--corp .wcard__stats b{color:var(--navy)}
+.wcard--corp .wcard__stats span{color:#3a4358}
+body[data-page="home"] main .wcard--corp .btn{background:var(--navy)!important;color:var(--lime)!important;box-shadow:0 10px 30px rgba(11,16,32,.3)}
+body[data-page="home"] main .worlds .wcard--prov{background:radial-gradient(circle,rgba(255,255,255,.08) 1px,transparent 1.5px) 0 0/22px 22px,radial-gradient(ellipse at 100% 0%,rgba(47,123,255,.55),transparent 60%),linear-gradient(160deg,#16255a,#0b1020)!important;color:#fff!important;border:1px solid rgba(47,123,255,.35)!important;box-shadow:0 24px 60px rgba(47,123,255,.15)!important}
+body[data-page="home"] main .wcard--prov .wcard__badge{background:#2f7bff;color:#fff}
+body[data-page="home"] main .wcard--prov h3{color:#fff}
+body[data-page="home"] main .wcard--prov p{color:#b7c0d3}
+body[data-page="home"] main .wcard--prov li{color:#eef1f7}
+body[data-page="home"] main .wcard--prov li::before{background:#2f7bff;color:#fff}
+.wcard--prov .wcard__pics img{border-color:rgba(255,255,255,.15)}
+body[data-page="home"] main .wcard--prov .btn{background:#2f7bff!important;color:#fff!important}
