@@ -159,12 +159,12 @@ const Q = {
 const FAQ = {
   home: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos],
   corp: [Q.llegan, Q.ans, Q.noAcepta, Q.propios, Q.asegurado, Q.eventos, Q.liquida, Q.fugas, Q.reportes, Q.tipos, Q.implementa, Q.costoCorp],
-  prov: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.cobro, Q.costoProv],
+  prov: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.costoProv],
 };
 const GROUPS = [
   { id: 'general', h: 'General', items: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos, Q.paises] },
   { id: 'aseguradoras', h: 'Aseguradoras y empresas de asistencia', items: [Q.llegan, Q.ans, Q.falla, Q.noAcepta, Q.propios, Q.asegurado, Q.eventos, Q.liquida, Q.fugas, Q.reportes, Q.implementa, Q.costoCorp] },
-  { id: 'proveedores', h: 'Proveedores de asistencia', items: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.cobro, Q.costoProv] },
+  { id: 'proveedores', h: 'Proveedores de asistencia', items: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.costoProv] },
 ];
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const faqHtml = (list, name = 'faq') => list.map(([q, a], i) => `      <details name="${name}"${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('\n');
