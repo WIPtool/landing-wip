@@ -3227,6 +3227,21 @@ body[data-page="prov"] main #contacto .iti__selected-dial-code,body[data-page="c
 .cs-hero{min-height:100vh;min-height:100svh;display:flex;align-items:center}
 .cs-hero > .wrap{width:100%}
 
+/* Proveedores: Todos tus servicios con más potencia */
+.ul{position:relative;flex-direction:column;gap:18px;perspective:1200px;overflow:hidden}
+.ul::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(11,16,32,.14) 1px,transparent 1.6px);background-size:22px 22px;-webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000,transparent 75%);mask-image:radial-gradient(ellipse at 50% 50%,#000,transparent 75%)}
+.ul__src{position:relative;display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
+.ul__src span{display:inline-flex;align-items:center;gap:7px;padding:8px 13px;border-radius:999px;background:#0b1020;color:#fff;font-size:12.5px;font-weight:700;box-shadow:0 10px 24px rgba(11,16,32,.25);animation:ulIn 8s ease infinite;animation-delay:calc(var(--i) * .5s)}
+.ul__src i{width:8px;height:8px;border-radius:50%;background:#dbff57;box-shadow:0 0 0 0 rgba(219,255,87,.7);animation:msLive 1.8s ease-out infinite}
+.ul__src span:last-child i{background:#25d366}
+.ul__ss{position:relative;transform:rotateX(8deg) rotateY(-6deg);transform-style:preserve-3d;transition:transform .6s cubic-bezier(.2,.8,.2,1);animation:ulFloat 7s ease-in-out infinite}
+.ul:hover .ul__ss{transform:none;animation-play-state:paused}
+.ul__ss::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.45) 50%,transparent 65%);transform:translateX(-120%);animation:ulShine 6s ease-in-out infinite;pointer-events:none}
+@keyframes ulIn{0%{transform:translateY(-8px);opacity:0}6%,85%{transform:none;opacity:1}95%,100%{transform:translateY(10px);opacity:0}}
+@keyframes ulFloat{0%,100%{translate:0 4px}50%{translate:0 -6px}}
+@keyframes ulShine{0%,55%{transform:translateX(-120%)}80%,100%{transform:translateX(120%)}}
+@media(prefers-reduced-motion:reduce){.ul__src span,.ul__src i,.ul__ss,.ul__ss::after{animation:none}.ul__ss{transform:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3351,11 +3366,14 @@ window.addEventListener('message',function(e){
 <section class="cs-sec" id="un-solo-lugar">
   <div class="wrap cs-row">
     <div class="cs-row__copy rv">
+      <span class="cs-k">Monitoreo central</span>
       <h2 class="cs-h2">Todos tus servicios en un mismo lugar</h2>
-      <p>Los servicios de todas tus aseguradoras, empresas de asistencia, otros corporativos y particulares llegan a Wip, con las reglas y la tarifa de cada convenio ya aplicadas. Sin estar pegado a cada plataforma.</p>
+      <p>Los servicios de todas tus aseguradoras, empresas de asistencia, otros corporativos y particulares llegan a Wip, con las reglas y la tarifa de cada convenio ya aplicadas.</p>
+      <ul class="cs-checks"><li>El estado de cada servicio, en vivo</li><li>Quién es el responsable en cada momento</li><li>Semáforo para cumplir el ANS de cada cliente</li></ul>
     </div>
-    <div class="cs-grad cs-grad--lime rv" style="--rd:.08s">
-      <figure class="pv-ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/monitoreo-servicios.webp" alt="Monitoreo central de Wip con los servicios del día y su estado" width="1788" height="579" loading="lazy" decoding="async"></figure>
+    <div class="cs-grad cs-grad--lime ul rv" style="--rd:.08s">
+      <div class="ul__src" aria-hidden="true"><span style="--i:0"><i></i>Aseguradora A</span><span style="--i:1"><i></i>Asistencia B</span><span style="--i:2"><i></i>Corporativo C</span><span style="--i:3"><i></i>Particulares</span></div>
+      <figure class="pv-ss ul__ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/monitoreo-servicios.webp" alt="Monitoreo central de Wip con los servicios del día y su estado" width="1788" height="579" loading="lazy" decoding="async"></figure>
     </div>
   </div>
 </section>
