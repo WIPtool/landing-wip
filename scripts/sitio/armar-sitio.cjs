@@ -208,6 +208,9 @@ for (const p of pages) {
   if (p.key === 'corp') {
     c = rep(c, '<h2 class="h2">Mira WIP en vivo <span class="lime">con un caso como el tuyo</span></h2>', '<h2 class="h2">Mira Wip IA <span class="lime">operando tu red</span></h2>');
     c = rep(c, 'Cuéntanos de qué lado de las asistencias estás y cómo operas hoy. Te mostramos WIP operando tu día a día.', 'Cuéntanos cómo opera hoy tu red de proveedores y te mostramos Wip en vivo con un caso como el tuyo.');
+    // Formulario solo para corporativos: sin la opción de proveedor.
+    c = rep(c, between(c, '        <fieldset class="perfil">', '</fieldset>\n'), '        <input type="hidden" name="perfil" value="Aseguradora o empresa de asistencia">\n');
+    c = rep(c, '<h3>¿Prefieres que te contactemos?</h3>', '<h3>¿Prefieres que te contactemos?</h3>\n      <p class="form__for">Para aseguradoras y empresas de asistencia</p>');
   }
   main = main.replace('{{CLIENTES}}', clientes.trim()).replace('{{FAQ}}', faqBlock.trim()).replace('{{CONTACTO}}', c.trim())
     .replace('{{FAQ_GROUPS}}', groupsHtml);

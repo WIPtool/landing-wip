@@ -2284,3 +2284,24 @@ body[data-page="corp"] .spx-btn,body[data-page="corp"] main .btn,body[data-page=
 .cht__list > [style*="--d:4"]{animation-name:chtIn4}
 @keyframes chtDot{0%,100%{opacity:.3;transform:none}50%{opacity:1;transform:translateY(-2px)}}
 @media(prefers-reduced-motion:reduce){.cht__m,.cht__typing{animation:none;opacity:1}}
+
+/* Corporativo: formulario y preguntas frecuentes en fondo blanco */
+body[data-page="corp"] main #contacto,body[data-page="corp"] main #faq{background:#fff!important;color:var(--navy)}
+body[data-page="corp"] main #contacto{padding-top:clamp(70px,9vw,120px)!important}
+body[data-page="corp"] main #contacto .h2,body[data-page="corp"] main #faq .h2{color:var(--navy)}
+body[data-page="corp"] main #contacto .lime,body[data-page="corp"] main #faq .lime{color:var(--navy)!important;background:linear-gradient(transparent 58%,var(--lime) 58%,var(--lime) 92%,transparent 92%)!important;padding:0 .05em!important}
+body[data-page="corp"] main #contacto .eyebrow{color:#4c6b00}
+body[data-page="corp"] main #contacto .lead,body[data-page="corp"] main #contacto .trust{color:#2b3346}
+body[data-page="corp"] main #contacto .form.card{background:#f6f7f9;border:1px solid #e3e6ec;box-shadow:0 20px 50px rgba(11,16,32,.08);color:var(--navy)}
+body[data-page="corp"] main #contacto .form h3{color:var(--navy)}
+body[data-page="corp"] main #contacto .form__for{margin:-6px 0 14px;font-size:14px;font-weight:600;color:#4c6b00}
+body[data-page="corp"] main #contacto .field label,body[data-page="corp"] main #contacto .contact-consent{color:#2b3346}
+body[data-page="corp"] main #contacto .contact-consent a{color:var(--navy)}
+body[data-page="corp"] main #contacto .field input,body[data-page="corp"] main #contacto .field select,body[data-page="corp"] main #contacto .field textarea{background:#fff!important;border-color:#cfd5df!important;color:var(--navy)!important}
+body[data-page="corp"] main #contacto .field input::placeholder,body[data-page="corp"] main #contacto .field textarea::placeholder{color:#8a93a8}
+body[data-page="corp"] main #contacto .contact-ok{color:var(--navy)}
+body[data-page="corp"] main #faq .faq details{background:#f6f7f9!important;border:1px solid #e3e6ec!important}
+body[data-page="corp"] main #faq .faq details[open]{border-color:rgba(76,107,0,.4)!important;background:#fff!important}
+body[data-page="corp"] main #faq .faq summary{color:var(--navy)}
+body[data-page="corp"] main #faq .faq p{color:#2b3346}
+body[data-page="corp"] main #faq .faq summary::after{color:#4c6b00!important;border-color:#cfd5df!important;background:#fff!important}

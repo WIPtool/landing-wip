@@ -1276,7 +1276,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   /* Formulario: el perfil elegido viaja al inicio de "¿Qué necesitas resolver?" */
   var form=document.getElementById('contactForm');
   if(form) form.addEventListener('submit',function(){
-    var p=form.querySelector('input[name="perfil"]:checked'), n=document.getElementById('c-necesidad');
+    var p=form.querySelector('input[name="perfil"]:checked,input[name="perfil"][type="hidden"]'), n=document.getElementById('c-necesidad');
     if(!p||!n) return;
     var antes=n.value; n.value='['+p.value+'] '+antes;
     setTimeout(function(){n.value=antes;},0);
