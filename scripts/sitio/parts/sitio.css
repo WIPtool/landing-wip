@@ -2219,3 +2219,14 @@ body[data-page="corp"] .footer{background:#000;border-top:1px solid rgba(255,255
 .spx-hero--white .spx-hero__copy{padding:0;display:flex;justify-content:center}
 .spx-hero--white .spx-h1{color:var(--navy);margin:0 auto}
 .spx-hero--white .spx-down{border-color:var(--navy)}
+/* Corporativo: hero blanco con letra del adjunto (Roboto gruesa), subtexto y botones */
+.spx-hero--white .spx-hero__copy{flex-direction:column;align-items:center}
+.spx-h1--soft{text-transform:none!important;font-weight:800!important;letter-spacing:-.035em!important;line-height:1.02!important;font-size:clamp(42px,6vw,84px)!important;max-width:1000px}
+.spx-h1--soft span{background:linear-gradient(transparent 58%,var(--lime) 58%,var(--lime) 92%,transparent 92%);padding:0 .06em}
+.spx-hero__sub{margin:22px auto 0;max-width:760px;font-size:clamp(16px,1.4vw,19.5px);line-height:1.6;color:#4a5468}
+.spx-hero__ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:32px}
+.wh-btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 26px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease}
+.wh-btn:hover{transform:translateY(-2px)}
+.wh-btn--main{background:var(--lime);color:var(--navy);box-shadow:0 10px 26px rgba(127,166,0,.3)}
+.wh-btn--line{border:2px solid var(--navy);color:var(--navy)}
+.wh-btn--line:hover{background:var(--navy);color:#fff}
