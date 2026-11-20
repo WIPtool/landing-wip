@@ -2378,6 +2378,114 @@ body[data-page="prov"] .footer{background:var(--navy)}
 @media(max-width:480px){.ep-nums__grid{grid-template-columns:1fr}.ep-pain__list li{font-size:14.5px}}
 body[data-page="prov"] main .ep-pain__k,body[data-page="prov"] main .ep-num b,body[data-page="prov"] main .ep-tile--color .ep-tile__img span{font-family:'Instrument Serif',Georgia,serif!important;font-weight:400}
 
+/* ===================== PROVEEDORES: formato cleanshot.com adaptado a Wip ===================== */
+body[data-page="prov"]{background:#fff}
+body[data-page="prov"] main{background:#fff}
+body[data-page="prov"] main #faq{background:#f6f8f0!important}
+.cs-hero{position:relative;padding:clamp(120px,15vh,160px) 0 clamp(50px,6vw,80px);background:radial-gradient(ellipse 70% 50% at 50% 0%,rgba(219,255,87,.35),transparent 70%),linear-gradient(180deg,#f7faec 0%,#fff 60%)}
+.cs-hero__in{display:flex;flex-direction:column;align-items:center;text-align:center}
+.cs-pill{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:var(--navy);color:#fff;font-size:13.5px;font-weight:600}
+.cs-pill i{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:msLive 1.8s ease-out infinite}
+.cs-h1{margin-top:22px;font-weight:800;font-size:clamp(34px,4.8vw,62px);line-height:1.06;letter-spacing:-.035em;color:var(--navy);max-width:1000px}
+.cs-h1 span{color:#5f7d00}
+.cs-sub{margin-top:18px;max-width:640px;font-size:clamp(16px,1.3vw,18.5px);line-height:1.6;color:#4a5468}
+.cs-ctas{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:28px}
+.cs-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 22px;border-radius:12px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s ease,box-shadow .2s ease,background .2s ease}
+.cs-btn:hover{transform:translateY(-1px)}
+.cs-btn--main{background:var(--lime);color:var(--navy);box-shadow:0 1px 0 rgba(255,255,255,.5) inset,0 8px 24px rgba(127,166,0,.3)}
+.cs-btn--ghost{background:#fff;color:var(--navy);border:1px solid #d9dde4;box-shadow:0 2px 6px rgba(11,16,32,.05)}
+.cs-btn--dark{background:var(--navy);color:#fff}
+.cs-more{margin-top:16px;font-size:14px;font-weight:600;color:var(--navy);text-decoration:none}
+.cs-more:hover{text-decoration:underline}
+.cs-showcase{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:18px;margin-top:clamp(40px,5vw,64px);align-items:stretch}
+.cs-vid{margin:0;max-width:none;width:100%;border-radius:20px;background:var(--navy);border:0;box-shadow:0 30px 70px rgba(11,16,32,.18)}
+.cs-vid .vid__ph{color:#c1c9d6}
+.cs-side{display:flex}
+.cs-live{margin:0;width:100%;border-radius:20px;background:var(--navy);color:#fff;--soft:#c1c9d6;--muted:#8a93a8;--line:rgba(255,255,255,.12);--line-lime:rgba(219,255,87,.45);box-shadow:0 30px 70px rgba(11,16,32,.18)}
+.cs-live .live__steps{grid-template-columns:1fr 1fr}
+
+.cs-sec{padding:clamp(80px,10vw,130px) 0}
+.cs-h2{font-weight:800;font-size:clamp(28px,3.4vw,44px);line-height:1.08;letter-spacing:-.03em;color:var(--navy)}
+.cs-h2--c{text-align:center}
+.cs-k{display:inline-block;margin-bottom:10px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#5f7d00}
+.cs-row{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,5vw,70px);align-items:center}
+.cs-row--flip .cs-row__copy{order:2}
+.cs-row__copy p,.cs-head p{margin-top:14px;max-width:520px;font-size:clamp(16px,1.25vw,18px);line-height:1.6;color:#4a5468}
+.cs-grad{display:grid;place-items:center;min-height:clamp(320px,34vw,460px);padding:clamp(20px,3vw,40px);border-radius:24px}
+.cs-grad--lime{background:radial-gradient(ellipse at 20% 0%,#f1ffb8,transparent 60%),linear-gradient(140deg,#dbff57 0%,#9be15d 55%,#1fb5a8 100%)}
+.cs-grad--navy{background:radial-gradient(ellipse at 80% 0%,rgba(47,123,255,.45),transparent 60%),linear-gradient(140deg,#16255a,#0b1020)}
+.cs-grad .pv-ss{width:100%;box-shadow:0 24px 60px rgba(11,16,32,.35)}
+.cs-checks{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.cs-checks li{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;color:var(--navy)}
+.cs-checks li::before{content:"✓";flex:none;display:grid;place-items:center;width:22px;height:22px;border-radius:50%;background:var(--lime);color:var(--navy);font-size:12px;font-weight:900}
+.cs-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:clamp(28px,3.5vw,44px)}
+.cs-head .cs-btn{flex:none}
+
+.cs-bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.cs-b{position:relative;display:flex;flex-direction:column;min-height:260px;padding:22px;border-radius:22px;overflow:hidden}
+.cs-b--wide{grid-column:span 2}
+.cs-b--tall{grid-row:span 2}
+.cs-b--wide2{grid-column:span 2}
+.cs-b__t b{display:block;font-size:18px;font-weight:800;letter-spacing:-.01em}
+.cs-b__t span{display:block;margin-top:6px;font-size:14.5px;line-height:1.5;opacity:.8;max-width:420px}
+.cs-b__v{margin-top:auto;padding-top:18px;display:flex;justify-content:center}
+.cs-b__v--img img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:0 12px 30px rgba(11,16,32,.18)}
+.cs-b__v--map img{max-height:300px;object-fit:cover;object-position:60% 50%}
+.cs-b--peach{background:linear-gradient(140deg,#fff4e6,#ffe1c7 60%,#dbff57 140%);color:var(--navy)}
+.cs-b--light{background:#f4f6f0;border:1px solid #e6eadb;color:var(--navy)}
+.cs-b--navy{background:var(--navy);color:#fff}
+.cs-b--blue{background:linear-gradient(150deg,#2f7bff,#16255a);color:#fff}
+.cs-b--lime{background:linear-gradient(140deg,#e9ff9a,#dbff57 60%,#b8e84a);color:var(--navy)}
+.cs-b .pv-card{width:100%;max-width:440px;background:rgba(11,16,32,.95);border-color:rgba(219,255,87,.3)}
+.cs-b .pv-card__h > span,.cs-b .pv-card__r small{color:#9aa3b5}
+.cs-sign{width:100%;max-width:260px;padding:14px 16px 10px;border-radius:14px;background:#fff;border:1px solid #e3e7d6}
+.cs-sign svg{width:100%;height:60px;fill:none;stroke:var(--navy);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.cs-sign span{display:block;margin-top:4px;padding-top:6px;border-top:1px dashed #cfd5df;font-size:12px;color:#6b7385}
+.cs-tag{margin-top:auto;align-self:flex-start;padding:6px 12px;border-radius:999px;background:var(--lime);color:var(--navy);font-size:12.5px;font-weight:800}
+
+.cs-tabs__track{gap:14px!important}
+.cs-tab{flex:none;width:clamp(240px,24vw,300px);list-style:none;border-radius:20px;background:#f4f6f0;border:1px solid #e6eadb;overflow:hidden}
+.cs-tab__h{display:flex;align-items:center;gap:10px;padding:14px 16px;background:#fff;border-bottom:1px solid #e6eadb;color:var(--navy)}
+.cs-tab__h svg,.cs-m svg{width:20px;height:20px;fill:none;stroke:#5f7d00;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.cs-tab__h b{font-size:15px}
+.cs-tab__b{display:flex;flex-direction:column;gap:8px;min-height:190px;padding:16px;background:linear-gradient(160deg,#16255a,#0b1020)}
+.cs-bub{max-width:88%;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.1);color:#fff;font-size:13.5px;line-height:1.35}
+.cs-bub small{display:block;margin-bottom:2px;font-size:11px;font-weight:700;color:#9aa3b5}
+.cs-bub--me{align-self:flex-end;background:var(--lime);color:var(--navy)}
+.cs-bub--me small{color:#3d5200}
+.cs-mini{display:flex;flex-wrap:wrap;align-items:center;gap:6px;color:#fff;font-size:13.5px}
+.cs-mini kbd{padding:4px 9px;border-radius:7px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);font-size:12px}
+.cs-mini span{flex-basis:100%;margin-top:8px;color:#c1c9d6}
+
+.cs-grad .pv-checks li{background:rgba(11,16,32,.92)}
+.cs-grad .pv-shot__keys{color:#c1c9d6}
+.cs-grad .pv-card{background:rgba(11,16,32,.95)}
+
+.cs-mini-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:clamp(30px,4vw,48px)}
+.cs-m{padding:22px;border-radius:18px;background:#f4f6f0;border:1px solid #e6eadb}
+.cs-m b{display:block;margin-top:12px;font-size:16.5px;color:var(--navy)}
+.cs-m span{display:block;margin-top:6px;font-size:14.5px;line-height:1.5;color:#5b6272}
+
+.cs-price{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(30px,5vw,70px);align-items:center;padding:clamp(28px,4vw,48px);border-radius:26px;background:linear-gradient(140deg,#f7faec,#eef4d6)}
+.cs-price p{margin-top:12px;font-size:17px;color:#4a5468;max-width:460px}
+.cs-price__card{display:flex;flex-direction:column;align-items:stretch;gap:12px;padding:26px;border-radius:20px;background:#fff;border:1px solid #e3e7d6;box-shadow:0 20px 50px rgba(11,16,32,.08)}
+.cs-price__n{font-weight:800;font-size:clamp(34px,3.6vw,46px);letter-spacing:-.03em;color:var(--navy)}
+.cs-price__n small{font-size:15px;font-weight:600;letter-spacing:0;color:#6b7385}
+.cs-price__card .cs-more{text-align:center}
+
+.cs-final{padding:clamp(90px,11vw,150px) 0;background:var(--navy);text-align:center}
+.cs-final__in{display:flex;flex-direction:column;align-items:center}
+.cs-final img{width:90px;height:auto}
+.cs-final .cs-h1{color:#fff}
+.cs-final .cs-h1 span{color:var(--lime)}
+.cs-final .cs-btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.3);box-shadow:none}
+
+@media(max-width:900px){.cs-showcase,.cs-row,.cs-price{grid-template-columns:1fr}.cs-row--flip .cs-row__copy{order:0}.cs-head{flex-direction:column;align-items:flex-start}.cs-bento,.cs-mini-grid{grid-template-columns:1fr 1fr}.cs-b--tall{grid-row:auto}}
+@media(max-width:600px){.cs-bento,.cs-mini-grid{grid-template-columns:1fr}.cs-b--wide,.cs-b--wide2{grid-column:auto}.cs-h1 br{display:none}}
+.cs-b--full{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:24px;align-items:center}
+.cs-b--full .cs-b__v{margin-top:0;padding-top:0}
+@media(max-width:900px){.cs-b--full{grid-template-columns:1fr}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2445,202 +2553,33 @@ window.addEventListener('message',function(e){
 </header>
 
 <main>
-<!-- ===================== WIP PROVEEDORES, formato de epidemicsound.com con el verde de Wip ===================== -->
-<section class="ep-hero" id="inicio">
-  <div class="wrap ep-hero__in">
-    <h1 class="ep-h1 rv in">Tú prestas el servicio.<br>Wip pone <em>el orden.</em></h1>
-    <ul class="ep-hero__list rv in" style="--rd:.08s">
-      <li>Todas las plataformas de tus aseguradoras, en un solo lugar</li>
-      <li>Una sola app para todos tus técnicos</li>
-      <li>La cuenta de cobro, lista desde el reporte</li>
-    </ul>
-    <div class="ep-ctas rv in" style="--rd:.14s"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--main" target="_blank" rel="noopener" data-cta="meli">Escríbele a Meli por WhatsApp</a><a href="/equipos#planes" class="ep-btn ep-btn--soft">Ver planes</a></div>
-    <small class="ep-note rv in" style="--rd:.18s">Planes desde $195.000 COP al mes</small>
+<!-- ===================== WIP PROVEEDORES, formato de cleanshot.com adaptado a Wip ===================== -->
+<section class="cs-hero" id="inicio">
+  <div class="wrap cs-hero__in">
+    <span class="cs-pill rv in"><i aria-hidden="true"></i>Wip IA atiende tus novedades 24/7</span>
+    <h1 class="cs-h1 rv in" style="--rd:.05s">Tus aseguradoras tienen muchas plataformas.<br>Tú tienes <span>Wip.</span></h1>
+    <p class="cs-sub rv in" style="--rd:.1s">El lugar donde el proveedor de asistencia recibe, asigna, cierra y cobra cada servicio.<br>Para grúas, hogar, médicos y veterinarios a domicilio.</p>
+    <div class="cs-ctas rv in" style="--rd:.15s"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a><a href="#como-funciona" class="cs-btn cs-btn--ghost">Cómo funciona</a></div>
+    <a href="/equipos#planes" class="cs-more rv in" style="--rd:.2s">Planes desde $195.000 COP al mes <span aria-hidden="true">›</span></a>
   </div>
-  <div class="ep-rail rv in" style="--rd:.22s" data-rail>
-    <ul class="ap-rail__track ep-rail__track">
-      <li class="ep-tile ep-tile--video">
-        <!-- Espacio para el video vertical de Wip Proveedores (9:16). Cuando esté listo, reemplazar .vid__ph por:
-             <video src="/video/wip-proveedores-vertical.mp4" poster="/video/wip-proveedores-vertical.jpg" controls playsinline preload="metadata"></video> -->
-        <div class="vid ep-vid" id="video-hero-proveedores"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Proveedores</span></div></div>
-        <b>Wip para proveedores</b><span>Mira cómo opera un servicio</span>
-      </li>
-      <li class="ep-tile"><div class="ep-tile__img"><img src="/img/proveedores/grua.webp" alt="Grúa" loading="lazy" decoding="async"></div><b>Grúa</b><span>Asistencia vial</span></li>
-      <li class="ep-tile"><div class="ep-tile__img"><img src="/img/proveedores/llanta.webp" alt="Cambio de llanta" loading="lazy" decoding="async"></div><b>Cambio de llanta</b><span>Asistencia vial</span></li>
-      <li class="ep-tile"><div class="ep-tile__img"><img src="/img/proveedores/mecanica.webp" alt="Mecánica" loading="lazy" decoding="async"></div><b>Mecánica</b><span>Asistencia vial</span></li>
-      <li class="ep-tile"><div class="ep-tile__img"><img src="/img/proveedores/ambulancia.webp" alt="Ambulancia" loading="lazy" decoding="async"></div><b>Ambulancia</b><span>Asistencia médica</span></li>
-      <li class="ep-tile ep-tile--color ep-tile--lime"><div class="ep-tile__img"><span>Hogar</span></div><b>Cerrajería y plomería</b><span>Asistencia hogar</span></li>
-      <li class="ep-tile ep-tile--color ep-tile--navy"><div class="ep-tile__img"><span>Veterinaria</span></div><b>Veterinario a domicilio</b><span>Asistencia mascotas</span></li>
-    </ul>
-    <div class="wrap ap-rail__nav"><button type="button" class="ap-arrow" data-dir="-1" aria-label="Anterior"></button><button type="button" class="ap-arrow" data-dir="1" aria-label="Siguiente"></button></div>
-  </div>
-</section>
-
-<section class="ep-pain" id="hoy">
-  <div class="wrap">
-    <span class="ep-label ep-label--dark"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h4"/></svg>Así se opera hoy</span>
-    <h2 class="ep-h2 rv">Una plataforma por cada empresa. <em>Y novedades todo el día.</em></h2>
-    <ul class="ep-pain__list">
-      <li class="rv">Alguien pegado a cada plataforma, 24/7</li>
-      <li class="rv" style="--rd:.05s">Llamadas para pedir autorizaciones</li>
-      <li class="rv" style="--rd:.1s">Tu técnico con una app por empresa</li>
-      <li class="rv" style="--rd:.15s">Reglas y tarifas distintas en cada convenio</li>
-      <li class="rv" style="--rd:.2s">La cuenta de cobro, armada a mano</li>
-    </ul>
-    <p class="ep-pain__k rv">Quieres prestar más servicios. Pero cada empresa nueva es una plataforma más.</p>
-  </div>
-</section>
-
-<section class="ep-blk ep-blk--lime" id="un-solo-lugar">
-  <div class="wrap ep-blk__in">
-    <div class="ep-blk__copy rv">
-      <span class="ep-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Un solo lugar</span>
-      <h2 class="ep-h2">Todas tus plataformas, <em>un solo</em> lugar.</h2>
-      <p>Wip se integra con las plataformas de tus aseguradoras y asistencias. Los servicios llegan a un solo lugar, con las reglas y la tarifa de cada convenio ya aplicadas.</p>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--line" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
-    </div>
-    <div class="pv-panel__vis pv-panel__vis--ss rv" style="--rd:.1s">
-    <figure class="pv-ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/monitoreo.webp" alt="Monitoreo central de Wip con los servicios activos del día" width="1336" height="500" loading="lazy" decoding="async"></figure>
-    <span class="pv-ss__note">Captura real de Wip. Datos de clientes difuminados.</span>
-  </div>
-  </div>
-</section>
-
-<section class="ep-blk ep-blk--paper ep-blk--flip" id="pantallazo">
-  <div class="wrap ep-blk__in">
-    <div class="ep-blk__copy rv">
-      <span class="ep-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h4"/></svg>Sin integración</span>
-      <h2 class="ep-h2">¿Sin integración? <em>Pega</em> el pantallazo.</h2>
-      <p>Wip lee el servicio de la plataforma de tu empresa y lo crea con todos sus datos: origen, destino, placa, tarifa y ANS.</p>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--line" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
-    </div>
-    <div class="pv-panel__vis rv" style="--rd:.1s" aria-hidden="true">
-    <div class="pv-shot">
-      <div class="pv-shot__img"><b>Plataforma Aseguradora B</b>Servicio 88213 · Grúa liviana<br>Origen: Av. Boyacá con Cl. 13<br>Destino: Taller Autoexpress<br>Placa: DFR 219 · ANS 45 min</div>
-      <div class="pv-shot__keys"><kbd>Ctrl</kbd>+<kbd>V</kbd><span>en Wip</span></div>
-      <div class="pv-card pv-card--sm">
-        <div class="pv-card__h"><b>Servicio creado en Wip</b><span class="pv-tag">Aseguradora B</span></div>
-        <div class="pv-card__r"><span>Servicio</span><em>Grúa liviana · 88213</em></div>
-        <div class="pv-card__r"><span>Origen</span><em>Av. Boyacá con Cl. 13</em></div>
-        <div class="pv-card__r"><span>Convenio</span><em>Tarifa $185.000 · ANS 45 min</em></div>
+  <div class="wrap cs-showcase rv in" style="--rd:.25s" id="como-funciona">
+    <!-- Espacio para el video de Wip Proveedores (16:9). Cuando esté listo, reemplazar .vid__ph por:
+         <video src="/video/wip-proveedores.mp4" poster="/video/wip-proveedores.jpg" controls playsinline preload="metadata"></video> -->
+    <div class="vid cs-vid" id="video-hero-proveedores"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Proveedores</span></div></div>
+    <div class="cs-side">
+      <div class="live cs-live" aria-label="Así opera Wip un servicio de un proveedor">
+        <div class="live__h"><div><small>Aseguradora B · servicio 88213</small><b>Grúa liviana · Av. Boyacá con Cl. 13</b></div><span class="live__t"><span>En curso</span> · <b>00:00:00</b></span></div>
+        <ol class="live__steps">
+          <li data-t="5"><i></i>Tomado de la plataforma</li>
+          <li data-t="12"><i></i>Tarifa del convenio</li>
+          <li data-t="40"><i></i>Técnico asignado</li>
+          <li data-t="1500"><i></i>Novedad atendida</li>
+          <li data-t="2950"><i></i>Fotos, firma y horas</li>
+          <li data-t="3010"><i></i>Cuenta de cobro lista</li>
+        </ol>
+        <p class="live__foot">Wip IA atiende la novedad. Tu equipo solo decide lo que necesita criterio.</p>
       </div>
     </div>
-  </div>
-  </div>
-</section>
-
-<section class="ep-blk ep-blk--navy" id="wip-ia">
-  <div class="wrap ep-blk__in">
-    <div class="ep-blk__copy rv">
-      <span class="ep-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M6 6l2 2M16 16l2 2M18 6l-2 2M8 16l-2 2"/><circle cx="12" cy="12" r="3"/></svg>Wip IA</span>
-      <h2 class="ep-h2">Novedades y autorizaciones, <em>atendidas.</em></h2>
-      <p>Wip IA atiende las novedades y te ayuda con las autorizaciones. Tu call deja de estar pegado a las plataformas y al teléfono, y solo resuelve lo que necesita criterio.</p>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--line" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
-    </div>
-    <div class="pv-panel__vis rv" style="--rd:.1s" aria-hidden="true">
-    <ul class="pv-checks">
-      <li><i></i><span>Atiende la novedad<small>El cliente no está, cambia el destino o pide un servicio adicional</small></span></li>
-      <li><i></i><span>Te ayuda con la autorización<small>La pide a la empresa si hay integración; si no, la deja lista para tu equipo</small></span></li>
-      <li><i></i><span>Asigna al técnico<small>Según tus reglas: cercanía, turno y tipo de servicio</small></span></li>
-      <li><i></i><span>Avisa al cliente en vivo<small>Quién va, cuándo llega y el cierre</small></span></li>
-    </ul>
-  </div>
-  </div>
-</section>
-
-<section class="ep-blk ep-blk--lime ep-blk--flip" id="radar">
-  <div class="wrap ep-blk__in">
-    <div class="ep-blk__copy rv">
-      <span class="ep-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Radar</span>
-      <h2 class="ep-h2">Tus técnicos <em>en el mapa,</em> en tiempo real.</h2>
-      <p>Ves a cada técnico en el mapa: quién está libre, quién va en camino y quién está en servicio. Así asignas al más cercano sin llamar a nadie.</p>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--line" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
-    </div>
-    <div class="pv-panel__vis pv-panel__vis--ss rv" style="--rd:.1s">
-    <figure class="pv-ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/radar.webp" alt="Radar de Wip con los técnicos en el mapa de Medellín" width="1128" height="550" loading="lazy" decoding="async"></figure>
-    <span class="pv-ss__note">Captura real de Wip. Nombres de técnicos difuminados.</span>
-  </div>
-  </div>
-</section>
-
-<section class="ep-blk ep-blk--paper" id="evidencias">
-  <div class="wrap ep-blk__in">
-    <div class="ep-blk__copy rv">
-      <span class="ep-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg>Evidencias</span>
-      <h2 class="ep-h2">Fotos con fecha y hora, <em>listas</em> para el visado.</h2>
-      <p>Tus técnicos suben las fotos desde la app y cada cambio de estado queda registrado con su hora y su responsable. Cuando la empresa pregunta, la respuesta ya está en el servicio.</p>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--line" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
-    </div>
-    <div class="pv-panel__vis pv-panel__vis--ss rv" style="--rd:.1s">
-    <div class="pv-ev3">
-      <figure class="pv-ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/evidencias.webp" alt="Fotos de evidencia de un servicio de grúa en Wip" width="1200" height="262" loading="lazy" decoding="async"></figure>
-      <figure class="pv-ev3__foto"><img src="/img/plataforma/proveedores/evidencia-foto.webp" alt="Foto de evidencia con fecha y hora" width="572" height="430" loading="lazy" decoding="async"><figcaption>Foto con fecha y hora</figcaption></figure>
-      <figure class="pv-ss pv-ss--traz"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/trazabilidad.webp" alt="Trazabilidad de los estados de un servicio en Wip" width="1181" height="280" loading="lazy" decoding="async"></figure>
-    </div>
-    <span class="pv-ss__note">Capturas reales de Wip. Datos sensibles difuminados.</span>
-  </div>
-  </div>
-</section>
-
-<section class="ep-blk ep-blk--navy ep-blk--flip" id="tecnicos">
-  <div class="wrap ep-blk__in">
-    <div class="ep-blk__copy rv">
-      <span class="ep-label"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg>Tus técnicos</span>
-      <h2 class="ep-h2">Una sola app para <em>todos</em> tus servicios.</h2>
-      <p>Los servicios de todas tus empresas y tus particulares, en la misma app. Cierran con fotos, firma y horas, listas para lo que pida cada empresa.</p>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--line" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
-    </div>
-    <div class="pv-panel__vis rv" style="--rd:.1s" aria-hidden="true">
-    <div class="pv-card">
-      <div class="pv-card__h"><b>Mis servicios de hoy</b><span>Técnico · Grúa 04</span></div>
-      <div class="pv-card__r"><span>Grúa liviana<small>Aseguradora A</small></span><em class="pv-st pv-st--go">En camino</em></div>
-      <div class="pv-card__r"><span>Cerrajería<small>Particular</small></span><em class="pv-st">En servicio</em></div>
-      <div class="pv-card__r"><span>Consulta veterinaria<small>Asistencia C</small></span><em class="pv-st pv-st--ok">Finalizado</em></div>
-      <div class="pv-ev"><span>✓ Fotos de llegada y entrega</span><span>✓ Firma del cliente</span><span>✓ Horas de cada estado</span></div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section class="ep-blk ep-blk--lime" id="cobro">
-  <div class="wrap ep-blk__in">
-    <div class="ep-blk__copy rv">
-      <span class="ep-label"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg>Del servicio al cobro</span>
-      <h2 class="ep-h2">La cuenta de cobro, <em>desde</em> el reporte.</h2>
-      <p>Con la tarifa de cada convenio aplicada sola. Llegas a los días de visado con cada servicio cerrado y su evidencia, sin armar nada a mano.</p>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--line" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
-    </div>
-    <div class="pv-panel__vis rv" style="--rd:.1s" aria-hidden="true">
-    <div class="pv-card">
-      <div class="pv-card__h"><b>Aseguradora A · octubre</b><span>Ejemplo</span></div>
-      <div class="pv-card__r"><span>Servicios cerrados</span><em>263</em></div>
-      <div class="pv-card__r"><span>Con evidencias completas</span><em>263</em></div>
-      <div class="pv-card__r"><span>Tarifa del convenio</span><em>Aplicada</em></div>
-      <div class="pv-card__r pv-card__r--total"><span>Total a cobrar</span><em>$48.620.000</em></div>
-      <div class="pv-card__into"><i class="pv-ok">✓</i><div><b>Cuenta de cobro lista</b><span>Desde el reporte del mes</span></div></div>
-    </div>
-  </div>
-  </div>
-</section>
-
-<section class="ep-nums" id="cifras">
-  <div class="wrap">
-    <span class="ep-label">Wip en números</span>
-    <h2 class="ep-h2 rv">Hecho para operaciones <em>que crecen.</em></h2>
-    <div class="ep-nums__grid">
-      <div class="ep-num rv"><b>+4 millones</b><span>de servicios gestionados en Wip</span></div>
-      <div class="ep-num rv" style="--rd:.05s"><b>+354</b><span>tipos de asistencia configurados</span></div>
-      <div class="ep-num rv" style="--rd:.1s"><b>+13</b><span>verticales en LATAM</span></div>
-      <div class="ep-num ep-num--lime rv" style="--rd:.15s"><b>24/7</b><span>Wip IA atendiendo novedades</span></div>
-    </div>
-  </div>
-</section>
-
-<section class="ep-cta" id="meli">
-  <div class="wrap ep-cta__in rv">
-    <h2 class="ep-h1">Mira lo que Wip puede hacer <em>por tu operación.</em></h2>
-    <p>Meli te responde por WhatsApp y te muestra los planes, desde $195.000 COP al mes.</p>
-    <div class="ep-ctas"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="ep-btn ep-btn--main" target="_blank" rel="noopener" data-cta="meli">Escríbele a Meli por WhatsApp</a><a href="/equipos#planes" class="ep-btn ep-btn--soft">Ver planes</a></div>
   </div>
 </section>
 
@@ -2683,6 +2622,152 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
+<section class="cs-sec" id="un-solo-lugar">
+  <div class="wrap cs-row">
+    <div class="cs-row__copy rv">
+      <h2 class="cs-h2">Todo entra a un solo lugar</h2>
+      <p>Los servicios de todas tus aseguradoras, asistencias y particulares llegan a Wip, con las reglas y la tarifa de cada convenio ya aplicadas. Sin estar pegado a cada plataforma.</p>
+    </div>
+    <div class="cs-grad cs-grad--lime rv" style="--rd:.08s">
+      <figure class="pv-ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/monitoreo.webp" alt="Monitoreo central de Wip con los servicios activos del día" width="1336" height="500" loading="lazy" decoding="async"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec" id="tecnicos">
+  <div class="wrap">
+    <div class="cs-head rv">
+      <div><h2 class="cs-h2">Tus técnicos, conectados en campo</h2><p>Una sola app para los servicios de todas tus empresas. Cada servicio cierra con fotos, firma y horas, y tú lo ves en tiempo real.</p></div>
+      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--dark" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
+    </div>
+    <div class="cs-bento">
+      <div class="cs-b cs-b--peach cs-b--wide rv"><div class="cs-b__t"><b>Una sola app</b><span>Los servicios de todas tus empresas y tus particulares, en la misma app.</span></div><div class="cs-b__v"><div class="pv-card">
+      <div class="pv-card__h"><b>Mis servicios de hoy</b><span>Técnico · Grúa 04</span></div>
+      <div class="pv-card__r"><span>Grúa liviana<small>Aseguradora A</small></span><em class="pv-st pv-st--go">En camino</em></div>
+      <div class="pv-card__r"><span>Cerrajería<small>Particular</small></span><em class="pv-st">En servicio</em></div>
+      <div class="pv-card__r"><span>Consulta veterinaria<small>Asistencia C</small></span><em class="pv-st pv-st--ok">Finalizado</em></div>
+      </div></div></div>
+      <div class="cs-b cs-b--light rv" style="--rd:.05s"><div class="cs-b__t"><b>Fotos con fecha y hora</b><span>Cada foto queda en el servicio.</span></div><div class="cs-b__v cs-b__v--img"><img src="/img/plataforma/proveedores/evidencia-foto.webp" alt="Foto de evidencia con fecha y hora" width="572" height="430" loading="lazy" decoding="async"></div></div>
+      <div class="cs-b cs-b--light rv" style="--rd:.1s"><div class="cs-b__t"><b>Firma del cliente</b><span>El cierre se firma en la app.</span></div><div class="cs-b__v"><div class="cs-sign"><svg viewBox="0 0 220 70" aria-hidden="true"><path d="M10 50c18-30 30-38 36-30s-10 34 2 30 18-36 30-32-6 30 6 28 20-24 34-22 4 20 18 18 30-12 74-14"/></svg><span>Firma del cliente</span></div></div></div>
+      <div class="cs-b cs-b--navy rv"><div class="cs-b__t"><b>Chat en cada servicio</b><span>Novedades y autorizaciones dentro del servicio, con quién autorizó qué y cuándo.</span></div></div>
+      <div class="cs-b cs-b--blue rv" style="--rd:.05s"><div class="cs-b__t"><b>Radar de técnicos</b><span>Quién está libre, en camino o en servicio.</span></div></div>
+      <div class="cs-b cs-b--lime cs-b--full rv" style="--rd:.1s"><div class="cs-b__t"><b>Tus técnicos en el mapa</b><span>Asigna al más cercano sin llamar a nadie. Captura real, nombres difuminados.</span></div><div class="cs-b__v cs-b__v--img cs-b__v--map"><img src="/img/plataforma/proveedores/radar.webp" alt="Radar de Wip con técnicos en el mapa" width="1128" height="550" loading="lazy" decoding="async"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec" id="novedades">
+  <div class="wrap">
+    <div class="cs-head rv">
+      <div><h2 class="cs-h2">Resuelve novedades, rápido</h2><p>Wip IA atiende las novedades y te ayuda con las autorizaciones. Tu call solo resuelve lo que necesita criterio.</p></div>
+      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--dark" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
+    </div>
+    <div class="cs-tabs rv" data-rail>
+      <ul class="ap-rail__track cs-tabs__track">
+        <li class="cs-tab"><div class="cs-tab__h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 16H3z"/><path d="M12 10v4M12 17h.01"/></svg><b>Novedad</b></div><div class="cs-tab__b"><div class="cs-bub"><small>Técnico</small>El cliente no está en el sitio.</div><div class="cs-bub cs-bub--me"><small>Wip IA</small>Lo llamo y le aviso a la empresa.</div></div></li>
+        <li class="cs-tab"><div class="cs-tab__h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l4 4 10-10"/></svg><b>Autorización</b></div><div class="cs-tab__b"><div class="cs-bub"><small>Técnico</small>Son 8 km adicionales.</div><div class="cs-bub cs-bub--me"><small>Wip IA</small>Dejo la autorización lista para tu equipo.</div></div></li>
+        <li class="cs-tab"><div class="cs-tab__h"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="7" r="3.5"/><path d="M5 21v-2a7 7 0 0 1 14 0v2"/></svg><b>Asignación</b></div><div class="cs-tab__b"><div class="cs-bub cs-bub--me"><small>Wip IA</small>Grúa 04 es la más cercana, a 12 min.</div><div class="cs-bub"><small>Base</small>Asignado.</div></div></li>
+        <li class="cs-tab"><div class="cs-tab__h"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20l1.5-4A8 8 0 1 1 8 18.5z"/></svg><b>Aviso al cliente</b></div><div class="cs-tab__b"><div class="cs-bub cs-bub--me"><small>Wip IA</small>Tu grúa va en camino, llega en 12 min.</div></div></li>
+        <li class="cs-tab"><div class="cs-tab__h"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h4"/></svg><b>Pega el pantallazo</b></div><div class="cs-tab__b"><div class="cs-mini"><kbd>Ctrl</kbd>+<kbd>V</kbd><span>Servicio creado con origen, destino, placa, tarifa y ANS.</span></div></div></li>
+      </ul>
+      <div class="wrap ap-rail__nav"><button type="button" class="ap-arrow" data-dir="-1" aria-label="Anterior"></button><button type="button" class="ap-arrow" data-dir="1" aria-label="Siguiente"></button></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec" id="cobro">
+  <div class="wrap">
+    <div class="cs-head rv">
+      <div><h2 class="cs-h2">Del servicio al cobro</h2><p>Cada servicio queda cerrado, con su evidencia y la tarifa de su convenio. Llegas a los días de visado con todo listo.</p></div>
+      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--dark" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
+    </div>
+    <div class="cs-bento cs-bento--3">
+      <div class="cs-b cs-b--lime cs-b--tall rv"><div class="cs-b__t"><b>La cuenta de cobro, desde el reporte</b><span>Con la tarifa de cada convenio aplicada sola.</span></div><div class="cs-b__v"><div class="pv-card">
+      <div class="pv-card__h"><b>Aseguradora A · octubre</b><span>Ejemplo</span></div>
+      <div class="pv-card__r"><span>Servicios cerrados</span><em>263</em></div>
+      <div class="pv-card__r"><span>Con evidencias completas</span><em>263</em></div>
+      <div class="pv-card__r"><span>Tarifa del convenio</span><em>Aplicada</em></div>
+      <div class="pv-card__r pv-card__r--total"><span>Total a cobrar</span><em>$48.620.000</em></div>
+      <div class="pv-card__into"><i class="pv-ok">✓</i><div><b>Cuenta de cobro lista</b><span>Desde el reporte del mes</span></div></div>
+</div></div></div>
+      <div class="cs-b cs-b--light rv" style="--rd:.05s"><div class="cs-b__t"><b>Tarifado de cada cliente</b><span>Cada aseguradora con su lista de tarifas, sus reglas y su ANS.</span></div></div>
+      <div class="cs-b cs-b--navy rv" style="--rd:.1s"><div class="cs-b__t"><b>Listo para el visado</b><span>Servicios cerrados con fotos, firma y horas.</span></div><span class="cs-tag">Evidencias completas</span></div>
+      <div class="cs-b cs-b--light cs-b--wide2 rv"><div class="cs-b__t"><b>Trazabilidad de cada estado</b><span>Cada cambio con su hora y su responsable. Captura real, datos difuminados.</span></div><div class="cs-b__v cs-b__v--img"><img src="/img/plataforma/proveedores/trazabilidad.webp" alt="Trazabilidad de los estados de un servicio en Wip" width="1181" height="280" loading="lazy" decoding="async"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec" id="pantallazo">
+  <div class="wrap cs-row cs-row--flip">
+    <div class="cs-row__copy rv">
+      <span class="cs-k">Sin integración</span>
+      <h2 class="cs-h2">Pega el pantallazo</h2>
+      <p>Wip lee el servicio de la plataforma de tu empresa y lo crea con todos sus datos.</p>
+      <ul class="cs-checks"><li>Origen y destino</li><li>Placa y tipo de servicio</li><li>Tarifa del convenio y ANS</li></ul>
+    </div>
+    <div class="cs-grad cs-grad--navy rv" style="--rd:.08s">
+      <div class="pv-shot">
+      <div class="pv-shot__img"><b>Plataforma Aseguradora B</b>Servicio 88213 · Grúa liviana<br>Origen: Av. Boyacá con Cl. 13<br>Destino: Taller Autoexpress<br>Placa: DFR 219 · ANS 45 min</div>
+      <div class="pv-shot__keys"><kbd>Ctrl</kbd>+<kbd>V</kbd><span>en Wip</span></div>
+      <div class="pv-card pv-card--sm">
+        <div class="pv-card__h"><b>Servicio creado en Wip</b><span class="pv-tag">Aseguradora B</span></div>
+        <div class="pv-card__r"><span>Servicio</span><em>Grúa liviana · 88213</em></div>
+        <div class="pv-card__r"><span>Origen</span><em>Av. Boyacá con Cl. 13</em></div>
+        <div class="pv-card__r"><span>Convenio</span><em>Tarifa $185.000 · ANS 45 min</em></div>
+      </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec" id="wip-ia">
+  <div class="wrap cs-row">
+    <div class="cs-row__copy rv">
+      <span class="cs-k">Wip IA</span>
+      <h2 class="cs-h2">Tu call, acompañado 24/7</h2>
+      <p>Wip IA trabaja con las reglas de tu operación, también de madrugada.</p>
+      <ul class="cs-checks"><li>Atiende la novedad</li><li>Te ayuda con la autorización</li><li>Asigna al técnico y avisa al cliente</li></ul>
+    </div>
+    <div class="cs-grad cs-grad--lime rv" style="--rd:.08s">
+      <ul class="pv-checks">
+      <li><i></i><span>Atiende la novedad<small>El cliente no está, cambia el destino o pide un servicio adicional</small></span></li>
+      <li><i></i><span>Te ayuda con la autorización<small>La pide a la empresa si hay integración; si no, la deja lista para tu equipo</small></span></li>
+      <li><i></i><span>Asigna al técnico<small>Según tus reglas: cercanía, turno y tipo de servicio</small></span></li>
+      <li><i></i><span>Avisa al cliente en vivo<small>Quién va, cuándo llega y el cierre</small></span></li>
+    </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec" id="dia-a-dia">
+  <div class="wrap">
+    <h2 class="cs-h2 cs-h2--c rv">Hecho para el día a día de un proveedor</h2>
+    <div class="cs-mini-grid">
+      <div class="cs-m rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9H3z"/><path d="M9 20v-6h6v6"/></svg><b>Particulares también</b><span>Los servicios que te llegan por llamada o WhatsApp, en el mismo lugar.</span></div>
+      <div class="cs-m rv" style="--rd:.05s"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><path d="M11 18h2"/></svg><b>Una app por técnico</b><span>No una app por empresa.</span></div>
+      <div class="cs-m rv" style="--rd:.1s"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2z"/><path d="M9 8h6M9 12h6"/></svg><b>Tarifado por cliente</b><span>Las reglas de cada convenio, aplicadas solas.</span></div>
+      <div class="cs-m rv"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6 7-11a7 7 0 0 0-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><b>Radar</b><span>Tus técnicos en el mapa, en tiempo real.</span></div>
+      <div class="cs-m rv" style="--rd:.05s"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><b>Chat del servicio</b><span>Con tu técnico y con la empresa, en el servicio.</span></div>
+      <div class="cs-m rv" style="--rd:.1s"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="4"/></svg><b>Wip IA</b><span>Novedades y autorizaciones, a cualquier hora.</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-sec" id="planes">
+  <div class="wrap cs-price rv">
+    <div>
+      <h2 class="cs-h2">Planes para tu operación</h2>
+      <p>Meli te responde por WhatsApp, te muestra los planes y te ayuda a empezar.</p>
+    </div>
+    <div class="cs-price__card">
+      <span class="cs-k">Wip Proveedores</span>
+      <div class="cs-price__n"><small>desde</small> $195.000 <small>COP al mes</small></div>
+      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a>
+      <a href="/equipos#planes" class="cs-more">Ver todos los planes <span aria-hidden="true">›</span></a>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== FAQ ===================== -->
 <section class="sec" id="faq" style="padding-top:0">
   <div class="wrap">
@@ -2695,6 +2780,14 @@ window.addEventListener('message',function(e){
       <details name="faq"><summary>¿Cómo saco la cuenta de cobro?</summary><p>Sale del reporte: Wip junta los servicios del periodo por empresa, con la tarifa de cada convenio aplicada, las horas y las evidencias de cierre.</p></details>
       <details name="faq"><summary>¿Cuánto cuesta Wip para un proveedor?</summary><p>Hay planes mensuales según tu volumen de servicios, desde $195.000 COP al mes. Meli te los explica por WhatsApp.</p></details>
     </div>
+  </div>
+</section>
+
+<section class="cs-final" id="meli">
+  <div class="wrap cs-final__in rv">
+    <img src="/img/wip-logo-lima-554349d3.png" alt="" width="108" height="60" loading="lazy">
+    <h2 class="cs-h1">Presta más servicios.<br><span>Con el mismo equipo.</span></h2>
+    <div class="cs-ctas"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a><a href="/equipos#planes" class="cs-btn cs-btn--ghost">Ver planes</a></div>
   </div>
 </section>
 
