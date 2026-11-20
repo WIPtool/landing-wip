@@ -138,6 +138,8 @@ body{
   background:#EEF1F4;border-radius:999px;padding:.42cqw .95cqw;
 }
 .chip.lime{background:rgba(200,235,84,.35);color:var(--ink)}
+a.chip.demo{background:var(--ink);color:#fff;text-decoration:none;white-space:nowrap}
+a.chip.demo:hover{background:var(--ink-soft)}
 
 /* ---------- REQ BLOCK ---------- */
 .req{display:flex;gap:1.5cqw;padding:1.35cqw 0;border-top:1px solid var(--line-soft)}
@@ -172,6 +174,8 @@ body{
 .tbl td .st-prog{background:rgba(59,130,246,.14);color:#1D4ED8}
 .tbl td .st-wait{background:#EEF1F4;color:var(--ink-soft)}
 .tbl td .st-appr{background:rgba(245,158,11,.16);color:#A15C07}
+.tbl td .st-ok{background:rgba(95,190,46,.16);color:#3C8A16}
+.tbl td .st-no{background:rgba(229,56,59,.12);color:#B42318}
 .tbl td .note{display:block;padding-left:2.05cqw;font-weight:500;color:var(--gray);font-size:.9cqw;margin-top:.15cqw}
 .tbl.compact th{white-space:nowrap;padding-bottom:.6cqw}
 .tbl.compact td{padding:.3cqw 1cqw;line-height:1.2}
@@ -242,14 +246,15 @@ body{
 .grow-row{display:grid;grid-template-columns:21cqw 1fr;align-items:center;gap:1.1cqw}
 .gname{font-size:1.05cqw;font-weight:600;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .gtrack{position:relative;height:1.75cqw;background:#EFF1F4;border-radius:.5cqw;overflow:hidden}
-.gtrack .glines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(8.3333% - 1px),#E3E6EC calc(8.3333% - 1px),#E3E6EC 8.3333%)}
-.gbar{position:absolute;top:.2cqw;bottom:.2cqw;left:calc(var(--s) * 8.3333%);width:calc(var(--n) * 8.3333%);border-radius:.4cqw;background:linear-gradient(90deg,var(--lime-deep),var(--lime));box-shadow:0 1px 2px rgba(22,29,49,.08);display:flex;align-items:center;justify-content:center}
+.gtrack .glines{position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(100% / var(--cols,12) - 1px),#E3E6EC calc(100% / var(--cols,12) - 1px),#E3E6EC calc(100% / var(--cols,12)))}
+.gbar{position:absolute;top:.2cqw;bottom:.2cqw;left:calc(var(--s) * 100% / var(--cols,12));width:calc(var(--n) * 100% / var(--cols,12));border-radius:.4cqw;background:linear-gradient(90deg,var(--lime-deep),var(--lime));box-shadow:0 1px 2px rgba(22,29,49,.08);display:flex;align-items:center;justify-content:center}
 .gbar span{font-size:.82cqw;font-weight:700;color:var(--ink);opacity:.75}
 .gmonths{display:flex;gap:.45cqw}
 .gmonths span{flex:1;text-align:center;font-size:1.0cqw;font-weight:700;color:var(--ink);background:rgba(200,235,84,.32);border-radius:.5cqw;padding:.42cqw 0;letter-spacing:.01em}
 .gweeks{display:flex}
 .gweeks span{flex:1;text-align:center;font-size:.8cqw;color:var(--muted);font-weight:600}
 .gcap .gname{color:var(--muted);font-weight:600;font-size:.9cqw}
+.gp{display:inline-block;min-width:1.9cqw;margin-right:.45cqw;padding:.08cqw .35cqw;border-radius:.3cqw;background:rgba(200,235,84,.45);color:var(--ink);font-size:.72cqw;font-weight:700;text-align:center}
 
 /* ---------- SHOT SLIDES (capturas) ---------- */
 .shot-slide .pad{display:flex;flex-direction:column}
@@ -490,7 +495,7 @@ body{
       <div class="shot-head">
         <div class="rn">11</div>
         <div class="rc"><h4>Reporte detallado de costos</h4><p>Al editar un servicio, cada opción muestra su valor (p. ej. 5 km → $18.500; grúa planchón liviano → $70.000). Al exportar en WIP, los valores se desglosan por ítem para ver el total con el detalle de cada servicio.</p></div>
-        <div class="rmeta"><span class="chip lime">17 horas</span><span class="chip">4 semanas</span></div>
+        <div class="rmeta"><span class="chip lime">17 horas</span><span class="chip">2 semanas</span></div>
       </div>
       <div class="shot"><img loading="lazy" decoding="async" src="/img/formulario-de-servicio-con-el-va-1cb76ab9.jpg" alt="Formulario de servicio con el valor desglosado por ítem"></div>
     </div>
@@ -504,7 +509,7 @@ body{
       <div class="shot-head">
         <div class="rn">12</div>
         <div class="rc"><h4>Revisión de porcentajes: fallidos locales y carreteros</h4><p>Ajustamos las tarifas automáticas para reconocer qué valores debe asumir en los servicios fallidos según sean locales o carreteros, multiplicando los porcentajes correspondientes según las variables de cada caso.</p></div>
-        <div class="rmeta"><span class="chip lime">15 horas</span><span class="chip">3 semanas</span></div>
+        <div class="rmeta"><span class="chip lime">15 horas</span><span class="chip">2 semanas</span><a class="chip demo" href="/cotizaciones/asisya01/tarifas" target="_blank" rel="noopener">Probar la solución →</a></div>
       </div>
       <div class="shot"><img loading="lazy" decoding="async" src="/img/configuracion-de-tarifado-automa-b8f1b96e.jpg" alt="Configuración de tarifado automático: porcentajes local vs. foráneo"></div>
     </div>
@@ -518,7 +523,7 @@ body{
       <div class="shot-head">
         <div class="rn">13</div>
         <div class="rc"><h4>Bloqueo de campos y perfiles con nivel de autorización</h4><p>“Costo final” queda bloqueado cuando el servicio pasa a “Autorizado para facturación: Sí”, y “Facturado por el proveedor” solo se diligencia mediante carga masiva del reporte de facturación. Solo perfiles autorizados aprueban costos para facturación o los mueven según reglas definidas: Perfil 1 · Básico Call Center (con limitaciones), Perfil 2 · Auditoría y control de operaciones (aprobación de servicios) y Perfil 3 · Súper usuario.</p></div>
-        <div class="rmeta"><span class="chip lime">22 horas</span><span class="chip">4 semanas</span></div>
+        <div class="rmeta"><span class="chip lime">22 horas</span><span class="chip">2 semanas</span><a class="chip demo" href="/cotizaciones/asisya01/tarifas" target="_blank" rel="noopener">Probar la solución →</a></div>
       </div>
       <div class="shot"><img loading="lazy" decoding="async" src="/img/bloqueo-de-campos-autorizado-fact-3d7a91c2.jpg" alt="Campos Autorizado para facturación y Facturado por el proveedor en la edición del servicio"></div>
     </div>
@@ -532,7 +537,7 @@ body{
       <div class="shot-head">
         <div class="rn">14</div>
         <div class="rc"><h4>Km adicional en tarifados automáticos</h4><p>Cada grupo de tarifado automático cobra los kilómetros según los <b>km estimados</b> de la ruta (km estimated, predeterminado) o los <b>km reales</b> recorridos (km current). Se define un mínimo de km incluidos en el valor base; si el servicio lo supera, cada km por encima se cobra al valor del km adicional. Los km se cobran siempre hacia arriba: 3 km → 3 km; 3,1 km → 4 km; 3,9 km → 4 km; 4 km → 4 km.</p></div>
-        <div class="rmeta"><span class="chip lime">12 horas</span><span class="chip">2 semanas</span></div>
+        <div class="rmeta"><span class="chip lime">12 horas</span><span class="chip">2 semanas</span><a class="chip demo" href="/cotizaciones/asisya01/tarifas" target="_blank" rel="noopener">Probar la solución →</a></div>
       </div>
       <div class="shot" style="display:flex;align-items:center;justify-content:center"><div style="height:100%;max-width:100%;aspect-ratio:1414/680;overflow:hidden"><img loading="lazy" decoding="async" style="height:auto;margin-top:-43.85%" src="/img/km-adicional-tarifado-automatico-070bc977.webp" alt="Crear grupo de tarifado automático con el cálculo de km: tipo de km, km mínimos incluidos y valor por km adicional"></div></div>
     </div>
@@ -554,15 +559,15 @@ body{
           <tr><td class="dev"><span class="tn">04</span>Integración Perito Ya <span class="st st-wait">Espera del orden por Asisya</span></td><td class="n">24</td><td class="n">$3.360.000</td><td class="inc">$3.360.000</td><td class="z"></td></tr>
           <tr><td class="dev"><span class="tn">05</span>Formularios (usabilidad) <span class="st st-done">Desarrollo finalizado</span></td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
           <tr><td class="dev"><span class="tn">06</span>APIs Simón <span class="st st-done">Desarrollo finalizado</span></td><td class="n">6</td><td class="n">$840.000</td><td class="inc">$840.000</td><td class="z"></td></tr>
-          <tr><td class="dev"><span class="tn">07</span>Usuarios activos en tiempo real <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
-          <tr><td class="dev"><span class="tn">08</span>Alertas de casos sin proveedor <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">27</td><td class="n">$3.780.000</td><td class="z"></td><td class="add">$3.780.000</td></tr>
+          <tr><td class="dev"><span class="tn">07</span><s class="strike">Usuarios activos en tiempo real</s> <span class="st st-no">No aprobado</span></td><td class="n"><s class="strike">27</s></td><td class="n"><s class="strike">$3.780.000</s></td><td class="z"></td><td class="add"><s class="strike">$3.780.000</s></td></tr>
+          <tr><td class="dev"><span class="tn">08</span><s class="strike">Alertas de casos sin proveedor</s> <span class="st st-no">No aprobado</span></td><td class="n"><s class="strike">27</s></td><td class="n"><s class="strike">$3.780.000</s></td><td class="z"></td><td class="add"><s class="strike">$3.780.000</s></td></tr>
           <tr><td class="dev"><span class="tn">09</span>Estadísticas en pestañas de servicio <span class="st st-done">Desarrollo finalizado</span></td><td class="n">12</td><td class="n">$1.680.000</td><td class="inc">$1.680.000</td><td class="z"></td></tr>
           <tr><td class="dev"><span class="tn">10</span>Módulo de gráficas <span class="st st-prog">Desarrollo en curso</span></td><td class="n">90</td><td class="n">$12.600.000</td><td class="inc">$12.600.000</td><td class="z"></td></tr>
-          <tr><td class="dev"><span class="tn">11</span>Reporte detallado de costos <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
-          <tr><td class="dev"><span class="tn">12</span>Revisión de fallidos (locales/carreteros) <span class="st st-appr">Espera de aprobación por Asisya</span></td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
-          <tr><td class="dev"><span class="tn">13</span>Bloqueo de campos y perfiles de autorización  <span class="st st-appr">Espera de aprobación por Asisya</span><span class="note">(incluido si se invierte en todos los otros desarrollos)</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add"><s class="strike">$3.080.000</s></td></tr>
+          <tr><td class="dev"><span class="tn">11</span>Reporte detallado de costos <span class="st st-ok">Aprobado por Asisya</span></td><td class="n">17</td><td class="n">$2.380.000</td><td class="z"></td><td class="add">$2.380.000</td></tr>
+          <tr><td class="dev"><span class="tn">12</span>Revisión de fallidos (locales/carreteros) <span class="st st-ok">Aprobado por Asisya</span></td><td class="n">15</td><td class="n">$2.100.000</td><td class="z"></td><td class="add">$2.100.000</td></tr>
+          <tr><td class="dev"><span class="tn">13</span>Bloqueo de campos y perfiles de autorización <span class="st st-ok">Aprobado por Asisya</span></td><td class="n">22</td><td class="n">$3.080.000</td><td class="z"></td><td class="add">$3.080.000</td></tr>
           <tr><td class="dev"><span class="tn">14</span>Km adicional en tarifados automáticos <span class="st st-wait">Por iniciar</span></td><td class="n">12</td><td class="n">$1.680.000</td><td class="inc">$1.680.000</td><td class="z"></td></tr>
-          <tr class="total"><td>Total</td><td class="n">330</td><td class="n">$46.200.000</td><td class="inc">$31.080.000</td><td class="add">$12.040.000</td></tr>
+          <tr class="total"><td>Total</td><td class="n">276</td><td class="n">$38.640.000</td><td class="inc">$31.080.000</td><td class="add">$7.560.000</td></tr>
         </tbody>
       </table>
       <div class="footmark">Valor hora de desarrollo WIP · $140.000 COP · Valores sin IVA · Los desarrollos no incluidos se desarrollan en paralelo con los incluidos</div>
@@ -575,16 +580,20 @@ body{
       <div class="top"><div class="eyebrow"><b>Asisya</b> · Cronograma · Powered by WIP</div></div>
       <span class="badge mt-s">Cronograma</span>
       <h2 class="h-sec mt-s" style="font-size:3.4cqw">Plan de trabajo</h2>
-      <div class="gantt">
-        <div class="grow-row gcap"><span class="gname"></span><div class="gmonths"><span>Mes 1 · Septiembre</span><span>Mes 2 · Octubre</span><span>Mes 3 · Noviembre</span></div></div>
-        <div class="grow-row gcap"><span class="gname">Semana</span><div class="gweeks"><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span><span>1</span><span>2</span><span>3</span><span>4</span></div></div>
-        <div class="grow-row"><span class="gname">06 · APIs Simón</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:1"><span>1 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">05 · Formularios usables</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:1;--n:1"><span>1 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">09 · Estadísticas en servicio</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:2;--n:2"><span>2 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">10 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:4;--n:4"><span>4 sem</span></div></div></div>
-        <div class="grow-row"><span class="gname">14 · Km adicional en tarifados</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:8;--n:2"><span>2 sem</span></div></div></div>
+      <div class="gantt" style="--cols:19">
+        <div class="grow-row gcap"><span class="gname"></span><div class="gmonths"><span style="flex:4">Octubre</span><span style="flex:5">Noviembre</span><span style="flex:4">Diciembre</span><span style="flex:4">Enero 2027</span><span style="flex:2">Febrero</span></div></div>
+        <div class="grow-row gcap"><span class="gname">Semana del lunes</span><div class="gweeks"><span>5</span><span>12</span><span>19</span><span>26</span><span>2</span><span>9</span><span>16</span><span>23</span><span>30</span><span>7</span><span>14</span><span>21</span><span>28</span><span>4</span><span>11</span><span>18</span><span>25</span><span>1</span><span>8</span></div></div>
+        <div class="grow-row"><span class="gname">10 · Módulo de gráficas</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:0;--n:4"><span>Octubre</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>11 · Reporte detallado de costos</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:6.8;--n:2.2"><span>20 nov – 4 dic</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>12 · Revisión de fallidos</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:6.8;--n:2.2"><span>20 nov – 4 dic</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>14 · Km adicional en tarifados</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:6.8;--n:2.2"><span>20 nov – 4 dic</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P1</span>13 · Bloqueo de campos y perfiles</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:9;--n:2"><span>7 – 18 dic</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P2</span>04 · Integración Perito Ya</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:7;--n:3"><span>23 nov – 11 dic</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P3</span>01 · Integración Sigma</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:10;--n:3"><span>14 dic – 1 ene</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P4</span>02 · Integración Mawdy</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:13;--n:3"><span>4 – 22 ene</span></div></div></div>
+        <div class="grow-row"><span class="gname"><span class="gp">P5</span>03 · Integración Connect</span><div class="gtrack"><div class="glines"></div><div class="gbar" style="--s:16;--n:3"><span>25 ene – 12 feb</span></div></div></div>
       </div>
-      <div class="footmark">Los desarrollos no se ejecutan en simultánea: se distribuyen por meses según su duración.</div>
+      <div class="footmark">11, 12 y 14 en paralelo desde el 20 de noviembre hasta el 4 de diciembre; luego el bloqueo de campos, hasta el 18 de diciembre. En paralelo, desde el 23 de noviembre, las integraciones de 3 semanas cada una.</div>
     </div>
     <div class="pagenum">18</div>
   </section>

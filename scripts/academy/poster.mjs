@@ -36,7 +36,7 @@ body{width:1080px;background:var(--surface)}
 .poster__top h1{color:#fff;font-size:44px}
 .poster__top p{margin-top:12px;font-size:19px;color:rgba(255,255,255,.85)}
 .steps{grid-template-columns:repeat(${g.web ? 2 : 3},1fr);gap:18px;margin:28px 28px 0;padding:0}
-.step--done{grid-column:${g.web ? '1/-1' : 'auto'};justify-content:center}
+.step--done{grid-column:auto;justify-content:center}
 .step--done h3{font-size:22px}
 .poster__foot{text-align:center;padding:28px 24px 36px;font-size:17px;color:var(--navy-soft)}
 .poster__foot b{color:var(--navy)}

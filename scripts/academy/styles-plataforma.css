@@ -9,7 +9,9 @@
 .screen::before{content:"";position:absolute;top:7px;left:10px;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.35);box-shadow:11px 0 0 rgba(255,255,255,.35),22px 0 0 rgba(255,255,255,.35)}
 .screen img,.screen__ph{width:100%;height:auto;aspect-ratio:16/10;border-radius:6px;background:#fff;object-fit:cover;object-position:top left}
 .screen__ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:var(--surface-low);color:var(--navy-soft);font-size:13px;font-weight:600}
-/* Paso final: mismo tratamiento que en la guia del colaborador, con lista y captura */
+/* Paso final: mismo tratamiento que en la guia del colaborador, con lista y captura. Ocupa una celda
+   (no toda la fila) para que los 7 pasos + el final queden en filas de 2 sin una tarjeta sola. */
+.steps--web .step--done{grid-column:auto}
 .step--done .step__list{list-style:none;display:grid;gap:8px;max-width:600px;margin:12px auto 22px;text-align:left}
 .step--done .step__list li{position:relative;padding-left:20px;font-size:15.5px;color:rgba(255,255,255,.82)}
 .step--done .step__list li::before{content:"";position:absolute;left:2px;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--lime)}

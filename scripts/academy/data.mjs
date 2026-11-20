@@ -279,7 +279,7 @@ export const courses = [
 // img: captura en public/img/academy/app/<img>.jpg (540x1200).
 export const appSteps = [
   { img: '1-buscar-wip', title: 'Busca “Wip” en la Play Store', text: 'Abre la Play Store en tu celular y escribe “wip” en el buscador.' },
-  { img: '2-wip-colaboradores', title: 'Instala “Wip colaboradores”', text: 'En los resultados aparece Wip colaboradores. Tócala y presiona Instalar.' },
+  { img: '2-wip-colaboradores', title: 'Instala “Wip colaboradores”', text: 'En los resultados aparece Wip colaboradores. Tócala y presiona Instalar (o Abrir, si ya la tenías).' },
   { img: '3-registrate', title: 'Abre la app y toca “Regístrate”', text: 'Cuando termine la descarga, abre la app y, debajo de Iniciar sesión, toca Regístrate.' },
   { img: '4-registro', title: 'Completa tus datos', text: 'Escribe tu correo, tu nombre y tu apellido, y sigue los pasos hasta terminar el registro.' },
   { img: '5-permisos', title: 'Permite notificaciones y ubicación', text: 'Al ingresar a la app, acepta los permisos de notificaciones y de ubicación. La app te muestra cómo dejar la ubicación activa todo el tiempo y precisa: sigue esos pasos.' },
@@ -292,8 +292,7 @@ export const appSteps = [
 // Guia para operadores (plataforma web, capturas de escritorio en public/img/academy/plataforma/).
 // En los textos, **x** es un boton o etiqueta de la plataforma (va en negrita, tal cual) y [x](url) un enlace.
 export const webSteps = [
-  { img: '1-entrar', title: 'Entra a la plataforma', text: 'Abre [https://platform.wiptool.com/login](https://platform.wiptool.com/login) en el navegador de tu computador.' },
-  { img: '2-crear-cuenta', title: 'Crea tu cuenta', text: 'Toca **Crear Cuenta**, en el panel de la izquierda, o **Regístrate**, debajo de **Iniciar sesión**. Si ya tienes cuenta en WIP, inicia sesión y pasa al paso 6.' },
+  { img: '2-crear-cuenta', title: 'Entra a la plataforma y crea tu cuenta', text: 'Abre [https://platform.wiptool.com/login](https://platform.wiptool.com/login) en el navegador de tu computador y toca **Crear Cuenta**, en el panel de la izquierda, o **Regístrate**, debajo de **Iniciar sesión**. Si ya tienes cuenta en WIP, inicia sesión y pasa al paso 5.' },
   { img: '3-datos', title: 'Escribe tus datos', text: 'Escribe tu correo, tu nombre y tus apellidos, y toca **Siguiente**.' },
   { img: '4-verificar-correo', title: 'Verifica tu correo', text: 'Te llega un código a tu correo. Escríbelo y toca **Siguiente**. Si no te llega, revisa la carpeta de spam o toca **Reenviar correo electrónico de verificación**.' },
   { img: '5-contrasena', title: 'Crea tu contraseña', text: 'Escribe tu contraseña, confírmala y toca **Finalizar**. La plataforma te lleva de nuevo al inicio de sesión.' },

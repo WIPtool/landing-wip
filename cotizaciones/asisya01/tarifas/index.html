@@ -1,0 +1,1292 @@
+<!doctype html><html lang="es"><head><meta name="robots" content="noindex, nofollow"><meta charset="utf-8"><title>Tarifas automáticas · Asisya · WIP</title><link rel="icon" type="image/png" href="/favicon.png"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+<style>
+  /* Layout: the rate card editor on the left reads top to bottom like a receipt; the live receipt stays pinned on the right. */
+  :root {
+    --bg: #f3f4f8; --surface: #ffffff; --surface-2: #f7f8fb; --ink: #1b2140; --muted: #666e85; --line: #e1e4ee;
+    --primary: #1b2140; --primary-ink: #ffffff; --accent: #c6ee1c; --accent-ink: #1b2140; --accent-soft: #f2fbd0;
+    --note-bg: #fff5e6; --note-line: #f3c98f; --neg: #b83a2a; --inherit: #9aa1b5; --focus: #4f63ff;
+    --font: 'Montserrat', 'Segoe UI', system-ui, -apple-system, Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1224; --surface: #171c35; --surface-2: #1e2442; --ink: #eef0f9; --muted: #a3aac2; --line: #2d3458;
+      --primary: #c6ee1c; --primary-ink: #141932; --accent: #c6ee1c; --accent-ink: #141932; --accent-soft: #2a3320;
+      --note-bg: #382c15; --note-line: #7a5b22; --neg: #ff9484; --inherit: #7f87a8; --focus: #9aa6ff;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1224; --surface: #171c35; --surface-2: #1e2442; --ink: #eef0f9; --muted: #a3aac2; --line: #2d3458;
+    --primary: #c6ee1c; --primary-ink: #141932; --accent: #c6ee1c; --accent-ink: #141932; --accent-soft: #2a3320;
+    --note-bg: #382c15; --note-line: #7a5b22; --neg: #ff9484; --inherit: #7f87a8; --focus: #9aa6ff;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font); font-size: 14px; line-height: 1.45; }
+  .page { max-width: 1360px; margin: 0 auto; padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: flex; flex-direction: column; gap: 20px; }
+  h1 { font-size: 26px; font-weight: 700; margin: 0; letter-spacing: -0.01em; text-wrap: balance; }
+  h2 { font-size: 16px; font-weight: 700; margin: 0; }
+  p { margin: 0; }
+  .lede { color: var(--muted); max-width: 68ch; }
+  .muted { color: var(--muted); }
+  .small { font-size: 12px; }
+  button, input, select { font: inherit; color: inherit; }
+  :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+  .intro { display: flex; flex-direction: column; gap: 14px; }
+  .back { align-self: flex-start; color: var(--muted); font-size: 13px; font-weight: 600; text-decoration: none; }
+  .back:hover { color: var(--ink); text-decoration: underline; }
+
+  .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 410px); gap: 20px; align-items: start; }
+  .editor { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+  .receipt { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); max-height: calc(100dvh - 24px); overflow-y: auto; min-width: 0; display: flex; flex-direction: column; gap: 16px; }
+  @media (max-width: 980px) { .cols { grid-template-columns: minmax(0, 1fr); } .receipt { position: static; max-height: none; overflow: visible; } }
+  /* On a narrow window the receipt drops to the bottom of the page: this bar keeps the value in sight and leads to it. */
+  .bar { display: none; }
+  @media (max-width: 980px) {
+    .bar { display: flex; position: sticky; bottom: 0; z-index: 5; align-items: center; justify-content: space-between; gap: 8px 12px; flex-wrap: wrap; background: var(--primary); color: var(--primary-ink); border-radius: 12px 12px 0 0; padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)); }
+    .bar .amount { font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; margin-left: 6px; }
+    .bar button { border: 1px solid currentColor; background: transparent; color: inherit; border-radius: 8px; padding: 6px 12px; font-weight: 600; cursor: pointer; }
+  }
+
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .card-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 12px; }
+  .step { color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+  .scroll { overflow-x: auto; }
+
+  .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+  @media (min-width: 720px) { .meta .wide { grid-column: span 2; } }
+  .field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+  .field > span:first-child { font-size: 12px; font-weight: 600; color: var(--muted); }
+  input.txt, select.sel { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; width: 100%; min-width: 0; }
+  .txt.num { text-align: right; font-variant-numeric: tabular-nums; width: 100px; }
+  .txt.num.short { width: 58px; }
+  .svc .txt, .meta .txt { width: 100%; }
+  .row .sel, .over .sel { width: auto; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { display: inline-flex; align-items: center; border-radius: 999px; padding: 2px 9px; font-size: 12px; font-weight: 600; background: var(--surface-2); border: 1px solid var(--line); white-space: nowrap; }
+  .chip.kind { background: var(--accent-soft); border-color: transparent; }
+  .check { display: inline-flex; align-items: center; gap: 6px; font-size: 12.5px; cursor: pointer; }
+  .refs { display: flex; flex-wrap: wrap; gap: 6px 14px; flex: 1 1 100%; }
+  .zones { display: flex; flex-direction: column; gap: 10px; }
+  .zone { display: flex; flex-direction: column; gap: 8px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); padding: 10px 12px; }
+  .zhead { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .zhead select.sel { width: auto; }
+  .zone .txt.zname { width: 240px; max-width: 100%; font-weight: 600; }
+  .zone .txt.zsearch { max-width: 360px; }
+  .zchips, .zsug { display: flex; flex-wrap: wrap; gap: 6px; }
+  .zchips .chip, .sug { white-space: normal; text-align: left; }
+  .zsug .hint { flex: 1 1 100%; }
+  .grip { cursor: grab; color: var(--muted); font-size: 16px; line-height: 1; padding: 4px 2px; user-select: none; }
+  .lname { font-weight: 700; padding: 4px 6px; flex: 1 1 150px; max-width: 260px; }
+  .line.dragging { opacity: 0.45; }
+  .line.over-up { box-shadow: 0 -3px 0 var(--focus); }
+  .line.over-down { box-shadow: 0 3px 0 var(--focus); }
+  .line.aside { background: var(--surface); border-style: dashed; }
+  .line .sum { font-weight: 600; }
+  #layer { display: flex; flex-direction: column; gap: 6px; }
+  .trules { display: flex; flex-direction: column; gap: 10px; flex: 1 1 100%; }
+  .trule { border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 10px 12px; display: flex; flex-direction: column; gap: 8px; }
+  .trule .tlabel { width: 112px; font-size: 12px; font-weight: 600; color: var(--muted); }
+  .trule .txt.clock { width: 124px; }
+  .trule .txt.tname { max-width: 280px; font-weight: 600; }
+  .svc .wide { grid-column: 1 / -1; }
+  .chip .x { border: 0; background: transparent; cursor: pointer; margin-left: 4px; padding: 0 2px; font-size: 11px; color: var(--muted); }
+  .sug { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 3px 10px; font-size: 12.5px; cursor: pointer; }
+  .sug:disabled { opacity: 0.55; cursor: default; }
+
+  .seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+  .seg button { border: 0; background: transparent; padding: 6px 11px; cursor: pointer; font-weight: 600; font-size: 12.5px; }
+  .seg button + button { border-left: 1px solid var(--line); }
+  .seg button[aria-pressed="true"] { background: var(--primary); color: var(--primary-ink); }
+
+  table { border-collapse: collapse; width: 100%; }
+  th { text-align: left; font-size: 12px; font-weight: 600; color: var(--muted); padding: 6px 8px; white-space: nowrap; }
+  td { padding: 5px 8px; border-top: 1px solid var(--line); vertical-align: middle; }
+  .grid td, .grid th { padding-inline: 6px; }
+  .grid td:first-child { white-space: nowrap; font-weight: 600; }
+  .grid tr.detail td:first-child { font-weight: 500; padding-left: 24px; color: var(--muted); }
+  .grid td .sub { display: block; white-space: normal; max-width: 150px; font-size: 11.5px; font-weight: 400; line-height: 1.25; color: var(--muted); }
+  .grid .txt.cell { width: 88px; }
+  .grid .txt.cell.short { width: 56px; }
+  .grid select.sel { width: 120px; }
+  .cell::placeholder { color: var(--inherit); opacity: 1; }
+  .pair { display: flex; align-items: center; gap: 4px; }
+  .pair select.sel { width: 86px; padding-inline: 4px; }
+  .pair .txt.cell { width: 80px; }
+  .unit { color: var(--muted); font-size: 12px; min-width: 14px; white-space: nowrap; }
+
+  .lines { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+  .line { border: 1px solid var(--line); border-radius: 10px; background: var(--surface-2); padding: 10px 12px; display: flex; flex-direction: column; gap: 10px; }
+  .line-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .order { display: flex; flex-direction: column; gap: 2px; }
+  .order button, .icon { border: 1px solid var(--line); background: var(--surface); border-radius: 6px; width: 26px; height: 20px; line-height: 1; cursor: pointer; font-size: 10px; }
+  .order button:disabled { opacity: 0.35; cursor: default; }
+  .icon { height: 26px; font-size: 13px; margin-left: auto; }
+  .pos { font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; width: 18px; text-align: center; }
+  input.name { border: 1px solid transparent; background: transparent; font-weight: 700; padding: 4px 6px; border-radius: 6px; min-width: 0; flex: 1 1 150px; max-width: 260px; }
+  input.name:hover, input.name:focus { border-color: var(--line); background: var(--surface); }
+  .line-body { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+  .line-body .inline { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .line-body select.sel { width: auto; }
+  .over { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .opts select.sel { width: 150px; }
+
+  .btn { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 7px 12px; font-weight: 600; cursor: pointer; }
+  .btn.primary { background: var(--primary); color: var(--primary-ink); border-color: var(--primary); }
+  .row { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
+  .note { background: var(--note-bg); border: 1px solid var(--note-line); border-radius: 8px; padding: 8px 10px; font-size: 12.5px; }
+  .why { background: var(--accent-soft); border-radius: 8px; padding: 8px 10px; font-size: 12.5px; }
+
+  .svc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .rc th.n, .rc td.n { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rc td { padding: 7px 6px; }
+  .rc th { padding: 4px 6px; }
+  .rc .how { display: block; font-size: 11.5px; color: var(--muted); }
+  .rc .neg { color: var(--neg); }
+  .rc tr.off td { color: var(--muted); }
+  .total { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; border-top: 2px solid var(--ink); padding-top: 10px; }
+  .total .amount { font-size: 28px; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .splits { display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+</style>
+
+<div class="page">
+  <header class="intro">
+    <a class="back" href="/cotizaciones/asisya01">← Propuesta Asisya</a>
+    <p class="step">Prototipo · Tarifas automáticas</p>
+    <h1>La tarifa se lee como un recibo</h1>
+    <p class="lede">Cada concepto dice qué se cobra, cuándo aplica y sobre qué se calcula. Arrastra los conceptos, cambia las ciudades o la hora programada del servicio, o sobre qué se calcula un porcentaje, y mira el recibo: está a la derecha o, si la ventana es angosta, al final de la página. Los valores son de ejemplo; las ciudades son una muestra de las listas de la plataforma, escritas como están allá.</p>
+    <div id="presets"></div>
+  </header>
+
+  <div class="cols">
+    <main class="editor">
+      <section class="card" id="meta"></section>
+      <section class="card" id="trip"></section>
+      <section class="card">
+        <div class="card-head"><h2>Tarifario</h2><span class="step">Lo fijo, por subservicio y detalle</span></div>
+        <p class="muted small"><strong>General</strong> es el valor para todo lo que no tenga uno propio. Un número en gris es heredado de la fila de arriba: haz clic y escríbele encima para darle su propio valor; si lo borras, vuelve a heredar. Un concepto puede traer aquí su precio para que cambie por fila.</p>
+        <div id="layer"></div>
+        <div class="scroll" id="tarifario"></div>
+      </section>
+      <section class="card">
+        <div class="card-head"><h2>Conceptos, en orden</h2><span class="step">Lo que depende del servicio</span></div>
+        <p class="muted small">Cada concepto trae marcada la casilla <strong>Suma en el valor total</strong>. Quítale la marca si no quieres que se le cobre al cliente: se calcula igual y queda en su propia casilla. Un porcentaje dice sobre qué se calcula: el valor base, el valor total que va sumado hasta ese concepto, o una casilla. Arrastra un concepto por ⠿, o usa las flechas, para cambiarlo de lugar.</p>
+        <ol class="lines" id="lines"></ol>
+        <div class="row" id="adder"></div>
+      </section>
+      <section class="card" id="closing"></section>
+    </main>
+
+    <aside class="receipt">
+      <section class="card">
+        <div class="card-head"><h2>Probar</h2><span class="step">Servicio de ejemplo</span></div>
+        <div class="svc" id="service"></div>
+      </section>
+      <section class="card" id="receipt"></section>
+    </aside>
+  </div>
+  <div class="bar" id="bar"></div>
+</div>
+
+<script>
+/*LOGIC-START*/
+// Every concept carries a tick, on by default: "adds to the total value". Without it the concept is still worked out
+// and kept in its own box, but the client is not charged for it (a commission, a tax shown for information).
+// A percentage is taken of the base value, of the total value, or of one box.
+const moveLine = (lines, from, to) => { lines.splice(to, 0, lines.splice(from, 1)[0]); return lines; };
+const usesPercent = (line) => line.type === 'percent'
+  || (line.type === 'option' && line.options.concat([line.others]).some((rule) => rule.kind === 'pctAdd' || rule.kind === 'pctSub'))
+  || (line.type === 'time' && line.rules.some((rule) => rule.kind === 'pctAdd' || rule.kind === 'pctSub'));
+// The boxes a concept can take its percentage of. A box that is a plain value (typed, counted, fixed) comes to the same
+// wherever it is, so it can always be used. A box that is itself a percentage has to be worked out first: for a concept
+// that adds to the total, that means it adds too and is above; one that does not add is worked out at the end, so it
+// sees every percentage that adds, and the ones like itself that are above.
+const boxesFor = (card, index) => {
+  const line = card.lines[index];
+  const late = line.inTotal === false;
+  const ready = (other, at) => !usesPercent(other) || (late ? other.inTotal !== false || at < index : at < index && other.inTotal !== false);
+  return [['km', 'Kilómetros']].concat(card.lines.map((other, at) => [other, at])
+    .filter(([other, at]) => other !== line && ready(other, at))
+    .map(([other]) => [other.id, other.name]));
+};
+
+// A sample of the platform's city lists, one per country, written the way the platform writes them (Colombia's has no
+// accents). A zone keeps the id of each city, never a typed name.
+const COUNTRIES = [['co', 'Colombia'], ['do', 'República Dominicana']];
+const LISTS = {
+  co: [
+    ['bog', 'Bogota - Cundinamarca'], ['chi', 'Chia - Cundinamarca'], ['soa', 'Soacha - Cundinamarca'], ['cot', 'Cota - Cundinamarca'],
+    ['fun', 'Funza - Cundinamarca'], ['mosc', 'Mosquera - Cundinamarca'], ['mosn', 'Mosquera - Narino'], ['gir', 'Girardot - Cundinamarca'],
+    ['med', 'Medellin - Antioquia'], ['sab', 'Sabaneta - Antioquia'], ['env', 'Envigado - Antioquia'], ['bel', 'Bello - Antioquia'],
+    ['est', 'La Estrella - Antioquia'], ['cop', 'Copacabana - Antioquia'], ['cala', 'Caldas - Antioquia'], ['calb', 'Caldas - Boyaca'],
+    ['rioa', 'Rionegro - Antioquia'], ['rios', 'Rionegro - Santander'], ['jar', 'Jardin - Antioquia'],
+    ['cal', 'Cali - Valle del Cauca'], ['yum', 'Yumbo - Valle del Cauca'], ['pal', 'Palmira - Valle del Cauca'],
+    ['baq', 'Barranquilla - Atlantico'], ['sol', 'Soledad - Atlantico'], ['ctg', 'Cartagena - Bolivar'],
+    ['buc', 'Bucaramanga - Santander'], ['flo', 'Floridablanca - Santander'],
+    ['per', 'Pereira - Risaralda'], ['dos', 'Dosquebradas - Risaralda'], ['man', 'Manizales - Caldas']
+  ],
+  do: [
+    ['sdq', 'Santo Domingo - Santo Domingo - Distrito Nacional'], ['sde', 'Santo Domingo Este - Santo Domingo Este - Santo Domingo'],
+    ['sdn', 'Santo Domingo Norte - Santo Domingo Norte - Santo Domingo'], ['sdo', 'Santo Domingo Oeste - Santo Domingo Oeste - Santo Domingo'],
+    ['boc', 'Boca Chica - Boca Chica - Santo Domingo'], ['alc', 'Los Alcarrizos - Los Alcarrizos - Santo Domingo'], ['ped', 'Pedro Brand - Pedro Brand - Santo Domingo'],
+    ['sti', 'Santiago - Santiago - Santiago'], ['sto', 'Santiago Oeste - Santiago - Santiago'], ['veg', 'La Vega - La Vega - La Vega'],
+    ['pop', 'Puerto Plata - Puerto Plata - Puerto Plata'], ['rom', 'La Romana - La Romana - La Romana'], ['hig', 'Higüey - Higüey - La Altagracia'],
+    ['puj', 'Verón-Punta Cana - Higüey - La Altagracia'], ['scr', 'San Cristóbal - San Cristóbal - San Cristóbal'],
+    ['spm', 'San Pedro de Macorís - San Pedro de Macorís - San Pedro de Macorís']
+  ]
+};
+const localZones = () => [
+  { name: 'Bogotá y Sabana', country: 'co', cities: ['bog', 'chi', 'soa'] },
+  { name: 'Medellín y Valle de Aburrá', country: 'co', cities: ['med', 'sab', 'env'] },
+  { name: 'Cali', country: 'co', cities: ['cal'] }
+];
+const tripRules = (on) => ({ on, useZones: true, zones: localZones(), maxKmOn: false, maxKm: 10 });
+// Each set of values says where its km start: at the origin of the service, or at the site of whoever attends it.
+const KM_FROM = [['trip', 'Del origen al destino'], ['site', 'Desde la sede']];
+const kmFromSite = () => ({ local: 'trip', away: 'site' });
+
+// Surcharges by time: each one is a span of hours on some days with what it does to the price. Nobody ticks them: the
+// scheduled date of the service decides. Days are numbered as the calendar does, 0 being Sunday.
+const DAYS = [[1, 'Lun'], [2, 'Mar'], [3, 'Mié'], [4, 'Jue'], [5, 'Vie'], [6, 'Sáb'], [0, 'Dom']];
+const DAY_NAMES = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+const TIME_KINDS = [['add', 'Suma $'], ['sub', 'Resta $'], ['pctAdd', 'Sube %'], ['pctSub', 'Baja %']];
+const everyDay = () => DAYS.map(([day]) => day);
+const newTimeRule = () => ({ name: '', allDay: false, from: '20:00', to: '23:59', days: everyDay(), holidays: false, kind: 'add', value: 10000 });
+const minutesOf = (clock) => { const m = /^(\d{1,2}):(\d{2})/.exec(clock || ''); return m ? Number(m[1]) * 60 + Number(m[2]) : null; };
+
+// The scheduled moment as the clock of the rate card reads it: weekday and minutes since midnight.
+function momentOf(when) {
+  const m = /^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/.exec(when || '');
+  if (!m) return null;
+  return { weekday: new Date(Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3]))).getUTCDay(), minutes: Number(m[4]) * 60 + Number(m[5]), clock: `${m[4]}:${m[5]}` };
+}
+
+// A surcharge is a span inside one day, 00:00 to 23:59 at most: it never runs into the next day, so a night takes two
+// of them. "Whole day" has no hours. With hours, the end one is not part of the span (06:00 is already daytime),
+// except 23:59, which stands for the end of the day.
+const LAST_MINUTE = 23 * 60 + 59;
+function timeRuleApplies(rule, moment, holiday) {
+  if (!moment) return false;
+  const thatDay = (rule.days || []).includes(moment.weekday) || (!!rule.holidays && !!holiday);
+  if (rule.allDay) return thatDay;
+  const from = minutesOf(rule.from);
+  const to = minutesOf(rule.to);
+  if (from === null || to === null || from >= to) return false;
+  return thatDay && moment.minutes >= from && (moment.minutes < to || to === LAST_MINUTE);
+}
+
+// Holidays come from the country of the company's account. Colombia's follow a law, so they can be worked out for any
+// year: fixed dates, dates moved to the following Monday, and dates counted from Easter. A country with no calendar
+// yet has no holidays of its own, and the day can only be marked by hand.
+const DAY_MS = 86400000;
+const isoDay = (time) => new Date(time).toISOString().slice(0, 10);
+function easterOf(year) {
+  const a = year % 19;
+  const b = Math.floor(year / 100);
+  const c = year % 100;
+  const g = Math.floor((b - Math.floor((b + 8) / 25) + 1) / 3);
+  const h = (19 * a + b - Math.floor(b / 4) - g + 15) % 30;
+  const l = (32 + 2 * (b % 4) + 2 * Math.floor(c / 4) - h - (c % 4)) % 7;
+  const m = Math.floor((a + 11 * h + 22 * l) / 451);
+  return Date.UTC(year, Math.floor((h + l - 7 * m + 114) / 31) - 1, ((h + l - 7 * m + 114) % 31) + 1);
+}
+function colombiaHolidays(year) {
+  const days = {};
+  const fixed = (month, day, name) => { days[isoDay(Date.UTC(year, month - 1, day))] = name; };
+  const nextMonday = (time, name) => { days[isoDay(time + ((8 - new Date(time).getUTCDay()) % 7) * DAY_MS)] = name; };
+  const easter = easterOf(year);
+  fixed(1, 1, 'Año Nuevo'); fixed(5, 1, 'Día del Trabajo'); fixed(7, 20, 'Día de la Independencia');
+  fixed(8, 7, 'Batalla de Boyacá'); fixed(12, 8, 'Inmaculada Concepción'); fixed(12, 25, 'Navidad');
+  [[1, 6, 'Reyes Magos'], [3, 19, 'San José'], [6, 29, 'San Pedro y San Pablo'], [8, 15, 'Asunción de la Virgen'],
+    [10, 12, 'Día de la Raza'], [11, 1, 'Todos los Santos'], [11, 11, 'Independencia de Cartagena']]
+    .forEach(([month, day, name]) => nextMonday(Date.UTC(year, month - 1, day), name));
+  days[isoDay(easter - 3 * DAY_MS)] = 'Jueves Santo';
+  days[isoDay(easter - 2 * DAY_MS)] = 'Viernes Santo';
+  nextMonday(easter + 39 * DAY_MS, 'Ascensión del Señor');
+  nextMonday(easter + 60 * DAY_MS, 'Corpus Christi');
+  nextMonday(easter + 68 * DAY_MS, 'Sagrado Corazón');
+  return days;
+}
+const HOLIDAYS = { co: colombiaHolidays };
+const hasCalendar = (country) => !!HOLIDAYS[country];
+const holidayOf = (country, when) => {
+  const date = /^\d{4}-\d{2}-\d{2}/.exec(when || '');
+  return date && HOLIDAYS[country] ? HOLIDAYS[country](Number(date[0].slice(0, 4)))[date[0]] || null : null;
+};
+
+function spanText(rule) {
+  const days = rule.days || [];
+  const named = days.length === 7 ? 'todos los días' : DAYS.filter(([day]) => days.includes(day)).map(([, name]) => name.toLowerCase()).join(', ');
+  const all = [named, rule.holidays && days.length < 7 ? 'festivos' : ''].filter(Boolean).join(' y ') || 'ningún día';
+  return `${rule.allDay ? 'todo el día' : `${rule.from} a ${rule.to}`}, ${all}`;
+}
+
+function spanHint(rule) {
+  if (rule.allDay) return 'De 00:00 a 23:59.';
+  const from = minutesOf(rule.from);
+  const to = minutesOf(rule.to);
+  if (from === null || to === null) return 'Falta una hora: este recargo no se aplica.';
+  if (from === to) return 'Las dos horas son iguales: este recargo no se aplica. Para el día completo, marca «Todo el día».';
+  return from > to ? 'La hora final debe ser posterior a la inicial: una franja no pasa de un día al otro. Para la noche, usa dos recargos: uno hasta las 23:59 y otro desde las 00:00.' : '';
+}
+
+const emptyRow = (sub, det, values) => Object.assign({ sub, det, base: null, kmMode: null, kmIncl: null, kmPrice: null, failed: null, cancelled: null }, values);
+const subservices = (values) => [
+  emptyRow('Grúa liviana', '', values[0]), emptyRow('Grúa liviana', 'Arrastre', values[1]),
+  emptyRow('Grúa liviana', 'Planchón', values[2]), emptyRow('Grúa pesada', '', values[3])
+];
+
+function saleCard() {
+  return {
+    name: 'Grúa – general', role: 'Lo que se le cobra al cliente', calc: 'Valor total', applies: ['Clientes: todos'],
+    trip: tripRules(true), kmFrom: kmFromSite(),
+    g: { base: 100000, kmMode: 'Estimado', kmIncl: 20, kmPrice: 4000, f_base: 130000, f_kmIncl: 0, f_kmPrice: 5500, failed: 50, failedUnit: 'pb', cancelled: 30000, f_cancelled: 45000, cancelledUnit: '$', u_espera: 20000 },
+    rows: subservices([{}, { base: 90000, f_base: 115000 }, { base: 130000, kmIncl: 30, f_base: 160000, f_kmIncl: 0 },
+      { base: 350000, kmPrice: 8000, f_base: 420000, f_kmPrice: 11000, cancelled: 80000, u_espera: 45000 }]),
+    lines: [
+      { id: 'veh', type: 'option', name: 'Tipo de vehículo', field: 'vehiculo', pctBase: 'base', options: [
+        { opt: 'Automóvil', kind: 'none', value: null }, { opt: 'Camioneta', kind: 'add', value: 15000 }, { opt: 'Moto', kind: 'pctSub', value: 10 } ],
+        others: { kind: 'none', value: null } },
+      { id: 'noct', type: 'time', name: 'Recargos por tiempo', pctBase: 'base', rules: [
+        { name: 'Nocturno', allDay: false, from: '20:00', to: '23:59', days: everyDay(), holidays: false, kind: 'add', value: 10000 },
+        { name: 'Madrugada', allDay: false, from: '00:00', to: '06:00', days: everyDay(), holidays: false, kind: 'add', value: 10000 },
+        { name: 'Fin de semana y festivos', allDay: true, from: '00:00', to: '23:59', days: [6, 0], holidays: true, kind: 'pctAdd', value: 10 } ] },
+      { id: 'espera', type: 'unit', name: 'Hora de espera', field: 'espera', included: 1, price: 20000, byRow: true },
+      { id: 'combustible', type: 'entered', name: 'Combustible', field: 'combustible' },
+      { id: 'fee', type: 'percent', name: 'Fee de combustible', sign: 1, value: 14, pctBase: 'combustible' },
+      { id: 'peajes', type: 'entered', name: 'Peajes', field: 'peajes' },
+      { id: 'conv', type: 'percent', name: 'Descuento de convenio', sign: -1, value: 10, pctBase: 'acc' },
+      // These two do not add to the total: they are worked out from it and kept in their own boxes.
+      { id: 'comision', type: 'percent', name: 'Comisión', sign: 1, value: 10, pctBase: 'acc', inTotal: false },
+      { id: 'iva', type: 'percent', name: 'IVA de la comisión', sign: 1, value: 19, pctBase: 'comision', inTotal: false }
+    ],
+    closing: { min: null, round: 0 }
+  };
+}
+
+function costCard() {
+  return {
+    name: 'Proveedores – tarifa A', role: 'Lo que se le paga al proveedor', calc: 'Valor proveedor', applies: ['Proveedores: Grúas Pérez, Auxilio Ya y 3 más'],
+    trip: tripRules(true), kmFrom: kmFromSite(),
+    g: { base: 60000, kmMode: 'Estimado', kmIncl: 14, kmPrice: 1000, f_base: 70000, f_kmIncl: 0, f_kmPrice: 3200, failed: 20000, f_failed: 35000, failedUnit: '$', cancelled: 0, cancelledUnit: '$' },
+    rows: subservices([{}, { base: 55000, f_base: 65000 }, { base: 75000, f_base: 85000 }, { base: 240000, kmPrice: 3500, f_base: 300000, f_kmPrice: 5500 }]),
+    lines: [{ id: 'peajes', type: 'entered', name: 'Peajes', field: 'peajes' }],
+    closing: { min: null, round: 0 }
+  };
+}
+
+function collabCard() {
+  return {
+    name: 'Colaboradores propios', role: 'Lo que se le paga al colaborador propio', calc: 'Valor colaborador', applies: ['Colaboradores propios'],
+    trip: tripRules(false), kmFrom: kmFromSite(),
+    g: { base: 35000, kmMode: 'Estimado', kmIncl: 0, kmPrice: 0, failed: 15000, failedUnit: '$', cancelled: 0, cancelledUnit: '$' },
+    rows: subservices([{}, { base: 30000 }, { base: 45000 }, { base: 80000 }]),
+    lines: [{ id: 'kmad', type: 'unit', name: 'Km adicional', field: 'kmAd', included: 0, price: 800, byRow: false }],
+    closing: { min: null, round: 0 }
+  };
+}
+
+// Third parties are paid by a rate card of their own. Here it is a share of what the client is charged, which own staff
+// (a fixed value per service) do not get.
+function thirdCard() {
+  return {
+    name: 'Colaboradores terceros', role: 'Lo que se le paga al colaborador tercero', calc: 'Valor colaborador tercero', applies: ['Colaboradores terceros'],
+    trip: tripRules(false), kmFrom: kmFromSite(),
+    g: { base: 0, kmMode: 'Estimado', kmIncl: 0, kmPrice: 0, failed: 15000, failedUnit: '$', cancelled: 0, cancelledUnit: '$' },
+    rows: subservices([{}, {}, {}, {}]),
+    lines: [{ id: 'parte', type: 'percent', name: 'Participación', sign: 1, value: 80, pctBase: 'total' }],
+    closing: { min: null, round: 0 }
+  };
+}
+
+// Own staff and third parties are paid by different rate cards. Which of the two a person is, is set on that person in
+// Usuarios: "Valor colaborador" unless marked as third party. Until somebody is assigned, that default one is filled,
+// and it moves to the other field if a third party ends up attending.
+const appliesTo = (which, attends) => (which === 'collab' ? attends !== 'third' : which === 'third' ? attends === 'third' : true);
+
+const defaultService = () => ({ row: '', status: 'Terminado', attends: 'own', from: 'bog', to: 'bog', trip: 'Auto', kmEst: 25, kmReal: 25, kmSite: 12, when: '2026-11-21T22:30', country: 'co', holiday: false, f: { vehiculo: 'Automóvil', espera: 0, peajes: 15000, combustible: 0, kmAd: 10 } });
+
+const money = (n) => (n < 0 ? '−' : '') + '$' + Math.abs(Math.round(n)).toLocaleString('es-CO');
+const plain = (n) => Number(n).toLocaleString('es-CO', { maximumFractionDigits: 3 });
+const isSet = (v) => v !== null && v !== undefined && v !== '';
+const norm = (text) => String(text || '').trim().toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+const refName = (card, id) => (id === 'km' ? 'Kilómetros' : (card.lines.find((line) => line.id === id) || {}).name || 'una casilla');
+
+// How the platform already reads a typed city: no accents, case or punctuation, no "D.C." at the end, and the official
+// names nobody types. "Medellín", "MEDELLIN" and "medellin" are the same search.
+const ALIASES = { 'santafe de bogota': 'bogota', 'santa fe de bogota': 'bogota', 'santiago de cali': 'cali', 'cartagena de indias': 'cartagena', 'san jose de cucuta': 'cucuta' };
+function searchKey(text) {
+  const words = norm(text).replace(/[^a-z0-9]+/g, ' ').trim().split(' ').filter(Boolean);
+  const last = words.length - 1;
+  if (words.length > 1 && words[last] === 'c' && words[last - 1] === 'd') words.splice(last - 1, 2);
+  else if (words.length > 1 && words[last] === 'dc') words.pop();
+  else if (words.length > 2 && words[last] === 'capital' && words[last - 1] === 'distrito') words.splice(last - 1, 2);
+  const key = words.join(' ');
+  return ALIASES[key] || key;
+}
+
+const CATALOG = COUNTRIES.flatMap(([country]) => LISTS[country].map(([id, label]) => ({ id, country, label, name: label.split(' - ')[0], key: searchKey(label) })));
+const countryName = (code) => (COUNTRIES.find(([value]) => value === code) || ['', ''])[1];
+const cityName = (id) => (CATALOG.find((city) => city.id === id) || { label: id }).label;
+
+function distance(a, b) {
+  let row = Array.from({ length: b.length + 1 }, (_, j) => j);
+  for (let i = 1; i <= a.length; i++) {
+    const next = [i];
+    for (let j = 1; j <= b.length; j++) next[j] = Math.min(row[j] + 1, next[j - 1] + 1, row[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    row = next;
+  }
+  return row[b.length];
+}
+
+// Cities are picked from the country's list, never typed in: first the ones holding every word typed, and when none
+// does, the names a letter or two away ("medeyin"), offered as a guess to pick.
+function searchCities(text, country, limit) {
+  const typed = searchKey(text);
+  if (typed.length < 2) return { cities: [], guessed: false };
+  const list = CATALOG.filter((city) => city.country === country);
+  const words = typed.split(' ');
+  const holding = list.filter((city) => words.every((word) => city.key.includes(word)));
+  if (holding.length || typed.length < 4) {
+    // The city called exactly that goes first, then the ones starting with it, then the rest; alphabetical within each.
+    const rank = (city) => (searchKey(city.name) === typed ? 0 : city.key.startsWith(typed) ? 1 : 2);
+    return { cities: holding.sort((a, b) => rank(a) - rank(b) || a.label.localeCompare(b.label, 'es')).slice(0, limit), guessed: false };
+  }
+  const reach = typed.length >= 6 ? 2 : 1;
+  const near = list.map((city) => [city, distance(typed, searchKey(city.name))]).filter(([, far]) => far <= reach).sort((a, b) => a[1] - b[1]);
+  return { cities: near.slice(0, limit).map(([city]) => city), guessed: true };
+}
+
+// Local only when every rule that is on says so; a city outside every zone is always out of town.
+function tripOf(card, svc) {
+  const rules = card.trip;
+  if (!rules || !rules.on) return null;
+  if (svc.trip === 'Local' || svc.trip === 'Foráneo') return { kind: svc.trip, why: 'elegido a mano en el servicio' };
+  const zoneOf = (cityId) => rules.zones.find((zone) => zone.cities.includes(cityId));
+  const listed = (cityId) => CATALOG.some((city) => city.id === cityId);
+  const unlisted = (which) => ({ kind: 'Foráneo', why: `la ciudad de ${which} no se reconoció en la lista de ciudades; si el servicio es local, cámbialo en «Trayecto»` });
+  let reason = '';
+  if (rules.useZones) {
+    if (!listed(svc.from)) return unlisted('origen');
+    if (svc.to && !listed(svc.to)) return unlisted('destino');
+    const origin = zoneOf(svc.from);
+    if (!origin) return { kind: 'Foráneo', why: `el origen, ${cityName(svc.from)}, no está en ninguna zona local` };
+    if (svc.to) {
+      const destination = zoneOf(svc.to);
+      if (!destination) return { kind: 'Foráneo', why: `el destino, ${cityName(svc.to)}, no está en ninguna zona local` };
+      if (destination !== origin) return { kind: 'Foráneo', why: `el origen y el destino están en zonas distintas (${origin.name} y ${destination.name})` };
+      reason = `origen y destino en la zona «${origin.name}»`;
+    } else reason = `el origen está en la zona «${origin.name}»`;
+  }
+  // The local limit looks at the km the way the local values count them.
+  const service = isSet(svc.kmEst) ? svc.kmEst : svc.kmReal;
+  const withSite = (card.kmFrom || {}).local === 'site' && isSet(svc.kmEst) && isSet(svc.kmSite);
+  const km = isSet(service) && withSite ? service + svc.kmSite : service;
+  if (rules.maxKmOn && isSet(rules.maxKm) && isSet(km)) {
+    if (km > rules.maxKm) return { kind: 'Foráneo', why: `el recorrido, ${plain(km)} km, pasa de los ${plain(rules.maxKm)} km locales` };
+    reason = `${reason ? reason + ' y ' : ''}el recorrido no pasa de ${plain(rules.maxKm)} km`;
+  }
+  return { kind: 'Local', why: reason || 'no hay ninguna regla encendida' };
+}
+
+function resolve(card, svc) {
+  const row = svc.row === '' ? null : card.rows[Number(svc.row)];
+  const parent = row && row.det ? card.rows.find((x) => x.sub === row.sub && !x.det) : null;
+  const chain = [row, parent, card.g].filter(Boolean);
+  const trip = tripOf(card, svc);
+  const away = !!trip && trip.kind === 'Foráneo';
+  // An out-of-town value falls back on the local one of the same row before looking at the row above.
+  const owner = (key, layered) => chain.find((x) => (layered && away && isSet(x['f_' + key])) || isSet(x[key]));
+  const pick = (key, layered) => {
+    const x = owner(key, layered);
+    if (!x) return null;
+    return layered && away && isSet(x['f_' + key]) ? x['f_' + key] : x[key];
+  };
+  const baseOwner = owner('base', true);
+  const where = baseOwner && baseOwner !== card.g ? ` (${baseOwner.sub}${baseOwner.det ? ' › ' + baseOwner.det : ''})` : '';
+  const unit = {};
+  card.lines.forEach((line) => { if (line.type === 'unit' && line.byRow) unit[line.id] = pick('u_' + line.id) || 0; });
+  return {
+    trip, unit, label: `Valor base${trip ? (away ? ' foráneo' : ' local') : ''}${where}`,
+    base: pick('base', true) || 0, kmMode: pick('kmMode') || 'Estimado', kmIncl: pick('kmIncl', true) || 0, kmPrice: pick('kmPrice', true) || 0,
+    kmFrom: (card.kmFrom || {})[away ? 'away' : 'local'] || 'trip',
+    failed: isSet(pick('failed', true)) ? pick('failed', true) : 100, cancelled: isSet(pick('cancelled', true)) ? pick('cancelled', true) : 100,
+    failedUnit: card.g.failedUnit, cancelledUnit: card.g.cancelledUnit
+  };
+}
+
+function compute(card, svc) {
+  const p = resolve(card, svc);
+  let rows = [{ label: p.label, how: '', amount: p.base, acc: p.base }];
+  let warnings = [];
+  let pending = false;
+  let pendingNote = 'Lo que ya se sabe, sin km';
+  let acc = p.base;
+  const amounts = { km: 0 };
+  // What each concept takes its percentage of in this service, to show it beside the choice.
+  const bases = {};
+
+  // What one concept comes to. `total` is what "the total value" means for it: what has been added so far, for a
+  // concept that adds to the total; the total as it ended up, for one that does not and is worked out last.
+  const work = (line, index, total, late) => {
+    if (line.when && svc.f[line.when.field] !== line.when.is) return { parts: [], amount: 0 };
+    const usable = boxesFor(card, index).some(([id]) => id === line.pctBase);
+    const lost = !['base', 'acc', 'total'].includes(line.pctBase) && !usable;
+    if (lost && usesPercent(line)) warnings.push(`«${line.name}» se calcula sobre una casilla que ya no puede usar (quedó debajo, se quitó o dejó de sumar en el valor total), y por eso da $0. Elige otra.`);
+    // A share of what the client is charged has to wait for that value.
+    if (line.pctBase === 'total' && !isSet(svc.clientTotal)) return { waiting: true };
+    const base = line.pctBase === 'base' ? p.base : line.pctBase === 'total' ? svc.clientTotal : line.pctBase === 'acc' ? total : usable ? amounts[line.pctBase] || 0 : 0;
+    const what = line.pctBase === 'base' ? 'el valor base' : line.pctBase === 'total' ? 'lo que se le cobra al cliente'
+      : line.pctBase === 'acc' ? (late ? 'el valor total' : 'el valor total hasta aquí') : usable ? `«${refName(card, line.pctBase)}»` : 'una casilla que ya no puede usar';
+    const baseText = `sobre ${what} (${money(base)})`;
+    bases[line.id] = base;
+    const parts = [];
+
+    if (line.type === 'time') {
+      // Every span the scheduled time falls in is a part of its own. All of them take the same base, so they do not chain.
+      const moment = momentOf(svc.when);
+      if (!moment && line.rules.length) warnings.push('El servicio no tiene fecha programada: no se aplicaron los recargos por tiempo.');
+      // A holiday of the company's country, from its calendar; or a day marked by hand where there is no calendar yet.
+      const holidayName = holidayOf(svc.country, svc.when);
+      const holiday = !!holidayName || !!svc.holiday;
+      for (const rule of line.rules) {
+        if (!timeRuleApplies(rule, moment, holiday)) continue;
+        const v = rule.value || 0;
+        const percent = rule.kind === 'pctAdd' || rule.kind === 'pctSub';
+        const sign = rule.kind === 'sub' || rule.kind === 'pctSub' ? -1 : 1;
+        const part = sign * (percent ? Math.round(base * v / 100) : v);
+        if (part === 0) continue;
+        const at = `${DAY_NAMES[moment.weekday]} ${moment.clock}${holiday ? `, festivo${holidayName ? ` (${holidayName})` : ''}` : ''}`;
+        parts.push({ label: rule.name || line.name, how: `${at} · ${spanText(rule)} · ${percent ? `${sign < 0 ? '−' : '+'}${plain(v)} % ${baseText}` : 'valor fijo'}`, amount: part });
+      }
+      return { parts, amount: parts.reduce((sum, part) => sum + part.amount, 0) };
+    }
+
+    let amount = 0;
+    let how = '';
+    if (line.type === 'fixed') {
+      amount = (line.sign < 0 ? -1 : 1) * (line.value || 0);
+      how = 'Valor fijo';
+    } else if (line.type === 'unit') {
+      const count = svc.f[line.field] || 0;
+      const price = line.byRow ? p.unit[line.id] || 0 : line.price || 0;
+      const extra = Math.max(0, count - (line.included || 0));
+      amount = extra * price;
+      how = `${plain(count)} − ${plain(line.included || 0)} incluidas = ${plain(extra)} × ${money(price)}`;
+    } else if (line.type === 'entered') {
+      amount = svc.f[line.field] || 0;
+      how = 'Valor digitado';
+    } else if (line.type === 'percent') {
+      const sign = line.sign < 0 ? -1 : 1;
+      amount = sign * Math.round(base * (line.value || 0) / 100);
+      how = `${sign < 0 ? '−' : '+'}${plain(line.value || 0)} % ${baseText}`;
+    } else if (line.type === 'option') {
+      const chosen = svc.f[line.field];
+      const rule = line.options.find((o) => o.opt === chosen) || line.others;
+      const v = rule.value || 0;
+      if (rule.kind === 'add') { amount = v; how = `${chosen}: valor fijo`; }
+      else if (rule.kind === 'sub') { amount = -v; how = `${chosen}: valor fijo`; }
+      else if (rule.kind === 'pctAdd' || rule.kind === 'pctSub') {
+        const sign = rule.kind === 'pctSub' ? -1 : 1;
+        amount = sign * Math.round(base * v / 100);
+        how = `${chosen}: ${sign < 0 ? '−' : '+'}${plain(v)} % ${baseText}`;
+      }
+    }
+    if (!(amount === 0 && line.type !== 'fixed')) parts.push({ label: line.name, how, amount });
+    return { parts, amount };
+  };
+
+  // Rounding goes before the minimum and the maximum, so that rounding up never takes the total over the maximum.
+  const roundUp = (total) => {
+    const step = Number(card.closing.round) || 0;
+    if (step <= 0) return total;
+    const rounded = Math.ceil(total / step) * step;
+    if (rounded !== total) rows.push({ label: `Redondeo a ${money(step)}`, how: 'Hacia arriba', amount: rounded - total, acc: rounded });
+    return rounded;
+  };
+
+  const finish = (total, excess) => {
+    // The concepts that do not add to the total are worked out last, from the total as it ended up.
+    const extras = [];
+    const unknownIds = new Set();
+    card.lines.forEach((line, index) => {
+      if (line.inTotal !== false) return;
+      const done = work(line, index, total, true);
+      // Not known yet: it waits for the total, or it is taken of a box that is itself not known yet.
+      const unknown = !!done.waiting || (pending && line.pctBase === 'acc') || unknownIds.has(line.pctBase);
+      if (unknown) unknownIds.add(line.id);
+      amounts[line.id] = unknown ? 0 : done.amount;
+      extras.push({ label: line.name, value: unknown ? null : done.amount, how: unknown ? 'Falta un valor para calcularlo' : done.parts.map((part) => part.how).join(' · ') || 'No aplica en este servicio' });
+    });
+    if (excess > 0 && card.closing.excess === 'keep') extras.push({ label: 'Excedente', value: excess, how: `Lo que pasó del total máximo (${money(card.closing.max)})` });
+    return { rows, warnings: [...new Set(warnings)], pending, pendingNote, total, extras, calc: card.calc, trip: p.trip, bases };
+  };
+
+  if (svc.status === 'Fallido' || svc.status === 'Cancelado') {
+    const failed = svc.status === 'Fallido';
+    const value = failed ? p.failed : p.cancelled;
+    const unit = failed ? p.failedUnit : p.cancelledUnit;
+    const label = `Servicio ${failed ? 'fallido' : 'cancelado'}${p.trip ? (p.trip.kind === 'Foráneo' ? ', foráneo' : ', local') : ''}`;
+    if (unit === 'pt') {
+      const full = compute(card, Object.assign({}, svc, { status: 'Terminado' }));
+      const charged = Math.round(full.total * value / 100);
+      rows = full.rows.map((row) => Object.assign({}, row, { off: true }));
+      warnings = full.warnings;
+      pending = full.pending;
+      pendingNote = full.pendingNote;
+      Object.assign(bases, full.bases);
+      rows.push({ label, how: `${plain(value)} % del total (${money(full.total)})`, amount: charged - full.total, acc: charged });
+      return finish(roundUp(charged));
+    }
+    const charged = unit === '$' ? value : Math.round(p.base * value / 100);
+    rows[0].off = true;
+    rows.push({ label, how: unit === '$' ? 'Valor fijo: no cuentan km ni conceptos' : `${plain(value)} % del valor base: no cuentan km ni conceptos`, amount: charged - p.base, acc: charged });
+    return finish(roundUp(charged));
+  }
+
+  if (p.kmPrice > 0) {
+    const real = p.kmMode === 'Real';
+    const measured = real ? svc.kmReal : svc.kmEst;
+    // The technician's real route starts when he sets off, so it already holds the way to the origin: only the
+    // estimate gets the leg from the site added.
+    const fromSite = p.kmFrom === 'site' && !real;
+    if (real && svc.status !== 'Terminado') {
+      pending = true;
+      rows.push({ label: 'Kilómetros', how: 'Se calculan al terminar, con el recorrido real', amount: null, acc });
+    } else if (!real && !isSet(measured)) {
+      pending = true;
+      rows.push({ label: 'Kilómetros', how: 'Falta la ruta estimada', amount: null, acc });
+    } else {
+      const service = isSet(measured) ? Math.max(0, measured) : 0;
+      const missing = fromSite && !isSet(svc.kmSite);
+      const approach = fromSite && !missing ? Math.max(0, svc.kmSite) : 0;
+      // Nobody attends it yet, so no site: the value waits. Once the service is over, that leg counts as 0 km.
+      if (missing && svc.status !== 'Terminado') { pending = true; pendingNote = 'Lo que ya se sabe, sin los km desde la sede'; }
+      else if (missing) warnings.push('No se supo desde qué sede se atendió: ese tramo se cobró con 0 km.');
+      const km = service + approach;
+      if (real && !(km > 0)) warnings.push('No hubo recorrido registrado: se cobró con 0 km.');
+      // The legs are added first and rounded up once.
+      const billed = Math.ceil(Math.round(km * 1000) / 1000);
+      const extra = Math.max(0, billed - p.kmIncl);
+      const amount = extra * p.kmPrice;
+      acc += amount;
+      amounts.km = amount;
+      const legs = missing ? `Falta el tramo desde la sede. Origen → destino ${plain(service)} km`
+        : fromSite ? `Sede → origen ${plain(approach)} km + origen → destino ${plain(service)} km = ${plain(km)} km`
+          : real && p.kmFrom === 'site' ? `Desde que salió el técnico: ${plain(km)} km`
+            : `${plain(km)} km`;
+      rows.push({
+        label: `Kilómetros (${real ? 'reales' : 'estimados'}${fromSite ? ', desde la sede' : ''})`,
+        how: extra > 0 ? `${legs} → ${billed} − ${p.kmIncl} incluidos = ${extra} km × ${money(p.kmPrice)}` : `${legs}, dentro de los ${p.kmIncl} incluidos`,
+        amount, acc
+      });
+    }
+  }
+
+  // The plain values first: they do not depend on the order, and a percentage placed above one may be taken of it.
+  card.lines.forEach((line, index) => { if (!usesPercent(line)) amounts[line.id] = work(line, index, 0, false).amount; });
+
+  // The concepts that add to the total, in the order of the list. The others wait for the total to be final.
+  card.lines.forEach((line, index) => {
+    if (line.inTotal === false) return;
+    const done = work(line, index, acc, false);
+    if (done.waiting) {
+      pending = true;
+      pendingNote = 'Lo que ya se sabe, sin el valor total del servicio';
+      amounts[line.id] = 0;
+      rows.push({ label: line.name, how: 'Falta el valor total del servicio', amount: null, acc });
+      return;
+    }
+    done.parts.forEach((part) => { acc += part.amount; rows.push({ label: part.label, how: part.how, amount: part.amount, acc }); });
+    amounts[line.id] = done.amount;
+  });
+
+  let total = roundUp(acc);
+  const min = card.closing.min || 0;
+  if (min > 0 && total < min) { rows.push({ label: 'Total mínimo', how: `No baja de ${money(min)}`, amount: min - total, acc: min }); total = min; }
+  // A ceiling. What goes over it is not charged here; it can be kept in a box of its own, for whoever has to pay it.
+  const max = card.closing.max || 0;
+  let excess = 0;
+  if (max > 0 && total > max) {
+    excess = total - max;
+    rows.push({ label: 'Total máximo', how: `No pasa de ${money(max)}`, amount: -excess, acc: max });
+    total = max;
+  }
+  if (max > 0 && min > max) warnings.push('El total mínimo es mayor que el total máximo: revisa los dos valores.');
+  if (total < 0) { rows.push({ label: 'El total no baja de $0', how: '', amount: -total, acc: 0 }); total = 0; }
+  return finish(total, excess);
+}
+
+/*LOGIC-END*/
+
+const FACTORY = { sale: saleCard, cost: costCard, collab: collabCard, third: thirdCard };
+const state = { cards: { sale: saleCard(), cost: costCard(), collab: collabCard(), third: thirdCard() }, which: 'sale', layer: 'local', svc: defaultService(), adding: false, seq: 1, zoneSearch: {}, focusAfter: null, dragging: null };
+const card = () => state.cards[state.which];
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const shown = (v) => (isSet(v) ? plain(v) : '');
+const idOf = (path) => 'i-' + path.replace(/[^a-zA-Z0-9]/g, '-');
+
+function parseNum(text) {
+  const clean = String(text).trim().replace(/\./g, '').replace(',', '.').replace(/[^0-9.\-]/g, '');
+  if (clean === '' || clean === '-') return null;
+  const value = Number(clean);
+  return Number.isFinite(value) ? value : null;
+}
+
+function setPath(path, value) {
+  const parts = path.split('.');
+  let target = parts[0] === 'svc' ? state.svc : card();
+  for (const key of parts.slice(1, -1)) target = target[key];
+  target[parts[parts.length - 1]] = value;
+}
+
+// A cell left empty takes the value shown in grey. That value also goes in data-inherit, so that clicking the cell can
+// put it in the field to be typed over.
+const numInput = (path, value, label, extra) => {
+  const inherited = extra && isSet(extra.inherit) ? shown(extra.inherit) : '';
+  const hint = isSet(value) ? `Valor propio. Si lo borras, vuelve a heredar ${inherited}.` : 'Valor heredado de la fila de arriba. Escríbele encima para darle uno propio.';
+  const own = inherited ? ` data-inherit="${inherited}" title="${hint}"` : '';
+  return `<input class="txt num ${extra && extra.cls ? extra.cls : ''}" id="${idOf(path)}" data-p="${path}" data-t="num" inputmode="decimal" value="${shown(value)}" placeholder="${inherited}"${own} aria-label="${esc(label)}">`;
+};
+const GENERAL = 'General<span class="sub">para lo que no tenga valor propio</span>';
+const select = (path, value, options, label, type) => `<select class="sel" id="${idOf(path)}" data-p="${path}" data-t="${type || 'text'}" aria-label="${esc(label)}">${options.map(([v, text]) => `<option value="${esc(v)}"${String(v) === String(value == null ? '' : value) ? ' selected' : ''}>${esc(text)}</option>`).join('')}</select>`;
+const seg = (act, value, options, label, data) => `<span class="seg" role="group" aria-label="${esc(label)}">${options.map(([v, text]) => `<button type="button" data-act="${act}" data-v="${v}"${data || ''} aria-pressed="${v === value}">${esc(text)}</button>`).join('')}</span>`;
+const check = (act, on, text, data) => `<label class="check"><input type="checkbox" data-act="${act}"${data || ''}${on ? ' checked' : ''}> ${text}</label>`;
+
+function renderPresets() {
+  if (state.which !== 'sale') {
+    const about = {
+      cost: 'Tarifa de pago al proveedor: sus propios precios pactados, sin depender de lo que se le cobra al cliente.',
+      collab: 'Tarifa de pago al colaborador: un valor fijo por servicio más lo que recorra, sin depender de lo que se le cobra al cliente. Es la de los colaboradores que en Usuarios tienen «Valor colaborador», que es lo predeterminado.',
+      third: 'Tarifa de pago al colaborador tercero: aquí, una parte de lo que se le cobra al cliente. Es la de los colaboradores que en Usuarios se marcan con «Valor colaborador tercero».'
+    };
+    $('presets').innerHTML = `<p class="note">${about[state.which]} Un mismo servicio usa varias tarifas a la vez, una por cada valor.</p>`;
+    return;
+  }
+  $('presets').innerHTML = '';
+}
+
+function renderMeta() {
+  const c = card();
+  $('meta').innerHTML = `
+    <div class="card-head"><h2>Datos de la tarifa</h2><span class="step">Qué calcula y a quién aplica</span></div>
+    <div class="meta">
+      <label class="field"><span>Nombre</span><input class="txt" id="${idOf('card.name')}" data-p="card.name" data-t="text" value="${esc(c.name)}"></label>
+      <div class="field"><span>Tipo de servicio</span><div class="chips"><span class="chip">Grúa</span></div></div>
+      <div class="field wide"><span>Esta tarifa calcula</span>${seg('which', state.which, [['sale', 'Cobro al cliente'], ['cost', 'Pago al proveedor'], ['collab', 'Pago al colaborador'], ['third', 'Pago al colaborador tercero']], 'Qué calcula la tarifa')}</div>
+      <div class="field"><span>Se escribe en</span><div class="chips"><span class="chip kind">${esc(c.calc)}</span></div></div>
+      <div class="field"><span>Aplica a</span><div class="chips">${c.applies.map((a) => `<span class="chip">${esc(a)}</span>`).join('')}</div></div>
+    </div>`;
+}
+
+const fromText = (value) => (KM_FROM.find(([key]) => key === value) || KM_FROM[0])[1].toLowerCase();
+
+function renderTrip() {
+  const rules = card().trip;
+  const head = `<div class="card-head"><h2>Local y foráneo</h2><span class="step">Dos juegos de valores</span></div>${check('tripOn', rules.on, 'Esta tarifa distingue local y foráneo')}`;
+  if (!rules.on) { $('trip').innerHTML = `${head}<p class="muted small">Apagado: todos los servicios se calculan con los mismos valores.</p>`; return; }
+  const cityChip = (id, i) => `<span class="chip">${esc(cityName(id))}<button type="button" class="x" data-act="cityDel" data-i="${i}" data-v="${esc(id)}" aria-label="Quitar ${esc(cityName(id))}">✕</button></span>`;
+  // The country can only change while the zone is empty: its cities belong to one country's list.
+  const countryOf = (zone, i) => (zone.cities.length
+    ? `<span class="chip" title="Para cambiar de país, quita primero las ciudades">${esc(countryName(zone.country))}</span>`
+    : select(`card.trip.zones.${i}.country`, zone.country, COUNTRIES, 'País de la zona'));
+  const zones = rules.zones.map((zone, i) => `<div class="zone">
+      <div class="zhead">
+        <input class="txt zname" id="${idOf(`card.trip.zones.${i}.name`)}" data-p="card.trip.zones.${i}.name" data-t="text" value="${esc(zone.name)}" aria-label="Nombre de la zona">
+        ${countryOf(zone, i)}
+        <button type="button" class="icon" data-act="zoneDel" data-i="${i}" aria-label="Quitar la zona ${esc(zone.name)}">✕</button>
+      </div>
+      <div class="zchips">${zone.cities.map((id) => cityChip(id, i)).join('') || '<span class="muted small">Sin ciudades todavía.</span>'}</div>
+      <input class="txt zsearch" id="zsearch-${i}" data-zs="${i}" value="${esc(state.zoneSearch[i] || '')}" placeholder="Busca en la lista de ciudades de ${esc(countryName(zone.country))}" autocomplete="off" aria-label="Buscar una ciudad de ${esc(countryName(zone.country))} para ${esc(zone.name)}">
+      <div class="zsug" id="zsug-${i}" aria-live="polite"></div>
+    </div>`).join('');
+  $('trip').innerHTML = `${head}
+    <p class="muted small">Un servicio es local solo si cumple todas las reglas encendidas; si no, es foráneo. En el servicio se puede cambiar a mano.</p>
+    ${check('useZones', rules.useZones, 'Zonas locales: el origen y el destino deben quedar dentro de la misma zona')}
+    ${rules.useZones ? `<div class="zones">${zones}</div>
+    <div class="row"><button type="button" class="btn" data-act="zoneAdd">+ Agregar zona local</button><span class="muted small">Las ciudades se escogen de la lista del país, no se escriben. Una ciudad va en una sola zona, y la que no esté en ninguna siempre es foránea.</span></div>` : ''}
+    <div class="row">${check('maxKmOn', rules.maxKmOn, 'Km máximo local: es foráneo si el recorrido pasa de')}${numInput('card.trip.maxKm', rules.maxKm, 'Km máximo local', { cls: 'short' })}<span class="unit">km</span></div>
+    <p class="muted small">En Local los km se cuentan ${fromText(card().kmFrom.local)}; en Foráneo, ${fromText(card().kmFrom.away)}. Se cambia en el tarifario, en cada juego de valores.</p>`;
+  if (rules.useZones) rules.zones.forEach((zone, i) => renderSuggestions(i));
+}
+
+function renderSuggestions(i) {
+  const box = $('zsug-' + i);
+  if (!box) return;
+  const text = state.zoneSearch[i] || '';
+  const zones = card().trip.zones;
+  if (!zones[i] || searchKey(text).length < 2) { box.innerHTML = ''; return; }
+  const { cities, guessed } = searchCities(text, zones[i].country, 8);
+  if (!cities.length) {
+    box.innerHTML = `<span class="muted small hint">No hay ninguna ciudad así en la lista de ${esc(countryName(zones[i].country))}. Solo se pueden agregar ciudades de la lista.</span>`;
+    return;
+  }
+  const buttons = cities.map((city) => {
+    const taken = zones.find((zone) => zone.cities.includes(city.id));
+    return taken
+      ? `<button type="button" class="sug" disabled>${esc(city.label)} · ya está en «${esc(taken.name)}»</button>`
+      : `<button type="button" class="sug" data-act="cityAdd" data-i="${i}" data-v="${esc(city.id)}">+ ${esc(city.label)}</button>`;
+  }).join('');
+  box.innerHTML = (guessed ? '<span class="muted small hint">Así no está en la lista. ¿Es alguna de estas?</span>' : '') + buttons;
+}
+
+const STATUS_UNITS = [['pb', '% base'], ['pt', '% total'], ['$', '$ fijo']];
+const unitLabel = (unit) => (STATUS_UNITS.find(([v]) => v === unit) || ['', ''])[1];
+// What the out-of-town set of values can change. Failed and cancelled keep the mode of the rate card (%, fixed): only the number differs.
+const AWAY_KEYS = [['base', 'Valor base', 'cell'], ['kmIncl', 'Km incluidos', 'cell short'], ['kmPrice', 'Valor km adicional', 'cell'],
+  ['failed', 'Fallido', 'cell', 'failedUnit'], ['cancelled', 'Cancelado', 'cell', 'cancelledUnit']];
+
+function renderTarifario() {
+  const c = card();
+  const split = c.trip.on;
+  const away = split && state.layer === 'foraneo';
+  const layerKey = away ? 'away' : 'local';
+  $('layer').innerHTML = `<div class="row">
+      ${split ? `<span class="muted small">Valores para</span>${seg('layer', away ? 'foraneo' : 'local', [['local', 'Local'], ['foraneo', 'Foráneo']], 'Juego de valores')}` : ''}
+      <span class="muted small">Los km se cuentan</span>${select(`card.kmFrom.${layerKey}`, c.kmFrom[layerKey], KM_FROM, 'Desde dónde se cuentan los km')}
+    </div>
+    ${c.kmFrom[layerKey] === 'site' ? '<p class="muted small">Sede → origen → destino, solo la ida: el regreso a la sede no se cuenta. La sede es la más cercana al origen, de la empresa que atiende el servicio. Con km reales no se suma nada: el recorrido del técnico ya cuenta desde que sale.</p>' : ''}
+    ${away ? '<p class="muted small">Lo que no escribas aquí usa el valor local de esa misma fila.</p>' : ''}`;
+  const parentOf = (row) => (row.det ? c.rows.find((x) => x.sub === row.sub && !x.det) : null);
+
+  if (away) {
+    const fallback = (row, key) => {
+      if (!row) return c.g[key];
+      if (isSet(row[key])) return row[key];
+      for (const x of [parentOf(row), c.g].filter(Boolean)) {
+        if (isSet(x['f_' + key])) return x['f_' + key];
+        if (isSet(x[key])) return x[key];
+      }
+      return null;
+    };
+    const cells = (path, source, row, name) => AWAY_KEYS.map(([key, label, cls, unit]) => {
+      const input = numInput(`${path}.f_${key}`, source['f_' + key], `${label} foráneo de ${name}`, { cls, inherit: fallback(row, key) });
+      return `<td>${unit ? `<span class="pair">${input}<span class="unit">${esc(unitLabel(c.g[unit]))}</span></span>` : input}</td>`;
+    }).join('');
+    const body = `<tr><td>${GENERAL}</td>${cells('card.g', c.g, null, 'General')}</tr>` + c.rows.map((row, i) => `<tr class="${row.det ? 'detail' : ''}"><td>${esc(row.det || row.sub)}</td>${cells(`card.rows.${i}`, row, row, row.det || row.sub)}</tr>`).join('');
+    $('tarifario').innerHTML = `<table class="grid"><thead><tr><th>Subservicio › detalle</th>${AWAY_KEYS.map(([, label]) => `<th>${label}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table>`;
+    return;
+  }
+
+  const inherit = (i, key) => {
+    const parent = parentOf(c.rows[i]);
+    return parent && isSet(parent[key]) ? parent[key] : c.g[key];
+  };
+  const modes = [['Estimado', 'Estimado'], ['Real', 'Real']];
+  const unitCols = c.lines.filter((line) => line.type === 'unit' && line.byRow);
+  const general = `<tr><td>${GENERAL}</td>
+    <td>${numInput('card.g.base', c.g.base, 'Valor base general', { cls: 'cell' })}</td>
+    <td>${select('card.g.kmMode', c.g.kmMode, modes, 'Tipo de km general')}</td>
+    <td>${numInput('card.g.kmIncl', c.g.kmIncl, 'Km incluidos general', { cls: 'cell short' })}</td>
+    <td>${numInput('card.g.kmPrice', c.g.kmPrice, 'Valor por km adicional general', { cls: 'cell' })}</td>
+    ${unitCols.map((line) => `<td>${numInput(`card.g.u_${line.id}`, c.g['u_' + line.id], `${line.name}, precio general`, { cls: 'cell' })}</td>`).join('')}
+    <td><span class="pair">${numInput('card.g.failed', c.g.failed, 'Fallido general', { cls: 'cell' })}${select('card.g.failedUnit', c.g.failedUnit, STATUS_UNITS, 'Fallido: porcentaje del valor base, del total o valor fijo')}</span></td>
+    <td><span class="pair">${numInput('card.g.cancelled', c.g.cancelled, 'Cancelado general', { cls: 'cell' })}${select('card.g.cancelledUnit', c.g.cancelledUnit, STATUS_UNITS, 'Cancelado: porcentaje del valor base, del total o valor fijo')}</span></td></tr>`;
+  const rows = c.rows.map((row, i) => {
+    const name = row.det || row.sub;
+    const path = `card.rows.${i}`;
+    return `<tr class="${row.det ? 'detail' : ''}"><td>${esc(name)}</td>
+      <td>${numInput(`${path}.base`, row.base, `Valor base de ${name}`, { cls: 'cell', inherit: inherit(i, 'base') })}</td>
+      <td>${select(`${path}.kmMode`, row.kmMode || '', [['', `Hereda: ${inherit(i, 'kmMode') === 'Real' ? 'real' : 'estimado'}`]].concat(modes), `Tipo de km de ${name}`)}</td>
+      <td>${numInput(`${path}.kmIncl`, row.kmIncl, `Km incluidos de ${name}`, { cls: 'cell short', inherit: inherit(i, 'kmIncl') })}</td>
+      <td>${numInput(`${path}.kmPrice`, row.kmPrice, `Valor por km adicional de ${name}`, { cls: 'cell', inherit: inherit(i, 'kmPrice') })}</td>
+      ${unitCols.map((line) => `<td>${numInput(`${path}.u_${line.id}`, row['u_' + line.id], `${line.name}, precio de ${name}`, { cls: 'cell', inherit: inherit(i, 'u_' + line.id) })}</td>`).join('')}
+      <td><span class="pair">${numInput(`${path}.failed`, row.failed, `Fallido de ${name}`, { cls: 'cell', inherit: inherit(i, 'failed') })}<span class="unit">${esc(unitLabel(c.g.failedUnit))}</span></span></td>
+      <td><span class="pair">${numInput(`${path}.cancelled`, row.cancelled, `Cancelado de ${name}`, { cls: 'cell', inherit: inherit(i, 'cancelled') })}<span class="unit">${esc(unitLabel(c.g.cancelledUnit))}</span></span></td></tr>`;
+  }).join('');
+  $('tarifario').innerHTML = `<table class="grid"><thead><tr><th>Subservicio › detalle</th><th>Valor base</th><th>Tipo de km</th><th>Km incluidos</th><th>Valor km adicional</th>${unitCols.map((line) => `<th>${esc(line.name)}, c/u</th>`).join('')}<th>Fallido</th><th>Cancelado</th></tr></thead><tbody>${general}${rows}</tbody></table>`;
+}
+
+const KINDS = [['none', 'No cambia'], ['add', 'Suma $'], ['sub', 'Resta $'], ['pctAdd', 'Suma %'], ['pctSub', 'Resta %']];
+const TYPE_NAME = { option: 'Según una opción', percent: 'Porcentaje', unit: 'Por cantidad', entered: 'Valor digitado', fixed: 'Cargo fijo', time: 'Recargos por tiempo' };
+
+// One surcharge by time, laid out as in the sketch: hours, days, value.
+function timeRule(i, line, r, j) {
+  const path = `card.lines.${i}.rules.${j}`;
+  const percent = r.kind === 'pctAdd' || r.kind === 'pctSub';
+  const data = ` data-i="${i}" data-j="${j}"`;
+  const clock = (key, label) => `<input class="txt clock" type="time" id="${idOf(`${path}.${key}`)}" data-p="${path}.${key}" data-t="text" data-hint="thint-${i}-${j}" value="${esc(r[key] || '')}" aria-label="${label}">`;
+  return `<div class="trule">
+      <div class="row">
+        <input class="txt tname" id="${idOf(`${path}.name`)}" data-p="${path}.name" data-t="text" value="${esc(r.name || '')}" placeholder="Nombre: Nocturno, Fin de semana…" aria-label="Nombre del recargo">
+        <button type="button" class="icon" data-act="ruleDel"${data} aria-label="Quitar el recargo ${esc(r.name || String(j + 1))}">✕</button>
+      </div>
+      <div class="row"><span class="tlabel">Horas aplicadas</span>${check('ruleAllDay', !!r.allDay, 'Todo el día', data)}${r.allDay ? '' : `${clock('from', 'Desde')}<span class="muted small">a</span>${clock('to', 'Hasta')}`}<span class="muted small" id="thint-${i}-${j}">${spanHint(r)}</span></div>
+      <div class="row"><span class="tlabel">Día</span>${DAYS.map(([day, name]) => check('ruleDay', r.days.includes(day), name, `${data} data-v="${day}"`)).join('')}${check('ruleHoliday', !!r.holidays, 'Festivos', data)}</div>
+      <div class="row"><span class="tlabel">Valor</span>${select(`${path}.kind`, r.kind, TIME_KINDS, 'Qué hace el recargo')}${percent ? '' : '<span class="unit">$</span>'}${numInput(`${path}.value`, r.value, 'Valor del recargo', percent ? { cls: 'short' } : undefined)}${percent ? '<span class="unit">%</span>' : ''}</div>
+    </div>`;
+}
+
+// The three things a percentage can be taken of, in one list: the base value, the total value, or one box.
+function overControl(i, line) {
+  const pay = state.which !== 'sale';
+  const fixed = [['base', 'El valor base'], ['acc', pay ? 'El valor total de este pago' : 'El valor total']].concat(pay ? [['total', 'Lo que se le cobra al cliente']] : []);
+  const boxes = boxesFor(card(), i);
+  const known = fixed.concat(boxes).some(([value]) => value === line.pctBase);
+  const option = ([value, text]) => `<option value="${esc(value)}"${value === line.pctBase ? ' selected' : ''}>${esc(text)}</option>`;
+  return `<span class="over"><span class="muted small">Se calcula sobre</span><select class="sel" id="${idOf(`card.lines.${i}.pctBase`)}" data-p="card.lines.${i}.pctBase" data-t="text" aria-label="Sobre qué se calcula" title="En «Una casilla» salen las que ya tienen valor cuando se calcula este concepto: los valores digitados, por cantidad y fijos, y los porcentajes que estén arriba.">${known ? '' : `<option value="${esc(line.pctBase)}" selected>Una casilla que ya no puede usar</option>`}${fixed.map(option).join('')}<optgroup label="Una casilla">${boxes.map(option).join('')}</optgroup></select><span class="muted small" id="ohelp-${i}"></span></span>`;
+}
+
+// Beside each "se calcula sobre", a whole sentence saying what the chosen thing is worth in the example service, so the
+// number is not read as what the concept charges.
+function renderOverHelp(result) {
+  card().lines.forEach((line, i) => {
+    const help = $('ohelp-' + i);
+    if (!help) return;
+    if (!result || !isSet(result.bases[line.id])) { help.textContent = ''; return; }
+    const late = line.inTotal === false;
+    const usable = boxesFor(card(), i).some(([id]) => id === line.pctBase);
+    const what = line.pctBase === 'base' ? 'el valor base es' : line.pctBase === 'total' ? 'lo que se le cobra al cliente es'
+      : line.pctBase === 'acc' ? (late ? 'el valor total es' : 'el valor total hasta este concepto es') : usable ? `«${refName(card(), line.pctBase)}» vale` : '';
+    if (!what) { help.textContent = 'Esa casilla ya no la puede usar este concepto: da $0.'; return; }
+    const share = line.type === 'percent' ? `: el ${plain(line.value || 0)} % son ${money(Math.round(result.bases[line.id] * (line.value || 0) / 100))}` : '';
+    help.textContent = `En el servicio de ejemplo, ${what} ${money(result.bases[line.id])}${share}.`;
+  });
+}
+
+function lineBody(line, i) {
+  const path = `card.lines.${i}`;
+  if (line.type === 'percent') return `<span class="inline">${select(`${path}.sign`, line.sign, [[1, 'Suma'], [-1, 'Resta']], 'Suma o resta', 'num')}${numInput(`${path}.value`, line.value, 'Porcentaje', { cls: 'short' })}<span class="unit">%</span></span>${overControl(i, line)}`;
+  if (line.type === 'fixed') return `<span class="inline">${select(`${path}.sign`, line.sign, [[1, 'Suma'], [-1, 'Resta']], 'Suma o resta', 'num')}<span class="unit">$</span>${numInput(`${path}.value`, line.value, 'Valor fijo')}</span><span class="muted small">No depende del valor base.</span>`;
+  if (line.type === 'unit') {
+    const price = line.byRow
+      ? '<span class="muted small">incluidas; el precio de cada adicional está en el tarifario.</span>'
+      : `<span class="muted small">incluidas, y cada adicional</span><span class="unit">$</span>${numInput(`${path}.price`, line.price, 'Precio por unidad adicional')}`;
+    return `<span class="inline">${numInput(`${path}.included`, line.included, 'Unidades incluidas', { cls: 'short' })}${price}</span>${check('byrow', line.byRow, 'El precio cambia por fila del tarifario', ` data-i="${i}"`)}`;
+  }
+  if (line.type === 'entered') {
+    // The amount is typed in each service, not in the rate card. The example one is shown here too, since this is where people look for it.
+    return `<span class="muted small" style="flex:1 1 100%">Suma lo que se escriba en el campo «${esc(line.name)}» de cada servicio. El valor no se pone en la tarifa.</span>
+      <span class="inline"><span class="muted small">En el servicio de ejemplo</span><span class="unit">$</span><input class="txt num" id="ex-${i}" data-p="svc.f.${line.field}" data-t="num" inputmode="decimal" value="${shown(state.svc.f[line.field])}" aria-label="${esc(line.name)} en el servicio de ejemplo"></span>`;
+  }
+  if (line.type === 'time') {
+    const anyPercent = line.rules.some((r) => r.kind === 'pctAdd' || r.kind === 'pctSub');
+    return `<p class="muted small" style="flex:1 1 100%">Se aplican solos, según la fecha y la hora programadas del servicio. Cada recargo es una franja dentro de un mismo día (de 00:00 a 23:59 como máximo): si otro día tiene otras horas, agrega otro recargo. La hora final no entra: con 00:00 a 06:00, un servicio a las 06:00 en punto ya no lo lleva. Si la hora cae en varios, se aplican todos.</p>
+      <div class="trules">${line.rules.map((r, j) => timeRule(i, line, r, j)).join('') || '<span class="muted small">Sin recargos todavía.</span>'}</div>
+      <div class="row" style="flex:1 1 100%"><button type="button" class="btn" data-act="ruleAdd" data-i="${i}">+ Agregar recargo por tiempo</button></div>
+      ${anyPercent ? overControl(i, line) : ''}`;
+  }
+  const rule = (rulePath, r, label) => `<td>${select(`${rulePath}.kind`, r.kind, KINDS, `Ajuste de ${label}`)}</td><td>${r.kind === 'none' ? '' : numInput(`${rulePath}.value`, r.value, `Valor de ${label}`)}</td>`;
+  const hasPercent = line.options.concat([line.others]).some((r) => r.kind === 'pctAdd' || r.kind === 'pctSub');
+  return `<div class="scroll" style="flex:1 1 100%"><table class="opts"><thead><tr><th>Opción</th><th>Ajuste</th><th>Valor</th></tr></thead><tbody>
+    ${line.options.map((r, j) => `<tr><td>${esc(r.opt)}</td>${rule(`${path}.options.${j}`, r, r.opt)}</tr>`).join('')}
+    <tr><td class="muted">Las demás opciones</td>${rule(`${path}.others`, line.others, 'las demás opciones')}</tr>
+  </tbody></table></div>${hasPercent ? overControl(i, line) : ''}`;
+}
+
+function renderLines() {
+  const lines = card().lines;
+  // Every concept is moved the same way: dragged by its grip, or with the arrows for whoever does not use a mouse.
+  const lead = (line, i) => `
+        <span class="grip" draggable="true" data-drag="${i}" title="Arrastra para mover" aria-hidden="true">⠿</span>
+        <span class="order"><button type="button" data-act="up" data-i="${i}" aria-label="Subir ${esc(line.name)}"${i === 0 ? ' disabled' : ''}>▲</button><button type="button" data-act="down" data-i="${i}" aria-label="Bajar ${esc(line.name)}"${i === lines.length - 1 ? ' disabled' : ''}>▼</button></span>
+        <span class="pos">${i + 1}</span>
+        ${line.field
+    // A concept fed by a field of the service form carries that field's name: it is not typed here, and neither is its value.
+    ? `<strong class="lname" title="Es un campo del formulario del servicio: el nombre no se cambia aquí">${esc(line.name)}</strong>`
+    : `<input class="name" id="${idOf(`card.lines.${i}.name`)}" data-p="card.lines.${i}.name" data-t="text" value="${esc(line.name)}" placeholder="Nombre" title="Nombre del concepto" aria-label="Nombre del concepto">`}
+        <span class="chip kind">${TYPE_NAME[line.type]}</span>`;
+  const remove = (line, i) => `<button type="button" class="icon" data-act="del" data-i="${i}" aria-label="Quitar ${esc(line.name)}">✕</button>`;
+  $('lines').innerHTML = lines.map((line, i) => {
+    const adds = line.inTotal !== false;
+    return `
+    <li class="line${adds ? '' : ' aside'}" data-line="${i}">
+      <div class="line-head">${lead(line, i)}
+        ${line.type === 'time' ? '<span class="chip">Automático, por la hora programada</span>' : line.when ? `<span class="chip">Solo cuando ${esc(line.when.label)} es ${esc(line.when.is)}</span>` : '<span class="chip">Aplica siempre</span>'}
+        ${remove(line, i)}
+      </div>
+      <div class="line-body">${lineBody(line, i)}</div>
+      <div class="row"><span class="sum">${check('inTotal', adds, 'Suma en el valor total', ` data-i="${i}"`)}</span>${adds ? '' : '<span class="muted small">Sin la marca no se le cobra al cliente: se calcula con el total ya terminado y queda en su casilla.</span>'}</div>
+    </li>`;
+  }).join('') || '<li class="muted small">Sin conceptos: se usa el tarifario tal cual.</li>';
+  $('adder').innerHTML = state.adding
+    ? `<span class="muted small">Agregar:</span><button type="button" class="btn" data-act="add" data-v="fixed">Cargo fijo</button><button type="button" class="btn" data-act="add" data-v="percent">Porcentaje</button><button type="button" class="btn" data-act="add" data-v="time">Recargos por tiempo</button><button type="button" class="btn" data-act="adding">Cancelar</button>`
+    : `<button type="button" class="btn primary" data-act="adding">+ Agregar concepto</button><button type="button" class="btn" data-act="reset">Volver al ejemplo</button>`;
+}
+
+function renderClosing() {
+  const c = card();
+  $('closing').innerHTML = `
+    <div class="card-head"><h2>Cierre</h2><span class="step">Mínimo, máximo y redondeo</span></div>
+    <div class="row">
+      <label class="inline row"><span class="muted small">Total mínimo $</span>${numInput('card.closing.min', c.closing.min, 'Total mínimo', { cls: 'cell' })}</label>
+      <label class="inline row"><span class="muted small">Total máximo $</span>${numInput('card.closing.max', c.closing.max, 'Total máximo', { cls: 'cell' })}</label>
+      ${isSet(c.closing.max) ? `<label class="inline row"><span class="muted small">Lo que pase del máximo</span>${select('card.closing.excess', c.closing.excess || 'drop', [['drop', 'No se cobra'], ['keep', 'Queda aparte, en «Excedente»']], 'Qué pasa con lo que pase del total máximo')}</label>` : ''}
+      <label class="inline row"><span class="muted small">Redondear</span>${select('card.closing.round', c.closing.round, [[0, 'Sin redondeo'], [100, 'A $100, hacia arriba'], [1000, 'A $1.000, hacia arriba']], 'Redondeo', 'num')}</label>
+    </div>
+    <p class="muted small"><strong>Total mínimo:</strong> si la cuenta da menos que ese valor, se cobra ese valor. <strong>Total máximo:</strong> si da más, se cobra ese valor; lo que pase de ahí no se cobra, o queda aparte en la casilla «Excedente» para cobrárselo a otro. Vacíos, no hay mínimo ni máximo. No aplican a un servicio fallido o cancelado.</p>
+    <p class="muted small">Fallido y Cancelado se definen en el tarifario, en las dos últimas columnas: un % del valor base, un % del total o un valor fijo. ${c.trip.on ? 'Con local y foráneo, cada juego tiene los suyos: cambia a «Valores para Foráneo» para escribirlos.' : ''}</p>`;
+}
+
+function renderService() {
+  const c = card();
+  const s = state.svc;
+  const rowOptions = [['', 'Sin subservicio']].concat(c.rows.map((row, i) => [i, row.det ? `${row.sub} › ${row.det}` : row.sub]));
+  // In a real service the city comes from its point on the map, already tied to the list; the last option is one that could not be tied.
+  const cities = CATALOG.map((city) => [city.id, city.label]).concat([['otra', 'Una ciudad que no se reconoció']]);
+  const field = (label, control) => `<label class="field"><span>${label}</span>${control}</label>`;
+  const hasLine = (id) => c.lines.some((line) => line.field === id || (line.when && line.when.field === id));
+  const usesSite = c.kmFrom.local === 'site' || (c.trip.on && c.kmFrom.away === 'site');
+  const hasTime = c.lines.some((line) => line.type === 'time');
+  $('service').innerHTML = [
+    field('Subservicio › detalle', select('svc.row', s.row, rowOptions, 'Subservicio y detalle')),
+    field('Estado', select('svc.status', s.status, [['Abierto', 'Abierto'], ['Terminado', 'Terminado'], ['Fallido', 'Fallido'], ['Cancelado', 'Cancelado']], 'Estado del servicio')),
+    state.which === 'collab' || state.which === 'third' ? `<label class="field wide"><span>Lo atiende</span>${select('svc.attends', s.attends, [['own', 'Un colaborador con «Valor colaborador» (predeterminado)'], ['third', 'Un colaborador con «Valor colaborador tercero»'], ['', 'Nadie todavía']], 'Quién atiende el servicio')}</label>` : '',
+    c.trip.on ? field('Ciudad de origen', select('svc.from', s.from, cities, 'Ciudad de origen')) : '',
+    c.trip.on ? field('Ciudad de destino', select('svc.to', s.to, [['', 'Sin destino']].concat(cities), 'Ciudad de destino')) : '',
+    c.trip.on ? field('Trayecto', select('svc.trip', s.trip, [['Auto', 'Automático'], ['Local', 'Local, a mano'], ['Foráneo', 'Foráneo, a mano']], 'Trayecto')) : '',
+    field('Km estimados', numInput('svc.kmEst', s.kmEst, 'Km estimados')),
+    // Empty means nobody attends the service yet, so there is no site to count from.
+    usesSite ? field('Km de la sede al origen', `<input class="txt num" id="${idOf('svc.kmSite')}" data-p="svc.kmSite" data-t="num" inputmode="decimal" value="${shown(s.kmSite)}" placeholder="Sin asignar" aria-label="Km de la sede al origen">`) : '',
+    field('Km reales', numInput('svc.kmReal', s.kmReal, 'Km reales')),
+    hasLine('vehiculo') ? field('Tipo de vehículo', select('svc.f.vehiculo', s.f.vehiculo, [['Automóvil', 'Automóvil'], ['Camioneta', 'Camioneta'], ['Moto', 'Moto'], ['Camión', 'Camión']], 'Tipo de vehículo')) : '',
+    hasTime ? `<label class="field wide"><span>Programado para</span><input class="txt" type="datetime-local" id="${idOf('svc.when')}" data-p="svc.when" data-t="text" value="${esc(s.when || '')}" aria-label="Fecha y hora programadas"></label>` : '',
+    hasTime ? `<label class="field wide"><span>País de la cuenta de la empresa</span>${select('svc.country', s.country, COUNTRIES, 'País de la cuenta de la empresa')}</label>` : '',
+    // With a calendar the holiday is found alone; without one it can only be marked by hand.
+    hasTime ? `<div class="field wide"><span>Festivo</span>${hasCalendar(s.country)
+      ? `<span class="small" id="holiday-note">${esc(holidayLine())}</span>`
+      : `${check('svcHoliday', !!s.holiday, 'Ese día es festivo')}<span class="muted small">Este país todavía no tiene calendario de festivos: se marca a mano.</span>`}</div>` : '',
+    hasLine('espera') ? field('Horas de espera', numInput('svc.f.espera', s.f.espera, 'Horas de espera')) : '',
+    hasLine('kmAd') ? field('Km adicional', numInput('svc.f.kmAd', s.f.kmAd, 'Km adicional')) : '',
+    hasLine('combustible') ? field('Combustible $', numInput('svc.f.combustible', s.f.combustible, 'Combustible')) : '',
+    hasLine('peajes') ? field('Peajes $', numInput('svc.f.peajes', s.f.peajes, 'Peajes')) : ''
+  ].join('');
+}
+
+// A rate card that pays someone can take a share of what the client is charged, so that value is worked out first.
+function serviceWithTotal() {
+  const sale = compute(state.cards.sale, state.svc);
+  return Object.assign({}, state.svc, { clientTotal: sale.pending ? null : sale.total });
+}
+
+const holidayLine = () => {
+  const name = holidayOf(state.svc.country, state.svc.when);
+  return name ? `Sí: ${name}. Sale solo, del calendario de ${countryName(state.svc.country)}.` : `No es festivo en ${countryName(state.svc.country)}.`;
+};
+
+const renderBar = (label, value) => {
+  $('bar').innerHTML = `<span>${esc(label)}<span class="amount">${esc(value)}</span></span><button type="button" data-act="toReceipt">Ver el recibo</button>`;
+};
+
+function renderReceipt() {
+  const head = `<div class="card-head"><h2>Recibo</h2><span class="step">${esc(card().role)}</span></div>`;
+  // The date is typed without redrawing the service, so the holiday note follows it from here.
+  if ($('holiday-note')) $('holiday-note').textContent = holidayLine();
+  if (!appliesTo(state.which, state.svc.attends)) {
+    const other = state.which === 'collab' ? ['un colaborador tercero', 'la de pago al colaborador tercero'] : ['un colaborador propio', 'la de pago al colaborador'];
+    const why = state.svc.attends
+      ? `Este servicio lo atiende ${other[0]}: esta tarifa no se aplica y «${esc(card().calc)}» queda vacío. Se usa ${other[1]}.`
+      : `Todavía no hay colaborador asignado: mientras tanto se llena «Valor colaborador», que es lo predeterminado. Si al final lo atiende un tercero, el valor pasa a «${esc(card().calc)}».`;
+    $('receipt').innerHTML = `${head}
+      <p class="note">${why}</p>
+      <div class="total"><strong>${esc(card().calc)}</strong><span class="amount">${state.svc.attends ? 'No aplica' : 'Vacío por ahora'}</span></div>`;
+    renderOverHelp(null);
+    renderBar(card().calc, state.svc.attends ? 'No aplica' : 'Vacío por ahora');
+    return;
+  }
+  const r = compute(card(), serviceWithTotal());
+  renderOverHelp(r);
+  renderBar(r.calc, r.pending ? 'Pendiente' : money(r.total));
+  const amount = (n) => (n === null ? '<span class="muted">Pendiente</span>' : `<span class="${n < 0 ? 'neg' : ''}">${money(n)}</span>`);
+  $('receipt').innerHTML = `
+    ${head}
+    ${state.which === 'collab' && !state.svc.attends ? '<p class="why">Todavía no hay colaborador asignado: se llena «Valor colaborador», que es lo predeterminado. Si al final lo atiende un tercero, se corrige y pasa a «Valor colaborador tercero».</p>' : ''}
+    ${r.trip ? `<p class="why">Se calcula como <strong>${esc(r.trip.kind)}</strong>: ${esc(r.trip.why)}.</p>` : ''}
+    <div class="scroll"><table class="rc"><thead><tr><th>Concepto</th><th class="n">Importe</th><th class="n">Acumulado</th></tr></thead><tbody>
+      ${r.rows.map((row) => `<tr class="${row.off ? 'off' : ''}"><td>${esc(row.label)}${row.how ? `<span class="how">${esc(row.how)}</span>` : ''}</td><td class="n">${amount(row.amount)}</td><td class="n">${money(row.acc)}</td></tr>`).join('')}
+    </tbody></table></div>
+    <div class="total"><strong>${esc(r.calc)}</strong><span class="amount">${r.pending ? 'Pendiente' : money(r.total)}</span></div>
+    ${r.pending ? `<p class="muted small">${esc(r.pendingNote)}: ${money(r.total)}.</p>` : ''}
+    ${r.extras.length ? `<div class="splits" id="extras"><span class="muted small">No suman en el valor total. Cada uno queda en su casilla:</span>${r.extras.map((x) => `<span>${esc(x.label)}: <strong>${x.value === null ? 'Pendiente' : money(x.value)}</strong> <span class="muted">(${esc(x.how)})</span></span>`).join('')}</div>` : ''}
+    ${r.warnings.map((w) => `<p class="note">${esc(w)}</p>`).join('')}`;
+}
+
+function renderAll() { renderPresets(); renderMeta(); renderTrip(); renderTarifario(); renderLines(); renderClosing(); renderService(); renderReceipt(); }
+
+function keepingFocus(render) {
+  setTimeout(() => {
+    const id = state.focusAfter || (document.activeElement && document.activeElement.id);
+    state.focusAfter = null;
+    render();
+    const again = id && document.getElementById(id);
+    if (again) again.focus();
+  }, 0);
+}
+
+// An inherited cell shows in grey the value it takes from the row above, and looks as if it could not be edited. So
+// clicking it puts that number in the field, selected, to be typed over or corrected. Left as it was, it stays inherited.
+document.addEventListener('focusin', (event) => {
+  const el = event.target;
+  if (!el.dataset || !el.dataset.inherit || el.value !== '') return;
+  el.value = el.dataset.inherit;
+  el.dataset.prefilled = '1';
+  el.select();
+});
+
+document.addEventListener('focusout', (event) => {
+  const el = event.target;
+  if (!el.dataset || !el.dataset.prefilled) return;
+  delete el.dataset.prefilled;
+  if (el.value === el.dataset.inherit) el.value = '';
+});
+
+document.addEventListener('input', (event) => {
+  const el = event.target;
+  if (el.dataset) delete el.dataset.prefilled;
+  if (el.dataset && el.dataset.zs !== undefined) {
+    state.zoneSearch[el.dataset.zs] = el.value;
+    renderSuggestions(Number(el.dataset.zs));
+    return;
+  }
+  if (!el.dataset || !el.dataset.p || el.tagName === 'SELECT') return;
+  const kind = el.dataset.t;
+  setPath(el.dataset.p, kind === 'text' ? el.value : parseNum(el.value));
+  // A value of the example service can be on screen twice, in its concept and in the service: the other one follows.
+  document.querySelectorAll(`[data-p="${el.dataset.p}"]`).forEach((other) => { if (other !== el) other.value = el.value; });
+  // The note beside the hours of a surcharge follows what is typed, without redrawing the field being typed in.
+  if (el.dataset.hint && $(el.dataset.hint)) {
+    const [, line, rule] = el.dataset.hint.split('-').map(Number);
+    $(el.dataset.hint).textContent = spanHint(card().lines[line].rules[rule]);
+  }
+  renderReceipt();
+});
+
+// Concepts are dragged by their grip to another place in the list. Dropping one on another puts it in that place.
+const lineUnder = (event) => (state.dragging === null || !event.target.closest ? null : event.target.closest('[data-line]'));
+const clearDragMarks = () => document.querySelectorAll('.line.dragging, .line.over-up, .line.over-down').forEach((el) => el.classList.remove('dragging', 'over-up', 'over-down'));
+
+document.addEventListener('dragstart', (event) => {
+  const grip = event.target.closest ? event.target.closest('[data-drag]') : null;
+  if (!grip) return;
+  state.dragging = Number(grip.dataset.drag);
+  const item = grip.closest('.line');
+  if (event.dataTransfer) {
+    event.dataTransfer.effectAllowed = 'move';
+    event.dataTransfer.setData('text/plain', String(state.dragging));
+    if (item && event.dataTransfer.setDragImage) event.dataTransfer.setDragImage(item, 16, 16);
+  }
+  if (item) item.classList.add('dragging');
+});
+
+document.addEventListener('dragover', (event) => {
+  const item = lineUnder(event);
+  if (!item) return;
+  event.preventDefault();
+  const to = Number(item.dataset.line);
+  document.querySelectorAll('.line.over-up, .line.over-down').forEach((el) => el.classList.remove('over-up', 'over-down'));
+  if (to !== state.dragging) item.classList.add(to > state.dragging ? 'over-down' : 'over-up');
+});
+
+document.addEventListener('drop', (event) => {
+  const item = lineUnder(event);
+  if (!item) return;
+  event.preventDefault();
+  const to = Number(item.dataset.line);
+  if (to !== state.dragging) moveLine(card().lines, state.dragging, to);
+  state.dragging = null;
+  keepingFocus(renderAll);
+});
+
+document.addEventListener('dragend', () => {
+  state.dragging = null;
+  clearDragMarks();
+});
+
+// In a city search, Enter adds the first city offered and Escape clears what was typed.
+document.addEventListener('keydown', (event) => {
+  const el = event.target;
+  if (!el.dataset || el.dataset.zs === undefined) return;
+  if (event.key === 'Enter') {
+    event.preventDefault();
+    const first = document.querySelector(`#zsug-${el.dataset.zs} [data-act="cityAdd"]`);
+    if (first) first.click();
+  } else if (event.key === 'Escape' && el.value) {
+    el.value = '';
+    state.zoneSearch[el.dataset.zs] = '';
+    renderSuggestions(Number(el.dataset.zs));
+  }
+});
+
+document.addEventListener('change', (event) => {
+  const el = event.target;
+  if (!el.dataset || !el.dataset.p) return;
+  if (el.tagName === 'SELECT') {
+    setPath(el.dataset.p, el.dataset.t === 'num' ? parseNum(el.value) : el.value);
+    // A day marked by hand belongs to the country it was marked for.
+    if (el.dataset.p === 'svc.country') state.svc.holiday = false;
+    keepingFocus(renderAll);
+  } else if (el.dataset.p.startsWith('card.g') || el.dataset.p.startsWith('card.rows')) {
+    keepingFocus(renderTarifario);
+  } else if (el.dataset.p === 'card.closing.max') {
+    // What to do with the excess is only asked once there is a maximum.
+    keepingFocus(renderClosing);
+  }
+});
+
+document.addEventListener('click', (event) => {
+  const button = event.target.closest('[data-act]');
+  if (!button) return;
+  const act = button.dataset.act;
+  if (act === 'toReceipt') {
+    if ($('receipt').scrollIntoView) $('receipt').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  const i = Number(button.dataset.i);
+  const lines = card().lines;
+  const rules = card().trip;
+  if (act === 'which') { state.which = button.dataset.v; state.adding = false; state.layer = 'local'; state.zoneSearch = {}; }
+  else if (act === 'layer') state.layer = button.dataset.v;
+  else if (act === 'tripOn') { rules.on = !rules.on; state.layer = 'local'; }
+  else if (act === 'useZones') rules.useZones = !rules.useZones;
+  else if (act === 'maxKmOn') rules.maxKmOn = !rules.maxKmOn;
+  else if (act === 'zoneAdd') { rules.zones.push({ name: 'Nueva zona', country: 'co', cities: [] }); state.focusAfter = 'zsearch-' + (rules.zones.length - 1); }
+  else if (act === 'zoneDel') { rules.zones.splice(i, 1); state.zoneSearch = {}; }
+  else if (act === 'cityAdd') {
+    // A city belongs to one local zone only, so a trip between two cities always has one answer.
+    if (!rules.zones.some((zone) => zone.cities.includes(button.dataset.v))) rules.zones[i].cities.push(button.dataset.v);
+    state.zoneSearch[i] = '';
+    state.focusAfter = 'zsearch-' + i;
+  } else if (act === 'cityDel') { rules.zones[i].cities = rules.zones[i].cities.filter((id) => id !== button.dataset.v); state.focusAfter = 'zsearch-' + i; }
+  else if (act === 'svcHoliday') state.svc.holiday = !state.svc.holiday;
+  else if (act === 'inTotal') lines[i].inTotal = lines[i].inTotal === false;
+  else if (act === 'ruleAdd') lines[i].rules.push(newTimeRule());
+  else if (act === 'ruleDel') lines[i].rules.splice(Number(button.dataset.j), 1);
+  else if (act === 'ruleHoliday') { const rule = lines[i].rules[Number(button.dataset.j)]; rule.holidays = !rule.holidays; }
+  else if (act === 'ruleAllDay') {
+    const rule = lines[i].rules[Number(button.dataset.j)];
+    const from = minutesOf(rule.from);
+    const to = minutesOf(rule.to);
+    rule.allDay = !rule.allDay;
+    // Back to hours with none to go back to: start from the whole day written as hours.
+    if (!rule.allDay && (from === null || to === null || from >= to)) { rule.from = '00:00'; rule.to = '23:59'; }
+  }
+  else if (act === 'ruleDay') {
+    const rule = lines[i].rules[Number(button.dataset.j)];
+    const day = Number(button.dataset.v);
+    rule.days = rule.days.includes(day) ? rule.days.filter((other) => other !== day) : rule.days.concat([day]);
+  } else if (act === 'byrow') {
+    const line = lines[i];
+    const key = 'u_' + line.id;
+    if (line.byRow) { line.price = card().g[key] || 0; line.byRow = false; } else { card().g[key] = line.price || 0; line.byRow = true; }
+  } else if (act === 'up' && i > 0) lines.splice(i - 1, 0, lines.splice(i, 1)[0]);
+  else if (act === 'down' && i < lines.length - 1) lines.splice(i + 1, 0, lines.splice(i, 1)[0]);
+  else if (act === 'del') lines.splice(i, 1);
+  else if (act === 'adding') state.adding = !state.adding;
+  else if (act === 'add') {
+    const id = 'nuevo' + state.seq++;
+    lines.push(button.dataset.v === 'fixed' ? { id, type: 'fixed', name: 'Cargo fijo', sign: 1, value: 10000 }
+      : button.dataset.v === 'time' ? { id, type: 'time', name: 'Recargos por tiempo', pctBase: 'base', rules: [newTimeRule()] }
+        : { id, type: 'percent', name: 'Porcentaje', sign: 1, value: 5, pctBase: 'base' });
+    state.adding = false;
+  } else if (act === 'reset') { state.cards[state.which] = FACTORY[state.which](); state.svc = defaultService(); state.layer = 'local'; state.zoneSearch = {}; }
+  keepingFocus(renderAll);
+});
+
+renderAll();
+</script>
+
+</body></html>
