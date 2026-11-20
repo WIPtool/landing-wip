@@ -2252,3 +2252,6 @@ body[data-page="corp"] .footer{background:#000;border-top:1px solid rgba(255,255
 .spx-panel .spx-panel__in{max-width:1080px;margin-left:auto;margin-right:auto;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,5vw,72px)}
 .spx-panel .spx-h2{font-size:clamp(32px,3.6vw,48px)}
 @media(max-width:900px){.spx-panel .spx-panel__in{grid-template-columns:1fr}}
+
+/* Corporativo: todos los botones redondeados */
+body[data-page="corp"] .spx-btn,body[data-page="corp"] main .btn,body[data-page="corp"] main button[type="submit"]{border-radius:12px!important}
