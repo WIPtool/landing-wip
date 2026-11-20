@@ -112,7 +112,7 @@ shell = rep(shell, "{p:4,l:'$45.000 · tarifa convenio'}", "{p:4,l:'$185.000 · 
 shell = rep(shell, '<a href="/corporativo"><span class="ic">', '<a href="/software-empresas-de-asistencia"><span class="ic">');
 shell = rep(shell, '<a href="/proveedores"><span class="ic">', '<a href="/proveedores-de-asistencia"><span class="ic">');
 shell = rep(shell, '<b>Wip Corporativo</b><span>Para aseguradoras y empresas de asistencia con su propia red de proveedores.</span>', '<b>Aseguradoras y asistencias</b><span>Toda tu red de proveedores, medida por ANS, calidad y costo.</span>');
-shell = rep(shell, '<b>Wip Proveedores</b><span>Para grúas, técnicos, cerrajeros, médicos y abogados que atienden asistencias.</span>', '<b>Proveedores de asistencia</b><span>Todas las plataformas de tus aseguradoras en un solo lugar.</span>');
+shell = rep(shell, '<b>Wip Proveedores</b><span>Para grúas, técnicos, cerrajeros, médicos y abogados que atienden asistencias.</span>', '<b>Proveedores de asistencia</b><span>Las plataformas de tus aseguradoras y empresas de asistencia en un solo lugar.</span>');
 shell = rep(shell, '      <a href="#clientes">Clientes</a>\n', '      <a href="/preguntas-frecuentes">Preguntas</a>\n');
 shell = rep(shell, `        <a href="/corporativo">Wip Corporativo</a>
         <a href="/proveedores">Wip Proveedores</a>
@@ -149,9 +149,9 @@ const Q = {
   liquida: ['¿Cómo se liquidan los servicios de mi red?', 'Cada servicio toma la tarifa de su convenio de forma automática y cierra con fotos, firma y horas. Al final del periodo tienes los servicios listos para conciliar y pagar, con la evidencia de cada uno.'],
   reportes: ['¿Qué indicadores puedo ver de mi operación?', 'ANS, calidad y costo de tu red, por proveedor, ciudad y tipo de servicio, en tiempo real. También puedes pedirle a Wipi, la IA de Wip, un informe en tus propias palabras.'],
   costoCorp: ['¿Cuánto cuesta Wip para una aseguradora o empresa de asistencia?', 'Se cotiza según la operación: volumen de servicios, convenios, integraciones y desarrollos. En una demo te mostramos Wip con un caso como el tuyo.'],
-  varias: ['¿Sirve para proveedores que trabajan con varias aseguradoras?', 'Sí, es justo para eso. Los servicios de todas tus aseguradoras y asistencias llegan a un solo lugar, cada uno con las reglas y la tarifa de su convenio, y tus técnicos trabajan en una sola app.'],
+  varias: ['¿Sirve para proveedores que trabajan con varias aseguradoras y empresas de asistencia?', 'Sí, es justo para eso. Los servicios de todas tus aseguradoras y asistencias llegan a un solo lugar, cada uno con las reglas y la tarifa de su convenio, y tus técnicos trabajan en una sola app.'],
   sinInteg: ['¿Y si mi aseguradora no está integrada con Wip?', 'Pegas el pantallazo del servicio y Wip lo crea con todos sus datos. Si hay integración, los servicios entran solos y Wip puede pedir las autorizaciones a la empresa.'],
-  particulares: ['¿Sirve para mis servicios particulares?', 'Sí. Los particulares que llegan por llamada o WhatsApp entran al mismo lugar que los servicios de tus aseguradoras, con tu propia tarifa.'],
+  particulares: ['¿Sirve para mis servicios particulares?', 'Sí. Los particulares que llegan por llamada o WhatsApp entran al mismo lugar que los servicios de tus aseguradoras y empresas de asistencia, con tu propia tarifa.'],
   novedades: ['¿Qué hace Wip IA con las novedades y autorizaciones?', 'Atiende las novedades del servicio, como un cliente que no está o un cambio de destino, y te ayuda con las autorizaciones: las pide a la empresa si hay integración o las deja listas para tu equipo.'],
   cobro: ['¿Cómo saco la cuenta de cobro?', 'Sale del reporte: Wip junta los servicios del periodo por empresa, con la tarifa de cada convenio aplicada, las horas y las evidencias de cierre.'],
   costoProv: ['¿Cuánto cuesta Wip para un proveedor?', 'Hay planes mensuales según tu volumen de servicios, desde $195.000 COP al mes. Meli te los explica por WhatsApp.'],
@@ -197,7 +197,7 @@ const pages = [
     navCta: demoBtn('btn btn--lime nav__cta'), xp: 'corp' },
   { key: 'prov', out: 'proveedores-de-asistencia/index.html', path: '/proveedores-de-asistencia', body: 'proveedores.html',
     title: 'Software para proveedores de asistencia | Wip',
-    desc: 'Grúas, hogar, médicos y veterinarios: todas las plataformas de tus aseguradoras en un solo lugar, una sola app y la cuenta de cobro desde el reporte.',
+    desc: 'Grúas, hogar, médicos y veterinarios: las plataformas de tus aseguradoras y asistencias en un solo lugar, una sola app y la cuenta de cobro desde el reporte.',
     bar: '',
     navCta: meliBtn('btn btn--lime nav__cta', 'Habla con Meli'), xp: 'prov' },
   { key: 'faq', out: 'preguntas-frecuentes/index.html', path: '/preguntas-frecuentes', body: 'preguntas.html',
@@ -226,7 +226,7 @@ for (const p of pages) {
     c = rep(c, between(c, '        <fieldset class="perfil">', '</fieldset>\n'), '        <input type="hidden" name="perfil" value="Proveedor de asistencia">\n');
     c = rep(c, '<h3>¿Prefieres que te contactemos?</h3>', '<h3>Registro de proveedores</h3>\n      <p class="form__for">Para proveedores de asistencia</p>');
     c = rep(c, between(c, '<div class="contact-calendly">', '</div>'), `<div class="contact-calendly">${meliBtn('btn btn--lime', 'O escríbele a Meli por WhatsApp')}</div>`);
-    c = rep(c, 'placeholder="Cuéntanos sobre tu operación y qué te gustaría mejorar."', 'placeholder="Cuántos técnicos tienes, con qué aseguradoras trabajas y qué te gustaría mejorar."');
+    c = rep(c, 'placeholder="Cuéntanos sobre tu operación y qué te gustaría mejorar."', 'placeholder="Cuántos técnicos tienes, con qué aseguradoras o empresas de asistencia trabajas y qué te gustaría mejorar."');
     c = rep(c, '>Correo corporativo</label>', '>Correo</label>');
   }
   main = main.replace('{{CLIENTES}}', clientes.trim()).replace('{{FAQ}}', faqBlock.trim()).replace('{{CONTACTO}}', c.trim())
