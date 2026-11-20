@@ -3126,9 +3126,16 @@ window.addEventListener('message',function(e){
   <div class="wrap">
     <div class="head rv"><h2 class="h2">Aseguradoras y empresas de asistencia</h2></div>
     <div class="faq rv">
-      <details name="aseguradoras" open><summary>¿Cómo se mide el ANS de una red de proveedores?</summary><p>Se compara, servicio por servicio, el tiempo real de cada etapa (asignación, llegada y cierre) contra el tiempo pactado en el convenio. Wip lo mide solo, lo muestra por proveedor, ciudad y tipo de servicio, y alerta antes de que un servicio incumpla.</p></details>
+      <details name="aseguradoras" open><summary>¿Cómo llegan los casos de mis asegurados a Wip?</summary><p>Desde la plataforma de la aseguradora por integración API, por WhatsApp o creados por tu equipo en Wip. Todos quedan en el mismo lugar, con el convenio, la tarifa y el ANS que les corresponden.</p></details>
+      <details name="aseguradoras"><summary>¿Cómo se mide el ANS de una red de proveedores?</summary><p>Se compara, servicio por servicio, el tiempo real de cada etapa (asignación, llegada y cierre) contra el tiempo pactado en el convenio. Wip lo mide solo, lo muestra por proveedor, ciudad y tipo de servicio, y alerta antes de que un servicio incumpla.</p></details>
       <details name="aseguradoras"><summary>¿Cuántas asistencias no terminan bien?</summary><p>En Wip, 1 de cada 6 asistencias no termina en finalizada: 10,8 % se cancelan, 2,1 % fallan y 1,9 % las rechaza el proveedor. Por eso Wip IA sigue cada servicio y avisa antes de que se caiga.</p></details>
+      <details name="aseguradoras"><summary>¿Qué pasa si un proveedor no acepta el servicio?</summary><p>Wip lo pasa al siguiente proveedor según las reglas del convenio, sin que tu equipo tenga que llamar uno por uno. Desde la central de monitoreo ves en todo momento quién lo tiene y en qué estado va.</p></details>
+      <details name="aseguradoras"><summary>¿Puedo operar con proveedores externos y con técnicos propios?</summary><p>Sí. Wip integra en una sola plataforma a tus proveedores tercerizados y a tus colaboradores de nómina, cada uno con el perfil adecuado según su rol, y asigna cada servicio al mejor según tus reglas.</p></details>
+      <details name="aseguradoras"><summary>¿Cómo se entera el asegurado del estado de su asistencia?</summary><p>Por WhatsApp. Wip le avisa cada cambio de estado, le puede pedir la ubicación de origen y destino, y el asegurado escribe o envía fotos que quedan en el servicio. Si conectas el número de tu empresa, los mensajes le llegan con tu nombre.</p></details>
+      <details name="aseguradoras"><summary>¿Puedo coordinar varios servicios para un mismo caso?</summary><p>Sí. Con Multiservicios creas un evento con varios servicios, por ejemplo grúa, desplazamiento y custodia. Se crean en simultánea, Wip asigna cada uno a su prestador y todos comparten el mismo evento y el mismo usuario.</p></details>
+      <details name="aseguradoras"><summary>¿Cómo se liquidan los servicios de mi red?</summary><p>Cada servicio toma la tarifa de su convenio de forma automática y cierra con fotos, firma y horas. Al final del periodo tienes los servicios listos para conciliar y pagar, con la evidencia de cada uno.</p></details>
       <details name="aseguradoras"><summary>¿Cómo detecta Wip las fugas de costo?</summary><p>Revisa cada servicio antes de pagarlo y marca los que están a punto de incumplir, los kilómetros cobrados que no cuadran con el recorrido y el mismo servicio cobrado dos veces. Lo que cumple queda listo para facturar con la tarifa del convenio.</p></details>
+      <details name="aseguradoras"><summary>¿Qué indicadores puedo ver de mi operación?</summary><p>ANS, calidad y costo de tu red, por proveedor, ciudad y tipo de servicio, en tiempo real. También puedes pedirle a Wipi, la IA de Wip, un informe en tus propias palabras.</p></details>
       <details name="aseguradoras"><summary>¿Cuánto tarda la implementación?</summary><p>Depende de cuántos convenios, proveedores e integraciones tenga la operación. En la demo se arma el cronograma: configuración, capacitación del equipo y de la red, e inicio de operación con acompañamiento del equipo Wip.</p></details>
       <details name="aseguradoras"><summary>¿Cuánto cuesta Wip para una aseguradora o empresa de asistencia?</summary><p>Se cotiza según la operación: volumen de servicios, convenios, integraciones y desarrollos. En una demo te mostramos Wip con un caso como el tuyo.</p></details>
     </div>
@@ -3288,6 +3295,14 @@ window.addEventListener('message',function(e){
     },
     {
       "@type": "Question",
+      "name": "¿Cómo llegan los casos de mis asegurados a Wip?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Desde la plataforma de la aseguradora por integración API, por WhatsApp o creados por tu equipo en Wip. Todos quedan en el mismo lugar, con el convenio, la tarifa y el ANS que les corresponden."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "¿Cómo se mide el ANS de una red de proveedores?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -3304,10 +3319,58 @@ window.addEventListener('message',function(e){
     },
     {
       "@type": "Question",
+      "name": "¿Qué pasa si un proveedor no acepta el servicio?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Wip lo pasa al siguiente proveedor según las reglas del convenio, sin que tu equipo tenga que llamar uno por uno. Desde la central de monitoreo ves en todo momento quién lo tiene y en qué estado va."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo operar con proveedores externos y con técnicos propios?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Wip integra en una sola plataforma a tus proveedores tercerizados y a tus colaboradores de nómina, cada uno con el perfil adecuado según su rol, y asigna cada servicio al mejor según tus reglas."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se entera el asegurado del estado de su asistencia?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Por WhatsApp. Wip le avisa cada cambio de estado, le puede pedir la ubicación de origen y destino, y el asegurado escribe o envía fotos que quedan en el servicio. Si conectas el número de tu empresa, los mensajes le llegan con tu nombre."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Puedo coordinar varios servicios para un mismo caso?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sí. Con Multiservicios creas un evento con varios servicios, por ejemplo grúa, desplazamiento y custodia. Se crean en simultánea, Wip asigna cada uno a su prestador y todos comparten el mismo evento y el mismo usuario."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo se liquidan los servicios de mi red?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Cada servicio toma la tarifa de su convenio de forma automática y cierra con fotos, firma y horas. Al final del periodo tienes los servicios listos para conciliar y pagar, con la evidencia de cada uno."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "¿Cómo detecta Wip las fugas de costo?",
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Revisa cada servicio antes de pagarlo y marca los que están a punto de incumplir, los kilómetros cobrados que no cuadran con el recorrido y el mismo servicio cobrado dos veces. Lo que cumple queda listo para facturar con la tarifa del convenio."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué indicadores puedo ver de mi operación?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ANS, calidad y costo de tu red, por proveedor, ciudad y tipo de servicio, en tiempo real. También puedes pedirle a Wipi, la IA de Wip, un informe en tus propias palabras."
       }
     },
     {

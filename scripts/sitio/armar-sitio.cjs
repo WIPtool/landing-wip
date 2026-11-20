@@ -141,6 +141,13 @@ const Q = {
   fugas: ['¿Cómo detecta Wip las fugas de costo?', 'Revisa cada servicio antes de pagarlo y marca los que están a punto de incumplir, los kilómetros cobrados que no cuadran con el recorrido y el mismo servicio cobrado dos veces. Lo que cumple queda listo para facturar con la tarifa del convenio.'],
   reemplaza: ['¿Wip reemplaza los sistemas que ya tenemos?', 'No. Wip recibe los casos desde la plataforma de la aseguradora, por API o por WhatsApp, y se conecta con la operación que ya existe, sin reemplazar lo que funciona.'],
   implementa: ['¿Cuánto tarda la implementación?', 'Depende de cuántos convenios, proveedores e integraciones tenga la operación. En la demo se arma el cronograma: configuración, capacitación del equipo y de la red, e inicio de operación con acompañamiento del equipo Wip.'],
+  llegan: ['¿Cómo llegan los casos de mis asegurados a Wip?', 'Desde la plataforma de la aseguradora por integración API, por WhatsApp o creados por tu equipo en Wip. Todos quedan en el mismo lugar, con el convenio, la tarifa y el ANS que les corresponden.'],
+  propios: ['¿Puedo operar con proveedores externos y con técnicos propios?', 'Sí. Wip integra en una sola plataforma a tus proveedores tercerizados y a tus colaboradores de nómina, cada uno con el perfil adecuado según su rol, y asigna cada servicio al mejor según tus reglas.'],
+  noAcepta: ['¿Qué pasa si un proveedor no acepta el servicio?', 'Wip lo pasa al siguiente proveedor según las reglas del convenio, sin que tu equipo tenga que llamar uno por uno. Desde la central de monitoreo ves en todo momento quién lo tiene y en qué estado va.'],
+  asegurado: ['¿Cómo se entera el asegurado del estado de su asistencia?', 'Por WhatsApp. Wip le avisa cada cambio de estado, le puede pedir la ubicación de origen y destino, y el asegurado escribe o envía fotos que quedan en el servicio. Si conectas el número de tu empresa, los mensajes le llegan con tu nombre.'],
+  eventos: ['¿Puedo coordinar varios servicios para un mismo caso?', 'Sí. Con Multiservicios creas un evento con varios servicios, por ejemplo grúa, desplazamiento y custodia. Se crean en simultánea, Wip asigna cada uno a su prestador y todos comparten el mismo evento y el mismo usuario.'],
+  liquida: ['¿Cómo se liquidan los servicios de mi red?', 'Cada servicio toma la tarifa de su convenio de forma automática y cierra con fotos, firma y horas. Al final del periodo tienes los servicios listos para conciliar y pagar, con la evidencia de cada uno.'],
+  reportes: ['¿Qué indicadores puedo ver de mi operación?', 'ANS, calidad y costo de tu red, por proveedor, ciudad y tipo de servicio, en tiempo real. También puedes pedirle a Wipi, la IA de Wip, un informe en tus propias palabras.'],
   costoCorp: ['¿Cuánto cuesta Wip para una aseguradora o empresa de asistencia?', 'Se cotiza según la operación: volumen de servicios, convenios, integraciones y desarrollos. En una demo te mostramos Wip con un caso como el tuyo.'],
   varias: ['¿Sirve para proveedores que trabajan con varias aseguradoras?', 'Sí, es justo para eso. Los servicios de todas tus aseguradoras y asistencias llegan a un solo lugar, cada uno con las reglas y la tarifa de su convenio, y tus técnicos trabajan en una sola app.'],
   sinInteg: ['¿Y si mi aseguradora no está integrada con Wip?', 'Pegas el pantallazo del servicio y Wip lo crea con todos sus datos. Si hay integración, los servicios entran solos y Wip puede pedir las autorizaciones a la empresa.'],
@@ -151,12 +158,12 @@ const Q = {
 };
 const FAQ = {
   home: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos],
-  corp: [Q.ans, Q.fugas, Q.implementa, Q.costoCorp],
+  corp: [Q.llegan, Q.ans, Q.noAcepta, Q.propios, Q.asegurado, Q.eventos, Q.liquida, Q.fugas, Q.reportes, Q.tipos, Q.implementa, Q.costoCorp],
   prov: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.cobro, Q.costoProv],
 };
 const GROUPS = [
   { id: 'general', h: 'General', items: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos, Q.paises] },
-  { id: 'aseguradoras', h: 'Aseguradoras y empresas de asistencia', items: [Q.ans, Q.falla, Q.fugas, Q.implementa, Q.costoCorp] },
+  { id: 'aseguradoras', h: 'Aseguradoras y empresas de asistencia', items: [Q.llegan, Q.ans, Q.falla, Q.noAcepta, Q.propios, Q.asegurado, Q.eventos, Q.liquida, Q.fugas, Q.reportes, Q.implementa, Q.costoCorp] },
   { id: 'proveedores', h: 'Proveedores de asistencia', items: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.cobro, Q.costoProv] },
 ];
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
