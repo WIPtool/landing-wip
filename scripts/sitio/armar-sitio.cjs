@@ -98,7 +98,7 @@ const faqBlock = between(oldMain, '<!-- ===================== FAQ', '<!-- ======
 const contacto = between(oldMain, '<!-- ===================== CONTACTO', '<section class="outro">', false);
 
 const CAL_URL = 'https://calendly.com/comercial-wiptool/acercamiento-wip';
-const demoBtn = (cls = 'btn btn--lime') => `<a href="${CAL_URL}" class="${cls}" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'${CAL_URL}'});return false;}">Agenda una demo</a>`;
+const demoBtn = (cls = 'btn btn--lime', txt = 'Agenda una demo') => `<a href="${CAL_URL}" class="${cls}" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'${CAL_URL}'});return false;}">${txt}</a>`;
 const MELI_URL = 'https://wa.me/573005124111?text=' + encodeURIComponent('Hola Meli, soy proveedor de asistencia y quiero conocer Wip');
 const meliBtn = (cls = 'btn btn--lime', txt = 'Escríbele a Meli por WhatsApp') => `<a href="${MELI_URL}" class="${cls}" target="_blank" rel="noopener" data-cta="meli">${txt}</a>`;
 // Barra de lanzamiento: sin uso por ahora (se quitó el aviso del piloto); se deja para la próxima oferta.
@@ -154,7 +154,7 @@ const Q = {
   particulares: ['¿Sirve para mis servicios particulares?', 'Sí. Los particulares que llegan por llamada o WhatsApp entran al mismo lugar que los servicios de tus aseguradoras y empresas de asistencia, con tu propia tarifa.'],
   novedades: ['¿Qué hace Wip IA con las novedades y autorizaciones?', 'Atiende las novedades del servicio, como un cliente que no está o un cambio de destino, y te ayuda con las autorizaciones: las pide a la empresa si hay integración o las deja listas para tu equipo.'],
   cobro: ['¿Cómo saco la cuenta de cobro?', 'Sale del reporte: Wip junta los servicios del periodo por empresa, con la tarifa de cada convenio aplicada, las horas y las evidencias de cierre.'],
-  costoProv: ['¿Cuánto cuesta Wip para un proveedor?', 'Hay planes mensuales según tu volumen de servicios, desde $195.000 COP al mes. Meli te los explica por WhatsApp.'],
+  costoProv: ['¿Cuánto cuesta Wip para un proveedor?', 'Hay planes mensuales según tu volumen de servicios, desde $195.000 COP al mes. En una demo te mostramos el plan que se ajusta a tu operación.'],
 };
 const FAQ = {
   home: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos],
@@ -199,7 +199,7 @@ const pages = [
     title: 'Software para proveedores de asistencia | Wip',
     desc: 'Grúas, hogar, médicos y veterinarios: las plataformas de tus aseguradoras y asistencias en un solo lugar, una sola app y la cuenta de cobro desde el reporte.',
     bar: '',
-    navCta: meliBtn('btn btn--lime nav__cta', 'Habla con Meli'), xp: 'prov' },
+    navCta: demoBtn('btn btn--lime nav__cta', 'Pide una demo'), xp: 'prov' },
   { key: 'faq', out: 'preguntas-frecuentes/index.html', path: '/preguntas-frecuentes', body: 'preguntas.html',
     title: 'Preguntas frecuentes sobre software para asistencias | Wip',
     desc: 'Qué es un software para empresas de asistencia, cómo se mide el ANS de una red de proveedores y cómo Wip sirve a proveedores de varias aseguradoras.',
@@ -225,16 +225,20 @@ for (const p of pages) {
     c = rep(c, 'Cuéntanos de qué lado de las asistencias estás y cómo operas hoy. Te mostramos WIP operando tu día a día.', 'Déjanos tus datos y un asesor de Wip te contacta para mostrarte cómo operar todos tus servicios en un solo lugar.');
     c = rep(c, between(c, '        <fieldset class="perfil">', '</fieldset>\n'), '        <input type="hidden" name="perfil" value="Proveedor de asistencia">\n');
     c = rep(c, '<h3>¿Prefieres que te contactemos?</h3>', '<h3>Registro de proveedores</h3>\n      <p class="form__for">Para proveedores de asistencia</p>');
-    c = rep(c, between(c, '<div class="contact-calendly">', '</div>'), `<div class="contact-calendly">${meliBtn('btn btn--lime', 'O escríbele a Meli por WhatsApp')}</div>`);
+    c = rep(c, between(c, '<div class="contact-calendly">', '</div>'), `<div class="contact-calendly">${demoBtn('btn btn--lime', 'Pide una demo de Wip')}</div>`);
     c = rep(c, 'placeholder="Cuéntanos sobre tu operación y qué te gustaría mejorar."', 'placeholder="Cuántos técnicos tienes, con qué aseguradoras o empresas de asistencia trabajas y qué te gustaría mejorar."');
     c = rep(c, '>Correo corporativo</label>', '>Correo</label>');
+  }
+  if (p.key === 'corp' || p.key === 'home') {
+    c = c.replace('>Agendar una demo</a>', '>Agenda una demo</a>');
+    if (p.key === 'home') c = c.replace('Mira WIP en vivo', 'Mira Wip en vivo').replace('Te mostramos WIP operando', 'Te mostramos Wip operando');
   }
   main = main.replace('{{CLIENTES}}', clientes.trim()).replace('{{FAQ}}', faqBlock.trim()).replace('{{CONTACTO}}', c.trim())
     .replace('{{FAQ_GROUPS}}', groupsHtml);
   let t = shell.replace('{{MAIN}}', main);
   const faqList = p.key === 'faq' ? GROUPS.flatMap((g) => g.items) : FAQ[p.key];
   const vars = { TITLE: p.title, DESC: p.desc, PATH: p.path, PAGE: p.key, BAR: p.bar, NAV_CTA: p.navCta,
-    DEMO_BTN: demoBtn(), MELI_BTN: meliBtn(), MELI_BTN_GHOST: meliBtn('btn btn--ghost'), MELI_SX: meliBtn('pv-btn', 'Habla con Meli'), DEMO_CX: demoBtn('cx-btn cx-btn--w'), MELI_EP: meliBtn('ep-btn ep-btn--line', 'Habla con Meli'), MELI_EP_MAIN: meliBtn('ep-btn ep-btn--main', 'Escríbele a Meli por WhatsApp'), MELI_CS: meliBtn('cs-btn cs-btn--main', 'Habla con Meli por WhatsApp'), MELI_CS_LINE: meliBtn('cs-btn cs-btn--dark', 'Habla con Meli'), DEMO_IX: demoBtn('ix-btn ix-btn--main'), DEMO_PL: demoBtn('pl-btn pl-btn--main'), DEMO_SPX: demoBtn('spx-btn spx-btn--main'), DEMO_WH: demoBtn('wh-btn wh-btn--main'),
+    DEMO_BTN: demoBtn(), DEMO_CS: demoBtn('cs-btn cs-btn--main', 'Pide una demo de Wip'), HABLEMOS_CS: '<a href="#contacto" class="cs-btn cs-btn--dark">Hablemos</a>', MELI_BTN: meliBtn(), MELI_BTN_GHOST: meliBtn('btn btn--ghost'), MELI_SX: meliBtn('pv-btn', 'Habla con Meli'), DEMO_CX: demoBtn('cx-btn cx-btn--w'), MELI_EP: meliBtn('ep-btn ep-btn--line', 'Habla con Meli'), MELI_EP_MAIN: meliBtn('ep-btn ep-btn--main', 'Escríbele a Meli por WhatsApp'), MELI_CS: meliBtn('cs-btn cs-btn--main', 'Habla con Meli por WhatsApp'), MELI_CS_LINE: meliBtn('cs-btn cs-btn--dark', 'Habla con Meli'), DEMO_IX: demoBtn('ix-btn ix-btn--main'), DEMO_PL: demoBtn('pl-btn pl-btn--main'), DEMO_SPX: demoBtn('spx-btn spx-btn--main'), DEMO_WH: demoBtn('wh-btn wh-btn--main'),
     XP_CORP: p.xp === 'prov' ? '' : ' checked', XP_PROV: p.xp === 'prov' ? ' checked' : '',
     FAQ_HTML: p.key === 'faq' ? '' : faqHtml(faqList), FAQ_JSON: faqJson(faqList), ...blocks };
   for (const [k, v] of Object.entries(vars)) t = t.split(`{{${k}}}`).join(v);
