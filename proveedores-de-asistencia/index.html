@@ -2551,6 +2551,15 @@ body[data-page="prov"] .nav__in{background:rgba(255,255,255,.92)}
 .cx-doors .door--lime::after{width:26px;height:26px;margin-top:-13px;right:13px}
 .cx-side{margin-top:28px}
 
+/* Proveedores: video al lado del título en el hero */
+.cs-hero__grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(28px,4vw,60px);align-items:center}
+.cs-hero__grid .cs-hero__in{align-items:flex-start;text-align:left}
+.cs-hero__grid .cs-h1{font-size:clamp(32px,3.9vw,54px)}
+.cs-hero__grid .cs-sub{max-width:560px}
+.cs-hero__grid .cs-ctas{justify-content:flex-start}
+.cs-hero__vid .cs-vid{box-shadow:0 30px 70px rgba(11,16,32,.28)}
+@media(max-width:900px){.cs-hero__grid{grid-template-columns:1fr}.cs-hero__grid .cs-hero__in{align-items:center;text-align:center}.cs-hero__grid .cs-ctas{justify-content:center}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2620,31 +2629,19 @@ window.addEventListener('message',function(e){
 <main>
 <!-- ===================== WIP PROVEEDORES, formato de cleanshot.com adaptado a Wip ===================== -->
 <section class="cs-hero" id="inicio">
-  <div class="wrap cs-hero__in">
+  <div class="wrap cs-hero__grid">
+  <div class="cs-hero__in">
     <span class="cs-pill rv in"><i aria-hidden="true"></i>Wip IA atiende tus novedades 24/7</span>
-    <h1 class="cs-h1 rv in" style="--rd:.05s">Tus aseguradoras tienen muchas plataformas.<br>Tú tienes <span>Wip.</span></h1>
+    <h1 class="cs-h1 rv in" style="--rd:.05s">Tus aseguradoras tienen muchas plataformas. <br>Tú tienes <span>Wip.</span></h1>
     <p class="cs-sub rv in" style="--rd:.1s">El lugar donde el proveedor de asistencia recibe, asigna, cierra y cobra cada servicio.<br>Para grúas, hogar, médicos y veterinarios a domicilio.</p>
-    <div class="cs-ctas rv in" style="--rd:.15s"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a><a href="#como-funciona" class="cs-btn cs-btn--ghost">Cómo funciona</a></div>
+    <div class="cs-ctas rv in" style="--rd:.15s"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a><a href="#un-solo-lugar" class="cs-btn cs-btn--ghost">Cómo funciona</a></div>
     <a href="/equipos#planes" class="cs-more rv in" style="--rd:.2s">Planes desde $195.000 COP al mes <span aria-hidden="true">›</span></a>
   </div>
-  <div class="wrap cs-showcase rv in" style="--rd:.25s" id="como-funciona">
+  <div class="cs-hero__vid rv in" style="--rd:.2s">
     <!-- Espacio para el video de Wip Proveedores (16:9). Cuando esté listo, reemplazar .vid__ph por:
          <video src="/video/wip-proveedores.mp4" poster="/video/wip-proveedores.jpg" controls playsinline preload="metadata"></video> -->
     <div class="vid cs-vid" id="video-hero-proveedores"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Proveedores</span></div></div>
-    <div class="cs-side">
-      <div class="live cs-live" aria-label="Así opera Wip un servicio de un proveedor">
-        <div class="live__h"><div><small>Aseguradora B · servicio 88213</small><b>Grúa liviana · Av. Boyacá con Cl. 13</b></div><span class="live__t"><span>En curso</span> · <b>00:00:00</b></span></div>
-        <ol class="live__steps">
-          <li data-t="5"><i></i>Tomado de la plataforma</li>
-          <li data-t="12"><i></i>Tarifa del convenio</li>
-          <li data-t="40"><i></i>Técnico asignado</li>
-          <li data-t="1500"><i></i>Novedad atendida</li>
-          <li data-t="2950"><i></i>Fotos, firma y horas</li>
-          <li data-t="3010"><i></i>Cuenta de cobro lista</li>
-        </ol>
-        <p class="live__foot">Wip IA atiende la novedad. Tu equipo solo decide lo que necesita criterio.</p>
-      </div>
-    </div>
+  </div>
   </div>
 </section>
 
