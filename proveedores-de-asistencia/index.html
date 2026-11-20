@@ -3080,6 +3080,23 @@ body[data-page="corp"] #video{scroll-margin-top:90px}
 @media(max-width:900px){.nv__stage{grid-template-columns:1fr}.nv__pts{grid-template-columns:1fr}.nv__list{min-height:0}}
 @media(prefers-reduced-motion:reduce){.nv .cht__list > *{animation:none;opacity:1}}
 
+/* Proveedores: del servicio al cobro */
+.cb-tar{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding-top:16px}
+.cb-tar div{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:10px;background:#fff;border:1px solid #e3e8d4;font-size:13px;color:#4a5468}
+.cb-tar b{color:var(--navy);font-variant-numeric:tabular-nums}
+.cb-tar div:first-child{border-color:#9bbf1a;background:rgba(219,255,87,.25)}
+.cb-tar small{font-size:11px;color:#8a93a8}
+.cb-ev{list-style:none;margin:auto 0 0;padding:16px 0 0;display:flex;flex-direction:column;gap:8px}
+.cb-ev li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:13.5px;font-weight:600}
+.cb-ev li::before{content:"✓";flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--navy);font-size:11px;font-weight:900}
+.cb-flow{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:18px;flex-wrap:wrap}
+.cb-flow__n{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;background:#fff;border:1px solid #e3e6ec;font-size:14px;font-weight:700;color:var(--navy);box-shadow:0 8px 20px rgba(11,16,32,.06)}
+.cb-flow__n--wip{background:#0b1020;color:#fff;border-color:#0b1020}.cb-flow__n--wip img{width:40px;height:auto}
+.cb-flow__n--acc{background:var(--lime);border-color:#9bbf1a}
+.cb-flow i{position:relative;flex:1 1 30px;min-width:24px;height:2px;background:linear-gradient(90deg,#9bbf1a,#dbff57);overflow:hidden;border-radius:2px}
+.cb-flow i::after{content:"";position:absolute;top:-2px;left:-30%;width:30%;height:6px;border-radius:6px;background:#7fa600;animation:igFlow 2s linear infinite}
+@media(prefers-reduced-motion:reduce){.cb-flow i::after{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3270,21 +3287,21 @@ window.addEventListener('message',function(e){
 <section class="cs-sec" id="cobro">
   <div class="wrap">
     <div class="cs-head rv">
-      <div><h2 class="cs-h2">Del servicio al cobro</h2><p>Cada servicio queda cerrado, con su evidencia y la tarifa de su convenio. Llegas a los días de visado con todo listo.</p></div>
+      <div><h2 class="cs-h2">Del servicio al cobro</h2><p>Wip tiene todo lo que necesitas para facturar tus servicios: informes por cliente, tarifas con sus variables de costo, revisión de evidencias e integración con tu software contable.</p></div>
       <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--dark" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
     </div>
     <div class="cs-bento cs-bento--3">
-      <div class="cs-b cs-b--lime cs-b--tall rv"><div class="cs-b__t"><b>La cuenta de cobro, desde el reporte</b><span>Con la tarifa de cada convenio aplicada sola.</span></div><div class="cs-b__v"><div class="pv-card">
+      <div class="cs-b cs-b--lime cs-b--tall rv"><div class="cs-b__t"><b>Informes listos para facturar</b><span>Los servicios del periodo por cliente, con la tarifa de cada convenio ya aplicada.</span></div><div class="cs-b__v"><div class="pv-card">
       <div class="pv-card__h"><b>Aseguradora A · octubre</b><span>Ejemplo</span></div>
       <div class="pv-card__r"><span>Servicios cerrados</span><em>263</em></div>
       <div class="pv-card__r"><span>Con evidencias completas</span><em>263</em></div>
       <div class="pv-card__r"><span>Tarifa del convenio</span><em>Aplicada</em></div>
       <div class="pv-card__r pv-card__r--total"><span>Total a cobrar</span><em>$48.620.000</em></div>
-      <div class="pv-card__into"><i class="pv-ok">✓</i><div><b>Cuenta de cobro lista</b><span>Desde el reporte del mes</span></div></div>
+      <div class="pv-card__into"><i class="pv-ok">✓</i><div><b>Cuenta de cobro lista</b><span>Desde el informe del mes</span></div></div>
 </div></div></div>
-      <div class="cs-b cs-b--light rv" style="--rd:.05s"><div class="cs-b__t"><b>Tarifado de cada cliente</b><span>Cada aseguradora con su lista de tarifas, sus reglas y su ANS.</span></div></div>
-      <div class="cs-b cs-b--navy rv" style="--rd:.1s"><div class="cs-b__t"><b>Listo para el visado</b><span>Servicios cerrados con fotos, firma y horas.</span></div><span class="cs-tag">Evidencias completas</span></div>
-      <div class="cs-b cs-b--light cs-b--wide2 rv"><div class="cs-b__t"><b>Trazabilidad de cada estado</b><span>Cada cambio con su hora y su responsable. Captura real, datos difuminados.</span></div><div class="cs-b__v cs-b__v--img"><img src="/img/plataforma/proveedores/trazabilidad.webp" alt="Trazabilidad de los estados de un servicio en Wip" width="1181" height="280" loading="lazy" decoding="async"></div></div>
+      <div class="cs-b cs-b--light rv" style="--rd:.05s"><div class="cs-b__t"><b>Tarifas con sus variables</b><span>Cada cliente con sus tarifas y variables de costo. Si cambia una tarifa, la actualizas y se aplica sola.</span></div><div class="cb-tar" aria-hidden="true"><div><span>Tarifa base</span><b>$185.000</b></div><div><span>Km adicional</span><b>$4.500</b></div><div><span>Recargo nocturno</span><b>20 %</b></div><div><span>Espera por hora</span><b>$25.000</b></div><small>Valores de ejemplo</small></div></div>
+      <div class="cs-b cs-b--navy rv" style="--rd:.1s"><div class="cs-b__t"><b>Revisión de evidencias</b><span>Antes del visado revisas que cada servicio tenga sus fotos, la firma y las horas.</span></div><ul class="cb-ev" aria-hidden="true"><li>Fotos de llegada y cierre</li><li>Firma del usuario</li><li>Horas de cada estado</li></ul></div>
+      <div class="cs-b cs-b--light cs-b--wide2 rv"><div class="cs-b__t"><b>Conectado con tu software contable</b><span>Wip se integra con tu software contable para pasar los servicios facturables sin digitarlos otra vez.</span></div><div class="cb-flow" aria-hidden="true"><span class="cb-flow__n cb-flow__n--wip"><img src="/img/wip-logo-lima-554349d3.png" alt="" width="54" height="30" loading="lazy">Servicios cerrados</span><i></i><span class="cb-flow__n">Informe por cliente</span><i></i><span class="cb-flow__n cb-flow__n--acc">Software contable</span></div></div>
     </div>
   </div>
 </section>

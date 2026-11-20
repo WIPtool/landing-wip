@@ -3080,6 +3080,23 @@ body[data-page="corp"] #video{scroll-margin-top:90px}
 @media(max-width:900px){.nv__stage{grid-template-columns:1fr}.nv__pts{grid-template-columns:1fr}.nv__list{min-height:0}}
 @media(prefers-reduced-motion:reduce){.nv .cht__list > *{animation:none;opacity:1}}
 
+/* Proveedores: del servicio al cobro */
+.cb-tar{margin-top:auto;display:flex;flex-direction:column;gap:6px;padding-top:16px}
+.cb-tar div{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-radius:10px;background:#fff;border:1px solid #e3e8d4;font-size:13px;color:#4a5468}
+.cb-tar b{color:var(--navy);font-variant-numeric:tabular-nums}
+.cb-tar div:first-child{border-color:#9bbf1a;background:rgba(219,255,87,.25)}
+.cb-tar small{font-size:11px;color:#8a93a8}
+.cb-ev{list-style:none;margin:auto 0 0;padding:16px 0 0;display:flex;flex-direction:column;gap:8px}
+.cb-ev li{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#fff;font-size:13.5px;font-weight:600}
+.cb-ev li::before{content:"✓";flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--lime);color:var(--navy);font-size:11px;font-weight:900}
+.cb-flow{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:18px;flex-wrap:wrap}
+.cb-flow__n{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;background:#fff;border:1px solid #e3e6ec;font-size:14px;font-weight:700;color:var(--navy);box-shadow:0 8px 20px rgba(11,16,32,.06)}
+.cb-flow__n--wip{background:#0b1020;color:#fff;border-color:#0b1020}.cb-flow__n--wip img{width:40px;height:auto}
+.cb-flow__n--acc{background:var(--lime);border-color:#9bbf1a}
+.cb-flow i{position:relative;flex:1 1 30px;min-width:24px;height:2px;background:linear-gradient(90deg,#9bbf1a,#dbff57);overflow:hidden;border-radius:2px}
+.cb-flow i::after{content:"";position:absolute;top:-2px;left:-30%;width:30%;height:6px;border-radius:6px;background:#7fa600;animation:igFlow 2s linear infinite}
+@media(prefers-reduced-motion:reduce){.cb-flow i::after{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
