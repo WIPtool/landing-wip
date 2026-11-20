@@ -308,3 +308,14 @@
       requestAnimationFrame(paso);});
   },{threshold:.35});io.observe(wn);
 })();
+
+/* Proveedores: luz que sigue al mouse en las tarjetas y conteo del total de cobro */
+(function(){
+  [].forEach.call(document.querySelectorAll('.dd .cs-m'),function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
+  var b=document.querySelector('[data-cb]');if(!b||!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var fin=+b.getAttribute('data-cb'),fmt=function(n){return '$'+Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');};
+  b.textContent=fmt(0);
+  var io=new IntersectionObserver(function(en){if(!en[0].isIntersecting)return;io.disconnect();var t0=performance.now();
+    var paso=function(t){var p=Math.min(1,(t-t0)/1600),k=1-Math.pow(1-p,3);b.textContent=fmt(fin*k);if(p<1)requestAnimationFrame(paso);};requestAnimationFrame(paso);},{threshold:.5});
+  io.observe(b);
+})();

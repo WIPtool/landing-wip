@@ -3097,6 +3097,74 @@ body[data-page="corp"] #video{scroll-margin-top:90px}
 .cb-flow i::after{content:"";position:absolute;top:-2px;left:-30%;width:30%;height:6px;border-radius:6px;background:#7fa600;animation:igFlow 2s linear infinite}
 @media(prefers-reduced-motion:reduce){.cb-flow i::after{animation:none}}
 
+/* Proveedores: chat del servicio con la visual real de Wip */
+.nv__svc.wc{padding:12px;background:#fff;border:1px solid #e3e6ec;color:#2b2f3a;font-family:Montserrat,Roboto,sans-serif!important}
+.nv__svc.wc *{font-family:inherit!important}
+.wc__tabs{display:flex;gap:4px;padding:4px;border-radius:10px;background:#f1f2f4;overflow:hidden}
+.wc__tabs span{flex:1;padding:7px 4px;border-radius:8px;text-align:center;font-size:11px;color:#5b6170;white-space:nowrap}
+.wc__tabs .on{background:#0b1020;color:#dbff57;font-weight:700}
+.wc__info{display:grid;grid-template-columns:1fr 1.5fr .9fr 1fr;gap:6px;margin-top:8px}
+.wc__info div{padding:7px 9px;border-radius:8px;background:#f6f7f9;border:1px solid #eceef2;min-width:0}
+.wc__info small{display:block;font-size:8.5px;letter-spacing:.06em;text-transform:uppercase;color:#7a8090}
+.wc__info b{display:block;font-size:11px;color:#1b1f2a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.wc__info .wc__st{background:#8ed94a;border-color:#8ed94a}.wc__info .wc__st small,.wc__info .wc__st b{color:#fff}
+.wc__sub{display:flex;justify-content:center;gap:4px;margin:10px auto 8px;padding:3px;border-radius:8px;background:#f1f2f4;width:max-content;max-width:100%}
+.wc__sub span{padding:6px 12px;border-radius:6px;font-size:11px;color:#5b6170;white-space:nowrap}.wc__sub .on{background:#0b1020;color:#fff;font-weight:700}
+.wc__area{border-radius:8px;padding:12px;background:#e9e8e1 url(/img/plataforma/proveedores/chat-fondo.webp) center/cover}
+.wc .nv__list{min-height:330px}
+.wc__m{position:relative;align-self:flex-start;max-width:80%;padding:8px 11px 17px;border-radius:10px;border-top-left-radius:2px;background:#fff;font-size:12.5px;line-height:1.4;color:#1b1f2a;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.wc__m small{display:block;margin-bottom:2px;font-size:10.5px;font-weight:700;color:#4c6b00}
+.wc__m em{position:absolute;right:9px;bottom:3px;font-style:normal;font-size:9.5px;color:#8a909c}
+.wc__m--me{align-self:flex-end;background:#e7f7c4;border-top-left-radius:10px;border-top-right-radius:2px}
+.wc__m--wa small{color:#128c4a}.wc__m--wa img{display:block;width:140px;height:auto;margin-top:6px;border-radius:8px}
+.wc__auth{align-self:center;display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:10px;background:#fff;border:1px solid #cfe7a0;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.wc__auth i{flex:none;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#8ed94a;color:#fff;font-style:normal;font-weight:900;font-size:12px}
+.wc__auth b{display:block;font-size:12px;color:#1b1f2a}.wc__auth span{font-size:11px;color:#4c6b00}
+.wc__in{display:flex;align-items:center;gap:10px;margin-top:8px;padding:6px 8px;border:1px solid #e3e6ec;border-radius:8px}
+.wc__emo{width:22px;height:22px;border-radius:50%;border:2px solid #2b2f3a;flex:none;background:radial-gradient(circle at 35% 40%,#2b2f3a 0 1.5px,transparent 2px),radial-gradient(circle at 65% 40%,#2b2f3a 0 1.5px,transparent 2px)}
+.wc__ph{flex:1;padding:6px 10px;border:1px solid #e3e6ec;border-radius:6px;font-size:12px;font-weight:600;color:#5b6170}
+@media(max-width:600px){.wc__tabs span:nth-child(-n+3){display:none}.wc__info{grid-template-columns:1fr 1fr}.wc__sub span{padding:6px 8px;font-size:10px}}
+
+/* Proveedores: cobro en cuadros pequeños y concretos */
+.cb-grid{grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:14px}
+.cb-grid .cs-b{min-height:0!important;padding:20px 20px 18px;display:flex;flex-direction:column;gap:14px}
+.cb-grid .cs-b__t b{font-size:17px}.cb-grid .cs-b__t span{font-size:13.5px;line-height:1.45}
+.cb-grid .cb-tar,.cb-grid .cb-ev,.cb-grid .cb-flow{padding-top:0;margin-top:auto}
+.cb-grid .cb-tar div{padding:7px 10px;font-size:12px}
+.cb-sum{margin-top:auto;padding:12px 14px;border-radius:14px;background:#0b1020;color:#fff}
+.cb-sum small{display:block;font-size:10.5px;color:#8a93a8}.cb-sum b{display:block;margin:4px 0 2px;font-size:22px;color:#dbff57;font-variant-numeric:tabular-nums}.cb-sum span{font-size:11.5px;color:#c1c9d6}
+.cb-grid .cb-ev{flex-direction:row;gap:6px;flex-wrap:wrap}.cb-grid .cb-ev li{padding:7px 10px;font-size:12.5px}
+.cb-grid .cb-flow{flex-wrap:nowrap}.cb-grid .cb-flow__n{padding:9px 12px;font-size:12.5px}
+@media(max-width:1100px){.cb-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+@media(max-width:600px){.cb-grid{grid-template-columns:1fr!important}}
+
+/* Proveedores: cobro con más potencia (borde de luz, elevación, conteo) */
+.cb-grid .cs-b{isolation:isolate;box-shadow:0 18px 40px rgba(11,16,32,.08);transition:transform .35s ease,box-shadow .35s ease}
+.cb-grid .cs-b::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--wna),transparent 0deg,transparent 250deg,#dbff57 300deg,#7fa600 330deg,transparent 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:wnSpin 6s linear infinite;pointer-events:none;z-index:2}
+.cb-grid .cs-b:nth-child(2)::before{animation-delay:-1.5s}.cb-grid .cs-b:nth-child(3)::before{animation-delay:-3s}.cb-grid .cs-b:nth-child(4)::before{animation-delay:-4.5s}
+.cb-grid .cs-b:hover{transform:translateY(-6px);box-shadow:0 28px 60px rgba(11,16,32,.16)}
+.cb-sum b{text-shadow:0 0 18px rgba(219,255,87,.45)}
+.cb-grid .cb-ev li{opacity:0;transform:scale(.85);transition:opacity .4s ease,transform .4s cubic-bezier(.3,1.6,.5,1)}
+.cb-grid .cs-b.in .cb-ev li{opacity:1;transform:none}
+.cb-grid .cs-b.in .cb-ev li:nth-child(2){transition-delay:.25s}.cb-grid .cs-b.in .cb-ev li:nth-child(3){transition-delay:.5s}
+.cb-grid .cb-tar div{transition:transform .3s ease}.cb-grid .cs-b:hover .cb-tar div:first-child{transform:scale(1.03)}
+
+/* Proveedores: Hecho para el día a día, oscuro con luz que sigue al mouse */
+.dd{position:relative;background:radial-gradient(ellipse at 50% 0%,rgba(47,123,255,.35),transparent 60%),radial-gradient(ellipse at 50% 120%,rgba(219,255,87,.25),transparent 55%),#0b1020;overflow:hidden}
+.dd::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(219,255,87,.12) 1px,transparent 1.6px);background-size:26px 26px;-webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,#000,transparent);mask-image:radial-gradient(ellipse 80% 70% at 50% 50%,#000,transparent)}
+.dd .wrap{position:relative;text-align:center}
+.dd__k{display:inline-block;padding:6px 14px;border-radius:999px;background:rgba(219,255,87,.12);border:1px solid rgba(219,255,87,.35);color:#dbff57;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
+.dd .cs-h2{color:#fff;margin-top:14px}
+.dd__sub{margin:12px auto 0;max-width:560px;color:#c1c9d6;font-size:clamp(16px,1.25vw,18px)}
+.dd .cs-mini-grid{text-align:left}
+.dd .cs-m{position:relative;isolation:isolate;background:rgba(255,255,255,.04)!important;border:1px solid rgba(255,255,255,.1)!important;border-radius:20px;overflow:hidden;transition:transform .35s ease,border-color .35s ease}
+.dd .cs-m::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(219,255,87,.16),transparent 60%);opacity:0;transition:opacity .3s ease}
+.dd .cs-m:hover{transform:translateY(-5px);border-color:rgba(219,255,87,.45)!important}.dd .cs-m:hover::after{opacity:1}
+.dd .cs-m svg{box-sizing:content-box;width:22px;height:22px;padding:11px;border-radius:14px;background:#dbff57;stroke:#0b1020!important;box-shadow:0 0 24px rgba(219,255,87,.35)}
+.dd .cs-m b{color:#fff!important;font-size:18px}
+.dd .cs-m span{color:#aab3c5!important}
+@media(prefers-reduced-motion:reduce){.cb-grid .cs-b::before{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3774,6 +3842,17 @@ window.addEventListener('message',function(e){
       var paso=function(t){var p=Math.min(1,(t-t0)/1600),k=1-Math.pow(1-p,3);e.textContent=Math.round(fin*k);if(p<1)requestAnimationFrame(paso);};
       requestAnimationFrame(paso);});
   },{threshold:.35});io.observe(wn);
+})();
+
+/* Proveedores: luz que sigue al mouse en las tarjetas y conteo del total de cobro */
+(function(){
+  [].forEach.call(document.querySelectorAll('.dd .cs-m'),function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');});});
+  var b=document.querySelector('[data-cb]');if(!b||!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var fin=+b.getAttribute('data-cb'),fmt=function(n){return '$'+Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');};
+  b.textContent=fmt(0);
+  var io=new IntersectionObserver(function(en){if(!en[0].isIntersecting)return;io.disconnect();var t0=performance.now();
+    var paso=function(t){var p=Math.min(1,(t-t0)/1600),k=1-Math.pow(1-p,3);b.textContent=fmt(fin*k);if(p<1)requestAnimationFrame(paso);};requestAnimationFrame(paso);},{threshold:.5});
+  io.observe(b);
 })();
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
