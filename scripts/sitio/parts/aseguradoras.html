@@ -9,9 +9,7 @@
 </section>
 
 <section class="spx-video" id="video">
-  <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar .vid__ph por:
-       <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
-  <div class="vid spx-vid" id="video-hero-corporativo"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div></div>
+  <div class="vid spx-vid" id="video-hero-corporativo"><video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo-portada.webp" controls playsinline preload="none" aria-label="Video de Wip Corporativo: la plataforma IA que opera asistencias contigo"></video></div>
 </section>
 
 <section class="spx-nums" id="cifras">
@@ -133,23 +131,27 @@
 <section class="spx-panel spx-panel--flip" id="chat">
   <div class="wrap spx-panel__in">
     <div class="spx-panel__copy rv">
-      <span class="spx-k">Trazabilidad</span>
+      <span class="spx-k">Comunicación</span>
       <h2 class="spx-h2">Chat en tiempo real, con toda la operación</h2>
-      <p>Cada foto, cada firma y cada autorización queda en el servicio, lista para auditar.</p>
+      <p>Operadores, proveedores, técnicos y clientes hablan en el chat de cada servicio. Novedades, autorizaciones y avisos llegan al instante y quedan registrados, sin llamadas ni grupos aparte.</p>
       <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
     </div>
     <div class="spx-panel__vis rv" style="--rd:.1s">
       <div class="sx-panel__vis " aria-hidden="true">
-          <div class="ap-ms ap-ev">
-            <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span class="ap-ms__live">Evidencias en vivo</span></div>
-            <div class="ap-ev__ph">
-              <div class="ap-ev__t ap-ev__t--1"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Llegada</b><em>10:42</em></div>
-              <div class="ap-ev__t ap-ev__t--2"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Vehículo</b><em>10:49</em></div>
-              <div class="ap-ev__t ap-ev__t--3"><svg viewBox="0 0 24 24"><path d="M3 17c3-6 5-9 7-9s-1 8 2 8 3-5 5-5 2 3 4 3"/><path d="M3 21h18"/></svg><b>Firma</b><em>11:15</em></div>
+          <div class="ap-ms cht">
+            <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span class="ap-ms__live">Chat en vivo</span></div>
+            <div class="cht__who">
+              <span class="cht__p cht__p--op"><i>OP</i>Operador</span>
+              <span class="cht__p cht__p--pr"><i>PR</i>Proveedor</span>
+              <span class="cht__p cht__p--te"><i>TE</i>Técnico</span>
+              <span class="cht__p cht__p--cl"><i>CL</i>Cliente</span>
             </div>
-            <div class="ap-ev__chat">
-              <div class="asg__msg a"><small>Técnico · Grúas del Pacífico</small>El cliente pide llevar el carro a otro taller, son 8 km adicionales.</div>
-              <div class="asg__msg u">Autorizado, quedan registrados en el servicio. ✓</div>
+            <div class="cht__list">
+              <div class="cht__m cht__m--te" style="--d:0"><small>Técnico · Grúas del Pacífico</small>Llegué al sitio. El cliente pide llevar el carro a otro taller, son 8 km adicionales.</div>
+              <div class="cht__m cht__m--op" style="--d:1"><small>Operador · Tú</small>Autorizado, queda registrado en el servicio. ✓</div>
+              <div class="cht__m cht__m--cl" style="--d:2"><small>Cliente · por WhatsApp</small>Gracias. ¿A qué hora llega el carro al taller?</div>
+              <div class="cht__m cht__m--pr" style="--d:3"><small>Proveedor · Grúas del Pacífico</small>En 25 minutos. Te aviso cuando salgamos.</div>
+              <div class="cht__typing" style="--d:4"><span></span><span></span><span></span><em>Técnico escribiendo</em></div>
             </div>
           </div>
     </div>

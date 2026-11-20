@@ -151,12 +151,12 @@ const Q = {
 };
 const FAQ = {
   home: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos],
-  corp: [Q.ans, Q.fugas, Q.reemplaza, Q.implementa, Q.costoCorp],
+  corp: [Q.ans, Q.fugas, Q.implementa, Q.costoCorp],
   prov: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.cobro, Q.costoProv],
 };
 const GROUPS = [
   { id: 'general', h: 'General', items: [Q.que, Q.software, Q.campo, Q.ia, Q.wipi, Q.tipos, Q.paises] },
-  { id: 'aseguradoras', h: 'Aseguradoras y empresas de asistencia', items: [Q.ans, Q.falla, Q.fugas, Q.reemplaza, Q.implementa, Q.costoCorp] },
+  { id: 'aseguradoras', h: 'Aseguradoras y empresas de asistencia', items: [Q.ans, Q.falla, Q.fugas, Q.implementa, Q.costoCorp] },
   { id: 'proveedores', h: 'Proveedores de asistencia', items: [Q.varias, Q.sinInteg, Q.particulares, Q.novedades, Q.cobro, Q.costoProv] },
 ];
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');

@@ -2902,6 +2902,35 @@ body[data-page="corp"] .footer{background:#000;border-top:1px solid rgba(255,255
 /* Corporativo: todos los botones redondeados */
 body[data-page="corp"] .spx-btn,body[data-page="corp"] main .btn,body[data-page="corp"] main button[type="submit"]{border-radius:12px!important}
 
+/* Corporativo: chat en tiempo real con toda la operación */
+.ap-ms.cht{width:min(460px,92%);gap:12px}
+.cht__who{display:flex;flex-wrap:wrap;gap:6px}
+.cht__p{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);font-size:11.5px;color:#cfd5e2}
+.cht__p i{width:20px;height:20px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:9px;font-weight:800;color:#0b1020}
+.cht__p--op i,.cht__m--op small::before{background:#dbff57}.cht__p--pr i,.cht__m--pr small::before{background:#8b7bff}.cht__p--te i,.cht__m--te small::before{background:#ffd24a}.cht__p--cl i,.cht__m--cl small::before{background:#25d366}
+.cht__list{display:flex;flex-direction:column;gap:8px;min-height:300px}
+.cht__m{max-width:84%;font-size:13px;line-height:1.4;padding:9px 12px;border-radius:12px;background:rgba(255,255,255,.07);border-bottom-left-radius:4px;align-self:flex-start;opacity:0;animation:14s ease infinite}
+.cht__m small{display:flex;align-items:center;gap:6px;margin-bottom:3px;font-size:11px;font-weight:600;color:#aab3c5}
+.cht__m small::before{content:"";width:7px;height:7px;border-radius:50%}
+.cht__m--op{align-self:flex-end;background:#1f6f4a;border-bottom-left-radius:12px;border-bottom-right-radius:4px}.cht__m--op small{color:#dbff57}
+.cht__m--cl{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.25)}
+.cht__typing{display:inline-flex;align-items:center;gap:4px;align-self:flex-start;padding:8px 12px;border-radius:12px;background:rgba(255,255,255,.05);opacity:0;animation:14s ease infinite}
+.cht__typing span{width:6px;height:6px;border-radius:50%;background:#aab3c5;animation:chtDot 1.2s ease-in-out infinite}
+.cht__typing span:nth-child(2){animation-delay:.15s}.cht__typing span:nth-child(3){animation-delay:.3s}
+.cht__typing em{margin-left:6px;font-style:normal;font-size:11px;color:#8a93a8}
+@keyframes chtIn0{0%{opacity:0;transform:translateY(8px)}3.0%,88%{opacity:1;transform:none}95%,100%{opacity:0;transform:none}}
+.cht__list > [style*="--d:0"]{animation-name:chtIn0}
+@keyframes chtIn1{0%,11.5%{opacity:0;transform:translateY(8px)}14.5%,88%{opacity:1;transform:none}95%,100%{opacity:0;transform:none}}
+.cht__list > [style*="--d:1"]{animation-name:chtIn1}
+@keyframes chtIn2{0%,23.0%{opacity:0;transform:translateY(8px)}26.0%,88%{opacity:1;transform:none}95%,100%{opacity:0;transform:none}}
+.cht__list > [style*="--d:2"]{animation-name:chtIn2}
+@keyframes chtIn3{0%,34.5%{opacity:0;transform:translateY(8px)}37.5%,88%{opacity:1;transform:none}95%,100%{opacity:0;transform:none}}
+.cht__list > [style*="--d:3"]{animation-name:chtIn3}
+@keyframes chtIn4{0%,46.0%{opacity:0;transform:translateY(8px)}49.0%,88%{opacity:1;transform:none}95%,100%{opacity:0;transform:none}}
+.cht__list > [style*="--d:4"]{animation-name:chtIn4}
+@keyframes chtDot{0%,100%{opacity:.3;transform:none}50%{opacity:1;transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce){.cht__m,.cht__typing{animation:none;opacity:1}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2980,9 +3009,7 @@ window.addEventListener('message',function(e){
 </section>
 
 <section class="spx-video" id="video">
-  <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar .vid__ph por:
-       <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
-  <div class="vid spx-vid" id="video-hero-corporativo"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div></div>
+  <div class="vid spx-vid" id="video-hero-corporativo"><video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo-portada.webp" controls playsinline preload="none" aria-label="Video de Wip Corporativo: la plataforma IA que opera asistencias contigo"></video></div>
 </section>
 
 <section class="spx-nums" id="cifras">
@@ -3104,23 +3131,27 @@ window.addEventListener('message',function(e){
 <section class="spx-panel spx-panel--flip" id="chat">
   <div class="wrap spx-panel__in">
     <div class="spx-panel__copy rv">
-      <span class="spx-k">Trazabilidad</span>
+      <span class="spx-k">Comunicación</span>
       <h2 class="spx-h2">Chat en tiempo real, con toda la operación</h2>
-      <p>Cada foto, cada firma y cada autorización queda en el servicio, lista para auditar.</p>
+      <p>Operadores, proveedores, técnicos y clientes hablan en el chat de cada servicio. Novedades, autorizaciones y avisos llegan al instante y quedan registrados, sin llamadas ni grupos aparte.</p>
       <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
     </div>
     <div class="spx-panel__vis rv" style="--rd:.1s">
       <div class="sx-panel__vis " aria-hidden="true">
-          <div class="ap-ms ap-ev">
-            <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span class="ap-ms__live">Evidencias en vivo</span></div>
-            <div class="ap-ev__ph">
-              <div class="ap-ev__t ap-ev__t--1"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Llegada</b><em>10:42</em></div>
-              <div class="ap-ev__t ap-ev__t--2"><svg viewBox="0 0 24 24"><path d="M4 8h3l2-2h6l2 2h3v11H4z"/><circle cx="12" cy="13" r="3.5"/></svg><b>Vehículo</b><em>10:49</em></div>
-              <div class="ap-ev__t ap-ev__t--3"><svg viewBox="0 0 24 24"><path d="M3 17c3-6 5-9 7-9s-1 8 2 8 3-5 5-5 2 3 4 3"/><path d="M3 21h18"/></svg><b>Firma</b><em>11:15</em></div>
+          <div class="ap-ms cht">
+            <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span class="ap-ms__live">Chat en vivo</span></div>
+            <div class="cht__who">
+              <span class="cht__p cht__p--op"><i>OP</i>Operador</span>
+              <span class="cht__p cht__p--pr"><i>PR</i>Proveedor</span>
+              <span class="cht__p cht__p--te"><i>TE</i>Técnico</span>
+              <span class="cht__p cht__p--cl"><i>CL</i>Cliente</span>
             </div>
-            <div class="ap-ev__chat">
-              <div class="asg__msg a"><small>Técnico · Grúas del Pacífico</small>El cliente pide llevar el carro a otro taller, son 8 km adicionales.</div>
-              <div class="asg__msg u">Autorizado, quedan registrados en el servicio. ✓</div>
+            <div class="cht__list">
+              <div class="cht__m cht__m--te" style="--d:0"><small>Técnico · Grúas del Pacífico</small>Llegué al sitio. El cliente pide llevar el carro a otro taller, son 8 km adicionales.</div>
+              <div class="cht__m cht__m--op" style="--d:1"><small>Operador · Tú</small>Autorizado, queda registrado en el servicio. ✓</div>
+              <div class="cht__m cht__m--cl" style="--d:2"><small>Cliente · por WhatsApp</small>Gracias. ¿A qué hora llega el carro al taller?</div>
+              <div class="cht__m cht__m--pr" style="--d:3"><small>Proveedor · Grúas del Pacífico</small>En 25 minutos. Te aviso cuando salgamos.</div>
+              <div class="cht__typing" style="--d:4"><span></span><span></span><span></span><em>Técnico escribiendo</em></div>
             </div>
           </div>
     </div>
@@ -3273,7 +3304,6 @@ window.addEventListener('message',function(e){
     <div class="faq rv">
       <details name="faq" open><summary>¿Cómo se mide el ANS de una red de proveedores?</summary><p>Se compara, servicio por servicio, el tiempo real de cada etapa (asignación, llegada y cierre) contra el tiempo pactado en el convenio. Wip lo mide solo, lo muestra por proveedor, ciudad y tipo de servicio, y alerta antes de que un servicio incumpla.</p></details>
       <details name="faq"><summary>¿Cómo detecta Wip las fugas de costo?</summary><p>Revisa cada servicio antes de pagarlo y marca los que están a punto de incumplir, los kilómetros cobrados que no cuadran con el recorrido y el mismo servicio cobrado dos veces. Lo que cumple queda listo para facturar con la tarifa del convenio.</p></details>
-      <details name="faq"><summary>¿Wip reemplaza los sistemas que ya tenemos?</summary><p>No. Wip recibe los casos desde la plataforma de la aseguradora, por API o por WhatsApp, y se conecta con la operación que ya existe, sin reemplazar lo que funciona.</p></details>
       <details name="faq"><summary>¿Cuánto tarda la implementación?</summary><p>Depende de cuántos convenios, proveedores e integraciones tenga la operación. En la demo se arma el cronograma: configuración, capacitación del equipo y de la red, e inicio de operación con acompañamiento del equipo Wip.</p></details>
       <details name="faq"><summary>¿Cuánto cuesta Wip para una aseguradora o empresa de asistencia?</summary><p>Se cotiza según la operación: volumen de servicios, convenios, integraciones y desarrollos. En una demo te mostramos Wip con un caso como el tuyo.</p></details>
     </div>
@@ -3407,14 +3437,6 @@ window.addEventListener('message',function(e){
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Revisa cada servicio antes de pagarlo y marca los que están a punto de incumplir, los kilómetros cobrados que no cuadran con el recorrido y el mismo servicio cobrado dos veces. Lo que cumple queda listo para facturar con la tarifa del convenio."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "¿Wip reemplaza los sistemas que ya tenemos?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Wip recibe los casos desde la plataforma de la aseguradora, por API o por WhatsApp, y se conecta con la operación que ya existe, sin reemplazar lo que funciona."
       }
     },
     {
