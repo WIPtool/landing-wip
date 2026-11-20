@@ -2639,6 +2639,16 @@ body[data-page="home"] main .wcard--prov li::before{background:var(--navy);color
 body[data-page="home"] main .wcard--prov .btn{background:var(--navy)!important;color:var(--lime)!important}
 @media(max-width:900px){body[data-page="home"] main .worlds{grid-template-columns:1fr}}
 
+/* Soluciones: tarjetas más compactas */
+body[data-page="home"] main .worlds{max-width:980px;margin-left:auto;margin-right:auto;gap:16px}
+body[data-page="home"] main .worlds .wcard--corp,body[data-page="home"] main .worlds .wcard--prov{padding:clamp(22px,2.4vw,30px)!important;min-height:0}
+body[data-page="home"] main .wcard--corp h3,body[data-page="home"] main .wcard--prov h3{font-size:clamp(22px,2.1vw,28px);margin-top:16px}
+body[data-page="home"] main .worlds .wcard p{font-size:15px;margin-top:8px}
+body[data-page="home"] main .worlds .wcard ul{display:flex;flex-direction:column;gap:9px;margin:18px 0 22px;font-size:14.5px}
+body[data-page="home"] main .worlds .wcard .btn{min-height:44px;padding:0 20px;font-size:14.5px}
+body[data-page="home"] main .wcard--corp .wcard__tier{display:none}
+body[data-page="home"] main .worlds .wcard .btn{margin-top:auto!important}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
