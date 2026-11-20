@@ -214,7 +214,7 @@ for (const p of pages) {
   let t = shell.replace('{{MAIN}}', main);
   const faqList = p.key === 'faq' ? GROUPS.flatMap((g) => g.items) : FAQ[p.key];
   const vars = { TITLE: p.title, DESC: p.desc, PATH: p.path, PAGE: p.key, BAR: p.bar, NAV_CTA: p.navCta,
-    DEMO_BTN: demoBtn(), MELI_BTN: meliBtn(), MELI_BTN_GHOST: meliBtn('btn btn--ghost'), MELI_SX: meliBtn('pv-btn', 'Habla con Meli'), DEMO_CX: demoBtn('cx-btn cx-btn--w'), MELI_EP: meliBtn('ep-btn ep-btn--line', 'Habla con Meli'), MELI_EP_MAIN: meliBtn('ep-btn ep-btn--main', 'Escríbele a Meli por WhatsApp'), MELI_CS: meliBtn('cs-btn cs-btn--main', 'Habla con Meli por WhatsApp'), MELI_CS_LINE: meliBtn('cs-btn cs-btn--dark', 'Habla con Meli'), DEMO_IX: demoBtn('ix-btn ix-btn--main'), DEMO_PL: demoBtn('pl-btn pl-btn--main'),
+    DEMO_BTN: demoBtn(), MELI_BTN: meliBtn(), MELI_BTN_GHOST: meliBtn('btn btn--ghost'), MELI_SX: meliBtn('pv-btn', 'Habla con Meli'), DEMO_CX: demoBtn('cx-btn cx-btn--w'), MELI_EP: meliBtn('ep-btn ep-btn--line', 'Habla con Meli'), MELI_EP_MAIN: meliBtn('ep-btn ep-btn--main', 'Escríbele a Meli por WhatsApp'), MELI_CS: meliBtn('cs-btn cs-btn--main', 'Habla con Meli por WhatsApp'), MELI_CS_LINE: meliBtn('cs-btn cs-btn--dark', 'Habla con Meli'), DEMO_IX: demoBtn('ix-btn ix-btn--main'), DEMO_PL: demoBtn('pl-btn pl-btn--main'), DEMO_SPX: demoBtn('spx-btn spx-btn--main'),
     XP_CORP: p.xp === 'prov' ? '' : ' checked', XP_PROV: p.xp === 'prov' ? ' checked' : '',
     FAQ_HTML: p.key === 'faq' ? '' : faqHtml(faqList), FAQ_JSON: faqJson(faqList), ...blocks };
   for (const [k, v] of Object.entries(vars)) t = t.split(`{{${k}}}`).join(v);

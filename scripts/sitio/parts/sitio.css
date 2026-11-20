@@ -2153,3 +2153,61 @@ body[data-page="corp"] main{background:#f5f6f1}
 body[data-page="corp"] main #faq{background:#eef0e7!important}
 @media(max-width:900px){.pl-hero__in,.pl-plat__head{grid-template-columns:1fr}.pl-diff__grid,.pl-res__grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.pl-hero__bg img{animation:none}}
+
+/* ===================== CORPORATIVO: formato spacex.com con colores de Wip ===================== */
+body[data-page="corp"]{background:#000}
+body[data-page="corp"] main{background:#000;color:#f0f0fa;--soft:#c1c9d6;--muted:#8a93a8;--card:#111;--line:rgba(255,255,255,.12)}
+body[data-page="corp"] .nav__in{background:rgba(0,0,0,.55);border-color:rgba(255,255,255,.1);box-shadow:none;-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+body[data-page="corp"] .nav__logo img{content:none}
+body[data-page="corp"] .nav__burger span,body[data-page="corp"] .nav__burger span::before,body[data-page="corp"] .nav__burger span::after{background:#fff}
+@media(min-width:901px){body[data-page="corp"] .nav__links > a:not(.nav__cta),body[data-page="corp"] .nav__dd > button{color:#e6e6ee}body[data-page="corp"] .nav__links > a:not(.nav__cta):hover,body[data-page="corp"] .nav__dd > button:hover,body[data-page="corp"] .nav__dd.is-open > button{color:#fff;background:rgba(255,255,255,.08)}}
+.spx-k{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.spx-h1{margin-top:12px;font-weight:700;font-size:clamp(40px,6vw,86px);line-height:.98;letter-spacing:-.01em;text-transform:uppercase;color:#fff;max-width:900px}
+.spx-h2{margin-top:12px;font-weight:700;font-size:clamp(32px,4.4vw,60px);line-height:1;letter-spacing:-.005em;text-transform:uppercase;color:#fff;max-width:760px}
+.spx-btn{display:inline-flex;align-items:center;gap:14px;min-height:52px;margin-top:28px;padding:0 26px;border:2px solid #fff;background:transparent;color:#fff;font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;transition:background .25s ease,color .25s ease}
+.spx-btn::after{content:"";width:0;height:0;border-style:solid;border-width:6px 0 6px 9px;border-color:transparent transparent transparent currentColor}
+.spx-btn:hover{background:#fff;color:#000}
+.spx-btn--main{border-color:var(--lime);color:var(--lime)}
+.spx-btn--main:hover{background:var(--lime);color:var(--navy)}
+
+.spx-hero,.spx-photo,.spx-final{position:relative;min-height:100vh;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.spx-hero__bg,.spx-photo__bg{position:absolute;inset:0}
+.spx-hero__bg img,.spx-photo__bg img{width:100%;height:100%;object-fit:cover;filter:saturate(.7) brightness(.85)}
+.spx-hero__bg img{animation:plZoom 18s ease-in-out infinite alternate}
+.spx-hero::after,.spx-photo::after,.spx-final::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.45) 45%,rgba(0,0,0,.1) 100%),linear-gradient(90deg,rgba(0,0,0,.55),transparent 60%)}
+.spx-hero__copy,.spx-photo__copy{position:relative;z-index:1;padding-bottom:clamp(70px,12vh,130px)}
+.spx-hero__copy p,.spx-photo__copy p{margin-top:16px;max-width:560px;font-size:clamp(16px,1.3vw,18.5px);line-height:1.55;color:#d9dce6}
+.spx-down{position:absolute;z-index:1;left:50%;bottom:28px;width:20px;height:20px;margin-left:-10px;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(45deg);opacity:.7;animation:sxDown 1.8s ease-in-out infinite}
+
+.spx-nums{padding:clamp(50px,7vw,90px) 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
+.spx-nums__row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px}
+.spx-nums__row b{display:block;font-weight:700;font-size:clamp(40px,5vw,72px);line-height:1;letter-spacing:-.02em;color:#fff}
+.spx-nums__row span{display:block;margin-top:12px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#8a8f9c}
+
+.spx-panel{min-height:92vh;display:flex;align-items:center;padding:clamp(70px,9vw,110px) 0;border-top:1px solid rgba(255,255,255,.08)}
+.spx-panel__in{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,5vw,80px);align-items:center;width:100%}
+.spx-panel--flip .spx-panel__copy{order:2}
+.spx-panel__copy p{margin-top:16px;max-width:480px;font-size:clamp(16px,1.3vw,18px);line-height:1.6;color:#c7c7cf}
+.spx-panel__vis .sx-panel__vis{border-radius:20px;min-height:clamp(340px,40vw,520px);background:radial-gradient(ellipse at 50% 110%,rgba(219,255,87,.1),transparent 55%),#07090f;border:1px solid rgba(255,255,255,.08)}
+
+.spx-video{background:#000}
+.spx-vid{margin:0;max-width:none;width:100%;aspect-ratio:21/9;border-radius:0;border:0;box-shadow:none;background:radial-gradient(ellipse at 50% 120%,rgba(219,255,87,.2),transparent 60%),linear-gradient(160deg,#0d1322,#000)}
+.spx-vid .vid__ph{color:#c1c9d6}
+.spx-verts{padding:clamp(80px,10vw,130px) 0;border-top:1px solid rgba(255,255,255,.08)}
+.spx-frame{margin-top:clamp(32px,4vw,50px);padding:clamp(12px,2.4vw,28px);border-radius:20px;background:#0b0b0d;border:1px solid rgba(255,255,255,.08)}
+.spx-frame .brd{margin-top:0}
+
+/* bloques compartidos en oscuro */
+body[data-page="corp"] main #faq{background:#000!important}
+body[data-page="corp"] main .faq details{background:#0b0b0d;border-color:rgba(255,255,255,.1)}
+body[data-page="corp"] main .faq summary::after{color:var(--lime)}
+body[data-page="corp"] main .eyebrow{color:var(--lime)}
+body[data-page="corp"] main .lime{background:none;color:var(--lime);padding:0}
+body[data-page="corp"] main .logos__track div{border-color:rgba(255,255,255,.1);background:transparent}
+body[data-page="corp"] main .field input,body[data-page="corp"] main .field select,body[data-page="corp"] main .field textarea{background:#0b0b0d;border-color:rgba(255,255,255,.16);color:#f5f5f5}
+body[data-page="corp"] main .perfil span{background:#0b0b0d;border-color:rgba(255,255,255,.16);color:#cfcfcf}
+body[data-page="corp"] main .perfil input:checked + span{color:var(--navy);background:var(--lime);border-color:var(--lime)}
+body[data-page="corp"] main .btn--ghost{background:transparent;color:#f5f5f5;border-color:rgba(255,255,255,.3)}
+body[data-page="corp"] .footer{background:#000;border-top:1px solid rgba(255,255,255,.08)}
+
+@media(max-width:900px){.spx-nums__row{grid-template-columns:1fr 1fr}.spx-panel{min-height:0}.spx-panel__in{grid-template-columns:1fr}.spx-panel--flip .spx-panel__copy{order:0}.spx-vid{aspect-ratio:16/9}}

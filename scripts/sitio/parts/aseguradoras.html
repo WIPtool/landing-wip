@@ -1,51 +1,44 @@
-<!-- ===================== WIP CORPORATIVO, formato de parloa.com con colores de Wip ===================== -->
-<section class="pl-hero" id="inicio">
-  <div class="pl-hero__bg" aria-hidden="true"><img src="/img/proveedores/grua.webp" alt="" fetchpriority="high"></div>
-  <div class="wrap pl-hero__in">
-    <div class="pl-hero__copy rv in">
-      <span class="pl-k">Wip Corporativo</span>
-      <h1 class="pl-h1">Opera tus asistencias y tu red de proveedores, en tiempo real.</h1>
-      <div class="pl-ctas">{{DEMO_PL}}<a class="pl-btn pl-btn--ghost" href="#plataforma">Explora la plataforma</a></div>
-    </div>
-    <div class="pl-chat rv in" style="--rd:.2s" aria-label="Ejemplo de conversación atendida por Wip IA">
-      <div class="pl-chat__m"><small>Cliente</small>Hola, ¿a qué hora llega mi grúa?</div>
-      <div class="pl-chat__m pl-chat__m--ai"><small>Wip IA</small>Tu grúa va en camino y llega en unos 12 minutos. Te comparto el seguimiento para que veas al técnico en el mapa.</div>
-      <div class="pl-chat__m"><small>Cliente</small>Perfecto, gracias.</div>
-      <div class="pl-chat__f"><span class="pl-chat__dot"></span>Atendido por Wip IA · ejemplo</div>
-    </div>
+<!-- ===================== WIP CORPORATIVO, formato spacex.com con colores de Wip ===================== -->
+<section class="spx-hero" id="inicio">
+  <div class="spx-hero__bg" aria-hidden="true"><img src="/img/proveedores/grua.webp" alt="" fetchpriority="high"></div>
+  <div class="wrap spx-hero__copy rv in">
+    <span class="spx-k">Wip Corporativo</span>
+    <h1 class="spx-h1">Opera tus asistencias en tiempo real</h1>
+    <p>Para aseguradoras y empresas de asistencia con alto volumen de servicios y su propia red de proveedores.</p>
+    {{DEMO_SPX}}
+  </div>
+  <a href="#cifras" class="spx-down" aria-label="Bajar a la siguiente sección"></a>
+</section>
+
+<section class="spx-nums" id="cifras">
+  <div class="wrap spx-nums__row">
+    <div class="rv"><b>+4M</b><span>Servicios gestionados</span></div>
+    <div class="rv" style="--rd:.06s"><b>+354</b><span>Tipos de asistencia</span></div>
+    <div class="rv" style="--rd:.12s"><b>+13</b><span>Verticales en LATAM</span></div>
+    <div class="rv" style="--rd:.18s"><b>24/7</b><span>Wip IA operando</span></div>
   </div>
 </section>
 
-<section class="pl-diff" id="por-que">
-  <div class="wrap">
-    <span class="pl-k rv">La diferencia</span>
-    <h2 class="pl-h2 rv">Por qué las aseguradoras y empresas de asistencia operan su red con Wip.</h2>
-    <div class="pl-diff__grid">
-      <div class="pl-pt rv"><b>1.</b><h3>Toda tu red en una sola plataforma.</h3><p>Proveedores, técnicos en campo y clientes conectados en tiempo real, en todas las verticales de asistencia.</p></div>
-      <div class="pl-pt rv" style="--rd:.06s"><b>2.</b><h3>Wip IA trabaja con tu equipo, 24/7.</h3><p>Atiende, asigna y hace seguimiento con las reglas de tu operación. Tu equipo decide lo que necesita criterio.</p></div>
-      <div class="pl-pt rv" style="--rd:.12s"><b>3.</b><h3>Control de cada servicio y de cada peso.</h3><p>Tarifas automáticas por convenio y evidencias en cada servicio, listas para auditar y conciliar.</p></div>
-    </div>
+<section class="spx-photo" id="red">
+  <div class="spx-photo__bg" aria-hidden="true"><img src="/img/proveedores/ambulancia.webp" alt="" loading="lazy" style="object-position:55% 30%"></div>
+  <div class="wrap spx-photo__copy rv">
+    <span class="spx-k">Tu red</span>
+    <h2 class="spx-h2">Toda tu red de proveedores, conectada</h2>
+    <p>Proveedores y técnicos en campo conectados a tu operación en tiempo real, en todas las verticales de asistencia.</p>
+    {{DEMO_SPX}}
   </div>
 </section>
 
-<section class="pl-plat" id="plataforma">
-  <div class="wrap">
-    <div class="pl-plat__head rv">
-      <div><span class="pl-k">La plataforma</span><h2 class="pl-h2">Una plataforma para todo el ciclo de la asistencia.</h2></div>
-      <p>Desde que entra el servicio hasta el cierre y el cobro: asignación, red, monitoreo, evidencias, tarifas y Wipi, todo conectado.</p>
+<section class="spx-panel" id="asignacion">
+  <div class="wrap spx-panel__in">
+    <div class="spx-panel__copy rv">
+      <span class="spx-k">Asignación</span>
+      <h2 class="spx-h2">Asignación inteligente de servicios</h2>
+      <p>Wip ubica a tus proveedores disponibles más cerca del cliente y asigna el servicio al mejor, sin llamar uno por uno.</p>
+      <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
     </div>
-    <div class="pl-tabs rv" role="tablist" aria-label="Módulos de Wip">
-      <button type="button" role="tab" class="on" aria-selected="true" data-tab="asg">Asignación</button>
-      <button type="button" role="tab" class="" aria-selected="false" data-tab="red">Tu red</button>
-      <button type="button" role="tab" class="" aria-selected="false" data-tab="mon">Monitoreo 24/7</button>
-      <button type="button" role="tab" class="" aria-selected="false" data-tab="ev">Evidencias y chat</button>
-      <button type="button" role="tab" class="" aria-selected="false" data-tab="tar">Tarifas</button>
-      <button type="button" role="tab" class="" aria-selected="false" data-tab="wipi">Wipi</button>
-    </div>
-    <div class="pl-stage rv">
-      <div class="pl-pane on" data-tab="asg">
-        <p class="pl-pane__d">Asignación inteligente de servicios a tu red, por cercanía, tarifa y prioridad.</p>
-        <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
+    <div class="spx-panel__vis rv" style="--rd:.1s">
+      <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
           <svg class="amap" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid meet">
             <g class="amap__st"><path d="M-400 60H1000"/><path d="M-400 140H1000"/><path d="M-400 300H1000"/><path d="M-400 380H1000"/><path d="M-400 460H1000"/><path d="M70 -400V920"/><path d="M170 -400V920"/><path d="M260 -400V920"/><path d="M440 -400V920"/><path d="M530 -400V920"/></g>
             <g class="amap__av"><path d="M-400 220H1000"/><path d="M350 -400V920"/><path d="M-200 700L800 -150"/></g>
@@ -64,10 +57,20 @@
             <g class="amap__chip"><rect x="88" y="474" width="132" height="34" rx="11"/><text x="101" y="496">Grúas Express<tspan dx="6" class="m">6,5 km</tspan></text></g>
           </svg>
     </div>
-      </div>
-      <div class="pl-pane" data-tab="red">
-        <p class="pl-pane__d">Toda tu red de proveedores conectada en tiempo real, en el mapa.</p>
-        <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="spx-panel spx-panel--flip" id="red-conectada">
+  <div class="wrap spx-panel__in">
+    <div class="spx-panel__copy rv">
+      <span class="spx-k">En el mapa</span>
+      <h2 class="spx-h2">Quién está disponible, en camino o en servicio</h2>
+      <p>Ves toda tu red en el mapa y le avisas al instante, desde una sola plataforma.</p>
+      <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
+    </div>
+    <div class="spx-panel__vis rv" style="--rd:.1s">
+      <div class="sx-panel__vis sx-panel__vis--map" aria-hidden="true">
           <svg class="amap rmap" viewBox="0 0 600 520" preserveAspectRatio="xMidYMid meet">
             <g class="amap__st"><path d="M-400 60H1000"/><path d="M-400 140H1000"/><path d="M-400 300H1000"/><path d="M-400 380H1000"/><path d="M-400 460H1000"/><path d="M70 -400V920"/><path d="M170 -400V920"/><path d="M260 -400V920"/><path d="M440 -400V920"/><path d="M530 -400V920"/></g>
             <g class="amap__av"><path d="M-400 220H1000"/><path d="M350 -400V920"/><path d="M-200 700L800 -150"/></g>
@@ -83,10 +86,20 @@
             <g class="rmap__leg"><circle cx="34" cy="486" r="5" class="g"/><text x="44" y="490">Disponible</text><circle cx="124" cy="486" r="5" class="y"/><text x="134" y="490">En camino</text><circle cx="210" cy="486" r="5" class="p"/><text x="220" y="490">En servicio</text></g>
           </svg>
     </div>
-      </div>
-      <div class="pl-pane" data-tab="mon">
-        <p class="pl-pane__d">Trazabilidad en tiempo real de cada servicio, con novedades, tiempos y ANS.</p>
-        <div class="sx-panel__vis " aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="spx-panel" id="monitoreo">
+  <div class="wrap spx-panel__in">
+    <div class="spx-panel__copy rv">
+      <span class="spx-k">24/7</span>
+      <h2 class="spx-h2">Central de monitoreo</h2>
+      <p>Trazabilidad en tiempo real de cada servicio: novedades, tiempos y semáforo de ANS de cada proveedor.</p>
+      <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
+    </div>
+    <div class="spx-panel__vis rv" style="--rd:.1s">
+      <div class="sx-panel__vis " aria-hidden="true">
           <div class="ap-ms mon">
             <div class="ap-ms__h"><b>Central de monitoreo 24/7</b><span class="ap-ms__live">En vivo</span></div>
             <div class="mon__t">
@@ -99,10 +112,30 @@
             </div>
           </div>
     </div>
-      </div>
-      <div class="pl-pane" data-tab="ev">
-        <p class="pl-pane__d">Fotos, firma y chat en cada servicio, para autorizar y resolver novedades.</p>
-        <div class="sx-panel__vis " aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="spx-photo" id="evidencias">
+  <div class="spx-photo__bg" aria-hidden="true"><img src="/img/proveedores/mecanica.webp" alt="" loading="lazy" style="object-position:60% 50%"></div>
+  <div class="wrap spx-photo__copy rv">
+    <span class="spx-k">Desde campo</span>
+    <h2 class="spx-h2">Evidencias en segundos</h2>
+    <p>El técnico sube fotos, firma y tiempos desde la app. Con el chat del servicio das autorizaciones y resuelves novedades.</p>
+    {{DEMO_SPX}}
+  </div>
+</section>
+
+<section class="spx-panel spx-panel--flip" id="chat">
+  <div class="wrap spx-panel__in">
+    <div class="spx-panel__copy rv">
+      <span class="spx-k">Trazabilidad</span>
+      <h2 class="spx-h2">Evidencias y chat en cada servicio</h2>
+      <p>Cada foto, cada firma y cada autorización queda en el servicio, lista para auditar.</p>
+      <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
+    </div>
+    <div class="spx-panel__vis rv" style="--rd:.1s">
+      <div class="sx-panel__vis " aria-hidden="true">
           <div class="ap-ms ap-ev">
             <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span class="ap-ms__live">Evidencias en vivo</span></div>
             <div class="ap-ev__ph">
@@ -116,10 +149,20 @@
             </div>
           </div>
     </div>
-      </div>
-      <div class="pl-pane" data-tab="tar">
-        <p class="pl-pane__d">Tarifas automáticas por servicio y convenio, listas para conciliar.</p>
-        <div class="sx-panel__vis sx-panel__vis--dark" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="spx-panel" id="tarifas">
+  <div class="wrap spx-panel__in">
+    <div class="spx-panel__copy rv">
+      <span class="spx-k">Costos</span>
+      <h2 class="spx-h2">Tarifas automáticas por convenio</h2>
+      <p>Valor base, kilómetros adicionales, horario nocturno, festivos, fallidos y cancelados, con las reglas de cada convenio.</p>
+      <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
+    </div>
+    <div class="spx-panel__vis rv" style="--rd:.1s">
+      <div class="sx-panel__vis sx-panel__vis--dark" aria-hidden="true">
           <div class="ap-ms ap-ms--near ap-tar">
             <div class="ap-ms__h"><b>Servicio #4187 · Grúa</b><span>Convenio vial</span></div>
             <div class="ap-ms__r"><i class="dot g"></i><span>Valor base</span><em>$180.000</em></div>
@@ -128,10 +171,20 @@
             <div class="ap-ms__r on"><i class="dot g"></i><span><b>Total liquidado</b></span><em><b>$264.000</b> · Calculado</em></div>
           </div>
     </div>
-      </div>
-      <div class="pl-pane" data-tab="wipi">
-        <p class="pl-pane__d">La IA de Wip: crea servicios, asigna, calcula tarifas y te entrega informes.</p>
-        <div class="sx-panel__vis ap-tile__vis--wipi" aria-hidden="true">
+    </div>
+  </div>
+</section>
+
+<section class="spx-panel spx-panel--flip" id="wipi">
+  <div class="wrap spx-panel__in">
+    <div class="spx-panel__copy rv">
+      <span class="spx-k">Wip IA</span>
+      <h2 class="spx-h2">Wipi, la IA de Wip</h2>
+      <p>Crea servicios, asigna cada servicio al mejor proveedor, calcula tarifas, notifica novedades y te entrega informes, con solo pedírselo.</p>
+      <a href="#siguiente-paso" class="spx-btn">Quiero verlo</a>
+    </div>
+    <div class="spx-panel__vis rv" style="--rd:.1s">
+      <div class="sx-panel__vis ap-tile__vis--wipi" aria-hidden="true">
           <div class="wv" id="wv" data-v="0">
             <div class="wv__float">
               <svg class="wv__a" data-v="0" viewBox="0 -40 150 190"><path d="M24 78a51 51 0 0 1 102 0" fill="none" stroke="#ff8a4c" stroke-width="9" stroke-linecap="round"/><rect x="10" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><rect x="120" y="64" width="20" height="32" rx="9" fill="#ff8a4c"/><path d="M20 96c0 22 14 34 36 36" fill="none" stroke="#ff8a4c" stroke-width="5" stroke-linecap="round"/><circle cx="60" cy="132" r="6" fill="#ff8a4c"/></svg>
@@ -145,37 +198,21 @@
           </div>
           <div class="ap-tile__chips" id="wv-chips"><span data-v="0">Atender 24/7</span><span data-v="1">Asignar proveedor</span><span data-v="2">Seguimiento en vivo</span><span data-v="3">Configurar convenio</span><span data-v="4">Sacar informe</span></div>
     </div>
-      </div>
     </div>
   </div>
 </section>
 
-<section class="pl-video" id="video">
-  <div class="wrap">
-    <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar .vid__ph por:
-         <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
-    <div class="vid pl-vid rv" id="video-hero-corporativo"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div></div>
-  </div>
+<section class="spx-video" id="video">
+  <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar .vid__ph por:
+       <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
+  <div class="vid spx-vid" id="video-hero-corporativo"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div></div>
 </section>
 
-{{CLIENTES}}
-
-<section class="pl-res" id="cifras">
+<section class="spx-verts" id="verticales">
   <div class="wrap">
-    <h2 class="pl-h2 rv">Wip en números.</h2>
-    <div class="pl-res__grid">
-      <div class="rv"><b>+4M</b><span>servicios gestionados en Wip</span></div>
-      <div class="rv" style="--rd:.06s"><b>+354</b><span>tipos de asistencia configurados</span></div>
-      <div class="rv" style="--rd:.12s"><b>24/7</b><span>Wip IA operando con tu equipo</span></div>
-    </div>
-    <div class="pl-res__cta rv">{{DEMO_PL}}<a class="pl-btn pl-btn--line" href="#contacto">Escríbenos</a></div>
-  </div>
-</section>
-
-<section class="pl-verts" id="verticales">
-  <div class="wrap">
-    <h2 class="pl-h2 rv">Una solución para cada asistencia.</h2>
-    <div class="pl-frame">
+    <span class="spx-k rv">Verticales</span>
+    <h2 class="spx-h2 rv">Una solución para cada asistencia</h2>
+    <div class="spx-frame">
       <div class="brd brd--vert" id="brd-vert">
       <div class="brd__stage">
         <div class="brd__scale">
@@ -207,6 +244,18 @@
       </div>
     </div>
     </div>
+  </div>
+</section>
+
+{{CLIENTES}}
+
+<section class="spx-final" id="siguiente-paso">
+  <div class="spx-photo__bg" aria-hidden="true"><img src="/img/proveedores/llanta.webp" alt="" loading="lazy"></div>
+  <div class="wrap spx-photo__copy rv">
+    <span class="spx-k">Siguiente paso</span>
+    <h2 class="spx-h2">Mira Wip operando tu red</h2>
+    <p>Agenda una demo y te mostramos Wip en vivo con un caso como el tuyo.</p>
+    {{DEMO_SPX}}
   </div>
 </section>
 
