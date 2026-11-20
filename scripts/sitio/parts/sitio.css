@@ -2518,3 +2518,61 @@ body[data-page="corp"] #video{scroll-margin-top:90px}
 .dd .cs-m b{color:#fff!important;font-size:18px}
 .dd .cs-m span{color:#aab3c5!important}
 @media(prefers-reduced-motion:reduce){.cb-grid .cs-b::before{animation:none}}
+
+/* Proveedores: cierre con más potencia, hablándole al proveedor */
+.fx{position:relative;overflow:hidden;text-align:left;background:radial-gradient(ellipse at 85% 30%,rgba(219,255,87,.22),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(47,123,255,.3),transparent 55%),#0b1020}
+.fx::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(219,255,87,.12) 1px,transparent 1.6px);background-size:26px 26px;-webkit-mask-image:linear-gradient(90deg,transparent,#000 60%);mask-image:linear-gradient(90deg,transparent,#000 60%)}
+.fx__in{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5vw,70px);align-items:center}
+.fx__k{display:inline-block;padding:6px 14px;border-radius:999px;background:rgba(219,255,87,.12);border:1px solid rgba(219,255,87,.35);color:#dbff57;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}
+.fx .cs-h1{margin-top:18px;font-size:clamp(34px,4.2vw,58px)!important;line-height:1.05}
+.fx .cs-h1 span{display:block;margin-top:6px}
+.fx__copy p{margin-top:18px;max-width:560px;font-size:clamp(16px,1.3vw,18.5px);line-height:1.6;color:#c1c9d6}
+.fx .cs-ctas{margin-top:26px;justify-content:flex-start}
+.fx__note{display:block;margin-top:14px;font-size:13px;color:#8a93a8}
+.fx__card{position:relative;padding:22px;border-radius:24px;background:rgba(255,255,255,.04);border:1px solid rgba(219,255,87,.28);box-shadow:0 30px 70px rgba(0,0,0,.35),0 0 60px rgba(219,255,87,.08);backdrop-filter:blur(6px)}
+.fx__card-h{display:flex;justify-content:space-between;align-items:center}
+.fx__card-h img{width:64px!important;height:auto}
+.fx__card-h .ap-ms__live{font-size:12px;font-weight:700}
+.fx__card-t{margin:16px 0 10px;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#8a93a8}
+.fx__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.fx__list li{position:relative;display:grid;grid-template-columns:28px 1fr;column-gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08)}
+.fx__list li::before{content:"";grid-row:1/3;width:28px;height:28px;border-radius:50%;border:2px solid rgba(255,255,255,.25)}
+.fx__list li::after{content:"✓";position:absolute;left:14px;top:50%;width:28px;height:28px;margin-top:-14px;border-radius:50%;display:grid;place-items:center;background:#dbff57;color:#0b1020;font-weight:900;font-size:14px;transform:scale(0);animation:fxCheck 10s ease infinite;animation-delay:calc(var(--i) * .7s)}
+.fx__list b{position:relative;font-size:14.5px;color:#fff;text-decoration:line-through;text-decoration-color:rgba(219,255,87,0);animation:fxStrike 10s ease infinite;animation-delay:calc(var(--i) * .7s)}
+.fx__list span{font-size:12.5px;color:#dbff57;font-weight:600}
+@keyframes fxCheck{0%,4%{transform:scale(0)}8%,88%{transform:scale(1)}94%,100%{transform:scale(0)}}
+@keyframes fxStrike{0%,4%{text-decoration-color:rgba(219,255,87,0);color:#fff}8%,88%{text-decoration-color:rgba(219,255,87,.8);color:#aab3c5}94%,100%{text-decoration-color:rgba(219,255,87,0);color:#fff}}
+@media(max-width:900px){.fx__in{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){.fx__list li::after{animation:none;transform:none}.fx__list b{animation:none}}
+
+/* Proveedores: formulario de registro en blanco */
+body[data-page="prov"] main #contacto{background:#fff!important;color:var(--navy);padding-top:clamp(70px,9vw,120px)!important;padding-bottom:clamp(70px,9vw,120px)!important}
+body[data-page="prov"] main #contacto .h2{color:var(--navy)}
+body[data-page="prov"] main #contacto .lime{color:var(--navy)!important;background:linear-gradient(transparent 58%,var(--lime) 58%,var(--lime) 92%,transparent 92%)!important;padding:0 .05em!important}
+body[data-page="prov"] main #contacto .eyebrow,body[data-page="prov"] main #contacto .form__for{color:#4c6b00}
+body[data-page="prov"] main #contacto .form__for{margin:-6px 0 14px;font-size:14px;font-weight:600}
+body[data-page="prov"] main #contacto .lead,body[data-page="prov"] main #contacto .trust{color:#2b3346}
+body[data-page="prov"] main #contacto .form.card{background:#f6f7f9;border:1px solid #e3e6ec;box-shadow:0 20px 50px rgba(11,16,32,.08);color:var(--navy)}
+body[data-page="prov"] main #contacto .form h3{color:var(--navy)}
+body[data-page="prov"] main #contacto .field label,body[data-page="prov"] main #contacto .contact-consent{color:#2b3346}
+body[data-page="prov"] main #contacto .contact-consent a{color:var(--navy)}
+body[data-page="prov"] main #contacto .field input,body[data-page="prov"] main #contacto .field select,body[data-page="prov"] main #contacto .field textarea{background:#fff!important;border:1px solid #cfd5df!important;color:var(--navy)!important}
+body[data-page="prov"] main #contacto .field input::placeholder,body[data-page="prov"] main #contacto .field textarea::placeholder{color:#8a93a8}
+body[data-page="prov"] main #contacto .btn{text-transform:none!important;letter-spacing:0!important;border-radius:12px!important}
+
+/* Proveedores: animación en la tarjeta de la app (teléfono flotando y servicios que llegan) */
+.cs-b--wipapp .cs-b__v--phone{position:relative}
+.cs-b--wipapp .cs-phone{animation:apFloat 6s ease-in-out infinite}
+.cs-b--wipapp .cs-phone::after{content:"";position:absolute;left:10px;right:10px;top:10px;height:60px;border-radius:28px 28px 0 0;background:linear-gradient(180deg,rgba(219,255,87,.25),transparent);animation:apScan 4s ease-in-out infinite;pointer-events:none}
+.cs-b--wipapp .cs-phone{position:relative}
+.ap-pops{position:absolute;inset:0;pointer-events:none;z-index:2}
+.ap-pop{position:absolute;top:22%;display:grid;grid-template-columns:30px auto;column-gap:10px;align-items:center;padding:10px 14px 10px 10px;border-radius:14px;background:rgba(255,255,255,.96);box-shadow:0 14px 30px rgba(0,0,0,.3);opacity:0;animation:apPop 12s ease infinite;animation-delay:calc(var(--i) * 3s)}
+.ap-pop i{grid-row:1/3;display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#dbff57;color:#0b1020;font-style:normal;font-weight:900;font-size:13px}
+.ap-pop b{font-size:13px;color:#0b1020;white-space:nowrap}.ap-pop small{font-size:11px;color:#4c6b00;font-weight:700;white-space:nowrap}
+.ap-pop--l{left:4%}.ap-pop--r{right:4%}.ap-pop--low{top:52%}
+@keyframes apFloat{0%,100%{transform:translateY(6px)}50%{transform:translateY(-6px)}}
+@keyframes apScan{0%{transform:translateY(0);opacity:0}15%{opacity:1}70%{transform:translateY(420px);opacity:.6}100%{transform:translateY(480px);opacity:0}}
+@keyframes apPop{0%{opacity:0;transform:translateY(14px) scale(.92)}4%,22%{opacity:1;transform:none}27%,100%{opacity:0;transform:translateY(-10px) scale(.96)}}
+@media(max-width:700px){.ap-pop{transform-origin:center}.ap-pop--l{left:2%}.ap-pop--r{right:2%}.ap-pop b{font-size:11.5px}}
+@media(prefers-reduced-motion:reduce){.cs-b--wipapp .cs-phone,.cs-b--wipapp .cs-phone::after,.ap-pop{animation:none}}
+body[data-page="prov"] main #contacto .iti__selected-dial-code,body[data-page="corp"] main #contacto .iti__selected-dial-code{color:var(--navy)!important}

@@ -219,6 +219,16 @@ for (const p of pages) {
     c = rep(c, between(c, '        <fieldset class="perfil">', '</fieldset>\n'), '        <input type="hidden" name="perfil" value="Aseguradora o empresa de asistencia">\n');
     c = rep(c, '<h3>¿Prefieres que te contactemos?</h3>', '<h3>¿Prefieres que te contactemos?</h3>\n      <p class="form__for">Para aseguradoras y empresas de asistencia</p>');
   }
+  if (p.key === 'prov') {
+    // Formulario solo para proveedores: registro para que el equipo los contacte.
+    c = rep(c, '<h2 class="h2">Mira WIP en vivo <span class="lime">con un caso como el tuyo</span></h2>', '<h2 class="h2">Regístrate y <span class="lime">te contactamos</span></h2>');
+    c = rep(c, 'Cuéntanos de qué lado de las asistencias estás y cómo operas hoy. Te mostramos WIP operando tu día a día.', 'Déjanos tus datos y un asesor de Wip te contacta para mostrarte cómo operar todos tus servicios en un solo lugar.');
+    c = rep(c, between(c, '        <fieldset class="perfil">', '</fieldset>\n'), '        <input type="hidden" name="perfil" value="Proveedor de asistencia">\n');
+    c = rep(c, '<h3>¿Prefieres que te contactemos?</h3>', '<h3>Registro de proveedores</h3>\n      <p class="form__for">Para proveedores de asistencia</p>');
+    c = rep(c, between(c, '<div class="contact-calendly">', '</div>'), `<div class="contact-calendly">${meliBtn('btn btn--lime', 'O escríbele a Meli por WhatsApp')}</div>`);
+    c = rep(c, 'placeholder="Cuéntanos sobre tu operación y qué te gustaría mejorar."', 'placeholder="Cuántos técnicos tienes, con qué aseguradoras trabajas y qué te gustaría mejorar."');
+    c = rep(c, '>Correo corporativo</label>', '>Correo</label>');
+  }
   main = main.replace('{{CLIENTES}}', clientes.trim()).replace('{{FAQ}}', faqBlock.trim()).replace('{{CONTACTO}}', c.trim())
     .replace('{{FAQ_GROUPS}}', groupsHtml);
   let t = shell.replace('{{MAIN}}', main);
