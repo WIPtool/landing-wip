@@ -2375,3 +2375,6 @@ body[data-page="corp"] main #siguiente-paso .spx-final__fx i:nth-child(1){backgr
 body[data-page="corp"] main #siguiente-paso .spx-final__fx i:nth-child(2){background:rgba(47,123,255,.12)}
 body[data-page="corp"] main #siguiente-paso .spx-btn--main{background:var(--lime);border-color:var(--lime);color:var(--navy)}
 body[data-page="corp"] main #siguiente-paso .spx-btn--main:hover{background:var(--navy);border-color:var(--navy);color:#fff}
+
+/* Corporativo: al ir al video, que el menú no lo tape */
+body[data-page="corp"] #video{scroll-margin-top:90px}
