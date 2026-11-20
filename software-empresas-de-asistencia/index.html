@@ -2877,6 +2877,23 @@ body[data-page="corp"] .footer{background:#000;border-top:1px solid rgba(255,255
 .wh-btn--line{border:2px solid var(--navy);color:var(--navy)}
 .wh-btn--line:hover{background:var(--navy);color:#fff}
 
+/* Corporativo: subtítulo del hero más oscuro */
+.spx-hero--white .spx-hero__copy .spx-hero__sub{color:#0b1020}
+.spx-hero--white .spx-h1--soft{font-size:clamp(38px,5.2vw,74px)!important;max-width:1180px}
+/* Corporativo: siguiente paso con fondo gráfico (cuadrícula de puntos y luz verde) */
+.spx-final--grid{background:#000;align-items:center}
+.spx-final--grid::after{display:none}
+.spx-final__fx{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.spx-final__fx::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle,rgba(219,255,87,.32) 1.2px,transparent 1.8px);background-size:28px 28px;-webkit-mask-image:radial-gradient(ellipse 70% 75% at 70% 50%,#000 10%,transparent 75%);mask-image:radial-gradient(ellipse 70% 75% at 70% 50%,#000 10%,transparent 75%);animation:sfDrift 30s linear infinite}
+.spx-final__fx::after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:140px 140px;-webkit-mask-image:radial-gradient(ellipse 60% 70% at 70% 50%,#000,transparent 80%);mask-image:radial-gradient(ellipse 60% 70% at 70% 50%,#000,transparent 80%)}
+.spx-final__fx i{position:absolute;border-radius:50%;filter:blur(90px)}
+.spx-final__fx i:nth-child(1){width:46vw;height:46vw;right:-8vw;top:50%;margin-top:-23vw;background:rgba(219,255,87,.16);animation:sfGlow 9s ease-in-out infinite alternate}
+.spx-final__fx i:nth-child(2){width:30vw;height:30vw;left:-10vw;bottom:-14vw;background:rgba(40,70,160,.28)}
+.spx-final--grid .spx-photo__copy{padding:clamp(80px,12vh,130px) 0}
+@keyframes sfDrift{to{background-position:28px 56px}}
+@keyframes sfGlow{from{transform:scale(.9);opacity:.7}to{transform:scale(1.1);opacity:1}}
+@media(prefers-reduced-motion:reduce){.spx-final__fx::before,.spx-final__fx i{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2947,7 +2964,7 @@ window.addEventListener('message',function(e){
 <!-- ===================== WIP CORPORATIVO, formato spacex.com con colores de Wip ===================== -->
 <section class="spx-hero spx-hero--white" id="inicio">
   <div class="wrap spx-hero__copy rv in">
-    <h1 class="spx-h1 spx-h1--soft">Opera tus asistencias <span>en tiempo real.</span></h1>
+    <h1 class="spx-h1 spx-h1--soft">Opera tus asistencias y gestiona tu red de proveedores <span>en tiempo real.</span></h1>
     <p class="spx-hero__sub">En nuestra línea corporativa trabajamos con altos volúmenes de asistencias, redes de proveedores y muchos técnicos en campo. Wip es tu call center inteligente 24/7.</p>
     <div class="spx-hero__ctas"><a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="wh-btn wh-btn--main" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a><a href="#cifras" class="wh-btn wh-btn--line">Conoce la plataforma</a></div>
   </div>
@@ -3067,7 +3084,7 @@ window.addEventListener('message',function(e){
 </section>
 
 <section class="spx-photo" id="evidencias">
-  <div class="spx-photo__bg" aria-hidden="true"><img src="/img/corporativo/grua-moderna.webp" alt="" loading="lazy" style="object-position:55% 55%"></div>
+  <div class="spx-photo__bg" aria-hidden="true"><img src="/img/corporativo/tecnico-evidencia.webp" alt="" loading="lazy" style="object-position:60% 50%"></div>
   <div class="wrap spx-photo__copy rv">
     <span class="spx-k">Desde campo</span>
     <h2 class="spx-h2">Evidencias en segundos</h2>
@@ -3231,8 +3248,8 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<section class="spx-final" id="siguiente-paso">
-  <div class="spx-photo__bg" aria-hidden="true"><img src="/img/corporativo/ciudad-medellin.webp" alt="" loading="lazy" style="object-position:50% 60%"></div>
+<section class="spx-final spx-final--grid" id="siguiente-paso">
+  <div class="spx-final__fx" aria-hidden="true"><i></i><i></i></div>
   <div class="wrap spx-photo__copy rv">
     <span class="spx-k">Siguiente paso</span>
     <h2 class="spx-h2">Mira Wip operando tu red</h2>
