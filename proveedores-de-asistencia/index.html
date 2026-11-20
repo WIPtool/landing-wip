@@ -3036,6 +3036,13 @@ body[data-page="corp"] #video{scroll-margin-top:90px}
 .cs-ev__note{grid-column:1/-1;font-size:11px;color:#6b7385}
 .cs-b--ev{display:flex;flex-direction:column}
 
+/* Proveedores: tarjeta de la app con fondo en tonos Wip */
+.cs-b--wipapp{position:relative;overflow:hidden;background:radial-gradient(ellipse at 85% 110%,rgba(219,255,87,.45),transparent 55%),radial-gradient(ellipse at 10% -10%,rgba(47,123,255,.35),transparent 55%),linear-gradient(150deg,#16255a 0%,#0b1020 70%);color:#fff;border:0}
+.cs-b--wipapp::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(219,255,87,.18) 1px,transparent 1.6px);background-size:24px 24px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 60%);mask-image:linear-gradient(180deg,transparent,#000 60%)}
+.cs-b--wipapp .cs-b__t,.cs-b--wipapp .cs-b__v{position:relative}
+.cs-b--wipapp .cs-b__t b{color:#fff}.cs-b--wipapp .cs-b__t span{color:#c1c9d6}
+.cs-b--wipapp .cs-phone{box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 0 2px rgba(219,255,87,.35),0 0 60px rgba(219,255,87,.18)}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3164,7 +3171,7 @@ window.addEventListener('message',function(e){
       <p>Los servicios de todas tus aseguradoras, asistencias y particulares llegan a Wip, con las reglas y la tarifa de cada convenio ya aplicadas. Sin estar pegado a cada plataforma.</p>
     </div>
     <div class="cs-grad cs-grad--lime rv" style="--rd:.08s">
-      <figure class="pv-ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/monitoreo.webp" alt="Monitoreo central de Wip con los servicios activos del día" width="1336" height="500" loading="lazy" decoding="async"></figure>
+      <figure class="pv-ss"><span class="pv-ss__bar"><i></i><i></i><i></i></span><img src="/img/plataforma/proveedores/monitoreo-servicios.webp" alt="Monitoreo central de Wip con los servicios del día y su estado" width="1788" height="579" loading="lazy" decoding="async"></figure>
     </div>
   </div>
 </section>
@@ -3172,11 +3179,11 @@ window.addEventListener('message',function(e){
 <section class="cs-sec" id="tecnicos">
   <div class="wrap">
     <div class="cs-head rv">
-      <div><h2 class="cs-h2">Tus técnicos, conectados desde campo</h2><p>Una sola app para los servicios de todas tus aseguradoras y tus particulares. Cada cierre llega con fotos, firma y horas, y tú lo sigues en tiempo real.</p></div>
+      <div><h2 class="cs-h2">Tus técnicos siempre conectados</h2><p>Una sola app para los servicios de todas tus aseguradoras y tus particulares. Cada cierre llega con fotos, firma y horas, y tú lo sigues en tiempo real.</p></div>
       <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--dark" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
     </div>
     <div class="cs-bento">
-      <div class="cs-b cs-b--peach cs-b--wide rv"><div class="cs-b__t"><b>Una app para todos tus servicios</b><span>Tus técnicos ven y atienden los servicios de todas tus empresas y tus particulares, sin cambiar de app.</span></div><div class="cs-b__v cs-b__v--phone"><div class="cs-phone"><img src="/img/plataforma/proveedores/app-tecnico.webp" alt="App de Wip para técnicos: servicio en curso con su estado" width="540" height="880" loading="lazy" decoding="async"></div></div></div>
+      <div class="cs-b cs-b--wipapp cs-b--wide rv"><div class="cs-b__t"><b>Una app para todos tus servicios</b><span>Tus técnicos ven y atienden los servicios de todas tus empresas y tus particulares, sin cambiar de app.</span></div><div class="cs-b__v cs-b__v--phone"><div class="cs-phone"><img src="/img/plataforma/proveedores/app-tecnico.webp" alt="App de Wip para técnicos: servicio en curso con su estado" width="540" height="880" loading="lazy" decoding="async"></div></div></div>
       <div class="cs-b cs-b--light cs-b--ev rv" style="--rd:.05s"><div class="cs-b__t"><b>Evidencias al instante</b><span>Fotos con fecha, hora y ubicación que quedan en el servicio, listas para el visado.</span></div><div class="cs-ev"><figure class="cs-ev__main"><img src="/img/plataforma/proveedores/evidencia-principal.webp" alt="Foto de evidencia de un vehículo con fecha y hora" width="572" height="430" loading="lazy" decoding="async"><figcaption>Llegada</figcaption></figure><figure><img src="/img/plataforma/proveedores/evidencia-frente.webp" alt="Foto de evidencia del frente del vehículo" width="340" height="210" loading="lazy" decoding="async"><figcaption>Frente</figcaption></figure><figure><img src="/img/plataforma/proveedores/evidencia-detalle.webp" alt="Foto de evidencia del detalle del daño" width="340" height="210" loading="lazy" decoding="async"><figcaption>Detalle</figcaption></figure><span class="cs-ev__note">Capturas reales, datos difuminados</span></div></div>
       <div class="cs-b cs-b--light rv" style="--rd:.1s"><div class="cs-b__t"><b>Firma del usuario en la app</b><span>El servicio cierra con la firma del usuario, sin papeles.</span></div><div class="cs-b__v"><div class="cs-sign"><svg viewBox="0 0 220 70" aria-hidden="true"><path d="M10 50c18-30 30-38 36-30s-10 34 2 30 18-36 30-32-6 30 6 28 20-24 34-22 4 20 18 18 30-12 74-14"/></svg><span>Firma del cliente</span></div></div></div>
       <div class="cs-b cs-b--navy rv"><div class="cs-b__t"><b>Novedades resueltas en el chat</b><span>Autorizaciones y novedades dentro de cada servicio, con quién autorizó qué y cuándo.</span></div></div>

@@ -2389,3 +2389,10 @@ body[data-page="corp"] #video{scroll-margin-top:90px}
 .cs-ev figcaption::before{content:"✓";display:grid;place-items:center;width:14px;height:14px;border-radius:50%;background:var(--lime);color:var(--navy);font-size:9px;font-weight:900}
 .cs-ev__note{grid-column:1/-1;font-size:11px;color:#6b7385}
 .cs-b--ev{display:flex;flex-direction:column}
+
+/* Proveedores: tarjeta de la app con fondo en tonos Wip */
+.cs-b--wipapp{position:relative;overflow:hidden;background:radial-gradient(ellipse at 85% 110%,rgba(219,255,87,.45),transparent 55%),radial-gradient(ellipse at 10% -10%,rgba(47,123,255,.35),transparent 55%),linear-gradient(150deg,#16255a 0%,#0b1020 70%);color:#fff;border:0}
+.cs-b--wipapp::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(219,255,87,.18) 1px,transparent 1.6px);background-size:24px 24px;-webkit-mask-image:linear-gradient(180deg,transparent,#000 60%);mask-image:linear-gradient(180deg,transparent,#000 60%)}
+.cs-b--wipapp .cs-b__t,.cs-b--wipapp .cs-b__v{position:relative}
+.cs-b--wipapp .cs-b__t b{color:#fff}.cs-b--wipapp .cs-b__t span{color:#c1c9d6}
+.cs-b--wipapp .cs-phone{box-shadow:0 30px 70px rgba(0,0,0,.45),0 0 0 2px rgba(219,255,87,.35),0 0 60px rgba(219,255,87,.18)}
