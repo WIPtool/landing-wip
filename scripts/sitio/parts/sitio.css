@@ -2378,3 +2378,14 @@ body[data-page="corp"] main #siguiente-paso .spx-btn--main:hover{background:var(
 
 /* Corporativo: al ir al video, que el menú no lo tape */
 body[data-page="corp"] #video{scroll-margin-top:90px}
+
+/* Proveedores: galería de evidencias reales */
+.cs-ev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:16px}
+.cs-ev figure{position:relative;margin:0;border-radius:12px;overflow:hidden;background:#dfe3ea;aspect-ratio:16/10}
+.cs-ev__main{grid-column:1/-1;aspect-ratio:4/3!important}
+.cs-ev img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.cs-b--ev:hover .cs-ev img{transform:scale(1.04)}
+.cs-ev figcaption{position:absolute;left:8px;top:8px;display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;background:rgba(11,16,32,.82);color:#fff;font-size:11px;font-weight:700}
+.cs-ev figcaption::before{content:"✓";display:grid;place-items:center;width:14px;height:14px;border-radius:50%;background:var(--lime);color:var(--navy);font-size:9px;font-weight:900}
+.cs-ev__note{grid-column:1/-1;font-size:11px;color:#6b7385}
+.cs-b--ev{display:flex;flex-direction:column}

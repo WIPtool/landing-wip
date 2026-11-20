@@ -3025,6 +3025,17 @@ body[data-page="corp"] main #siguiente-paso .spx-btn--main:hover{background:var(
 /* Corporativo: al ir al video, que el menú no lo tape */
 body[data-page="corp"] #video{scroll-margin-top:90px}
 
+/* Proveedores: galería de evidencias reales */
+.cs-ev{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:16px}
+.cs-ev figure{position:relative;margin:0;border-radius:12px;overflow:hidden;background:#dfe3ea;aspect-ratio:16/10}
+.cs-ev__main{grid-column:1/-1;aspect-ratio:4/3!important}
+.cs-ev img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.cs-b--ev:hover .cs-ev img{transform:scale(1.04)}
+.cs-ev figcaption{position:absolute;left:8px;top:8px;display:inline-flex;align-items:center;gap:5px;padding:4px 9px;border-radius:999px;background:rgba(11,16,32,.82);color:#fff;font-size:11px;font-weight:700}
+.cs-ev figcaption::before{content:"✓";display:grid;place-items:center;width:14px;height:14px;border-radius:50%;background:var(--lime);color:var(--navy);font-size:9px;font-weight:900}
+.cs-ev__note{grid-column:1/-1;font-size:11px;color:#6b7385}
+.cs-b--ev{display:flex;flex-direction:column}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3102,9 +3113,7 @@ window.addEventListener('message',function(e){
     <div class="cs-ctas rv in" style="--rd:.15s"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a><a href="#un-solo-lugar" class="cs-btn cs-btn--ghost">Cómo funciona</a></div>
   </div>
   <div class="cs-hero__vid rv in" style="--rd:.2s">
-    <!-- Espacio para el video de Wip Proveedores (16:9). Cuando esté listo, reemplazar .vid__ph por:
-         <video src="/video/wip-proveedores.mp4" poster="/video/wip-proveedores.jpg" controls playsinline preload="metadata"></video> -->
-    <div class="vid cs-vid" id="video-hero-proveedores"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Proveedores</span></div></div>
+    <div class="vid cs-vid" id="video-hero-proveedores"><video src="/video/wip-proveedores.mp4" poster="/video/wip-proveedores-portada.webp" controls playsinline preload="none" aria-label="Video de Wip Proveedores: todos tus servicios en un mismo lugar, con tu call center inteligente 24/7"></video></div>
   </div>
   </div>
 </section>
@@ -3163,16 +3172,16 @@ window.addEventListener('message',function(e){
 <section class="cs-sec" id="tecnicos">
   <div class="wrap">
     <div class="cs-head rv">
-      <div><h2 class="cs-h2">Tus técnicos, conectados en campo</h2><p>Una sola app para los servicios de todas tus empresas. Cada servicio cierra con fotos, firma y horas, y tú lo ves en tiempo real.</p></div>
+      <div><h2 class="cs-h2">Tus técnicos, conectados desde campo</h2><p>Una sola app para los servicios de todas tus aseguradoras y tus particulares. Cada cierre llega con fotos, firma y horas, y tú lo sigues en tiempo real.</p></div>
       <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--dark" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
     </div>
     <div class="cs-bento">
-      <div class="cs-b cs-b--peach cs-b--wide rv"><div class="cs-b__t"><b>Una sola app</b><span>Los servicios de todas tus empresas y tus particulares, en la misma app.</span></div><div class="cs-b__v cs-b__v--phone"><div class="cs-phone"><img src="/img/plataforma/proveedores/app-tecnico.webp" alt="App de Wip para técnicos: servicio en curso con su estado" width="540" height="880" loading="lazy" decoding="async"></div></div></div>
-      <div class="cs-b cs-b--light rv" style="--rd:.05s"><div class="cs-b__t"><b>Fotos con fecha y hora</b><span>Cada foto queda en el servicio.</span></div><div class="cs-b__v cs-b__v--img"><img src="/img/plataforma/proveedores/evidencia-foto.webp" alt="Foto de evidencia con fecha y hora" width="572" height="430" loading="lazy" decoding="async"></div></div>
-      <div class="cs-b cs-b--light rv" style="--rd:.1s"><div class="cs-b__t"><b>Firma del cliente</b><span>El cierre se firma en la app.</span></div><div class="cs-b__v"><div class="cs-sign"><svg viewBox="0 0 220 70" aria-hidden="true"><path d="M10 50c18-30 30-38 36-30s-10 34 2 30 18-36 30-32-6 30 6 28 20-24 34-22 4 20 18 18 30-12 74-14"/></svg><span>Firma del cliente</span></div></div></div>
-      <div class="cs-b cs-b--navy rv"><div class="cs-b__t"><b>Chat en cada servicio</b><span>Novedades y autorizaciones dentro del servicio, con quién autorizó qué y cuándo.</span></div></div>
-      <div class="cs-b cs-b--blue rv" style="--rd:.05s"><div class="cs-b__t"><b>Radar de técnicos</b><span>Quién está libre, en camino o en servicio.</span></div></div>
-      <div class="cs-b cs-b--lime cs-b--full rv" style="--rd:.1s"><div class="cs-b__t"><b>Tus técnicos en el mapa</b><span>Asigna al más cercano sin llamar a nadie. Captura real, nombres difuminados.</span></div><div class="cs-b__v cs-b__v--img cs-b__v--map"><img src="/img/plataforma/proveedores/radar.webp" alt="Radar de Wip con técnicos en el mapa" width="1128" height="550" loading="lazy" decoding="async"></div></div>
+      <div class="cs-b cs-b--peach cs-b--wide rv"><div class="cs-b__t"><b>Una app para todos tus servicios</b><span>Tus técnicos ven y atienden los servicios de todas tus empresas y tus particulares, sin cambiar de app.</span></div><div class="cs-b__v cs-b__v--phone"><div class="cs-phone"><img src="/img/plataforma/proveedores/app-tecnico.webp" alt="App de Wip para técnicos: servicio en curso con su estado" width="540" height="880" loading="lazy" decoding="async"></div></div></div>
+      <div class="cs-b cs-b--light cs-b--ev rv" style="--rd:.05s"><div class="cs-b__t"><b>Evidencias al instante</b><span>Fotos con fecha, hora y ubicación que quedan en el servicio, listas para el visado.</span></div><div class="cs-ev"><figure class="cs-ev__main"><img src="/img/plataforma/proveedores/evidencia-principal.webp" alt="Foto de evidencia de un vehículo con fecha y hora" width="572" height="430" loading="lazy" decoding="async"><figcaption>Llegada</figcaption></figure><figure><img src="/img/plataforma/proveedores/evidencia-frente.webp" alt="Foto de evidencia del frente del vehículo" width="340" height="210" loading="lazy" decoding="async"><figcaption>Frente</figcaption></figure><figure><img src="/img/plataforma/proveedores/evidencia-detalle.webp" alt="Foto de evidencia del detalle del daño" width="340" height="210" loading="lazy" decoding="async"><figcaption>Detalle</figcaption></figure><span class="cs-ev__note">Capturas reales, datos difuminados</span></div></div>
+      <div class="cs-b cs-b--light rv" style="--rd:.1s"><div class="cs-b__t"><b>Firma del usuario en la app</b><span>El servicio cierra con la firma del usuario, sin papeles.</span></div><div class="cs-b__v"><div class="cs-sign"><svg viewBox="0 0 220 70" aria-hidden="true"><path d="M10 50c18-30 30-38 36-30s-10 34 2 30 18-36 30-32-6 30 6 28 20-24 34-22 4 20 18 18 30-12 74-14"/></svg><span>Firma del cliente</span></div></div></div>
+      <div class="cs-b cs-b--navy rv"><div class="cs-b__t"><b>Novedades resueltas en el chat</b><span>Autorizaciones y novedades dentro de cada servicio, con quién autorizó qué y cuándo.</span></div></div>
+      <div class="cs-b cs-b--blue rv" style="--rd:.05s"><div class="cs-b__t"><b>Radar de técnicos</b><span>Mira quién está libre, en camino o en servicio, sin llamar a nadie.</span></div></div>
+      <div class="cs-b cs-b--lime cs-b--full rv" style="--rd:.1s"><div class="cs-b__t"><b>Asigna al técnico más cercano</b><span>Tus técnicos en el mapa para mandar al que está más cerca. Captura real, nombres difuminados.</span></div><div class="cs-b__v cs-b__v--img cs-b__v--map"><img src="/img/plataforma/proveedores/radar.webp" alt="Radar de Wip con técnicos en el mapa" width="1128" height="550" loading="lazy" decoding="async"></div></div>
     </div>
   </div>
 </section>
