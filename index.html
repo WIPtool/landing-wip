@@ -2510,6 +2510,8 @@ body[data-page="home"] main .wcard--prov .btn{background:transparent;color:var(-
 @keyframes cxShine{0%,55%{left:-60%}85%,100%{left:130%}}
 @keyframes cxPulse{0%{box-shadow:0 0 0 0 rgba(219,255,87,.45),0 10px 30px rgba(219,255,87,.22)}70%{box-shadow:0 0 0 14px rgba(219,255,87,0),0 10px 30px rgba(219,255,87,.22)}100%{box-shadow:0 0 0 0 rgba(219,255,87,0),0 10px 30px rgba(219,255,87,.22)}}
 @media(prefers-reduced-motion:reduce){.cx-hero .cx-btn,.cx-hero .cx-btn::after{animation:none}}
+body[data-page="home"] .home-video{padding-top:clamp(20px,3vw,40px)}
+body[data-page="home"] .home-video .vid{margin-top:0}
 
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
@@ -2597,17 +2599,23 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
+<!-- ===================== VIDEO ===================== -->
+<section class="sec home-video" id="video">
+  <div class="wrap">
+    <!-- Espacio para el video de Wip IA (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
+         <video src="/video/wip-ia.mp4" poster="/video/wip-ia.jpg" muted loop playsinline autoplay preload="none"></video> -->
+    <div class="vid rv" id="video-wip">
+      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip IA</span></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===================== QUÉ ES WIP ===================== -->
 <section class="sec" id="que-es">
   <div class="wrap">
     <div class="what rv">
       <span class="eyebrow">¿Qué es WIP?</span>
       <p class="big">Wip es la infraestructura tecnológica del mundo de las asistencias en LATAM. <span>Conocemos cómo funciona este mercado por dentro, y tenemos una solución para cada uno: aseguradoras, empresas de asistencia y proveedores.</span></p>
-    </div>
-    <!-- Espacio para el video de Wip IA (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
-         <video src="/video/wip-ia.mp4" poster="/video/wip-ia.jpg" muted loop playsinline autoplay preload="none"></video> -->
-    <div class="vid rv" id="video-wip">
-      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip IA</span></div>
     </div>
     <div class="stats rv">
       <div class="stats__main">
