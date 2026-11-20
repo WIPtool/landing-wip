@@ -1439,3 +1439,19 @@ body[data-page="prov"] .nav__in{background:rgba(11,16,32,.9);border-color:rgba(2
 .rmap__leg text{font-size:12px;fill:#9aa3b5}.rmap__leg circle.g{fill:#9be15d}.rmap__leg circle.y{fill:#ffd84d}.rmap__leg circle.p{fill:#8f6bff}
 @media(prefers-reduced-motion:reduce){.rmap__ln,.rmap__ring,.rmap__hubring{animation:none}}
 .amap__chip .p{fill:#b9a3ff}
+
+/* Proveedores: capturas reales de la plataforma */
+.pv-panel__vis--ss{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:12px;padding:clamp(16px,2.4vw,30px)}
+.pv-ss{margin:0;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 24px 60px rgba(0,0,0,.45),0 0 0 1px rgba(219,255,87,.25)}
+.pv-ss__bar{display:flex;gap:6px;padding:9px 12px;background:#eef1ea;border-bottom:1px solid #dde2d6}
+.pv-ss__bar i{width:9px;height:9px;border-radius:50%;background:#c9cfc2}.pv-ss__bar i:first-child{background:#ff8a6b}.pv-ss__bar i:nth-child(2){background:#ffd84d}.pv-ss__bar i:last-child{background:#9be15d}
+.pv-ss img{display:block;width:100%;height:auto}
+.pv-ss__note{font-size:12px;color:#8fb59b;text-align:center}
+.pv-ev3{position:relative;display:grid;gap:12px}
+.pv-ev3__foto{position:absolute;right:-6px;top:38%;width:38%;margin:0;border-radius:12px;overflow:hidden;border:3px solid #fff;box-shadow:0 18px 40px rgba(0,0,0,.5);transform:rotate(3deg)}
+.pv-ev3__foto img{display:block;width:100%;height:auto}
+.pv-ev3__foto figcaption{position:absolute;left:8px;bottom:8px;padding:4px 9px;border-radius:999px;background:var(--lime);color:var(--navy);font-size:11px;font-weight:700}
+.pv-ss--traz{margin-top:clamp(40px,6vw,90px);width:88%}
+@media(max-width:600px){.pv-ev3__foto{width:46%;top:30%}.pv-ss--traz{width:100%;margin-top:70px}}
+@media(min-width:901px){.pv-panel__in:has(.pv-panel__vis--ss){grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr)}}
+.pv-panel__vis--ss{min-height:0}
