@@ -268,6 +268,13 @@
       [].forEach.call(t.querySelectorAll("button"),function(x){var on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-selected",on?"true":"false");});
       [].forEach.call(sec.querySelectorAll(".ix-ps__pane"),function(p){p.classList.toggle("on",p.getAttribute("data-ps")===k);});});
   });
+  /* Corporativo: pestañas de módulos de la plataforma */
+  [].forEach.call(document.querySelectorAll(".pl-tabs"),function(t){
+    var stage=t.parentNode.querySelector(".pl-stage");
+    t.addEventListener("click",function(ev){var b=ev.target.closest("button[data-tab]");if(!b)return;var k=b.getAttribute("data-tab");
+      [].forEach.call(t.querySelectorAll("button"),function(x){var on=x===b;x.classList.toggle("on",on);x.setAttribute("aria-selected",on?"true":"false");});
+      [].forEach.call(stage.querySelectorAll(".pl-pane"),function(p){p.classList.toggle("on",p.getAttribute("data-tab")===k);});});
+  });
   /* Mapa de asignación: cada etiqueta se ajusta al ancho de su texto */
   [].forEach.call(document.querySelectorAll(".amap__chip"),function(g){
     var t=g.querySelector("text"), r=g.querySelector("rect");
