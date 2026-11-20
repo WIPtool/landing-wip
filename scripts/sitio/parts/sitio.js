@@ -296,3 +296,15 @@
       });},{threshold:[0,.2,.4,.6]}).observe(brd);
     } else brd.classList.add("play");
   });
+
+/* Corporativo: las cifras cuentan desde cero cuando aparecen */
+(function(){
+  var wn=document.querySelector('.wn');if(!wn||!('IntersectionObserver' in window))return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var ems=[].slice.call(wn.querySelectorAll('[data-wn]'));ems.forEach(function(e){e.textContent='0';});
+  var io=new IntersectionObserver(function(en){if(!en[0].isIntersecting)return;io.disconnect();
+    ems.forEach(function(e){var fin=+e.getAttribute('data-wn'),t0=performance.now();
+      var paso=function(t){var p=Math.min(1,(t-t0)/1600),k=1-Math.pow(1-p,3);e.textContent=Math.round(fin*k);if(p<1)requestAnimationFrame(paso);};
+      requestAnimationFrame(paso);});
+  },{threshold:.35});io.observe(wn);
+})();

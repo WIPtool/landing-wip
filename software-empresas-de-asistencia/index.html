@@ -2952,6 +2952,59 @@ body[data-page="corp"] main #faq .faq summary{color:var(--navy)}
 body[data-page="corp"] main #faq .faq p{color:#2b3346}
 body[data-page="corp"] main #faq .faq summary::after{color:#4c6b00!important;border-color:#cfd5df!important;background:#fff!important}
 
+/* Corporativo: cifras en blanco con efecto (borde de luz que gira, conteo y barra verde) */
+@property --wna{syntax:"<angle>";inherits:false;initial-value:0deg}
+.wn{position:relative;background:#fff;padding:clamp(40px,6vw,80px) 0 clamp(70px,9vw,120px);overflow:hidden}
+.wn::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(11,16,32,.1) 1px,transparent 1.5px);background-size:26px 26px;-webkit-mask-image:linear-gradient(#000,transparent 85%);mask-image:linear-gradient(#000,transparent 85%)}
+.wn .wrap{position:relative}
+.wn__k{text-align:center;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#4c6b00;margin-bottom:clamp(24px,3vw,40px)}
+.wn__row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,22px)}
+.wn__c{position:relative;padding:clamp(24px,2.6vw,36px) clamp(18px,2vw,28px) clamp(26px,2.8vw,38px);border-radius:22px;background:#fff;isolation:isolate;box-shadow:0 18px 50px rgba(11,16,32,.07);transition:transform .35s ease,box-shadow .35s ease}
+.wn__c::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--wna),#e6e9ef 0deg,#e6e9ef 250deg,#dbff57 300deg,#7fa600 330deg,#e6e9ef 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:wnSpin 6s linear infinite;z-index:-1}
+.wn__c:nth-child(2)::before{animation-delay:-1.5s}.wn__c:nth-child(3)::before{animation-delay:-3s}.wn__c:nth-child(4)::before{animation-delay:-4.5s}
+.wn__c::after{content:"";position:absolute;inset:auto 0 0;height:60%;border-radius:0 0 22px 22px;background:radial-gradient(ellipse at 50% 120%,rgba(219,255,87,.35),transparent 70%);opacity:0;transition:opacity .35s ease;z-index:-1}
+.wn__c:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(11,16,32,.12)}.wn__c:hover::after{opacity:1}
+.wn__c b{display:block;font-weight:900!important;font-size:clamp(44px,5.4vw,80px);line-height:1;letter-spacing:-.04em;color:var(--navy);font-variant-numeric:tabular-nums}
+.wn__c em{font-style:normal}
+.wn__c span{display:block;margin-top:14px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4a5468}
+.wn__c i{display:block;margin-top:18px;height:5px;border-radius:5px;background:#eef0f4;overflow:hidden;position:relative}
+.wn__c i::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,#7fa600,#dbff57);transform:scaleX(0);transform-origin:left;transition:transform 1.6s cubic-bezier(.2,.8,.2,1) .3s}
+.wn__c.in i::before{transform:scaleX(1)}
+.wn__c--live b{display:flex;align-items:center;gap:12px}
+.wn__c--live b::after{content:"";width:12px;height:12px;border-radius:50%;background:#7fa600;box-shadow:0 0 0 0 rgba(127,166,0,.5);animation:wnPulse 1.8s ease-out infinite}
+@keyframes wnSpin{to{--wna:360deg}}
+@keyframes wnPulse{0%{box-shadow:0 0 0 0 rgba(127,166,0,.5)}100%{box-shadow:0 0 0 14px rgba(127,166,0,0)}}
+@media(max-width:900px){.wn__row{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.wn__c::before,.wn__c--live b::after{animation:none}.wn__c i::before{transition:none}}
+
+/* Proveedores: la app real de Wip en un teléfono */
+.cs-b__v--phone{display:flex;justify-content:center;align-items:flex-end;overflow:hidden;padding-top:10px}
+.cs-phone{width:min(270px,72%);border-radius:38px 38px 0 0;padding:10px 10px 0;background:#0b1020;box-shadow:0 30px 60px rgba(11,16,32,.25),inset 0 0 0 2px #2a3146;transform:translateY(6px);transition:transform .4s ease}
+.cs-phone img{display:block;width:100%;height:auto;border-radius:28px 28px 0 0}
+.cs-b:hover .cs-phone{transform:translateY(-4px)}
+
+/* Proveedores: integraciones, todos tus clientes conectados a Wip */
+.ig{position:relative;width:100%;max-width:520px;display:grid;grid-template-columns:minmax(0,1fr) 70px minmax(0,1fr);align-items:center}
+.ig__col{display:flex;flex-direction:column;gap:12px}
+.ig__c{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:14px;font-weight:600;animation:igOn 6s ease-in-out infinite;animation-delay:calc(var(--i) * .5s)}
+.ig__c i{width:9px;height:9px;border-radius:50%;background:#dbff57;box-shadow:0 0 10px #dbff57}
+.ig__c--p i{background:#25d366;box-shadow:0 0 10px #25d366}
+.ig__lines{position:relative;align-self:stretch}
+.ig__lines b{position:absolute;left:0;right:0;height:2px;top:calc(10% + var(--i) * 20%);background:linear-gradient(90deg,rgba(219,255,87,.15),rgba(219,255,87,.5));overflow:hidden}
+.ig__lines b::after{content:"";position:absolute;top:-2px;left:-30%;width:30%;height:6px;border-radius:6px;background:#dbff57;box-shadow:0 0 12px #dbff57;animation:igFlow 2.4s linear infinite;animation-delay:calc(var(--i) * .45s)}
+.ig__hub{display:flex;flex-direction:column;align-items:center;gap:8px;padding:26px 16px;border-radius:22px;background:rgba(11,16,32,.95);border:1.5px solid rgba(219,255,87,.55);box-shadow:0 0 0 8px rgba(219,255,87,.06),0 0 50px rgba(219,255,87,.25);text-align:center;animation:igHub 2.4s ease-in-out infinite}
+.ig__hub img{width:92px;height:auto}
+.ig__hub small{font-size:14px;font-weight:700;color:#fff}
+.ig__hub em{font-style:normal;font-size:12px;color:#dbff57;display:inline-flex;align-items:center;gap:6px}
+.ig__hub em::before{content:"";width:7px;height:7px;border-radius:50%;background:#dbff57;animation:msLive 1.8s ease-out infinite}
+@keyframes igFlow{to{left:100%}}
+@keyframes igOn{0%,100%{border-color:rgba(255,255,255,.12)}50%{border-color:rgba(219,255,87,.45)}}
+@keyframes igHub{0%,100%{box-shadow:0 0 0 8px rgba(219,255,87,.06),0 0 40px rgba(219,255,87,.2)}50%{box-shadow:0 0 0 14px rgba(219,255,87,.08),0 0 60px rgba(219,255,87,.35)}}
+@media(max-width:600px){.ig{grid-template-columns:minmax(0,1.1fr) 34px minmax(0,1fr)}.ig__c{font-size:12px;padding:9px 10px}.ig__hub{padding:18px 10px}.ig__hub img{width:70px}}
+@media(prefers-reduced-motion:reduce){.ig__c,.ig__lines b::after,.ig__hub{animation:none}}
+.ig{grid-template-columns:auto minmax(40px,1fr) auto}.ig__c{white-space:nowrap}
+@media(max-width:600px){.ig{grid-template-columns:auto minmax(20px,1fr) auto}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3026,20 +3079,23 @@ window.addEventListener('message',function(e){
     <p class="spx-hero__sub">En nuestra línea corporativa trabajamos con altos volúmenes de asistencias, redes de proveedores y muchos técnicos en campo. Wip es tu call center inteligente 24/7.</p>
     <div class="spx-hero__ctas"><a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="wh-btn wh-btn--main" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a><a href="#cifras" class="wh-btn wh-btn--line">Conoce la plataforma</a></div>
   </div>
-  <a href="#video" class="spx-down" aria-label="Bajar a la siguiente sección"></a>
+  <a href="#cifras" class="spx-down" aria-label="Bajar a la siguiente sección"></a>
+</section>
+
+<section class="wn" id="cifras">
+  <div class="wrap">
+    <p class="wn__k rv">Wip en números</p>
+    <div class="wn__row">
+      <div class="wn__c rv"><b>+<em data-wn="4">4</em>M</b><span>Servicios gestionados</span><i></i></div>
+      <div class="wn__c rv" style="--rd:.08s"><b>+<em data-wn="354">354</em></b><span>Tipos de asistencia</span><i></i></div>
+      <div class="wn__c rv" style="--rd:.16s"><b>+<em data-wn="13">13</em></b><span>Verticales en LATAM</span><i></i></div>
+      <div class="wn__c wn__c--live rv" style="--rd:.24s"><b>24/7</b><span>Wip IA operando</span><i></i></div>
+    </div>
+  </div>
 </section>
 
 <section class="spx-video" id="video">
   <div class="vid spx-vid" id="video-hero-corporativo"><video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo-portada.webp" controls playsinline preload="none" aria-label="Video de Wip Corporativo: la plataforma IA que opera asistencias contigo"></video></div>
-</section>
-
-<section class="spx-nums" id="cifras">
-  <div class="wrap spx-nums__row">
-    <div class="rv"><b>+4M</b><span>Servicios gestionados</span></div>
-    <div class="rv" style="--rd:.06s"><b>+354</b><span>Tipos de asistencia</span></div>
-    <div class="rv" style="--rd:.12s"><b>+13</b><span>Verticales en LATAM</span></div>
-    <div class="rv" style="--rd:.18s"><b>24/7</b><span>Wip IA operando</span></div>
-  </div>
 </section>
 
 <section class="spx-photo" id="red">
@@ -3811,6 +3867,18 @@ window.addEventListener('message',function(e){
       });},{threshold:[0,.2,.4,.6]}).observe(brd);
     } else brd.classList.add("play");
   });
+
+/* Corporativo: las cifras cuentan desde cero cuando aparecen */
+(function(){
+  var wn=document.querySelector('.wn');if(!wn||!('IntersectionObserver' in window))return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var ems=[].slice.call(wn.querySelectorAll('[data-wn]'));ems.forEach(function(e){e.textContent='0';});
+  var io=new IntersectionObserver(function(en){if(!en[0].isIntersecting)return;io.disconnect();
+    ems.forEach(function(e){var fin=+e.getAttribute('data-wn'),t0=performance.now();
+      var paso=function(t){var p=Math.min(1,(t-t0)/1600),k=1-Math.pow(1-p,3);e.textContent=Math.round(fin*k);if(p<1)requestAnimationFrame(paso);};
+      requestAnimationFrame(paso);});
+  },{threshold:.35});io.observe(wn);
+})();
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
   if(calc){

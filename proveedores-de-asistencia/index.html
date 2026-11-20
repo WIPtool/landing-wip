@@ -2952,6 +2952,59 @@ body[data-page="corp"] main #faq .faq summary{color:var(--navy)}
 body[data-page="corp"] main #faq .faq p{color:#2b3346}
 body[data-page="corp"] main #faq .faq summary::after{color:#4c6b00!important;border-color:#cfd5df!important;background:#fff!important}
 
+/* Corporativo: cifras en blanco con efecto (borde de luz que gira, conteo y barra verde) */
+@property --wna{syntax:"<angle>";inherits:false;initial-value:0deg}
+.wn{position:relative;background:#fff;padding:clamp(40px,6vw,80px) 0 clamp(70px,9vw,120px);overflow:hidden}
+.wn::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,rgba(11,16,32,.1) 1px,transparent 1.5px);background-size:26px 26px;-webkit-mask-image:linear-gradient(#000,transparent 85%);mask-image:linear-gradient(#000,transparent 85%)}
+.wn .wrap{position:relative}
+.wn__k{text-align:center;font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#4c6b00;margin-bottom:clamp(24px,3vw,40px)}
+.wn__row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,1.6vw,22px)}
+.wn__c{position:relative;padding:clamp(24px,2.6vw,36px) clamp(18px,2vw,28px) clamp(26px,2.8vw,38px);border-radius:22px;background:#fff;isolation:isolate;box-shadow:0 18px 50px rgba(11,16,32,.07);transition:transform .35s ease,box-shadow .35s ease}
+.wn__c::before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1.5px;background:conic-gradient(from var(--wna),#e6e9ef 0deg,#e6e9ef 250deg,#dbff57 300deg,#7fa600 330deg,#e6e9ef 360deg);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:wnSpin 6s linear infinite;z-index:-1}
+.wn__c:nth-child(2)::before{animation-delay:-1.5s}.wn__c:nth-child(3)::before{animation-delay:-3s}.wn__c:nth-child(4)::before{animation-delay:-4.5s}
+.wn__c::after{content:"";position:absolute;inset:auto 0 0;height:60%;border-radius:0 0 22px 22px;background:radial-gradient(ellipse at 50% 120%,rgba(219,255,87,.35),transparent 70%);opacity:0;transition:opacity .35s ease;z-index:-1}
+.wn__c:hover{transform:translateY(-6px);box-shadow:0 26px 60px rgba(11,16,32,.12)}.wn__c:hover::after{opacity:1}
+.wn__c b{display:block;font-weight:900!important;font-size:clamp(44px,5.4vw,80px);line-height:1;letter-spacing:-.04em;color:var(--navy);font-variant-numeric:tabular-nums}
+.wn__c em{font-style:normal}
+.wn__c span{display:block;margin-top:14px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#4a5468}
+.wn__c i{display:block;margin-top:18px;height:5px;border-radius:5px;background:#eef0f4;overflow:hidden;position:relative}
+.wn__c i::before{content:"";position:absolute;inset:0;border-radius:inherit;background:linear-gradient(90deg,#7fa600,#dbff57);transform:scaleX(0);transform-origin:left;transition:transform 1.6s cubic-bezier(.2,.8,.2,1) .3s}
+.wn__c.in i::before{transform:scaleX(1)}
+.wn__c--live b{display:flex;align-items:center;gap:12px}
+.wn__c--live b::after{content:"";width:12px;height:12px;border-radius:50%;background:#7fa600;box-shadow:0 0 0 0 rgba(127,166,0,.5);animation:wnPulse 1.8s ease-out infinite}
+@keyframes wnSpin{to{--wna:360deg}}
+@keyframes wnPulse{0%{box-shadow:0 0 0 0 rgba(127,166,0,.5)}100%{box-shadow:0 0 0 14px rgba(127,166,0,0)}}
+@media(max-width:900px){.wn__row{grid-template-columns:1fr 1fr}}
+@media(prefers-reduced-motion:reduce){.wn__c::before,.wn__c--live b::after{animation:none}.wn__c i::before{transition:none}}
+
+/* Proveedores: la app real de Wip en un teléfono */
+.cs-b__v--phone{display:flex;justify-content:center;align-items:flex-end;overflow:hidden;padding-top:10px}
+.cs-phone{width:min(270px,72%);border-radius:38px 38px 0 0;padding:10px 10px 0;background:#0b1020;box-shadow:0 30px 60px rgba(11,16,32,.25),inset 0 0 0 2px #2a3146;transform:translateY(6px);transition:transform .4s ease}
+.cs-phone img{display:block;width:100%;height:auto;border-radius:28px 28px 0 0}
+.cs-b:hover .cs-phone{transform:translateY(-4px)}
+
+/* Proveedores: integraciones, todos tus clientes conectados a Wip */
+.ig{position:relative;width:100%;max-width:520px;display:grid;grid-template-columns:minmax(0,1fr) 70px minmax(0,1fr);align-items:center}
+.ig__col{display:flex;flex-direction:column;gap:12px}
+.ig__c{display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#fff;font-size:14px;font-weight:600;animation:igOn 6s ease-in-out infinite;animation-delay:calc(var(--i) * .5s)}
+.ig__c i{width:9px;height:9px;border-radius:50%;background:#dbff57;box-shadow:0 0 10px #dbff57}
+.ig__c--p i{background:#25d366;box-shadow:0 0 10px #25d366}
+.ig__lines{position:relative;align-self:stretch}
+.ig__lines b{position:absolute;left:0;right:0;height:2px;top:calc(10% + var(--i) * 20%);background:linear-gradient(90deg,rgba(219,255,87,.15),rgba(219,255,87,.5));overflow:hidden}
+.ig__lines b::after{content:"";position:absolute;top:-2px;left:-30%;width:30%;height:6px;border-radius:6px;background:#dbff57;box-shadow:0 0 12px #dbff57;animation:igFlow 2.4s linear infinite;animation-delay:calc(var(--i) * .45s)}
+.ig__hub{display:flex;flex-direction:column;align-items:center;gap:8px;padding:26px 16px;border-radius:22px;background:rgba(11,16,32,.95);border:1.5px solid rgba(219,255,87,.55);box-shadow:0 0 0 8px rgba(219,255,87,.06),0 0 50px rgba(219,255,87,.25);text-align:center;animation:igHub 2.4s ease-in-out infinite}
+.ig__hub img{width:92px;height:auto}
+.ig__hub small{font-size:14px;font-weight:700;color:#fff}
+.ig__hub em{font-style:normal;font-size:12px;color:#dbff57;display:inline-flex;align-items:center;gap:6px}
+.ig__hub em::before{content:"";width:7px;height:7px;border-radius:50%;background:#dbff57;animation:msLive 1.8s ease-out infinite}
+@keyframes igFlow{to{left:100%}}
+@keyframes igOn{0%,100%{border-color:rgba(255,255,255,.12)}50%{border-color:rgba(219,255,87,.45)}}
+@keyframes igHub{0%,100%{box-shadow:0 0 0 8px rgba(219,255,87,.06),0 0 40px rgba(219,255,87,.2)}50%{box-shadow:0 0 0 14px rgba(219,255,87,.08),0 0 60px rgba(219,255,87,.35)}}
+@media(max-width:600px){.ig{grid-template-columns:minmax(0,1.1fr) 34px minmax(0,1fr)}.ig__c{font-size:12px;padding:9px 10px}.ig__hub{padding:18px 10px}.ig__hub img{width:70px}}
+@media(prefers-reduced-motion:reduce){.ig__c,.ig__lines b::after,.ig__hub{animation:none}}
+.ig{grid-template-columns:auto minmax(40px,1fr) auto}.ig__c{white-space:nowrap}
+@media(max-width:600px){.ig{grid-template-columns:auto minmax(20px,1fr) auto}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3027,7 +3080,6 @@ window.addEventListener('message',function(e){
     <h1 class="cs-h1 rv in" style="--rd:.05s">Tus aseguradoras tienen muchas plataformas. <br>Tú tienes <span>Wip.</span></h1>
     <p class="cs-sub rv in" style="--rd:.1s">El lugar donde el proveedor de asistencia recibe, asigna, cierra y cobra cada servicio.<br>Para grúas, hogar, médicos y veterinarios a domicilio.</p>
     <div class="cs-ctas rv in" style="--rd:.15s"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a><a href="#un-solo-lugar" class="cs-btn cs-btn--ghost">Cómo funciona</a></div>
-    <a href="/equipos#planes" class="cs-more rv in" style="--rd:.2s">Planes desde $195.000 COP al mes <span aria-hidden="true">›</span></a>
   </div>
   <div class="cs-hero__vid rv in" style="--rd:.2s">
     <!-- Espacio para el video de Wip Proveedores (16:9). Cuando esté listo, reemplazar .vid__ph por:
@@ -3095,12 +3147,7 @@ window.addEventListener('message',function(e){
       <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--dark" target="_blank" rel="noopener" data-cta="meli">Habla con Meli</a>
     </div>
     <div class="cs-bento">
-      <div class="cs-b cs-b--peach cs-b--wide rv"><div class="cs-b__t"><b>Una sola app</b><span>Los servicios de todas tus empresas y tus particulares, en la misma app.</span></div><div class="cs-b__v"><div class="pv-card">
-      <div class="pv-card__h"><b>Mis servicios de hoy</b><span>Técnico · Grúa 04</span></div>
-      <div class="pv-card__r"><span>Grúa liviana<small>Aseguradora A</small></span><em class="pv-st pv-st--go">En camino</em></div>
-      <div class="pv-card__r"><span>Cerrajería<small>Particular</small></span><em class="pv-st">En servicio</em></div>
-      <div class="pv-card__r"><span>Consulta veterinaria<small>Asistencia C</small></span><em class="pv-st pv-st--ok">Finalizado</em></div>
-      </div></div></div>
+      <div class="cs-b cs-b--peach cs-b--wide rv"><div class="cs-b__t"><b>Una sola app</b><span>Los servicios de todas tus empresas y tus particulares, en la misma app.</span></div><div class="cs-b__v cs-b__v--phone"><div class="cs-phone"><img src="/img/plataforma/proveedores/app-tecnico.webp" alt="App de Wip para técnicos: servicio en curso con su estado" width="540" height="880" loading="lazy" decoding="async"></div></div></div>
       <div class="cs-b cs-b--light rv" style="--rd:.05s"><div class="cs-b__t"><b>Fotos con fecha y hora</b><span>Cada foto queda en el servicio.</span></div><div class="cs-b__v cs-b__v--img"><img src="/img/plataforma/proveedores/evidencia-foto.webp" alt="Foto de evidencia con fecha y hora" width="572" height="430" loading="lazy" decoding="async"></div></div>
       <div class="cs-b cs-b--light rv" style="--rd:.1s"><div class="cs-b__t"><b>Firma del cliente</b><span>El cierre se firma en la app.</span></div><div class="cs-b__v"><div class="cs-sign"><svg viewBox="0 0 220 70" aria-hidden="true"><path d="M10 50c18-30 30-38 36-30s-10 34 2 30 18-36 30-32-6 30 6 28 20-24 34-22 4 20 18 18 30-12 74-14"/></svg><span>Firma del cliente</span></div></div></div>
       <div class="cs-b cs-b--navy rv"><div class="cs-b__t"><b>Chat en cada servicio</b><span>Novedades y autorizaciones dentro del servicio, con quién autorizó qué y cuándo.</span></div></div>
@@ -3151,25 +3198,26 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<section class="cs-sec" id="pantallazo">
+<section class="cs-sec" id="integraciones">
   <div class="wrap cs-row cs-row--flip">
     <div class="cs-row__copy rv">
-      <span class="cs-k">Sin integración</span>
-      <h2 class="cs-h2">Pega el pantallazo</h2>
-      <p>Wip lee el servicio de la plataforma de tu empresa y lo crea con todos sus datos.</p>
-      <ul class="cs-checks"><li>Origen y destino</li><li>Placa y tipo de servicio</li><li>Tarifa del convenio y ANS</li></ul>
+      <span class="cs-k">Integraciones</span>
+      <h2 class="cs-h2">Con Wip, conéctate con tus clientes</h2>
+      <p>Wip se integra con las aseguradoras y empresas de asistencia del mercado. Los servicios de todos tus clientes llegan a una sola plataforma, sin saltar de una a otra.</p>
+      <ul class="cs-checks"><li>Los servicios entran solos a Wip</li><li>Autorizaciones pedidas a la empresa desde Wip</li><li>Todos tus clientes centralizados en un solo lugar</li></ul>
     </div>
     <div class="cs-grad cs-grad--navy rv" style="--rd:.08s">
-      <div class="pv-shot">
-      <div class="pv-shot__img"><b>Plataforma Aseguradora B</b>Servicio 88213 · Grúa liviana<br>Origen: Av. Boyacá con Cl. 13<br>Destino: Taller Autoexpress<br>Placa: DFR 219 · ANS 45 min</div>
-      <div class="pv-shot__keys"><kbd>Ctrl</kbd>+<kbd>V</kbd><span>en Wip</span></div>
-      <div class="pv-card pv-card--sm">
-        <div class="pv-card__h"><b>Servicio creado en Wip</b><span class="pv-tag">Aseguradora B</span></div>
-        <div class="pv-card__r"><span>Servicio</span><em>Grúa liviana · 88213</em></div>
-        <div class="pv-card__r"><span>Origen</span><em>Av. Boyacá con Cl. 13</em></div>
-        <div class="pv-card__r"><span>Convenio</span><em>Tarifa $185.000 · ANS 45 min</em></div>
+      <div class="ig" aria-hidden="true">
+        <div class="ig__col">
+          <span class="ig__c" style="--i:0"><i></i>Aseguradora A</span>
+          <span class="ig__c" style="--i:1"><i></i>Asistencia B</span>
+          <span class="ig__c" style="--i:2"><i></i>Aseguradora C</span>
+          <span class="ig__c" style="--i:3"><i></i>Asistencia D</span>
+          <span class="ig__c ig__c--p" style="--i:4"><i></i>Particulares</span>
+        </div>
+        <div class="ig__lines"><b style="--i:0"></b><b style="--i:1"></b><b style="--i:2"></b><b style="--i:3"></b><b style="--i:4"></b></div>
+        <div class="ig__hub"><img src="/img/wip-logo-lima-554349d3.png" alt="" width="108" height="60" loading="lazy"><small>Una sola plataforma</small><em>En tiempo real</em></div>
       </div>
-</div>
     </div>
   </div>
 </section>
@@ -3207,21 +3255,6 @@ window.addEventListener('message',function(e){
   </div>
 </section>
 
-<section class="cs-sec" id="planes">
-  <div class="wrap cs-price rv">
-    <div>
-      <h2 class="cs-h2">Planes para tu operación</h2>
-      <p>Meli te responde por WhatsApp, te muestra los planes y te ayuda a empezar.</p>
-    </div>
-    <div class="cs-price__card">
-      <span class="cs-k">Wip Proveedores</span>
-      <div class="cs-price__n"><small>desde</small> $195.000 <small>COP al mes</small></div>
-      <a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a>
-      <a href="/equipos#planes" class="cs-more">Ver todos los planes <span aria-hidden="true">›</span></a>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== FAQ ===================== -->
 <section class="sec" id="faq" style="padding-top:0">
   <div class="wrap">
@@ -3241,7 +3274,7 @@ window.addEventListener('message',function(e){
   <div class="wrap cs-final__in rv">
     <img src="/img/wip-logo-lima-554349d3.png" alt="" width="108" height="60" loading="lazy">
     <h2 class="cs-h1">Presta más servicios.<br><span>Con el mismo equipo.</span></h2>
-    <div class="cs-ctas"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a><a href="/equipos#planes" class="cs-btn cs-btn--ghost">Ver planes</a></div>
+    <div class="cs-ctas"><a href="https://wa.me/573005124111?text=Hola%20Meli%2C%20soy%20proveedor%20de%20asistencia%20y%20quiero%20conocer%20Wip" class="cs-btn cs-btn--main" target="_blank" rel="noopener" data-cta="meli">Habla con Meli por WhatsApp</a></div>
   </div>
 </section>
 
@@ -3702,6 +3735,18 @@ window.addEventListener('message',function(e){
       });},{threshold:[0,.2,.4,.6]}).observe(brd);
     } else brd.classList.add("play");
   });
+
+/* Corporativo: las cifras cuentan desde cero cuando aparecen */
+(function(){
+  var wn=document.querySelector('.wn');if(!wn||!('IntersectionObserver' in window))return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var ems=[].slice.call(wn.querySelectorAll('[data-wn]'));ems.forEach(function(e){e.textContent='0';});
+  var io=new IntersectionObserver(function(en){if(!en[0].isIntersecting)return;io.disconnect();
+    ems.forEach(function(e){var fin=+e.getAttribute('data-wn'),t0=performance.now();
+      var paso=function(t){var p=Math.min(1,(t-t0)/1600),k=1-Math.pow(1-p,3);e.textContent=Math.round(fin*k);if(p<1)requestAnimationFrame(paso);};
+      requestAnimationFrame(paso);});
+  },{threshold:.35});io.observe(wn);
+})();
   /* La cuenta del call center inteligente */
   var calc=document.getElementById('calc');
   if(calc){
