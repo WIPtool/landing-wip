@@ -2731,6 +2731,13 @@ body[data-page="corp"] main > section{border-top:0}
 @media(max-width:900px){.ix-story__in,.ix-ai__in,.ix-mod{grid-template-columns:1fr}.ix-mod--flip .ix-mod__copy{order:0}.ix-arch{grid-template-columns:1fr}.ix-arch__arrow{transform:rotate(90deg);justify-self:center}}
 @media(max-width:480px){.ix-nums{grid-template-columns:1fr}.ix-ctas .ix-btn{width:100%}}
 
+/* Corporativo: espacio para video en el hero */
+.ix-hero-vid{margin:0;max-width:none;width:100%;aspect-ratio:16/9;border-radius:0;border:0;box-shadow:none;background:radial-gradient(ellipse at 50% 120%,rgba(219,255,87,.25),transparent 60%),linear-gradient(160deg,#16255a,#0b1020)}
+.ix-hero-vid .vid__ph{color:#c1c9d6}
+.ix-story__in--solo{grid-template-columns:1fr;text-align:center;justify-items:center}
+.ix-story__in--solo .ix-story__copy p{margin-left:auto;margin-right:auto;max-width:640px}
+.ix-story__in--solo .ix-nums{max-width:620px;margin-left:auto;margin-right:auto}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2807,26 +2814,22 @@ window.addEventListener('message',function(e){
   </div>
   <div class="wrap">
     <div class="ix-shot rv in" style="--rd:.18s">
-      <div class="ix-shot__bar"><i></i><i></i><i></i><span>Wip · Monitoreo central</span><em class="ix-live">En vivo</em></div>
-      <img src="/img/home/wip-pantalla.webp" alt="Monitoreo central de Wip con los servicios del día (datos difuminados)" width="1440" height="900" fetchpriority="high">
+      <div class="ix-shot__bar"><i></i><i></i><i></i><span>Wip Corporativo</span><em class="ix-live">En vivo</em></div>
+      <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar .vid__ph por:
+           <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
+      <div class="vid ix-hero-vid" id="video-hero-corporativo"><div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div></div>
     </div>
   </div>
 </section>
 
 <section class="ix-story" id="video">
-  <div class="wrap ix-story__in">
+  <div class="wrap ix-story__in ix-story__in--solo">
     <div class="ix-story__copy rv">
       <span class="ix-k">Wip Corporativo</span>
       <h2 class="ix-h2">+4 millones de servicios gestionados en Wip</h2>
       <p>Aseguradoras y empresas de asistencia operan su red en Wip, en todas las verticales: vial, hogar, médica, jurídica, veterinaria y más.</p>
       <div class="ix-nums"><div><b>+354</b><span>tipos de asistencia</span></div><div><b>+13</b><span>verticales en LATAM</span></div><div><b>24/7</b><span>soporte a tu operación</span></div></div>
     </div>
-    <!-- Espacio para el video de Wip Corporativo (16:9). Cuando esté listo, reemplazar el contenido de .vid por:
-         <video src="/video/wip-corporativo.mp4" poster="/video/wip-corporativo.jpg" controls playsinline preload="metadata"></video> -->
-    <div class="rv" style="--rd:.08s"><div class="vid ix-vid" id="video-hero-corporativo">
-      <div class="vid__ph"><span class="vid__play" aria-hidden="true"></span><span>Video de Wip Corporativo</span></div>
-    </div></div>
-  </div>
 </section>
 
 <section class="ix-ps" id="por-que">
