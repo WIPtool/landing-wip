@@ -363,38 +363,18 @@
       "permanent": true
     },
     {
+      "source": "/blog/operacion-de-asistencias/page/:n",
+      "destination": "/blog/operacion-de-asistencias",
+      "permanent": true
+    },
+    {
       "source": "/blog/gestion-servicios-en-campo/page/:n",
       "destination": "/blog/gestion-servicios-en-campo",
       "permanent": true
     },
     {
-      "source": "/blog/delivery/page/:n",
-      "destination": "/blog/delivery",
-      "permanent": true
-    },
-    {
       "source": "/blog/insurtech/page/:n",
       "destination": "/blog/insurtech",
-      "permanent": true
-    },
-    {
-      "source": "/blog/logistica-y-transporte/page/:n",
-      "destination": "/blog/logistica-y-transporte",
-      "permanent": true
-    },
-    {
-      "source": "/blog/optimizacion-procesos-logisticos/page/:n",
-      "destination": "/blog/optimizacion-procesos-logisticos",
-      "permanent": true
-    },
-    {
-      "source": "/blog/trazabilidad-y-ruteo/page/:n",
-      "destination": "/blog/trazabilidad-y-ruteo",
-      "permanent": true
-    },
-    {
-      "source": "/blog/uberizacion/page/:n",
-      "destination": "/blog/uberizacion",
       "permanent": true
     },
     {
@@ -440,6 +420,121 @@
     {
       "source": "/demo",
       "destination": "/contacto",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-uberizar-tu-negocio",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/modelo-de-negocio-de-uber",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-uberizacion",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/logistica-ultima-milla",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/logistica-ecommerce",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/icommerce",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tendencias-logisticas-2023",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/centro-de-distribucion",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/logistica-transporte",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/como-gestionar-logistica-casilleros-inteligentes",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-delivery",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/logistica-delivery",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-gps-tracker",
+      "destination": "/blog/gestion-de-flotas-de-servicio",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-trazabilidad",
+      "destination": "/blog/trazabilidad-de-servicios-de-asistencia",
+      "permanent": true
+    },
+    {
+      "source": "/blog/servicio-al-cliente-que-es",
+      "destination": "/blog/whatsapp-en-la-operacion-de-asistencias",
+      "permanent": true
+    },
+    {
+      "source": "/blog/indicadores-de-productividad-empresarial",
+      "destination": "/blog/indicadores-red-de-proveedores-de-asistencia",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-la-productividad-empresarial",
+      "destination": "/blog/indicadores-red-de-proveedores-de-asistencia",
+      "permanent": true
+    },
+    {
+      "source": "/blog/que-es-el-mejoramiento-continuo",
+      "destination": "/blog/indicadores-red-de-proveedores-de-asistencia",
+      "permanent": true
+    },
+    {
+      "source": "/blog/delivery",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/logistica-y-transporte",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/uberizacion",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/blog/trazabilidad-y-ruteo",
+      "destination": "/blog/operacion-de-asistencias",
+      "permanent": true
+    },
+    {
+      "source": "/blog/optimizacion-procesos-logisticos",
+      "destination": "/blog/operacion-de-asistencias",
       "permanent": true
     },
     {

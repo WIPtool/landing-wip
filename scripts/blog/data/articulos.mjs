@@ -29,7 +29,7 @@ export const articulos = [
     excerpt: 'La orden de trabajo es el documento que convierte una solicitud en un servicio ejecutado. Te explicamos qué debe incluir, te damos un ejemplo de formato y te mostramos cómo digitalizarla.',
     category: 'gestion-servicios-en-campo',
     solucion: 'software-servicio-tecnico',
-    date: HOY, modified: HOY,
+    date: HOY, modified: '2026-11-22',
     ...img('orden-de-trabajo', 'Ilustración de una orden de trabajo digital con lista de chequeo'),
     ebookCtas: ['checklist-definitiva'],
     html: `
@@ -141,6 +141,9 @@ export const articulos = [
 </ul>
 <p>Eso es lo que hace un <a href="/software-servicio-tecnico">software para empresas de servicio técnico e instalaciones</a> como WIP: cada orden de trabajo queda con su responsable, sus tiempos, su evidencia y su tarifa, y tu cliente puede seguirla por WhatsApp.</p>
 ${tool('App para técnicos en campo', 'Tus técnicos reciben la orden, actualizan el estado y suben fotos y firma desde el celular.', '/software-servicio-tecnico', 'Ver cómo funciona en WIP', 'app')}
+<h2>La orden de trabajo en las asistencias</h2>
+<p>En asistencia vial, de hogar o médica, la orden de trabajo es el servicio que la aseguradora o la empresa de asistencia le asigna al proveedor. Además de los campos de siempre, lleva datos propios del sector: el número del expediente o de la póliza, el convenio con su tarifa, el ANS que hay que cumplir y las autorizaciones de kilómetros adicionales o tiempos de espera. Sin esos datos, el servicio no se puede conciliar ni cobrar.</p>
+<p>Si eres proveedor de asistencia y le trabajas a varias aseguradoras, lo ideal es que las órdenes de todos tus clientes lleguen a un mismo lugar y que tus técnicos las cierren desde una sola app, con fotos, firma y horas. Así funciona <a href="/proveedores-de-asistencia">Wip Proveedores</a>. Y si operas la red, mira <a href="/software-empresas-de-asistencia">Wip Corporativo</a>.</p>
 <h2>Conclusión</h2>
 <p>Una buena orden de trabajo ahorra visitas repetidas, reclamos y discusiones de cobro. Empieza por asegurarte de que tu formato tenga los campos de identificación, cliente, trabajo, ejecución y cierre. Cuando el volumen crezca, llévala a una herramienta digital para que la información llegue completa y a tiempo. Si tienes tu propio equipo técnico, puedes ver los planes de <a href="/equipos">WIP Equipos</a>.</p>
 `,
@@ -290,7 +293,7 @@ ${tool('Ubicación del equipo en tiempo real', 'Ve quién está disponible, qui�
     seoTitle: 'SLA de proveedores de asistencia: cómo medirlo',
     seoDesc: 'Qué es el SLA en asistencia vial y hogar, qué indicadores medir a tus proveedores, cómo calcularlos y cómo convertir el cumplimiento en mejores asignaciones.',
     excerpt: 'En asistencia, el SLA se cumple o se incumple en minutos. Qué indicadores medir a tu red de proveedores, cómo calcularlos y cómo usar el cumplimiento para asignar mejor.',
-    category: 'gestion-servicios-en-campo',
+    category: 'operacion-de-asistencias',
     solucion: 'software-empresas-de-asistencia',
     date: HOY, modified: HOY,
     ...img('sla-proveedores-de-asistencia', 'Ilustración de un tablero de SLA con semáforo de cumplimiento de proveedores'),

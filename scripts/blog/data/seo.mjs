@@ -57,8 +57,8 @@ export const ebookSeo = {
 
 export const pageSeo = {
   blog: {
-    title: 'Blog de WIP: gestión de servicios en campo y logística',
-    desc: 'Guías prácticas para gestionar servicios en campo: órdenes de trabajo, técnicos, proveedores de asistencia, flotas de servicio, trazabilidad y logística.',
+    title: 'Blog de Wip: guías para operar asistencias',
+    desc: 'Guías para operar asistencias: software para empresas de asistencia y grúas, asignación de proveedores, ANS, tarifas por convenio, WhatsApp y facturación.',
   },
   ebook: {
     title: 'Ebooks gratuitos de logística y gestión de servicios | WIP',

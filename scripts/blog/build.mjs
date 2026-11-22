@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { postSeo, ebookSeo, pageSeo } from './data/seo.mjs';
 import { soluciones } from './data/soluciones.mjs';
 import { articulos } from './data/articulos.mjs';
+import { articulosAsistencias } from './data/articulos-asistencias.mjs';
 
 const here = path.dirname(fileURLToPath(import.meta.url));
 const root = path.resolve(here, '../..');
@@ -27,7 +28,7 @@ function normalizar(a) {
   const words = html.replace(/<aside[\s\S]*?<\/aside>/g, ' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
   return { ...a, html, toc, words: String(words), readMin: String(Math.max(1, Math.round(words / 200))) };
 }
-const posts = [...readJson('scripts/blog/data/posts.json'), ...articulos.map(normalizar)]
+const posts = [...readJson('scripts/blog/data/posts.json'), ...articulos.map(normalizar), ...articulosAsistencias.map(normalizar)]
   .sort((a, b) => (a.date < b.date ? 1 : a.date > b.date ? -1 : 0));
 if (new Set(posts.map((p) => p.slug)).size !== posts.length) throw new Error('slug de articulo repetido');
 const ebooks = readJson('scripts/blog/data/ebooks.json');
@@ -232,6 +233,8 @@ const chips = (current) => `
 
 const written = [];
 function write(rel, html) {
+  // Estas páginas las genera scripts/sitio/armar-sitio.cjs (landings nuevas): no se pisan.
+  if (['software-empresas-de-asistencia'].includes(rel)) return;
   const file = path.join(root, rel, 'index.html');
   fs.mkdirSync(path.dirname(file), { recursive: true });
   fs.writeFileSync(file, html);
@@ -245,8 +248,8 @@ function write(rel, html) {
   <section class="page-head">
     <div class="container">
       <span class="eyebrow">WIP Blog</span>
-      <h1>Blog de gestión de servicios en campo y logística</h1>
-      <p>Bienvenido a nuestro blog: guías prácticas y contenido de valor para que tu empresa lleve su operación a otro nivel.</p>
+      <h1>Blog de operación de asistencias</h1>
+      <p>Guías para aseguradoras, empresas de asistencia y proveedores: software de asistencias, asignación, ANS, tarifas por convenio, WhatsApp y facturación.</p>
     </div>
   </section>
   <section>
@@ -300,7 +303,7 @@ for (const c of categories) {
 }
 
 // ---------- /blog/<articulo> ----------
-const RED = new Set(['uberizacion', 'insurtech']);
+const RED = new Set(['operacion-de-asistencias', 'insurtech']);
 function ebookCta(slug) {
   const e = ebookBy[slug];
   return `<aside class="cta-ebook"><img src="${e.coverSm.file}" width="${e.coverSm.w}" height="${e.coverSm.h}" alt="" loading="lazy" decoding="async"><div><span class="cta-ebook__tag">Ebook gratis</span><p class="cta-ebook__title">${esc(e.title)}</p><p>${esc(clip(e.excerpt, 140))}</p><a class="btn btn--primary" href="/ebook/${e.slug}" data-cta="post-ebook-${e.slug}">Descárgalo gratis</a></div></aside>`;
@@ -705,6 +708,30 @@ const red = [
   { source: '/herramientas/unidades-de-negocio', destination: '/', permanent: true },
   { source: '/herramientas', destination: '/', permanent: true },
   { source: '/demo', destination: '/contacto', permanent: true },
+  // Blog enfocado en asistencias (nov 2026): artículos y categorías fuera de tema redirigidos
+  { source: '/blog/como-uberizar-tu-negocio', destination: '/blog', permanent: true },
+  { source: '/blog/modelo-de-negocio-de-uber', destination: '/blog', permanent: true },
+  { source: '/blog/que-es-uberizacion', destination: '/blog', permanent: true },
+  { source: '/blog/logistica-ultima-milla', destination: '/blog', permanent: true },
+  { source: '/blog/logistica-ecommerce', destination: '/blog', permanent: true },
+  { source: '/blog/icommerce', destination: '/blog', permanent: true },
+  { source: '/blog/tendencias-logisticas-2023', destination: '/blog', permanent: true },
+  { source: '/blog/centro-de-distribucion', destination: '/blog', permanent: true },
+  { source: '/blog/logistica-transporte', destination: '/blog', permanent: true },
+  { source: '/blog/como-gestionar-logistica-casilleros-inteligentes', destination: '/blog', permanent: true },
+  { source: '/blog/que-es-delivery', destination: '/blog', permanent: true },
+  { source: '/blog/logistica-delivery', destination: '/blog', permanent: true },
+  { source: '/blog/que-es-gps-tracker', destination: '/blog/gestion-de-flotas-de-servicio', permanent: true },
+  { source: '/blog/que-es-trazabilidad', destination: '/blog/trazabilidad-de-servicios-de-asistencia', permanent: true },
+  { source: '/blog/servicio-al-cliente-que-es', destination: '/blog/whatsapp-en-la-operacion-de-asistencias', permanent: true },
+  { source: '/blog/indicadores-de-productividad-empresarial', destination: '/blog/indicadores-red-de-proveedores-de-asistencia', permanent: true },
+  { source: '/blog/que-es-la-productividad-empresarial', destination: '/blog/indicadores-red-de-proveedores-de-asistencia', permanent: true },
+  { source: '/blog/que-es-el-mejoramiento-continuo', destination: '/blog/indicadores-red-de-proveedores-de-asistencia', permanent: true },
+  { source: '/blog/delivery', destination: '/blog', permanent: true },
+  { source: '/blog/logistica-y-transporte', destination: '/blog', permanent: true },
+  { source: '/blog/uberizacion', destination: '/blog', permanent: true },
+  { source: '/blog/trazabilidad-y-ruteo', destination: '/blog/operacion-de-asistencias', permanent: true },
+  { source: '/blog/optimizacion-procesos-logisticos', destination: '/blog/operacion-de-asistencias', permanent: true },
   // Paginas de producto del WordPress que Google aun muestra (Search Console)
   { source: '/software-gestion-personal-en-campo', destination: '/equipos', permanent: true },
   { source: '/software-logistico', destination: '/software-gestion-servicios-en-campo', permanent: true },

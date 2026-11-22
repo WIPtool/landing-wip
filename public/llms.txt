@@ -45,6 +45,21 @@ Clientes que operan en Wip incluyen aseguradoras, empresas de asistencia, provee
 - Correo comercial: comercial@wiptool.com
 - WhatsApp: +57 300 512 4111
 
+## Guías del blog sobre asistencias
+
+- [Software para empresas de asistencia: qué debe tener](https://www.wiptool.com/blog/software-para-empresas-de-asistencia)
+- [Software para grúas y asistencia vial](https://www.wiptool.com/blog/software-para-gruas)
+- [Cómo reducir servicios fallidos y cancelados](https://www.wiptool.com/blog/reducir-servicios-fallidos-en-asistencias)
+- [Cómo facturar servicios a aseguradoras: visado y conciliación](https://www.wiptool.com/blog/como-facturar-servicios-a-aseguradoras)
+- [Tarifas por convenio: kilómetros y recargos](https://www.wiptool.com/blog/tarifas-por-convenio-en-asistencias)
+- [Asignación de proveedores por cercanía](https://www.wiptool.com/blog/asignacion-de-proveedores-por-cercania)
+- [WhatsApp en la operación de asistencias](https://www.wiptool.com/blog/whatsapp-en-la-operacion-de-asistencias)
+- [Multiservicios: varios servicios en un caso](https://www.wiptool.com/blog/multiservicios-en-asistencias)
+- [Trazabilidad de servicios de asistencia](https://www.wiptool.com/blog/trazabilidad-de-servicios-de-asistencia)
+- [Indicadores de una red de proveedores](https://www.wiptool.com/blog/indicadores-red-de-proveedores-de-asistencia)
+- [SLA de proveedores de asistencia](https://www.wiptool.com/blog/sla-proveedores-de-asistencia)
+- [Temporada alta en asistencia vial (datos de Wip)](https://www.wiptool.com/blog/temporada-alta-asistencia-vial)
+
 ## Opcional
 
-- [Blog](https://www.wiptool.com/blog): artículos sobre operación de asistencias y redes de proveedores.
+- [Blog](https://www.wiptool.com/blog): guías para operar asistencias, redes de proveedores y facturación a aseguradoras.
