@@ -3309,6 +3309,13 @@ body[data-page="corp"] .spx-video{background:#fff;padding:0 20px clamp(60px,8vw,
 body[data-page="corp"] .spx-vid{max-width:1080px;margin:0 auto;aspect-ratio:16/9;border-radius:24px;overflow:hidden;box-shadow:0 30px 70px rgba(11,16,32,.18),0 0 0 1px rgba(11,16,32,.06)}
 body[data-page="corp"] .spx-vid video{width:100%;height:100%;object-fit:contain;background:#f3f4ee}
 
+/* Corporativo: cinco cifras */
+.wn__row{grid-template-columns:repeat(5,minmax(0,1fr))}
+.wn__c b{font-size:clamp(38px,4.2vw,68px)}
+.wn__c:nth-child(5)::before{animation-delay:-2.2s}
+@media(max-width:1100px){.wn__row{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:900px){.wn__row{grid-template-columns:1fr 1fr}.wn__c:nth-child(5){grid-column:1/-1}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -3394,6 +3401,7 @@ window.addEventListener('message',function(e){
       <div class="wn__c rv" style="--rd:.08s"><b>+<em data-wn="354">354</em></b><span>Tipos de asistencia</span><i></i></div>
       <div class="wn__c rv" style="--rd:.16s"><b>+<em data-wn="13">13</em></b><span>Verticales en LATAM</span><i></i></div>
       <div class="wn__c wn__c--live rv" style="--rd:.24s"><b>24/7</b><span>Wip IA operando</span><i></i></div>
+      <div class="wn__c rv" style="--rd:.32s"><b>99,9%</b><span>Disponibilidad en línea</span><i></i></div>
     </div>
   </div>
 </section>
