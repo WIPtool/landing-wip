@@ -242,6 +242,8 @@ for (const p of pages) {
     XP_CORP: p.xp === 'prov' ? '' : ' checked', XP_PROV: p.xp === 'prov' ? ' checked' : '',
     FAQ_HTML: p.key === 'faq' ? '' : faqHtml(faqList), FAQ_JSON: faqJson(faqList), ...blocks };
   for (const [k, v] of Object.entries(vars)) t = t.split(`{{${k}}}`).join(v);
+  // La portada del video del hero de Proveedores es lo más grande al cargar: que llegue primero.
+  if (p.key === 'prov') t = t.replace('</head>', '<link rel="preload" as="image" href="/video/wip-proveedores-portada.webp" fetchpriority="high">\n</head>');
   const left = t.match(/\{\{[A-Z_]+\}\}/);
   if (left) throw new Error(`${p.out}: quedó sin reemplazar ${left[0]}`);
   if (/—/.test(t.replace(/<script[\s\S]*?<\/script>/g, ''))) throw new Error(`${p.out}: hay rayas largas en el texto visible`);
@@ -249,4 +251,10 @@ for (const p of pages) {
   fs.mkdirSync(path.dirname(out), { recursive: true });
   fs.writeFileSync(out, t.replace(/\n/g, '\r\n'));
   console.log('ok', p.out, (t.length / 1024).toFixed(1) + ' KB');
+}
+
+// Optimización final: CSS sin usar, medidas y versiones livianas de las imágenes.
+{
+  const r = require('child_process').spawnSync(process.execPath, [path.join(__dirname, 'optimizar.cjs'), ...pages.map((p) => path.join(repo, p.out))], { stdio: 'inherit' });
+  if (r.status !== 0) throw new Error('Falló la optimización de las páginas');
 }

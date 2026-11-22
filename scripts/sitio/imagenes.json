@@ -1,0 +1,166 @@
+{
+ "/img/corporativo/ciudad-bogota.webp": {
+  "w": 1600,
+  "h": 1067,
+  "sizes": "100vw",
+  "variants": [
+   [
+    "/img/corporativo/ciudad-bogota-800.webp",
+    800
+   ],
+   [
+    "/img/corporativo/ciudad-bogota-1200.webp",
+    1200
+   ]
+  ]
+ },
+ "/img/corporativo/evidencia-celular.webp": {
+  "w": 2400,
+  "h": 1192,
+  "sizes": "100vw",
+  "variants": [
+   [
+    "/img/corporativo/evidencia-celular-900.webp",
+    900
+   ],
+   [
+    "/img/corporativo/evidencia-celular-1400.webp",
+    1400
+   ]
+  ]
+ },
+ "/img/plataforma/proveedores/app-tecnico.webp": {
+  "w": 540,
+  "h": 880,
+  "sizes": "(max-width: 700px) 60vw, 270px",
+  "variants": [
+   [
+    "/img/plataforma/proveedores/app-tecnico-320.webp",
+    320
+   ]
+  ]
+ },
+ "/img/plataforma/proveedores/monitoreo-servicios.webp": {
+  "w": 1788,
+  "h": 579,
+  "sizes": "(max-width: 900px) 92vw, 50vw",
+  "variants": [
+   [
+    "/img/plataforma/proveedores/monitoreo-servicios-700.webp",
+    700
+   ],
+   [
+    "/img/plataforma/proveedores/monitoreo-servicios-1100.webp",
+    1100
+   ]
+  ]
+ },
+ "/img/plataforma/proveedores/radar-tecnicos.webp": {
+  "w": 1120,
+  "h": 550,
+  "sizes": "(max-width: 900px) 92vw, 60vw",
+  "variants": [
+   [
+    "/img/plataforma/proveedores/radar-tecnicos-700.webp",
+    700
+   ]
+  ]
+ },
+ "/img/plataforma/proveedores/evidencia-principal.webp": {
+  "w": 572,
+  "h": 430,
+  "sizes": "(max-width: 900px) 92vw, 30vw",
+  "variants": [
+   [
+    "/img/plataforma/proveedores/evidencia-principal-400.webp",
+    400
+   ]
+  ]
+ },
+ "__dims": {
+  "/img/wip-logo-lima-554349d3.png": [
+   216,
+   120
+  ],
+  "/img/asisya-9f4a62e0.png": [
+   360,
+   105
+  ],
+  "/img/finanzauto-97912bc8.png": [
+   360,
+   47
+  ],
+  "/img/constructora-bolivar-1107c036.jpg": [
+   181,
+   130
+  ],
+  "/img/falabella-86c0a620.png": [
+   360,
+   123
+  ],
+  "/img/prindel-3b3f2b16.png": [
+   209,
+   130
+  ],
+  "/img/avise-91be30ff.png": [
+   360,
+   116
+  ],
+  "/img/exito-5a7354a7.png": [
+   328,
+   130
+  ],
+  "/img/sbs-556e6c39.png": [
+   360,
+   113
+  ],
+  "/img/cafam-181c16cd.png": [
+   260,
+   130
+  ],
+  "/img/sotrandes-0372f8cf.png": [
+   225,
+   130
+  ],
+  "/img/transmilenio-4f336185.png": [
+   161,
+   130
+  ],
+  "/img/lulo-bank-b78efe08.png": [
+   243,
+   130
+  ],
+  "/img/corporativo/ciudad-bogota.webp": [
+   1600,
+   1067
+  ],
+  "/img/corporativo/evidencia-celular.webp": [
+   2400,
+   1192
+  ],
+  "/img/plataforma/proveedores/monitoreo-servicios.webp": [
+   1788,
+   579
+  ],
+  "/img/plataforma/proveedores/app-tecnico.webp": [
+   540,
+   880
+  ],
+  "/img/plataforma/proveedores/evidencia-principal.webp": [
+   572,
+   430
+  ],
+  "/img/plataforma/proveedores/evidencia-frente.webp": [
+   340,
+   210
+  ],
+  "/img/plataforma/proveedores/evidencia-detalle.webp": [
+   340,
+   210
+  ],
+  "/img/plataforma/proveedores/radar-tecnicos.webp": [
+   1120,
+   550
+  ]
+ }
+}
