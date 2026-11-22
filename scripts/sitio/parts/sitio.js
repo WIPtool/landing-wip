@@ -319,3 +319,10 @@
     var paso=function(t){var p=Math.min(1,(t-t0)/1600),k=1-Math.pow(1-p,3);b.textContent=fmt(fin*k);if(p<1)requestAnimationFrame(paso);};requestAnimationFrame(paso);},{threshold:.5});
   io.observe(b);
 })();
+
+/* Inicio: activa las animaciones en bucle del hero después de cargar o con la primera interacción */
+(function(){
+  var b=document.body;if(!b)return;var go=function(){b.classList.add('vivo');};
+  ['pointerdown','keydown','scroll','touchstart'].forEach(function(e){window.addEventListener(e,go,{once:true,passive:true});});
+  window.addEventListener('load',function(){setTimeout(go,3500);});
+})();

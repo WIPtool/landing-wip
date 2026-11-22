@@ -242,6 +242,8 @@ for (const p of pages) {
     XP_CORP: p.xp === 'prov' ? '' : ' checked', XP_PROV: p.xp === 'prov' ? ' checked' : '',
     FAQ_HTML: p.key === 'faq' ? '' : faqHtml(faqList), FAQ_JSON: faqJson(faqList), ...blocks };
   for (const [k, v] of Object.entries(vars)) t = t.split(`{{${k}}}`).join(v);
+  // El campo de teléfono (y sus banderas) se carga solo cuando el formulario está cerca; sin el respaldo de 4 s.
+  t = t.replace("window.addEventListener('load',function(){setTimeout(load,4000);});\n", '');
   // La portada del video del hero de Proveedores es lo más grande al cargar: que llegue primero.
   if (p.key === 'prov') t = t.replace('</head>', '<link rel="preload" as="image" href="/video/wip-proveedores-portada.webp" fetchpriority="high">\n</head>');
   const left = t.match(/\{\{[A-Z_]+\}\}/);

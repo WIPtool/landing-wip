@@ -2691,3 +2691,6 @@ body[data-page="corp"] .spx-vid video{width:100%;height:100%;object-fit:contain;
 @keyframes cpinRing{0%{transform:scale(.4);opacity:.9}70%,100%{transform:scale(2.6);opacity:0}}
 @media(max-width:700px){.cpin:nth-child(n+6){display:none}.cpin i{transform:rotate(-45deg) scale(.8)}}
 @media(prefers-reduced-motion:reduce){.cpin,.cpin i,.cpin::before{animation:none}}
+
+/* Inicio: las animaciones en bucle del hero arrancan cuando la página ya cargó (mejora el Speed Index) */
+body:not(.vivo) .cx-pill i,body:not(.vivo) .cx-side .orb__eyes,body:not(.vivo) .cx-side .orb__eyes i,body:not(.vivo) .cx-doors .door--lime,body:not(.vivo) .cx-doors .door--lime::before,body:not(.vivo) .cx-hero .cx-btn,body:not(.vivo) .cx-hero .cx-btn::after{animation-play-state:paused!important}

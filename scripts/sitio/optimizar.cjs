@@ -12,7 +12,7 @@ const dims = imgs.__dims || {};
 
 // Clases y estados que el JS agrega en tiempo de ejecución o que se arman por concatenación.
 const safelist = {
-  standard: ['in', 'on', 'ok', 'open', 'show', 'active', 'is-open', 'is-resolved', 'scrolled', 'hidden', 'sent', 'error', 'loading', 'done', 'playing', 'visible'],
+  standard: ['in', 'on', 'ok', 'open', 'show', 'active', 'is-open', 'is-resolved', 'scrolled', 'hidden', 'sent', 'error', 'loading', 'done', 'playing', 'visible', 'vivo'],
   deep: [/^iti/, /^calendly/, /^mon__/, /^ck-/, /^cookie/, /^consent/, /^xm/, /^nav/, /^menu/, /^sx-/, /^pl-/, /^ix-/, /^amap/, /^rmap/, /^asg/, /^pslide/, /^brd/, /^wh-/, /^wn/, /^cht/, /^cp/, /^as__/, /^ap-/, /^cb-/, /^fx/, /^dd/],
   greedy: [/--on$/, /--active$/, /is-/],
 };
