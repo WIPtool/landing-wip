@@ -1,31 +1,47 @@
 # Wip
 
-> Wip (wiptool.com) es la plataforma para operar asistencias. Conecta a aseguradoras, empresas de asistencia y sus redes de proveedores para recibir, asignar, seguir y facturar cada servicio, en todas las verticales: vial, hogar, médica, jurídica, veterinaria y otras. Wip IA hace el trabajo repetitivo de la operación y Wipi, la IA que vive dentro de la plataforma, ayuda al equipo a crear servicios, configurar convenios y tarifas y sacar informes.
+> Wip (wiptool.com) es la más completa infraestructura tecnológica para logísticas de asistencia en Latam: un software de asistencias con agentes IA para aseguradoras, empresas de asistencia y sus proveedores. Conecta a quien opera la red con quien presta el servicio para recibir, asignar, seguir y facturar cada asistencia, en todas las verticales: vial (grúas, cambio de llanta, cerrajería, carro taller), hogar, médica, jurídica, veterinaria y otras. Wip IA es el call center inteligente que opera contigo 24/7 y Wipi, la IA que vive dentro de la plataforma, ayuda al equipo a crear servicios, configurar convenios y tarifas y sacar informes.
 
 Wip no presta asistencias: es la tecnología con la que se operan. Empresa: Aplicando S.A.S. Opera en Colombia, Honduras, Guatemala, República Dominicana y México.
 
 Datos agregados de la plataforma:
 - Más de 4 millones de asistencias gestionadas con Wip en Latinoamérica.
-- 193.885 servicios gestionados en los últimos 12 meses.
-- 354 tipos de asistencia configurados en 13 verticales.
+- 354 tipos de asistencia configurados en más de 13 verticales.
+- 99,9 % de disponibilidad en línea.
 - 1 de cada 6 asistencias no termina en finalizada: 10,8 % canceladas, 2,1 % fallidas, 1,9 % rechazadas por el proveedor.
 - Las asistencias crecieron 60 % en dos años; la veterinaria se multiplicó por cinco.
 
-## Para aseguradoras y empresas de asistencia
+Clientes que operan en Wip incluyen aseguradoras, empresas de asistencia, proveedores y corporativos. Reconocimiento: Forbes, 30 Promesas de los Negocios de Colombia 2023 y 100 Mejores Startups 2022.
 
-- [Software para empresas de asistencia y aseguradoras](https://www.wiptool.com/software-empresas-de-asistencia): toda la red de proveedores medida por ANS, calidad y costo. Wip IA recibe el caso (desde la plataforma de la aseguradora, por API o por WhatsApp), lo asigna según las reglas de cada convenio, avisa al asegurado en vivo, sigue el ANS y alerta antes de incumplir, detecta fugas (servicios a punto de incumplir, kilómetros que no cuadran, el mismo servicio cobrado dos veces) y deja cada servicio listo para facturar con la tarifa correcta. Se conecta con la operación existente sin reemplazar lo que funciona.
+## Wip Corporativo: para aseguradoras y empresas de asistencia
 
-## Para proveedores de asistencia
+- [Software para empresas de asistencia y aseguradoras](https://www.wiptool.com/software-empresas-de-asistencia): gestiona tus asistencias y tu red de proveedores en tiempo real.
+  - Recepción de casos desde la plataforma de la aseguradora (API), por WhatsApp o creados por el equipo.
+  - Asignación inteligente al proveedor más cercano según las reglas de cada convenio; si no acepta, pasa al siguiente.
+  - Central de monitoreo: trazabilidad en tiempo real de cada servicio, semáforo de ANS y responsable de cada estado.
+  - Chat en tiempo real con toda la operación: técnicos, proveedores, aseguradoras y clientes, con autorizaciones registradas.
+  - El asegurado recibe avisos por WhatsApp desde el número de la empresa, comparte su ubicación y envía fotos.
+  - Multiservicios: un evento con varios servicios (por ejemplo grúa, desplazamiento y custodia), cada uno asignado a su prestador.
+  - Tarifas automáticas por servicio y convenio, detección de fugas de costo y servicios listos para conciliar.
+  - Indicadores de ANS, calidad y costo por proveedor, ciudad y tipo de servicio.
 
-- [Software para proveedores de asistencia](https://www.wiptool.com/proveedores-de-asistencia): para grúas, hogar, médicos y veterinarios a domicilio que trabajan con varias aseguradoras y asistencias. Todas sus plataformas en un solo lugar, una sola app para los técnicos, Wip IA que atiende novedades y ayuda con las autorizaciones, cierre con fotos, firma y horas, la tarifa de cada convenio aplicada sola y la cuenta de cobro desde el reporte. También sirve para los servicios de particulares. Planes desde $195.000 COP al mes.
+## Wip Proveedores: para proveedores de asistencia
+
+- [Software para proveedores de asistencia](https://www.wiptool.com/proveedores-de-asistencia): para grúas, hogar, médicos y veterinarios a domicilio que trabajan con varias aseguradoras, empresas de asistencia y otros corporativos.
+  - Todos los servicios de todas sus aseguradoras, empresas de asistencia y particulares en un solo lugar, integrados con las plataformas del mercado.
+  - Una sola app para los técnicos, con fotos, firma y horas en cada cierre.
+  - Radar de técnicos en el mapa y asignación al más cercano.
+  - Wip IA atiende novedades y ayuda con las autorizaciones; chat del servicio y WhatsApp con el cliente.
+  - Del servicio al cobro: informes por cliente, tarifas con sus variables de costo, revisión de evidencias e integración con el software contable.
 
 ## Preguntas frecuentes
 
-- [Preguntas frecuentes](https://www.wiptool.com/preguntas-frecuentes): qué es un software para empresas de asistencia, en qué se diferencia de uno de servicios en campo, cómo se mide el ANS de una red de proveedores, cómo detecta Wip las fugas de costo, si sirve para proveedores que trabajan con varias aseguradoras y cuánto tarda la implementación.
+- [Preguntas frecuentes](https://www.wiptool.com/preguntas-frecuentes): qué es un software para empresas de asistencia, en qué se diferencia de uno de servicios en campo, cómo llegan los casos a Wip, cómo se mide el ANS de una red de proveedores, qué pasa si un proveedor no acepta, cómo se liquidan los servicios, cómo detecta Wip las fugas de costo, si sirve para proveedores que trabajan con varias aseguradoras y empresas de asistencia, y cuánto tarda la implementación.
 
 ## Contacto
 
 - [Inicio](https://www.wiptool.com/)
+- Agenda una demo: https://calendly.com/comercial-wiptool/acercamiento-wip
 - Correo comercial: comercial@wiptool.com
 - WhatsApp: +57 300 512 4111
 

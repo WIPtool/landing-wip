@@ -186,8 +186,8 @@ const corpCheck = (c, prov) => prov
   : c;
 const pages = [
   { key: 'home', out: 'index.html', path: '/', body: 'home.html',
-    title: 'Wip · Plataforma para operar asistencias, con Wip IA',
-    desc: 'Wip es la plataforma para operar asistencias: aseguradoras, empresas de asistencia y proveedores reciben, asignan, siguen y facturan cada servicio con IA.',
+    title: 'Software de asistencias con IA para Latam | Wip',
+    desc: 'Wip es el software de asistencias con IA: aseguradoras, empresas de asistencia y proveedores reciben, asignan, siguen y facturan cada servicio en Latam.',
     bar: '',
     navCta: demoBtn('btn btn--lime nav__cta', 'Conversemos'), xp: '' },
   { key: 'corp', out: 'software-empresas-de-asistencia/index.html', path: '/software-empresas-de-asistencia', body: 'aseguradoras.html',
