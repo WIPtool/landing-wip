@@ -244,6 +244,8 @@ for (const p of pages) {
   for (const [k, v] of Object.entries(vars)) t = t.split(`{{${k}}}`).join(v);
   // El campo de teléfono (y sus banderas) se carga solo cuando el formulario está cerca; sin el respaldo de 4 s.
   t = t.replace("window.addEventListener('load',function(){setTimeout(load,4000);});\n", '');
+  // Inicio: el título del hero usa Satoshi; precargarla evita que el texto cambie de letra tarde.
+  if (p.key === 'home') t = t.replace('<link rel="preload" href="/fonts/roboto-var.woff2"', '<link rel="preload" href="/fonts/satoshi-500.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="preload" href="/fonts/satoshi-400.woff2" as="font" type="font/woff2" crossorigin>\n<link rel="preload" href="/fonts/roboto-var.woff2"');
   // La portada del video del hero de Proveedores es lo más grande al cargar: que llegue primero.
   if (p.key === 'prov') t = t.replace('</head>', '<link rel="preload" as="image" href="/video/wip-proveedores-portada.webp" fetchpriority="high">\n</head>');
   const left = t.match(/\{\{[A-Z_]+\}\}/);
