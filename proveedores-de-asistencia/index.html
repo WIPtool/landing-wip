@@ -3327,6 +3327,17 @@ body[data-page="corp"] .spx-vid video{width:100%;height:100%;object-fit:contain;
 @media(max-width:700px){.cp:nth-child(n+11){display:none}}
 @media(prefers-reduced-motion:reduce){.cp,.cp::after{animation:none}}
 
+/* Corporativo: proveedores como punteros de mapa */
+.cpin{position:absolute;width:0;height:0;animation:cpinBob 4s ease-in-out infinite;animation-delay:var(--d)}
+.cpin i{position:absolute;left:-11px;top:-30px;width:22px;height:22px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#dbff57;box-shadow:0 0 14px rgba(219,255,87,.65);animation:cpinGlow 4s ease-in-out infinite;animation-delay:var(--d)}
+.cpin i::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:#0b1020}
+.cpin::before{content:"";position:absolute;left:-9px;top:-4px;width:18px;height:8px;border-radius:50%;border:1.5px solid rgba(219,255,87,.7);animation:cpinRing 4s ease-out infinite;animation-delay:var(--d)}
+@keyframes cpinBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes cpinGlow{0%,100%{opacity:.6;box-shadow:0 0 8px rgba(219,255,87,.4)}50%{opacity:1;box-shadow:0 0 20px rgba(219,255,87,.9)}}
+@keyframes cpinRing{0%{transform:scale(.4);opacity:.9}70%,100%{transform:scale(2.6);opacity:0}}
+@media(max-width:700px){.cpin:nth-child(n+6){display:none}.cpin i{transform:rotate(-45deg) scale(.8)}}
+@media(prefers-reduced-motion:reduce){.cpin,.cpin i,.cpin::before{animation:none}}
+
 /* Títulos en Roboto */
 .pain b,.calc__big,.trio h3,.funnel__in h3,.paste h3,.hero h1,.h2,.statement p:first-child,.statement p:nth-child(2),.auto h3,.data h3,.sol__card h3,.proof b,.chaos__word,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
