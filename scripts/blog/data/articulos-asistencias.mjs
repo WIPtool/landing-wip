@@ -122,13 +122,13 @@ ${tool('Radar de técnicos y grúas', 'Mira en el mapa quién está libre, en ca
     slug: 'reducir-servicios-fallidos-en-asistencias',
     title: 'Cómo reducir los servicios fallidos y cancelados en asistencias',
     seoTitle: 'Cómo reducir servicios fallidos y cancelados en asistencias',
-    seoDesc: 'En Wip, 1 de cada 6 asistencias no termina en finalizada. Por qué pasa y qué hacer para reducir cancelaciones, servicios fallidos y rechazos de proveedores.',
-    excerpt: 'En los datos agregados de Wip, 1 de cada 6 asistencias no termina en finalizada. Estas son las causas más comunes y cómo atacarlas desde la operación.',
+    seoDesc: 'Cancelaciones, servicios fallidos y rechazos de proveedores son comunes en el mercado de asistencias. Por qué pasan y cómo la tecnología ayuda a reducirlos.',
+    excerpt: 'En el mercado de asistencias, una parte de los servicios se cancela, falla o la rechaza el proveedor. Estas son las causas más comunes y cómo la tecnología ayuda a atacarlas.',
     solucion: 'software-empresas-de-asistencia',
     ...img('reducir-servicios-fallidos-en-asistencias', 'Ilustración de servicios de asistencia con estados finalizado, cancelado y fallido'),
     html: `
-<p>Cada asistencia que no termina bien tiene un costo doble: un asegurado insatisfecho y una operación que gastó tiempo sin resultado. En los datos agregados de Wip, <strong>1 de cada 6 asistencias no termina en finalizada</strong>: el 10,8 % se cancelan, el 2,1 % fallan y el 1,9 % las rechaza el proveedor.</p>
-<p>La buena noticia es que buena parte de esas pérdidas se puede prevenir. Te contamos cómo.</p>
+<p>Cada asistencia que no termina bien tiene un costo doble: un asegurado insatisfecho y una operación que gastó tiempo sin resultado. En el mercado de asistencias es un problema frecuente: <strong>una parte de los servicios se cancela, falla o la rechaza el proveedor</strong>, y pasa sobre todo cuando la operación depende de llamadas, chats sueltos y hojas de cálculo.</p>
+<p>Sin herramientas adecuadas, asignar toma más tiempo, la ubicación llega incompleta, el asegurado no sabe cuándo llega su servicio y nadie ve a tiempo cuál se está retrasando. Cuando la operación se apoya en tecnología como Wip, esos indicadores mejoran: se asigna más rápido, se sigue cada servicio en vivo y se actúa antes de que se caiga. Te contamos cómo.</p>
 <h2>Cancelados, fallidos y rechazados: no son lo mismo</h2>
 <div class="table-wrap"><table><tbody>
 <tr><td><strong>Estado</strong></td><td><strong>Qué significa</strong></td><td><strong>Causas frecuentes</strong></td></tr>
@@ -159,7 +159,7 @@ ${tool('Avisos al asegurado por WhatsApp', 'Wip le avisa al cliente cada paso de
 <li>Tiempo de asignación y de llegada frente al ANS.</li>
 </ul>
 <h2>Conclusión</h2>
-<p>Reducir los servicios fallidos y cancelados es, sobre todo, una cuestión de velocidad, información y seguimiento en vivo. Conoce cómo <a href="${CORP}">Wip Corporativo</a> ayuda a las aseguradoras y empresas de asistencia a cumplir cada servicio, y revisa cómo medir el <a href="/blog/sla-proveedores-de-asistencia">SLA de tus proveedores de asistencia</a>.</p>
+<p>Los servicios fallidos y cancelados no son un problema de una empresa en particular: aparecen en todo el mercado cuando la operación no tiene las herramientas para asignar rápido, informar al asegurado y seguir cada servicio en vivo. Con la tecnología adecuada, esos indicadores mejoran. Conoce cómo <a href="${CORP}">Wip Corporativo</a> ayuda a las aseguradoras y empresas de asistencia a cumplir cada servicio, y revisa cómo medir el <a href="/blog/sla-proveedores-de-asistencia">SLA de tus proveedores de asistencia</a>.</p>
 `,
   },
 

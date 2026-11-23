@@ -8,7 +8,6 @@ Datos agregados de la plataforma:
 - Más de 4 millones de asistencias gestionadas con Wip en Latinoamérica.
 - 354 tipos de asistencia configurados en más de 13 verticales.
 - 99,9 % de disponibilidad en línea.
-- 1 de cada 6 asistencias no termina en finalizada: 10,8 % canceladas, 2,1 % fallidas, 1,9 % rechazadas por el proveedor.
 - Las asistencias crecieron 60 % en dos años; la veterinaria se multiplicó por cinco.
 
 Clientes que operan en Wip incluyen aseguradoras, empresas de asistencia, proveedores y corporativos. Reconocimiento: Forbes, 30 Promesas de los Negocios de Colombia 2023 y 100 Mejores Startups 2022.
