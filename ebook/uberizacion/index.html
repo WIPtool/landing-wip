@@ -284,20 +284,19 @@ img{max-width:100%;height:auto;display:block}
 
 /* ---------- Pie de pagina (mismo de la home) ---------- */
 .footer{padding:44px 0;margin-top:clamp(56px,8vw,96px);background:var(--surface-bright);border-top:1px solid var(--border-line)}
-.footer .container{max-width:1360px;padding:0 28px}
-.footer__grid{display:grid;grid-template-columns:1.5fr 1fr 1.3fr 1fr 1fr;gap:36px}
-.footer__col--social{grid-column:5}
+.footer .wrap{max-width:1360px;margin:0 auto;padding:0 28px}
+.footer__grid{display:grid;grid-template-columns:1.5fr 1.2fr 1fr 1fr;gap:36px}
+.footer__col:last-child a{display:flex;align-items:center;gap:8px}
 .footer__brand{display:flex;flex-direction:column;gap:14px;max-width:340px}
 .footer__brand img{height:22px;width:auto;align-self:flex-start}
 .footer__brand p{font-size:14px;color:var(--on-surface-variant);line-height:1.5}
 .footer__col h3,.footer__col h4{font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy-faint);margin-bottom:14px}
 .footer__col a{display:block;font-size:14px;color:var(--navy-soft);margin-bottom:10px;transition:color .2s ease}
 .footer__col a:hover{color:var(--navy)}
-.footer__col--social a{display:flex;align-items:center;gap:8px}
-.footer__col--social svg{flex-shrink:0}
+.footer__col svg{flex-shrink:0}
 .footer__bottom{display:flex;justify-content:space-between;align-items:center;margin-top:32px;padding-top:24px;border-top:1px solid var(--border-line);flex-wrap:wrap;gap:12px}
 .footer__bottom span,.footer__bottom a{font-size:13.5px;color:var(--navy-soft)}
-.footer__legal{display:flex;gap:24px}
+.footer__legal{display:flex;flex-wrap:wrap;gap:10px 24px}
 
 /* ---------- Responsive ---------- */
 @media(max-width:1080px){
@@ -314,11 +313,11 @@ img{max-width:100%;height:auto;display:block}
   .ebook-band{grid-template-columns:1fr}
   .footer__grid{grid-template-columns:1fr 1fr;gap:32px}
   .footer__brand{grid-column:1/-1;max-width:none}
-  .footer__col--social{grid-column:auto}
+  .footer__col:last-child{grid-column:1/-1}
 }
 @media(max-width:640px){
   .container,.topbar__inner{padding-left:16px;padding-right:16px}
-  .footer .container{padding:0 16px}
+  .footer .wrap{padding:0 16px}
   .topbar__inner{gap:10px;flex-wrap:wrap}
   .topnav{order:3;width:100%;margin-left:-12px}
   .topbar__cta{padding:8px 14px;font-size:13px}
