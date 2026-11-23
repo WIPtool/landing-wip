@@ -1973,6 +1973,23 @@ body[data-page="corp"] .spx-vid video{width:100%;height:100%;object-fit:contain;
 
 /* Inicio: las animaciones en bucle del hero arrancan cuando la página ya cargó (mejora el Speed Index) */
 
+/* Corporativo y Proveedores: bloque de guías del blog */
+.gx{background:#fff;padding:clamp(60px,8vw,100px) 0;color:var(--navy)}
+.gx__head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(24px,3vw,36px)}
+.gx__eyebrow{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#4c6b00}
+.gx__h2{margin-top:8px;font-size:clamp(28px,3.2vw,42px)!important;font-weight:800!important;line-height:1.1;letter-spacing:-.02em;text-transform:none!important;color:var(--navy)!important}
+.gx__head p{margin-top:10px;max-width:560px;font-size:16px;line-height:1.6;color:#4a5468}
+.gx__all{font-weight:700;color:var(--navy);text-decoration:underline;text-decoration-color:var(--lime);text-underline-offset:5px;text-decoration-thickness:3px}
+.gx__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.gx__c{display:flex;flex-direction:column;gap:8px;padding:14px 14px 20px;border-radius:20px;background:#f6f7f9;border:1px solid #e6e8ec;color:var(--navy);text-decoration:none;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+.gx__c:hover{transform:translateY(-5px);box-shadow:0 20px 44px rgba(11,16,32,.1);border-color:#c9e36a}
+.gx__c img{width:100%;height:auto;border-radius:14px;background:#fff;margin-bottom:6px}
+.gx__k{align-self:flex-start;padding:3px 10px;border-radius:999px;background:rgba(219,255,87,.45);font-size:11.5px;font-weight:700;color:#3d5200}
+.gx__c b{font-size:18px;line-height:1.3}
+.gx__d{font-size:14px;line-height:1.5;color:#4a5468}
+.gx__more{margin-top:auto;padding-top:6px;font-size:14px;font-weight:700;color:#4c6b00}
+@media(max-width:900px){.gx__grid{grid-template-columns:1fr}}
+
 /* Títulos en Roboto */
 .paste h3,.hero h1,.h2,.auto h3,.data h3,.step b,.mode b{font-family:var(--display);letter-spacing:-.02em}
 .hero h1{font-weight:600;letter-spacing:-.025em}
@@ -2338,6 +2355,17 @@ window.addEventListener('message',function(e){
     <h2 class="spx-h2">Mira Wip operando tu red</h2>
     <p>Agenda una demo y te mostramos Wip en vivo con un caso como el tuyo.</p>
     <a href="https://calendly.com/comercial-wiptool/acercamiento-wip" class="spx-btn spx-btn--main" target="_blank" rel="noopener" onclick="if(window.Calendly){Calendly.initPopupWidget({url:'https://calendly.com/comercial-wiptool/acercamiento-wip'});return false;}">Agenda una demo</a>
+  </div>
+</section>
+
+<section class="gx" id="guias">
+  <div class="wrap">
+    <div class="gx__head"><div><span class="gx__eyebrow">Guías</span><h2 class="gx__h2">Aprende a operar mejor tus asistencias</h2><p>Guías prácticas para aseguradoras y empresas de asistencia que operan una red de proveedores.</p></div><a class="gx__all" href="/blog/operacion-de-asistencias">Ver todas las guías →</a></div>
+    <div class="gx__grid">
+      <a class="gx__c" href="/blog/software-para-empresas-de-asistencia"><img src="/img/blog/software-para-empresas-de-asistencia-420.webp" alt="" width="420" height="263" loading="lazy" decoding="async"><span class="gx__k">Software</span><b>Software para empresas de asistencia: qué debe tener</b><span class="gx__d">Las funciones clave para operar tu red con control.</span><span class="gx__more">Leer guía →</span></a>
+      <a class="gx__c" href="/blog/reducir-servicios-fallidos-en-asistencias"><img src="/img/blog/reducir-servicios-fallidos-en-asistencias-420.webp" alt="" width="420" height="263" loading="lazy" decoding="async"><span class="gx__k">Operación</span><b>Cómo reducir servicios fallidos y cancelados</b><span class="gx__d">Causas y acciones, con datos agregados de Wip.</span><span class="gx__more">Leer guía →</span></a>
+      <a class="gx__c" href="/blog/indicadores-red-de-proveedores-de-asistencia"><img src="/img/blog/indicadores-red-de-proveedores-de-asistencia-420.webp" alt="" width="420" height="263" loading="lazy" decoding="async"><span class="gx__k">Indicadores</span><b>Indicadores para medir tu red de proveedores</b><span class="gx__d">ANS, tiempos, rechazos, calidad y costo.</span><span class="gx__more">Leer guía →</span></a>
+    </div>
   </div>
 </section>
 
