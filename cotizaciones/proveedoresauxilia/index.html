@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Capacitación proveedores Auxilia | Wip</title>
+<meta name="description" content="Presentación de Wip para la red de proveedores de Auxilia.">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root {
+  --navy: #0b1020;
+  --navy-2: #161e36;
+  --lime: #dbff57;
+  --lime-dk: #556b00;
+  --paper: #f2f4ee;
+  --white: #fbfcf8;
+  --ink: #0b1020;
+  --muted: #4a5266;
+  --muted-d: #b9c1d3;
+  --line: #dde1d6;
+}
+
+body { font-family: 'Inter', Arial, sans-serif; color: var(--ink); }
+
+section {
+  counter-increment: page;
+  box-sizing: border-box;
+  padding: 128px 128px 160px;
+  background: var(--paper);
+  color: var(--ink);
+  display: flex;
+  flex-direction: column;
+}
+section.white { background: var(--white); }
+section.dark { background: var(--navy); color: var(--white); }
+section.lime { background: var(--lime); color: var(--navy); }
+
+h1, h2, h3 { font-family: 'Archivo', Arial, sans-serif; margin: 0; }
+h1 { font-size: 120px; font-weight: 900; line-height: 1.02; letter-spacing: -2px; text-transform: uppercase; }
+h2 { font-size: 72px; font-weight: 800; line-height: 1.06; letter-spacing: -1px; text-transform: uppercase; }
+h3 { font-size: 36px; font-weight: 800; line-height: 1.15; }
+p { margin: 0; font-size: 28px; line-height: 1.4; }
+
+/* eyebrow, como en el boletín */
+.eye { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 24px; font-weight: 700; letter-spacing: 4px; text-transform: uppercase; color: var(--ink); margin-bottom: 28px; }
+.dark .eye { color: var(--lime); }
+.lime .eye { color: var(--navy); }
+.dot { color: var(--lime-dk); }
+.dark .dot { color: var(--lime); }
+
+.lead { font-size: 36px; line-height: 1.4; color: var(--muted); }
+.dark .lead { color: var(--muted-d); }
+.lime .lead { color: var(--navy); }
+
+/* línea resaltada en lima */
+.hl { align-self: flex-start; background: var(--lime); color: var(--navy); padding: 0 22px; }
+.dark .hl { background: var(--lime); color: var(--navy); }
+
+.head { margin-bottom: 48px; }
+.spacer { flex: 1; }
+
+/* tarjetas */
+.row { display: flex; gap: 32px; }
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
+.g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 24px; }
+.card { background: var(--white); border: 1px solid var(--line); border-radius: 24px; padding: 36px 40px; display: flex; flex-direction: column; gap: 12px; }
+.white .card { background: var(--paper); }
+.dark .card { background: var(--navy-2); border: 1px solid #283152; }
+.num { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 24px; font-weight: 700; letter-spacing: 2px; color: var(--lime-dk); }
+.dark .num { color: var(--lime); }
+.tx { font-size: 28px; line-height: 1.4; color: var(--muted); }
+.dark .tx { color: var(--muted-d); }
+.sm { font-size: 24px; line-height: 1.4; color: var(--muted); }
+.dark .sm { color: var(--muted-d); }
+
+/* filas con check */
+.chk { display: flex; gap: 20px; align-items: flex-start; }
+.chk x-icon { width: 36px; height: 36px; color: var(--lime-dk); flex: none; margin-top: 2px; }
+.dark .chk x-icon { color: var(--lime); }
+.list { display: flex; flex-direction: column; gap: 22px; }
+
+/* capturas */
+.shot { border: 1px solid var(--line); border-radius: 20px; background: #ffffff; box-shadow: 0 24px 48px rgba(11, 16, 32, 0.10); }
+.dark .shot { border: 1px solid #283152; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45); }
+
+/* cifras grandes */
+.big { font-family: 'Archivo', Arial, sans-serif; font-size: 120px; font-weight: 900; line-height: 1; letter-spacing: -2px; color: var(--lime); }
+.white .big, .paper-big { color: var(--navy); }
+
+/* pie de página */
+.foot { position: absolute; left: 128px; bottom: 56px; width: 1664px; height: 48px; display: flex; align-items: center; gap: 28px; }
+.foot img { width: 76px; height: 42px; object-fit: contain; }
+.ft { flex: 1; font-family: 'JetBrains Mono', Consolas, monospace; font-size: 24px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
+.dark .ft { color: var(--muted-d); }
+.pg { font-family: 'JetBrains Mono', Consolas, monospace; font-size: 24px; font-weight: 700; color: var(--muted); }
+.dark .pg { color: var(--lime); }
+.pg::after { content: attr(data-n); }
+
+/* movimiento al llegar */
+@keyframes up { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+.a { animation: up 650ms cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 110ms); }
+
+html,body{margin:0;height:100%;background:#05080f;overflow:hidden}
+#vp{position:fixed;inset:0 0 64px 0;display:flex;align-items:center;justify-content:center}
+#stage{position:relative;width:1920px;height:1080px;flex:none;transform-origin:center center;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+#stage section{position:absolute;inset:0;width:1920px;height:1080px;overflow:hidden;display:none}
+#stage section.on{display:flex}
+x-icon{display:inline-block}
+x-icon svg{width:100%;height:100%;display:block}
+#bar{position:fixed;left:0;right:0;bottom:0;height:64px;display:flex;align-items:center;justify-content:center;gap:16px;font-family:'JetBrains Mono',Consolas,monospace;color:#b9c1d3;font-size:15px;letter-spacing:2px}
+#bar button{background:#161e36;color:#dbff57;border:1px solid #283152;border-radius:999px;height:40px;min-width:40px;padding:0 16px;font:inherit;font-size:18px;cursor:pointer}
+#bar button:hover{background:#dbff57;color:#0b1020}
+#num{min-width:90px;text-align:center}
+</style>
+</head>
+<body>
+<div id="vp"><div id="stage">
+<section id="cover" class="dark">
+<svg aria-label="" width="760" height="700" viewBox="0 0 760 700" style="position:absolute;left:1100px;top:190px;width:760px;height:700px;opacity:0.55">
+<path d="M40 640 C 220 560, 260 380, 420 330 S 640 220, 700 60" fill="none" stroke="#dbff57" stroke-width="3" stroke-dasharray="10 14"/>
+<circle cx="40" cy="640" r="14" fill="#dbff57"/>
+<circle cx="420" cy="330" r="10" fill="#dbff57"/>
+<circle cx="700" cy="60" r="18" fill="none" stroke="#dbff57" stroke-width="4"/>
+<circle cx="700" cy="60" r="6" fill="#dbff57"/>
+</svg>
+<div class="row a" style="align-items:center;gap:40px;--i:0">
+<div style="background:#fbfcf8;border-radius:20px;padding:22px 32px;display:flex;align-items:center"><img src="/cotizaciones/proveedoresauxilia/img/auxilia.png" alt="Auxilia" style="width:300px;height:66px;object-fit:contain"></div>
+<img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip" style="width:180px;height:100px;object-fit:contain">
+</div>
+<div class="spacer"></div>
+<p class="eye a" style="--i:1"><span class="dot">●</span>&#160;&#160;Capacitación para proveedores de Auxilia</p>
+<h1 class="a" style="--i:2">Te damos la<br>bienvenida</h1>
+<h1 class="hl a" style="--i:3">a Wip</h1>
+<p class="lead a" style="margin-top:36px;width:1100px;--i:4">La plataforma con la que vas a operar los servicios de Auxilia, de principio a fin.</p>
+<p class="ft a" style="margin-top:28px;--i:5">26 de noviembre de 2026</p>
+
+</section>
+<section id="agenda">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Agenda</p>
+<h2 class="a" style="--i:1">Lo que vamos a ver hoy</h2>
+</div>
+<div style="display:flex;flex-direction:column">
+<div class="a" style="display:flex;align-items:center;gap:48px;padding:26px 0;border-top:2px solid #0b1020;--i:2"><p class="num" style="width:90px">01</p><h3 style="width:760px">Quiénes somos</h3><p class="tx">Una herramienta que nace de las asistencias</p></div>
+<div class="a" style="display:flex;align-items:center;gap:48px;padding:26px 0;border-top:1px solid #c9cec0;--i:3"><p class="num" style="width:90px">02</p><h3 style="width:760px">El cambio en tu operación</h3><p class="tx">Cómo ayuda Wip a ti y a Auxilia</p></div>
+<div class="a" style="display:flex;align-items:center;gap:48px;padding:26px 0;border-top:1px solid #c9cec0;--i:4"><p class="num" style="width:90px">03</p><h3 style="width:760px">Wip en tu operación</h3><p class="tx">Los módulos que vas a usar</p></div>
+<div class="a" style="display:flex;align-items:center;gap:48px;padding:26px 0;border-top:1px solid #c9cec0;--i:5"><p class="num" style="width:90px">04</p><h3 style="width:760px">Acompañamiento</h3><p class="tx">Soporte, actualizaciones y co-construcción</p></div>
+<div class="a" style="display:flex;align-items:center;gap:48px;padding:26px 0;border-top:1px solid #c9cec0;border-bottom:1px solid #c9cec0;--i:6"><p class="num" style="width:90px">05</p><h3 style="width:760px">Tu beneficio exclusivo</h3><p class="tx">Por ser proveedor de Auxilia</p></div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="somos" class="white">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;01&#160;&#160;Quiénes somos</p>
+<h2 class="a" style="--i:1">Hola, somos Wip</h2>
+<p class="lead a" style="margin-top:28px;width:1500px;--i:2">La infraestructura tecnológica para operar asistencias en Latam. Conectamos a quien opera la red con quien presta el servicio, para recibir, asignar, seguir y cobrar cada asistencia.</p>
+</div>
+<div class="spacer"></div>
+<div class="g3">
+<div class="card a" style="--i:3"><p class="num">01</p><h3>Nacemos de las asistencias</h3><p class="tx">Wip se creó desde la operación real: tomar servicios, novedades, autorizaciones y visado.</p></div>
+<div class="card a" style="--i:4"><p class="num">02</p><h3>Experiencia en el campo</h3><p class="tx">Más de 4 millones de asistencias gestionadas en Wip.</p></div>
+<div class="card a" style="--i:5"><p class="num">03</p><h3>Hecha para el proveedor</h3><p class="tx">Una sola plataforma para los servicios de todos tus clientes y tus particulares.</p></div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="nace" class="lime">
+<p class="eye a"><span>●</span>&#160;&#160;Nuestro origen</p>
+<div class="spacer"></div>
+<h1 class="a" style="width:1500px;--i:1">Una herramienta que nace de las asistencias</h1>
+<p class="lead a" style="margin-top:40px;width:1400px;--i:2">Por eso habla tu idioma: tomar servicios, asignar, novedades, autorizaciones, evidencias y visado.</p>
+<div class="spacer"></div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft" style="color:#0b1020">Capacitación proveedores · Auxilia</p><p class="pg" style="color:#0b1020"></p></div>
+
+</section>
+<section id="cifras" class="dark">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Experiencia en el campo</p>
+<h2 class="a" style="--i:1">La experiencia está en los datos</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:40px 64px">
+<div class="a" style="border-top:2px solid #dbff57;padding-top:28px;--i:2"><p class="big">+4 M</p><p class="tx" style="margin-top:10px">asistencias gestionadas con Wip en Latinoamérica</p></div>
+<div class="a" style="border-top:2px solid #dbff57;padding-top:28px;--i:3"><p class="big">354</p><p class="tx" style="margin-top:10px">tipos de asistencia configurados en la plataforma</p></div>
+<div class="a" style="border-top:2px solid #dbff57;padding-top:28px;--i:4"><p class="big">+13</p><p class="tx" style="margin-top:10px">verticales: vial, hogar, médica, jurídica, veterinaria y más</p></div>
+<div class="a" style="border-top:2px solid #dbff57;padding-top:28px;--i:5"><p class="big">99,9 %</p><p class="tx" style="margin-top:10px">de disponibilidad en línea</p></div>
+</div>
+<div class="spacer"></div>
+<p class="sm a" style="--i:6">Reconocimientos: Forbes, 30 Promesas de los Negocios de Colombia 2023 y 100 Mejores Startups 2022.</p>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="latam">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Dónde estamos</p>
+<h2 class="a" style="--i:1">Trabajamos en Latam</h2>
+<p class="lead a" style="margin-top:28px;width:1400px;--i:2">Aseguradoras, empresas de asistencia y proveedores de cinco países operan sus servicios en Wip.</p>
+</div>
+<div class="spacer"></div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr;gap:24px">
+<div class="card a" style="--i:3"><p class="num">MX</p><h3>México</h3></div>
+<div class="card a" style="--i:4"><p class="num">GT</p><h3>Guatemala</h3></div>
+<div class="card a" style="--i:5"><p class="num">HN</p><h3>Honduras</h3></div>
+<div class="card a" style="background:#0b1020;border:1px solid #0b1020;--i:6"><p class="num" style="color:#dbff57">RD</p><h3 style="color:#fbfcf8">República Dominicana</h3><p class="sm" style="color:#dbff57">Aquí opera Auxilia</p></div>
+<div class="card a" style="--i:7"><p class="num">CO</p><h3>Colombia</h3></div>
+</div>
+<div class="spacer"></div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="realidad" class="white">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;02&#160;&#160;El cambio</p>
+<h2 class="a" style="--i:1">Conocemos tu día a día</h2>
+</div>
+<div class="g3">
+<div class="card a" style="--i:2"><h3>Tomar servicios</h3><p class="tx">Varias plataformas abiertas y turnos de día, de noche y fines de semana.</p></div>
+<div class="card a" style="--i:3"><h3>Asignar</h3><p class="tx">Datos copiados a Excel y enviados por grupos de WhatsApp.</p></div>
+<div class="card a" style="--i:4"><h3>Novedades</h3><p class="tx">Varados, cancelados, demoras y usuarios que no salen.</p></div>
+<div class="card a" style="--i:5"><h3>Autorizaciones</h3><p class="tx">Km adicionales y tiempos extra, pedidos por llamada.</p></div>
+<div class="card a" style="--i:6"><h3>Evidencias</h3><p class="tx">Fotos, tiempos y firmas repartidos en chats.</p></div>
+<div class="card a" style="--i:7"><h3>Visado</h3><p class="tx">Cerrar el periodo y conciliar servicio por servicio.</p></div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="cambio" class="dark">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Una nueva forma de gestionar asistencias</p>
+<h2 class="a" style="width:1500px;--i:1">Todo el ciclo del servicio en un solo lugar</h2>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr 1fr 1fr;gap:20px">
+<div class="a" style="border-top:4px solid #dbff57;padding-top:24px;display:flex;flex-direction:column;gap:12px;--i:2"><p class="num">01</p><h3>Tomas</h3><p class="sm">Los servicios de Auxilia llegan directo a Wip.</p></div>
+<div class="a" style="border-top:4px solid #dbff57;padding-top:24px;display:flex;flex-direction:column;gap:12px;--i:3"><p class="num">02</p><h3>Asignas</h3><p class="sm">Al técnico que corresponde, sin grupos de WhatsApp.</p></div>
+<div class="a" style="border-top:4px solid #dbff57;padding-top:24px;display:flex;flex-direction:column;gap:12px;--i:4"><p class="num">03</p><h3>Monitoreas</h3><p class="sm">Cada estado, en tiempo real.</p></div>
+<div class="a" style="border-top:4px solid #dbff57;padding-top:24px;display:flex;flex-direction:column;gap:12px;--i:5"><p class="num">04</p><h3>Resuelves</h3><p class="sm">Novedades y autorizaciones dentro del servicio.</p></div>
+<div class="a" style="border-top:4px solid #dbff57;padding-top:24px;display:flex;flex-direction:column;gap:12px;--i:6"><p class="num">05</p><h3>Cierras</h3><p class="sm">Con fotos, tiempos y firma del usuario.</p></div>
+<div class="a" style="border-top:4px solid #dbff57;padding-top:24px;display:flex;flex-direction:column;gap:12px;--i:7"><p class="num">06</p><h3>Concilias</h3><p class="sm">Servicios listos para el visado con Auxilia.</p></div>
+</div>
+<div class="spacer"></div>
+<p class="lead a" style="width:1500px;--i:8">Sin copiar datos de una plataforma a otra, sin perseguir fotos por chat y sin armar el visado a mano.</p>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="auxilia" class="white">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Wip y Auxilia</p>
+<h2 class="a" style="--i:1">Así les ayuda Wip a ti y a Auxilia</h2>
+</div>
+<div class="g2">
+<div class="card a" style="padding:44px 48px;gap:28px;--i:2">
+<p class="num">Para ti, como proveedor</p>
+<div class="list">
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">Recibes los servicios de Auxilia directo en Wip</p></div>
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">Tus técnicos trabajan desde una sola app</p></div>
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">Novedades y autorizaciones dentro del servicio</p></div>
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">Cierres con evidencias, listos para conciliar</p></div>
+</div>
+</div>
+<div class="card a" style="background:#0b1020;border:1px solid #0b1020;padding:44px 48px;gap:28px;--i:3">
+<p class="num" style="color:#dbff57">Para Auxilia</p>
+<div class="list">
+<div class="chk"><x-icon name="CheckCircle" style="color:#dbff57"></x-icon><p class="tx" style="color:#d5dbe7">Ve cada servicio en tiempo real</p></div>
+<div class="chk"><x-icon name="CheckCircle" style="color:#dbff57"></x-icon><p class="tx" style="color:#d5dbe7">Mide tiempos y cumplimiento del ANS (Acuerdo de Nivel de Servicio)</p></div>
+<div class="chk"><x-icon name="CheckCircle" style="color:#dbff57"></x-icon><p class="tx" style="color:#d5dbe7">Le informa a sus clientes sin llamarte</p></div>
+<div class="chk"><x-icon name="CheckCircle" style="color:#dbff57"></x-icon><p class="tx" style="color:#d5dbe7">Concilia contigo de forma más ágil</p></div>
+</div>
+</div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="perfiles">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;03&#160;&#160;Wip en tu operación</p>
+<h2 class="a" style="--i:1">Dos formas de entrar a Wip</h2>
+</div>
+<div class="g2" style="flex:1">
+<div class="card a" style="padding:48px;gap:20px;--i:2">
+<x-icon name="Globe" style="width:64px;height:64px;color:#556b00"></x-icon>
+<p class="num">Acceso web</p>
+<h3>Base de operaciones</h3>
+<p class="tx">Tu call y tus coordinadores trabajan desde el computador: toman, asignan y monitorean cada servicio, y resuelven novedades.</p>
+</div>
+<div class="card a" style="background:#0b1020;border:1px solid #0b1020;padding:48px;gap:20px;--i:3">
+<x-icon name="Users" style="width:64px;height:64px;color:#dbff57"></x-icon>
+<p class="num" style="color:#dbff57">App Store y Google Play</p>
+<h3 style="color:#fbfcf8">Tus técnicos en campo</h3>
+<p class="tx" style="color:#d5dbe7">Atienden desde el celular con la app de Wip: ven el servicio, avanzan los estados, suben evidencias y cierran.</p>
+</div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="monitoreo" class="white">
+<div class="head" style="margin-bottom:40px">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Módulo&#160;&#160;·&#160;&#160;Monitoreo central</p>
+<h2 class="a" style="--i:1">Todos tus servicios, en vivo</h2>
+</div>
+<img class="shot a" src="/cotizaciones/proveedoresauxilia/img/monitoreo-servicios.webp" alt="Monitoreo central de Wip con los servicios del día, sus estados y responsables" style="width:1664px;height:500px;object-fit:contain;--i:2">
+<div class="row a" style="margin-top:28px;gap:20px;--i:3">
+<p class="sm" style="background:#f2f4ee;border:1px solid #dde1d6;border-radius:999px;padding:8px 26px;color:#0b1020">Estado de cada servicio en vivo</p>
+<p class="sm" style="background:#f2f4ee;border:1px solid #dde1d6;border-radius:999px;padding:8px 26px;color:#0b1020">Responsable en cada momento</p>
+<p class="sm" style="background:#f2f4ee;border:1px solid #dde1d6;border-radius:999px;padding:8px 26px;color:#0b1020">Semáforo para cumplir el ANS</p>
+<p class="sm" style="background:#dbff57;border-radius:999px;padding:8px 26px;color:#0b1020">Filtros por estado y cliente</p>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="app" class="dark">
+<div style="display:flex;gap:96px;flex:1">
+<div style="flex:1;display:flex;flex-direction:column">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Módulo&#160;&#160;·&#160;&#160;App del técnico</p>
+<h2 class="a" style="--i:1">Una sola app para tus técnicos</h2>
+<div class="list" style="margin-top:56px;gap:26px">
+<div class="chk a" style="--i:2"><x-icon name="CheckCircle"></x-icon><p class="tx">Reciben el servicio con todos sus datos</p></div>
+<div class="chk a" style="--i:3"><x-icon name="CheckCircle"></x-icon><p class="tx">Avanzan los estados: aceptado, en camino, en servicio y finalizado</p></div>
+<div class="chk a" style="--i:4"><x-icon name="CheckCircle"></x-icon><p class="tx">Suben fotos con fecha, hora y ubicación</p></div>
+<div class="chk a" style="--i:5"><x-icon name="CheckCircle"></x-icon><p class="tx">Cierran con la firma del usuario, sin papeles</p></div>
+<div class="chk a" style="--i:6"><x-icon name="CheckCircle"></x-icon><p class="tx">Hablan con la base desde el chat del servicio</p></div>
+</div>
+</div>
+<img class="shot a" src="/cotizaciones/proveedoresauxilia/img/app-tecnico.webp" alt="App de Wip para el técnico con el servicio en curso y sus estados" style="width:404px;height:658px;object-fit:cover;border-radius:36px;--i:3">
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="radar" class="white">
+<div class="head" style="margin-bottom:40px">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Módulo&#160;&#160;·&#160;&#160;Radar</p>
+<h2 class="a" style="--i:1">Mira dónde está cada técnico</h2>
+</div>
+<div style="display:flex;gap:56px;align-items:flex-start">
+<div class="list" style="width:500px;gap:30px">
+<div class="a" style="border-top:2px solid #0b1020;padding-top:18px;--i:2"><h3>Su estado, en vivo</h3><p class="tx" style="margin-top:8px">Libre, en camino, en servicio o sin señal.</p></div>
+<div class="a" style="border-top:1px solid #c9cec0;padding-top:18px;--i:3"><h3>Asigna al más cercano</h3><p class="tx" style="margin-top:8px">Mandas al técnico que llega más rápido.</p></div>
+<div class="a" style="border-top:1px solid #c9cec0;padding-top:18px;--i:4"><h3>Sin llamar a nadie</h3><p class="tx" style="margin-top:8px">Ya no preguntas por teléfono dónde va.</p></div>
+</div>
+<img class="shot a" src="/cotizaciones/proveedoresauxilia/img/radar-tecnicos.webp" alt="Radar de Wip con los técnicos en el mapa y su estado" style="width:1108px;height:544px;object-fit:cover;--i:3">
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="novedades">
+<div class="head" style="margin-bottom:40px">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Módulo&#160;&#160;·&#160;&#160;Chat del servicio</p>
+<h2 class="a" style="--i:1">Novedades resueltas en el chat</h2>
+</div>
+<div style="display:flex;gap:64px;align-items:flex-start">
+<div class="list" style="width:600px;gap:26px">
+<div class="chk a" style="--i:2"><x-icon name="CheckCircle"></x-icon><p class="tx">Tu técnico reporta la novedad desde el servicio</p></div>
+<div class="chk a" style="--i:3"><x-icon name="CheckCircle"></x-icon><p class="tx">Pides la autorización a Auxilia ahí mismo</p></div>
+<div class="chk a" style="--i:4"><x-icon name="CheckCircle"></x-icon><p class="tx">Queda registro de quién autorizó qué y cuándo</p></div>
+<div class="chk a" style="--i:5"><x-icon name="CheckCircle"></x-icon><p class="tx">El usuario recibe avisos por WhatsApp: quién va y cuándo llega</p></div>
+</div>
+<div class="a" style="flex:1;background:#fbfcf8;border:1px solid #dde1d6;border-radius:28px;padding:32px;display:flex;flex-direction:column;gap:16px;box-shadow:0 24px 48px rgba(11,16,32,0.08);--i:3">
+<p class="sm" style="font-family:'JetBrains Mono',Consolas,monospace;font-weight:700;color:#0b1020;letter-spacing:2px">CHAT · GRÚA · URBANO · AUXILIA</p>
+<div style="background:#f2f4ee;border-radius:20px 20px 20px 6px;padding:16px 22px;width:760px"><p class="sm" style="color:#556b00;font-weight:700">Técnico · Grúa 04&#160;&#160;10:46</p><p class="sm" style="color:#0b1020">Llegué. El usuario pide llevar el carro a otro taller, son 8 km adicionales.</p></div>
+<div style="background:#0b1020;border-radius:20px 20px 6px 20px;padding:16px 22px;width:640px;align-self:flex-end"><p class="sm" style="color:#dbff57;font-weight:700">Base de operaciones&#160;&#160;10:47</p><p class="sm" style="color:#fbfcf8">Ya le pedimos la autorización a Auxilia.</p></div>
+<div style="display:flex;align-items:center;gap:14px;background:#dbff57;border-radius:16px;padding:14px 22px"><x-icon name="CheckCircle" style="width:32px;height:32px;color:#0b1020"></x-icon><p class="sm" style="color:#0b1020;font-weight:700">Autorización · 8 km adicionales · Aprobada por Auxilia · 10:52</p></div>
+<div style="background:#f2f4ee;border-radius:20px 20px 20px 6px;padding:16px 22px;width:640px"><p class="sm" style="color:#556b00;font-weight:700">Técnico · Grúa 04&#160;&#160;10:53</p><p class="sm" style="color:#0b1020">Listo, sigo al nuevo destino.</p></div>
+</div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="evidencias" class="white">
+<div class="head" style="margin-bottom:40px">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Módulo&#160;&#160;·&#160;&#160;Evidencias y trazabilidad</p>
+<h2 class="a" style="--i:1">Cada cierre, con sus pruebas</h2>
+</div>
+<div style="display:flex;gap:56px;align-items:flex-start">
+<img class="shot a" src="/cotizaciones/proveedoresauxilia/img/evidencia-principal.webp" alt="Foto de evidencia de un vehículo con sello de fecha y hora" style="width:560px;height:421px;object-fit:cover;--i:2">
+<div style="flex:1;display:flex;flex-direction:column;gap:36px">
+<p class="lead a" style="--i:3">Fotos con fecha, hora y ubicación, la firma del usuario y cada cambio de estado con su hora y su responsable. Todo queda en el servicio, listo para el visado.</p>
+<img class="shot a" src="/cotizaciones/proveedoresauxilia/img/trazabilidad.webp" alt="Trazabilidad del servicio: cada estado con fecha, hora y responsable" style="width:1048px;height:249px;object-fit:contain;--i:4">
+</div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="cobro">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Módulo&#160;&#160;·&#160;&#160;Del servicio al cobro</p>
+<h2 class="a" style="--i:1">Cierres listos para conciliar</h2>
+<p class="lead a" style="margin-top:28px;width:1400px;--i:2">Cuando el servicio cierra en Wip, ya tiene todo lo que se necesita para el visado.</p>
+</div>
+<div class="spacer"></div>
+<div class="g4">
+<div class="card a" style="--i:3"><x-icon name="CheckCircle" style="width:48px;height:48px;color:#556b00"></x-icon><h3>Conciliación</h3><p class="tx">Tus servicios de Auxilia con evidencias completas, listos para revisar.</p></div>
+<div class="card a" style="--i:4"><x-icon name="Settings" style="width:48px;height:48px;color:#556b00"></x-icon><h3>Tarifas</h3><p class="tx">Cada convenio con sus variables: km adicionales, recargos y tiempos.</p></div>
+<div class="card a" style="--i:5"><x-icon name="Book" style="width:48px;height:48px;color:#556b00"></x-icon><h3>Reportes</h3><p class="tx">Informes por cliente para armar tu cuenta de cobro.</p></div>
+<div class="card a" style="--i:6"><x-icon name="Clock" style="width:48px;height:48px;color:#556b00"></x-icon><h3>Tiempos</h3><p class="tx">Cuánto tardó cada etapa de cada servicio.</p></div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="modulos" class="dark">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Y además</p>
+<h2 class="a" style="--i:1">Todo lo que tienes en Wip</h2>
+</div>
+<div class="g4">
+<div class="card a" style="--i:2"><x-icon name="Globe" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Mapas</h3><p class="sm">Origen, destino y ruta de cada servicio.</p></div>
+<div class="card a" style="--i:2"><x-icon name="Chart" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Gráficas</h3><p class="sm">Los números de tu operación, al día.</p></div>
+<div class="card a" style="--i:3"><x-icon name="Chat" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Chats</h3><p class="sm">Con tu técnico, con Auxilia y con el usuario.</p></div>
+<div class="card a" style="--i:3"><x-icon name="Warning" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Novedades</h3><p class="sm">Cada imprevisto, registrado en el servicio.</p></div>
+<div class="card a" style="--i:4"><x-icon name="CheckCircle" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Conciliación</h3><p class="sm">Servicios listos para el visado.</p></div>
+<div class="card a" style="--i:4"><x-icon name="Clock" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Tiempos</h3><p class="sm">Cuánto toma cada etapa del servicio.</p></div>
+<div class="card a" style="--i:5"><x-icon name="Play" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Multimedia</h3><p class="sm">Fotos y archivos de cada servicio.</p></div>
+<div class="card a" style="--i:5"><x-icon name="Book" style="width:48px;height:48px;color:#dbff57"></x-icon><h3 style="color:#fbfcf8">Reportes</h3><p class="sm">Para tu operación y tu cuenta de cobro.</p></div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="wipia" class="white">
+<div style="display:flex;gap:72px;flex:1;align-items:center">
+<div style="flex:1;display:flex;flex-direction:column">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Inteligencia artificial</p>
+<h2 class="a" style="--i:1">La IA también trabaja contigo</h2>
+<div class="list" style="margin-top:44px;gap:22px">
+<div class="chk a" style="--i:2"><x-icon name="CheckCircle"></x-icon><p class="tx">Wip IA atiende novedades a cualquier hora, también de madrugada</p></div>
+<div class="chk a" style="--i:3"><x-icon name="CheckCircle"></x-icon><p class="tx">Te ayuda con las autorizaciones</p></div>
+<div class="chk a" style="--i:4"><x-icon name="CheckCircle"></x-icon><p class="tx">Avisa al usuario quién va y cuándo llega</p></div>
+</div>
+<div class="a" style="margin-top:44px;background:#0b1020;border-radius:24px;padding:28px 36px;display:flex;flex-direction:column;gap:8px;--i:5">
+<p class="num" style="color:#dbff57">30 de noviembre</p>
+<p class="tx" style="color:#fbfcf8">Llega Wipi, la IA que vive dentro de Wip: te ayuda a crear servicios, configurar y sacar informes.</p>
+</div>
+</div>
+<img class="a" src="/cotizaciones/proveedoresauxilia/img/wipis.gif" alt="Wipi, la IA de Wip, cambiando de rol" style="width:720px;height:480px;object-fit:contain;--i:3">
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="soporte">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;04&#160;&#160;Acompañamiento</p>
+<h2 class="a" style="--i:1">Nunca estás solo</h2>
+</div>
+<div class="g2">
+<div class="card a" style="--i:2"><p class="num">01</p><h3>Soporte</h3><p class="tx">Un equipo que te acompaña en la puesta en marcha y en el día a día de tu operación.</p></div>
+<div class="card a" style="--i:3"><p class="num">02</p><h3>Capacitación</h3><p class="tx">Te enseñamos a ti, a tu call y a tus técnicos a operar en Wip.</p></div>
+<div class="card a" style="--i:4"><p class="num">03</p><h3>Actualizaciones constantes</h3><p class="tx">Wip mejora todo el tiempo: las funciones nuevas llegan a tu plataforma sin instalar nada.</p></div>
+<div class="card a" style="--i:5"><p class="num">04</p><h3>Te escuchamos</h3><p class="tx">Tus ideas y comentarios llegan directo a nuestro equipo de producto.</p></div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="coconstruir" class="dark">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Cómo trabajamos</p>
+<div class="spacer"></div>
+<h1 class="a" style="--i:1">Nos gusta</h1>
+<h1 class="hl a" style="--i:2">construir contigo</h1>
+<p class="lead a" style="margin-top:44px;width:1400px;--i:3">Wip crece con lo que nos cuentan quienes la usan todos los días. Por eso te escuchamos constantemente: dinos qué necesita tu operación y lo construimos juntos.</p>
+<div class="spacer"></div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="beneficio" class="dark">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;05&#160;&#160;Beneficio exclusivo</p>
+<h2 class="a" style="--i:1">Por ser proveedor de Auxilia</h2>
+</div>
+<div class="spacer"></div>
+<div style="display:flex;gap:64px;align-items:center">
+<p class="a" style="font-family:'Archivo',Arial,sans-serif;font-size:220px;font-weight:900;line-height:1;letter-spacing:-4px;color:#dbff57;white-space:nowrap;--i:2">6 MESES</p>
+<div class="a" style="flex:1;display:flex;flex-direction:column;gap:16px;--i:3">
+<h3 style="color:#fbfcf8">de Wip para todas tus unidades de negocio</h3>
+<p class="tx">Desde que tomas la decisión. Sube toda tu operación: los servicios de tus otras aseguradoras, empresas de asistencia y particulares.</p>
+<p class="sm">Al terminar, sigues en Wip con nuestros planes para proveedores de asistencia.</p>
+</div>
+</div>
+<div class="spacer"></div>
+<div class="a" style="background:#dbff57;border-radius:28px;padding:36px 48px;display:flex;align-items:center;gap:48px;--i:4">
+<div style="display:flex;flex-direction:column;width:330px"><p class="num" style="color:#0b1020">Solo pagas</p><p style="font-family:'Archivo',Arial,sans-serif;font-size:72px;font-weight:900;line-height:1;color:#0b1020">USD 50</p></div>
+<p style="flex:1;font-size:36px;line-height:1.35;color:#0b1020">la mensualidad del plan Basic. <b>El resto es un beneficio que Wip te da.</b></p>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="beneficio-detalle" class="white">
+<div class="head">
+<p class="eye a"><span class="dot">●</span>&#160;&#160;Tu beneficio</p>
+<h2 class="a" style="--i:1">Así funciona</h2>
+</div>
+<div class="g3" style="flex:1">
+<div class="card a" style="gap:22px;--i:2">
+<p class="num">Lo que recibes</p>
+<div class="list" style="gap:18px">
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">6 meses de Wip para todas tus unidades de negocio, desde que tomas la decisión</p></div>
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">Toda tu operación en una sola plataforma</p></div>
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">La app para todos tus técnicos</p></div>
+<div class="chk"><x-icon name="CheckCircle"></x-icon><p class="tx">Al terminar, sigues en Wip con nuestros planes para proveedores de asistencia</p></div>
+</div>
+</div>
+<div class="card a" style="background:#0b1020;border:1px solid #0b1020;gap:16px;--i:3">
+<p class="num" style="color:#dbff57">Lo que pagas</p>
+<div class="spacer"></div>
+<p class="big" style="color:#dbff57;font-size:96px">USD 50</p>
+<p class="tx" style="color:#d5dbe7">al mes, la mensualidad del plan Basic.</p>
+<p class="tx" style="color:#fbfcf8;font-weight:600">El resto lo pone Wip.</p>
+</div>
+<div class="card a" style="gap:22px;--i:4">
+<p class="num">Cómo empezar</p>
+<div class="list" style="gap:18px">
+<div class="chk"><p class="num" style="width:44px;flex:none">01</p><p class="tx">Cuéntanos qué unidades de negocio quieres subir</p></div>
+<div class="chk"><p class="num" style="width:44px;flex:none">02</p><p class="tx">Te ayudamos a configurarlas en Wip</p></div>
+<div class="chk"><p class="num" style="width:44px;flex:none">03</p><p class="tx">Escríbenos por WhatsApp al +57 300 512 4111</p></div>
+</div>
+</div>
+</div>
+<div class="foot"><img src="/cotizaciones/proveedoresauxilia/img/wip-navy.png" alt="Wip"><p class="ft">Capacitación proveedores · Auxilia</p><p class="pg"></p></div>
+
+</section>
+<section id="bienvenida" class="dark">
+<div class="row a" style="align-items:center;gap:40px">
+<div style="background:#fbfcf8;border-radius:20px;padding:22px 32px;display:flex;align-items:center"><img src="/cotizaciones/proveedoresauxilia/img/auxilia.png" alt="Auxilia" style="width:300px;height:66px;object-fit:contain"></div>
+<img src="/cotizaciones/proveedoresauxilia/img/wip-lima.png" alt="Wip" style="width:180px;height:100px;object-fit:contain">
+</div>
+<div class="spacer"></div>
+<p class="eye a" style="--i:1"><span class="dot">●</span>&#160;&#160;Te damos la bienvenida a Wip</p>
+<h1 class="a" style="--i:2">Felices de</h1>
+<h1 class="hl a" style="--i:3">operar contigo</h1>
+<p class="lead a" style="margin-top:36px;width:1300px;--i:4">Muy pronto recibirás los accesos para tu equipo. ¿Preguntas? Estamos aquí.</p>
+<div class="row a" style="margin-top:40px;gap:20px;--i:5">
+<p class="sm" style="border:1px solid #3a4466;border-radius:999px;padding:10px 28px;color:#fbfcf8">wiptool.com</p>
+<p class="sm" style="border:1px solid #3a4466;border-radius:999px;padding:10px 28px;color:#fbfcf8">comercial@wiptool.com</p>
+<p class="sm" style="background:#dbff57;border-radius:999px;padding:10px 28px;color:#0b1020;font-weight:700">WhatsApp +57 300 512 4111</p>
+</div>
+
+</section>
+</div></div>
+<div id="bar"><button id="prev" aria-label="Diapositiva anterior">&larr;</button><span id="num"></span><button id="next" aria-label="Diapositiva siguiente">&rarr;</button><button id="full" aria-label="Pantalla completa">&#x26F6;</button></div>
+<script>
+(function(){
+var P={
+CheckCircle:'<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+Globe:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+Users:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+Settings:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>',
+Book:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>',
+Clock:'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+Chart:'<path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/>',
+Chat:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>',
+Warning:'<path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+Play:'<circle cx="12" cy="12" r="10"/><path d="m10 8 6 4-6 4z"/>'};
+document.querySelectorAll('x-icon').forEach(function(e){e.setAttribute('aria-hidden','true');e.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'+(P[e.getAttribute('name')]||'')+'</svg>';});
+
+var S=[].slice.call(document.querySelectorAll('#stage > section')),i=0,st=document.getElementById('stage'),vp=document.getElementById('vp');
+S.forEach(function(s,k){var p=s.querySelector('.pg');if(p)p.setAttribute('data-n',k+1);});
+function fit(){var w=vp.clientWidth,h=vp.clientHeight;st.style.transform='scale('+Math.min(w/1920,h/1080)+')';}
+function go(n){i=Math.max(0,Math.min(S.length-1,n));S.forEach(function(s,k){s.classList.toggle('on',k===i);});document.getElementById('num').textContent=(i+1)+' / '+S.length;history.replaceState(null,'','#'+(i+1));}
+document.getElementById('prev').onclick=function(){go(i-1)};
+document.getElementById('next').onclick=function(){go(i+1)};
+document.getElementById('full').onclick=function(){if(document.fullscreenElement)document.exitFullscreen();else document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen();};
+document.addEventListener('keydown',function(e){if(['ArrowRight','PageDown',' '].indexOf(e.key)>-1){e.preventDefault();go(i+1)}else if(['ArrowLeft','PageUp'].indexOf(e.key)>-1){e.preventDefault();go(i-1)}else if(e.key==='Home')go(0);else if(e.key==='End')go(S.length-1);});
+vp.addEventListener('click',function(e){var r=vp.getBoundingClientRect();go(e.clientX-r.left<r.width/3?i-1:i+1);});
+var x0=null;vp.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+vp.addEventListener('touchend',function(e){if(x0===null)return;var d=e.changedTouches[0].clientX-x0;if(Math.abs(d)>40)go(d<0?i+1:i-1);x0=null;});
+window.addEventListener('resize',fit);window.addEventListener('hashchange',function(){var n=(parseInt(location.hash.slice(1),10)||1)-1;if(n!==i)go(n);});fit();
+go((parseInt(location.hash.slice(1),10)||1)-1);
+})();
+</script>
+</body>
+</html>
