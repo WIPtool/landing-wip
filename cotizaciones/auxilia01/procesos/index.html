@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WIP · Mejorar procesos Auxilia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#171A24;
+    --ink-2:#232838;
+    --bg:#F4F5F7;
+    --grid:rgba(23,26,36,0.045);
+    --lime:#C6F84B;
+    --green:#1FA85B;
+    --green-bg:#E7F8ED;
+    --muted:#6B7280;
+    --muted-2:#9BA1AE;
+    --line:#E8EAEF;
+    --card:#FFFFFF;
+    --red:#F0664E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#E4E6EB;font-family:'Archivo',-apple-system,'Helvetica Neue',Arial,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased}
+  .deck{max-width:980px;margin:0 auto;padding:30px 20px 56px}
+  .slide{
+    position:relative;width:100%;aspect-ratio:16/9;background:var(--bg);
+    border-radius:18px;overflow:hidden;margin-bottom:28px;
+    box-shadow:0 18px 50px -20px rgba(23,26,36,.28);
+    container-type:inline-size;
+  }
+  .gridbg{position:absolute;inset:0;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:4.6cqw 4.6cqw;pointer-events:none}
+  .pad{position:relative;height:100%;padding:5.2cqw 5.6cqw;display:flex;flex-direction:column}
+  .hdr{position:absolute;top:3.2cqw;right:5.6cqw;font-size:1.23cqw;color:var(--muted-2);font-weight:500;letter-spacing:.01em;z-index:3}
+  .hdr b{color:var(--ink);font-weight:800}
+  .asist{display:inline-block;background:var(--lime);color:var(--ink);font-weight:800;font-size:1.15cqw;letter-spacing:.02em;padding:.28cqw 1cqw;border-radius:100px;margin-left:.4cqw;vertical-align:middle}
+  .wlogo{display:inline-block;height:1.9cqw;width:3.21cqw;vertical-align:-0.4cqw;margin-right:.25cqw;background:url("/img/img-0af97668.png") no-repeat left center;background-size:contain}
+  .pg{position:absolute;bottom:3.2cqw;right:5.6cqw;font-size:1.1cqw;color:var(--muted-2);font-weight:600;z-index:3}
+
+  .badge{display:inline-flex;align-items:center;background:var(--lime);color:var(--ink);
+    font-size:1.01cqw;font-weight:800;letter-spacing:.09em;text-transform:uppercase;
+    padding:.75cqw 1.5cqw;border-radius:100px;align-self:flex-start}
+  .badge.dark{background:var(--ink);color:var(--lime)}
+
+  h1.d{font-weight:900;line-height:.9;letter-spacing:-.032em;color:var(--ink)}
+  .d-xl{font-size:6.16cqw}
+  .d-lg{font-size:4.75cqw}
+  .sub{font-size:1.67cqw;line-height:1.42;color:var(--muted);font-weight:400;max-width:42cqw}
+  .lead{font-size:1.8cqw;line-height:1.4;color:var(--muted);font-weight:400}
+
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:4cqw;align-items:center;flex:1;min-height:0}
+  .split.wide-l{grid-template-columns:1.05fr .95fr}
+  .col{min-width:0}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:1.6cqw;
+    box-shadow:0 10cqw 22cqw -14cqw rgba(23,26,36,.35)}
+  .soft-card{background:var(--card);border:1px solid var(--line);border-radius:1.4cqw;padding:2.4cqw}
+
+  .pills{display:flex;flex-wrap:wrap;gap:1cqw}
+  .pill{display:inline-flex;align-items:center;gap:.7cqw;background:var(--card);border:1px solid var(--line);
+    border-radius:100px;padding:.85cqw 1.5cqw;font-size:1.28cqw;font-weight:600;color:var(--ink)}
+  .dot{width:.9cqw;height:.9cqw;border-radius:100px;background:var(--green);flex:none}
+  .dot.lime{background:var(--lime)} .dot.red{background:var(--red)} .dot.ink{background:var(--ink)}
+
+  .chk{display:flex;gap:1.2cqw;align-items:flex-start;margin-top:1.6cqw}
+  .chk .ic{flex:none;width:2.1cqw;height:2.1cqw;border-radius:100px;background:var(--green-bg);color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-size:1.1cqw;font-weight:900;margin-top:.15cqw}
+  .chk .tx{font-size:1.41cqw;line-height:1.32}
+  .chk .tx b{font-weight:800}
+  .chk .tx span{color:var(--muted);font-weight:400}
+
+  .stat-num{font-size:4.05cqw;font-weight:900;letter-spacing:-.03em;line-height:1}
+  .stat-lb{font-size:1.19cqw;color:var(--muted);font-weight:500;margin-top:.5cqw;line-height:1.3}
+
+  .btag{display:inline-flex;align-items:center;gap:.7cqw;font-size:1.32cqw;font-weight:700;padding:1cqw 2cqw;border-radius:100px}
+  .btag.lime{background:var(--lime);color:var(--ink)}
+  .btag.line{background:var(--card);border:1px solid var(--line);color:var(--ink)}
+
+  /* browser mockup */
+  .browser{background:var(--card);border:1px solid var(--line);border-radius:1.5cqw;overflow:hidden;
+    box-shadow:0 12cqw 26cqw -14cqw rgba(23,26,36,.4)}
+  .bbar{display:flex;align-items:center;gap:1cqw;padding:1.4cqw 1.6cqw;border-bottom:1px solid var(--line)}
+  .tl{display:flex;gap:.6cqw}.tl i{width:1cqw;height:1cqw;border-radius:100px;display:block}
+  .tl i:nth-child(1){background:#F0664E}.tl i:nth-child(2){background:#F4B740}.tl i:nth-child(3){background:#2BC24A}
+  .url{flex:1;background:var(--bg);border-radius:100px;padding:.8cqw 1.4cqw;font-size:1.1cqw;color:var(--muted);display:flex;align-items:center;gap:.6cqw}
+  .live{display:inline-flex;align-items:center;gap:.6cqw;background:var(--ink);color:#fff;font-size:1.06cqw;font-weight:700;padding:.65cqw 1.2cqw;border-radius:100px}
+  .live::before{content:"";width:.8cqw;height:.8cqw;border-radius:100px;background:var(--lime)}
+
+  .eyebrow{font-size:1.14cqw;font-weight:700;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
+
+  .prow{display:flex;align-items:center;gap:1.3cqw;padding:1.5cqw 0;border-top:1px solid var(--line)}
+  .av{width:3.2cqw;height:3.2cqw;border-radius:100px;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1cqw;font-weight:800;flex:none}
+  .pname{font-size:1.41cqw;font-weight:800;line-height:1.1}
+  .pcity{font-size:1.1cqw;color:var(--muted-2);font-weight:500}
+  .pct{color:var(--green);font-weight:800;font-size:1.5cqw}
+
+  .barrow{display:flex;align-items:center;gap:1.4cqw;padding:1.35cqw 0;border-top:1px solid var(--line)}
+  .barrow .nm{width:11cqw;font-size:1.36cqw;font-weight:700}
+  .track{flex:1;height:1.1cqw;background:var(--bg);border-radius:100px;overflow:hidden}
+  .fill{height:100%;background:var(--ink);border-radius:100px}
+  .barrow .vl{width:5cqw;text-align:right;font-size:1.36cqw;font-weight:800}
+
+  .unit-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1.4cqw;margin-top:auto}
+  .unit{background:var(--card);border:1px solid var(--line);border-radius:1.3cqw;padding:1.8cqw 1.5cqw}
+  .unit .un{font-size:1.5cqw;font-weight:800;margin-bottom:.6cqw}
+  .unit .ud{font-size:1.06cqw;color:var(--muted);line-height:1.35}
+  .unit .uc{margin-top:1.3cqw;font-size:1.19cqw;font-weight:800;color:var(--ink)}
+  .unit.plus{background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center}
+  .unit.plus .un{color:var(--lime);font-size:1.36cqw;margin:0}
+  .unit.known{background:var(--lime);border-color:transparent}
+  .unit.known .ud{color:rgba(23,26,36,.72)}
+
+  .tri{display:grid;grid-template-columns:repeat(3,1fr);gap:2cqw;flex:1;align-content:center}
+  .tri .soft-card{padding:2.6cqw 2.2cqw;display:flex;flex-direction:column}
+  .tag{display:inline-flex;align-self:flex-start;font-size:0.968cqw;font-weight:800;letter-spacing:.05em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:100px;margin-bottom:1.4cqw}
+  .tag.ok{background:var(--green-bg);color:var(--green)}
+  .tag.dev{background:#FFF3E0;color:#C97A16}
+  .tag.route{background:#EEF0FF;color:#5560D6}
+  .tag.now{background:var(--lime);color:var(--ink)}
+  .icard-t{font-size:1.76cqw;font-weight:800;line-height:1.1;margin-bottom:.9cqw}
+  .icard-d{font-size:1.28cqw;color:var(--muted);line-height:1.4}
+
+  .flow{display:flex;align-items:stretch;gap:1cqw;margin-top:2cqw}
+  .fstep{flex:1;background:var(--card);border:1px solid var(--line);border-radius:1.2cqw;padding:1.8cqw 1.4cqw}
+  .fstep .fn{width:2.6cqw;height:2.6cqw;border-radius:100px;background:var(--ink);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:1.23cqw;font-weight:900;margin-bottom:1.1cqw}
+  .fstep .ft{font-size:1.36cqw;font-weight:800;margin-bottom:.4cqw}
+  .fstep .fd{font-size:1.06cqw;color:var(--muted);line-height:1.35}
+  .arrow{align-self:center;color:var(--muted-2);font-size:1.58cqw;font-weight:900}
+
+  .note{font-size:1.14cqw;color:var(--muted);line-height:1.45;margin-top:2cqw;padding-top:1.6cqw;border-top:1px solid var(--line)}
+  .note b{color:var(--ink);font-weight:800}
+
+  /* radar */
+  .radar{position:relative;height:100%;background:var(--card) url("/img/radar-map-2d4a9e02.jpg") center/cover no-repeat;border:1px solid var(--line);border-radius:1.6cqw;overflow:hidden}
+  .radar .rgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(23,26,36,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,26,36,.05) 1px,transparent 1px);background-size:6cqw 6cqw}
+  .rpin{position:absolute;display:flex;flex-direction:column;align-items:center;transform:translate(-50%,-50%)}
+  .rpin i{width:3cqw;height:3cqw;border-radius:100px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.06cqw;font-weight:800;box-shadow:0 3cqw 8cqw -3cqw rgba(0,0,0,.5)}
+  .rpin.g i{background:var(--green)} .rpin.r i{background:var(--red)} .rpin.k i{background:var(--ink)} .rpin.l i{background:var(--lime);color:var(--ink)}
+  .rchip{position:absolute;top:2.4cqw;right:2.4cqw;background:var(--card);border:1px solid var(--line);border-radius:1cqw;display:flex;gap:1.8cqw;padding:1.2cqw 1.8cqw;box-shadow:0 6cqw 16cqw -8cqw rgba(0,0,0,.3)}
+  .rchip div{text-align:center}
+  .rchip .n{font-size:1.76cqw;font-weight:900;line-height:1}
+  .rchip .n.r{color:var(--red)} .rchip .l{font-size:0.88cqw;color:var(--muted);font-weight:700;letter-spacing:.05em;margin-top:.3cqw}
+  .rlive{position:absolute;top:2.4cqw;left:2.4cqw}
+
+  /* whatsapp */
+  .wa{background:#EDE4DB;border-radius:1.8cqw;overflow:hidden;box-shadow:0 12cqw 26cqw -14cqw rgba(23,26,36,.4)}
+  .wa-h{background:#0E5A45;color:#fff;padding:1.8cqw;display:flex;align-items:center;gap:1.2cqw}
+  .wa-h .wl{width:3cqw;height:3cqw;border-radius:100px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:1.32cqw}
+  .wa-h b{font-size:1.41cqw;font-weight:800}.wa-h small{display:block;font-size:1.01cqw;opacity:.8;font-weight:400}
+  .wa-b{padding:1.8cqw;display:flex;flex-direction:column;gap:1.3cqw}
+  .bub{background:#fff;border-radius:1.2cqw;padding:1.3cqw 1.5cqw;font-size:1.23cqw;line-height:1.35;max-width:82%;box-shadow:0 2cqw 6cqw -4cqw rgba(0,0,0,.2)}
+  .bub.me{background:#DCF8C6;align-self:flex-end}
+  .bub b{font-weight:800}
+  .bub .eta{margin-top:.9cqw;padding-top:.9cqw;border-top:1px solid #eee;font-size:1.1cqw;color:var(--muted)}
+  .bub .eta b{color:var(--ink)}
+  .stars{color:#F4B740}
+
+  /* timeline */
+  .steps{display:flex;gap:1.2cqw;flex:1;align-items:stretch;margin-top:1cqw}
+  .step{flex:1;background:var(--card);border:1px solid var(--line);border-radius:1.3cqw;padding:2cqw 1.6cqw;display:flex;flex-direction:column}
+  .step .sn{width:2.8cqw;height:2.8cqw;border-radius:100px;background:var(--ink);color:var(--lime);display:flex;align-items:center;justify-content:center;font-size:1.32cqw;font-weight:900;margin-bottom:1.3cqw}
+  .step .sw{font-size:1.01cqw;font-weight:800;color:var(--green);letter-spacing:.04em;text-transform:uppercase;margin-bottom:.5cqw}
+  .step .st{font-size:1.54cqw;font-weight:800;line-height:1.05;margin-bottom:.7cqw}
+  .step .sd{font-size:1.1cqw;color:var(--muted);line-height:1.35}
+
+  /* cronograma con fechas: una columna por día hábil, con un respiro entre semanas */
+  .gantt{display:grid;grid-template-columns:25cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(5,1fr) .8cqw repeat(3,1fr) .8cqw 5cqw;column-gap:.3cqw;row-gap:.75cqw;align-items:center;margin-top:1.1cqw}
+  .gantt .gw{font-size:.86cqw;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);padding-bottom:.4cqw;border-bottom:1px solid var(--line);white-space:nowrap}
+  .gantt .gw.go{color:var(--ink);border-bottom-color:var(--ink)}
+  .gantt .gm{font-size:1.08cqw;font-weight:800;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
+  .gantt .gd{position:relative;text-align:center;background:var(--card);border:1px solid var(--line);border-radius:.6cqw;padding:.45cqw 0}
+  .gantt .gd span{display:block;font-size:.72cqw;font-weight:700;color:var(--muted-2);text-transform:uppercase}
+  .gantt .gd b{display:block;font-size:1.22cqw;font-weight:900;line-height:1.05}
+  .gantt .gd.go{background:var(--ink);border-color:var(--ink);color:#fff}
+  .gantt .gd.go span{color:var(--lime)}
+  .gantt .gd i{position:absolute;top:-1.25cqw;right:-.9cqw;font-size:1.35cqw;font-style:normal;line-height:1}
+  .gantt .gl,.gantt .gm{grid-column:1}
+  .gantt .gl .t{font-size:1.3cqw;font-weight:800;line-height:1.1}
+  .gantt .gl .d{font-size:.98cqw;color:var(--muted);line-height:1.3;margin-top:.25cqw}
+  .gantt .gb{height:2.9cqw;border-radius:100px;background:var(--lime);color:var(--ink);display:flex;align-items:center;justify-content:space-between;gap:.6cqw;padding:0 1cqw;font-size:1cqw;font-weight:800;white-space:nowrap}
+  .gantt .gb small{font-size:.86cqw;font-weight:700;color:rgba(23,26,36,.62)}
+  .gantt .gb.pr{background:var(--card);box-shadow:inset 0 0 0 2px var(--ink)}
+  .gantt .gb.vv{justify-content:center;padding:0}
+  .gantt .gd.nx{border-style:dashed}
+  .gantt .gb.go{background:none;justify-content:center;padding:0;font-size:1.9cqw;overflow:visible}
+  .gantt .gf{font-size:1.2cqw;font-weight:900;white-space:nowrap;padding-left:.5cqw}
+
+  /* investment */
+  .plan{background:var(--card);border:1px solid var(--line);border-radius:1.6cqw;padding:2.6cqw;display:flex;flex-direction:column}
+  .plan.hi{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .plan .pe{font-size:1.06cqw;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2)}
+  .plan.hi .pe{color:var(--lime)}
+  .plan .pv{font-size:3.17cqw;font-weight:900;letter-spacing:-.03em;line-height:1;margin:.8cqw 0 .3cqw}
+  .plan .pp{font-size:1.32cqw;font-weight:700;color:var(--muted)}
+  .plan.hi .pp{color:#B9BECC}
+  .plan .pl{list-style:none;margin-top:1.8cqw;display:flex;flex-direction:column;gap:1cqw}
+  .plan .pl li{font-size:1.23cqw;display:flex;gap:.9cqw;align-items:flex-start;line-height:1.3}
+  .plan .pl li::before{content:"✓";color:var(--green);font-weight:900;font-size:1.23cqw}
+  .plan.hi .pl li::before{color:var(--lime)}
+
+  .ptbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--card);border:1px solid var(--line);border-radius:1.3cqw;overflow:hidden;margin-top:.4cqw}
+  .ptbl th{font-size:0.9cqw;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2);text-align:right;padding:0.85cqw 1.8cqw}
+  .ptbl th:first-child{text-align:left}
+  .ptbl td{font-size:1.5cqw;font-weight:800;text-align:right;padding:0.78cqw 1.8cqw;border-top:1px solid var(--line)}
+  .ptbl td:first-child{text-align:left}
+  .ptbl td.u{color:var(--muted);font-weight:700}
+  .ptbl tr.au td{background:#F3FBDB}
+  .ptbl .pmark{display:inline-block;font-size:0.85cqw;font-weight:800;letter-spacing:.03em;text-transform:uppercase;padding:.35cqw 1cqw;border-radius:100px;background:var(--ink);color:var(--lime)}
+  .ptbl td.mk{text-align:right;padding-right:1.6cqw}
+  .grow-strip{margin-top:1.2cqw;background:var(--ink);color:#fff;border-radius:1.2cqw;padding:1.2cqw 1.8cqw;display:flex;align-items:center;gap:1.4cqw}
+  .grow-strip .k{flex:none;background:var(--lime);color:var(--ink);font-weight:800;font-size:1cqw;letter-spacing:.04em;text-transform:uppercase;padding:.5cqw 1.1cqw;border-radius:100px}
+  .grow-strip .t{font-size:1.2cqw;color:#E4E7EE;line-height:1.35}
+  .grow-strip .t b{color:#fff}
+  .setup-card{margin-top:1.2cqw;display:flex;align-items:center;gap:1.6cqw;background:var(--card);border:1px solid var(--line);border-left:0.4cqw solid var(--lime);border-radius:1.2cqw;padding:1.3cqw 1.9cqw}
+  .setup-card .l{flex:1}
+  .setup-card .opt{display:inline-block;font-size:0.82cqw;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);background:var(--bg);border:1px solid var(--line);padding:.32cqw 1cqw;border-radius:100px;margin-bottom:.55cqw}
+  .setup-card .st{font-size:1.55cqw;font-weight:800;line-height:1.1}
+  .setup-card .sd{font-size:1.12cqw;color:var(--muted);line-height:1.35;margin-top:.3cqw}
+  .setup-card .sp{flex:none;font-size:2.5cqw;font-weight:900;letter-spacing:-.02em;text-align:right;line-height:1}
+  .setup-card .sp small{display:block;font-size:0.9cqw;font-weight:700;color:var(--muted-2);letter-spacing:.04em;text-transform:uppercase;margin-top:.4cqw}
+  .tbl-cap{font-size:1.12cqw;color:var(--muted);line-height:1.4;margin-top:.9cqw}
+  .tbl-cap b{color:var(--ink);font-weight:800}
+  .inv-row{display:flex;gap:1.6cqw;margin-top:1.4cqw}
+  .inv-card{flex:1;background:var(--card);border:1px solid var(--line);border-radius:1.3cqw;padding:1.0cqw 1.7cqw;display:flex;flex-direction:column}
+  .inv-card.dark{background:var(--ink);border-color:var(--ink)}
+  .inv-card .e{font-size:0.92cqw;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2)}
+  .inv-card.dark .e{color:var(--lime)}
+  .inv-card .big{font-size:2.15cqw;font-weight:900;letter-spacing:-.02em;margin:.3cqw 0;line-height:1}
+  .inv-card.dark .big{color:var(--lime)}
+  .inv-card .d{font-size:1.12cqw;color:var(--muted);line-height:1.38}
+  .inv-card.dark .d{color:#C7CCD6}
+
+  .nums-inline{display:flex;gap:4cqw}
+  .clients{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw;margin-top:auto}
+  .clogo{background:var(--card);border:1px solid var(--line);border-radius:1.3cqw;height:8.6cqw;display:flex;align-items:center;justify-content:center;font-size:1.76cqw;font-weight:800;color:#B4B9C4;letter-spacing:.02em}
+  .clogo.mk{background:#0B7A3B;color:#fff}
+  .clogo img{max-width:78%;max-height:60%;object-fit:contain;display:block}
+  .flags-wrap{margin:.2cqw 0 1.4cqw;text-align:center}
+  .flags{display:flex;gap:.9cqw;align-items:center;justify-content:center;flex-wrap:nowrap}
+  .flags img{width:3cqw;height:3cqw;border-radius:50%;object-fit:cover;box-shadow:0 0 0 1px rgba(23,26,36,.10);display:block}
+  .flags-cap{font-size:.98cqw;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-top:.85cqw}
+  .contact{margin-top:1.3cqw;background:var(--ink);border-radius:1.2cqw;padding:1.1cqw 2cqw;display:flex;align-items:center;justify-content:space-between;gap:1.2cqw}
+  .contact .ci{display:flex;flex-direction:column;min-width:0}
+  .contact .ci .cl{font-size:.76cqw;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--lime);margin-bottom:.18cqw}
+  .contact .ci .cv{font-size:1.26cqw;font-weight:700;color:#fff;white-space:nowrap}
+  .contact .sep{width:1px;height:2.6cqw;background:rgba(255,255,255,.14);flex:none}
+
+  .darkcard{background:var(--ink);color:#fff;border-radius:1.8cqw;padding:3cqw}
+  .darkcard .badge{margin-bottom:1.6cqw}
+  .darkcard h2{font-size:3.17cqw;font-weight:900;line-height:.98;letter-spacing:-.02em;margin-bottom:1.2cqw}
+  .darkcard p{font-size:1.36cqw;color:#B9BECC;line-height:1.4}
+
+  @media print{
+    @page{size:landscape;margin:0}
+    html,body{background:#fff}
+    .deck{max-width:none;margin:0;padding:0}
+    .slide{border-radius:0;box-shadow:none;margin:0;page-break-after:always;break-after:page;width:100vw;height:100vh;aspect-ratio:auto}
+  }
+
+  /* ===== Mejorar procesos Auxilia ===== */
+  .tag.done{background:var(--green-bg);color:var(--green)}
+  .tag.w1{background:var(--lime);color:var(--ink)}
+  .tag.w2{background:#EEF0FF;color:#5560D6}
+  .tag.w3{background:#FFF3E0;color:#C97A16}
+  .tag.moved{background:var(--card);color:var(--muted);border:1px dashed #C7CCD6}
+  .itm-n{font-size:1.14cqw;font-weight:800;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
+  .tags{display:flex;gap:.8cqw;flex-wrap:wrap;margin:1.4cqw 0 0}
+  .tags .tag{margin:0}
+  h1.d.d-md{font-size:3.7cqw;line-height:.96}
+  .diff{display:flex;align-items:center;gap:1cqw;margin-top:1.8cqw}
+  .diff .lb{font-size:1.02cqw;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted-2)}
+  .diff .bars{display:flex;gap:.4cqw}
+  .diff .bars i{display:block;width:2.6cqw;height:.9cqw;border-radius:100px;background:#DADDE3}
+  .diff .bars i.on{background:var(--ink)}
+  .diff .vl{font-size:1.2cqw;font-weight:800}
+  .box{background:var(--card);border:1px solid var(--line);border-radius:1.2cqw;padding:1.3cqw 1.7cqw;margin-top:1.2cqw}
+  .box .k{font-size:.92cqw;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted-2);margin-bottom:.45cqw}
+  .box p{font-size:1.24cqw;line-height:1.4;color:var(--ink)}
+  .box p span{color:var(--muted)}
+
+  /* maquetas de la plataforma */
+  .ui{padding:2cqw 2.2cqw}
+  .ui .eyebrow{margin-bottom:.4cqw}
+  .ui .ttl{font-size:1.67cqw;font-weight:900;margin-bottom:1.4cqw}
+  .fld{display:flex;flex-direction:column;gap:.45cqw;margin-bottom:1.1cqw}
+  .fld label{font-size:1cqw;font-weight:700;color:var(--muted)}
+  .inp{background:var(--bg);border:1px solid var(--line);border-radius:.8cqw;padding:1cqw 1.3cqw;font-size:1.23cqw;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:1cqw}
+  .inp.ok{border-color:var(--green);background:#F4FCF7}
+  .inp.bad{border-color:var(--red);background:#FFF4F2}
+  .msg{font-size:1cqw;font-weight:700}
+  .msg.ok{color:var(--green)} .msg.bad{color:var(--red)}
+  .row{display:flex;align-items:center;gap:1.1cqw;padding:1.05cqw 0;border-top:1px solid var(--line);font-size:1.2cqw}
+  .row:first-child{border-top:0}
+  .row .nm{flex:1;font-weight:700;min-width:0}
+  .row .nm small{display:block;font-size:.98cqw;color:var(--muted-2);font-weight:500}
+  .chip{display:inline-flex;align-items:center;gap:.4cqw;font-size:.95cqw;font-weight:800;padding:.4cqw .9cqw;border-radius:100px;background:var(--bg);color:var(--muted);white-space:nowrap}
+  .chip.g{background:var(--green-bg);color:var(--green)} .chip.k{background:var(--ink);color:var(--lime)} .chip.l{background:var(--lime);color:var(--ink)} .chip.r{background:#FFF0ED;color:var(--red)}
+  .tgl{width:3cqw;height:1.7cqw;border-radius:100px;background:#DADDE3;position:relative;flex:none}
+  .tgl::after{content:"";position:absolute;top:.25cqw;left:.25cqw;width:1.2cqw;height:1.2cqw;border-radius:100px;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .tgl.on{background:var(--green)} .tgl.on::after{left:1.55cqw}
+  .ptab{display:flex;gap:.6cqw;margin-bottom:1.2cqw;flex-wrap:wrap}
+  .ptab span{font-size:1.02cqw;font-weight:800;padding:.6cqw 1.2cqw;border-radius:100px;background:var(--bg);color:var(--muted)}
+  .ptab span.on{background:var(--ink);color:#fff}
+  .mtx{width:100%;border-collapse:collapse;font-size:1.15cqw}
+  .mtx th{font-size:.9cqw;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted-2);text-align:center;padding:.7cqw .6cqw;border-bottom:1px solid var(--line)}
+  .mtx th:first-child,.mtx td:first-child{text-align:left}
+  .mtx td{padding:.8cqw .6cqw;border-bottom:1px solid var(--line);text-align:center;font-weight:600}
+  .mtx td.y{color:var(--green);font-weight:900} .mtx td.n{color:var(--muted-2);font-weight:900}
+  .mtx tr:last-child td{border-bottom:0}
+  .shot{display:block;width:100%;height:auto}
+
+  /* íconos de canal del proveedor */
+  .pic{display:inline-flex;align-items:center;justify-content:center;width:2.3cqw;height:2.3cqw;border-radius:100px;font-size:.9cqw;font-weight:900;flex:none}
+  .pic svg{width:1.3cqw;height:1.3cqw}
+  .pic.off{background:#EEF0F3;color:#8A90A0}
+  .pic.nowa{background:#FFF0ED;color:var(--red)}
+  .pic.wa{background:#E3F7EA;color:#1FA85B}
+  .pic.wip{background:var(--ink);color:var(--lime);font-size:.76cqw;letter-spacing:-.02em}
+  .pics{display:flex;gap:.3cqw}
+  .legend{display:grid;grid-template-columns:1fr 1fr;gap:1cqw 1.6cqw;margin-top:1.5cqw}
+  .legend div{display:flex;align-items:center;gap:.9cqw;font-size:1.1cqw;line-height:1.25}
+  .legend b{font-weight:800}
+  .legend span{color:var(--muted)}
+
+  /* chat interno */
+  .chat{background:var(--card);border:1px solid var(--line);border-radius:1.5cqw;overflow:hidden;box-shadow:0 12cqw 26cqw -14cqw rgba(23,26,36,.4)}
+  .chat-h{display:flex;align-items:center;justify-content:space-between;padding:1.3cqw 1.8cqw;border-bottom:1px solid var(--line)}
+  .chat-h b{font-size:1.36cqw;font-weight:900}
+  .chat-b{padding:1.6cqw 1.8cqw;display:flex;flex-direction:column;gap:1.1cqw;background:var(--bg)}
+  .cm{display:flex;gap:.9cqw;align-items:flex-start}
+  .cm .av{width:2.6cqw;height:2.6cqw;font-size:.9cqw}
+  .cm .bb{background:#fff;border:1px solid var(--line);border-radius:1cqw;padding:.9cqw 1.2cqw;font-size:1.13cqw;line-height:1.35;max-width:85%}
+  .cm .bb small{display:block;font-size:.88cqw;color:var(--muted-2);font-weight:700;margin-bottom:.2cqw}
+  .cm.me{flex-direction:row-reverse}
+  .cm.me .bb{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .cm.me .bb small{color:var(--lime)}
+  .ment{background:var(--lime);color:var(--ink);font-weight:800;border-radius:.4cqw;padding:0 .3cqw}
+  .lbl{display:inline-block;font-size:.82cqw;font-weight:800;padding:.2cqw .7cqw;border-radius:100px;margin-left:.4cqw;vertical-align:middle}
+  .lbl.u{background:#FFF0ED;color:var(--red)} .lbl.f{background:#EEF0FF;color:#5560D6} .lbl.o{background:var(--green-bg);color:var(--green)}
+  .chat-in{display:flex;align-items:center;gap:1cqw;padding:1.1cqw 1.8cqw;border-top:1px solid var(--line);font-size:1.1cqw;color:var(--muted-2)}
+  .chat-in .inp{flex:1;padding:.8cqw 1.2cqw;font-size:1.1cqw}
+
+  /* resumen */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4cqw;margin-top:1.4cqw}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:1.3cqw;padding:1.2cqw 1.6cqw}
+  .kpi.dk{background:var(--ink);border-color:var(--ink);color:#fff}
+  .kpi .n{font-size:3.8cqw;font-weight:900;letter-spacing:-.03em;line-height:1}
+  .kpi.dk .n{color:var(--lime)}
+  .kpi .l{font-size:1.12cqw;color:var(--muted);font-weight:600;margin-top:.6cqw;line-height:1.3}
+  .kpi.dk .l{color:#C7CCD6}
+  .idx{display:grid;grid-template-columns:1fr 1fr;gap:0 3cqw;margin-top:1.2cqw}
+  .idx div{display:flex;align-items:center;gap:1cqw;padding:.55cqw 0;border-top:1px solid var(--line);font-size:1.15cqw;font-weight:700}
+  .idx div em{font-style:normal;color:var(--muted-2);font-weight:800;width:2.2cqw;flex:none}
+  .idx div .tag{margin:0 0 0 auto;font-size:.8cqw;padding:.35cqw .9cqw;flex:none}
+
+  /* cronograma por semanas */
+  .wk{display:grid;grid-template-columns:25cqw repeat(5,1fr);column-gap:.5cqw;row-gap:.42cqw;align-items:center;margin-top:1.3cqw}
+  .wk .wh{text-align:center;padding:.55cqw 0;border-radius:.7cqw;background:var(--card);border:1px solid var(--line)}
+  .wk .wh b{display:block;font-size:1.1cqw;font-weight:900}
+  .wk .wh span{display:block;font-size:.82cqw;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.03em}
+  .wk .wh.now{background:var(--ink);border-color:var(--ink);color:#fff}
+  .wk .wh.now span{color:var(--lime)}
+  .wk .wl{font-size:1.06cqw;font-weight:800;line-height:1.1;display:flex;align-items:center;gap:.6cqw}
+  .wk .wl em{font-style:normal;color:var(--muted-2);font-size:.9cqw;width:1.8cqw;flex:none}
+  .wk .wb{height:1.85cqw;border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:.84cqw;font-weight:800;white-space:nowrap}
+  .wk .wb.done{background:var(--green-bg);color:var(--green)}
+  .wk .wb.w1{background:var(--lime);color:var(--ink)}
+  .wk .wb.w2{background:#DDE1FF;color:#3D47B8}
+  .wk .wb.w3{background:#FFE6C2;color:#9A5B0B}
+  .wk .wb.gh{background:none;border:1.5px dashed #C7CCD6;color:var(--muted-2)}
+
+  /* marco con el aspecto de platform.wiptool.com (Noto Sans, tinta #161D31, fondo #F6F7F9, píldoras) */
+  .pf{background:#fff;border:1px solid var(--line);border-radius:1.4cqw;overflow:hidden;font-family:'Noto Sans',system-ui,sans-serif;color:#161D31;box-shadow:0 12cqw 26cqw -14cqw rgba(23,26,36,.4)}
+  .pf-top{display:flex;align-items:center;gap:1.1cqw;padding:.9cqw 1.4cqw;border-bottom:1px solid #EEF0F3;background:#fff}
+  .pf-top .lg{height:1.5cqw;width:2.6cqw;background:url("/img/img-0af97668.png") no-repeat left center;background-size:contain;flex:none}
+  .pf-top .cr{flex:1;font-size:.92cqw;color:#82868B;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pf-top .cr b{color:#161D31;font-weight:600}
+  .pf-top .em{font-size:.72cqw;color:#82868B;line-height:1.15;white-space:nowrap}
+  .pf-top .em b{display:block;color:#161D31;font-size:.86cqw;font-weight:600}
+  .pf-top .lo{width:1.9cqw;height:1.9cqw;border-radius:.5cqw;background:#1F2A44;position:relative;flex:none}
+  .pf-top .lo::after{content:"";position:absolute;right:.35cqw;top:.35cqw;width:.6cqw;height:.6cqw;border-radius:100px;background:#2BB6A3}
+  .pf-b{background:#F6F7F9;padding:1.4cqw}
+  .pf-c{background:#fff;border:1px solid #EEF0F3;border-radius:1cqw;padding:1.3cqw 1.4cqw}
+  .pf-h{font-size:1.22cqw;font-weight:700;margin-bottom:.2cqw}
+  .pf-s{font-size:.9cqw;color:#82868B;margin-bottom:1cqw}
+  .pf label,.pf .lb2{font-size:.88cqw;font-weight:600;color:#161D31;display:block;margin-bottom:.35cqw}
+  .pf .in{background:#F6F7F9;border:1px solid #E6E8EC;border-radius:.6cqw;padding:.75cqw 1cqw;font-size:1.02cqw;display:flex;align-items:center;justify-content:space-between;gap:.8cqw;min-height:2.5cqw}
+  .pf .in.foc{border-color:#161D31;background:#fff;box-shadow:0 0 0 2px rgba(22,29,49,.08)}
+  .pf .in.ok{border-color:#1FA85B;background:#F4FCF7}
+  .pf .in.bad{border-color:#F0664E;background:#FFF4F2}
+  .pp{display:inline-flex;align-items:center;gap:.35cqw;font-size:.82cqw;font-weight:500;padding:.28cqw .8cqw;border-radius:100px;white-space:nowrap}
+  .pp.cc{background:#E1F7EB;color:#1F7250}
+  .pp.of{background:#82868B;color:#fff}
+  .pp.wa{background:#E3F7EA;color:#16804A}
+  .pp.iv{background:#FFF1DC;color:#A0620C}
+  .pp.rd{background:#FFF0ED;color:#D24A33}
+  .pp.gy{background:#F1F3F6;color:#5B616B}
+  .bt{display:inline-flex;align-items:center;font-size:.86cqw;font-weight:600;padding:.4cqw 1cqw;border-radius:100px;white-space:nowrap}
+  .bt.lime{background:#E3F98C;color:#161D31}
+  .bt.ink{background:#161D31;color:#fff}
+  .bt.gy{background:#F1F3F6;color:#161D31}
+  .ptbl2{width:100%;border-collapse:collapse;font-size:.9cqw}
+  .ptbl2 th{font-weight:600;text-align:left;padding:.55cqw .5cqw;border-bottom:1px solid #EEF0F3;white-space:nowrap}
+  .ptbl2 td{padding:.55cqw .5cqw;border-bottom:1px solid #F1F3F6;white-space:nowrap}
+  .ptbl2 .ua{display:inline-flex;align-items:center;gap:.6cqw}
+  .ptbl2 .ua i{width:1.7cqw;height:1.7cqw;border-radius:.4cqw;background:#F27C6B;display:inline-block;flex:none}
+  .dotg{display:inline-block;width:.55cqw;height:.55cqw;border-radius:100px;background:#1FA85B;margin-right:.35cqw}
+  .dotgy{display:inline-block;width:.55cqw;height:.55cqw;border-radius:100px;background:#B4B9C4;margin-right:.35cqw}
+  .ncard{background:#fff;border:1px solid #EEF0F3;border-radius:1cqw;overflow:hidden}
+  .ncard .nh{height:2.6cqw;background:#FFE7D1;position:relative}
+  .ncard .nh .pp{position:absolute;right:1cqw;bottom:-.9cqw}
+  .ncard .nl{width:3.2cqw;height:3.2cqw;border-radius:100px;background:#F0F1F4;margin:-1.6cqw 0 0 1.2cqw;position:relative;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1cqw;color:#161D31;border:2px solid #fff}
+  .ncard .nb{padding:.7cqw 1.2cqw 1.1cqw}
+  .ncard .nt{font-size:1.15cqw;font-weight:600}
+  .ncard .nc{font-size:.82cqw;color:#82868B;margin-bottom:.6cqw}
+  .ncard .nr{font-size:.9cqw;display:flex;gap:.5cqw;align-items:flex-start;margin-top:.35cqw;line-height:1.3}
+  .ncard .nr .i{flex:none;width:1.1cqw;text-align:center}
+  .ncard .nf{display:flex;justify-content:space-between;align-items:center;margin-top:.9cqw}
+  .opt{display:flex;align-items:center;gap:.8cqw;padding:.65cqw .9cqw;border-radius:.5cqw;font-size:1.0cqw}
+  .opt.hi{background:#E3F98C}
+  .opt .nm{flex:1}
+  .opt .nm small{color:#82868B;font-size:.82cqw;margin-left:.3cqw}
+  .dd{background:#fff;border:1px solid #E6E8EC;border-radius:.8cqw;box-shadow:0 2cqw 5cqw -2cqw rgba(0,0,0,.25);padding:.5cqw;margin-top:.4cqw}
+  .mapbox{position:relative;height:9cqw;border-radius:.8cqw;overflow:hidden;background:#BFE6F2 url("/img/radar-map-2d4a9e02.jpg") center/cover no-repeat}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+</head>
+<body>
+<div class="deck">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 5-1.3A9.8 9.8 0 1 0 12 2.2zm4.9 13.6c-.2.6-1.2 1.2-1.7 1.2-.5.1-1 .1-3.2-.8-2.7-1.1-4.4-3.9-4.5-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.1.1.6-.1 1.2z"/></symbol>
+  <symbol id="i-nowa" viewBox="0 0 24 24"><path fill="currentColor" opacity=".55" d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.4 4.8 5-1.3A9.8 9.8 0 1 0 12 2.2z"/><path d="M4 4l16 16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-off" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></symbol>
+</svg>
+
+<!-- 01 · PORTADA -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> <span class="asist">Proyecto · WIP × Auxilia</span></div>
+  <div class="pad">
+    <div class="split wide-l">
+      <div class="col">
+        <span class="badge">Mejorar procesos · Noviembre–diciembre 2026</span>
+        <h1 class="d d-xl" style="margin:2.4cqw 0 2cqw">Mejorar<br>procesos<br>Auxilia</h1>
+        <p class="sub">12 ajustes a la plataforma pedidos por el equipo de Auxilia: lo que ya quedó listo, lo que sigue y en qué semana llega cada uno.</p>
+        <div style="display:flex;gap:1.2cqw;margin-top:3cqw">
+          <span class="btag lime">5 de 12 hechos</span>
+          <span class="btag line">Cierre: semana del 14 de diciembre</span>
+        </div>
+      </div>
+      <div class="col">
+        <div class="browser">
+          <div class="bbar"><div class="tl"><i></i><i></i><i></i></div><div class="url">🔒 platform.wiptool.com</div><span class="live">En curso</span></div>
+          <div class="ui">
+            <div class="eyebrow">Avance del proyecto</div>
+            <div class="ttl">12 ajustes · 4 semanas</div>
+            <div style="margin-bottom:1.1cqw"><div style="display:flex;justify-content:space-between;font-size:1.2cqw;font-weight:700;margin-bottom:.6cqw"><span>Hechos</span><span>5</span></div><div class="track"><div class="fill" style="width:41.6%;background:var(--green)"></div></div></div>
+            <div style="margin-bottom:1.1cqw"><div style="display:flex;justify-content:space-between;font-size:1.2cqw;font-weight:700;margin-bottom:.6cqw"><span>Semana 1 · esta semana</span><span>1</span></div><div class="track"><div class="fill" style="width:8.3%;background:var(--lime)"></div></div></div>
+            <div style="margin-bottom:1.1cqw"><div style="display:flex;justify-content:space-between;font-size:1.2cqw;font-weight:700;margin-bottom:.6cqw"><span>Semana 2</span><span>4</span></div><div class="track"><div class="fill" style="width:33.3%;background:#5560D6"></div></div></div>
+            <div><div style="display:flex;justify-content:space-between;font-size:1.2cqw;font-weight:700;margin-bottom:.6cqw"><span>Semanas 3 y 4</span><span>2</span></div><div class="track"><div class="fill" style="width:16.6%;background:#E3A03C"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">01</div>
+</section>
+
+<!-- 02 · RESUMEN -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Resumen</div>
+  <div class="pad">
+    <span class="badge">Resumen del proyecto</span>
+    <h1 class="d d-lg" style="margin:1.8cqw 0 0">Doce ajustes,<br>un mismo objetivo</h1>
+    <div class="kpis">
+      <div class="kpi dk"><div class="n">5</div><div class="l">Ya hechos y en la plataforma</div></div>
+      <div class="kpi"><div class="n">1</div><div class="l">Semana 1 · esta semana<br>23 al 27 de noviembre</div></div>
+      <div class="kpi"><div class="n">4</div><div class="l">Semana 2<br>30 de noviembre al 4 de diciembre</div></div>
+      <div class="kpi"><div class="n">2</div><div class="l">Semanas 3 y 4<br>7 al 18 de diciembre</div></div>
+    </div>
+    <div class="idx">
+      <div><em>01</em>Documentos que empiezan con cero<span class="tag done">Hecho</span></div>
+      <div><em>07</em>Exigir documentos a proveedores<span class="tag w2">Semana 2</span></div>
+      <div><em>02</em>Permisos de Toda la empresa<span class="tag done">Hecho</span></div>
+      <div><em>08</em>Íconos de canal al crear servicios<span class="tag w2">Semana 2</span></div>
+      <div><em>03</em>Ajustes de Google Maps<span class="tag done">Hecho</span></div>
+      <div><em>09</em>Colaboradores con y sin WhatsApp<span class="tag w2">Semana 2</span></div>
+      <div><em>04</em>Usuarios con muchas invitaciones<span class="tag done">Hecho</span></div>
+      <div><em>10</em>Nombre de la empresa offline<span class="tag w2">Semana 2</span></div>
+      <div><em>05</em>Proveedor por provincia, municipio y ciudad<span class="tag done">Hecho</span></div>
+      <div><em>11</em>Logo de perfil en WhatsApp<span class="tag w3">Semana 3–4</span></div>
+      <div><em>06</em>Configurar valores de Auxilia<span class="tag w1">Semana 1</span></div>
+      <div><em>12</em>Chats internos con etiquetas<span class="tag w3">Semana 3–4</span></div>
+    </div>
+  </div>
+  <div class="pg">02</div>
+</section>
+
+<!-- 03 · AJUSTE 01 · DOCUMENTOS CON CERO -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 01 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Documentos que<br>empiezan con cero</h1>
+        <div class="tags"><span class="tag done">✓ Hecho</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i></i><i></i><i></i></span><span class="vl">Pequeña</span></div>
+        <div class="box"><div class="k">Qué pasaba</div><p>Un documento de identidad como <b>001-1234567-8</b> perdía los ceros del inicio al guardarse <span>y chocaba con otro registro.</span></p></div>
+        <div class="box"><div class="k">Qué cambió</div><p>El documento se guarda tal cual se escribe, <b>con todos sus ceros</b>. <span>Sin conflictos ni duplicados.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Servicios › <b>Crear servicio: Grua por Averia</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b">
+            <div class="pf-c">
+              <div class="eyebrow" style="margin-bottom:.8cqw">Antes</div>
+              <label>Documento del usuario</label>
+              <div class="in bad">1123456789 <span class="pp rd">Conflicto</span></div>
+              <div class="msg bad" style="margin-top:.4cqw">Se perdían los ceros y el documento chocaba con otro registro</div>
+              <div class="eyebrow" style="margin:1.6cqw 0 .8cqw">Ahora</div>
+              <label>Documento del usuario</label>
+              <div class="in ok">00112345678 <span class="pp cc">✓ Encontrado</span></div>
+              <div class="msg ok" style="margin-top:.4cqw">Se guarda y se busca con sus ceros iniciales</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">03</div>
+</section>
+
+<!-- 04 · AJUSTE 02 · PERMISOS TODA LA EMPRESA -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 02 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Permisos de Toda<br>la empresa</h1>
+        <div class="tags"><span class="tag done">✓ Hecho</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i></i><i></i><i></i></span><span class="vl">Pequeña</span></div>
+        <div class="box"><div class="k">Qué pasaba</div><p>Quien tenía permisos sobre <b>Toda la empresa</b> no veía lo mismo que <b>Grúa liviana</b>.</p></div>
+        <div class="box"><div class="k">Qué cambió</div><p>Toda la empresa se ve y opera <b>igual que Grúa liviana</b>. <span>Mismos módulos, mismas acciones.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Configuración › <b>Usuarios › Permisos</b></span><span class="lo"></span><span class="em">Unidad de negocio<b>Asistencia Vial</b></span></div>
+          <div class="ui" style="font-family:'Noto Sans',system-ui,sans-serif">
+            <div class="pf-h">Permisos por alcance</div>
+            <div class="pf-s">Toda la empresa queda con la misma vista que Grúa liviana</div>
+            <table class="mtx">
+              <tr><th>Permiso</th><th>Grúa liviana</th><th>Toda la empresa</th></tr>
+              <tr><td>Ver servicios</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Crear servicios</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Asignar proveedor</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Ver proveedores</td><td class="y">✓</td><td class="y">✓</td></tr>
+              <tr><td>Ver reportes</td><td class="y">✓</td><td class="y">✓</td></tr>
+            </table>
+            <div style="margin-top:1.3cqw"><span class="pp cc">✓ Permisos igualados</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">04</div>
+</section>
+
+<!-- 05 · AJUSTE 03 · GOOGLE MAPS -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 03 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Ajustes de<br>Google Maps</h1>
+        <div class="tags"><span class="tag done">✓ Hecho</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="vl">Media</span></div>
+        <div class="box"><div class="k">Qué cambió</div><p>Ajustamos la búsqueda de direcciones y el mapa del servicio para que <b>origen y destino</b> se ubiquen bien.</p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>El operador confirma el punto exacto <span>y el proveedor llega a donde es.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Servicios › <b>Crear servicio: Grua por Averia</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1cqw">
+              <div class="pf-c" style="padding:1cqw">
+                <div style="display:flex;align-items:center;gap:.5cqw;font-size:1cqw;font-weight:700;margin-bottom:.6cqw"><span class="pic wip" style="width:1.6cqw;height:1.6cqw;font-size:.8cqw;color:#fff">A</span>Origen</div>
+                <div class="in ok" style="font-size:.88cqw">Av. Winston Churchill 95, Santo Domingo</div>
+                <div style="display:flex;gap:.4cqw;margin-top:.6cqw"><span class="bt gy">Elegir en el mapa</span></div>
+              </div>
+              <div class="pf-c" style="padding:1cqw">
+                <div style="display:flex;align-items:center;gap:.5cqw;font-size:1cqw;font-weight:700;margin-bottom:.6cqw"><span class="pic" style="width:1.6cqw;height:1.6cqw;font-size:.8cqw;background:#F4A62A;color:#fff">B</span>Destino</div>
+                <div class="in ok" style="font-size:.88cqw">Taller Autocentro, Santo Domingo Este</div>
+                <div style="display:flex;gap:.4cqw;margin-top:.6cqw"><span class="bt gy">Elegir en el mapa</span></div>
+              </div>
+            </div>
+            <div class="mapbox" style="margin-top:1cqw;height:13cqw">
+              <div style="position:absolute;top:.8cqw;left:.8cqw" class="bt gy">Clic coloca: <b style="margin-left:.3cqw">Origen A</b></div>
+              <div style="position:absolute;top:.8cqw;right:.8cqw" class="bt ink">⤢ Ampliar mapa</div>
+              <div class="rpin k" style="left:34%;top:52%"><i style="width:2.2cqw;height:2.2cqw">A</i></div>
+              <div class="rpin" style="left:68%;top:70%"><i style="width:2.2cqw;height:2.2cqw;background:#F4A62A">B</i></div>
+            </div>
+            <div style="font-size:.86cqw;color:#5B616B;margin-top:.6cqw">Distancia <b>8,4 km</b> · Tiempo <b>21 min</b></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">05</div>
+</section>
+
+<!-- 06 · AJUSTE 04 · USUARIOS CON MUCHAS INVITACIONES -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 04 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Usuarios con<br>muchas invitaciones</h1>
+        <div class="tags"><span class="tag done">✓ Hecho</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i></i><i></i><i></i></span><span class="vl">Pequeña</span></div>
+        <div class="box"><div class="k">Qué pasaba</div><p>Con muchas invitaciones pendientes, el módulo de usuarios <b>se desordenaba</b> <span>y costaba encontrar a alguien.</span></p></div>
+        <div class="box"><div class="k">Qué cambió</div><p>La vista se mantiene <b>ordenada y legible</b> aunque haya cientos de invitaciones.</p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Configuración › <b>Usuarios</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:.9cqw"><span class="bt ink">Lista usuarios</span><span style="display:flex;gap:.4cqw"><span class="bt ink">Invitar a mi equipo</span><span class="bt ink">Solicitudes</span></span></div>
+            <div class="pf-c" style="padding:1cqw 1.1cqw">
+              <div style="display:flex;gap:.4cqw;margin-bottom:.8cqw"><span class="bt gy">Usuarios · 48</span><span class="bt ink">Invitaciones · 236</span></div>
+              <div class="in" style="margin-bottom:.6cqw;color:#82868B;font-size:.9cqw;min-height:2cqw;padding:.5cqw .9cqw">Buscar por correo…</div>
+              <table class="ptbl2">
+                <tr><th>Invitado</th><th>Teléfono</th><th>Estado</th><th>Rol</th></tr>
+                <tr><td><span class="ua"><i></i>María Peña</span></td><td>+1 809 ··· 5433</td><td><span class="pp iv">Pendiente</span></td><td>Operador</td></tr>
+                <tr><td><span class="ua"><i></i>Luis Fermín</span></td><td>+1 849 ··· 3679</td><td><span class="pp cc">Aceptada</span></td><td>Colaborador</td></tr>
+                <tr><td><span class="ua"><i></i>Ana Tavárez</span></td><td>+1 829 ··· 4290</td><td><span class="pp iv">Pendiente</span></td><td>Operador</td></tr>
+                <tr><td><span class="ua"><i></i>Pedro Almonte</span></td><td>+1 809 ··· 1586</td><td><span class="pp iv">Pendiente</span></td><td>Colaborador</td></tr>
+              </table>
+              <div style="display:flex;justify-content:space-between;font-size:.82cqw;color:#82868B;margin-top:.7cqw"><span>236 fila(s) en total</span><span>Filas por página 10 · Página 1 de 24 ‹ ›</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">06</div>
+</section>
+
+<!-- 07 · AJUSTE 05 · PROVINCIA, MUNICIPIO Y CIUDAD -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 05 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Proveedor por<br>provincia, municipio<br>y ciudad</h1>
+        <div class="tags"><span class="tag done">✓ Hecho</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="vl">Media</span></div>
+        <div class="box"><div class="k">Qué cambió</div><p>Cada proveedor queda ubicado por <b>provincia, municipio y ciudad</b>, <span>la división que usa Auxilia en su operación.</span></p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>Filtrar y asignar con la cobertura real <span>de cada proveedor.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Mi red › <b>Empresas</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:.6cqw;margin-bottom:1cqw">
+              <div><span class="lb2">Provincia</span><div class="in" style="font-size:.88cqw;min-height:2cqw;padding:.45cqw .7cqw">Distrito Nacional ▾</div></div>
+              <div><span class="lb2">Municipio</span><div class="in" style="font-size:.88cqw;min-height:2cqw;padding:.45cqw .7cqw">Santo Domingo ▾</div></div>
+              <div><span class="lb2">Ciudad</span><div class="in" style="font-size:.88cqw;min-height:2cqw;padding:.45cqw .7cqw">Santo Domingo ▾</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1cqw">
+              <div class="ncard"><div class="nh"><span class="pp cc">Con cuenta</span></div><div class="nl">GE</div><div class="nb"><div class="nt">Grúas del Este</div><div class="nc">República Dominicana</div><div class="nr"><span class="i">📍</span>Santo Domingo - Santo Domingo - Distrito Nacional</div><div class="nr"><span class="i">🔧</span>Grua por Averia</div></div></div>
+              <div class="ncard"><div class="nh"><span class="pp of">Offline</span></div><div class="nl">AC</div><div class="nb"><div class="nt">Auxilios Capital</div><div class="nc">República Dominicana</div><div class="nr"><span class="i">📍</span>Santo Domingo - Santo Domingo - Distrito Nacional</div><div class="nr"><span class="i">🔧</span>Cambio de Neumatico</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">07</div>
+</section>
+
+<!-- 08 · AJUSTE 06 · VALORES DE AUXILIA -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 06 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Configurar los<br>valores de Auxilia</h1>
+        <div class="tags"><span class="tag w1">Semana 1 · 23 al 27 nov</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i></i><i></i><i></i></span><span class="vl">Fácil</span></div>
+        <div class="box"><div class="k">Qué cambia</div><p>Cargamos en la plataforma <b>los valores de Auxilia</b> por tipo de servicio.</p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>Cada servicio sale con su valor correcto, <span>sin cálculos a mano y igual para todos los operadores.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Configuración › <b>Tarifas automáticas</b></span><span class="lo"></span><span class="em">Unidad de negocio<b>Asistencia Vial</b></span></div>
+          <div class="pf-b">
+            <div class="pf-c">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div class="pf-h">Tarifario Auxilia</div><div class="pf-s">Valores por tipo de servicio · se aplican al crear cada servicio</div></div><span class="pp gy">Ejemplo</span></div>
+              <table class="ptbl2" style="font-size:.95cqw">
+                <tr><th>Tipo de servicio</th><th>Valor base</th><th>Km adicional</th><th></th></tr>
+                <tr><td>Grua por Averia</td><td>RD$ ·····</td><td>RD$ ···</td><td><span class="pp cc">Activa</span></td></tr>
+                <tr><td>Grua por Accidente</td><td>RD$ ·····</td><td>RD$ ···</td><td><span class="pp cc">Activa</span></td></tr>
+                <tr><td>Cambio de Neumatico</td><td>RD$ ·····</td><td>—</td><td><span class="pp cc">Activa</span></td></tr>
+                <tr><td>Paso de Corriente</td><td>RD$ ·····</td><td>—</td><td><span class="pp cc">Activa</span></td></tr>
+                <tr><td>Cerrajeria Vial</td><td>RD$ ·····</td><td>—</td><td><span class="pp iv">Por cargar</span></td></tr>
+              </table>
+              <div style="display:flex;justify-content:flex-end;margin-top:.9cqw"><span class="bt lime">Calcular</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">08</div>
+</section>
+
+<!-- 09 · AJUSTE 07 · EXIGIR DOCUMENTOS -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 07 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Exigir documentos<br>a los proveedores</h1>
+        <div class="tags"><span class="tag w2">Semana 2 · 30 nov al 4 dic</span><span class="tag moved">Pasó de la semana 1</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="vl">Media</span></div>
+        <div class="box"><div class="k">Qué cambia</div><p>Auxilia elige <b>qué documentos debe tener cada proveedor</b> <span>y la plataforma se los pide.</span></p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>Solo operan proveedores <b>con la documentación al día</b>, <span>y Auxilia ve qué falta sin pedirlo por correo.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Mi red › <b>Grúas del Este › Documentos</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b">
+            <div class="pf-c" style="font-family:'Noto Sans',system-ui,sans-serif">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div class="pf-h">Documentos exigidos por Auxilia</div><div class="pf-s">El proveedor los carga desde su perfil · 2 de 3 obligatorios</div></div><span class="pp iv">Incompleto</span></div>
+              <div class="row" style="font-size:1cqw"><div class="nm">Cédula de identidad<small>Obligatorio</small></div><span class="pp cc">✓ Cargado</span><span class="tgl on"></span></div>
+              <div class="row" style="font-size:1cqw"><div class="nm">Licencia de conducir<small>Obligatorio</small></div><span class="pp cc">✓ Cargado</span><span class="tgl on"></span></div>
+              <div class="row" style="font-size:1cqw"><div class="nm">Seguro del vehículo<small>Obligatorio</small></div><span class="pp rd">Pendiente</span><span class="tgl on"></span></div>
+              <div class="row" style="font-size:1cqw"><div class="nm">Matrícula del vehículo<small>Opcional</small></div><span class="pp gy">Sin cargar</span><span class="tgl"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">09</div>
+</section>
+
+<!-- 10 · AJUSTE 08 · ÍCONOS DE CANAL -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 08 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Íconos de canal<br>al crear servicios</h1>
+        <div class="tags"><span class="tag w2">Semana 2 · 30 nov al 4 dic</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="vl">Alta</span></div>
+        <div class="legend">
+          <div><span class="pic off"><svg><use href="#i-off"/></svg></span><span><b>Offline</b><br>Empresa offline en Mi red</span></div>
+          <div><span class="pic nowa"><svg><use href="#i-nowa"/></svg></span><span><b>Sin WhatsApp</b><br>Recibió la invitación, sin WhatsApp</span></div>
+          <div><span class="pic wa"><svg><use href="#i-wa"/></svg></span><span><b>Con WhatsApp</b><br>Recibe servicios por WhatsApp</span></div>
+          <div><span class="pic wip">wip</span><span><b>WIP</b><br>Activo en WIP y con WhatsApp</span></div>
+        </div>
+        <div class="box"><div class="k">Combinados</div><p>Un proveedor <b>sin WhatsApp pero activo en WIP</b> <span>muestra los dos íconos juntos.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Servicios › <b>Crear servicio: Grua por Averia</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8cqw">
+              <div><span class="lb2">Cliente</span><div class="in" style="font-size:.9cqw;min-height:2cqw;padding:.45cqw .8cqw">Seleccionar… ▾</div></div>
+              <div><span class="lb2">Propietario</span><div class="in" style="font-size:.9cqw;min-height:2cqw;padding:.45cqw .8cqw">Auxilia Asistencia S.A.</div></div>
+            </div>
+            <div style="margin-top:.8cqw"><span class="lb2">Proveedor</span><div class="in foc" style="font-size:.9cqw;min-height:2cqw;padding:.45cqw .8cqw">Seleccionar… ▾</div>
+              <div class="dd">
+                <div class="opt hi"><span class="nm">Grúas del Este<small>| Santo Domingo</small></span><span class="pics"><span class="pic wip">wip</span></span></div>
+                <div class="opt"><span class="nm">J. Reyes<small>| Santo Domingo Este</small></span><span class="pics"><span class="pic wa"><svg><use href="#i-wa"/></svg></span></span></div>
+                <div class="opt"><span class="nm">M. Peña<small>| Santiago</small></span><span class="pics"><span class="pic nowa"><svg><use href="#i-nowa"/></svg></span><span class="pic wip">wip</span></span></div>
+                <div class="opt"><span class="nm">L. Fermín<small>| La Romana</small></span><span class="pics"><span class="pic nowa"><svg><use href="#i-nowa"/></svg></span></span></div>
+                <div class="opt"><span class="nm">Auxilios Capital<small>| Santo Domingo</small></span><span class="pics"><span class="pic off"><svg><use href="#i-off"/></svg></span></span></div>
+                <div class="opt" style="color:#5B616B">Asignación automática proveedor</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">10</div>
+</section>
+
+<!-- 11 · AJUSTE 09 · COLABORADORES CON Y SIN WHATSAPP -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 09 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Colaboradores con<br>y sin WhatsApp</h1>
+        <div class="tags"><span class="tag w2">Semana 2 · 30 nov al 4 dic</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span><span class="vl">Alta</span></div>
+        <div class="box"><div class="k">Qué cambia</div><p>La plataforma separa a los colaboradores <b>con WhatsApp</b> de los <b>sin WhatsApp</b> <span>y trata cada caso como corresponde.</span></p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>Los servicios llegan por el canal que cada colaborador sí usa, <span>y Auxilia sabe a quién falta habilitar.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Configuración › <b>Usuarios</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b">
+            <div class="pf-c" style="padding:1cqw 1.1cqw">
+              <div style="display:flex;gap:.4cqw;margin-bottom:.8cqw"><span class="bt gy">Todos</span><span class="bt gy">Operador</span><span class="bt ink">Colaborador</span><span class="bt gy">Dual</span></div>
+              <div style="display:flex;gap:.4cqw;margin-bottom:.8cqw"><span class="pp gy">Todos · 64</span><span class="pp wa">Con WhatsApp · 41</span><span class="pp rd">Sin WhatsApp · 23</span></div>
+              <table class="ptbl2">
+                <tr><th>Nombre y Apellido</th><th>WhatsApp</th><th>Estado</th><th></th></tr>
+                <tr><td><span class="ua"><i></i>Carlos Martínez</span></td><td><span class="pics"><span class="pic wa" style="width:1.7cqw;height:1.7cqw"><svg style="width:1cqw;height:1cqw"><use href="#i-wa"/></svg></span></span></td><td><span class="dotg"></span>Activo hace 1 h</td><td><span class="bt lime">Mostrar detalles</span></td></tr>
+                <tr><td><span class="ua"><i></i>Rosa Jiménez</span></td><td><span class="pics"><span class="pic wa" style="width:1.7cqw;height:1.7cqw"><svg style="width:1cqw;height:1cqw"><use href="#i-wa"/></svg></span></span></td><td><span class="dotg"></span>Activo hace 3 h</td><td><span class="bt lime">Mostrar detalles</span></td></tr>
+                <tr><td><span class="ua"><i></i>Pedro Almonte</span></td><td><span class="pp rd">Sin WhatsApp</span></td><td><span class="dotgy"></span>Invitación enviada</td><td><span class="bt ink">Reenviar</span></td></tr>
+                <tr><td><span class="ua"><i></i>Juan Ureña</span></td><td><span class="pp rd">Sin WhatsApp</span></td><td><span class="dotgy"></span>Invitación enviada</td><td><span class="bt ink">Reenviar</span></td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">11</div>
+</section>
+
+<!-- 12 · AJUSTE 10 · NOMBRE DE LA EMPRESA OFFLINE -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 10 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Cambiar el nombre<br>de la empresa offline</h1>
+        <div class="tags"><span class="tag w2">Semana 2 · 30 nov al 4 dic</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="vl">Media</span></div>
+        <div class="box"><div class="k">Qué cambia</div><p>Auxilia puede <b>editar el nombre de una empresa offline</b> <span>sin borrarla ni crearla de nuevo.</span></p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>Los servicios, reportes e historial <b>quedan con el nombre correcto</b>.</p></div>
+      </div>
+      <div class="col">
+        <div class="pf">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Mi red › <b>Empresas offline</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b" style="display:grid;grid-template-columns:.9fr 1.1fr;gap:1cqw;align-items:start">
+            <div class="ncard"><div class="nh"><span class="pp of">Offline</span></div><div class="nl">GE</div><div class="nb"><div class="nt">Gruas Este SRL</div><div class="nc">República Dominicana</div><div class="nr"><span class="i">⊘</span>Es una empresa offline: no recibe servicios</div><div class="nr"><span class="i">📍</span>Santo Domingo Este</div><div class="nf"><span class="bt gy">Más acciones</span><span class="bt ink">Editar</span></div></div></div>
+            <div class="pf-c">
+              <div class="pf-h">Editar empresa offline</div>
+              <div class="pf-s">El cambio se ve en servicios, reportes e historial</div>
+              <label>Nombre actual</label><div class="in" style="color:#82868B;text-decoration:line-through;font-size:.95cqw">Gruas Este SRL</div>
+              <label style="margin-top:.8cqw">Nombre de la empresa</label><div class="in ok" style="font-size:.95cqw">Grúas del Este, S.R.L. <span class="pp cc">✓</span></div>
+              <div style="display:flex;justify-content:flex-end;gap:.5cqw;margin-top:1cqw"><span class="bt gy">Cancelar</span><span class="bt lime">Guardar</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">12</div>
+</section>
+
+<!-- 13 · AJUSTE 11 · LOGO DE PERFIL EN WHATSAPP -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 11 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Logo de perfil<br>en WhatsApp</h1>
+        <div class="tags"><span class="tag w3">Semana 3 o 4 · 7 al 18 dic</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i></i><i></i></span><span class="vl">Media</span></div>
+        <div class="box"><div class="k">Qué cambia</div><p>Cada empresa <b>cambia por su cuenta el logo</b> <span>que aparece en el perfil de WhatsApp.</span></p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>Clientes y proveedores <b>reconocen a Auxilia</b> en cada mensaje.</p></div>
+      </div>
+      <div class="col">
+        <div class="wa">
+          <div class="wa-h"><div class="wl" style="background:#fff;color:#0E5A45">A</div><div><b>Auxilia · Servicios</b><small>Cuenta de empresa</small></div></div>
+          <div class="wa-b">
+            <div class="bub">Hola Ana 👋 Tu servicio de <b>grúa liviana</b> fue asignado a <b>Grúas del Este</b>.<div class="eta">🕒 Llegada estimada: <b>18 min</b></div></div>
+            <div class="bub me">Gracias, los espero</div>
+          </div>
+        </div>
+        <div class="pf" style="margin-top:1.4cqw">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Configuración › <b>WhatsApp y chat</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="pf-b" style="padding:1cqw 1.4cqw">
+            <div class="pf-c" style="display:flex;align-items:center;gap:1.1cqw;padding:1cqw 1.2cqw">
+              <div class="av" style="background:#fff;color:#0E5A45;border:1px solid var(--line);font-size:1.3cqw">A</div>
+              <div style="flex:1"><div style="font-size:1.1cqw;font-weight:700">Foto de perfil de WhatsApp</div><div style="font-size:.88cqw;color:#82868B">PNG o JPG cuadrado · solo administradores</div></div>
+              <span class="bt lime">Cambiar logo</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">13</div>
+</section>
+
+<!-- 14 · AJUSTE 12 · CHATS INTERNOS CON ETIQUETAS -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Mejorar procesos Auxilia</div>
+  <div class="pad">
+    <div class="split">
+      <div class="col">
+        <span class="itm-n">Ajuste 12 de 12</span>
+        <h1 class="d d-md" style="margin:1.2cqw 0 0">Chats entre<br>personas, con<br>etiquetas</h1>
+        <div class="tags"><span class="tag w3">Semana 3 o 4 · 7 al 18 dic</span></div>
+        <div class="diff"><span class="lb">Dificultad</span><span class="bars"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span><span class="vl">Muy alta</span></div>
+        <div class="box"><div class="k">Qué cambia</div><p>En los chats, las personas del equipo <b>hablan entre ellas</b> y <b>etiquetan</b> <span>a quien debe actuar.</span></p></div>
+        <div class="box"><div class="k">Para qué sirve</div><p>La conversación de cada caso <b>queda en el servicio</b>, <span>no repartida en grupos de WhatsApp.</span></p></div>
+      </div>
+      <div class="col">
+        <div class="chat" style="font-family:'Noto Sans',system-ui,sans-serif">
+          <div class="pf-top"><span class="lg"></span><span class="cr">Chats › <b>Chats operacion</b></span><span class="lo"></span><span class="em">Empresa<b>Auxilia Asistencia S.A.</b></span></div>
+          <div class="chat-h"><b>Servicio #48213 · Grua por Averia</b><span class="pp cc">En ejecución</span></div>
+          <div class="chat-b">
+            <div class="cm"><div class="av">MP</div><div class="bb"><small>María · Operación</small><span class="ment">@Luis</span> el cliente pide cambiar el destino, ¿lo apruebas?<span class="lbl u">Urgente</span></div></div>
+            <div class="cm me"><div class="av" style="background:var(--lime);color:var(--ink)">LF</div><div class="bb"><small>Luis · Supervisor</small>Aprobado. <span class="ment">@Ana</span> ajusta el valor por el km adicional.</div></div>
+            <div class="cm"><div class="av">AT</div><div class="bb"><small>Ana · Facturación</small>Listo, valor actualizado ✓<span class="lbl f">Facturación</span></div></div>
+          </div>
+          <div class="chat-in"><div class="inp">Escribe y etiqueta con @…</div><span class="chip k">Enviar</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="pg">14</div>
+</section>
+
+<!-- 15 · CRONOGRAMA -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Cronograma</div>
+  <div class="pad" style="padding-top:4.4cqw">
+    <span class="badge">Cronograma</span>
+    <h1 class="d" style="font-size:3.2cqw;margin:1.2cqw 0 0">Semana a semana</h1>
+    <div class="wk">
+      <div></div>
+      <div class="wh"><b>Hecho</b><span>Antes del 23 nov</span></div>
+      <div class="wh now"><b>Semana 1</b><span>23–27 nov · hoy</span></div>
+      <div class="wh"><b>Semana 2</b><span>30 nov–4 dic</span></div>
+      <div class="wh"><b>Semana 3</b><span>7–11 dic</span></div>
+      <div class="wh"><b>Semana 4</b><span>14–18 dic</span></div>
+
+      <div class="wl"><em>01</em>Documentos que empiezan con cero</div><div class="wb done">✓ Hecho</div><div></div><div></div><div></div><div></div>
+      <div class="wl"><em>02</em>Permisos de Toda la empresa</div><div class="wb done">✓ Hecho</div><div></div><div></div><div></div><div></div>
+      <div class="wl"><em>03</em>Ajustes de Google Maps</div><div class="wb done">✓ Hecho</div><div></div><div></div><div></div><div></div>
+      <div class="wl"><em>04</em>Usuarios con muchas invitaciones</div><div class="wb done">✓ Hecho</div><div></div><div></div><div></div><div></div>
+      <div class="wl"><em>05</em>Proveedor por provincia y municipio</div><div class="wb done">✓ Hecho</div><div></div><div></div><div></div><div></div>
+      <div class="wl"><em>06</em>Configurar valores de Auxilia</div><div></div><div class="wb w1">Fácil</div><div></div><div></div><div></div>
+      <div class="wl"><em>07</em>Exigir documentos a proveedores</div><div></div><div class="wb gh">Movido →</div><div class="wb w2">Media</div><div></div><div></div>
+      <div class="wl"><em>08</em>Íconos de canal al crear servicios</div><div></div><div></div><div class="wb w2">Alta</div><div></div><div></div>
+      <div class="wl"><em>09</em>Colaboradores con y sin WhatsApp</div><div></div><div></div><div class="wb w2">Alta</div><div></div><div></div>
+      <div class="wl"><em>10</em>Nombre de la empresa offline</div><div></div><div></div><div class="wb w2">Media</div><div></div><div></div>
+      <div class="wl"><em>11</em>Logo de perfil en WhatsApp</div><div></div><div></div><div></div><div class="wb w3" style="grid-column:span 2">Media · semana 3 o 4</div>
+      <div class="wl"><em>12</em>Chats internos con etiquetas</div><div></div><div></div><div></div><div class="wb w3" style="grid-column:span 2">Muy alta · semanas 3 y 4</div>
+    </div>
+  </div>
+  <div class="pg">15</div>
+</section>
+
+<!-- 16 · CÓMO TRABAJAMOS -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Cómo trabajamos</div>
+  <div class="pad">
+    <span class="badge">Cómo trabajamos cada ajuste</span>
+    <h1 class="d d-lg" style="margin:2cqw 0 1.4cqw">Sin frenar<br>la operación</h1>
+    <p class="sub" style="max-width:66cqw">Cada ajuste pasa por los mismos cuatro pasos. Auxilia sigue operando normal mientras tanto.</p>
+    <div class="steps" style="margin-top:2.4cqw">
+      <div class="step"><div class="sn">1</div><div class="sw">Desarrollo</div><div class="st">Lo construimos</div><div class="sd">En un ambiente de pruebas, separado de la operación de Auxilia.</div></div>
+      <div class="step"><div class="sn">2</div><div class="sw">Pruebas</div><div class="st">Lo probamos</div><div class="sd">Con casos reales de Auxilia: documentos, proveedores y servicios.</div></div>
+      <div class="step"><div class="sn">3</div><div class="sw">Validación</div><div class="st">Auxilia lo revisa</div><div class="sd">El equipo de Auxilia confirma que hace lo que se pidió.</div></div>
+      <div class="step"><div class="sn">4</div><div class="sw">Salida</div><div class="st">Queda en la plataforma</div><div class="sd">Lo publicamos y lo marcamos como hecho en este plan.</div></div>
+    </div>
+  </div>
+  <div class="pg">16</div>
+</section>
+
+<!-- 17 · CIERRE -->
+<section class="slide">
+  <div class="gridbg"></div>
+  <div class="hdr"><span class="wlogo"></span> · Cierre</div>
+  <div class="pad">
+    <span class="badge">Próximos pasos</span>
+    <div class="split" style="align-items:center">
+      <div class="col">
+        <h1 class="d d-lg">Lo que<br>sigue</h1>
+      </div>
+      <div class="col">
+        <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">1</div><div class="tx" style="font-size:1.55cqw"><b>Esta semana:</b> <span>valores de Auxilia configurados en la plataforma.</span></div></div>
+        <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">2</div><div class="tx" style="font-size:1.55cqw"><b>Semana 2:</b> <span>documentos exigidos, íconos de canal, colaboradores con y sin WhatsApp y nombre de empresas offline.</span></div></div>
+        <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">3</div><div class="tx" style="font-size:1.55cqw"><b>Semanas 3 y 4:</b> <span>logo de WhatsApp y chats internos con etiquetas.</span></div></div>
+        <div class="chk"><div class="ic" style="background:var(--ink);color:var(--lime)">4</div><div class="tx" style="font-size:1.55cqw"><b>Cada viernes:</b> <span>revisamos juntos el avance y actualizamos este plan.</span></div></div>
+      </div>
+    </div>
+    <div class="contact" style="margin-top:auto">
+      <img loading="lazy" decoding="async" src="/img/wip-234608c6.png" alt="WIP" style="height:2.5cqw;margin-right:.3cqw">
+      <span class="sep"></span>
+      <div class="ci"><span class="cl">Contacto</span><span class="cv">+57 300 512 4111</span></div>
+      <span class="sep"></span>
+      <div class="ci"><span class="cl">Web</span><span class="cv">wiptool.com</span></div>
+      <span class="sep"></span>
+      <div class="ci"><span class="cl">Correo</span><span class="cv">comercial@wiptool.com</span></div>
+    </div>
+  </div>
+  <div class="pg">17</div>
+</section>
+
+</div>
+</body>
+</html>
