@@ -2,7 +2,8 @@
 //
 // Dos niveles:
 // 1. "bloqueado": señales de que el envío no salió del formulario real del sitio
-//    (campo trampa lleno, sin página de origen, sin event_id válido, enviado desde otro dominio).
+//    (campo trampa lleno, sin página de origen, sin event_id válido, enviado desde otro dominio),
+//    o dos o más campos con texto aleatorio tipo "ATlDQEtksgeLuJw".
 //    Se responde ok al bot y no se manda nada.
 // 2. "sospechoso": salió del formulario, pero el contenido parece generado
 //    (empresa inventada en inglés, texto en inglés sin sentido, enlaces, teléfono de EE. UU.).
@@ -22,6 +23,20 @@ function horaDelEventId(eventId) {
 
 const PALABRAS_ES = /\b(de|la|el|que|en|para|con|los|las|una?|servicios?|empresa|necesito|necesitamos|quiero|queremos|gesti[oó]n|operaci[oó]n|asistencias?|gr[uú]as?|t[eé]cnicos?|clientes?|hola|buen[oa]s?|informaci[oó]n|demo|cotizaci[oó]n|precio)\b/i;
 
+// Texto aleatorio de bot: "ATlDQEtksgeLuJwWihvyTF", "ZUxESUvpXXruCASLvu".
+// Una sola palabra larga que salta entre mayúsculas y minúsculas sin patrón, con tramos
+// cortos de minúsculas ("Tl", "Uv", "Xru"). Los nombres pegados reales ("McDonaldsColombia",
+// "GruasElRapidoSAS", "SURAMERICANA") tienen tramos de minúsculas largos y pocos saltos.
+function pareceAleatorio(texto) {
+  return String(texto || '').split(/[\s\[\]().,:;\/-]+/).some((p) => {
+    if (p.length < 10 || !/^[A-Za-z]+$/.test(p)) return false;
+    const tramos = p.match(/[A-Z]+|[a-z]+/g);
+    const saltos = tramos.length - 1;
+    const minusculasCortas = tramos.filter((t, i) => i > 0 && /^[a-z]{1,2}$/.test(t)).length;
+    return minusculasCortas >= 2 || (saltos >= 8 && saltos / p.length >= 0.35);
+  });
+}
+
 export function revisarEnvio(req, data) {
   const motivos = [];
 
@@ -34,6 +49,9 @@ export function revisarEnvio(req, data) {
   else if (Math.abs(Date.now() - t) > 2 * 60 * 60 * 1000) motivos.push('event_id viejo o futuro');
   const origen = hostDe(req.headers.origin || req.headers.referer || '');
   if (origen && !HOSTS_OK.test(origen)) motivos.push('enviado desde otro dominio: ' + origen);
+  // Dos o más campos con texto aleatorio: es un bot que llenó el formulario real.
+  const camposAleatorios = ['nombre', 'empresa', 'necesidad'].filter((k) => pareceAleatorio(data[k]));
+  if (camposAleatorios.length >= 2) motivos.push('texto aleatorio en ' + camposAleatorios.join(', '));
   if (motivos.length) return { nivel: 'bloqueado', motivos };
 
   // --- Nivel 2: contenido que parece generado por un bot ---
@@ -54,6 +72,10 @@ export function revisarEnvio(req, data) {
   }
   if (/^\+?1\(?\d{3}/.test(telefono)) { puntos += 1; motivos.push('teléfono de EE. UU./Canadá'); }
   if (/\d{4,}@/.test(String(data.email || ''))) { puntos += 0.5; motivos.push('correo con muchos números'); }
+  if (camposAleatorios.length === 1) { puntos += 1; motivos.push('texto aleatorio en ' + camposAleatorios[0]); }
+  // Gmail ignora los puntos: "uv.ec.upi8.91@gmail.com" es un truco de bots para repetir la misma cuenta.
+  const local = /^([^@]+)@(gmail|googlemail)\.com$/i.exec(String(data.email || '').trim());
+  if (local && (local[1].match(/\./g) || []).length >= 3) { puntos += 1; motivos.push('Gmail con muchos puntos'); }
 
   if (puntos >= 2) return { nivel: 'sospechoso', motivos };
   return { nivel: 'ok', motivos };
