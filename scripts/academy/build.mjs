@@ -171,11 +171,11 @@ const layout = ({ title, description, url, jsonld: ld, main, script, yt, extraCs
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${description}">
 <meta property="og:url" content="${SITE}${url}">
-<meta property="og:image" content="${SITE}/og-image.jpg">
+<meta property="og:image" content="${SITE}/og-asistencias.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="WIP, Field Service Management para LATAM: asignación inteligente y seguimiento en vivo de tu red de proveedores y tu equipo">
+<meta property="og:image:alt" content="Wip, la plataforma para operar asistencias en LATAM: aseguradoras, empresas de asistencia y redes de proveedores">
 ${ld ? `<script type="application/ld+json">
 ${JSON.stringify(ld)}
 </script>

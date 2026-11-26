@@ -132,7 +132,7 @@ const crumbsLd = (items) => ({
   itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: `${SITE}${it.url}` })),
 });
 
-function page({ url, title, desc, ogType = 'website', ogImage = '/og-image.jpg', ogW = 1200, ogH = 630, ogAlt, ld, preload = '', active, body, scripts = '', extraMeta = '', extraCss = '' }) {
+function page({ url, title, desc, ogType = 'website', ogImage = '/og-asistencias.jpg', ogW = 1200, ogH = 630, ogAlt, ld, preload = '', active, body, scripts = '', extraMeta = '', extraCss = '' }) {
   const nav = [['/software-gestion-servicios-en-campo', 'Soluciones'], ['/blog', 'Blog'], ['/ebook', 'Ebooks']]
     .map(([h, t]) => `<a href="${h}"${active === h ? ' aria-current="page"' : ''}>${t}</a>`).join('');
   return `<!DOCTYPE html>
