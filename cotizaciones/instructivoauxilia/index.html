@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Instructivo para proveedores de Auxilia en Wip</title>
+<meta name="description" content="Paso a paso para que tu empresa y tus técnicos queden conectados con Auxilia en Wip.">
+<link rel="icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400..900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --navy:#0b1020; --navy-2:#161e36; --lime:#dbff57; --lime-dk:#556b00; --lime-soft:#f1ffc2;
+  --paper:#f2f4ee; --white:#fbfcf8; --ink:#0b1020; --muted:#4a5266; --line:#dde1d6;
+  --blue:#2f5bff; --blue-soft:#e6ecff; --coral:#ff6a4d; --coral-soft:#ffe9e4;
+  --mint:#18b67a; --mint-soft:#dff7ec; --amber:#ffb81f; --amber-soft:#fff3d1;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px}
+body{margin:0;font-family:'Inter',Arial,sans-serif;color:var(--ink);background:var(--paper);font-size:18px;line-height:1.55}
+h1,h2,h3{font-family:'Archivo',Arial,sans-serif;margin:0;line-height:1.08}
+p{margin:0}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+/* barra */
+.top{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.96);backdrop-filter:blur(8px);color:#fff}
+.top .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.top img.w{height:32px;width:auto}
+.top .sep{width:1px;height:26px;background:#3a4468}
+.top .a{background:#fbfcf8;border-radius:10px;padding:5px 12px;display:flex}
+.top .a img{height:22px;width:auto}
+.nav{margin-left:auto;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none}
+.nav a{font:700 13px 'JetBrains Mono',monospace;color:#b9c1d3;text-decoration:none;min-width:32px;height:32px;display:grid;place-items:center;border-radius:999px;border:1px solid #283152;transition:.2s}
+.nav a:hover,.nav a.on{background:var(--lime);color:var(--navy);border-color:var(--lime)}
+.bar{position:absolute;left:0;bottom:0;height:3px;background:var(--lime);width:0}
+
+/* portada */
+.hero{background:var(--navy);color:#fff;position:relative;overflow:hidden;padding:72px 0 0}
+.hero:before{content:"";position:absolute;right:-120px;top:-120px;width:460px;height:460px;border-radius:50%;background:var(--lime);opacity:.14}
+.hero:after{content:"";position:absolute;left:-80px;bottom:60px;width:220px;height:220px;border-radius:50%;border:3px dashed #dbff5766}
+.eye{font:700 14px 'JetBrains Mono',monospace;letter-spacing:3px;text-transform:uppercase;color:var(--lime);margin-bottom:20px}
+.hero h1{font-size:clamp(40px,7vw,76px);font-weight:900;text-transform:uppercase;letter-spacing:-1.5px}
+.hl{display:inline-block;background:var(--lime);color:var(--navy);padding:0 16px;margin-top:8px}
+.hero .lead{font-size:22px;color:#c9d0e2;max-width:640px;margin-top:26px}
+.logos{display:flex;align-items:center;gap:16px;margin-bottom:40px;flex-wrap:wrap}
+.logos .a{background:#fbfcf8;border-radius:14px;padding:12px 22px;display:flex}
+.logos .a img{height:38px;width:auto}
+.logos .x{font:700 28px 'Archivo';color:var(--lime)}
+.logos img.w{height:54px;width:auto}
+.hero-row{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:end}
+.hero .phone{justify-self:center;width:min(300px,100%);border-radius:28px 28px 0 0;box-shadow:0 0 0 6px #283152,0 30px 60px #0008;margin-bottom:-2px}
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:28px 0 56px}
+.chip{background:#ffffff14;border:1px solid #ffffff30;border-radius:999px;padding:8px 16px;font-weight:600;font-size:15px}
+.chip b{color:var(--lime)}
+
+/* bloques */
+section.blk{padding:72px 0}
+.pill{display:inline-flex;align-items:center;gap:8px;font:700 13px 'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;padding:7px 14px;border-radius:999px;background:var(--lime);color:var(--navy);margin-bottom:18px}
+h2{font-size:clamp(30px,4.6vw,48px);font-weight:900;letter-spacing:-.5px}
+.sub{color:var(--muted);font-size:20px;margin-top:14px;max-width:700px}
+.mt{margin-top:36px}
+
+/* meta + materiales */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.card{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:28px}
+.card h3{font-size:22px;margin-bottom:10px}
+.goal{display:flex;gap:16px;align-items:flex-start}
+.ico{flex:none;width:54px;height:54px;border-radius:16px;display:grid;place-items:center;font-size:28px}
+.c-lime{background:var(--lime)}.c-blue{background:var(--blue-soft)}.c-coral{background:var(--coral-soft)}.c-mint{background:var(--mint-soft)}.c-amber{background:var(--amber-soft)}
+.need{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.need li{display:flex;gap:12px;align-items:flex-start;font-weight:500}
+.need li:before{content:"";flex:none;width:22px;height:22px;margin-top:2px;border-radius:7px;border:2px solid var(--lime-dk);background:#fff}
+
+/* mapa del recorrido */
+.route{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:36px;position:relative}
+.route a{text-decoration:none;color:inherit;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:16px 12px;text-align:center;transition:.2s}
+.route a:hover{transform:translateY(-4px);box-shadow:0 14px 28px #0b102018}
+.route b{display:grid;place-items:center;width:40px;height:40px;margin:0 auto 8px;border-radius:50%;font:900 18px 'Archivo';color:#fff}
+.route small{display:block;font-weight:700;font-size:13px;line-height:1.25}
+.route span{display:block;font-size:12px;color:var(--muted);margin-top:4px}
+
+/* pasos */
+.step{padding:80px 0}
+.step:nth-of-type(odd){background:var(--white)}
+.stephead{display:flex;gap:22px;align-items:center;margin-bottom:12px}
+.bignum{flex:none;width:84px;height:84px;border-radius:26px;display:grid;place-items:center;font:900 44px 'Archivo';color:#fff;box-shadow:0 10px 0 #0b102022}
+.who{font:700 13px 'JetBrains Mono',monospace;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.stepbody{display:grid;grid-template-columns:1.05fr .95fr;gap:44px;align-items:start;margin-top:30px}
+.stepbody.flip .shotcol{order:-1}
+.shotcol{position:sticky;top:90px}
+.shot{border-radius:22px;border:1px solid var(--line);background:#fff;box-shadow:0 24px 48px #0b102018;overflow:hidden}
+.shot.phone{max-width:340px;margin:0 auto;border-radius:30px}
+.cap{font-size:14px;color:var(--muted);margin-top:12px;text-align:center;font-style:italic}
+.do{counter-reset:s;list-style:none;padding:0;margin:0;display:grid;gap:14px}
+.do li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;background:var(--paper);border-radius:16px;padding:14px 16px}
+.step:nth-of-type(even) .do li{background:var(--white);border:1px solid var(--line)}
+.do li:before{content:counter(s);flex:none;width:30px;height:30px;border-radius:50%;background:var(--navy);color:var(--lime);display:grid;place-items:center;font:700 14px 'JetBrains Mono',monospace;margin-top:1px}
+.do b{background:var(--lime-soft);padding:0 5px;border-radius:5px}
+.sec-h{font:800 15px 'Archivo';text-transform:uppercase;letter-spacing:1.5px;margin:26px 0 12px;display:flex;gap:8px;align-items:center}
+.box{border-radius:18px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;margin-top:18px;font-size:17px}
+.box .e{font-size:24px;line-height:1}
+.box.tip{background:var(--mint-soft);border:1px solid #a8e6c9}
+.box.warn{background:var(--amber-soft);border:1px solid #ffdc86}
+.box.see{background:var(--blue-soft);border:1px solid #b9c9ff}
+.box.stop{background:var(--coral-soft);border:1px solid #ffc4b7}
+.box strong{display:block;font-family:'Archivo';font-size:15px;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px}
+
+/* tipos */
+.types{display:grid;gap:10px;margin-top:10px}
+.type{display:flex;gap:12px;align-items:center;border-radius:14px;padding:10px 14px;background:#fff;border:1px solid var(--line)}
+.type em{flex:none;font:700 12px 'JetBrains Mono',monospace;font-style:normal;padding:4px 10px;border-radius:999px;color:#fff}
+
+/* seguimiento */
+.states{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
+.st{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;border-top:6px solid var(--blue)}
+.st:nth-child(2){border-top-color:var(--amber)}.st:nth-child(3){border-top-color:var(--coral)}
+.st b{display:block;margin-bottom:4px}
+
+/* tabla */
+.faq{display:grid;gap:12px;margin-top:30px}
+details{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:0 22px}
+details[open]{border-color:var(--navy);box-shadow:0 10px 24px #0b10200f}
+summary{cursor:pointer;font:800 19px 'Archivo';padding:18px 0;list-style:none;display:flex;align-items:center;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary:before{content:"?";flex:none;width:30px;height:30px;border-radius:50%;background:var(--lime);display:grid;place-items:center;font-weight:900}
+summary:after{content:"+";margin-left:auto;font-size:26px;color:var(--lime-dk)}
+details[open] summary:after{content:"–"}
+details p{padding:0 0 20px 42px;color:var(--muted)}
+
+/* cierre */
+.end{background:var(--navy);color:#fff;padding:80px 0 40px;position:relative;overflow:hidden}
+.end:before{content:"";position:absolute;left:-100px;top:-100px;width:360px;height:360px;border-radius:50%;background:var(--lime);opacity:.14}
+.checks{list-style:none;padding:0;margin:30px 0 0;display:grid;gap:12px}
+.checks label{display:flex;gap:14px;align-items:center;background:#161e36;border:1px solid #283152;border-radius:16px;padding:16px 20px;cursor:pointer;font-weight:600;transition:.2s}
+.checks input{appearance:none;flex:none;width:28px;height:28px;border-radius:9px;border:2px solid var(--lime);background:transparent;display:grid;place-items:center;cursor:pointer}
+.checks input:checked{background:var(--lime)}
+.checks input:checked:after{content:"✓";color:var(--navy);font-weight:900}
+.checks label:has(input:checked){background:#1f2c4d;border-color:var(--lime)}
+.done{display:none;margin-top:24px;background:var(--lime);color:var(--navy);border-radius:20px;padding:22px 26px;font:900 26px 'Archivo'}
+.done.on{display:block}
+.help{margin-top:48px;display:grid;grid-template-columns:auto 1fr;gap:24px;align-items:center;background:#fbfcf8;color:var(--navy);border-radius:24px;padding:26px 30px}
+.help img{height:46px;width:auto}
+.help p b{display:block;font-family:'Archivo';font-size:22px}
+.foot{display:flex;align-items:center;gap:18px;margin-top:48px;padding-top:24px;border-top:1px solid #283152;color:#b9c1d3;font:500 14px 'JetBrains Mono',monospace;letter-spacing:1px}
+.foot img{height:36px;width:auto}
+.foot .a{background:#fbfcf8;border-radius:8px;padding:4px 10px;display:flex;margin-left:auto}
+.foot .a img{height:22px}
+
+@media(max-width:860px){
+  .hero-row,.stepbody,.g2,.g3{grid-template-columns:1fr}
+  .stepbody.flip .shotcol{order:0}
+  .shotcol{position:static}
+  .route{grid-template-columns:repeat(3,1fr)}
+  .states{grid-template-columns:1fr}
+  .hero .phone{display:none}
+  .nav{display:none}
+  .help{grid-template-columns:1fr}
+  .bignum{width:64px;height:64px;font-size:34px;border-radius:20px}
+}
+@keyframes up{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.rv{opacity:0}.rv.in{animation:up .6s cubic-bezier(.2,.7,.2,1) both}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1}.rv.in{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img class="w" src="/cotizaciones/instructivoauxilia/img/wip-lima.png" alt="Wip">
+    <span class="sep"></span>
+    <span class="a"><img src="/cotizaciones/instructivoauxilia/img/auxilia.png" alt="Auxilia"></span>
+    <nav class="nav" id="nav">
+      <a href="#paso1">1</a><a href="#paso2">2</a><a href="#paso3">3</a><a href="#paso4">4</a><a href="#paso5">5</a><a href="#paso6">6</a><a href="#faq">?</a>
+    </nav>
+  </div>
+  <div class="bar" id="bar"></div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-row">
+      <div>
+        <div class="logos">
+          <span class="a"><img src="/cotizaciones/instructivoauxilia/img/auxilia.png" alt="Auxilia"></span>
+          <span class="x">+</span>
+          <img class="w" src="/cotizaciones/instructivoauxilia/img/wip-lima.png" alt="Wip">
+        </div>
+        <p class="eye">Instructivo para proveedores</p>
+        <h1>Conecta tu empresa<br>con Auxilia <span class="hl">en 6 pasos</span></h1>
+        <p class="lead">Aprende a crear el perfil de tu empresa, invitar a tus técnicos y empezar a recibir los servicios de Auxilia en Wip.</p>
+        <div class="chips">
+          <span class="chip">⏱ <b>~20 minutos</b> en total</span>
+          <span class="chip">🧰 <b>6 pasos</b> con imágenes</span>
+          <span class="chip">📲 Celular + computador</span>
+        </div>
+      </div>
+      <img class="phone" src="/cotizaciones/instructivoauxilia/img/whatsapp-tecnico.png" alt="WhatsApp que recibe el técnico con los botones de descarga">
+    </div>
+  </div>
+</section>
+
+<section class="blk">
+  <div class="wrap">
+    <span class="pill">● Antes de empezar</span>
+    <h2>¿Qué vas a lograr?</h2>
+    <p class="sub">Para las empresas proveedoras de Auxilia: grúas, cerrajería, plomería y más. Al terminar vas a tener:</p>
+    <div class="g2 mt">
+      <div class="card goal rv"><div class="ico c-lime">🏢</div><div><h3>Tu empresa en Wip</h3><p>Con perfil propio y conectada con Auxilia, para recibir sus servicios.</p></div></div>
+      <div class="card goal rv"><div class="ico c-blue">📱</div><div><h3>Tus técnicos con la app</h3><p><b>Wip Colaboradores</b>, dentro de tu empresa y listos para recibir servicios.</p></div></div>
+    </div>
+    <div class="g2 mt">
+      <div class="card rv">
+        <h3>🎒 Ten a la mano</h3>
+        <ul class="need">
+          <li>El celular con el <b>&nbsp;WhatsApp que le diste a Auxilia</b></li>
+          <li>Un <b>&nbsp;correo de la empresa</b></li>
+          <li>El <b>&nbsp;número tributario</b>&nbsp;(RNC o cédula)</li>
+          <li>De cada técnico: <b>&nbsp;WhatsApp y correo</b></li>
+        </ul>
+      </div>
+      <div class="card rv">
+        <h3>🗺 El recorrido</h3>
+        <p style="color:var(--muted)">Toca un paso para ir directo. Cada uno tiene: qué hacer, qué vas a ver y un consejo.</p>
+        <div class="route" style="grid-template-columns:repeat(3,1fr);margin-top:16px">
+          <a href="#paso1"><b style="background:var(--blue)">1</b><small>WhatsApp</small></a>
+          <a href="#paso2"><b style="background:var(--mint)">2</b><small>Perfil</small></a>
+          <a href="#paso3"><b style="background:var(--coral)">3</b><small>Entra</small></a>
+          <a href="#paso4"><b style="background:var(--amber)">4</b><small>Invita</small></a>
+          <a href="#paso5"><b style="background:var(--blue)">5</b><small>Técnicos</small></a>
+          <a href="#paso6"><b style="background:var(--mint)">6</b><small>Revisa</small></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 1 -->
+<section class="step" id="paso1">
+  <div class="wrap">
+    <div class="stephead rv"><div class="bignum" style="background:var(--blue)">1</div><div><p class="who">📱 Lo haces tú, en el celular</p><h2>El WhatsApp de invitación</h2></div></div>
+    <p class="sub">Auxilia te invitó a Wip. Lo primero es confirmar que este número es el tuyo.</p>
+    <div class="stepbody">
+      <div>
+        <p class="sec-h">✅ Qué haces</p>
+        <ol class="do">
+          <li><span>Te llega un WhatsApp de <b>Wip</b> a nombre de Auxilia: por ahí te enviarán los servicios para tu empresa.</span></li>
+          <li><span>Toca <b>Confirmar</b>.</span></li>
+          <li><span>Wip responde «Listo, quedaste conectado con Auxilia» y te manda un <b>enlace para crear tu perfil</b>. Ábrelo en los próximos <b>7 días</b>; después vence.</span></li>
+        </ol>
+        <div class="box warn"><span class="e">🚫</span><div><strong>¿No es para ti?</strong>Toca <b>No soy yo</b> y no te volveremos a escribir. Si diste correo a Auxilia, también te llega un correo con estos pasos.</div></div>
+      </div>
+      <div class="shotcol rv"><div class="shot"><img src="/cotizaciones/instructivoauxilia/img/whatsapp-invitacion.png" alt="WhatsApp de invitación de Wip con los botones Confirmar, No soy yo y No quiero recibirlos"></div><p class="cap">Mensaje de ejemplo: en el tuyo aparece Auxilia y el nombre de tu empresa. Toca Confirmar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 2 -->
+<section class="step" id="paso2">
+  <div class="wrap">
+    <div class="stephead rv"><div class="bignum" style="background:var(--mint)">2</div><div><p class="who">🔗 Desde el enlace</p><h2>Crea el perfil de tu empresa</h2></div></div>
+    <p class="sub">El enlace abre «Termina de crear el perfil de tu empresa en Wip». Arriba ves lo que registró Auxilia (empresa, servicios, ciudades); lo puedes cambiar después.</p>
+    <div class="stepbody flip">
+      <div>
+        <p class="sec-h">✅ Qué haces</p>
+        <ol class="do">
+          <li><span><b>Tu correo</b>: el de la empresa. Con él vas a entrar a Wip.</span></li>
+          <li><span><b>Crea una contraseña</b> de al menos 8 caracteres y repítela.</span></li>
+          <li><span><b>Número tributario</b> de tu empresa (RNC o cédula).</span></li>
+          <li><span>Marca <b>Acepto las políticas de privacidad de Wip</b> y toca <b>Crear mi perfil</b>.</span></li>
+          <li><span>Te llega un <b>código de 6 dígitos</b> al correo. Escríbelo y toca <b>Verificar y crear mi perfil</b>.</span></li>
+          <li><span>Verás «¡Listo! Tu perfil está creado». Toca <b>Entrar a Wip</b>.</span></li>
+        </ol>
+        <div class="box tip"><span class="e">💡</span><div><strong>Consejo</strong>El código vence en 10 minutos. Si no lo ves, revisa el correo no deseado o toca <b>Reenviar código</b> (el anterior deja de servir).</div></div>
+      </div>
+      <div class="shotcol rv">
+        <div class="shot"><img src="/cotizaciones/instructivoauxilia/img/crear-perfil.png" alt="Página para crear el perfil: datos que registró Auxilia, correo, contraseña y número tributario"></div>
+        <p class="cap">La página del enlace, con datos de ejemplo.</p>
+        <div class="shot" style="margin-top:18px"><img src="/cotizaciones/instructivoauxilia/img/codigo.png" alt="Paso del código de 6 dígitos que llega al correo"></div>
+        <p class="cap">El código llega al correo que escribiste.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 3 -->
+<section class="step" id="paso3">
+  <div class="wrap">
+    <div class="stephead rv"><div class="bignum" style="background:var(--coral)">3</div><div><p class="who">💻 Desde un computador</p><h2>Entra a Wip</h2></div></div>
+    <div class="stepbody">
+      <div>
+        <p class="sec-h">✅ Qué haces</p>
+        <ol class="do">
+          <li><span>Entra a <b>platform.wiptool.com</b> con el correo y la contraseña que acabas de crear.</span></li>
+          <li><span>En <b>Ofertas</b> te llegan los servicios que Auxilia te asigna.</span></li>
+          <li><span>En <b>Configuración → Mi Wip</b> ves cómo va tu empresa como proveedora y qué te falta (por ejemplo, técnicos sin la app).</span></li>
+        </ol>
+        <div class="box see"><span class="e">👀</span><div><strong>Lo que vas a ver</strong>Un aviso arriba: «Eres una empresa invitada a Wip por medio de Auxilia». Es normal: tu empresa trabaja dentro de la red de Auxilia.</div></div>
+      </div>
+      <div class="shotcol rv"><div class="shot"><img src="/cotizaciones/instructivoauxilia/img/mi-wip-equipo.jpg" alt="Mi Wip, pestaña Tu equipo: técnicos invitados, con WhatsApp verificado y con la app"></div><p class="cap">Mi Wip → Tu equipo: cuántos técnicos invitaste y cuántos ya tienen la app.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 4 -->
+<section class="step" id="paso4">
+  <div class="wrap">
+    <div class="stephead rv"><div class="bignum" style="background:var(--amber)">4</div><div><p class="who">💻 Desde el computador</p><h2>Invita a tus técnicos</h2></div></div>
+    <div class="stepbody flip">
+      <div>
+        <p class="sec-h">✅ Qué haces</p>
+        <ol class="do">
+          <li><span>Ve a <b>Configuración → Usuarios</b> y toca <b>Invitar a mi equipo</b> (también está en Mi red, en el menú de la izquierda).</span></li>
+          <li><span>Llena una fila por persona (hasta 20 por envío; <b>Agregar persona</b> suma filas).</span></li>
+          <li><span>Toca <b>Enviar invitaciones</b>.</span></li>
+        </ol>
+        <p class="sec-h">🧩 Qué poner en cada columna</p>
+        <div class="types">
+          <div class="type"><em style="background:var(--blue)">Colaborador</em><span>Técnicos que atienden en la calle con la app.</span></div>
+          <div class="type"><em style="background:var(--mint)">Operador</em><span>Quien gestiona servicios desde el computador.</span></div>
+          <div class="type"><em style="background:var(--coral)">Dual</em><span>Quien hace las dos cosas.</span></div>
+        </div>
+        <div class="box warn"><span class="e">✉️</span><div><strong>Pon siempre el correo</strong>Teléfono (WhatsApp) y <b>Correo</b>. El técnico queda dentro de tu empresa cuando crea su cuenta con <b>ese mismo correo</b>.</div></div>
+        <div class="box tip"><span class="e">✅</span><div><strong>Unidades de negocio</strong>Ya viene marcada la unidad de Auxilia en la que trabajas: déjala así para que tus técnicos reciban los servicios de Auxilia.</div></div>
+        <div class="box stop"><span class="e">⚠️</span><div><strong>Cuidado</strong>Invita solo a personas que esperan el mensaje: si lo reportan como spam, WhatsApp limita los envíos.</div></div>
+      </div>
+      <div class="shotcol rv"><div class="shot"><img src="/cotizaciones/instructivoauxilia/img/invitar-equipo.jpg" alt="Formulario Invitar a mi equipo con las columnas Tipo, Unidad de negocio, Teléfono, Correo y Nombre"></div><p class="cap">El formulario Invitar a mi equipo: una fila por persona.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 5 -->
+<section class="step" id="paso5">
+  <div class="wrap">
+    <div class="stephead rv"><div class="bignum" style="background:var(--blue)">5</div><div><p class="who">🧑‍🔧 Lo hace cada técnico</p><h2>Lo que hace cada técnico</h2></div></div>
+    <p class="sub">📤 <b>Envíale este paso a tus técnicos.</b> Les llegará un WhatsApp de Wip: su empresa los registró como colaboradores.</p>
+    <div class="stepbody">
+      <div>
+        <p class="sec-h">✅ Qué hace el técnico</p>
+        <ol class="do">
+          <li><span>Le llega un WhatsApp de Wip: tu empresa lo registró como colaborador.</span></li>
+          <li><span>Descarga la app <b>Wip Colaboradores</b> con el botón del mensaje (Android o iPhone).</span></li>
+          <li><span>Abre la app y, debajo de Iniciar sesión, toca <b>Regístrate</b>.</span></li>
+          <li><span>Escribe el <b>mismo correo</b> al que lo invitó la empresa, su nombre y apellido, y sigue los pasos: el código de 6 dígitos y una contraseña.</span></li>
+          <li><span>Acepta los permisos de notificaciones y ubicación. En ubicación elige <b>Permitir todo el tiempo</b> y deja activa <b>Ubicación precisa</b>.</span></li>
+          <li><span>Listo: queda conectado a tu empresa y en la app ve los servicios que le asignen.</span></li>
+        </ol>
+        <div class="box tip"><span class="e">🔁</span><div><strong>¿Ya tenía cuenta en Wip?</strong>No debe crear otra: entra a la app y acepta la solicitud de tu empresa con <b>Aceptar</b>.</div></div>
+        <div class="box see"><span class="e">🔎</span><div><strong>¿No ve la empresa al terminar?</strong>Por ejemplo, se registró con otro correo. En la pantalla de inicio toca <b>Mi red</b>, busca el nombre de tu empresa y toca <b>Conectar</b>. Tu empresa recibe la solicitud y, cuando lo acepte, ya ve sus servicios.</div></div>
+      </div>
+      <div class="shotcol rv">
+        <div class="shot phone"><img src="/cotizaciones/instructivoauxilia/img/whatsapp-tecnico.png" alt="WhatsApp que recibe el técnico: lo registraron como colaborador, con botones para descargar en Android y iPhone"></div>
+        <p class="cap">El WhatsApp que recibe cada técnico (ejemplo).</p>
+      </div>
+    </div>
+    <div class="g2 mt rv" style="align-items:start">
+      <div><div class="shot"><img src="/cotizaciones/instructivoauxilia/img/app-registro.png" alt="Pantallas de la app: Regístrate, datos del registro, permisos de ubicación y Permitir todo el tiempo"></div><p class="cap">Registro y permisos en la app Wip Colaboradores. Guía completa: <a href="https://www.wiptool.com/academy/guia-colaborador">wiptool.com/academy/guia-colaborador</a></p></div>
+      <div><div class="shot"><img src="/cotizaciones/instructivoauxilia/img/mi-red.png" alt="Pantallas de la app: Mi red y buscar la empresa para tocar Conectar"></div><p class="cap">Mi red → buscar tu empresa → Conectar.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PASO 6 -->
+<section class="step" id="paso6">
+  <div class="wrap">
+    <div class="stephead rv"><div class="bignum" style="background:var(--mint)">6</div><div><p class="who">💻 Desde el computador</p><h2>Revisa que todos entraron</h2></div></div>
+    <p class="sub">En <b>Configuración → Usuarios</b>: la tabla de abajo es tu equipo, quien aparece ahí ya está dentro. El cuadro <b>Invitados sin entrar</b> muestra a quien falta, con el estado de su WhatsApp (Enviada, Entregada, Leída o No entregada).</p>
+    <div class="states mt">
+      <div class="st rv"><b>🆕 Aún no ha creado su cuenta</b><span>Recuérdale el Paso 5.</span></div>
+      <div class="st rv"><b>✋ Ya tiene cuenta</b><span>Debe aceptar la solicitud en Mi red: pídele que la acepte en la app.</span></div>
+      <div class="st rv"><b>⌛ Invitación vencida</b><span>Pasaron 30 días: toca <b>Reenviar invitación</b>.</span></div>
+    </div>
+    <div class="g2 mt">
+      <div class="box tip" style="margin:0"><span class="e">🔄</span><div><strong>Reenviar invitación</strong>Hasta 3 envíos por persona, con 48 horas entre uno y otro.</div></div>
+      <div class="box warn" style="margin:0"><span class="e">🗑</span><div><strong>Cancelar invitación</strong>Si te equivocaste de persona o de dato. Después puedes invitarla de nuevo bien.</div></div>
+    </div>
+    <p class="sub" style="margin-top:28px">🎉 Cuando el cuadro desaparece, todo tu equipo está en la plataforma.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="blk" id="faq" style="background:var(--paper)">
+  <div class="wrap">
+    <span class="pill">● Si algo no sale</span>
+    <h2>Problemas frecuentes</h2>
+    <p class="sub">Toca la pregunta que se parezca a lo que ves en pantalla.</p>
+    <div class="faq">
+      <details><summary>«Este enlace venció»</summary><p>Pídele a Auxilia que te reenvíe la invitación (S.proveedores@auxilia.do o WhatsApp +1 849 314 3679).</p></details>
+      <details><summary>«Ya tienes una cuenta en Wip»</summary><p>Ese WhatsApp ya tiene cuenta: toca <b>Iniciar sesión</b> y tu empresa queda unida a ella.</p></details>
+      <details><summary>«Tu empresa ya está en Wip»</summary><p>Ya existe una empresa con ese RNC. Quien la administra debe aceptar la solicitud de Auxilia en Mi red y agregarte a su equipo.</p></details>
+      <details><summary>No llega el código al correo</summary><p>Revisa el correo no deseado y toca <b>Reenviar código</b>; el anterior deja de servir.</p></details>
+      <details><summary>Un técnico no aparece en el equipo</summary><p>Revisa que creó la cuenta con el mismo correo de la invitación. Si usó otro, cancela la invitación e invítalo con ese correo.</p></details>
+      <details><summary>WhatsApp «No entregada»</summary><p>El número no tiene WhatsApp o la app está desactualizada. Corrige el número o usa <b>Invitar por correo</b>.</p></details>
+      <details><summary>«Ya se le escribió hace menos de 48 horas»</summary><p>Espera la fecha que indica para reenviar.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="end">
+  <div class="wrap">
+    <div class="logos"><span class="a"><img src="/cotizaciones/instructivoauxilia/img/auxilia.png" alt="Auxilia"></span><span class="x">+</span><img class="w" src="/cotizaciones/instructivoauxilia/img/wip-lima.png" alt="Wip"></div>
+    <p class="eye">Autoevaluación</p>
+    <h2 style="color:#fff">¿Quedó todo listo?</h2>
+    <p class="sub" style="color:#c9d0e2">Marca cada punto. Si los completas todos, ya estás operando con Auxilia.</p>
+    <ul class="checks" id="checks">
+      <li><label><input type="checkbox"> Confirmé el WhatsApp de invitación</label></li>
+      <li><label><input type="checkbox"> Creé el perfil de mi empresa y entré a platform.wiptool.com</label></li>
+      <li><label><input type="checkbox"> Invité a mis técnicos con su correo y WhatsApp</label></li>
+      <li><label><input type="checkbox"> Mis técnicos descargaron Wip Colaboradores y dieron «Permitir todo el tiempo»</label></li>
+      <li><label><input type="checkbox"> En Usuarios ya no aparece el cuadro «Invitados sin entrar»</label></li>
+    </ul>
+    <div class="done" id="done">🎉 ¡Listo! Tu empresa ya recibe servicios de Auxilia.</div>
+    <div class="help">
+      <img src="/cotizaciones/instructivoauxilia/img/auxilia.png" alt="Auxilia">
+      <p><b>¿Otra duda? Soporte de Proveedores de Auxilia</b>S.proveedores@auxilia.do · WhatsApp +1 849 314 3679</p>
+    </div>
+    <div class="foot"><img src="/cotizaciones/instructivoauxilia/img/wip-lima.png" alt="Wip"><span>Instructivo para proveedores · Actualizado 27 nov 2026</span><span class="a"><img src="/cotizaciones/instructivoauxilia/img/auxilia.png" alt="Auxilia"></span></div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var bar=document.getElementById('bar');
+  function prog(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight);bar.style.width=(p*100)+'%'}
+  addEventListener('scroll',prog,{passive:true});prog();
+  var links=[].slice.call(document.querySelectorAll('#nav a'));
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){links.forEach(function(l){l.classList.toggle('on',l.getAttribute('href')==='#'+e.target.id)})}})},{rootMargin:'-40% 0px -55% 0px'});
+  document.querySelectorAll('.step,#faq').forEach(function(s){io.observe(s)});
+  var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){rv.observe(el)});
+  var cs=[].slice.call(document.querySelectorAll('#checks input')),dn=document.getElementById('done');
+  cs.forEach(function(c){c.addEventListener('change',function(){dn.classList.toggle('on',cs.every(function(x){return x.checked}))})});
+})();
+</script>
+</body>
+</html>
